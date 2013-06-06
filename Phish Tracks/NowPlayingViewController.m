@@ -33,6 +33,8 @@
 		
 		self.shouldHideNextTrackButtonAtBoundary = YES;
 		self.shouldHidePreviousTrackButtonAtBoundary = YES;
+		[self showScrobbleOverlay:YES
+						 animated:YES];
 		self.navigationController.navigationBar.hidden = YES;
 	}
 	return self;
