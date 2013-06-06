@@ -12,3 +12,17 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 #endif
+
+#define PHISH_TRACKS_PATH @"http://www.phishtracks.com"
+
+#import<SystemConfiguration/SystemConfiguration.h>
+#import<MobileCoreServices/MobileCoreServices.h>
+
+#import "PhishTracksAPI.h"
+#import "PhishNetAPI.h"
+#import<SVPullToRefresh.h>
+#import "FailureHandler.h"
+#import <FlurrySDK/Flurry.h>
+
+#define REQUEST_FAILED(x) [FailureHandler returnCallback:x]
+

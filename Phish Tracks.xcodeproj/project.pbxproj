@@ -16,9 +16,57 @@
 		7C518C17175D0C32005EB2E7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C16175D0C32005EB2E7 /* Default.png */; };
 		7C518C19175D0C32005EB2E7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C18175D0C32005EB2E7 /* Default@2x.png */; };
 		7C518C1B175D0C32005EB2E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C1A175D0C32005EB2E7 /* Default-568h@2x.png */; };
+		7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C25175D1170005EB2E7 /* PhishTracksAPI.m */; };
+		7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C28175D1386005EB2E7 /* PhishYear.m */; };
+		7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C2B175D13BF005EB2E7 /* PhishShow.m */; };
+		7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C2E175D149D005EB2E7 /* PhishSet.m */; };
+		7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C31175D14CF005EB2E7 /* PhishSong.m */; };
+		7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */; };
+		7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */; };
+		7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C38175D2A90005EB2E7 /* YearsViewController.m */; };
+		7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */; };
+		7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */; };
+		7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C40175D2E20005EB2E7 /* YearViewController.m */; };
+		7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C43175D9C87005EB2E7 /* ShowViewController.m */; };
+		7C518C47175DAA60005EB2E7 /* PhishTrackProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */; };
+		7C518C4A175DB75D005EB2E7 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C49175DB75D005EB2E7 /* NowPlayingViewController.m */; };
+		7C518C4C175DC59E005EB2E7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4B175DC59E005EB2E7 /* Reveal.framework */; };
+		7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */; };
+		7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */; };
+		7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C51175DC937005EB2E7 /* MediaPlayer.framework */; };
+		7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */; };
+		7C518C59175E581D005EB2E7 /* 83-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C58175E581D005EB2E7 /* 83-calendar.png */; };
+		7C518C5B175E5836005EB2E7 /* 19-gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C5A175E5836005EB2E7 /* 19-gear.png */; };
+		7C518C5D175E5890005EB2E7 /* 44-shoebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C5C175E5890005EB2E7 /* 44-shoebox.png */; };
+		7C518C5F175E58DD005EB2E7 /* 19-gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C5E175E58DD005EB2E7 /* 19-gear@2x.png */; };
+		7C518C61175E58E3005EB2E7 /* 44-shoebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C60175E58E3005EB2E7 /* 44-shoebox@2x.png */; };
+		7C518C63175E58E9005EB2E7 /* 83-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C62175E58E9005EB2E7 /* 83-calendar@2x.png */; };
+		7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */; };
+		7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */; };
+		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
+		7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */; };
+		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
+		7CADB3111760252600B80D54 /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB3101760252600B80D54 /* 28-star.png */; };
+		7CADB3131760258700B80D54 /* 194-note-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB3121760258700B80D54 /* 194-note-2.png */; };
+		7CADB316176025E800B80D54 /* 28-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB314176025E800B80D54 /* 28-star@2x.png */; };
+		7CADB317176025E800B80D54 /* 194-note-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB315176025E800B80D54 /* 194-note-2@2x.png */; };
+		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
+		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
+		7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31F176040B200B80D54 /* NSString+stripHTML.m */; };
+		7CADB323176043F700B80D54 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB322176043F700B80D54 /* SongsViewController.m */; };
+		7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB325176044DF00B80D54 /* SongInstancesViewController.m */; };
+		7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CADB3281760583D00B80D54 /* Crashlytics.framework */; };
+		7CADB34517610FA500B80D54 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB33F17610FA500B80D54 /* Icon-72.png */; };
+		7CADB34617610FA500B80D54 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34017610FA500B80D54 /* Icon-Small-50.png */; };
+		7CADB34717610FA500B80D54 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34117610FA500B80D54 /* Icon-Small.png */; };
+		7CADB34817610FA500B80D54 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34217610FA500B80D54 /* Icon-Small@2x.png */; };
+		7CADB34917610FA500B80D54 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34317610FA500B80D54 /* Icon.png */; };
+		7CADB34A17610FA500B80D54 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34417610FA500B80D54 /* Icon@2x.png */; };
+		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0835065E67C54644AE7E0BA1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		7C518C01175D0C32005EB2E7 /* Phish Tracks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phish Tracks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,6 +80,76 @@
 		7C518C16175D0C32005EB2E7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7C518C18175D0C32005EB2E7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7C518C1A175D0C32005EB2E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7C518C24175D1170005EB2E7 /* PhishTracksAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksAPI.h; sourceTree = "<group>"; };
+		7C518C25175D1170005EB2E7 /* PhishTracksAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksAPI.m; sourceTree = "<group>"; };
+		7C518C27175D1386005EB2E7 /* PhishYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishYear.h; sourceTree = "<group>"; };
+		7C518C28175D1386005EB2E7 /* PhishYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishYear.m; sourceTree = "<group>"; };
+		7C518C2A175D13BF005EB2E7 /* PhishShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishShow.h; sourceTree = "<group>"; };
+		7C518C2B175D13BF005EB2E7 /* PhishShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishShow.m; sourceTree = "<group>"; };
+		7C518C2D175D149D005EB2E7 /* PhishSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishSet.h; sourceTree = "<group>"; };
+		7C518C2E175D149D005EB2E7 /* PhishSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishSet.m; sourceTree = "<group>"; };
+		7C518C30175D14CF005EB2E7 /* PhishSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishSong.h; sourceTree = "<group>"; };
+		7C518C31175D14CF005EB2E7 /* PhishSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishSong.m; sourceTree = "<group>"; };
+		7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7C518C37175D2A90005EB2E7 /* YearsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearsViewController.h; sourceTree = "<group>"; };
+		7C518C38175D2A90005EB2E7 /* YearsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearsViewController.m; sourceTree = "<group>"; };
+		7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7C518C3C175D2C1B005EB2E7 /* FailureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailureHandler.h; sourceTree = "<group>"; };
+		7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailureHandler.m; sourceTree = "<group>"; };
+		7C518C3F175D2E20005EB2E7 /* YearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearViewController.h; sourceTree = "<group>"; };
+		7C518C40175D2E20005EB2E7 /* YearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearViewController.m; sourceTree = "<group>"; };
+		7C518C42175D9C87005EB2E7 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
+		7C518C43175D9C87005EB2E7 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
+		7C518C45175DAA60005EB2E7 /* PhishTrackProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTrackProvider.h; sourceTree = "<group>"; };
+		7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTrackProvider.m; sourceTree = "<group>"; };
+		7C518C48175DB75D005EB2E7 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
+		7C518C49175DB75D005EB2E7 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
+		7C518C4B175DC59E005EB2E7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7C518C51175DC937005EB2E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7C518C54175DCEDD005EB2E7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7C518C57175DDCE8005EB2E7 /* ColorSpaceUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorSpaceUtils.h; sourceTree = "<group>"; };
+		7C518C58175E581D005EB2E7 /* 83-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "83-calendar.png"; sourceTree = "<group>"; };
+		7C518C5A175E5836005EB2E7 /* 19-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-gear.png"; sourceTree = "<group>"; };
+		7C518C5C175E5890005EB2E7 /* 44-shoebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "44-shoebox.png"; sourceTree = "<group>"; };
+		7C518C5E175E58DD005EB2E7 /* 19-gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-gear@2x.png"; sourceTree = "<group>"; };
+		7C518C60175E58E3005EB2E7 /* 44-shoebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "44-shoebox@2x.png"; sourceTree = "<group>"; };
+		7C518C62175E58E9005EB2E7 /* 83-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "83-calendar@2x.png"; sourceTree = "<group>"; };
+		7C518C67175E59D6005EB2E7 /* PhishNetAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetAPI.h; sourceTree = "<group>"; };
+		7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAPI.m; sourceTree = "<group>"; };
+		7C518C6B175E5CD8005EB2E7 /* PhishNetSetlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSetlist.h; sourceTree = "<group>"; };
+		7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSetlist.m; sourceTree = "<group>"; };
+		7C518C6E175E5EE5005EB2E7 /* PhishNetReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetReview.h; sourceTree = "<group>"; };
+		7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetReview.m; sourceTree = "<group>"; };
+		7C518C71175E6465005EB2E7 /* ConcertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcertInfoViewController.h; sourceTree = "<group>"; };
+		7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcertInfoViewController.m; sourceTree = "<group>"; };
+		7C518C74175FD224005EB2E7 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		7CADB3101760252600B80D54 /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
+		7CADB3121760258700B80D54 /* 194-note-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "194-note-2.png"; sourceTree = "<group>"; };
+		7CADB314176025E800B80D54 /* 28-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star@2x.png"; sourceTree = "<group>"; };
+		7CADB315176025E800B80D54 /* 194-note-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "194-note-2@2x.png"; sourceTree = "<group>"; };
+		7CADB3181760352900B80D54 /* PhishNetTopShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetTopShow.h; sourceTree = "<group>"; };
+		7CADB3191760352900B80D54 /* PhishNetTopShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetTopShow.m; sourceTree = "<group>"; };
+		7CADB31B176035E100B80D54 /* TopRatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopRatedViewController.h; sourceTree = "<group>"; };
+		7CADB31C176035E100B80D54 /* TopRatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopRatedViewController.m; sourceTree = "<group>"; };
+		7CADB31E176040B200B80D54 /* NSString+stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+stripHTML.h"; sourceTree = "<group>"; };
+		7CADB31F176040B200B80D54 /* NSString+stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+stripHTML.m"; sourceTree = "<group>"; };
+		7CADB321176043F700B80D54 /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
+		7CADB322176043F700B80D54 /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
+		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
+		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
+		7CADB3281760583D00B80D54 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7CADB33F17610FA500B80D54 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = SOURCE_ROOT; };
+		7CADB34017610FA500B80D54 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
+		7CADB34117610FA500B80D54 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = SOURCE_ROOT; };
+		7CADB34217610FA500B80D54 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = SOURCE_ROOT; };
+		7CADB34317610FA500B80D54 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
+		7CADB34417610FA500B80D54 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +157,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
+				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
+				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
+				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
+				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
+				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
 				7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */,
 				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
 				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
+				EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */,
+				7C518C4C175DC59E005EB2E7 /* Reveal.framework in Frameworks */,
+				7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +181,7 @@
 				7C518C0A175D0C32005EB2E7 /* Phish Tracks */,
 				7C518C03175D0C32005EB2E7 /* Frameworks */,
 				7C518C02175D0C32005EB2E7 /* Products */,
+				0835065E67C54644AE7E0BA1 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,9 +196,18 @@
 		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CADB3281760583D00B80D54 /* Crashlytics.framework */,
+				7C518C51175DC937005EB2E7 /* MediaPlayer.framework */,
+				7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */,
+				7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */,
+				7C518C4B175DC59E005EB2E7 /* Reveal.framework */,
+				7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */,
+				7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */,
+				7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */,
 				7C518C04175D0C32005EB2E7 /* UIKit.framework */,
 				7C518C06175D0C32005EB2E7 /* Foundation.framework */,
 				7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */,
+				A7BC2DD37E37437D9490C12C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,9 +215,20 @@
 		7C518C0A175D0C32005EB2E7 /* Phish Tracks */ = {
 			isa = PBXGroup;
 			children = (
+				7C518C23175D115A005EB2E7 /* API */,
+				7CADB30F1760251500B80D54 /* Top Rated Tab */,
+				7C518C53175DCEC7005EB2E7 /* Settings Tab */,
+				7C518C22175D0C62005EB2E7 /* Song Tab */,
+				7C518C21175D0C4E005EB2E7 /* Year Tab */,
 				7C518C13175D0C32005EB2E7 /* AppDelegate.h */,
 				7C518C14175D0C32005EB2E7 /* AppDelegate.m */,
 				7C518C0B175D0C32005EB2E7 /* Supporting Files */,
+				7C518C45175DAA60005EB2E7 /* PhishTrackProvider.h */,
+				7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */,
+				7C518C48175DB75D005EB2E7 /* NowPlayingViewController.h */,
+				7C518C49175DB75D005EB2E7 /* NowPlayingViewController.m */,
+				7CADB3121760258700B80D54 /* 194-note-2.png */,
+				7CADB315176025E800B80D54 /* 194-note-2@2x.png */,
 			);
 			path = "Phish Tracks";
 			sourceTree = "<group>";
@@ -88,6 +236,7 @@
 		7C518C0B175D0C32005EB2E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7CADB33817610E9000B80D54 /* Icons */,
 				7C518C0C175D0C32005EB2E7 /* Phish Tracks-Info.plist */,
 				7C518C0D175D0C32005EB2E7 /* InfoPlist.strings */,
 				7C518C10175D0C32005EB2E7 /* main.m */,
@@ -95,26 +244,166 @@
 				7C518C16175D0C32005EB2E7 /* Default.png */,
 				7C518C18175D0C32005EB2E7 /* Default@2x.png */,
 				7C518C1A175D0C32005EB2E7 /* Default-568h@2x.png */,
+				7C518C3C175D2C1B005EB2E7 /* FailureHandler.h */,
+				7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */,
+				7C518C57175DDCE8005EB2E7 /* ColorSpaceUtils.h */,
+				7CADB31E176040B200B80D54 /* NSString+stripHTML.h */,
+				7CADB31F176040B200B80D54 /* NSString+stripHTML.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C518C21175D0C4E005EB2E7 /* Year Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C58175E581D005EB2E7 /* 83-calendar.png */,
+				7C518C62175E58E9005EB2E7 /* 83-calendar@2x.png */,
+				7C518C37175D2A90005EB2E7 /* YearsViewController.h */,
+				7C518C38175D2A90005EB2E7 /* YearsViewController.m */,
+				7C518C3F175D2E20005EB2E7 /* YearViewController.h */,
+				7C518C40175D2E20005EB2E7 /* YearViewController.m */,
+				7C518C77175FD229005EB2E7 /* Show */,
+			);
+			name = "Year Tab";
+			sourceTree = "<group>";
+		};
+		7C518C22175D0C62005EB2E7 /* Song Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C5C175E5890005EB2E7 /* 44-shoebox.png */,
+				7C518C60175E58E3005EB2E7 /* 44-shoebox@2x.png */,
+				7CADB321176043F700B80D54 /* SongsViewController.h */,
+				7CADB322176043F700B80D54 /* SongsViewController.m */,
+				7CADB324176044DF00B80D54 /* SongInstancesViewController.h */,
+				7CADB325176044DF00B80D54 /* SongInstancesViewController.m */,
+			);
+			name = "Song Tab";
+			sourceTree = "<group>";
+		};
+		7C518C23175D115A005EB2E7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C66175E59C1005EB2E7 /* Phish.Net */,
+				7C518C65175E59AE005EB2E7 /* Phish Tracks */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		7C518C53175DCEC7005EB2E7 /* Settings Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C5A175E5836005EB2E7 /* 19-gear.png */,
+				7C518C5E175E58DD005EB2E7 /* 19-gear@2x.png */,
+				7C518C54175DCEDD005EB2E7 /* SettingsViewController.h */,
+				7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */,
+			);
+			name = "Settings Tab";
+			sourceTree = "<group>";
+		};
+		7C518C64175E59A0005EB2E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C27175D1386005EB2E7 /* PhishYear.h */,
+				7C518C28175D1386005EB2E7 /* PhishYear.m */,
+				7C518C2A175D13BF005EB2E7 /* PhishShow.h */,
+				7C518C2B175D13BF005EB2E7 /* PhishShow.m */,
+				7C518C2D175D149D005EB2E7 /* PhishSet.h */,
+				7C518C2E175D149D005EB2E7 /* PhishSet.m */,
+				7C518C30175D14CF005EB2E7 /* PhishSong.h */,
+				7C518C31175D14CF005EB2E7 /* PhishSong.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7C518C65175E59AE005EB2E7 /* Phish Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C24175D1170005EB2E7 /* PhishTracksAPI.h */,
+				7C518C25175D1170005EB2E7 /* PhishTracksAPI.m */,
+				7C518C64175E59A0005EB2E7 /* Models */,
+			);
+			name = "Phish Tracks";
+			sourceTree = "<group>";
+		};
+		7C518C66175E59C1005EB2E7 /* Phish.Net */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C6A175E5C97005EB2E7 /* Models */,
+				7C518C67175E59D6005EB2E7 /* PhishNetAPI.h */,
+				7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */,
+			);
+			name = Phish.Net;
+			sourceTree = "<group>";
+		};
+		7C518C6A175E5C97005EB2E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C6B175E5CD8005EB2E7 /* PhishNetSetlist.h */,
+				7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */,
+				7C518C6E175E5EE5005EB2E7 /* PhishNetReview.h */,
+				7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */,
+				7CADB3181760352900B80D54 /* PhishNetTopShow.h */,
+				7CADB3191760352900B80D54 /* PhishNetTopShow.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7C518C77175FD229005EB2E7 /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				7C518C42175D9C87005EB2E7 /* ShowViewController.h */,
+				7C518C43175D9C87005EB2E7 /* ShowViewController.m */,
+				7C518C71175E6465005EB2E7 /* ConcertInfoViewController.h */,
+				7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */,
+				7C518C74175FD224005EB2E7 /* ReviewsViewController.h */,
+				7C518C75175FD224005EB2E7 /* ReviewsViewController.m */,
+			);
+			name = Show;
+			sourceTree = "<group>";
+		};
+		7CADB30F1760251500B80D54 /* Top Rated Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7CADB3101760252600B80D54 /* 28-star.png */,
+				7CADB314176025E800B80D54 /* 28-star@2x.png */,
+				7CADB31B176035E100B80D54 /* TopRatedViewController.h */,
+				7CADB31C176035E100B80D54 /* TopRatedViewController.m */,
+			);
+			name = "Top Rated Tab";
+			sourceTree = "<group>";
+		};
+		7CADB33817610E9000B80D54 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7CADB33F17610FA500B80D54 /* Icon-72.png */,
+				7CADB34017610FA500B80D54 /* Icon-Small-50.png */,
+				7CADB34117610FA500B80D54 /* Icon-Small.png */,
+				7CADB34217610FA500B80D54 /* Icon-Small@2x.png */,
+				7CADB34317610FA500B80D54 /* Icon.png */,
+				7CADB34417610FA500B80D54 /* Icon@2x.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C518C00175D0C32005EB2E7 /* Phish Tracks */ = {
+		7C518C00175D0C32005EB2E7 /* PhishTracks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish Tracks" */;
+			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishTracks" */;
 			buildPhases = (
+				0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */,
 				7C518BFD175D0C32005EB2E7 /* Sources */,
 				7C518BFE175D0C32005EB2E7 /* Frameworks */,
 				7C518BFF175D0C32005EB2E7 /* Resources */,
+				F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */,
+				7CADB327176057AB00B80D54 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Phish Tracks";
+			name = PhishTracks;
 			productName = "Phish Tracks";
 			productReference = 7C518C01175D0C32005EB2E7 /* Phish Tracks.app */;
 			productType = "com.apple.product-type.application";
@@ -140,7 +429,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C518C00175D0C32005EB2E7 /* Phish Tracks */,
+				7C518C00175D0C32005EB2E7 /* PhishTracks */,
 			);
 		};
 /* End PBXProject section */
@@ -154,10 +443,70 @@
 				7C518C17175D0C32005EB2E7 /* Default.png in Resources */,
 				7C518C19175D0C32005EB2E7 /* Default@2x.png in Resources */,
 				7C518C1B175D0C32005EB2E7 /* Default-568h@2x.png in Resources */,
+				7C518C59175E581D005EB2E7 /* 83-calendar.png in Resources */,
+				7C518C5B175E5836005EB2E7 /* 19-gear.png in Resources */,
+				7C518C5D175E5890005EB2E7 /* 44-shoebox.png in Resources */,
+				7C518C5F175E58DD005EB2E7 /* 19-gear@2x.png in Resources */,
+				7C518C61175E58E3005EB2E7 /* 44-shoebox@2x.png in Resources */,
+				7C518C63175E58E9005EB2E7 /* 83-calendar@2x.png in Resources */,
+				7CADB3111760252600B80D54 /* 28-star.png in Resources */,
+				7CADB3131760258700B80D54 /* 194-note-2.png in Resources */,
+				7CADB316176025E800B80D54 /* 28-star@2x.png in Resources */,
+				7CADB317176025E800B80D54 /* 194-note-2@2x.png in Resources */,
+				7CADB34517610FA500B80D54 /* Icon-72.png in Resources */,
+				7CADB34617610FA500B80D54 /* Icon-Small-50.png in Resources */,
+				7CADB34717610FA500B80D54 /* Icon-Small.png in Resources */,
+				7CADB34817610FA500B80D54 /* Icon-Small@2x.png in Resources */,
+				7CADB34917610FA500B80D54 /* Icon.png in Resources */,
+				7CADB34A17610FA500B80D54 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		7CADB327176057AB00B80D54 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4";
+		};
+		F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7C518BFD175D0C32005EB2E7 /* Sources */ = {
@@ -166,6 +515,28 @@
 			files = (
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
+				7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */,
+				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
+				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
+				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
+				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
+				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
+				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
+				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
+				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
+				7C518C47175DAA60005EB2E7 /* PhishTrackProvider.m in Sources */,
+				7C518C4A175DB75D005EB2E7 /* NowPlayingViewController.m in Sources */,
+				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
+				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
+				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
+				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
+				7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */,
+				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
+				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
+				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
+				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
+				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
+				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,10 +614,17 @@
 		};
 		7C518C1F175D0C32005EB2E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -254,10 +632,17 @@
 		};
 		7C518C20175D0C32005EB2E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,13 +660,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish Tracks" */ = {
+		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishTracks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1F175D0C32005EB2E7 /* Debug */,
 				7C518C20175D0C32005EB2E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
