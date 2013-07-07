@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ConcertInfoViewController.h"
 #import "ReviewsViewController.h"
+#import "RefreshableTableViewController.h"
 
-@interface ShowViewController : UITableViewController
+@interface ShowViewController : RefreshableTableViewController
 
 @property UISegmentedControl *control;
 @property PhishShow *show;

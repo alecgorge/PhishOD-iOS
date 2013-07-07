@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshableTableViewController.h"
 
-@interface YearsViewController : UITableViewController
+@interface YearsViewController : RefreshableTableViewController
 
 @property NSArray *years;
 

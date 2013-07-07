@@ -27,9 +27,7 @@
 }
 
 - (id)init {
-	if(self = [super init]) {
-		[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-		
+	if(self = [super init]) {		
 		NSError *activationError = nil;
 		AVAudioSession *audioSession = [AVAudioSession sharedInstance];
 		[audioSession setCategory:AVAudioSessionCategoryPlayback error:&activationError];

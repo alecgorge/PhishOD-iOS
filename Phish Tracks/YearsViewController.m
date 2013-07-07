@@ -21,20 +21,7 @@
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
 		self.years = @[];
-		
-		YearsViewController *i = self;
-        [self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishTracksAPI sharedAPI] years:^(NSArray *phishYears) {
-				i.years = phishYears;
-				[i.tableView reloadData];
-				
-				[i.tableView.pullToRefreshView stopAnimating];
-			}
-									  failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];
-    }
+	}
     return self;
 }
 
@@ -42,6 +29,16 @@
     [super viewDidLoad];
 
 	self.title = @"Years";
+}
+
+- (void)refresh:(id)sender {
+	[[PhishTracksAPI sharedAPI] years:^(NSArray *phishYears) {
+		self.years = phishYears;
+		[self.tableView reloadData];
+		
+		[super refresh:sender];
+	}
+							  failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source

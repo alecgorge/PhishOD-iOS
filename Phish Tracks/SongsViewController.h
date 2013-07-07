@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshableTableViewController.h"
 
-@interface SongsViewController : UITableViewController
+@interface SongsViewController : RefreshableTableViewController
 
 @property NSArray *songs;
 @property NSArray *indicies;

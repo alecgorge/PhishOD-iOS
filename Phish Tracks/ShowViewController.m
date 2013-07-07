@@ -12,6 +12,7 @@
 #import "NowPlayingViewController.h"
 #import "AppDelegate.h"
 #import "SongInstancesViewController.h"
+#import "StreamingMusicViewController.h"
 
 @interface ShowViewController ()
 
@@ -28,31 +29,24 @@
     if (self) {
 		self.show = s;
 		self.title = self.show.showDate;
-		
-		ShowViewController *i = self;
-        [self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishNetAPI sharedAPI] setlistForDate:i.show.showDate
-											success:^(PhishNetSetlist *s) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				i.setlist = s;
-				[i.tableView reloadData];
-			});
-											}
-											failure:REQUEST_FAILED(i.tableView)];
-			[[PhishTracksAPI sharedAPI] fullShow:s
-										 success:^(PhishShow *ss) {
-			 dispatch_async(dispatch_get_main_queue(), ^{
-				 i.show = ss;
-				 [i.tableView reloadData];
-			 });
-			 
-			 [i.tableView.pullToRefreshView stopAnimating];
-										 } failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];		
     }
     return self;
+}
+
+- (void)refresh:(id)sender {
+	[[PhishNetAPI sharedAPI] setlistForDate:self.show.showDate
+									success:^(PhishNetSetlist *s) {
+										self.setlist = s;
+										[self.tableView reloadData];
+									}
+									failure:REQUEST_FAILED(self.tableView)];
+	[[PhishTracksAPI sharedAPI] fullShow:self.show
+								 success:^(PhishShow *ss) {
+									 self.show = ss;
+									 [self.tableView reloadData];
+									 
+									 [super refresh:sender];
+								 } failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source
@@ -66,7 +60,7 @@
 		return ((PhishSet*)self.show.sets[section-1]).tracks.count;
 	}
 	else if(section == 0) {
-		return self.setlist == nil ? (self.show == nil ? 0 : 1) : 4;
+		return self.setlist == nil ? (self.show == nil ? 0 : 6) : 6;
 	}
 	return 0;
 }
@@ -88,7 +82,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == 0) {
-		if(indexPath.row == 1) {
+		if(indexPath.row == 3) {
 			static NSString *CellIdentifier = @"RatingCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
@@ -99,25 +93,45 @@ titleForHeaderInSection:(NSInteger)section {
 			
 			cell.textLabel.text = @"Rating";
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/5.00 (%@ ratings)", self.setlist.rating, self.setlist.ratingCount];
+			
+			if(self.setlist == nil) {
+				cell.detailTextLabel.text = @"Loading...";
+			}
+			else {
+				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/5.00 (%@ ratings)", self.setlist.rating, self.setlist.ratingCount];
+			}
 			
 			return cell;
 		}
-		else if(indexPath.row == 3) {
-			static NSString *CellIdentifier = @"InfoCell";
+		else if(indexPath.row == 1) {
+			static NSString *CellIdentifier = @"RatingCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
 			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
 											  reuseIdentifier:CellIdentifier];
 			}
 			
-			cell.textLabel.text = [NSString stringWithFormat:@"%d Reviews", self.setlist.reviews.count];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			cell.textLabel.text = @"City";
+			cell.detailTextLabel.text = self.show.city;
 			
 			return cell;
 		}
 		else if(indexPath.row == 2) {
+			static NSString *CellIdentifier = @"RatingCell";
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			
+			if(cell == nil) {
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+											  reuseIdentifier:CellIdentifier];
+			}
+
+			cell.textLabel.text = @"Venue";
+			cell.detailTextLabel.text = self.show.location;
+			
+			return cell;
+		}
+		else if(indexPath.row == 5) {
 			static NSString *CellIdentifier = @"InfoCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
@@ -126,8 +140,32 @@ titleForHeaderInSection:(NSInteger)section {
 											  reuseIdentifier:CellIdentifier];
 			}
 			
-			cell.textLabel.text = @"Notes and Detailed Setlist";
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			if(self.setlist == nil) {
+				cell.textLabel.text = @"Loading Reviews";
+			}
+			else {
+				cell.textLabel.text = [NSString stringWithFormat:@"%d Reviews", self.setlist.reviews.count];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			
+			return cell;
+		}
+		else if(indexPath.row == 4) {
+			static NSString *CellIdentifier = @"InfoCell";
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			
+			if(cell == nil) {
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+											  reuseIdentifier:CellIdentifier];
+			}
+			
+			if(self.setlist == nil) {
+				cell.textLabel.text = @"Loading Setlist Notes";
+			}
+			else {
+				cell.textLabel.text = @"Setlist Notes";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
 
 			return cell;
 		}
@@ -172,11 +210,23 @@ titleForHeaderInSection:(NSInteger)section {
 	PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
 	cell.textLabel.text = track.title;
 	cell.textLabel.numberOfLines = 2;
-	cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+	cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	cell.textLabel.font = [UIFont boldSystemFontOfSize: 14.0];
+	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+	cell.detailTextLabel.text = [self formattedStringForDuration: track.duration];
 	
-	cell.badgeString = [self formattedStringForDuration: track.duration];
+//	if(self.show.isSoundboard && self.show.isRemastered) {
+//		cell.badgeString = @"SDB+REMAST";
+//		cell.badgeColor = [UIColor darkGrayColor];
+//	} else if(self.show.isRemastered) {
+//		cell.badgeString = @"REMAST";
+//		cell.badgeColor = [UIColor blueColor];
+//	} else if(self.show.isSoundboard) {
+//		cell.badgeString = @"SBD";
+//		cell.badgeColor = [UIColor redColor];
+//	}
 	
-	cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -194,13 +244,16 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath
+							 animated:YES];
+	
 	if(indexPath.section == 0) {
-		if(indexPath.row == 3) {
+		if(indexPath.row == 5) {
 			ReviewsViewController *rev = [[ReviewsViewController alloc] initWithSetlist:self.setlist];
 			[self.navigationController pushViewController:rev
 												 animated:YES];
 		}
-		else if(indexPath.row == 2) {
+		else if(indexPath.row == 4) {
 			ConcertInfoViewController *info = [[ConcertInfoViewController alloc] initWithSetlist:self.setlist];
 			[self.navigationController pushViewController:info
 												 animated:YES];
@@ -209,57 +262,79 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return;
 	}
 	
-	NowPlayingViewController *player = [NowPlayingViewController sharedInstance];
+	((AppDelegate*)[UIApplication sharedApplication].delegate).shouldShowNowPlaying = YES;
+	StreamingMusicViewController *newPlayer = [StreamingMusicViewController sharedInstance];
 	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		PhishSet *set = (PhishSet*)self.show.sets[indexPath.section-1];
-		PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
-		
-		int count = 0;
-		for(PhishSet *set in self.show.sets) {
-			for(PhishSong *song in set.tracks) {
-				if(song.trackId == track.trackId) {
-					goto exit_loop;
-				}
-				count++;
+	NSMutableArray *playlist = [NSMutableArray array];
+
+	PhishSet *set = (PhishSet*)self.show.sets[indexPath.section-1];
+	PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
+
+	int count = 0, startIndex = 0;
+	for(PhishSet *set in self.show.sets) {
+		for(PhishSong *song in set.tracks) {
+			if(song.trackId == track.trackId) {
+				startIndex = count;
 			}
+			
+			StreamingPlaylistItem *item = [[StreamingPlaylistItem alloc] init];
+			
+			item.title = song.title;
+			item.subtitle = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
+			item.duration = song.duration;
+			item.file = song.fileURL;
+			
+			[playlist addObject: item];
+			
+			count++;
 		}
-		exit_loop:;
-		
-		[PhishTrackProvider sharedInstance].show = self.show;
-		[player reloadData];
-		
-		[player playTrack:count
-			   atPosition:0
-				   volume:player.volume];
-		
-		[player performSelector:@selector(updateUIForCurrentTrack)];
-		player.volume = MPMusicPlayerController.iPodMusicPlayer.volume;
-		[player performSelector:@selector(adjustPlayButtonState)];
-	});
+	}
+	
+	[newPlayer changePlaylist:playlist
+			andStartFromIndex:startIndex];
+
 	
 	[((AppDelegate *)[UIApplication sharedApplication].delegate) navigationController:self.navigationController
 															   willShowViewController:self
 																			 animated:YES];
-	
-	[self.navigationController presentModalViewController:player
-												 animated:YES];
-}
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == 0) {
-		return UITableViewAutomaticDimension;
-	}
+	[((AppDelegate *)[UIApplication sharedApplication].delegate) showNowPlaying];
 	
-	PhishSet *set = (PhishSet*)self.show.sets[indexPath.section-1];
-	PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
-	
-	if(track.title.length > 24) {
-		return tableView.rowHeight * 1.5;
-	}
-
-	return UITableViewAutomaticDimension;
+//	NowPlayingViewController *player = [NowPlayingViewController sharedInstance];
+//	
+//	dispatch_async(dispatch_get_main_queue(), ^{
+//		PhishSet *set = (PhishSet*)self.show.sets[indexPath.section-1];
+//		PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
+//		
+//		int count = 0;
+//		for(PhishSet *set in self.show.sets) {
+//			for(PhishSong *song in set.tracks) {
+//				if(song.trackId == track.trackId) {
+//					goto exit_loop;
+//				}
+//				count++;
+//			}
+//		}
+//		exit_loop:;
+//		
+//		[PhishTrackProvider sharedInstance].show = self.show;
+//		[player reloadData];
+//		
+//		[player playTrack:count
+//			   atPosition:0
+//				   volume:player.volume];
+//		
+//		[player performSelector:@selector(updateUIForCurrentTrack)];
+//		player.volume = MPMusicPlayerController.iPodMusicPlayer.volume;
+//		[player performSelector:@selector(adjustPlayButtonState)];
+//	});
+//	
+//	[((AppDelegate *)[UIApplication sharedApplication].delegate) navigationController:self.navigationController
+//															   willShowViewController:self
+//																			 animated:YES];
+//	
+//	[self.navigationController presentModalViewController:player
+//												 animated:YES];
 }
 
 @end

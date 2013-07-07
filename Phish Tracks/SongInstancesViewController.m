@@ -23,23 +23,19 @@
         self.title = s.title;
 		self.song = s;
 		self.indicies = @[];
-		
-		SongInstancesViewController *i = self;
-		[self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishTracksAPI sharedAPI] fullSong:s
-										 success:^(PhishSong *ss) {
-				i.song = ss;
-				i.title = [NSString stringWithFormat:@"%@ (%d)", ss.title, ss.tracks.count];
-			    [i makeIndicies];
-				[i.tableView reloadData];
-				[i.tableView.pullToRefreshView stopAnimating];
-			}
-									  failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];
     }
     return self;
+}
+
+- (void)refresh:(id)sender {
+	[[PhishTracksAPI sharedAPI] fullSong:self.song
+								 success:^(PhishSong *ss) {
+									 self.song = ss;
+									 [self makeIndicies];
+									 [self.tableView reloadData];
+									 [super refresh:sender];
+								 }
+								 failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (void)makeIndicies {
@@ -47,7 +43,7 @@
     NSMutableArray *stateIndex = [[NSMutableArray alloc] init];
     
 	for(PhishSong *s in self.song.tracks) {
-        NSString *uniChar = [s.showDate substringWithRange:NSMakeRange(0, 4)];
+        NSString *uniChar = [s.showDate substringWithRange:NSMakeRange(2, 2)];
 		
 		if(![stateIndex containsObject: uniChar])
 			[stateIndex addObject: uniChar];
@@ -61,18 +57,26 @@
 		return @[];
 	}
     NSString *alphabet = self.indicies[section-1];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.showDate beginswith[c] %@", alphabet];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.showDate contains[c] %@", [alphabet stringByAppendingString:@"-"]];
     return [self.song.tracks filteredArrayUsingPredicate:predicate];
 }
 
 #pragma mark - Table view data source
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+	if(self.indicies.count <= 5) return nil;
 	return self.indicies;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return self.indicies.count + 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+	if(section == self.indicies.count && self.song.tracks.count > 15) {
+		return [NSString stringWithFormat:@"%d times", self.song.tracks.count];
+	}
+	return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -89,9 +93,8 @@ titleForHeaderInSection:(NSInteger)section {
 		return @"Song Info";
 	}
 	else {
-		NSArray *yearInst = [self filteredForSection:section];
 		if(self.song.tracks.count) {
-			return [NSString stringWithFormat:@"%@ - %d Times Played", self.indicies[section - 1], yearInst.count];
+			return self.indicies[section - 1];
 		}
 		return @"Times Played";
 	}

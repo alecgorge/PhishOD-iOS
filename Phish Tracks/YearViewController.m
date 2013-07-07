@@ -21,20 +21,7 @@
     if (self) {
 		self.year = y;
 		
-		YearViewController *i = self;
-        [self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishTracksAPI sharedAPI] fullYear:y
-										 success:^(PhishYear *yy) {
-											 i.year = yy;
-											 [i.tableView reloadData];
-											 
-											 [i.tableView.pullToRefreshView stopAnimating];
-										 } failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];
-		
-		NSArray *itemArray = @[@"All", @"SDB", @"REMAST", @"Either", @"Both"];
+		NSArray *itemArray = @[@"All", @"SBD or Remastered"];
         control = [[UISegmentedControl alloc] initWithItems:itemArray];
 		control.segmentedControlStyle = UISegmentedControlStyleBar;
         control.frame = CGRectMake(10.0, 10.0, 305.0, 30.0);
@@ -52,6 +39,16 @@
 	self.title = self.year.year;
 }
 
+- (void)refresh:(id)sender {
+	[[PhishTracksAPI sharedAPI] fullYear:self.year
+								 success:^(PhishYear *yy) {
+									 self.year = yy;
+									 [self.tableView reloadData];
+									 
+									 [super refresh:sender];
+								 } failure:REQUEST_FAILED(self.tableView)];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -63,19 +60,7 @@
 		filteredShows = self.year.shows;
 	}
 	else if(control.selectedSegmentIndex == 1) {
-		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.isSoundboard == YES"];
-		filteredShows = [self.year.shows filteredArrayUsingPredicate:pred];
-	}
-	else if(control.selectedSegmentIndex == 2) {
-		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.isRemastered == YES"];
-		filteredShows = [self.year.shows filteredArrayUsingPredicate:pred];
-	}
-	else if(control.selectedSegmentIndex == 3) {
 		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.isRemastered == YES OR SELF.isSoundboard == YES"];
-		filteredShows = [self.year.shows filteredArrayUsingPredicate:pred];
-	}
-	else if(control.selectedSegmentIndex == 4) {
-		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.isRemastered == YES AND self.isSoundboard == YES"];
 		filteredShows = [self.year.shows filteredArrayUsingPredicate:pred];
 	}
 	else {

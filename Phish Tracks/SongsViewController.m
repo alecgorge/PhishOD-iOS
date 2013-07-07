@@ -21,21 +21,18 @@
         self.title = @"Songs";
 		self.indicies = @[];
 		self.songs = @[];
-		
-		SongsViewController *i = self;
-		[self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishTracksAPI sharedAPI] songs:^(NSArray *t) {
-				i.songs = t;
-				[i makeIndicies];
-				[i.tableView reloadData];
-				[i.tableView.pullToRefreshView stopAnimating];
-			}
-									  failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];
     }
     return self;
+}
+
+- (void)refresh:(id)sender {
+	[[PhishTracksAPI sharedAPI] songs:^(NSArray *t) {
+		self.songs = t;
+		[self makeIndicies];
+		[self.tableView reloadData];
+		[super refresh:sender];
+	}
+							  failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (void)makeIndicies {

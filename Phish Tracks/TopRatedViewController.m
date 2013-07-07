@@ -20,20 +20,17 @@
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
         self.title = @"Top Rated";
-		
-		TopRatedViewController *i = self;
-		[self.tableView addPullToRefreshWithActionHandler:^{
-			[[PhishNetAPI sharedAPI] topRatedShowsWithSuccess:^(NSArray *t) {
-				i.topShows = t;
-				[i.tableView reloadData];
-				[i.tableView.pullToRefreshView stopAnimating];
-			}
-													  failure:REQUEST_FAILED(i.tableView)];
-		}];
-		
-		[self.tableView triggerPullToRefresh];
     }
     return self;
+}
+
+- (void)refresh:(id)sender {
+	[[PhishNetAPI sharedAPI] topRatedShowsWithSuccess:^(NSArray *t) {
+		self.topShows = t;
+		[self.tableView reloadData];
+		[super refresh:sender];
+	}
+											  failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source

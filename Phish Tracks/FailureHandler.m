@@ -7,10 +7,11 @@
 //
 
 #import "FailureHandler.h"
+#import "RefreshableTableViewController.h"
 
 @implementation FailureHandler
 
-+ (void (^)(AFHTTPRequestOperation *, NSError *))returnCallback:(UITableView *)table {
++ (void (^)(AFHTTPRequestOperation *, NSError *))returnCallback:(RefreshableTableViewController *)table {
 	return ^(AFHTTPRequestOperation *op, NSError *err) {
 		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error!"
 													message:[err localizedDescription]
@@ -18,7 +19,7 @@
 										  cancelButtonTitle:@"OK"
 										  otherButtonTitles:nil];
 		[a show];
-		[table.pullToRefreshView stopAnimating];
+		[table.refreshControl endRefreshing];
 	};
 }
 

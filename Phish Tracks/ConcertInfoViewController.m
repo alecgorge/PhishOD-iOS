@@ -78,7 +78,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Get the size of the text given the CGSize we just made as a constraint
 	CGSize size = [text sizeWithFont:[UIFont systemFontOfSize: [UIFont systemFontSize]]
 				   constrainedToSize:constraint
-					   lineBreakMode:UILineBreakModeWordWrap];
+					   lineBreakMode:NSLineBreakByWordWrapping];
 	// Get the height of our measurement, with a minimum of 44 (standard cell size)
 	CGFloat height = MAX(size.height, tableView.rowHeight);
 	// return the height, with a bit of extra padding in

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshableTableViewController.h"
 
-@interface TopRatedViewController : UITableViewController
+@interface TopRatedViewController : RefreshableTableViewController
 
 @property NSArray *topShows;
 

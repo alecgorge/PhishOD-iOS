@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
+#import "EventInterceptWindow.h"
 
-@property (strong, nonatomic) UIWindow *window;
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, EventInterceptWindowDelegate>
+
+@property (strong, nonatomic) EventInterceptWindow *window;
 @property UINavigationController *yearsNav;
 @property UITabBarController *tabBar;
 
 @property (nonatomic) BOOL shouldShowNowPlaying;
+@property (nonatomic) BOOL isNowPlayingVisible;
+
+- (void)toggleNowPlaying;
+- (void)showNowPlaying;
 
 @end

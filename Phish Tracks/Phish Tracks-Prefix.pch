@@ -20,7 +20,6 @@
 
 #import "PhishTracksAPI.h"
 #import "PhishNetAPI.h"
-#import<SVPullToRefresh.h>
 #import "FailureHandler.h"
 #import <FlurrySDK/Flurry.h>
 

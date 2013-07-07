@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshableTableViewController.h"
 
-@interface YearViewController : UITableViewController {
+@interface YearViewController : RefreshableTableViewController {
 	UISegmentedControl *control;
 	NSArray *filteredShows;
 }
