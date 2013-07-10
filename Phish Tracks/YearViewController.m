@@ -117,28 +117,45 @@ heightForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"BadgedCell";
-    TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-	if(cell == nil) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-								   reuseIdentifier:CellIdentifier];
+	PhishShow *show = (PhishShow*)[self filteredShows][indexPath.row];
+	
+	UITableViewCell *cell;
+	
+	if(show.isRemastered || show.isSoundboard) {
+		static NSString *CellIdentifier = @"BadgedCell";
+		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		
+		if(cell == nil) {
+			cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+									   reuseIdentifier:CellIdentifier];
+		}
+	}
+	else {
+		static NSString *CellIdentifier = @"NormalCell";
+		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		
+		if(cell == nil) {
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+										  reuseIdentifier:CellIdentifier];
+		}
 	}
 	
-	PhishShow *show = (PhishShow*)[self filteredShows][indexPath.row];
 	cell.textLabel.text = [show.showDate stringByAppendingFormat:@" - %@", show.city];
 	cell.detailTextLabel.text = show.location;
 	cell.detailTextLabel.numberOfLines = 2;
 
-	if(show.isSoundboard && show.isRemastered) {
-		cell.badgeString = @"SDB+REMAST";
-		cell.badgeColor = [UIColor darkGrayColor];
-	} else if(show.isRemastered) {
-		cell.badgeString = @"REMAST";
-		cell.badgeColor = [UIColor blueColor];
-	} else if(show.isSoundboard) {
-		cell.badgeString = @"SBD";
-		cell.badgeColor = [UIColor redColor];
+	if(show.isSoundboard || show.isRemastered) {
+		TDBadgedCell *tcell = (TDBadgedCell*)cell;
+		if(show.isSoundboard && show.isRemastered) {
+			tcell.badgeString = @"SDB+REMAST";
+			tcell.badgeColor = [UIColor darkGrayColor];
+		} else if(show.isRemastered) {
+			tcell.badgeString = @"REMAST";
+			tcell.badgeColor = [UIColor blueColor];
+		} else if(show.isSoundboard) {
+			tcell.badgeString = @"SBD";
+			tcell.badgeColor = [UIColor redColor];
+		}
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

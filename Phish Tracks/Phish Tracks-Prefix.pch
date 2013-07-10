@@ -22,6 +22,17 @@
 #import "PhishNetAPI.h"
 #import "FailureHandler.h"
 #import <FlurrySDK/Flurry.h>
+#import <Crashlytics/Crashlytics.h>
 
 #define REQUEST_FAILED(x) [FailureHandler returnCallback:x]
 
+// #define ramblingwood_DEBUG_MODE
+#define TAKING_LAUNCH_SCREEN 0
+
+#ifdef ramblingwood_DEBUG_MODE
+#define dbug( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define MARK() NSLog( @"MARKED: <%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, nil)
+#else
+#define dbug( s, ... ) CLS_LOG( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define MARK()
+#endif

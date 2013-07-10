@@ -83,7 +83,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSSet *touches = [event allTouches];
     UITouch *oneTouch = [touches anyObject];
     UIView *touchView = [oneTouch view];
-    //  NSLog(@"tap count = %d", [oneTouch tapCount]);
+    //  dbug(@"tap count = %d", [oneTouch tapCount]);
     // check for taps on the web view which really end up being dispatched to
     // a scroll view
     if (touchView && [touchView isDescendantOfView:self.tabBar.selectedViewController.view]

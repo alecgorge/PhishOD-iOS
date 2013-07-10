@@ -30,7 +30,6 @@
 		7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C43175D9C87005EB2E7 /* ShowViewController.m */; };
 		7C518C47175DAA60005EB2E7 /* PhishTrackProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */; };
 		7C518C4A175DB75D005EB2E7 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C49175DB75D005EB2E7 /* NowPlayingViewController.m */; };
-		7C518C4C175DC59E005EB2E7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4B175DC59E005EB2E7 /* Reveal.framework */; };
 		7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */; };
 		7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */; };
 		7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C51175DC937005EB2E7 /* MediaPlayer.framework */; };
@@ -46,6 +45,20 @@
 		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
 		7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
+		7C658BDC178D2E6C005FD6D0 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD2178D2E6C005FD6D0 /* Icon-72.png */; };
+		7C658BDD178D2E6C005FD6D0 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD3178D2E6C005FD6D0 /* Icon-72@2x.png */; };
+		7C658BDE178D2E6C005FD6D0 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD4178D2E6C005FD6D0 /* Icon-Small-50.png */; };
+		7C658BDF178D2E6C005FD6D0 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD5178D2E6C005FD6D0 /* Icon-Small-50@2x.png */; };
+		7C658BE0178D2E6C005FD6D0 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD6178D2E6C005FD6D0 /* Icon-Small.png */; };
+		7C658BE1178D2E6C005FD6D0 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD7178D2E6C005FD6D0 /* Icon-Small@2x.png */; };
+		7C658BE2178D2E6C005FD6D0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD8178D2E6C005FD6D0 /* Icon.png */; };
+		7C658BE3178D2E6C005FD6D0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD9178D2E6C005FD6D0 /* Icon@2x.png */; };
+		7C658BE4178D2E6C005FD6D0 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BDA178D2E6C005FD6D0 /* iTunesArtwork */; };
+		7C658BE5178D2E6C005FD6D0 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BDB178D2E6C005FD6D0 /* iTunesArtwork@2x */; };
+		7C658BEA178D378B005FD6D0 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BE6178D378B005FD6D0 /* Default-Landscape~ipad.png */; };
+		7C658BEB178D378B005FD6D0 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BE7178D378B005FD6D0 /* Default-Landscape@2x~ipad.png */; };
+		7C658BEC178D378B005FD6D0 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BE8178D378B005FD6D0 /* Default-Portrait~ipad.png */; };
+		7C658BED178D378B005FD6D0 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BE9178D378B005FD6D0 /* Default-Portrait@2x~ipad.png */; };
 		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
 		7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE502178872E500AAED06 /* StreamingMusicViewController.m */; };
 		7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE503178872E500AAED06 /* StreamingMusicViewController.xib */; };
@@ -66,18 +79,12 @@
 		7CADB323176043F700B80D54 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB322176043F700B80D54 /* SongsViewController.m */; };
 		7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB325176044DF00B80D54 /* SongInstancesViewController.m */; };
 		7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CADB3281760583D00B80D54 /* Crashlytics.framework */; };
-		7CADB34517610FA500B80D54 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB33F17610FA500B80D54 /* Icon-72.png */; };
-		7CADB34617610FA500B80D54 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34017610FA500B80D54 /* Icon-Small-50.png */; };
-		7CADB34717610FA500B80D54 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34117610FA500B80D54 /* Icon-Small.png */; };
-		7CADB34817610FA500B80D54 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34217610FA500B80D54 /* Icon-Small@2x.png */; };
-		7CADB34917610FA500B80D54 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34317610FA500B80D54 /* Icon.png */; };
-		7CADB34A17610FA500B80D54 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CADB34417610FA500B80D54 /* Icon@2x.png */; };
 		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0835065E67C54644AE7E0BA1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		7C518C01175D0C32005EB2E7 /* PhishTracks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishTracks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C518C01175D0C32005EB2E7 /* Phish OD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phish OD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,12 +93,12 @@
 		7C518C10175D0C32005EB2E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C518C12175D0C32005EB2E7 /* Phish Tracks-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Phish Tracks-Prefix.pch"; sourceTree = "<group>"; };
 		7C518C13175D0C32005EB2E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C518C14175D0C32005EB2E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7C518C14175D0C32005EB2E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C518C16175D0C32005EB2E7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7C518C18175D0C32005EB2E7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7C518C1A175D0C32005EB2E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7C518C24175D1170005EB2E7 /* PhishTracksAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksAPI.h; sourceTree = "<group>"; };
-		7C518C25175D1170005EB2E7 /* PhishTracksAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksAPI.m; sourceTree = "<group>"; };
+		7C518C25175D1170005EB2E7 /* PhishTracksAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PhishTracksAPI.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C518C27175D1386005EB2E7 /* PhishYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishYear.h; sourceTree = "<group>"; };
 		7C518C28175D1386005EB2E7 /* PhishYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishYear.m; sourceTree = "<group>"; };
 		7C518C2A175D13BF005EB2E7 /* PhishShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishShow.h; sourceTree = "<group>"; };
@@ -112,7 +119,7 @@
 		7C518C42175D9C87005EB2E7 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
 		7C518C43175D9C87005EB2E7 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
 		7C518C45175DAA60005EB2E7 /* PhishTrackProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTrackProvider.h; sourceTree = "<group>"; };
-		7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTrackProvider.m; sourceTree = "<group>"; };
+		7C518C46175DAA60005EB2E7 /* PhishTrackProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PhishTrackProvider.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C518C48175DB75D005EB2E7 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
 		7C518C49175DB75D005EB2E7 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
 		7C518C4B175DC59E005EB2E7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
@@ -129,7 +136,7 @@
 		7C518C60175E58E3005EB2E7 /* 44-shoebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "44-shoebox@2x.png"; sourceTree = "<group>"; };
 		7C518C62175E58E9005EB2E7 /* 83-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "83-calendar@2x.png"; sourceTree = "<group>"; };
 		7C518C67175E59D6005EB2E7 /* PhishNetAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetAPI.h; sourceTree = "<group>"; };
-		7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAPI.m; sourceTree = "<group>"; };
+		7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PhishNetAPI.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7C518C6B175E5CD8005EB2E7 /* PhishNetSetlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSetlist.h; sourceTree = "<group>"; };
 		7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSetlist.m; sourceTree = "<group>"; };
 		7C518C6E175E5EE5005EB2E7 /* PhishNetReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetReview.h; sourceTree = "<group>"; };
@@ -138,6 +145,20 @@
 		7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcertInfoViewController.m; sourceTree = "<group>"; };
 		7C518C74175FD224005EB2E7 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
 		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		7C658BD2178D2E6C005FD6D0 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		7C658BD3178D2E6C005FD6D0 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		7C658BD4178D2E6C005FD6D0 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		7C658BD5178D2E6C005FD6D0 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		7C658BD6178D2E6C005FD6D0 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		7C658BD7178D2E6C005FD6D0 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		7C658BD8178D2E6C005FD6D0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7C658BD9178D2E6C005FD6D0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7C658BDA178D2E6C005FD6D0 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		7C658BDB178D2E6C005FD6D0 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		7C658BE6178D378B005FD6D0 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		7C658BE7178D378B005FD6D0 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		7C658BE8178D378B005FD6D0 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		7C658BE9178D378B005FD6D0 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshableTableViewController.h; sourceTree = "<group>"; };
 		7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshableTableViewController.m; sourceTree = "<group>"; };
 		7C6AE4FF1787BCBC00AAED06 /* Refreshable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Refreshable.h; sourceTree = "<group>"; };
@@ -162,18 +183,12 @@
 		7CADB31B176035E100B80D54 /* TopRatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopRatedViewController.h; sourceTree = "<group>"; };
 		7CADB31C176035E100B80D54 /* TopRatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopRatedViewController.m; sourceTree = "<group>"; };
 		7CADB31E176040B200B80D54 /* NSString+stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+stripHTML.h"; sourceTree = "<group>"; };
-		7CADB31F176040B200B80D54 /* NSString+stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+stripHTML.m"; sourceTree = "<group>"; };
+		7CADB31F176040B200B80D54 /* NSString+stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+stripHTML.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7CADB321176043F700B80D54 /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
 		7CADB322176043F700B80D54 /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
 		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
 		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
 		7CADB3281760583D00B80D54 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		7CADB33F17610FA500B80D54 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = SOURCE_ROOT; };
-		7CADB34017610FA500B80D54 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
-		7CADB34117610FA500B80D54 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = SOURCE_ROOT; };
-		7CADB34217610FA500B80D54 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = SOURCE_ROOT; };
-		7CADB34317610FA500B80D54 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
-		7CADB34417610FA500B80D54 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,7 +207,6 @@
 				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
 				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
 				EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */,
-				7C518C4C175DC59E005EB2E7 /* Reveal.framework in Frameworks */,
 				7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +227,7 @@
 		7C518C02175D0C32005EB2E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C518C01175D0C32005EB2E7 /* PhishTracks.app */,
+				7C518C01175D0C32005EB2E7 /* Phish OD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +286,10 @@
 				7C518C16175D0C32005EB2E7 /* Default.png */,
 				7C518C18175D0C32005EB2E7 /* Default@2x.png */,
 				7C518C1A175D0C32005EB2E7 /* Default-568h@2x.png */,
+				7C658BE6178D378B005FD6D0 /* Default-Landscape~ipad.png */,
+				7C658BE7178D378B005FD6D0 /* Default-Landscape@2x~ipad.png */,
+				7C658BE8178D378B005FD6D0 /* Default-Portrait~ipad.png */,
+				7C658BE9178D378B005FD6D0 /* Default-Portrait@2x~ipad.png */,
 				7C518C3C175D2C1B005EB2E7 /* FailureHandler.h */,
 				7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */,
 				7C518C57175DDCE8005EB2E7 /* ColorSpaceUtils.h */,
@@ -447,12 +465,16 @@
 		7CADB33817610E9000B80D54 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				7CADB33F17610FA500B80D54 /* Icon-72.png */,
-				7CADB34017610FA500B80D54 /* Icon-Small-50.png */,
-				7CADB34117610FA500B80D54 /* Icon-Small.png */,
-				7CADB34217610FA500B80D54 /* Icon-Small@2x.png */,
-				7CADB34317610FA500B80D54 /* Icon.png */,
-				7CADB34417610FA500B80D54 /* Icon@2x.png */,
+				7C658BD2178D2E6C005FD6D0 /* Icon-72.png */,
+				7C658BD3178D2E6C005FD6D0 /* Icon-72@2x.png */,
+				7C658BD4178D2E6C005FD6D0 /* Icon-Small-50.png */,
+				7C658BD5178D2E6C005FD6D0 /* Icon-Small-50@2x.png */,
+				7C658BD6178D2E6C005FD6D0 /* Icon-Small.png */,
+				7C658BD7178D2E6C005FD6D0 /* Icon-Small@2x.png */,
+				7C658BD8178D2E6C005FD6D0 /* Icon.png */,
+				7C658BD9178D2E6C005FD6D0 /* Icon@2x.png */,
+				7C658BDA178D2E6C005FD6D0 /* iTunesArtwork */,
+				7C658BDB178D2E6C005FD6D0 /* iTunesArtwork@2x */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -460,9 +482,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C518C00175D0C32005EB2E7 /* PhishTracks */ = {
+		7C518C00175D0C32005EB2E7 /* Phish OD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishTracks" */;
+			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish OD" */;
 			buildPhases = (
 				0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */,
 				7C518BFD175D0C32005EB2E7 /* Sources */,
@@ -475,9 +497,9 @@
 			);
 			dependencies = (
 			);
-			name = PhishTracks;
+			name = "Phish OD";
 			productName = "Phish Tracks";
-			productReference = 7C518C01175D0C32005EB2E7 /* PhishTracks.app */;
+			productReference = 7C518C01175D0C32005EB2E7 /* Phish OD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -501,7 +523,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C518C00175D0C32005EB2E7 /* PhishTracks */,
+				7C518C00175D0C32005EB2E7 /* Phish OD */,
 			);
 		};
 /* End PBXProject section */
@@ -514,29 +536,37 @@
 				7C518C0F175D0C32005EB2E7 /* InfoPlist.strings in Resources */,
 				7C518C17175D0C32005EB2E7 /* Default.png in Resources */,
 				7C518C19175D0C32005EB2E7 /* Default@2x.png in Resources */,
+				7C658BDE178D2E6C005FD6D0 /* Icon-Small-50.png in Resources */,
+				7C658BEC178D378B005FD6D0 /* Default-Portrait~ipad.png in Resources */,
 				7C518C1B175D0C32005EB2E7 /* Default-568h@2x.png in Resources */,
+				7C658BE0178D2E6C005FD6D0 /* Icon-Small.png in Resources */,
 				7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */,
 				7C518C59175E581D005EB2E7 /* 83-calendar.png in Resources */,
 				7C6AE5091788737D00AAED06 /* glyphicons_174_pause.png in Resources */,
+				7C658BEA178D378B005FD6D0 /* Default-Landscape~ipad.png in Resources */,
 				7C6AE50B1788738B00AAED06 /* glyphicons_176_forward.png in Resources */,
 				7C6AE50D178873A400AAED06 /* glyphicons_172_rewind.png in Resources */,
 				7C518C5B175E5836005EB2E7 /* 19-gear.png in Resources */,
+				7C658BE5178D2E6C005FD6D0 /* iTunesArtwork@2x in Resources */,
 				7C518C5D175E5890005EB2E7 /* 44-shoebox.png in Resources */,
+				7C658BE3178D2E6C005FD6D0 /* Icon@2x.png in Resources */,
+				7C658BDF178D2E6C005FD6D0 /* Icon-Small-50@2x.png in Resources */,
+				7C658BDC178D2E6C005FD6D0 /* Icon-72.png in Resources */,
 				7C518C5F175E58DD005EB2E7 /* 19-gear@2x.png in Resources */,
+				7C658BEB178D378B005FD6D0 /* Default-Landscape@2x~ipad.png in Resources */,
 				7C518C61175E58E3005EB2E7 /* 44-shoebox@2x.png in Resources */,
+				7C658BDD178D2E6C005FD6D0 /* Icon-72@2x.png in Resources */,
+				7C658BED178D378B005FD6D0 /* Default-Portrait@2x~ipad.png in Resources */,
 				7C518C63175E58E9005EB2E7 /* 83-calendar@2x.png in Resources */,
 				7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */,
 				7CADB3111760252600B80D54 /* 28-star.png in Resources */,
 				7CADB3131760258700B80D54 /* 194-note-2.png in Resources */,
+				7C658BE4178D2E6C005FD6D0 /* iTunesArtwork in Resources */,
 				7CADB316176025E800B80D54 /* 28-star@2x.png in Resources */,
 				7CADB317176025E800B80D54 /* 194-note-2@2x.png in Resources */,
 				7C6AE5071788737300AAED06 /* glyphicons_173_play.png in Resources */,
-				7CADB34517610FA500B80D54 /* Icon-72.png in Resources */,
-				7CADB34617610FA500B80D54 /* Icon-Small-50.png in Resources */,
-				7CADB34717610FA500B80D54 /* Icon-Small.png in Resources */,
-				7CADB34817610FA500B80D54 /* Icon-Small@2x.png in Resources */,
-				7CADB34917610FA500B80D54 /* Icon.png in Resources */,
-				7CADB34A17610FA500B80D54 /* Icon@2x.png in Resources */,
+				7C658BE1178D2E6C005FD6D0 /* Icon-Small@2x.png in Resources */,
+				7C658BE2178D2E6C005FD6D0 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishTracks" */ = {
+		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish OD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1F175D0C32005EB2E7 /* Debug */,

@@ -124,7 +124,7 @@
 		@"concert": self.show.showDate,
 		@"file": song.filePath
 	}];
-	NSLog(@"musicPlayer:didChangeTrack");
+	dbug(@"musicPlayer:didChangeTrack");
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
 	
 	[self updateInfo];
@@ -157,13 +157,13 @@
 }
 
 -(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController *)player {
-	NSLog(@"musicPlayerDidStartPlaying");
+	dbug(@"musicPlayerDidStartPlaying");
 	[self.player resume];
 	[self updateInfo];
 }
 
 -(void)musicPlayerDidStopPlaying:(BeamMusicPlayerViewController *)player {
-	NSLog(@"musicPlayerDidStopPlaying");
+	dbug(@"musicPlayerDidStopPlaying");
 	[self.player pause];
 	[self updateInfo];
 }
@@ -189,7 +189,7 @@
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer
 	   stateChanged:(AudioPlayerState)state {
-	NSLog(@"state changed: %d", state);
+	dbug(@"state changed: %d", state);
 	if(state == AudioPlayerStatePlaying) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
 		[[NowPlayingViewController sharedInstance] play];
@@ -208,9 +208,9 @@
 -(void) audioPlayer:(AudioPlayer*)audioPlayer
 internalStateChanged:(AudioPlayerInternalState)state {
 	internalState = state;
-	NSLog(@"audioPlayer:internalStateChanged: %d", state);
+	dbug(@"audioPlayer:internalStateChanged: %d", state);
 	if(state == AudioPlayerInternalStateError) {
-		NSLog(@"%d", audioPlayer.stopReason);
+		dbug(@"%d", audioPlayer.stopReason);
 	}
 	
 	[NowPlayingViewController sharedInstance].currentPlaybackPosition = audioPlayer.progress;
@@ -218,7 +218,7 @@ internalStateChanged:(AudioPlayerInternalState)state {
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer
   didEncounterError:(AudioPlayerErrorCode)errorCode {
-	NSLog(@"error: %d", errorCode);
+	dbug(@"error: %d", errorCode);
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
 	UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
 												message:[NSString stringWithFormat:@"%d", errorCode]
@@ -236,13 +236,13 @@ didStartPlayingQueueItemId:(NSObject*)queueItemId {
 									withDuration:[self musicPlayer:nil lengthForTrack:self.position]
 								  successHandler:nil
 								  failureHandler:nil];
-	NSLog(@"did start playing: %@", queueItemId);
+	dbug(@"did start playing: %@", queueItemId);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer
 didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
-	NSLog(@"did finish buffering: %@", queueItemId);
+	dbug(@"did finish buffering: %@", queueItemId);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer
@@ -259,7 +259,7 @@ didFinishPlayingQueueItemId:(NSObject*)queueItemId
 									 successHandler:nil
 									 failureHandler:nil];
 	}
-	NSLog(@"did finish playing: %@", queueItemId);
+	dbug(@"did finish playing: %@", queueItemId);
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
 	[self updateInfo];
 }

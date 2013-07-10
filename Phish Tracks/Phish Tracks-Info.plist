@@ -17,6 +17,7 @@
 				<string>Icon.png</string>
 				<string>Icon@2x.png</string>
 				<string>Icon-72.png</string>
+				<string>Icon-72@2x.png</string>
 				<string>Icon-Small.png</string>
 				<string>Icon-Small-50.png</string>
 				<string>Icon-Small@2x.png</string>
@@ -34,17 +35,19 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>Beta 5</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>Beta 5</string>
+	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
 	</array>
+	<key>UILaunchImageFile~ipad</key>
+	<string>Default</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

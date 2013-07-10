@@ -188,22 +188,22 @@
 		self.playerStatus.text = @"Buffering...";
 		self.isPlaying = YES;
 		[self startTimer];
-		NSLog(@"buffering");
+		dbug(@"buffering");
 	}
 	else if(state == MPMoviePlaybackStatePlaying ) {
 		self.isPlaying = YES;
 		[self startTimer];
-		NSLog(@"playing");
+		dbug(@"playing");
 	}
 	else if(state == MPMoviePlaybackStatePaused) {
 		self.isPlaying = NO;
 		[self startTimer];
-		NSLog(@"paused");
+		dbug(@"paused");
 	}
 	else if(state == MPMoviePlaybackStateStopped) {
 		self.isPlaying = NO;
 		[self stopTimer];
-		NSLog(@"stopped");
+		dbug(@"stopped");
 	}
 	
 	[self fixPlayPauseButtonImage];

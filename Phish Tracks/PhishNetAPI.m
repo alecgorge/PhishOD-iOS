@@ -33,7 +33,7 @@
 																	options:NSRegularExpressionDotMatchesLineSeparators
 																	  error:&error];
 		if(error) {
-			NSLog(@"%@", [error localizedDescription]);
+			dbug(@"%@", [error localizedDescription]);
 		}
 	}
 	return self;
@@ -51,7 +51,7 @@
 	[self getPath:@"/api.json"
 	   parameters:margs
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
 												 encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
 															 options:0

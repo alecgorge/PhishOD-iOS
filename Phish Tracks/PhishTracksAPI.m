@@ -26,7 +26,7 @@
 	[self getPath:@"/"
 	   parameters:@{}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData: responseObject
 															   options: NSJSONReadingMutableContainers error: nil];
 			  NSMutableArray *succ = [NSMutableArray array];
@@ -44,7 +44,7 @@
 	[self getPath:@"/songs"
 	   parameters:@{}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData: responseObject
 															   options: NSJSONReadingMutableContainers error: nil];
 			  NSMutableArray *succ = [NSMutableArray array];
@@ -64,7 +64,7 @@
 	[self getPath:[@"/shows/" stringByAppendingString: show.showDate]
 	   parameters:@{}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData: responseObject
 															   options: NSJSONReadingMutableContainers error: nil];
 			  success([[PhishShow alloc] initWithDictionary:responseObject]);
@@ -78,7 +78,7 @@
 	[self getPath:@"/shows"
 	   parameters:@{@"year": year.year}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData: responseObject
 															   options: NSJSONReadingMutableContainers error: nil];
 			  success([[PhishYear alloc] initWithYear:year.year andShowsJSONArray:responseObject]);
@@ -92,7 +92,7 @@
 	[self getPath:[@"/songs/" stringByAppendingString: song.slug]
 	   parameters:@{}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+			  dbug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData: responseObject
 															   options: NSJSONReadingMutableContainers error: nil];
 			  NSMutableArray *a = [NSMutableArray array];
