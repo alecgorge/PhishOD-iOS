@@ -108,7 +108,7 @@
 																									 options:0
 																									   range:NSMakeRange(0, [page length])];
 												
-												NSTextCheckingResult *matca = [findVotes firstMatchInString:page
+												NSTextCheckingResult *match = [findVotes firstMatchInString:page
 																									options:0
 																									  range:NSMakeRange(0, [page length])];
 												
