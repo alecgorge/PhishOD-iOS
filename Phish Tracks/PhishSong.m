@@ -36,10 +36,32 @@
 		
 		if(dict[@"show"] != nil) {
 			self.showDate = dict[@"show"][@"show_date"];
-			self.showLocation = dict[@"show"][@"location"];
-		}	
+			
+			if([dict[@"show"][@"location"] rangeOfString:@" - "].location == NSNotFound) {
+				self.showLocation = [dict[@"show"][@"location"] stringByReplacingOccurrencesOfString:@", "
+																				 withString:@"\n"];
+			}
+			else {
+				self.showLocation = [dict[@"show"][@"location"] stringByReplacingOccurrencesOfString:@" - "
+																						  withString:@"\n"];
+			}
+		}
 	}
 	return self;
+}
+
+- (void)setShowDate:(NSString *)showDate {
+	_showDate = showDate;
+	
+	self.index = [self.showDate substringWithRange:NSMakeRange(2, 2)];
+}
+
+- (NSString*)netSlug {
+	NSString *lower = [self.title lowercaseString];
+	NSCharacterSet *set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz0123456789 "] invertedSet];
+	lower = [[lower componentsSeparatedByCharactersInSet: set] componentsJoinedByString:@""];
+	
+	return [[lower componentsSeparatedByCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@"-"];
 }
 
 @end

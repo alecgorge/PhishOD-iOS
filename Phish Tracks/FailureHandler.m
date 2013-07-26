@@ -19,7 +19,9 @@
 										  cancelButtonTitle:@"OK"
 										  otherButtonTitles:nil];
 		[a show];
-		[table.refreshControl endRefreshing];
+		
+		if(table != nil && [table respondsToSelector:@selector(refreshControl)])
+			[table.refreshControl endRefreshing];
 	};
 }
 

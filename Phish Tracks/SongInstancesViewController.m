@@ -31,9 +31,32 @@
 	[[PhishTracksAPI sharedAPI] fullSong:self.song
 								 success:^(PhishSong *ss) {
 									 self.song = ss;
-									 [self makeIndicies];
-									 [self.tableView reloadData];
-									 [super refresh:sender];
+									 [[PhishNetAPI sharedAPI] jamsForSong:self.song
+																  success:^(NSArray *dates) {
+																	  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+																		  for (PhishSong *track in self.song.tracks) {
+																			  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+																			  formatter.dateFormat = @"yyyy-MM-dd";
+																			  if([dates containsObject:[formatter dateFromString: track.showDate]]) {
+																				  track.isBold = YES;
+																			  }
+																		  }
+																		  dispatch_async(dispatch_get_main_queue(), ^{
+																			  [self.tableView reloadData];
+																		  });
+																	  });
+																	  
+																  }];
+
+									 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+										 [self makeIndicies];
+
+										 dispatch_async(dispatch_get_main_queue(), ^{
+											 [self.tableView reloadData];
+											 
+											 [super refresh:sender];
+										 });
+									 });
 								 }
 								 failure:REQUEST_FAILED(self.tableView)];
 }
@@ -43,7 +66,7 @@
     NSMutableArray *stateIndex = [[NSMutableArray alloc] init];
     
 	for(PhishSong *s in self.song.tracks) {
-        NSString *uniChar = [s.showDate substringWithRange:NSMakeRange(2, 2)];
+        NSString *uniChar = s.index;
 		
 		if(![stateIndex containsObject: uniChar])
 			[stateIndex addObject: uniChar];
@@ -57,7 +80,7 @@
 		return @[];
 	}
     NSString *alphabet = self.indicies[section-1];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.showDate contains[c] %@", [alphabet stringByAppendingString:@"-"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.index == %@", alphabet];
     return [self.song.tracks filteredArrayUsingPredicate:predicate];
 }
 
@@ -132,25 +155,35 @@ titleForHeaderInSection:(NSInteger)section {
     TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if(cell == nil) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleValue1
 								   reuseIdentifier:CellIdentifier];
 	}
 	
 	PhishSong *song = [self filteredForSection:indexPath.section][indexPath.row];
     cell.textLabel.text = song.showDate;
-	cell.detailTextLabel.text = song.showLocation;
+//	cell.detailTextLabel.text = song.showLocation;
+//	cell.detailTextLabel.numberOfLines = 2;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.badgeString = [self formattedStringForDuration:song.duration];
+	
+	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+	cell.detailTextLabel.textColor = [UIColor grayColor];
+	
+	if(song.isBold)
+		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
+	else
+		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return UITableViewAutomaticDimension;
+
 	if(indexPath.section == 0) {
 		return UITableViewAutomaticDimension;
 	}
-	return tableView.rowHeight * 1.3;
+	return tableView.rowHeight * 1.5;
 }
 
 #pragma mark - Table view delegate
@@ -159,13 +192,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == 0) {
 		if(indexPath.row == 0) {
-			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/history", self.song.slug];
+			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/history", self.song.netSlug];
 			[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:addr]
 												 animated:YES];
 			
 		}
 		else {
-			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/lyrics", self.song.slug];
+			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/lyrics", self.song.netSlug];
 			[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:addr]
 												 animated:YES];
 		}

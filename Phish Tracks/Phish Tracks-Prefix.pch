@@ -24,6 +24,8 @@
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 
+#import <CKRefreshControl/CKRefreshControl.h>
+
 #define REQUEST_FAILED(x) [FailureHandler returnCallback:x]
 
 // #define ramblingwood_DEBUG_MODE

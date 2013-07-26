@@ -33,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UISlider *playerScrubber;
 @property (weak, nonatomic) IBOutlet UILabel *playerStatus;
 @property (weak, nonatomic) IBOutlet UIButton *playerPauseButton;
+@property (weak, nonatomic) IBOutlet MPVolumeView *playerAirPlayButton;
+
+@property (strong) UIButton *mpAirPlayButton;
 
 - (IBAction)playerPlayPauseTapped:(id)sender;
 - (IBAction)playerNextTapped:(id)sender;

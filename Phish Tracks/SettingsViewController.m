@@ -27,15 +27,24 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(section == 1) {
-		return 3;
+	if(section == 0) {
+		return [LastFm sharedInstance].username ? 2 : 1;
 	}
-	return [LastFm sharedInstance].username ? 2 : 1;
+	else if(section == 1) {
+		return 2;
+	}
+	else if(section == 2) {
+		return 5;
+	}
+	else if(section == 3) {
+		return 1;
+	}
+	return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -44,7 +53,13 @@ titleForHeaderInSection:(NSInteger)section {
 		return @"Last.FM";
 	}
 	else if(section == 1) {
+		return @"PhishTracksStats";
+	}
+	else if(section == 2) {
 		return @"Credits";
+	}
+	else if(section == 3) {
+		return @"Bugs";
 	}
 	
 	return nil;
@@ -71,16 +86,26 @@ titleForHeaderInSection:(NSInteger)section {
 	} else if(indexPath.section == 0 && indexPath.row == 1) {
 		cell.textLabel.text = @"View Last.FM profile";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else if(indexPath.section == 1 && indexPath.row == 0) {
-		cell.textLabel.text = @"Streaming provided by phishtracks.com!";
+	} else if(indexPath.section == 2 && indexPath.row == 0) {
+		cell.textLabel.text = @"Streaming by phishtracks.com";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else if(indexPath.section == 1 && indexPath.row == 1) {
+	} else if(indexPath.section == 2 && indexPath.row == 1) {
 		cell.textLabel.text = @"App by Alec Gorge";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else if(indexPath.section == 1 && indexPath.row == 2) {
-		cell.textLabel.text = @"This app is open source on Github!";
+	} else if(indexPath.section == 2 && indexPath.row == 2) {
+		cell.textLabel.text = @"Contribute on Github";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else if(indexPath.section == 2 && indexPath.row == 3) {
+		cell.textLabel.text = @"Some data from phish.net";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else if(indexPath.section == 2 && indexPath.row == 4) {
+		cell.textLabel.text = @"Thanks Mockingbird Foundation";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	else if(indexPath.section == 3 && indexPath.row == 0) {
+		cell.textLabel.text = @"Report a bug";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 
@@ -105,16 +130,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:add]
 											 animated:YES];
 	}
-	else if(indexPath.section == 1 && indexPath.row == 0) {
+	else if(indexPath.section == 2 && indexPath.row == 0) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://phishtracks.com/"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 1 && indexPath.row == 1) {
+	else if(indexPath.section == 2 && indexPath.row == 1) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://alecgorge.com/phish"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 1 && indexPath.row == 2) {
-		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishTracks-iOS"]
+	else if(indexPath.section == 2 && indexPath.row == 2) {
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishOD-iOS"]
+											 animated:YES];
+	}
+	else if(indexPath.section == 2 && indexPath.row == 3) {
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://phish.net"]
+											 animated:YES];
+	}
+	else if(indexPath.section == 2 && indexPath.row == 4) {
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://mbird.org"]
+											 animated:YES];
+	}
+	else if(indexPath.section == 3 && indexPath.row == 0) {
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishOD-iOS/issues"]
 											 animated:YES];
 	}
 }

@@ -7,6 +7,7 @@
 //
 
 #import "PhishNetAPI.h"
+#import "jQuery.h"
 
 @implementation PhishNetAPI
 
@@ -32,6 +33,11 @@
 		findTopRatings  = [NSRegularExpression regularExpressionWithPattern:@"<td><a href=\"/setlists/\\?d=[0-9-]+\">([0-9-]+)</a></td>.*?<td>([0-9]+)</td>.*?<td>([0-9.]+)</td>"
 																	options:NSRegularExpressionDotMatchesLineSeparators
 																	  error:&error];
+		
+		findIframe = [NSRegularExpression regularExpressionWithPattern:@"src='(.*)'>"
+															   options:0
+																 error:&error];
+		
 		if(error) {
 			dbug(@"%@", [error localizedDescription]);
 		}
@@ -85,6 +91,49 @@
 		  }
 		  failure:failure];
 
+}
+
+- (void)jamsForSong:(PhishSong *)date
+			success:(void (^)(NSArray *))success {
+	[self getPath:[NSString stringWithFormat:@"http://phish.net/song/%@/jamming-chart", date.netSlug , nil]
+	   parameters:nil
+		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			  NSString *page = [[NSString alloc] initWithData:responseObject
+													 encoding:NSASCIIStringEncoding];
+			  NSArray *matches = [findIframe matchesInString:page
+													 options:0
+													   range:NSMakeRange(0, [page length])];
+
+			  if(matches.count == 0) return;
+			  
+			  NSString *gDocsUrl = [page substringWithRange: [matches[0] rangeAtIndex:1]];
+			  [self getPath:gDocsUrl
+				 parameters:nil
+					success:^(AFHTTPRequestOperation *operation, id responseObject) {
+						NSString *page2 = [[NSString alloc] initWithData:responseObject
+															   encoding:NSUTF8StringEncoding];
+						jQuery *$ = [[jQuery alloc] initWithHTML:page2
+													   andScript:@"scrape_jams"];
+						
+						[$ start:^(NSError *err, id res) {
+							NSMutableArray *r = [NSMutableArray array];
+							
+							NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+							formatter.dateFormat = @"M/d/yyyy";
+							
+							for (NSDictionary *dict in res) {
+								[r addObject:[formatter dateFromString:dict[@"date"]]];
+							}
+							success(r);
+						}];
+					}
+					failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+						
+					}];
+		  }
+		  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			  
+		  }];
 }
 
 -(void)setlistForDate:(NSString *)date

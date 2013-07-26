@@ -130,7 +130,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	StreamingMusicViewController *nowPlaying = [StreamingMusicViewController sharedInstance];
 	
 	CGRect f = nowPlaying.view.frame;
-	f.origin.y = self.tabBar.selectedViewController.view.frame.size.height - 216.0f - self.tabBar.tabBar.frame.size.height;
+	f.origin.y = self.tabBar.selectedViewController.view.frame.size.height - 256.0f - self.tabBar.tabBar.frame.size.height;
 	f.size.width = self.tabBar.view.frame.size.width;
 	nowPlaying.view.frame = f;
 	
@@ -162,7 +162,7 @@ didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation {
 						 CGRect v = self.tabBar.selectedViewController.view.frame;
 						 CGRect f = nowPlaying.view.frame;
 						 f.size.width = v.size.width;
-						 f.size.height = 216.0f;
+						 f.size.height = 256.0f;
 						 
 						 if(self.isNowPlayingVisible) {
 							 f.origin.y = v.size.height + self.tabBar.tabBar.frame.size.height;

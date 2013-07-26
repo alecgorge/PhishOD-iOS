@@ -23,9 +23,16 @@
 @property NSString *filePath;
 @property NSString *slug;
 
-@property NSString *showDate;
+@property (nonatomic) NSString *showDate;
 @property NSString *showLocation;
 
+@property NSString *index;
+
 @property NSArray *tracks;
+
+@property BOOL isBold;
+@property NSString *jamNotes;
+
+@property (readonly) NSString *netSlug;
 
 @end

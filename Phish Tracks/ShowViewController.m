@@ -8,8 +8,6 @@
 
 #import "ShowViewController.h"
 #import <TDBadgedCell/TDBadgedCell.h>
-#import "PhishTrackProvider.h"
-#import "NowPlayingViewController.h"
 #import "AppDelegate.h"
 #import "SongInstancesViewController.h"
 #import "StreamingMusicViewController.h"
@@ -283,6 +281,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 			item.subtitle = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
 			item.duration = song.duration;
 			item.file = song.fileURL;
+			
+			item.shareTitle = [NSString stringWithFormat: @"#nowplaying %@ - %@ - Phish via @phishod", song.title, self.show.showDate, nil];
+			item.shareURL = [NSString stringWithFormat:@"http://www.phishtracks.com/show/%@/%@", self.show.showDate, song.slug, nil];
 			
 			[playlist addObject: item];
 			

@@ -45,6 +45,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	self.playerAirPlayButton.showsVolumeSlider = NO;
+	self.playerAirPlayButton.showsRouteButton = YES;
 	self.player = [[MPMoviePlayerController alloc] init];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -75,8 +77,66 @@
 	self.playerTimeElapsed.text = @"";
 	self.playerTimeRemaining.text = @"";
 	
+	[self customizeAirPlayButton];
+	
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 	[self becomeFirstResponder];
+}
+
+- (void)customizeAirPlayButton {
+	MPVolumeView *volumeView = self.playerAirPlayButton;
+	[volumeView setShowsVolumeSlider:NO];
+	for (UIButton *button in volumeView.subviews) {
+		if ([button isKindOfClass:[UIButton class]]) {
+			self.mpAirPlayButton = button;
+						
+			[self.mpAirPlayButton addObserver:self
+								   forKeyPath:@"alpha"
+									  options:NSKeyValueObservingOptionNew
+									  context:nil];
+			
+			[self fixAirPlayButtonColor];
+		}
+	}
+	[volumeView sizeToFit];	
+}
+
+- (void)fixAirPlayButtonColor {
+	UIImage *img = [self.mpAirPlayButton imageForState: UIControlStateNormal];
+	
+	[self.mpAirPlayButton setImage:[self ipMaskedImage:img
+												 color:[UIColor blackColor]]
+						  forState:UIControlStateNormal];
+	
+	img = [self.mpAirPlayButton imageForState: UIControlStateHighlighted];
+	[self.mpAirPlayButton setImage:[self ipMaskedImage:img
+												 color:[UIColor blackColor]]
+						  forState:UIControlStateHighlighted];
+	
+	img = [self.mpAirPlayButton imageForState: UIControlStateSelected];
+	[self.mpAirPlayButton setImage:[self ipMaskedImage:img
+												 color:[UIColor blackColor]]
+						  forState:UIControlStateSelected];
+}
+
+- (UIImage *)ipMaskedImage:(UIImage *)image
+					 color:(UIColor *)color {
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
+    CGContextRef c = UIGraphicsGetCurrentContext();
+    [image drawInRect:rect];
+    CGContextSetFillColorWithColor(c, [color CGColor]);
+    CGContextSetBlendMode(c, kCGBlendModeSourceAtop);
+    CGContextFillRect(c, rect);
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return result;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([object isKindOfClass:[UIButton class]] && [[change valueForKey:NSKeyValueChangeNewKey] intValue] == 1) {
+		[self fixAirPlayButtonColor];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,12 +159,14 @@
 	[self setPlayerStatus:nil];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
+	[self.mpAirPlayButton removeObserver:self forKeyPath:@"alpha"];
 	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 	[self resignFirstResponder];
 
 	
 	[self setView:nil];
 	[self setPlayerPauseButton:nil];
+	[self setPlayerAirPlayButton:nil];
 	[super viewDidUnload];
 }
 
@@ -359,6 +421,29 @@
 	}
 	
 	[self fixPlayPauseButtonImage];
+}
+
+- (IBAction)share:(id)sender {
+	if(NSClassFromString(@"UIActivityViewController")) {
+		NSString *textToShare = self.currentItem.shareTitle;
+		NSURL *urlToShare = self.currentItem.shareURL;
+		NSArray *itemsToShare = @[textToShare, urlToShare];
+		
+		UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
+																				 applicationActivities:nil];
+		
+		activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
+		
+		[self presentViewController:activityVC animated:YES completion:nil];
+	}
+	else {
+		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Not available on iOS 5"
+													message:@"Sharing songs is a feature not available on anything less than iOS 6"
+												   delegate:nil
+										  cancelButtonTitle:@"OK"
+										  otherButtonTitles: nil];
+		[a show];
+	}
 }
 
 -(void)stopTimer {

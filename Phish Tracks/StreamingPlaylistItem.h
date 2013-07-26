@@ -15,4 +15,7 @@
 @property NSTimeInterval duration;
 @property NSURL *file;
 
+@property NSString *shareTitle;
+@property NSURL *shareURL;
+
 @end
