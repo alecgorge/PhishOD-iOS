@@ -43,7 +43,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 83}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="749645303"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -77,7 +76,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 108}, {280, 48}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="256999089"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -109,7 +107,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{124, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="317348488"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -147,7 +144,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{124, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="529279300"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -176,8 +172,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{205, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="514871870"/>
+						<reference key="NSNextKeyView" ref="630265791"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -201,7 +196,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{43, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="451727166"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -226,7 +220,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{18, 31}, {284, 23}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="137964510"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -240,7 +233,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{238, 54}, {62, 21}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="639251841"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -269,7 +261,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 54}, {62, 21}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="154608992"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -290,7 +281,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrameSize">{320, 21}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="354921480"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -306,14 +296,13 @@
 						<reference key="IBUIFont" ref="1002500714"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIButton" id="514871870">
+					<object class="IBUIButton" id="630265791">
 						<reference key="NSNextResponder" ref="143291511"/>
 						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{85, 204}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="985868533"/>
+						<reference key="NSNextKeyView" ref="944402123"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -335,13 +324,13 @@
 						<reference key="IBUIFontDescription" ref="992356259"/>
 						<reference key="IBUIFont" ref="778215083"/>
 					</object>
-					<object class="IBUIView" id="985868533">
+					<object class="IBUIView" id="944402123">
 						<reference key="NSNextResponder" ref="143291511"/>
 						<int key="NSvFlags">1316</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrame">{{183, 218}, {36, 22}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="76412669"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -350,8 +339,7 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 256}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
+				<reference key="NSNextKeyView" ref="389986501"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -462,7 +450,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">playerAirPlayButton</string>
 						<reference key="source" ref="220396080"/>
-						<reference key="destination" ref="985868533"/>
+						<reference key="destination" ref="944402123"/>
 					</object>
 					<string key="id">Xwk-hT-Nhd</string>
 				</object>
@@ -505,7 +493,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">share:</string>
-						<reference key="source" ref="514871870"/>
+						<reference key="source" ref="630265791"/>
 						<reference key="destination" ref="220396080"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -554,8 +542,8 @@
 							<reference ref="154608992"/>
 							<reference ref="137964510"/>
 							<reference ref="389986501"/>
-							<reference ref="514871870"/>
-							<reference ref="985868533"/>
+							<reference ref="630265791"/>
+							<reference ref="944402123"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -611,12 +599,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">wbO-bX-bTk</string>
-						<reference key="object" ref="514871870"/>
+						<reference key="object" ref="630265791"/>
 						<reference key="parent" ref="143291511"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">tcx-Hq-UcT</string>
-						<reference key="object" ref="985868533"/>
+						<reference key="object" ref="944402123"/>
 						<reference key="parent" ref="143291511"/>
 					</object>
 				</array>
@@ -672,119 +660,7 @@
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">MPVolumeView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MPVolumeView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">StreamingMusicViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="playerNextTapped:">id</string>
-						<string key="playerPlayPauseTapped:">id</string>
-						<string key="playerPreviousTapped:">id</string>
-						<string key="playerProgressScrubbed:">id</string>
-						<string key="share:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="playerNextTapped:">
-							<string key="name">playerNextTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="playerPlayPauseTapped:">
-							<string key="name">playerPlayPauseTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="playerPreviousTapped:">
-							<string key="name">playerPreviousTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="playerProgressScrubbed:">
-							<string key="name">playerProgressScrubbed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="share:">
-							<string key="name">share:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="playerAirPlayButton">MPVolumeView</string>
-						<string key="playerNextButton">UIButton</string>
-						<string key="playerPauseButton">UIButton</string>
-						<string key="playerPlayPauseButton">UIButton</string>
-						<string key="playerPreviousButton">UIButton</string>
-						<string key="playerScrubber">UISlider</string>
-						<string key="playerStatus">UILabel</string>
-						<string key="playerSubtitle">UILabel</string>
-						<string key="playerTimeElapsed">UILabel</string>
-						<string key="playerTimeRemaining">UILabel</string>
-						<string key="playerTitle">UILabel</string>
-						<string key="view">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="playerAirPlayButton">
-							<string key="name">playerAirPlayButton</string>
-							<string key="candidateClassName">MPVolumeView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerNextButton">
-							<string key="name">playerNextButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerPauseButton">
-							<string key="name">playerPauseButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerPlayPauseButton">
-							<string key="name">playerPlayPauseButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerPreviousButton">
-							<string key="name">playerPreviousButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerScrubber">
-							<string key="name">playerScrubber</string>
-							<string key="candidateClassName">UISlider</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerStatus">
-							<string key="name">playerStatus</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerSubtitle">
-							<string key="name">playerSubtitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerTimeElapsed">
-							<string key="name">playerTimeElapsed</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerTimeRemaining">
-							<string key="name">playerTimeRemaining</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="playerTitle">
-							<string key="name">playerTitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="view">
-							<string key="name">view</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/StreamingMusicViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
