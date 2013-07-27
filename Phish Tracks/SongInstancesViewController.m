@@ -105,7 +105,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(section == 0) {
-		return 2;
+		return 3;
 	}
 	return [self filteredForSection: section].count;
 }
@@ -143,8 +143,11 @@ titleForHeaderInSection:(NSInteger)section {
 		if(indexPath.row == 0) {
 			cell.textLabel.text = @"Song History";
 		}
-		else {
+		else if(indexPath.row == 1) {
 			cell.textLabel.text = @"Song Lyrics";
+		}
+		else if(indexPath.row == 2) {
+			cell.textLabel.text = @"Jamming Charts";
 		}
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -197,8 +200,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 												 animated:YES];
 			
 		}
-		else {
+		else if(indexPath.row == 1) {
 			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/lyrics", self.song.netSlug];
+			[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:addr]
+												 animated:YES];
+		}
+		else if(indexPath.row == 2) {
+			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/jamming-chart", self.song.netSlug];
 			[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:addr]
 												 animated:YES];
 		}

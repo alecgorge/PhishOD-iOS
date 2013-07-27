@@ -22,22 +22,16 @@
 }
 
 - (void)refresh:(id)sender {
-	if([PhishTracksStats sharedInstance].username != nil) {
-		[[PhishTracksStats sharedInstance] globalStats:^(NSDictionary *stats, NSArray *history) {
-			self.stats = stats;
-			self.history = history;
-			
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[super refresh:sender];
-				[self.tableView reloadData];
-			});
-		}
-											   failure:REQUEST_FAILED(self)];
+	[[PhishTracksStats sharedInstance] globalStats:^(NSDictionary *stats, NSArray *history) {
+		self.stats = stats;
+		self.history = history;
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[super refresh:sender];
+			[self.tableView reloadData];
+		});
 	}
-	else {
-		[super refresh:sender];
-		[self.tableView reloadData];
-	}
+										   failure:REQUEST_FAILED(self)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RotatableTabBarController.h"
 
 #import "StreamingMusicViewController.h"
 
@@ -40,7 +41,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	self.shouldShowNowPlaying = NO;
     
-	self.tabBar = [[UITabBarController alloc] init];
+	self.tabBar = [[RotatableTabBarController alloc] init];
 	[self setupNowPlaying];
 	
 	YearsViewController *years = [[YearsViewController alloc] init];
@@ -84,6 +85,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+	return UIInterfaceOrientationMaskAll;
 }
 
 - (BOOL)interceptEvent:(UIEvent *)event {
@@ -141,7 +146,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	StreamingMusicViewController *nowPlaying = [StreamingMusicViewController sharedInstance];
 	
 	CGRect f = nowPlaying.view.frame;
-	f.origin.y = self.tabBar.selectedViewController.view.frame.size.height - 256.0f - self.tabBar.tabBar.frame.size.height;
+	f.origin.y = 1024.f;
 	f.size.width = self.tabBar.view.frame.size.width;
 	nowPlaying.view.frame = f;
 	
@@ -176,7 +181,7 @@ didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation {
 						 f.size.height = 256.0f;
 						 
 						 if(self.isNowPlayingVisible) {
-							 f.origin.y = v.size.height + self.tabBar.tabBar.frame.size.height;
+							 f.origin.y = 1024.0f;
 							 [nowPlaying viewWillDisappear: YES];
 						 }
 						 else {

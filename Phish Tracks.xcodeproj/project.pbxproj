@@ -62,6 +62,7 @@
 		7CACD4FB17A45BD300E84B28 /* 17-bar-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */; };
 		7CACD4FC17A45BD300E84B28 /* 17-bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */; };
 		7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */; };
+		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
 		7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31F176040B200B80D54 /* NSString+stripHTML.m */; };
@@ -96,7 +97,6 @@
 		7CC91A9117A093030047DFF3 /* 08-chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A8F17A093030047DFF3 /* 08-chat@2x.png */; };
 		7CC91A9417A093D40047DFF3 /* glyphicons_151_new_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */; };
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
-		7CC91A9717A09EA50047DFF3 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC91A9617A09EA50047DFF3 /* Reveal.framework */; };
 		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +187,8 @@
 		7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-bar-chart@2x.png"; sourceTree = "<group>"; };
 		7CACD4FD17A4658700E84B28 /* GlobalStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStatsViewController.h; sourceTree = "<group>"; };
 		7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStatsViewController.m; sourceTree = "<group>"; };
+		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
+		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
 		7CADB3181760352900B80D54 /* PhishNetTopShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetTopShow.h; sourceTree = "<group>"; };
 		7CADB3191760352900B80D54 /* PhishNetTopShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetTopShow.m; sourceTree = "<group>"; };
 		7CADB31B176035E100B80D54 /* TopRatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopRatedViewController.h; sourceTree = "<group>"; };
@@ -227,7 +229,6 @@
 		7CC91A8F17A093030047DFF3 /* 08-chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat@2x.png"; sourceTree = "<group>"; };
 		7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_151_new_window.png; sourceTree = "<group>"; };
 		7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_151_new_window@2x.png"; sourceTree = "<group>"; };
-		7CC91A9617A09EA50047DFF3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,7 +240,6 @@
 				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
 				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
 				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
-				7CC91A9717A09EA50047DFF3 /* Reveal.framework in Frameworks */,
 				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
 				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
 				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
@@ -283,7 +283,6 @@
 		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7CC91A9617A09EA50047DFF3 /* Reveal.framework */,
 				7CADB3281760583D00B80D54 /* Crashlytics.framework */,
 				7C518C51175DC937005EB2E7 /* MediaPlayer.framework */,
 				7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */,
@@ -313,6 +312,8 @@
 				7C518C13175D0C32005EB2E7 /* AppDelegate.h */,
 				7C518C14175D0C32005EB2E7 /* AppDelegate.m */,
 				7C518C0B175D0C32005EB2E7 /* Supporting Files */,
+				7CACD50017A4718900E84B28 /* RotatableTabBarController.h */,
+				7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */,
 			);
 			path = "Phish Tracks";
 			sourceTree = "<group>";
@@ -732,6 +733,7 @@
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */,
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
+				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */,
 				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
@@ -802,7 +804,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
 				SDKROOT = iphoneos;
@@ -829,7 +831,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
 				SDKROOT = iphoneos;

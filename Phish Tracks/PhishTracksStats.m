@@ -181,7 +181,7 @@
 - (void)stats:(void (^)(NSDictionary *, NSArray *))cb
 	  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
 	if(self.isAuthenticated) {
-		[self _stats:cb failure:failure];
+		[self _stats:cb failure:failure];  
 	}
 	else {
 		[self reauth:^(BOOL success) {
