@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
-#import "YearsViewController.h"
+
 #import "StreamingMusicViewController.h"
-#import <LastFm.h>
-#import "SettingsViewController.h"
-#import "TopRatedViewController.h"
+
+#import "YearsViewController.h"
 #import "SongsViewController.h"
+#import "TopRatedViewController.h"
+#import "PhishTracksStatsViewController.h"
+#import "SettingsViewController.h"
+
+#import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 #import <TestFlight.h>
@@ -66,7 +70,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 														  tag:1];
 	topNav.delegate = self;
 	
-	self.tabBar.viewControllers = @[self.yearsNav, songsNav, topNav, settingsNav];
+	PhishTracksStatsViewController *stats = [[PhishTracksStatsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	UINavigationController *statsNav = [[UINavigationController alloc] initWithRootViewController:stats];
+	statsNav.tabBarItem   = [[UITabBarItem alloc] initWithTitle:@"Stats"
+														  image:[UIImage imageNamed:@"17-bar-chart.png"]
+															tag:3];
+	statsNav.delegate = self;
+	
+	self.tabBar.viewControllers = @[self.yearsNav, songsNav, topNav, statsNav, settingsNav];
 	
 	self.window.rootViewController = self.tabBar;
 	

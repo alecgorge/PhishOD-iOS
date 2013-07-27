@@ -37,14 +37,14 @@
 										self.setlist = s;
 										[self.tableView reloadData];
 									}
-									failure:REQUEST_FAILED(self.tableView)];
+									failure:REQUEST_FAILED(self)];
 	[[PhishTracksAPI sharedAPI] fullShow:self.show
 								 success:^(PhishShow *ss) {
 									 self.show = ss;
 									 [self.tableView reloadData];
 									 
 									 [super refresh:sender];
-								 } failure:REQUEST_FAILED(self.tableView)];
+								 } failure:REQUEST_FAILED(self)];
 }
 
 #pragma mark - Table view data source
@@ -275,15 +275,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 				startIndex = count;
 			}
 			
-			StreamingPlaylistItem *item = [[StreamingPlaylistItem alloc] init];
-			
-			item.title = song.title;
-			item.subtitle = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
-			item.duration = song.duration;
-			item.file = song.fileURL;
-			
-			item.shareTitle = [NSString stringWithFormat: @"#nowplaying %@ - %@ - Phish via @phishod", song.title, self.show.showDate, nil];
-			item.shareURL = [NSString stringWithFormat:@"http://www.phishtracks.com/show/%@/%@", self.show.showDate, song.slug, nil];
+			StreamingPlaylistItem *item = [[StreamingPlaylistItem alloc] initWithSong:song
+																			 fromShow:self.show];
 			
 			[playlist addObject: item];
 			

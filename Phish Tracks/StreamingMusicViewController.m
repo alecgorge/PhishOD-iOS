@@ -10,10 +10,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <LastFm/LastFm.h>
+#import "PhishTracksStats.h"
 
 @interface StreamingMusicViewController ()
 @property NSTimer *timer;
 @property BOOL trackHasBeenScrobbled;
+@property BOOL updateProgress;
 @end
 
 @implementation StreamingMusicViewController
@@ -32,6 +34,7 @@
 							  bundle:[NSBundle mainBundle]]) {
 		self.playlist = playlist;
 		self.isPlaying  = NO;
+		self.updateProgress = YES;
 		
 		self.playerStatus.text = @"";
 		self.playerTimeElapsed.text = @"";
@@ -407,9 +410,13 @@
 	self.playerTimeElapsed.text = [self formatTime: playbackTime];
 	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [self formatTime: self.currentItem.duration - self.player.currentPlaybackTime]];
 	
-	self.playerScrubber.value = playbackTime / self.currentItem.duration;
+	float complete = playbackTime / self.currentItem.duration;
 	
-	if(!self.trackHasBeenScrobbled && self.playerScrubber.value > .5) {
+	if(self.updateProgress) {
+		self.playerScrubber.value = complete;
+	}
+	
+	if(!self.trackHasBeenScrobbled && complete > .5) {
 		[[LastFm sharedInstance] sendScrobbledTrack:self.currentItem.title
 										   byArtist:@"Phish"
 											onAlbum:self.currentItem.subtitle
@@ -417,6 +424,11 @@
 										atTimestamp:(int)[[NSDate date] timeIntervalSince1970]
 									 successHandler:nil
 									 failureHandler:nil];
+		
+		[[PhishTracksStats sharedInstance] playedTrack:self.currentItem.song
+											  fromShow:self.currentItem.show
+											   success:nil
+											   failure:nil];
 		self.trackHasBeenScrobbled = YES;
 	}
 	
@@ -456,6 +468,14 @@
 	[self.player stop];
 	self.playlist = array;
 	self.currentIndex = index;
+}
+
+- (IBAction)postionBeginAdjustment:(id)sender {
+	self.updateProgress = NO;
+}
+
+- (IBAction)positionEndAdjustment:(id)sender {
+	self.updateProgress = YES;
 }
 
 @end

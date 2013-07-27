@@ -50,4 +50,7 @@
 
 - (void)changePlaylist:(NSArray*)array andStartFromIndex:(NSInteger)index;
 
+- (IBAction)postionBeginAdjustment:(id)sender;
+- (IBAction)positionEndAdjustment:(id)sender;
+
 @end

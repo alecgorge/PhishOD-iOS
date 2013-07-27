@@ -38,7 +38,7 @@
 		
 		[super refresh:sender];
 	}
-							  failure:REQUEST_FAILED(self.tableView)];
+							  failure:REQUEST_FAILED(self)];
 }
 
 #pragma mark - Table view data source

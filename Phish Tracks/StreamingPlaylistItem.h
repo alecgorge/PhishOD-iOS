@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PhishSong.h"
+#import "PhishShow.h"
 
 @interface StreamingPlaylistItem : NSObject
 
-@property NSString *title;
-@property NSString *subtitle;
-@property NSTimeInterval duration;
-@property NSURL *file;
+@property PhishShow *show;
+@property PhishSong *song;
 
-@property NSString *shareTitle;
-@property NSURL *shareURL;
+- (id)initWithSong:(PhishSong*)song fromShow:(PhishShow*)show;
+
+@property (readonly) NSString *title;
+@property (readonly) NSString *subtitle;
+@property (readonly) NSTimeInterval duration;
+@property (readonly) NSURL *file;
+
+@property (readonly) NSString *shareTitle;
+@property (readonly) NSURL *shareURL;
 
 @end

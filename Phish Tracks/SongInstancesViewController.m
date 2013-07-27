@@ -58,7 +58,7 @@
 										 });
 									 });
 								 }
-								 failure:REQUEST_FAILED(self.tableView)];
+								 failure:REQUEST_FAILED(self)];
 }
 
 - (void)makeIndicies {

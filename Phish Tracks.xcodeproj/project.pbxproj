@@ -57,6 +57,11 @@
 		7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
+		7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */; };
+		7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */; };
+		7CACD4FB17A45BD300E84B28 /* 17-bar-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */; };
+		7CACD4FC17A45BD300E84B28 /* 17-bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */; };
+		7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
 		7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31F176040B200B80D54 /* NSString+stripHTML.m */; };
@@ -174,6 +179,14 @@
 		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
 		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		7CACD4F217A4585C00E84B28 /* PhishTracksStatsHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsHistoryItem.h; sourceTree = "<group>"; };
+		7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsHistoryItem.m; sourceTree = "<group>"; };
+		7CACD4F617A45AFC00E84B28 /* PhishTracksStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsViewController.h; sourceTree = "<group>"; };
+		7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsViewController.m; sourceTree = "<group>"; };
+		7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-bar-chart.png"; sourceTree = "<group>"; };
+		7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-bar-chart@2x.png"; sourceTree = "<group>"; };
+		7CACD4FD17A4658700E84B28 /* GlobalStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStatsViewController.h; sourceTree = "<group>"; };
+		7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStatsViewController.m; sourceTree = "<group>"; };
 		7CADB3181760352900B80D54 /* PhishNetTopShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetTopShow.h; sourceTree = "<group>"; };
 		7CADB3191760352900B80D54 /* PhishNetTopShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetTopShow.m; sourceTree = "<group>"; };
 		7CADB31B176035E100B80D54 /* TopRatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopRatedViewController.h; sourceTree = "<group>"; };
@@ -241,12 +254,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C1B438817984D6A00CB1255 /* Jam Charts Tab */ = {
+		7C1B438817984D6A00CB1255 /* Jam Charts */ = {
 			isa = PBXGroup;
 			children = (
 				7C1B438917984D8D00CB1255 /* scrape_jams.js */,
 			);
-			name = "Jam Charts Tab";
+			name = "Jam Charts";
 			sourceTree = "<group>";
 		};
 		7C518BF8175D0C32005EB2E7 = {
@@ -292,7 +305,7 @@
 			children = (
 				7C6AE5001788725800AAED06 /* MediaPlayer */,
 				7C518C23175D115A005EB2E7 /* API */,
-				7C1B438817984D6A00CB1255 /* Jam Charts Tab */,
+				7CACD4F517A45AE100E84B28 /* Stats Tab */,
 				7CADB30F1760251500B80D54 /* Top Rated Tab */,
 				7C518C53175DCEC7005EB2E7 /* Settings Tab */,
 				7C518C22175D0C62005EB2E7 /* Song Tab */,
@@ -346,6 +359,7 @@
 		7C518C22175D0C62005EB2E7 /* Song Tab */ = {
 			isa = PBXGroup;
 			children = (
+				7C1B438817984D6A00CB1255 /* Jam Charts */,
 				7CADB321176043F700B80D54 /* SongsViewController.h */,
 				7CADB322176043F700B80D54 /* SongsViewController.m */,
 				7CADB324176044DF00B80D54 /* SongInstancesViewController.h */,
@@ -486,6 +500,28 @@
 			name = EventInterceptingWindow;
 			sourceTree = "<group>";
 		};
+		7CACD4F117A4584900E84B28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CACD4F217A4585C00E84B28 /* PhishTracksStatsHistoryItem.h */,
+				7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7CACD4F517A45AE100E84B28 /* Stats Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */,
+				7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */,
+				7CACD4F617A45AFC00E84B28 /* PhishTracksStatsViewController.h */,
+				7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */,
+				7CACD4FD17A4658700E84B28 /* GlobalStatsViewController.h */,
+				7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */,
+			);
+			name = "Stats Tab";
+			sourceTree = "<group>";
+		};
 		7CADB30F1760251500B80D54 /* Top Rated Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +565,7 @@
 		7CC91A57179F75E40047DFF3 /* PhishTracks Stats */ = {
 			isa = PBXGroup;
 			children = (
+				7CACD4F117A4584900E84B28 /* Models */,
 				7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */,
 				7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */,
 			);
@@ -598,6 +635,7 @@
 				7C658BDE178D2E6C005FD6D0 /* Icon-Small-50.png in Resources */,
 				7C658BEC178D378B005FD6D0 /* Default-Portrait~ipad.png in Resources */,
 				7C518C1B175D0C32005EB2E7 /* Default-568h@2x.png in Resources */,
+				7CACD4FC17A45BD300E84B28 /* 17-bar-chart@2x.png in Resources */,
 				7C658BE0178D2E6C005FD6D0 /* Icon-Small.png in Resources */,
 				7CC91A7C17A091210047DFF3 /* 194-note-2.png in Resources */,
 				7CC91A8A17A091530047DFF3 /* glyphicons_174_pause.png in Resources */,
@@ -626,6 +664,7 @@
 				7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */,
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
 				7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */,
+				7CACD4FB17A45BD300E84B28 /* 17-bar-chart.png in Resources */,
 				7CC91A8617A091530047DFF3 /* glyphicons_172_rewind.png in Resources */,
 				7C658BE4178D2E6C005FD6D0 /* iTunesArtwork in Resources */,
 				7CC91A7617A091210047DFF3 /* 28-star.png in Resources */,
@@ -691,6 +730,7 @@
 			files = (
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
+				7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */,
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */,
@@ -699,12 +739,14 @@
 				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
 				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
+				7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */,
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
 				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
 				7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */,
 				7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */,
+				7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */,
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
 				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,

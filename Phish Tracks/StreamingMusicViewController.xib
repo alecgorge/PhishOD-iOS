@@ -34,7 +34,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="143291511">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">1298</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUILabel" id="639251841">
@@ -145,7 +145,7 @@
 						<string key="NSFrame">{{124, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
 						<reference key="NSNextKeyView" ref="529279300"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
+						<object class="NSColor" key="IBUIBackgroundColor" id="864289222">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
@@ -172,7 +172,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{205, 160}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSNextKeyView" ref="630265791"/>
+						<reference key="NSNextKeyView" ref="21279837"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -296,17 +296,14 @@
 						<reference key="IBUIFont" ref="1002500714"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIButton" id="630265791">
+					<object class="IBUIButton" id="21279837">
 						<reference key="NSNextResponder" ref="143291511"/>
 						<int key="NSvFlags">1293</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{85, 204}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSNextKeyView" ref="944402123"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
-						</object>
+						<reference key="NSNextKeyView" ref="434292215"/>
+						<reference key="IBUIBackgroundColor" ref="864289222"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -324,13 +321,12 @@
 						<reference key="IBUIFontDescription" ref="992356259"/>
 						<reference key="IBUIFont" ref="778215083"/>
 					</object>
-					<object class="IBUIView" id="944402123">
+					<object class="IBUIView" id="434292215">
 						<reference key="NSNextResponder" ref="143291511"/>
 						<int key="NSvFlags">1316</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrame">{{183, 218}, {36, 22}}</string>
 						<reference key="NSSuperview" ref="143291511"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="76412669"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -338,7 +334,6 @@
 				</array>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 256}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="389986501"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -450,7 +445,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">playerAirPlayButton</string>
 						<reference key="source" ref="220396080"/>
-						<reference key="destination" ref="944402123"/>
+						<reference key="destination" ref="434292215"/>
 					</object>
 					<string key="id">Xwk-hT-Nhd</string>
 				</object>
@@ -492,8 +487,35 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">postionBeginAdjustment:</string>
+						<reference key="source" ref="354921480"/>
+						<reference key="destination" ref="220396080"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<string key="id">mcD-DJ-5TF</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">positionEndAdjustment:</string>
+						<reference key="source" ref="354921480"/>
+						<reference key="destination" ref="220396080"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<string key="id">4pk-24-OTb</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">positionEndAdjustment:</string>
+						<reference key="source" ref="354921480"/>
+						<reference key="destination" ref="220396080"/>
+						<int key="IBEventType">8</int>
+					</object>
+					<string key="id">H0q-fE-l6c</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">share:</string>
-						<reference key="source" ref="630265791"/>
+						<reference key="source" ref="21279837"/>
 						<reference key="destination" ref="220396080"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -542,8 +564,8 @@
 							<reference ref="154608992"/>
 							<reference ref="137964510"/>
 							<reference ref="389986501"/>
-							<reference ref="630265791"/>
-							<reference ref="944402123"/>
+							<reference ref="21279837"/>
+							<reference ref="434292215"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -599,12 +621,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">wbO-bX-bTk</string>
-						<reference key="object" ref="630265791"/>
+						<reference key="object" ref="21279837"/>
 						<reference key="parent" ref="143291511"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">tcx-Hq-UcT</string>
-						<reference key="object" ref="944402123"/>
+						<reference key="object" ref="434292215"/>
 						<reference key="parent" ref="143291511"/>
 					</object>
 				</array>

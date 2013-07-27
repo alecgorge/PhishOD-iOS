@@ -10,4 +10,51 @@
 
 @implementation StreamingPlaylistItem
 
+- (id)initWithSong:(PhishSong *)song fromShow:(PhishShow *)show {
+	if (self = [super init]) {
+		self.song = song;
+		self.show = show;
+	}
+	return self;
+}
+
+- (NSString *)title {
+	return self.song.title;
+}
+
+- (NSString *)subtitle {
+	static NSString *sub = nil;
+	if(sub == nil) {
+		sub = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
+	}
+	
+	return sub;
+}
+
+- (NSTimeInterval)duration {
+	return self.song.duration;
+}
+
+- (NSURL *)file {
+	return self.song.fileURL;
+}
+
+- (NSString *)shareTitle {
+	static NSString *sub = nil;
+	if(sub == nil) {
+		sub = [NSString stringWithFormat: @"#nowplaying %@ - %@ - Phish via @phishod", self.song.title, self.show.showDate, nil];
+	}
+	
+	return sub;
+}
+
+- (NSURL *)shareURL {
+	static NSURL *sub = nil;
+	if(sub == nil) {
+		sub = [NSURL URLWithString: [NSString stringWithFormat:@"http://www.phishtracks.com/show/%@/%@", self.show.showDate, self.song.slug, nil]];
+	}
+	
+	return sub;
+}
+
 @end
