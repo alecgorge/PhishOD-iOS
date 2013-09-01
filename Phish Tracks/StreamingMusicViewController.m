@@ -446,7 +446,10 @@
 		
 		activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
 		
-		[self presentViewController:activityVC animated:YES completion:nil];
+		AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+		[delegate.tabBar presentViewController:activityVC
+									  animated:YES
+									completion:nil];
 	}
 	else {
 		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Not available on iOS 5"

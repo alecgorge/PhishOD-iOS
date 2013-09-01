@@ -34,7 +34,7 @@
 				[self.tableView reloadData];
 			});
 		}
-										 failure:REQUEST_FAILED(self)];
+										 failure:REQUEST_FAILED(self.tableView)];
 	}
 	else {
 		self.showLoginMessage = YES;

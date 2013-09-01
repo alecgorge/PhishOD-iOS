@@ -8,6 +8,12 @@
 
 #import "StreamingPlaylistItem.h"
 
+@interface StreamingPlaylistItem()
+
+@property NSString *album;
+
+@end
+
 @implementation StreamingPlaylistItem
 
 - (id)initWithSong:(PhishSong *)song fromShow:(PhishShow *)show {
@@ -23,12 +29,11 @@
 }
 
 - (NSString *)subtitle {
-	static NSString *sub = nil;
-	if(sub == nil) {
-		sub = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
+	if(!self.album) {
+		self.album = [self.show.showDate stringByAppendingFormat:@" - %@ - %@", self.show.location, self.show.city, nil];
 	}
 	
-	return sub;
+	return self.album;
 }
 
 - (NSTimeInterval)duration {

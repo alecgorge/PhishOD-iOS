@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "StreamingPlaylistItem.h"
+#import "AppDelegate.h"
 
 @interface StreamingMusicViewController : UIViewController
 

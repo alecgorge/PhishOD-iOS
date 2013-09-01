@@ -31,7 +31,7 @@
 			[self.tableView reloadData];
 		});
 	}
-										   failure:REQUEST_FAILED(self)];
+										   failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

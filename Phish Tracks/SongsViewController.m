@@ -32,7 +32,7 @@
 		[self.tableView reloadData];
 		[super refresh:sender];
 	}
-							  failure:REQUEST_FAILED(self)];
+							  failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (void)makeIndicies {

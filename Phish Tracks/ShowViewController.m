@@ -37,14 +37,14 @@
 										self.setlist = s;
 										[self.tableView reloadData];
 									}
-									failure:REQUEST_FAILED(self)];
+									failure:REQUEST_FAILED(self.tableView)];
 	[[PhishTracksAPI sharedAPI] fullShow:self.show
 								 success:^(PhishShow *ss) {
 									 self.show = ss;
 									 [self.tableView reloadData];
 									 
 									 [super refresh:sender];
-								 } failure:REQUEST_FAILED(self)];
+								 } failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source
