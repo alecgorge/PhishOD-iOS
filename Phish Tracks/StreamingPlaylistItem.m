@@ -56,7 +56,7 @@
 - (NSURL *)shareURL {
 	static NSURL *sub = nil;
 	if(sub == nil) {
-		sub = [NSURL URLWithString: [NSString stringWithFormat:@"http://www.phishtracks.com/show/%@/%@", self.show.showDate, self.song.slug, nil]];
+		sub = [NSURL URLWithString: [NSString stringWithFormat:@"http://www.phishtracks.com/shows/%@/%@", self.show.showDate, self.song.slug, nil]];
 	}
 	
 	return sub;
