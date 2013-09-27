@@ -15,7 +15,7 @@
     static dispatch_once_t once;
     static PhishTracksStats *sharedFoo;
     dispatch_once(&once, ^ {
-		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"http://www.phishtrackstats.com/api/"]];
+		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"https://www.phishtrackstats.com/api/"]];
 		sharedFoo.parameterEncoding = AFJSONParameterEncoding;
 	});
     return sharedFoo;
