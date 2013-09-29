@@ -114,6 +114,7 @@
 	[self postPath:[NSString stringWithFormat:@"played_tracks.json?auth_token=%@", self.authToken, nil]
 		parameters:@{ @"played_track": @{
 							  @"track_id": [NSNumber numberWithInt: song.trackId],
+							  @"slug": song.slug,
 							  @"show_id": [NSNumber numberWithInt: show.showId],
 							  @"show_date": show.showDate } }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject) {
