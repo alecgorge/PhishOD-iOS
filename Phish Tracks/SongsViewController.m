@@ -26,7 +26,7 @@
 }
 
 - (void)refresh:(id)sender {
-	[[PhishTracksAPI sharedAPI] songs:^(NSArray *t) {
+	[[PhishinAPI sharedAPI] songs:^(NSArray *t) {
 		self.songs = t;
 		[self makeIndicies];
 		[self.tableView reloadData];
@@ -104,7 +104,7 @@ titleForHeaderInSection:(NSInteger)section {
 									  reuseIdentifier:CellIdentifier];
 	}
     
-	PhishSong *song = [self filterForSection:indexPath.section][indexPath.row];
+	PhishinSong *song = [self filterForSection:indexPath.section][indexPath.row];
     cell.textLabel.text = song.title;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -116,7 +116,7 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PhishSong *song = [self filterForSection:indexPath.section][indexPath.row];
+	PhishinSong *song = [self filterForSection:indexPath.section][indexPath.row];
 
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];

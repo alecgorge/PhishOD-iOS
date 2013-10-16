@@ -14,8 +14,10 @@
 	NSArray *filteredShows;
 }
 
-@property PhishYear *year;
+@property PhishinYear *year;
 
--(id)initWithYear:(PhishYear *)y;
+@property (nonatomic, readonly) NSArray *shows;
+
+-(id)initWithYear:(PhishinYear *)y;
 
 @end

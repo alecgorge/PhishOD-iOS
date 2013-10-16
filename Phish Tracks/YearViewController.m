@@ -16,7 +16,7 @@
 
 @implementation YearViewController
 
-- (id)initWithYear:(PhishYear*)y {
+- (id)initWithYear:(PhishinYear*)y {
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
 		self.year = y;
@@ -40,13 +40,14 @@
 }
 
 - (void)refresh:(id)sender {
-	[[PhishTracksAPI sharedAPI] fullYear:self.year
-								 success:^(PhishYear *yy) {
-									 self.year = yy;
-									 [self.tableView reloadData];
-									 
-									 [super refresh:sender];
-								 } failure:REQUEST_FAILED(self.tableView)];
+	[[PhishinAPI sharedAPI] fullYear:self.year
+							 success:^(PhishinYear *yy) {
+								 self.year = yy;
+								 [self.tableView reloadData];
+								 
+								 [super refresh:sender];
+							 }
+							 failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source
@@ -55,16 +56,20 @@
 	return 1;
 }
 
+- (NSArray *)shows {
+	return self.year.shows;
+}
+
 - (NSArray *)doFilterShows {
 	if(control.selectedSegmentIndex == 0) {
-		filteredShows = self.year.shows;
+		filteredShows = self.shows;
 	}
 	else if(control.selectedSegmentIndex == 1) {
-		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.isRemastered == YES OR SELF.isSoundboard == YES"];
-		filteredShows = [self.year.shows filteredArrayUsingPredicate:pred];
+		NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.remastered == YES OR SELF.sbd == YES"];
+		filteredShows = [self.shows filteredArrayUsingPredicate:pred];
 	}
 	else {
-		filteredShows = self.year.shows;
+		filteredShows = self.shows;
 	}
 	
 	[self.tableView reloadData];
@@ -84,7 +89,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(self.year.hasShowsLoaded) {
+	if(self.shows.count) {
 		return [self filteredShows].count;
 	}
 	return 0;
@@ -117,11 +122,11 @@ heightForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	PhishShow *show = (PhishShow*)[self filteredShows][indexPath.row];
+	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
 	
 	UITableViewCell *cell;
 	
-	if(show.isRemastered || show.isSoundboard) {
+	if(show.remastered || show.sbd) {
 		static NSString *CellIdentifier = @"BadgedCell";
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
@@ -140,19 +145,19 @@ heightForHeaderInSection:(NSInteger)section {
 		}
 	}
 	
-	cell.textLabel.text = [show.showDate stringByAppendingFormat:@" - %@", show.city];
-	cell.detailTextLabel.text = show.location;
+	cell.textLabel.text = show.date;
+	cell.detailTextLabel.text = [show.location stringByAppendingFormat:@" - %@", show.venue_name];
 	cell.detailTextLabel.numberOfLines = 2;
 
-	if(show.isSoundboard || show.isRemastered) {
+	if(show.sbd || show.remastered) {
 		TDBadgedCell *tcell = (TDBadgedCell*)cell;
-		if(show.isSoundboard && show.isRemastered) {
+		if(show.sbd && show.remastered) {
 			tcell.badgeString = @"SDB+REMAST";
 			tcell.badgeColor = [UIColor darkGrayColor];
-		} else if(show.isRemastered) {
+		} else if(show.remastered) {
 			tcell.badgeString = @"REMAST";
 			tcell.badgeColor = [UIColor blueColor];
-		} else if(show.isSoundboard) {
+		} else if(show.sbd) {
 			tcell.badgeString = @"SBD";
 			tcell.badgeColor = [UIColor redColor];
 		}
@@ -167,7 +172,10 @@ heightForHeaderInSection:(NSInteger)section {
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PhishShow *show = [self filteredShows][indexPath.row];
+	[tableView deselectRowAtIndexPath:indexPath
+							 animated:YES];
+	
+	PhishinShow *show = [self filteredShows][indexPath.row];
     [self.navigationController pushViewController:[[ShowViewController alloc] initWithShow: show]
 										 animated:YES];
 }

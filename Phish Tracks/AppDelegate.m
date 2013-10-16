@@ -22,100 +22,70 @@
 #import <Crashlytics/Crashlytics.h>
 #import <TestFlight.h>
 
+static AppDelegate *sharedDelegate;
+
 @implementation AppDelegate
 
 @synthesize tabBar;
 @synthesize window;
 @synthesize yearsNav;
 
++ (instancetype)sharedDelegate {
+	return sharedDelegate;
+}
+
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	sharedDelegate = self;
+	
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
 	[TestFlight takeOff:@"b7d72e8f-eafb-43c2-ac00-238f786848c2"];
 	[Crashlytics startWithAPIKey:@"bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4"];
+
 	[self setupLastFM];
 	[self setupCaching];
+	[self setupAppearance];
 	
-    self.window = [[EventInterceptWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.window.eventInterceptDelegate = self;
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
 	
 	self.shouldShowNowPlaying = NO;
-    
-	self.tabBar = [[RotatableTabBarController alloc] init];
+	
 	[self setupNowPlaying];
 	
 	YearsViewController *years = [[YearsViewController alloc] init];
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
-	self.yearsNav.delegate = self;
-	self.yearsNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"By Year"
-															 image:[UIImage imageNamed:@"83-calendar.png"]
-															   tag:0];
+	self.yearsNav.navigationBar.translucent = NO;
 	
-	SettingsViewController *set = [[SettingsViewController alloc] init];
-	UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:set];
-	settingsNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings"
-														   image:[UIImage imageNamed:@"19-gear.png"]
-															 tag:2];
+	self.panels = [[JASidePanelController alloc] init];
+	self.menuPanel = [[MenuPanel alloc] init];
 	
-	SongsViewController *songs = [[SongsViewController alloc] init];
-	UINavigationController *songsNav = [[UINavigationController alloc] initWithRootViewController:songs];
-	songsNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"By Song"
-														image:[UIImage imageNamed:@"44-shoebox.png"]
-														  tag:1];
-	songsNav.delegate = self;
+	self.panels.leftFixedWidth = 256.0;
 	
-	TopRatedViewController *top = [[TopRatedViewController alloc] init];
-	UINavigationController *topNav = [[UINavigationController alloc] initWithRootViewController:top];
-	topNav.tabBarItem   = [[UITabBarItem alloc] initWithTitle:@"Top Rated"
-														image:[UIImage imageNamed:@"28-star.png"]
-														  tag:1];
-	topNav.delegate = self;
+	self.panels.leftPanel = self.menuPanel;
+	self.panels.centerPanel = yearsNav;
 	
-	PhishTracksStatsViewController *stats = [[PhishTracksStatsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	UINavigationController *statsNav = [[UINavigationController alloc] initWithRootViewController:stats];
-	statsNav.tabBarItem   = [[UITabBarItem alloc] initWithTitle:@"Stats"
-														  image:[UIImage imageNamed:@"17-bar-chart.png"]
-															tag:3];
-	statsNav.delegate = self;
-	
-	self.tabBar.viewControllers = @[self.yearsNav, songsNav, topNav, statsNav, settingsNav];
-	
-	self.window.rootViewController = self.tabBar;
+	self.window.rootViewController = self.panels;
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)setupAppearance {
+	UIColor *phishGreen = COLOR_PHISH_GREEN;
+	UIColor *lightPhishGreen = COLOR_PHISH_LIGHT_GREEN;
+	UIColor *white = COLOR_PHISH_WHITE;
+	
+	[UINavigationBar appearance].barTintColor = phishGreen;
+	[UINavigationBar appearance].tintColor = white;
+	[UINavigationBar appearance].titleTextAttributes = @{UITextAttributeTextColor: white};
+	
+	[UISegmentedControl appearance].tintColor = phishGreen;
+	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
+}
+
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
 	return UIInterfaceOrientationMaskAll;
-}
-
-- (BOOL)interceptEvent:(UIEvent *)event {
-	if(!self.isNowPlayingVisible) {
-		return NO;
-	}
-	
-    NSSet *touches = [event allTouches];
-    UITouch *oneTouch = [touches anyObject];
-    UIView *touchView = [oneTouch view];
-    //  dbug(@"tap count = %d", [oneTouch tapCount]);
-    // check for taps on the web view which really end up being dispatched to
-    // a scroll view
-    if (touchView && [touchView isDescendantOfView:self.tabBar.selectedViewController.view]
-		&& touches && oneTouch.phase == UITouchPhaseBegan) {
-        [self toggleNowPlaying];
-		return YES;
-    }
-    return NO;
-}
-
-- (void)setShouldShowNowPlaying:(BOOL)s {
-	_shouldShowNowPlaying = s;
-	if(!s) return;
-	[self navigationController:self.yearsNav
-		willShowViewController:self.yearsNav.visibleViewController
-					  animated:YES];
 }
 
 - (void)setupCaching {
@@ -130,29 +100,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [LastFm sharedInstance].username = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastfm_username_key"];
 }
 
-- (void)navigationController:(UINavigationController *)navigationController
-	  willShowViewController:(UIViewController *)viewController
-					animated:(BOOL)animated {
-	if(!self.shouldShowNowPlaying) return;
-	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Player"
-															   style:UIBarButtonItemStyleDone
-															  target:self
-															  action:@selector(nowPlaying)];
-	
-    viewController.navigationItem.rightBarButtonItem = button;
-}
-
 - (void)setupNowPlaying {
 	StreamingMusicViewController *nowPlaying = [StreamingMusicViewController sharedInstance];
-	
-	CGRect f = nowPlaying.view.frame;
-	f.origin.y = 1024.f;
-	f.size.width = self.tabBar.view.frame.size.width;
-	nowPlaying.view.frame = f;
-	
-	self.isNowPlayingVisible = NO;
-	
-	[self.tabBar.view addSubview: nowPlaying.view];
+	self.nowPlayingNav = [[UINavigationController alloc] initWithRootViewController:nowPlaying];
+	self.nowPlayingNav.navigationBar.translucent = NO;
 }
 
 
@@ -161,46 +112,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 														object:event];
 }
 
-- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration {
-	[self toggleNowPlaying];
-}
-
-- (void)application:(UIApplication *)application
-didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation {
-	
-}
-
 - (void)nowPlaying {
-	StreamingMusicViewController *nowPlaying = [StreamingMusicViewController sharedInstance];
-	
-	[UIView animateWithDuration:0.2
-					 animations:^{
-						 CGRect v = self.tabBar.selectedViewController.view.frame;
-						 CGRect f = nowPlaying.view.frame;
-						 f.size.width = v.size.width;
-						 f.size.height = 256.0f;
-						 
-						 if(self.isNowPlayingVisible) {
-							 f.origin.y = 1024.0f;
-							 [nowPlaying viewWillDisappear: YES];
-						 }
-						 else {
-							 f.origin.y = v.size.height - f.size.height;
-							 [nowPlaying viewWillAppear: YES];
-						 }
-						 
-						 self.isNowPlayingVisible = !self.isNowPlayingVisible;
-
-						 nowPlaying.view.frame = f;
-					 }
-					 completion:^(BOOL finished) {
-						 if(!self.isNowPlayingVisible) {
-							 [nowPlaying viewDidDisappear: YES];
-						 }
-						 else {
-							 [nowPlaying viewDidAppear: YES];
-						 }
-					 }];
+	[self.panels presentViewController:self.nowPlayingNav
+							  animated:YES
+							completion:^{}];
 }
 
 - (void)toggleNowPlaying {
@@ -210,6 +125,42 @@ didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation {
 - (void)showNowPlaying {
 	self.isNowPlayingVisible = NO;
 	[self nowPlaying];
+}
+
+- (BOOL)application:(UIApplication *)application
+			openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+		 annotation:(id)annotation {
+	if([url.scheme isEqualToString:@"phishod"]) {
+		NSArray *comps = url.pathComponents;
+		
+		if(comps.count == 0) {
+			// phishod:///
+			// nothing, just opening app
+		}
+		else if(comps.count == 1) {
+			// phishod:///:show_id
+			// open to date
+		}
+		else if(comps.count == 2) {
+			// phishod:///:show_id/:track_id
+			// open to track
+		}
+		else if(comps.count == 3 || comps.count == 4) {
+			// phishod:///:show_id/:track_id/3[/20]
+			// open to 3[:20] on light
+			NSTimeInterval position = [comps[2] integerValue];
+			
+			if(comps.count == 4)  {
+				position += [comps[3] floatValue] / 60.0;
+			}
+			
+			NSString *show_id = comps[0];
+			NSString *track_id = comps[1];
+		}
+	}
+	
+	return NO;
 }
 
 @end

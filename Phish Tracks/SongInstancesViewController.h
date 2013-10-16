@@ -11,9 +11,9 @@
 
 @interface SongInstancesViewController : RefreshableTableViewController
 
-@property PhishSong *song;
+@property PhishinSong *song;
 @property NSArray *indicies;
 
-- (id)initWithSong:(PhishSong*) s;
+- (id)initWithSong:(PhishinSong*) s;
 
 @end

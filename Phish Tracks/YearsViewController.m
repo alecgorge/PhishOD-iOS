@@ -15,12 +15,10 @@
 
 @implementation YearsViewController
 
-@synthesize years;
-
 - (id)init {
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
-		self.years = @[];
+		self.eras = @[];
 	}
     return self;
 }
@@ -32,24 +30,30 @@
 }
 
 - (void)refresh:(id)sender {
-	[[PhishTracksAPI sharedAPI] years:^(NSArray *phishYears) {
-		self.years = phishYears;
+	[[PhishinAPI sharedAPI] eras:^(NSArray *phishYears) {
+		self.eras = phishYears;
 		[self.tableView reloadData];
 		
 		[super refresh:sender];
 	}
-							  failure:REQUEST_FAILED(self.tableView)];
+						  failure:REQUEST_FAILED(self.tableView)];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return self.eras.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	return years.count;
+	PhishinEra *era = self.eras[section];
+	return era.years.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+	return [self.eras[section] name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -62,7 +66,8 @@
 									  reuseIdentifier:CellIdentifier];
 	}
 	
-	cell.textLabel.text = ((PhishYear*)years[indexPath.row]).year;
+	PhishinEra *era = self.eras[indexPath.section];
+	cell.textLabel.text = ((PhishinYear*)era.years[indexPath.row]).year;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -72,7 +77,9 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController pushViewController:[[YearViewController alloc] initWithYear:self.years[indexPath.row]]
+	PhishinEra *era = self.eras[indexPath.section];
+	PhishinYear *year = ((PhishinYear*)era.years[indexPath.row]);
+    [self.navigationController pushViewController:[[YearViewController alloc] initWithYear:year]
 										 animated:YES];
 	
 	[self.tableView deselectRowAtIndexPath:indexPath

@@ -107,7 +107,7 @@ titleForHeaderInSection:(NSInteger)section {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;		
 	}
 	else if(indexPath.section == 2 && indexPath.row == 0) {
-		cell.textLabel.text = @"Streaming by phishtracks.com";
+		cell.textLabel.text = @"Streaming by phish.in";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
@@ -175,7 +175,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 											 animated:YES];
 	}
 	else if(indexPath.section == 2 && indexPath.row == 0) {
-		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://phishtracks.com/"]
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://phish.in/"]
 											 animated:YES];
 	}
 	else if(indexPath.section == 2 && indexPath.row == 1) {
