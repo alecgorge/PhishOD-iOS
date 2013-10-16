@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7C02E784180F452E00C01CCB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E783180F452E00C01CCB /* SearchViewController.m */; };
 		7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E788180F45C300C01CCB /* SearchDelegate.m */; };
-		7C02E78C180F4C7F00C01CCB /* PhishinSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */; };
 		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
@@ -60,14 +59,7 @@
 		7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
-		7C7ED37417FFD712004F55DF /* PhishinAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED37317FFD712004F55DF /* PhishinAPI.m */; };
-		7C7ED37817FFDD2E004F55DF /* PhishinYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED37717FFDD2E004F55DF /* PhishinYear.m */; };
-		7C7ED37B17FFE048004F55DF /* PhishinShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED37A17FFE048004F55DF /* PhishinShow.m */; };
-		7C7ED37E17FFE13F004F55DF /* PhishinVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED37D17FFE13F004F55DF /* PhishinVenue.m */; };
-		7C7ED38117FFE5DA004F55DF /* PhishinEra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED38017FFE5DA004F55DF /* PhishinEra.m */; };
-		7C7ED3841800C7CD004F55DF /* PhishinTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3831800C7CD004F55DF /* PhishinTrack.m */; };
 		7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3871800D27A004F55DF /* MenuPanel.m */; };
-		7C7ED38B1800EEB4004F55DF /* PhishinSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED38A1800EEB4004F55DF /* PhishinSet.m */; };
 		7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */; };
 		7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED39018010620004F55DF /* CoreMedia.framework */; };
 		7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3931801ABD0004F55DF /* VenueViewController.m */; };
@@ -79,7 +71,6 @@
 		7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */; };
 		7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A71801B219004F55DF /* MapKit.framework */; };
 		7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A91801B22E004F55DF /* CoreLocation.framework */; };
-		7C7ED3AD1801CA3E004F55DF /* PhishinSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3AC1801CA3E004F55DF /* PhishinSong.m */; };
 		7C7ED3B118020BE4004F55DF /* VenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3B018020BE4004F55DF /* VenuesViewController.m */; };
 		7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */; };
 		7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */; };
@@ -93,9 +84,19 @@
 		7CADB323176043F700B80D54 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB322176043F700B80D54 /* SongsViewController.m */; };
 		7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB325176044DF00B80D54 /* SongInstancesViewController.m */; };
 		7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CADB3281760583D00B80D54 /* Crashlytics.framework */; };
-		7CB97EBF1805CEE7004A43EE /* PhishinTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB97EBE1805CEE7004A43EE /* PhishinTour.m */; };
 		7CB97EC21805E289004A43EE /* ToursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB97EC11805E289004A43EE /* ToursViewController.m */; };
 		7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB97EC41805E45B004A43EE /* TourViewController.m */; };
+		7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EA180F5EB700F72F0D /* PhishinEra.m */; };
+		7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */; };
+		7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EE180F5EB700F72F0D /* PhishinSet.m */; };
+		7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F0180F5EB700F72F0D /* PhishinShow.m */; };
+		7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F2180F5EB700F72F0D /* PhishinSong.m */; };
+		7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */; };
+		7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F6180F5EB700F72F0D /* PhishinTour.m */; };
+		7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F8180F5EB700F72F0D /* PhishinTrack.m */; };
+		7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FA180F5EB700F72F0D /* PhishinVenue.m */; };
+		7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FC180F5EB700F72F0D /* PhishinYear.m */; };
+		7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FE180F5EB700F72F0D /* PhishinAPI.m */; };
 		7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */; };
 		7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC91A5C179F875A0047DFF3 /* jQuery.m */; };
 		7CC91A6617A07D0F0047DFF3 /* jquery2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5D179F875A0047DFF3 /* jquery2.min.js */; };
@@ -133,8 +134,6 @@
 		7C02E783180F452E00C01CCB /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ../SearchViewController.m; sourceTree = "<group>"; };
 		7C02E787180F45C300C01CCB /* SearchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDelegate.h; sourceTree = "<group>"; };
 		7C02E788180F45C300C01CCB /* SearchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDelegate.m; sourceTree = "<group>"; };
-		7C02E78A180F4C7F00C01CCB /* PhishinSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSearchResults.h; sourceTree = "<group>"; };
-		7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSearchResults.m; sourceTree = "<group>"; };
 		7C1B438917984D8D00CB1255 /* scrape_jams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scrape_jams.js; sourceTree = "<group>"; };
 		7C518C01175D0C32005EB2E7 /* Phish OD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phish OD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -212,22 +211,8 @@
 		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
 		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		7C7ED37217FFD712004F55DF /* PhishinAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinAPI.h; sourceTree = "<group>"; };
-		7C7ED37317FFD712004F55DF /* PhishinAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinAPI.m; sourceTree = "<group>"; };
-		7C7ED37617FFDD2E004F55DF /* PhishinYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinYear.h; sourceTree = "<group>"; };
-		7C7ED37717FFDD2E004F55DF /* PhishinYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinYear.m; sourceTree = "<group>"; };
-		7C7ED37917FFE048004F55DF /* PhishinShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinShow.h; sourceTree = "<group>"; };
-		7C7ED37A17FFE048004F55DF /* PhishinShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinShow.m; sourceTree = "<group>"; };
-		7C7ED37C17FFE13F004F55DF /* PhishinVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinVenue.h; sourceTree = "<group>"; };
-		7C7ED37D17FFE13F004F55DF /* PhishinVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinVenue.m; sourceTree = "<group>"; };
-		7C7ED37F17FFE5DA004F55DF /* PhishinEra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinEra.h; sourceTree = "<group>"; };
-		7C7ED38017FFE5DA004F55DF /* PhishinEra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinEra.m; sourceTree = "<group>"; };
-		7C7ED3821800C7CD004F55DF /* PhishinTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTrack.h; sourceTree = "<group>"; };
-		7C7ED3831800C7CD004F55DF /* PhishinTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTrack.m; sourceTree = "<group>"; };
 		7C7ED3861800D27A004F55DF /* MenuPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPanel.h; sourceTree = "<group>"; };
 		7C7ED3871800D27A004F55DF /* MenuPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPanel.m; sourceTree = "<group>"; };
-		7C7ED3891800EEB4004F55DF /* PhishinSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSet.h; sourceTree = "<group>"; };
-		7C7ED38A1800EEB4004F55DF /* PhishinSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSet.m; sourceTree = "<group>"; };
 		7C7ED38D1800FEAA004F55DF /* PhishinStreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinStreamingPlaylistItem.h; sourceTree = "<group>"; };
 		7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinStreamingPlaylistItem.m; sourceTree = "<group>"; };
 		7C7ED39018010620004F55DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -245,8 +230,6 @@
 		7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDLocationsMapViewController.xib; sourceTree = "<group>"; };
 		7C7ED3A71801B219004F55DF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7C7ED3A91801B22E004F55DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		7C7ED3AB1801CA3E004F55DF /* PhishinSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSong.h; sourceTree = "<group>"; };
-		7C7ED3AC1801CA3E004F55DF /* PhishinSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSong.m; sourceTree = "<group>"; };
 		7C7ED3AF18020BE4004F55DF /* VenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenuesViewController.h; sourceTree = "<group>"; };
 		7C7ED3B018020BE4004F55DF /* VenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenuesViewController.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsHistoryItem.h; sourceTree = "<group>"; };
@@ -270,12 +253,32 @@
 		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
 		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
 		7CADB3281760583D00B80D54 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		7CB97EBD1805CEE7004A43EE /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishinTour.h; path = ../PhishinTour.h; sourceTree = "<group>"; };
-		7CB97EBE1805CEE7004A43EE /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishinTour.m; path = ../PhishinTour.m; sourceTree = "<group>"; };
 		7CB97EC01805E289004A43EE /* ToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToursViewController.h; path = ../ToursViewController.h; sourceTree = "<group>"; };
 		7CB97EC11805E289004A43EE /* ToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToursViewController.m; path = ../ToursViewController.m; sourceTree = "<group>"; };
 		7CB97EC31805E45B004A43EE /* TourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
 		7CB97EC41805E45B004A43EE /* TourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourViewController.m; sourceTree = "<group>"; };
+		7CC165E9180F5EB700F72F0D /* PhishinEra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinEra.h; sourceTree = "<group>"; };
+		7CC165EA180F5EB700F72F0D /* PhishinEra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinEra.m; sourceTree = "<group>"; };
+		7CC165EB180F5EB700F72F0D /* PhishinSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSearchResults.h; sourceTree = "<group>"; };
+		7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSearchResults.m; sourceTree = "<group>"; };
+		7CC165ED180F5EB700F72F0D /* PhishinSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSet.h; sourceTree = "<group>"; };
+		7CC165EE180F5EB700F72F0D /* PhishinSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSet.m; sourceTree = "<group>"; };
+		7CC165EF180F5EB700F72F0D /* PhishinShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinShow.h; sourceTree = "<group>"; };
+		7CC165F0180F5EB700F72F0D /* PhishinShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinShow.m; sourceTree = "<group>"; };
+		7CC165F1180F5EB700F72F0D /* PhishinSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSong.h; sourceTree = "<group>"; };
+		7CC165F2180F5EB700F72F0D /* PhishinSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSong.m; sourceTree = "<group>"; };
+		7CC165F3180F5EB700F72F0D /* PhishinStreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinStreamingPlaylistItem.h; sourceTree = "<group>"; };
+		7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinStreamingPlaylistItem.m; sourceTree = "<group>"; };
+		7CC165F5180F5EB700F72F0D /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTour.h; sourceTree = "<group>"; };
+		7CC165F6180F5EB700F72F0D /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTour.m; sourceTree = "<group>"; };
+		7CC165F7180F5EB700F72F0D /* PhishinTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTrack.h; sourceTree = "<group>"; };
+		7CC165F8180F5EB700F72F0D /* PhishinTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTrack.m; sourceTree = "<group>"; };
+		7CC165F9180F5EB700F72F0D /* PhishinVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinVenue.h; sourceTree = "<group>"; };
+		7CC165FA180F5EB700F72F0D /* PhishinVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinVenue.m; sourceTree = "<group>"; };
+		7CC165FB180F5EB700F72F0D /* PhishinYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinYear.h; sourceTree = "<group>"; };
+		7CC165FC180F5EB700F72F0D /* PhishinYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinYear.m; sourceTree = "<group>"; };
+		7CC165FD180F5EB700F72F0D /* PhishinAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinAPI.h; sourceTree = "<group>"; };
+		7CC165FE180F5EB700F72F0D /* PhishinAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinAPI.m; sourceTree = "<group>"; };
 		7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStats.h; sourceTree = "<group>"; };
 		7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStats.m; sourceTree = "<group>"; };
 		7CC91A5B179F875A0047DFF3 /* jQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jQuery.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 		7C02E785180F455100C01CCB /* Tours Tab */ = {
 			isa = PBXGroup;
 			children = (
+				7CB97EC31805E45B004A43EE /* TourViewController.h */,
+				7CB97EC41805E45B004A43EE /* TourViewController.m */,
 				7CB97EC01805E289004A43EE /* ToursViewController.h */,
 				7CB97EC11805E289004A43EE /* ToursViewController.m */,
 			);
@@ -472,7 +477,7 @@
 		7C518C23175D115A005EB2E7 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				7C7ED37117FFD6D7004F55DF /* Phish.in */,
+				7CC165E7180F5EB700F72F0D /* Phish.in */,
 				7CC91A57179F75E40047DFF3 /* PhishTracks Stats */,
 				7C518C66175E59C1005EB2E7 /* Phish.Net */,
 				7C518C65175E59AE005EB2E7 /* PhishTracks */,
@@ -602,43 +607,6 @@
 			name = EventInterceptingWindow;
 			sourceTree = "<group>";
 		};
-		7C7ED37117FFD6D7004F55DF /* Phish.in */ = {
-			isa = PBXGroup;
-			children = (
-				7C7ED37517FFDD0E004F55DF /* Models */,
-				7C7ED37217FFD712004F55DF /* PhishinAPI.h */,
-				7C7ED37317FFD712004F55DF /* PhishinAPI.m */,
-			);
-			name = Phish.in;
-			sourceTree = "<group>";
-		};
-		7C7ED37517FFDD0E004F55DF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7CB97EBD1805CEE7004A43EE /* PhishinTour.h */,
-				7CB97EBE1805CEE7004A43EE /* PhishinTour.m */,
-				7C7ED37617FFDD2E004F55DF /* PhishinYear.h */,
-				7C7ED37717FFDD2E004F55DF /* PhishinYear.m */,
-				7C7ED37917FFE048004F55DF /* PhishinShow.h */,
-				7C7ED37A17FFE048004F55DF /* PhishinShow.m */,
-				7C7ED37C17FFE13F004F55DF /* PhishinVenue.h */,
-				7C7ED37D17FFE13F004F55DF /* PhishinVenue.m */,
-				7C7ED37F17FFE5DA004F55DF /* PhishinEra.h */,
-				7C7ED38017FFE5DA004F55DF /* PhishinEra.m */,
-				7C7ED3821800C7CD004F55DF /* PhishinTrack.h */,
-				7C7ED3831800C7CD004F55DF /* PhishinTrack.m */,
-				7C7ED3891800EEB4004F55DF /* PhishinSet.h */,
-				7C7ED38A1800EEB4004F55DF /* PhishinSet.m */,
-				7C7ED3AB1801CA3E004F55DF /* PhishinSong.h */,
-				7C7ED3AC1801CA3E004F55DF /* PhishinSong.m */,
-				7CB97EC31805E45B004A43EE /* TourViewController.h */,
-				7CB97EC41805E45B004A43EE /* TourViewController.m */,
-				7C02E78A180F4C7F00C01CCB /* PhishinSearchResults.h */,
-				7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		7C7ED3851800D259004F55DF /* Panels */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,6 +729,43 @@
 				7C658BDB178D2E6C005FD6D0 /* iTunesArtwork@2x */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		7CC165E7180F5EB700F72F0D /* Phish.in */ = {
+			isa = PBXGroup;
+			children = (
+				7CC165E8180F5EB700F72F0D /* Models */,
+				7CC165FD180F5EB700F72F0D /* PhishinAPI.h */,
+				7CC165FE180F5EB700F72F0D /* PhishinAPI.m */,
+			);
+			path = Phish.in;
+			sourceTree = "<group>";
+		};
+		7CC165E8180F5EB700F72F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CC165E9180F5EB700F72F0D /* PhishinEra.h */,
+				7CC165EA180F5EB700F72F0D /* PhishinEra.m */,
+				7CC165EB180F5EB700F72F0D /* PhishinSearchResults.h */,
+				7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */,
+				7CC165ED180F5EB700F72F0D /* PhishinSet.h */,
+				7CC165EE180F5EB700F72F0D /* PhishinSet.m */,
+				7CC165EF180F5EB700F72F0D /* PhishinShow.h */,
+				7CC165F0180F5EB700F72F0D /* PhishinShow.m */,
+				7CC165F1180F5EB700F72F0D /* PhishinSong.h */,
+				7CC165F2180F5EB700F72F0D /* PhishinSong.m */,
+				7CC165F3180F5EB700F72F0D /* PhishinStreamingPlaylistItem.h */,
+				7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */,
+				7CC165F5180F5EB700F72F0D /* PhishinTour.h */,
+				7CC165F6180F5EB700F72F0D /* PhishinTour.m */,
+				7CC165F7180F5EB700F72F0D /* PhishinTrack.h */,
+				7CC165F8180F5EB700F72F0D /* PhishinTrack.m */,
+				7CC165F9180F5EB700F72F0D /* PhishinVenue.h */,
+				7CC165FA180F5EB700F72F0D /* PhishinVenue.m */,
+				7CC165FB180F5EB700F72F0D /* PhishinYear.h */,
+				7CC165FC180F5EB700F72F0D /* PhishinYear.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7CC91A57179F75E40047DFF3 /* PhishTracks Stats */ = {
@@ -942,44 +947,47 @@
 				7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
 				7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */,
-				7C7ED37B17FFE048004F55DF /* PhishinShow.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */,
+				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
 				7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */,
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
 				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
-				7C7ED37417FFD712004F55DF /* PhishinAPI.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
+				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
 				7C7ED3A31801B0FF004F55DF /* MapPoint.m in Sources */,
 				7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */,
+				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
+				7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */,
 				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
+				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
 				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
 				7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */,
+				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
 				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
 				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
-				7C7ED38B1800EEB4004F55DF /* PhishinSet.m in Sources */,
-				7C02E78C180F4C7F00C01CCB /* PhishinSearchResults.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
 				7C02E784180F452E00C01CCB /* SearchViewController.m in Sources */,
 				7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */,
-				7CB97EBF1805CEE7004A43EE /* PhishinTour.m in Sources */,
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
-				7C7ED38117FFE5DA004F55DF /* PhishinEra.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
 				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
 				7C7ED3B118020BE4004F55DF /* VenuesViewController.m in Sources */,
+				7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */,
 				7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */,
 				7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */,
 				7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */,
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
-				7C7ED37817FFDD2E004F55DF /* PhishinYear.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
+				7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */,
 				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
+				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
-				7C7ED3AD1801CA3E004F55DF /* PhishinSong.m in Sources */,
+				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
+				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */,
@@ -988,8 +996,6 @@
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
-				7C7ED37E17FFE13F004F55DF /* PhishinVenue.m in Sources */,
-				7C7ED3841800C7CD004F55DF /* PhishinTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
