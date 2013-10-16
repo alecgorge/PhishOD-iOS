@@ -81,7 +81,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[UINavigationBar appearance].titleTextAttributes = @{UITextAttributeTextColor: white};
 	
 	[UISegmentedControl appearance].tintColor = phishGreen;
-	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
+//	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {

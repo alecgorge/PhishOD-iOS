@@ -21,11 +21,15 @@
 
 typedef enum {
 	kPhishODMenuItemNowPlaying,
+	kPhishODMenuItemBlank,
 	kPhishODMenuItemYears,
 	kPhishODMenuItemSongs,
 	kPhishODMenuItemVenues,
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
+	kPhishODMenuItemBlank2,
+	kPhishODMenuItemSearch,
+	kPhishODMenuItemBlank3,
 	kPhishODMenuItemStats,
 	kPhishODMenuItemSettings,
 	kPhishODMenuItemsCount
@@ -93,9 +97,13 @@ typedef enum {
 									  reuseIdentifier:@"cell"];
 	}
 	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
 	int row = indexPath.row;
+
+	if(row == kPhishODMenuItemBlank || row == kPhishODMenuItemBlank2 || row == kPhishODMenuItemBlank3)
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	else
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
 	if (row == kPhishODMenuItemYears) {
 		cell.textLabel.text = @"Years";
 	}
@@ -110,6 +118,9 @@ typedef enum {
 	}
 	else if(row == kPhishODMenuItemTopRated) {
 		cell.textLabel.text = @"Top Rated Shows";
+	}
+	else if(row == kPhishODMenuItemSearch) {
+		cell.textLabel.text = @"Search";
 	}
 	else if(row == kPhishODMenuItemStats) {
 		cell.textLabel.text = @"Stats";
@@ -134,13 +145,13 @@ typedef enum {
 			NSString *str = [NSString stringWithFormat:@"%@\n%@ - %@", item.track.show.date, item.track.show.venue.name, item.track.show.venue.location, nil];
 			cell.detailTextLabel.text = str;
 			cell.detailTextLabel.numberOfLines = 3;
-			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_174_pause.png"]
+			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_174_pause"]
 																		  withColor:COLOR_PHISH_WHITE]];
 		}
 		else {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.textLabel.text = @"Nothing playing...";
-			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_173_play.png"]
+			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_173_play"]
 																		  withColor:COLOR_PHISH_WHITE]];
 		}
 	}

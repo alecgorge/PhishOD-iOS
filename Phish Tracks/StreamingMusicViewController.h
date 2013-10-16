@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
-#import <Audjustable/AudioPlayer.h>
-#import <Audjustable/AutoRecoveringHttpDataSource.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import "StreamingPlaylistItem.h"
 
-@interface StreamingMusicViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, AudioPlayerDelegate>
+@interface StreamingMusicViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 + (StreamingMusicViewController*)sharedInstance;
 
@@ -26,9 +24,7 @@
 @property (readonly) StreamingPlaylistItem *currentItem;
 @property (nonatomic) NSInteger currentIndex;
 
-//@property (nonatomic) AVQueuePlayer *queuePlayer;
-
-@property (nonatomic) AudioPlayer *audioPlayer;
+@property (nonatomic) AVQueuePlayer *queuePlayer;
 
 @property (weak, nonatomic) IBOutlet UILabel  *playerTitle;
 @property (weak, nonatomic) IBOutlet UILabel  *playerSubtitle;

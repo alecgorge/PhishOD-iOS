@@ -15,4 +15,4 @@ pod 'JSONModel'
 pod 'ObjectiveSugar'
 pod 'JASidePanels'
 pod 'DTCoreText'
-
+pod 'Audjustable', :head
