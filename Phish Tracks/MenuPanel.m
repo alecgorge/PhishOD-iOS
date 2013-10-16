@@ -18,6 +18,7 @@
 #import "PhishTracksStatsViewController.h"
 #import "SettingsViewController.h"
 #import "VenuesViewController.h"
+#import "SearchViewController.h"
 
 typedef enum {
 	kPhishODMenuItemNowPlaying,
@@ -27,9 +28,7 @@ typedef enum {
 	kPhishODMenuItemVenues,
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
-	kPhishODMenuItemBlank2,
 	kPhishODMenuItemSearch,
-	kPhishODMenuItemBlank3,
 	kPhishODMenuItemStats,
 	kPhishODMenuItemSettings,
 	kPhishODMenuItemsCount
@@ -99,10 +98,13 @@ typedef enum {
 	
 	int row = indexPath.row;
 
-	if(row == kPhishODMenuItemBlank || row == kPhishODMenuItemBlank2 || row == kPhishODMenuItemBlank3)
+	if(row == kPhishODMenuItemBlank) {
 		cell.accessoryType = UITableViewCellAccessoryNone;
-	else
+		cell.textLabel.text = @"";
+	}
+	else {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
 
 	if (row == kPhishODMenuItemYears) {
 		cell.textLabel.text = @"Years";
@@ -181,6 +183,9 @@ typedef enum {
 	}
 	else if(row == kPhishODMenuItemTopRated) {
 		[self pushViewController:[[TopRatedViewController alloc] init]];
+	}
+	else if(row == kPhishODMenuItemSearch) {
+		[self pushViewController:[[SearchViewController alloc] init]];
 	}
 	else if(row == kPhishODMenuItemStats) {
 		[self pushViewController:[[PhishTracksStatsViewController alloc] initWithStyle:UITableViewStyleGrouped]];

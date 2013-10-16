@@ -12,6 +12,7 @@
 #import "PhishinEra.h"
 #import "PhishinSong.h"
 #import "PhishinTour.h"
+#import "PhishinSearchResults.h"
 
 @interface PhishinAPI : AFHTTPClient
 
@@ -48,5 +49,9 @@
 
 -(void)songs:(void ( ^ ) ( NSArray *phishSongs ))success
 	 failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+-(void)search:(NSString*)searchTerm
+	  success:(void ( ^ ) ( PhishinSearchResults * ))success
+	  failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
 @end

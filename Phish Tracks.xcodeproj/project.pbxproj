@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C02E784180F452E00C01CCB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E783180F452E00C01CCB /* SearchViewController.m */; };
+		7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E788180F45C300C01CCB /* SearchDelegate.m */; };
+		7C02E78C180F4C7F00C01CCB /* PhishinSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */; };
 		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
@@ -126,6 +129,12 @@
 
 /* Begin PBXFileReference section */
 		0835065E67C54644AE7E0BA1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		7C02E782180F452E00C01CCB /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ../SearchViewController.h; sourceTree = "<group>"; };
+		7C02E783180F452E00C01CCB /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ../SearchViewController.m; sourceTree = "<group>"; };
+		7C02E787180F45C300C01CCB /* SearchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDelegate.h; sourceTree = "<group>"; };
+		7C02E788180F45C300C01CCB /* SearchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDelegate.m; sourceTree = "<group>"; };
+		7C02E78A180F4C7F00C01CCB /* PhishinSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSearchResults.h; sourceTree = "<group>"; };
+		7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSearchResults.m; sourceTree = "<group>"; };
 		7C1B438917984D8D00CB1255 /* scrape_jams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scrape_jams.js; sourceTree = "<group>"; };
 		7C518C01175D0C32005EB2E7 /* Phish OD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phish OD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -261,10 +270,10 @@
 		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
 		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
 		7CADB3281760583D00B80D54 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		7CB97EBD1805CEE7004A43EE /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTour.h; sourceTree = "<group>"; };
-		7CB97EBE1805CEE7004A43EE /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTour.m; sourceTree = "<group>"; };
-		7CB97EC01805E289004A43EE /* ToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToursViewController.h; sourceTree = "<group>"; };
-		7CB97EC11805E289004A43EE /* ToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToursViewController.m; sourceTree = "<group>"; };
+		7CB97EBD1805CEE7004A43EE /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishinTour.h; path = ../PhishinTour.h; sourceTree = "<group>"; };
+		7CB97EBE1805CEE7004A43EE /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishinTour.m; path = ../PhishinTour.m; sourceTree = "<group>"; };
+		7CB97EC01805E289004A43EE /* ToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToursViewController.h; path = ../ToursViewController.h; sourceTree = "<group>"; };
+		7CB97EC11805E289004A43EE /* ToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToursViewController.m; path = ../ToursViewController.m; sourceTree = "<group>"; };
 		7CB97EC31805E45B004A43EE /* TourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
 		7CB97EC41805E45B004A43EE /* TourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourViewController.m; sourceTree = "<group>"; };
 		7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStats.h; sourceTree = "<group>"; };
@@ -324,6 +333,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C02E785180F455100C01CCB /* Tours Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7CB97EC01805E289004A43EE /* ToursViewController.h */,
+				7CB97EC11805E289004A43EE /* ToursViewController.m */,
+			);
+			name = "Tours Tab";
+			sourceTree = "<group>";
+		};
+		7C02E786180F456000C01CCB /* Search Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7C02E782180F452E00C01CCB /* SearchViewController.h */,
+				7C02E783180F452E00C01CCB /* SearchViewController.m */,
+				7C02E787180F45C300C01CCB /* SearchDelegate.h */,
+				7C02E788180F45C300C01CCB /* SearchDelegate.m */,
+			);
+			name = "Search Tab";
+			sourceTree = "<group>";
+		};
 		7C1B438817984D6A00CB1255 /* Jam Charts */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,10 +364,6 @@
 		7C518BF8175D0C32005EB2E7 = {
 			isa = PBXGroup;
 			children = (
-				7CB97EC01805E289004A43EE /* ToursViewController.h */,
-				7CB97EC11805E289004A43EE /* ToursViewController.m */,
-				7CB97EBD1805CEE7004A43EE /* PhishinTour.h */,
-				7CB97EBE1805CEE7004A43EE /* PhishinTour.m */,
 				7C518C0A175D0C32005EB2E7 /* Phish Tracks */,
 				7C518C03175D0C32005EB2E7 /* Frameworks */,
 				7C518C02175D0C32005EB2E7 /* Products */,
@@ -380,16 +405,10 @@
 		7C518C0A175D0C32005EB2E7 /* Phish Tracks */ = {
 			isa = PBXGroup;
 			children = (
+				7C6AE5001788725800AAED06 /* MediaPlayer */,
 				7C7ED38C1800FDD4004F55DF /* New MediaPlayer */,
 				7C7ED3851800D259004F55DF /* Panels */,
-				7C6AE5001788725800AAED06 /* MediaPlayer */,
 				7C518C23175D115A005EB2E7 /* API */,
-				7C7ED3AE18020BB5004F55DF /* Venues */,
-				7CACD4F517A45AE100E84B28 /* Stats Tab */,
-				7CADB30F1760251500B80D54 /* Top Rated Tab */,
-				7C518C53175DCEC7005EB2E7 /* Settings Tab */,
-				7C518C22175D0C62005EB2E7 /* Song Tab */,
-				7C518C21175D0C4E005EB2E7 /* Year Tab */,
 				7C518C13175D0C32005EB2E7 /* AppDelegate.h */,
 				7C518C14175D0C32005EB2E7 /* AppDelegate.m */,
 				7C518C0B175D0C32005EB2E7 /* Supporting Files */,
@@ -596,6 +615,8 @@
 		7C7ED37517FFDD0E004F55DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7CB97EBD1805CEE7004A43EE /* PhishinTour.h */,
+				7CB97EBE1805CEE7004A43EE /* PhishinTour.m */,
 				7C7ED37617FFDD2E004F55DF /* PhishinYear.h */,
 				7C7ED37717FFDD2E004F55DF /* PhishinYear.m */,
 				7C7ED37917FFE048004F55DF /* PhishinShow.h */,
@@ -612,6 +633,8 @@
 				7C7ED3AC1801CA3E004F55DF /* PhishinSong.m */,
 				7CB97EC31805E45B004A43EE /* TourViewController.h */,
 				7CB97EC41805E45B004A43EE /* TourViewController.m */,
+				7C02E78A180F4C7F00C01CCB /* PhishinSearchResults.h */,
+				7C02E78B180F4C7F00C01CCB /* PhishinSearchResults.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -619,6 +642,14 @@
 		7C7ED3851800D259004F55DF /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				7C02E785180F455100C01CCB /* Tours Tab */,
+				7C02E786180F456000C01CCB /* Search Tab */,
+				7C7ED3AE18020BB5004F55DF /* Venues */,
+				7CACD4F517A45AE100E84B28 /* Stats Tab */,
+				7CADB30F1760251500B80D54 /* Top Rated Tab */,
+				7C518C53175DCEC7005EB2E7 /* Settings Tab */,
+				7C518C22175D0C62005EB2E7 /* Song Tab */,
+				7C518C21175D0C4E005EB2E7 /* Year Tab */,
 				7C7ED3861800D27A004F55DF /* MenuPanel.h */,
 				7C7ED3871800D27A004F55DF /* MenuPanel.m */,
 			);
@@ -927,7 +958,9 @@
 				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
 				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
 				7C7ED38B1800EEB4004F55DF /* PhishinSet.m in Sources */,
+				7C02E78C180F4C7F00C01CCB /* PhishinSearchResults.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
+				7C02E784180F452E00C01CCB /* SearchViewController.m in Sources */,
 				7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */,
 				7CB97EBF1805CEE7004A43EE /* PhishinTour.m in Sources */,
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
@@ -949,6 +982,7 @@
 				7C7ED3AD1801CA3E004F55DF /* PhishinSong.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
+				7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */,
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
@@ -1070,7 +1104,7 @@
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "53A50C2D-FC97-4E26-92CC-1C67B792E945";
+				PROVISIONING_PROFILE = "0BD60313-4A11-4525-A648-098D1BBE4729";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

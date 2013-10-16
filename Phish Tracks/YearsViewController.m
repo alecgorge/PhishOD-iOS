@@ -8,8 +8,13 @@
 
 #import "YearsViewController.h"
 #import "YearViewController.h"
+#import "SearchDelegate.h"
 
 @interface YearsViewController ()
+
+@property (nonatomic) UISearchDisplayController *con;
+@property (nonatomic) SearchDelegate *conDel;
+@property (nonatomic) UISearchBar *searchBar;
 
 @end
 
@@ -23,10 +28,31 @@
     return self;
 }
 
+- (void)createSearchBar {
+	self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+	
+	self.con = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar
+												 contentsController:self];
+	
+	self.conDel = [[SearchDelegate alloc] initWithTableView:self.searchDisplayController.searchResultsTableView
+									andNavigationController:self.navigationController];
+	
+	self.searchDisplayController.searchResultsDelegate = self.conDel;
+	self.searchDisplayController.searchResultsDataSource = self.conDel;
+	self.searchDisplayController.delegate = self.conDel;
+	
+	self.tableView.tableHeaderView = self.searchBar;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
 	self.title = @"Years";
+	[self createSearchBar];
+}
+
+- (void)dealloc {
+	self.con = nil;
 }
 
 - (void)refresh:(id)sender {

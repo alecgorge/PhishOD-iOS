@@ -34,4 +34,6 @@
 @property (nonatomic) NSArray *sets;
 @property (nonatomic) NSArray *tracks;
 
+@property (nonatomic, readonly) NSString *fullLocation;
+
 @end

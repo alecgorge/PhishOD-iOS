@@ -61,4 +61,8 @@
     return self;
 }
 
+- (NSString *)fullLocation {
+	return [self.location stringByAppendingFormat:@" - %@", self.venue_name];
+}
+
 @end

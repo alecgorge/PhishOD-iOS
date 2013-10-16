@@ -192,4 +192,17 @@
 		  failure:failure];
 }
 
+- (void)search:(NSString *)searchTerm
+	   success:(void (^)(PhishinSearchResults *))success
+	   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self getPath:[@"search/" stringByAppendingString: [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+	   parameters:nil
+		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			  responseObject = [self parseJSON:responseObject];
+			  
+			  success([[PhishinSearchResults alloc] initWithDictionary:responseObject[@"data"]]);
+		  }
+		  failure:failure];
+}
+
 @end
