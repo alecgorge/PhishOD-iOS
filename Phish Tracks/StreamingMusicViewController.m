@@ -112,8 +112,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.playerAirPlayButton.showsVolumeSlider = NO;
 	self.playerAirPlayButton.showsRouteButton = YES;
 	
-	self.queuePlayer = [AVQueuePlayer queuePlayerWithItems:@[]];
-	self.queuePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+	self.audioPlayer = [[AudioPlayer alloc] init];
+	self.audioPlayer.delegate = self;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(remoteControlReceivedWithEvent:)
@@ -208,6 +208,96 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return result;
 }
 
+-(void) audioPlayer:(AudioPlayer*)audioPlayer stateChanged:(AudioPlayerState)state {
+	[self fixPlayPauseButtonImage];
+
+	if(state == AudioPlayerStateReady) {
+		NSLog(@"state: AudioPlayerStateReady");
+	}
+	else if(state == AudioPlayerStateRunning) {
+		NSLog(@"state: AudioPlayerStateRunning");
+	}
+	else if(state == AudioPlayerStatePlaying) {
+		NSLog(@"state: AudioPlayerStatePlaying");
+	}
+	else if(state == AudioPlayerStatePaused) {
+		NSLog(@"state: AudioPlayerStatePaused");
+	}
+	else if(state == AudioPlayerStateStopped) {
+		NSLog(@"state: AudioPlayerStateStopped");
+	}
+	else if(state == AudioPlayerStateError) {
+		NSLog(@"state: AudioPlayerStateError");
+	}
+	else if(state == AudioPlayerStateDisposed) {
+		NSLog(@"state: AudioPlayerStateDisposed");
+	}
+	else {
+		NSLog(@"state: %d", state);
+	}
+}
+
+-(void) audioPlayer:(AudioPlayer*)audioPlayer didEncounterError:(AudioPlayerErrorCode)errorCode {
+	if(errorCode == AudioPlayerErrorNone) {
+		NSLog(@"error: AudioPlayerErrorNone");
+	}
+	else if(errorCode == AudioPlayerErrorDataSource) {
+		NSLog(@"error: AudioPlayerErrorDataSource");
+	}
+	else if(errorCode == AudioPlayerErrorStreamParseBytesFailed) {
+		NSLog(@"error: AudioPlayerErrorStreamParseBytesFailed");
+	}
+	else if(errorCode == AudioPlayerErrorDataNotFound) {
+		NSLog(@"error: AudioPlayerErrorDataNotFound");
+	}
+	else if(errorCode == AudioPlayerErrorQueueStartFailed) {
+		NSLog(@"error: AudioPlayerErrorQueueStartFailed");
+	}
+	else if(errorCode == AudioPlayerErrorQueuePauseFailed) {
+		NSLog(@"error: AudioPlayerErrorQueuePauseFailed");
+	}
+	else if(errorCode == AudioPlayerErrorUnknownBuffer) {
+		NSLog(@"error: AudioPlayerErrorUnknownBuffer");
+	}
+	else if(errorCode == AudioPlayerErrorQueueStopFailed) {
+		NSLog(@"error: AudioPlayerErrorQueueStopFailed");
+	}
+	else if(errorCode == AudioPlayerErrorOther) {
+		NSLog(@"error: AudioPlayerErrorOther");
+	}
+	else {
+		NSLog(@"error: %d", errorCode);
+	}
+}
+
+-(void) audioPlayer:(AudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId {
+	NSLog(@"started playing: %@", queueItemId);
+}
+
+-(void) audioPlayer:(AudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId {
+	NSLog(@"finished buffering: %@", queueItemId);
+}
+
+-(void) audioPlayer:(AudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(AudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
+	NSLog(@"finished %@. progress: %lf duration: %lf", queueItemId, progress, duration);
+	
+	if(stopReason == AudioPlayerStopReasonEof) {
+		NSLog(@"reason: AudioPlayerStopReasonEof");
+	}
+	else if(stopReason == AudioPlayerStopReasonNoStop) {
+		NSLog(@"reason: AudioPlayerStopReasonNoStop");
+	}
+	else if(stopReason == AudioPlayerStopReasonUserAction) {
+		NSLog(@"reason: AudioPlayerStopReasonUserAction");
+	}
+	else if(stopReason == AudioPlayerStopReasonUserActionFlushStop) {
+		NSLog(@"reason: AudioPlayerStopReasonUserActionFlushStop");
+	}
+	else {
+		NSLog(@"reason: %d", stopReason);
+	}
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
 						change:(NSDictionary *)change
@@ -216,48 +306,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	&& [[change valueForKey:NSKeyValueChangeNewKey] intValue] == 1) {
 		[self fixAirPlayButtonColor];
     }
-	else if([self.notifiers containsObject:object]
-	|| [object isKindOfClass:[AVPlayerItem class]]) {
-		AVPlayerItem *playerItem = object;
-		
-        if(playerItem.status == AVPlayerStatusReadyToPlay){
-            NSLog(@"AVPlayerStatusReadyToPlay");
-			[self.queuePlayer play];
-        }else if(playerItem.status == AVPlayerStatusFailed){
-            NSLog(@"AVPlayerStatusFailed");
-        }else if(playerItem.status == AVPlayerStatusUnknown){
-            NSLog(@"AVPlayerStatusUnknown");
-        }else if(playerItem.status == AVPlayerItemStatusReadyToPlay){
-            NSLog(@"AVPlayerItemStatusReadyToPlay");
-			[self.queuePlayer play];
-        }else if(playerItem.status == AVPlayerItemStatusFailed){
-            NSLog(@"AVPlayerItemStatusFailed");
-        }else if(playerItem.status == AVPlayerItemStatusUnknown){
-            NSLog(@"AVPlayerItemStatusUnknown");
-        }else if(playerItem.status == AVPlayerActionAtItemEndAdvance){
-            NSLog(@"AVPlayerActionAtItemEndAdvance");
-        }else if(playerItem.status == AVPlayerActionAtItemEndNone){
-            NSLog(@"AVPlayerActionAtItemEndNone");
-        }else if(playerItem.status == AVPlayerActionAtItemEndPause){
-            NSLog(@"AVPlayerActionAtItemEndPause");
-        }
-		
-        if(context == AVPlayerItemDidPlayToEndTimeNotification){
-            NSLog(@"AVPlayerItemDidPlayToEndTimeNotification");
-        }else if(context == AVPlayerItemFailedToPlayToEndTimeErrorKey){
-            NSLog(@"AVPlayerItemFailedToPlayToEndTimeErrorKey");
-        }else if(context == AVPlayerItemFailedToPlayToEndTimeNotification){
-            NSLog(@"AVPlayerItemFailedToPlayToEndTimeNotification");
-        }else if(context == AVPlayerItemNewAccessLogEntryNotification){
-            NSLog(@"AVPlayerItemNewAccessLogEntryNotification");
-        }else if(context == AVPlayerItemNewErrorLogEntryNotification){
-            NSLog(@"AVPlayerItemNewErrorLogEntryNotification");
-        }else if(context == AVPlayerItemPlaybackStalledNotification){
-            NSLog(@"AVPlayerItemPlaybackStalledNotification");
-        }else if(context == AVPlayerItemTimeJumpedNotification){
-            NSLog(@"AVPlayerItemTimeJumpedNotification");
-        }
-	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -309,9 +357,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)fixPlayPauseButtonImage {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		float rate = self.queuePlayer.rate;
-		
-		if(rate == 0) {
+		if(self.audioPlayer.state != AudioPlayerStatePlaying) {
 			self.playerPauseButton.hidden = YES;
 		}
 		else {
@@ -351,7 +397,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)playerProgressScrubbed:(id)sender {
-	[self.queuePlayer seekToTime:CMTimeMakeWithSeconds(((UISlider*)sender).value * self.currentItem.duration, 1)];
+	[self.audioPlayer seekToTime:((UISlider*)sender).value * self.currentItem.duration];
 }
 
 - (void)songDidFinish:(id)sender {
@@ -363,6 +409,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)setCurrentIndex:(NSInteger)currentIndex {
 	self.previousIndex = _currentIndex;
 	
+	[self.playerTableView reloadData];
 	[self.playerTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:currentIndex
 																	 inSection:0]
 								atScrollPosition:UITableViewScrollPositionMiddle
@@ -404,32 +451,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if(integer - 1 == self.previousIndex) {
 		NSLog(@"Advancing to next item");
-		[self.queuePlayer advanceToNextItem];
+		[self.audioPlayer seekToTime:10000000000000.0];
 		
 		if(integer + 1 < self.playlist.count) {
-			[self enqueueIndexAsync:integer + 1
-							success:^(AVPlayerItem *item) {
-								NSLog(@"Enqueued second track");
-								[self subscribeToCompletionNotificationForPlayerItem:self.queuePlayer.currentItem
-																		   withIndex:integer];
-							}];
+			DataSource *ds = [self.audioPlayer dataSourceFromURL:[self.playlist[integer + 1] file]];
+			ds = [[AutoRecoveringHttpDataSource alloc] initWithDataSource:ds];
+			[self.audioPlayer queueDataSource:ds
+							  withQueueItemId:[self.playlist[integer + 1] title]];
 		}
 	}
 	else {
-		[self.queuePlayer removeAllItems];
-		[self enqueueIndexAsync:integer
-						success:^(AVPlayerItem *item) {
-							NSLog(@"Enqueued first track");
-							[self subscribeToCompletionNotificationForPlayerItem:item
-																	   withIndex:integer];
-							
-							if(integer + 1 < self.playlist.count) {
-								[self enqueueIndexAsync:integer + 1
-												success:^(AVPlayerItem *item) {
-													NSLog(@"Enqueued second track");
-												}];
-							}
-						}];
+		[self.audioPlayer stop];
+		DataSource *ds1 = [self.audioPlayer dataSourceFromURL:[self.playlist[integer] file]];
+		ds1 = [[AutoRecoveringHttpDataSource alloc] initWithDataSource:ds1];
+		[self.audioPlayer queueDataSource:ds1
+						  withQueueItemId:[self.playlist[integer] title]];
+		
+		DataSource *ds = [self.audioPlayer dataSourceFromURL:[self.playlist[integer + 1] file]];
+		ds = [[AutoRecoveringHttpDataSource alloc] initWithDataSource:ds];
+		[self.audioPlayer queueDataSource:ds
+						  withQueueItemId:[self.playlist[integer + 1] title]];
+		
+		[self.audioPlayer resume];
 	}
 	
 	self.playerTitle.text = item.title;
@@ -439,75 +482,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.playerTimeRemaining.text =  [@"-" stringByAppendingString: [self formatTime: item.duration]];
 
 	[self startTimer];
-}
-
-- (void)subscribeToCompletionNotificationForPlayerItem:(AVPlayerItem*)item
-											 withIndex:(NSInteger)integer {
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(itemDidFinishPlaying:)
-												 name:AVPlayerItemDidPlayToEndTimeNotification
-											   object:item];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(itemPlaybackStalled:)
-												 name:AVPlayerItemPlaybackStalledNotification
-											   object:item];
-	
-	[item addObserver:self
-		   forKeyPath:@"status"
-			  options:0
-			  context:&ItemStatusContext];
-	
-	objc_setAssociatedObject(item, &IndexKey,
-							 [NSNumber numberWithInteger:integer], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-	
-	[self.notifiers addObject:item];
-}
-
-- (void)unscribeToCompletionNotifications {
-	for (id obj in self.notifiers) {
-		[[NSNotificationCenter defaultCenter] removeObserver:self
-														name:AVPlayerItemDidPlayToEndTimeNotification
-													  object:obj];
-	}
-	
-	[self.notifiers removeAllObjects];
-}
-
-- (void)itemPlaybackStalled:(NSNotification*)not {
-	self.title = @"Buffering...";
-	[self.queuePlayer play];
-}
-
-- (void)itemDidFinishPlaying:(NSNotification*)not {
-	AVPlayerItem *playerItem = not.object;
-	
-	NSInteger index = [objc_getAssociatedObject(playerItem, &IndexKey) integerValue];
-	StreamingPlaylistItem *item = self.playlist[index];
-	
-	[self next];
-	
-	NSLog(@"%@", item.title);
-	
-	[self unscribeToCompletionNotifications];
-}
-
-- (void)enqueueIndexAsync:(NSInteger)index
-				  success:(void(^)(AVPlayerItem *item))success {
-	AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[self.playlist[index] file]
-												options:nil];
-	
-	[asset loadValuesAsynchronouslyForKeys:@[@"playable"]
-						 completionHandler:^() {
-							 dispatch_async(dispatch_get_main_queue(), ^ {
-								 AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
-								 
-								 [self.queuePlayer insertItem:playerItem
-													afterItem:nil];
-								 
-								 if(success) success(playerItem);
-							 });
-						 }];
 }
 
 - (NSString *)formatTime:(NSTimeInterval)dur {
@@ -520,24 +494,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)play {
 	self.isPlaying = YES;
-	[self.queuePlayer play];
+	[self.audioPlayer resume];
 	
 	[self fixPlayPauseButtonImage];
 }
 
 - (void)pause {
 	self.isPlaying = NO;
-	[self.queuePlayer pause];
+	[self.audioPlayer pause];
 	
 	[self fixPlayPauseButtonImage];
 }
 
 - (void)playPauseToggle {
 	if(self.isPlaying) {
-		[self.queuePlayer pause];
+		[self.audioPlayer pause];
 	}
 	else {
-		[self.queuePlayer play];
+		[self.audioPlayer resume];
 	}
 	
 	self.isPlaying = !self.isPlaying;
@@ -584,24 +558,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		MPMediaItemPropertyPlaybackDuration			: [NSNumber numberWithDouble: self.currentItem.duration],
 		MPNowPlayingInfoPropertyPlaybackQueueCount	: [NSNumber numberWithUnsignedInteger: self.playlist.count],
 		MPNowPlayingInfoPropertyPlaybackQueueIndex	: [NSNumber numberWithUnsignedInteger: self.currentIndex],
-		MPNowPlayingInfoPropertyPlaybackRate		: [NSNumber numberWithFloat:self.queuePlayer.rate],
-		MPNowPlayingInfoPropertyElapsedPlaybackTime	: [NSNumber numberWithInt: CMTimeGetSeconds(self.queuePlayer.currentItem.currentTime)]
+		MPNowPlayingInfoPropertyPlaybackRate		: [NSNumber numberWithBool:self.isPlaying],
+		MPNowPlayingInfoPropertyElapsedPlaybackTime	: [NSNumber numberWithInt: self.audioPlayer.progress]
 	}];
 	
 	NSTimeInterval playbackTime = 0;
-	if(CMTimeGetSeconds(self.queuePlayer.currentItem.currentTime) == 0
-	|| self.queuePlayer.currentItem.status != AVPlayerItemStatusReadyToPlay) {
+	if(self.audioPlayer.progress == 0
+	|| (   self.audioPlayer.state != AudioPlayerStateStopped
+	    && self.audioPlayer.state != AudioPlayerStatePlaying
+		&& self.audioPlayer.state != AudioPlayerStatePaused)) {
 		self.title = @"Buffering...";
 	}
 	else {
-		playbackTime = CMTimeGetSeconds(self.queuePlayer.currentTime);
+		playbackTime = self.audioPlayer.progress;
 		self.title = @"";
 	}
 	
 	self.playerTitle.text = self.currentItem.title;
 	self.playerSubtitle.text = self.currentItem.subtitle;
 	self.playerTimeElapsed.text = [self formatTime: playbackTime];
-	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [self formatTime: self.currentItem.duration - playbackTime]];
+	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [self formatTime: self.audioPlayer.duration - playbackTime]];
 	
 	float complete = playbackTime / self.currentItem.duration;
 	
@@ -629,7 +605,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)share:(id)sender {
 	if(NSClassFromString(@"UIActivityViewController")) {
-		self.shareTime = CMTimeGetSeconds(self.queuePlayer.currentTime);
+		self.shareTime = self.audioPlayer.progress;
 		
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [self formatTime:self.shareTime]]
 																 delegate:self
@@ -683,8 +659,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)changePlaylist:(NSArray *)array
 	 andStartFromIndex:(NSInteger)index {
 	[self stopTimer];
-	[self.queuePlayer pause];
-	[self.queuePlayer removeAllItems];
+	[self.audioPlayer stop];
 	
 	self.playlist = array;
 	
