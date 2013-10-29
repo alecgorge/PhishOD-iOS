@@ -8,6 +8,8 @@
 
 #import "StreamingPlaylistItem.h"
 
+#import "PhishinTrack.h"
+
 @interface PhishinStreamingPlaylistItem : StreamingPlaylistItem
 
 - (instancetype)initWithTrack:(PhishinTrack*) track;

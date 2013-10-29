@@ -11,6 +11,5 @@
 
 @interface RefreshableTableViewController : UITableViewController<Refreshable>
 
-- (void)refresh:(id)sender;
-
+w
 @end

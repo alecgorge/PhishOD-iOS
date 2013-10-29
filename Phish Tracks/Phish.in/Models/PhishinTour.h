@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PhishinShow.h"
+
 @interface PhishinTour : NSObject
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict;

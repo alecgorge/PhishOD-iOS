@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PhishinShow.h"
+#import "PhishinSong.h"
+#import "PhishinVenue.h"
+#import "PhishinTour.h"
+
 @interface PhishinSearchResults : NSObject
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict;

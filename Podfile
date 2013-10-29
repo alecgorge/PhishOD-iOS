@@ -1,7 +1,6 @@
 platform :ios, '5.0'
 
 pod 'AFNetworking', 	'~> 1.3.2'
-pod 'SVPullToRefresh'
 pod 'SVWebViewController'
 pod 'Appirater'
 pod 'FlurrySDK'
@@ -11,8 +10,5 @@ pod 'SVProgressHUD'
 pod 'TestFlightSDK'
 pod 'FXKeychain'
 pod 'CKRefreshControl'
-pod 'JSONModel'
 pod 'ObjectiveSugar'
 pod 'JASidePanels'
-pod 'DTCoreText'
-pod 'Audjustable', :head
