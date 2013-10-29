@@ -16,6 +16,7 @@
 #import "TopRatedViewController.h"
 #import "PhishTracksStatsViewController.h"
 #import "SettingsViewController.h"
+#import "HomeViewController.h"
 
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
@@ -52,7 +53,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	[self setupNowPlaying];
 	
-	YearsViewController *years = [[YearsViewController alloc] init];
+	HomeViewController *years = [[HomeViewController alloc] init];
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
 	self.yearsNav.navigationBar.translucent = NO;
 	

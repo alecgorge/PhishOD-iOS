@@ -39,6 +39,8 @@
 		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
 		7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
+		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
+		7C60302E18206B320088F651 /* RandomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C60302D18206B320088F651 /* RandomShowViewController.m */; };
 		7C658BDC178D2E6C005FD6D0 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD2178D2E6C005FD6D0 /* Icon-72.png */; };
 		7C658BDD178D2E6C005FD6D0 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD3178D2E6C005FD6D0 /* Icon-72@2x.png */; };
 		7C658BDE178D2E6C005FD6D0 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C658BD4178D2E6C005FD6D0 /* Icon-Small-50.png */; };
@@ -60,7 +62,6 @@
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
 		7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3871800D27A004F55DF /* MenuPanel.m */; };
-		7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */; };
 		7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED39018010620004F55DF /* CoreMedia.framework */; };
 		7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3931801ABD0004F55DF /* VenueViewController.m */; };
 		7C7ED3A11801B0FF004F55DF /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3961801B0FF004F55DF /* close-button.png */; };
@@ -186,6 +187,10 @@
 		7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcertInfoViewController.m; sourceTree = "<group>"; };
 		7C518C74175FD224005EB2E7 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
 		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		7C603028182068DA0088F651 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Phish.in/Models/HomeViewController.h; sourceTree = "<group>"; };
+		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Phish.in/Models/HomeViewController.m; sourceTree = "<group>"; };
+		7C60302C18206B320088F651 /* RandomShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomShowViewController.h; sourceTree = "<group>"; };
+		7C60302D18206B320088F651 /* RandomShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomShowViewController.m; sourceTree = "<group>"; };
 		7C658BD2178D2E6C005FD6D0 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		7C658BD3178D2E6C005FD6D0 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		7C658BD4178D2E6C005FD6D0 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -213,8 +218,6 @@
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		7C7ED3861800D27A004F55DF /* MenuPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPanel.h; sourceTree = "<group>"; };
 		7C7ED3871800D27A004F55DF /* MenuPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPanel.m; sourceTree = "<group>"; };
-		7C7ED38D1800FEAA004F55DF /* PhishinStreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinStreamingPlaylistItem.h; sourceTree = "<group>"; };
-		7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinStreamingPlaylistItem.m; sourceTree = "<group>"; };
 		7C7ED39018010620004F55DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		7C7ED3921801ABD0004F55DF /* VenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueViewController.h; sourceTree = "<group>"; };
 		7C7ED3931801ABD0004F55DF /* VenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueViewController.m; sourceTree = "<group>"; };
@@ -560,6 +563,15 @@
 			name = Show;
 			sourceTree = "<group>";
 		};
+		7C60302B18206B1F0088F651 /* Random Show Tab */ = {
+			isa = PBXGroup;
+			children = (
+				7C60302C18206B320088F651 /* RandomShowViewController.h */,
+				7C60302D18206B320088F651 /* RandomShowViewController.m */,
+			);
+			name = "Random Show Tab";
+			sourceTree = "<group>";
+		};
 		7C6AE4FB1787BA1700AAED06 /* RefreshableTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +622,7 @@
 		7C7ED3851800D259004F55DF /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				7C60302B18206B1F0088F651 /* Random Show Tab */,
 				7C02E785180F455100C01CCB /* Tours Tab */,
 				7C02E786180F456000C01CCB /* Search Tab */,
 				7C7ED3AE18020BB5004F55DF /* Venues */,
@@ -620,6 +633,8 @@
 				7C518C21175D0C4E005EB2E7 /* Year Tab */,
 				7C7ED3861800D27A004F55DF /* MenuPanel.h */,
 				7C7ED3871800D27A004F55DF /* MenuPanel.m */,
+				7C603028182068DA0088F651 /* HomeViewController.h */,
+				7C603029182068DA0088F651 /* HomeViewController.m */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -627,8 +642,6 @@
 		7C7ED38C1800FDD4004F55DF /* New MediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				7C7ED38D1800FEAA004F55DF /* PhishinStreamingPlaylistItem.h */,
-				7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */,
 			);
 			name = "New MediaPlayer";
 			sourceTree = "<group>";
@@ -947,6 +960,7 @@
 				7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
 				7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */,
+				7C60302E18206B320088F651 /* RandomShowViewController.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */,
 				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
@@ -962,10 +976,10 @@
 				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
 				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
 				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
-				7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */,
 				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
 				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
 				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
+				7C60302A182068DA0088F651 /* HomeViewController.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
 				7C02E784180F452E00C01CCB /* SearchViewController.m in Sources */,
 				7CACD4FF17A4658700E84B28 /* GlobalStatsViewController.m in Sources */,

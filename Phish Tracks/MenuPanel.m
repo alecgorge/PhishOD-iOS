@@ -19,16 +19,11 @@
 #import "SettingsViewController.h"
 #import "VenuesViewController.h"
 #import "SearchViewController.h"
+#import "HomeViewController.h"
 
 typedef enum {
 	kPhishODMenuItemNowPlaying,
-	kPhishODMenuItemBlank,
-	kPhishODMenuItemYears,
-	kPhishODMenuItemSongs,
-	kPhishODMenuItemVenues,
-	kPhishODMenuItemTours,
-	kPhishODMenuItemTopRated,
-	kPhishODMenuItemSearch,
+	kPhishODMenuItemHome,
 	kPhishODMenuItemStats,
 	kPhishODMenuItemSettings,
 	kPhishODMenuItemsCount
@@ -98,31 +93,8 @@ typedef enum {
 	
 	int row = indexPath.row;
 
-	if(row == kPhishODMenuItemBlank) {
-		cell.accessoryType = UITableViewCellAccessoryNone;
-		cell.textLabel.text = @"";
-	}
-	else {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-
-	if (row == kPhishODMenuItemYears) {
-		cell.textLabel.text = @"Years";
-	}
-	else if(row == kPhishODMenuItemSongs) {
-		cell.textLabel.text = @"Songs";
-	}
-	else if(row == kPhishODMenuItemVenues) {
-		cell.textLabel.text = @"Venues";
-	}
-	else if(row == kPhishODMenuItemTours) {
-		cell.textLabel.text = @"Tours";
-	}
-	else if(row == kPhishODMenuItemTopRated) {
-		cell.textLabel.text = @"Top Rated Shows";
-	}
-	else if(row == kPhishODMenuItemSearch) {
-		cell.textLabel.text = @"Search";
+	if (row == kPhishODMenuItemHome) {
+		cell.textLabel.text = @"Home";
 	}
 	else if(row == kPhishODMenuItemStats) {
 		cell.textLabel.text = @"Stats";
@@ -147,13 +119,13 @@ typedef enum {
 			NSString *str = [NSString stringWithFormat:@"%@\n%@ - %@", item.track.show.date, item.track.show.venue.name, item.track.show.venue.location, nil];
 			cell.detailTextLabel.text = str;
 			cell.detailTextLabel.numberOfLines = 3;
-			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_174_pause"]
+			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_174_pause.png"]
 																		  withColor:COLOR_PHISH_WHITE]];
 		}
 		else {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.textLabel.text = @"Nothing playing...";
-			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_173_play"]
+			cell.accessoryView = [[UIImageView alloc] initWithImage:[self maskImage:[UIImage imageNamed:@"glyphicons_173_play.png"]
 																		  withColor:COLOR_PHISH_WHITE]];
 		}
 	}
@@ -169,23 +141,8 @@ typedef enum {
 	if(row == kPhishODMenuItemNowPlaying && self.item) {
 		[[AppDelegate sharedDelegate] showNowPlaying];
 	}
-	else if(row == kPhishODMenuItemYears) {
-		[self pushViewController:[[YearsViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemSongs) {
-		[self pushViewController:[[SongsViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemVenues) {
-		[self pushViewController:[[VenuesViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemTours) {
-		[self pushViewController:[[ToursViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemTopRated) {
-		[self pushViewController:[[TopRatedViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemSearch) {
-		[self pushViewController:[[SearchViewController alloc] init]];
+	else if(row == kPhishODMenuItemHome) {
+		[self pushViewController:[[HomeViewController alloc] init]];
 	}
 	else if(row == kPhishODMenuItemStats) {
 		[self pushViewController:[[PhishTracksStatsViewController alloc] initWithStyle:UITableViewStyleGrouped]];
