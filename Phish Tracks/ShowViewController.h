@@ -10,13 +10,14 @@
 #import "ConcertInfoViewController.h"
 #import "ReviewsViewController.h"
 #import "RefreshableTableViewController.h"
+#import "PhishinStreamingPlaylistItem.h"
 
 @interface ShowViewController : RefreshableTableViewController
 
 @property UISegmentedControl *control;
-@property PhishShow *show;
+@property PhishinShow *show;
 @property PhishNetSetlist *setlist;
 
-- (id)initWithShow:(PhishShow*) s;
+- (id)initWithShow:(PhishinShow*) s;
 
 @end

@@ -11,6 +11,6 @@
 
 @interface YearsViewController : RefreshableTableViewController
 
-@property NSArray *years;
+@property NSArray *eras;
 
 @end

@@ -67,8 +67,8 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	PhishNetTopShow *topShow = self.topShows[indexPath.row];
-	PhishShow *show = [[PhishShow alloc] init];
-	show.showDate = topShow.showDate;
+	PhishinShow *show = [[PhishinShow alloc] init];
+	show.date = topShow.showDate;
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]

@@ -93,7 +93,7 @@
 
 }
 
-- (void)jamsForSong:(PhishSong *)date
+- (void)jamsForSong:(PhishinSong *)date
 			success:(void (^)(NSArray *))success {
 	[self getPath:[NSString stringWithFormat:@"http://phish.net/song/%@/jamming-chart", date.netSlug , nil]
 	   parameters:nil

@@ -8,12 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <JASidePanels/JASidePanelController.h>
 
-#import "EventInterceptWindow.h"
+#import "MenuPanel.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, EventInterceptWindowDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
-@property (strong, nonatomic) EventInterceptWindow *window;
++ (instancetype)sharedDelegate;
+
+@property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic) JASidePanelController *panels;
+@property (nonatomic) MenuPanel *menuPanel;
+@property (nonatomic) UINavigationController *nowPlayingNav;
+
 @property UINavigationController *yearsNav;
 @property UITabBarController *tabBar;
 
@@ -22,5 +30,7 @@
 
 - (void)toggleNowPlaying;
 - (void)showNowPlaying;
+
+
 
 @end

@@ -20,8 +20,8 @@
 - (id)initWithJSON:(NSDictionary *)dict {
 	if(self = [super init]) {
 		self.showId = dict[@"showid"];
-		self.setlistNotes = [dict[@"setlistnotes"] stripHtml];
-		self.setlistHTML = [dict[@"setlistdata"] stripHtml];
+		self.setlistNotes = dict[@"setlistnotes"];
+		self.setlistHTML = dict[@"setlistdata"];
 		self.rating = @"0.00";
 		self.ratingCount = @"0";
 		self.reviews = @[];

@@ -1,29 +1,31 @@
 //
 //  StreamingMusicViewController.h
-//  Phish Tracks
+//  Listen to the Dead
 //
 //  Created by Alec Gorge on 7/6/13.
 //  Copyright (c) 2013 Alec Gorge. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 #import "StreamingPlaylistItem.h"
-#import "AppDelegate.h"
 
-@interface StreamingMusicViewController : UIViewController
+@interface StreamingMusicViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 + (StreamingMusicViewController*)sharedInstance;
 
 - (id)initWithPlaylist:(NSArray*)playlist atIndex:(NSInteger)index;
 
-@property NSArray *playlist;
+@property (nonatomic) NSArray *playlist;
 @property BOOL isPlaying;
-@property MPMoviePlayerController *player;
+
 @property (readonly) StreamingPlaylistItem *currentItem;
 @property (nonatomic) NSInteger currentIndex;
 
-@property (strong, nonatomic) IBOutlet UIView *view;
+@property (nonatomic) AVQueuePlayer *queuePlayer;
+
 @property (weak, nonatomic) IBOutlet UILabel  *playerTitle;
 @property (weak, nonatomic) IBOutlet UILabel  *playerSubtitle;
 @property (weak, nonatomic) IBOutlet UIButton *playerPlayPauseButton;
@@ -32,9 +34,9 @@
 @property (weak, nonatomic) IBOutlet UILabel  *playerTimeRemaining;
 @property (weak, nonatomic) IBOutlet UILabel  *playerTimeElapsed;
 @property (weak, nonatomic) IBOutlet UISlider *playerScrubber;
-@property (weak, nonatomic) IBOutlet UILabel *playerStatus;
 @property (weak, nonatomic) IBOutlet UIButton *playerPauseButton;
 @property (weak, nonatomic) IBOutlet MPVolumeView *playerAirPlayButton;
+@property (weak, nonatomic) IBOutlet UITableView *playerTableView;
 
 @property (strong) UIButton *mpAirPlayButton;
 

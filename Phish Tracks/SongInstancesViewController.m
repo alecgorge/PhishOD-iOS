@@ -17,7 +17,7 @@
 
 @implementation SongInstancesViewController
 
-- (id)initWithSong:(PhishSong*) s {
+- (id)initWithSong:(PhishinSong*) s {
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
         self.title = s.title;
@@ -28,37 +28,37 @@
 }
 
 - (void)refresh:(id)sender {
-	[[PhishTracksAPI sharedAPI] fullSong:self.song
-								 success:^(PhishSong *ss) {
-									 self.song = ss;
-									 [[PhishNetAPI sharedAPI] jamsForSong:self.song
-																  success:^(NSArray *dates) {
-																	  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-																		  for (PhishSong *track in self.song.tracks) {
-																			  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-																			  formatter.dateFormat = @"yyyy-MM-dd";
-																			  if([dates containsObject:[formatter dateFromString: track.showDate]]) {
-																				  track.isBold = YES;
-																			  }
+	[[PhishinAPI sharedAPI] fullSong:self.song
+							 success:^(PhishinSong *ss) {
+								 self.song = ss;
+								 [[PhishNetAPI sharedAPI] jamsForSong:self.song
+															  success:^(NSArray *dates) {
+																  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+																	  for (PhishinTrack *track in self.song.tracks) {
+																		  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+																		  formatter.dateFormat = @"yyyy-MM-dd";
+																		  if([dates containsObject:[formatter dateFromString: track.show_date]]) {
+																			  track.isBold = YES;
 																		  }
-																		  dispatch_async(dispatch_get_main_queue(), ^{
-																			  [self.tableView reloadData];
-																		  });
+																	  }
+																	  dispatch_async(dispatch_get_main_queue(), ^{
+																		  [self.tableView reloadData];
 																	  });
-																	  
-																  }];
-
-									 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-										 [self makeIndicies];
-
-										 dispatch_async(dispatch_get_main_queue(), ^{
-											 [self.tableView reloadData];
-											 
-											 [super refresh:sender];
-										 });
+																  });
+																  
+															  }];
+								 
+								 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+									 [self makeIndicies];
+									 
+									 dispatch_async(dispatch_get_main_queue(), ^{
+										 [self.tableView reloadData];
+										 
+										 [super refresh:sender];
 									 });
-								 }
-								 failure:REQUEST_FAILED(self.tableView)];
+								 });
+							 }
+							 failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (void)makeIndicies {
@@ -162,8 +162,8 @@ titleForHeaderInSection:(NSInteger)section {
 								   reuseIdentifier:CellIdentifier];
 	}
 	
-	PhishSong *song = [self filteredForSection:indexPath.section][indexPath.row];
-    cell.textLabel.text = song.showDate;
+	PhishinTrack *song = [self filteredForSection:indexPath.section][indexPath.row];
+    cell.textLabel.text = song.show_date;
 //	cell.detailTextLabel.text = song.showLocation;
 //	cell.detailTextLabel.numberOfLines = 2;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -171,10 +171,10 @@ titleForHeaderInSection:(NSInteger)section {
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.detailTextLabel.textColor = [UIColor grayColor];
 	
-	if(song.isBold)
-		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
-	else
-		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
+//	if(song.isBold)
+//		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
+//	else
+//		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
     
     return cell;
 }
@@ -213,10 +213,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return;
 	}
 	
-	PhishSong *song = [self filteredForSection:indexPath.section][indexPath.row];
+	PhishinTrack *song = [self filteredForSection:indexPath.section][indexPath.row];
 	
-	PhishShow *show = [[PhishShow alloc] init];
-	show.showDate = song.showDate;
+	PhishinShow *show = [[PhishinShow alloc] init];
+	show.id = song.show_id;
+	show.date = song.show_date;
 	
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
