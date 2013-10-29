@@ -60,7 +60,6 @@
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
 		7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3871800D27A004F55DF /* MenuPanel.m */; };
-		7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */; };
 		7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED39018010620004F55DF /* CoreMedia.framework */; };
 		7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED3931801ABD0004F55DF /* VenueViewController.m */; };
 		7C7ED3A11801B0FF004F55DF /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3961801B0FF004F55DF /* close-button.png */; };
@@ -213,8 +212,6 @@
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		7C7ED3861800D27A004F55DF /* MenuPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPanel.h; sourceTree = "<group>"; };
 		7C7ED3871800D27A004F55DF /* MenuPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPanel.m; sourceTree = "<group>"; };
-		7C7ED38D1800FEAA004F55DF /* PhishinStreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinStreamingPlaylistItem.h; sourceTree = "<group>"; };
-		7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinStreamingPlaylistItem.m; sourceTree = "<group>"; };
 		7C7ED39018010620004F55DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		7C7ED3921801ABD0004F55DF /* VenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueViewController.h; sourceTree = "<group>"; };
 		7C7ED3931801ABD0004F55DF /* VenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueViewController.m; sourceTree = "<group>"; };
@@ -627,8 +624,6 @@
 		7C7ED38C1800FDD4004F55DF /* New MediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				7C7ED38D1800FEAA004F55DF /* PhishinStreamingPlaylistItem.h */,
-				7C7ED38E1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m */,
 			);
 			name = "New MediaPlayer";
 			sourceTree = "<group>";
@@ -962,7 +957,6 @@
 				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
 				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
 				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
-				7C7ED38F1800FEAA004F55DF /* PhishinStreamingPlaylistItem.m in Sources */,
 				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
 				7C518C2F175D149D005EB2E7 /* PhishSet.m in Sources */,
 				7C518C32175D14CF005EB2E7 /* PhishSong.m in Sources */,
