@@ -15,7 +15,7 @@
     static dispatch_once_t once;
     static PhishTracksStats *sharedFoo;
     dispatch_once(&once, ^ {
-		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"http://www.phishtrackstats.com/api/"]];
+		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"https://www.phishtrackstats.com/api/"]];
 		sharedFoo.parameterEncoding = AFJSONParameterEncoding;
 	});
     return sharedFoo;
@@ -114,6 +114,7 @@
 	[self postPath:[NSString stringWithFormat:@"played_tracks.json?auth_token=%@", self.authToken, nil]
 		parameters:@{ @"played_track": @{
 							  @"track_id": [NSNumber numberWithInt: song.trackId],
+							  @"slug": song.slug,
 							  @"show_id": [NSNumber numberWithInt: show.showId],
 							  @"show_date": show.showDate } }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject) {
