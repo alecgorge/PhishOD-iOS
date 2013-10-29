@@ -7,6 +7,7 @@
 //
 
 #import "PhishTracksStats.h"
+#import "Configuration.h"
 #import <FXKeychain/FXKeychain.h>
 
 @implementation PhishTracksStats
@@ -15,7 +16,8 @@
     static dispatch_once_t once;
     static PhishTracksStats *sharedFoo;
     dispatch_once(&once, ^ {
-		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"https://www.phishtrackstats.com/api/"]];
+		NSLog(@"PhishTracksStats: base_url=%@", [Configuration ptsApiBaseUrl]);
+		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: [Configuration ptsApiBaseUrl]]];
 		sharedFoo.parameterEncoding = AFJSONParameterEncoding;
 	});
     return sharedFoo;

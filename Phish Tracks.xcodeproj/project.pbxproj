@@ -124,6 +124,8 @@
 		7CC91A9117A093030047DFF3 /* 08-chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A8F17A093030047DFF3 /* 08-chat@2x.png */; };
 		7CC91A9417A093D40047DFF3 /* glyphicons_151_new_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */; };
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
+		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
+		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
 		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -306,6 +308,9 @@
 		7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_151_new_window.png; sourceTree = "<group>"; };
 		7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_151_new_window@2x.png"; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
+		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
+		C54ED74818201FF8007D4261 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +448,9 @@
 				7CADB31E176040B200B80D54 /* NSString+stripHTML.h */,
 				7CADB31F176040B200B80D54 /* NSString+stripHTML.m */,
 				7C6AE5161788B97200AAED06 /* Entitlements.plist */,
+				C54ED74518201CF1007D4261 /* Configurations.plist */,
+				C54ED74718201FF8007D4261 /* Configuration.h */,
+				C54ED74818201FF8007D4261 /* Configuration.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -858,6 +866,7 @@
 				7C658BDF178D2E6C005FD6D0 /* Icon-Small-50@2x.png in Resources */,
 				7CC91A8917A091530047DFF3 /* glyphicons_173_play@2x.png in Resources */,
 				7C658BDC178D2E6C005FD6D0 /* Icon-72.png in Resources */,
+				C54ED74618201CF1007D4261 /* Configurations.plist in Resources */,
 				7C658BEB178D378B005FD6D0 /* Default-Landscape@2x~ipad.png in Resources */,
 				7CC91A9117A093030047DFF3 /* 08-chat@2x.png in Resources */,
 				7C658BDD178D2E6C005FD6D0 /* Icon-72@2x.png in Resources */,
@@ -983,6 +992,7 @@
 				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
+				C54ED74918201FF8007D4261 /* Configuration.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */,
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
@@ -1109,6 +1119,60 @@
 			};
 			name = Release;
 		};
+		C54ED743182019F7007D4261 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Development;
+		};
+		C54ED744182019F7007D4261 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
+				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4C73A136-2509-4D77-8A0E-DAC48F06DE92";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Development;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1116,6 +1180,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1C175D0C32005EB2E7 /* Debug */,
+				C54ED743182019F7007D4261 /* Development */,
 				7C518C1D175D0C32005EB2E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1125,6 +1190,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1F175D0C32005EB2E7 /* Debug */,
+				C54ED744182019F7007D4261 /* Development */,
 				7C518C20175D0C32005EB2E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Configuration.h"
 #import "RotatableTabBarController.h"
 
 #import "StreamingMusicViewController.h"

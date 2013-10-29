@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Development</key>
+	<dict>
+		<key>PTSApiKey</key>
+		<string></string>
+		<key>PTSApiBaseUrl</key>
+		<string>http://localhost:5000/api/</string>
+	</dict>
+	<key>Debug</key>
+	<dict>
+		<key>PTSApiKey</key>
+		<string></string>
+		<key>PTSApiBaseUrl</key>
+		<string>https://www.phishtrackstats.com/api/</string>
+	</dict>
+	<key>Release</key>
+	<dict>
+		<key>PTSApiKey</key>
+		<string></string>
+		<key>PTSApiBaseUrl</key>
+		<string>https://www.phishtrackstats.com/api/</string>
+	</dict>
+</dict>
+</plist>
