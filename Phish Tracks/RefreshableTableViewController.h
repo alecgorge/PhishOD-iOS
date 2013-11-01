@@ -11,4 +11,5 @@
 
 @interface RefreshableTableViewController : UITableViewController<Refreshable>
 
+
 @end

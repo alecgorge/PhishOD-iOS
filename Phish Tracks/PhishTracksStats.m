@@ -16,7 +16,7 @@
     static dispatch_once_t once;
     static PhishTracksStats *sharedFoo;
     dispatch_once(&once, ^ {
-		NSLog(@"PhishTracksStats: base_url=%@", [Configuration ptsApiBaseUrl]);
+		NSLog(@"PhishTracksStats: configuration=%@ base_url=%@", [Configuration configuration], [Configuration ptsApiBaseUrl]);
 		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: [Configuration ptsApiBaseUrl]]];
 		sharedFoo.parameterEncoding = AFJSONParameterEncoding;
 	});

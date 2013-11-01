@@ -108,6 +108,18 @@
 		  failure:failure];
 }
 
+- (void)randomShow:(void (^)(PhishinShow *))success
+		   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self getPath:@"random-show"
+	   parameters:nil
+		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			  responseObject = [self parseJSON:responseObject];
+			  
+			  success([[PhishinShow alloc] initWithDictionary:responseObject[@"data"]]);
+		  }
+		  failure:failure];
+}
+
 - (void)fullVenue:(PhishinVenue *)venue
 		  success:(void (^)(PhishinVenue *))success
 		  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {

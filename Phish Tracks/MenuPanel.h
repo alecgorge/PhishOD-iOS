@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StreamingPlaylistItem.h"
 #import "PhishinStreamingPlaylistItem.h"
 
 @interface MenuPanel : UITableViewController

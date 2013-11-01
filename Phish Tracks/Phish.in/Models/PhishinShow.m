@@ -13,6 +13,10 @@
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
+		if([dict[@"missing"] boolValue]) {
+			return self;
+		}
+		
         self.id = [dict[@"id"] intValue];
 		self.date = dict[@"date"];
 		self.duration = [dict[@"duration"] integerValue];

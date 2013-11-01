@@ -135,8 +135,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
 	else if(indexPath.section == 2) {
 		PhishTracksStatsHistoryItem *item = self.history[indexPath.row];
-		PhishShow *show = [[PhishShow alloc] init];
-		show.showDate = item.showDate;
+		PhishinShow *show = [[PhishinShow alloc] init];
+		show.date = item.showDate;
 		[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
 											 animated:YES];
 

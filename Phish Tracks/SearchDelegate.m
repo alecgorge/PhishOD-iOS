@@ -67,30 +67,105 @@
 	NSString *resultType = self.results.allowedKeys[indexPath.section];
 	id result = [self.results valueForKey:resultType][indexPath.row];
 	
-	if([resultType isEqualToString:@"show"]) {
+	if([resultType isEqualToString:@"show"] || [resultType isEqualToString:@"other_shows"]) {
 		PhishinShow *show = (PhishinShow*)result;
-		cell.textLabel.text = show.date;
-		cell.detailTextLabel.text = show.fullLocation;
-	}
-	else if([resultType isEqualToString:@"other_shows"]) {
-		PhishinShow *show = (PhishinShow*)result;
-		cell.textLabel.text = show.date;
-		cell.detailTextLabel.text = show.fullLocation;
+		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
+			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:show.date];
+			
+			NSRange matchedRange = [show.date rangeOfString:self.searchString
+													options:NSCaseInsensitiveSearch];
+			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange];
+			
+			cell.textLabel.attributedText = str;
+			
+			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:show.fullLocation];
+			
+			NSRange matchedRange2 = [show.fullLocation rangeOfString:self.searchString
+													options:NSCaseInsensitiveSearch];
+			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange2];
+			
+
+			cell.detailTextLabel.attributedText = str2;
+ 		}
+		else {
+			cell.textLabel.text = show.date;
+			cell.detailTextLabel.text = show.fullLocation;
+		}
 	}
 	else if([resultType isEqualToString:@"songs"]) {
 		PhishinSong *song = (PhishinSong*)result;
-		cell.textLabel.text = song.title;
-		cell.detailTextLabel.text = @"";
+		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
+			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:song.title];
+			
+			NSRange matchedRange = [song.title rangeOfString:self.searchString
+													 options:NSCaseInsensitiveSearch];
+			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange];
+			
+			cell.textLabel.attributedText = str;
+			
+			cell.detailTextLabel.text = @"";
+ 		}
+		else {
+			cell.textLabel.text = song.title;
+			cell.detailTextLabel.text = @"";
+		}
 	}
 	else if([resultType isEqualToString:@"venues"]) {
 		PhishinVenue *venue = (PhishinVenue*)result;
-		cell.textLabel.text = venue.name;
-		cell.detailTextLabel.text = venue.location;
+		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
+			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:venue.name];
+			
+			NSRange matchedRange = [venue.name rangeOfString:self.searchString
+													 options:NSCaseInsensitiveSearch];
+			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange];
+			
+			cell.textLabel.attributedText = str;
+			
+			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:venue.location];
+			
+			NSRange matchedRange2 = [venue.location rangeOfString:self.searchString
+														  options:NSCaseInsensitiveSearch];
+			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange2];
+			
+			
+			cell.detailTextLabel.attributedText = str2;
+ 		}
+		else {
+			cell.textLabel.text = venue.name;
+			cell.detailTextLabel.text = venue.location;
+		}
 	}
 	else if([resultType isEqualToString:@"tours"]) {
 		PhishinTour *tour = (PhishinTour*)result;
-		cell.textLabel.text = tour.name;
-		cell.detailTextLabel.text = tour.prettyDuration;
+		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
+			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:tour.name];
+			
+			NSRange matchedRange = [tour.name rangeOfString:self.searchString
+													 options:NSCaseInsensitiveSearch];
+			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange];
+			
+			cell.textLabel.attributedText = str;
+			
+			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:tour.prettyDuration];
+			
+			NSRange matchedRange2 = [tour.prettyDuration rangeOfString:self.searchString
+															   options:NSCaseInsensitiveSearch];
+			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
+						 range:matchedRange2];
+			
+			
+			cell.detailTextLabel.attributedText = str2;
+ 		}
+		else {
+			cell.textLabel.text = tour.name;
+			cell.detailTextLabel.text = tour.prettyDuration;
+		}
 	}
 	
 	return cell;

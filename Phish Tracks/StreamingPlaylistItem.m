@@ -10,4 +10,9 @@
 
 @implementation StreamingPlaylistItem
 
+- (NSURL *)shareURLWithPlayedTime:(NSTimeInterval)elapsed {
+	NSAssert(NO, @"shareURLWithPlayedTime: not implemented in subclass");
+	return nil;
+}
+
 @end
