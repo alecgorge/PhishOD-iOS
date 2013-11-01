@@ -41,6 +41,9 @@
 		success:(void ( ^ ) ( PhishinSong * ))success
 		failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
+-(void)randomShow:(void ( ^ ) ( PhishinShow * ))success
+		  failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
 -(void)tours:(void ( ^ ) ( NSArray * phishinTours ))success
 	 failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 

@@ -228,8 +228,10 @@ titleForHeaderInSection:(NSInteger)section {
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-
-	[self.navigationController pushViewController:[[SongInstancesViewController alloc] initWithSong:track]
+	PhishinSong *song = [[PhishinSong alloc] init];
+	song.id = [track.song_ids[0] integerValue];
+	
+	[self.navigationController pushViewController:[[SongInstancesViewController alloc] initWithSong:song]
 										 animated:YES];	
 }
 
