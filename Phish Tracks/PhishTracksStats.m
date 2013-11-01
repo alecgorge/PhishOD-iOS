@@ -118,7 +118,8 @@
 							  @"track_id": [NSNumber numberWithInt: song.trackId],
 							  @"slug": song.slug,
 							  @"show_id": [NSNumber numberWithInt: show.showId],
-							  @"show_date": show.showDate } }
+							  @"show_date": show.showDate },
+					  @"streaming_site": @"phishin" }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			   if(cb) cb();
 		   }
