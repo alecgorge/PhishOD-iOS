@@ -54,10 +54,10 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(section == 0) {
-		return self.showLoginMessage ? 0 : 1;
+		return self.showLoginMessage ? 0 : 5;
 	}
 	else if(section == 1) {
-		return 2;
+		return 3;
 	}
 	else if(section == 2) {
 		return self.history == nil ? 0 : self.history.count;
@@ -76,9 +76,27 @@
 										  reuseIdentifier:@"plainCell"];
 		}
 		
-		if(indexPath.section == 0 && indexPath.row == 0) {
-			cell.textLabel.text = @"View global stats";
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		if(indexPath.section == 0) {
+			if (indexPath.row == 0) {
+				cell.textLabel.text = @"Last Hour";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			else if (indexPath.row == 1) {
+				cell.textLabel.text = @"Today";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			else if (indexPath.row == 2) {
+				cell.textLabel.text = @"This Week";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			else if (indexPath.row == 3) {
+				cell.textLabel.text = @"This Month";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			else if (indexPath.row == 4) {
+				cell.textLabel.text = @"All time";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
 		}
 		return cell;
 	}
@@ -92,11 +110,17 @@
 		
 		if(indexPath.section == 1 && indexPath.row == 0) {
 			cell.textLabel.text = @"Plays";
-			cell.detailTextLabel.text = self.stats[@"catalog_progress"];
+			cell.detailTextLabel.text = [self.stats[@"play_count"] stringValue];
 			cell.accessoryType = UITableViewCellAccessoryNone;
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		}
 		else if(indexPath.section == 1 && indexPath.row == 1) {
+			cell.textLabel.text = @"Tracks Heard";
+			cell.detailTextLabel.text = self.stats[@"catalog_progress"];
+			cell.accessoryType = UITableViewCellAccessoryNone;
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		}
+		else if(indexPath.section == 1 && indexPath.row == 2) {
 			cell.textLabel.text = @"Playback Time";
 			cell.detailTextLabel.text = self.stats[@"total_time_formatted"];
 			cell.accessoryType = UITableViewCellAccessoryNone;
@@ -128,7 +152,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	if(indexPath.section == 0 && indexPath.section == 0) {
+	if(indexPath.section == 0 && indexPath.row == 4) {
 		GlobalStatsViewController *g = [[GlobalStatsViewController alloc] initWithStyle: UITableViewStyleGrouped];
 		[self.navigationController pushViewController:g
 											 animated:YES];
@@ -154,7 +178,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-	if(section == 1) {
+	if (section == 0) {
+		return @"Global Stats";
+	}
+	else if(section == 1) {
 		return [NSString stringWithFormat: @"Stats for %@", [PhishTracksStats sharedInstance].username];
 	}
 	return nil;

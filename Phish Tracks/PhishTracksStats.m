@@ -12,6 +12,12 @@
 
 @implementation PhishTracksStats
 
++ (void)initWithAPIKey:(NSString *)apiKey {
+	PhishTracksStats *pts = [PhishTracksStats sharedInstance];
+	pts.apiKey = apiKey;
+	
+}
+
 + (PhishTracksStats*)sharedInstance {
     static dispatch_once_t once;
     static PhishTracksStats *sharedFoo;
@@ -25,8 +31,8 @@
 
 - (id)initWithBaseURL:(NSURL *)url {
 	if(self = [super initWithBaseURL:url]) {
-		self.authToken = [FXKeychain defaultKeychain][@"phishtracksstats_authtoken"];
-		self.isAuthenticated = self.authToken != nil;
+		self.sessionKey = [FXKeychain defaultKeychain][@"phishtracksstats_sessionkey"];
+		self.isAuthenticated = self.sessionKey != nil;
 		self.userId = [[FXKeychain defaultKeychain][@"phishtracksstats_userid"] integerValue];
 	}
 	return self;
@@ -40,7 +46,7 @@
 	[FXKeychain defaultKeychain][@"phishtracksstats_username"] = username;
 }
 
-- (void)testUsername:(NSString *)username
+- (void)checkSessionKey:(NSString *)username
 			password:(NSString *)password
 			callback:(void (^)(BOOL success))cb
 			 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
@@ -53,11 +59,10 @@
 																		  error:nil];
 				   
 				   [FXKeychain defaultKeychain][@"phishtracksstats_username"] = username;
-				   [FXKeychain defaultKeychain][@"phishtracksstats_password"] = password;
-				   [FXKeychain defaultKeychain][@"phishtracksstats_authtoken"] = dict[@"auth_token"];
+				   [FXKeychain defaultKeychain][@"phishtracksstats_sessionkey"] = dict[@"auth_token"];
 				   [FXKeychain defaultKeychain][@"phishtracksstats_userid"] = [dict[@"user_id"] stringValue];
 				   
-				   self.authToken = dict[@"auth_token"];
+				   self.sessionKey = dict[@"session_key"];
 				   self.isAuthenticated = YES;
 				   self.userId = [dict[@"user_id"] integerValue];
 				   
@@ -75,45 +80,68 @@
 		   }];
 }
 
-- (void)reauth:(void (^)(BOOL))cb
-	   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	if([FXKeychain defaultKeychain][@"phishtracksstats_username"] == nil
-	|| [FXKeychain defaultKeychain][@"phishtracksstats_password"] == nil) {
-		cb(NO);
-		return;
-	}
-	[self testUsername:[FXKeychain defaultKeychain][@"phishtracksstats_username"]
-			  password:[FXKeychain defaultKeychain][@"phishtracksstats_password"]
-			  callback:cb
-			   failure:failure];
+- (BOOL)checkSessionKey {
+	__block	BOOL sessionKeyValid = NO;
+
+	[self postPath:@"check_session_key.json"
+		parameters:@{ @"session_key": self.sessionKey }
+		   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			   if(operation.response.statusCode == 200) {
+				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject
+																		options:0
+																		  error:nil];
+				   
+				   // [FXKeychain defaultKeychain][@"phishtracksstats_username"] = username;
+				   // [FXKeychain defaultKeychain][@"phishtracksstats_sessionkey"] = dict[@"auth_token"];
+				   // [FXKeychain defaultKeychain][@"phishtracksstats_userid"] = [dict[@"user_id"] stringValue];
+				   
+				   // self.sessionKey = dict[@"session_key"];
+				   // self.isAuthenticated = YES;
+				   // self.userId = [dict[@"user_id"] integerValue];
+
+				   sessionKeyValid = [dict[@"success"] boolValue];
+			   }
+			   else {
+				   //				   self.isAuthenticated = NO;
+				   //cb(NO);
+				   sessionKeyValid = NO;
+			   }
+		   }
+		   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			   sessionKeyValid = NO;
+		   }];
+	return sessionKeyValid;
+
 }
 
-- (void)signOut:(void (^)(BOOL))cb
-		failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self deletePath:@"users/sign_out.json"
-		  parameters:@{@"auth_token": self.authToken}
-			 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-				 if(cb) cb(YES);
-				 self.isAuthenticated = NO;
-				 self.userId = 0;
-				 self.username = nil;
-				 
-				 [[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_username"];
-				 [[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_password"];
-				 [[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_authtoken"];
-				 [[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_userid"];
-			 }
-			 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-				 if(cb) cb(NO);
-				 if(failure) failure(operation, error);
-			 }];
+//- (void)reauth:(void (^)(BOOL))cb
+//	   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+//	if([FXKeychain defaultKeychain][@"phishtracksstats_username"] == nil
+//	|| [FXKeychain defaultKeychain][@"phishtracksstats_password"] == nil) {
+//		cb(NO);
+//		return;
+//	}
+//	[self checkSessionKey:[FXKeychain defaultKeychain][@"phishtracksstats_username"]
+//			  password:[FXKeychain defaultKeychain][@"phishtracksstats_password"]
+//			  callback:cb
+//			   failure:failure];
+//}
+
+- (void)signOut {
+	self.isAuthenticated = NO;
+	self.userId = 0;
+	self.username = nil;
+
+	[[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_username"];
+	[[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_sessionkey"];
+	[[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_userid"];
 }
 
 - (void)_playedTrack:(PhishSong *)song
 			fromShow:(PhishShow *)show
 			 success:(void (^)(void))cb
 			 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self postPath:[NSString stringWithFormat:@"played_tracks.json?auth_token=%@", self.authToken, nil]
+	[self postPath:[NSString stringWithFormat:@"played_tracks.json?auth_token=%@", self.sessionKey, nil]
 		parameters:@{ @"played_track": @{
 							  @"track_id": [NSNumber numberWithInt: song.trackId],
 							  @"slug": song.slug,
@@ -155,14 +183,14 @@
 -(void)_stats:(void (^)(NSDictionary *stats, NSArray *history))cb
 	  failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure {
 	[self getPath:[NSString stringWithFormat:@"stats/users/%d.json", self.userId]
-	   parameters:@{@"auth_token": self.authToken}
+	   parameters:@{@"auth_token": self.sessionKey}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			  NSDictionary *stats = [NSJSONSerialization JSONObjectWithData:responseObject
 																	options:0
 																	  error:nil];
 			  
 			  [self getPath:[NSString stringWithFormat:@"stats/users/%d/history.json", self.userId]
-				 parameters:@{@"auth_token": self.authToken}
+				 parameters:@{@"auth_token": self.sessionKey}
 					success:^(AFHTTPRequestOperation *operation, id responseObject) {
 						NSDictionary *history = [NSJSONSerialization JSONObjectWithData:responseObject
 																				options:0
@@ -201,7 +229,7 @@
 -(void)_globalStats:(void (^)(NSDictionary *stats, NSArray *history))cb
 			failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure {
 	[self getPath:@"stats/overall.json"
-	   parameters:@{@"auth_token": self.authToken}
+	   parameters:@{@"auth_token": self.sessionKey}
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			  NSDictionary *stats = [NSJSONSerialization JSONObjectWithData:responseObject
 																	options:0

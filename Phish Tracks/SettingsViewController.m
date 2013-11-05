@@ -255,7 +255,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 			UITextField *username = [alertView textFieldAtIndex:0];
 			UITextField *password = [alertView textFieldAtIndex:1];
 			[SVProgressHUD show];
-			[[PhishTracksStats sharedInstance] testUsername:username.text
+			[[PhishTracksStats sharedInstance] checkSessionKey:username.text
 												   password:password.text
 												   callback:^(BOOL success) {
 													   [SVProgressHUD dismiss];

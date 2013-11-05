@@ -5,9 +5,9 @@
 	<key>Development</key>
 	<dict>
 		<key>PTSApiKey</key>
-		<string></string>
+		<string>093170ddfbf3ee44f5ae0973b1f45cc3</string>
 		<key>PTSApiBaseUrl</key>
-		<string>http://localhost:5000/api/</string>
+		<string>http://localhost:5000/api/v2/</string>
 	</dict>
 	<key>Debug</key>
 	<dict>

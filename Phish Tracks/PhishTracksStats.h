@@ -11,23 +11,26 @@
 
 @interface PhishTracksStats : AFHTTPClient
 
++ (void)initWithAPIKey:(NSString *)apiKey;
 + (PhishTracksStats*)sharedInstance;
 
-@property NSString *authToken;
+@property NSString *apiKey;
+@property NSString *sessionKey;
 @property BOOL isAuthenticated;
 @property NSString *username;
 @property NSInteger userId;
 
-- (void)testUsername:(NSString *)username
+- (void)checkSessionKey:(NSString *)username
 			password:(NSString *)password
 			callback:(void (^)(BOOL success))cb
 			 failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 
-- (void)reauth:(void (^)(BOOL success))cb
-	   failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+- (BOOL)checkSessionKey;
 
-- (void)signOut:(void (^)(BOOL success))cb
-		failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+//- (void)reauth:(void (^)(BOOL success))cb
+//	   failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+
+- (void)signOut;
 
 - (void)playedTrack:(PhishSong *)song
 		   fromShow:(PhishShow *)show
