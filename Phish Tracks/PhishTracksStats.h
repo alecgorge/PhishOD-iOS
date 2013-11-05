@@ -11,7 +11,7 @@
 
 @interface PhishTracksStats : AFHTTPClient
 
-+ (PhishTracksStats*)sharedInstance;
++ (PhishTracksStats *)sharedInstance;
 
 @property NSString *authToken;
 @property BOOL isAuthenticated;
@@ -29,8 +29,8 @@
 - (void)signOut:(void (^)(BOOL success))cb
 		failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 
-- (void)playedTrack:(PhishSong *)song
-		   fromShow:(PhishShow *)show
+- (void)playedTrack:(PhishinTrack *)track
+		   fromShow:(PhishinShow *)show
 			success:(void (^)(void))cb
 			failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 

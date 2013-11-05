@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <LastFm/LastFm.h>
+#import "PhishTracksStats.h"
 
 #import "AppDelegate.h"
 
@@ -620,6 +621,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 									 failureHandler:nil];
 		
 		self.trackHasBeenScrobbled = YES;
+
+		PhishinTrack *track = ((PhishinStreamingPlaylistItem *) self.currentItem).track;
+		[[PhishTracksStats sharedInstance] playedTrack:track fromShow:track.show success:nil failure:nil];
 	}
 	
 	[[AppDelegate sharedDelegate].menuPanel updateNowPlayingWithStreamingPlaylistItem:self.currentItem];

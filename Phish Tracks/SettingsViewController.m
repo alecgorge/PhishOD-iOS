@@ -176,7 +176,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		[a show];
 	}
 	else if(indexPath.section == 1 && indexPath.row == 1) {
-		NSString *add = @"http://www.phishtrackstats.com/";
+		NSString *add = @"https://www.phishtrackstats.com/";
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:add]
 											 animated:YES];
 	}
