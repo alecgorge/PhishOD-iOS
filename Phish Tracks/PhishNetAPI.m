@@ -122,7 +122,9 @@
 							formatter.dateFormat = @"M/d/yyyy";
 							
 							for (NSDictionary *dict in res) {
-								[r addObject:[formatter dateFromString:dict[@"date"]]];
+								NSDate *d = [formatter dateFromString:dict[@"date"]];
+								if(d)
+									[r addObject:d];
 							}
 							success(r);
 						}];

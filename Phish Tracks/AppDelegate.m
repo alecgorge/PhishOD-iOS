@@ -77,11 +77,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	UIColor *lightPhishGreen = COLOR_PHISH_LIGHT_GREEN;
 	UIColor *white = COLOR_PHISH_WHITE;
 	
-	[UINavigationBar appearance].barTintColor = phishGreen;
-	[UINavigationBar appearance].tintColor = white;
+	if([[UINavigationBar appearance] respondsToSelector:@selector(setBarTintColor:)]) {
+		[UINavigationBar appearance].barTintColor = phishGreen;
+		[UINavigationBar appearance].tintColor = white;
+		[UISegmentedControl appearance].tintColor = phishGreen;
+	}
+	else {
+		[UINavigationBar appearance].tintColor = phishGreen;
+	}
+
 	[UINavigationBar appearance].titleTextAttributes = @{UITextAttributeTextColor: white};
 	
-	[UISegmentedControl appearance].tintColor = phishGreen;
 //	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
 }
 

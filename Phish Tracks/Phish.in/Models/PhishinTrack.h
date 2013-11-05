@@ -25,6 +25,7 @@
 @property (nonatomic) NSString *slug;
 @property (nonatomic) NSURL *mp3;
 @property (nonatomic) NSArray *song_ids;
+@property (nonatomic) NSString *index;
 
 @property (nonatomic) BOOL isBold;
 

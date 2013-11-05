@@ -31,6 +31,12 @@
     return self;
 }
 
+- (void)setShow_date:(NSString *)show_date {
+	_show_date = show_date;
+	
+	self.index = [self.show_date substringWithRange:NSMakeRange(2, 2)];
+}
+
 - (NSString *)shareURLWithPlayedTime:(NSTimeInterval)elapsed {
 	NSString *url = [NSString stringWithFormat:@"http://phish.in/%@/%@", self.show.date, self.slug];
 	if(elapsed > 0) {

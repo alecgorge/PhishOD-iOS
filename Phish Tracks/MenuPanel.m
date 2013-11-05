@@ -133,6 +133,14 @@ typedef enum {
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(indexPath.row == kPhishODMenuItemNowPlaying) {
+		cell.backgroundColor = COLOR_PHISH_GREEN;
+	}
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
