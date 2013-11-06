@@ -355,6 +355,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.queuePlayer seekToTime:CMTimeMakeWithSeconds(((UISlider*)sender).value * self.currentItem.duration, 1)];
 }
 
+- (void)seekTo:(NSTimeInterval)position {
+	[self.queuePlayer seekToTime:CMTimeMakeWithSeconds(position, NSEC_PER_SEC)];
+}
+
 - (void)songDidFinish:(id)sender {
 	if([[sender userInfo][MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue] == MPMovieFinishReasonPlaybackEnded) {
 		[self next];
@@ -380,6 +384,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return nil;
 	}
 	return self.playlist[self.currentIndex];
+}
+
+- (NSTimeInterval)currentProgress {
+	return CMTimeGetSeconds(self.queuePlayer.currentItem.currentTime);
 }
 
 - (void)playIndex:(NSInteger)integer {
@@ -591,12 +599,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																}];
 	
 	NSTimeInterval playbackTime = 0;
-	if(CMTimeGetSeconds(self.queuePlayer.currentItem.currentTime) == 0
+	if(self.currentProgress == 0
 	   || self.queuePlayer.currentItem.status != AVPlayerItemStatusReadyToPlay) {
 		self.title = @"Buffering...";
 	}
 	else {
-		playbackTime = CMTimeGetSeconds(self.queuePlayer.currentTime);
+		playbackTime = self.currentProgress;
 		self.title = @"";
 	}
 	
@@ -666,7 +674,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(buttonIndex == 1) {
 		self.shareTime = 0;
 	}
-	
+
+	[Flurry logEvent:@"share"
+	  withParameters:@{@"with_time": @(self.shareTime != 0)}];
+
 	NSString *textToShare = self.currentItem.shareTitle;
 	NSURL *urlToShare = [self.currentItem shareURLWithPlayedTime:self.shareTime];
 	NSArray *itemsToShare = @[textToShare, urlToShare];

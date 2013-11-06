@@ -23,6 +23,7 @@
 
 @property (readonly) StreamingPlaylistItem *currentItem;
 @property (nonatomic) NSInteger currentIndex;
+@property (readonly) NSTimeInterval currentProgress;
 
 @property (nonatomic) AVQueuePlayer *queuePlayer;
 
@@ -50,6 +51,8 @@
 - (void)next;
 - (void)previous;
 - (void)playPauseToggle;
+
+- (void)seekTo:(NSTimeInterval)position;
 
 - (void)changePlaylist:(NSArray*)array andStartFromIndex:(NSInteger)index;
 

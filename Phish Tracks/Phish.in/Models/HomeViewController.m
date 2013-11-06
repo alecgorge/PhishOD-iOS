@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 
+#import "AppDelegate.h"
 #import "YearsViewController.h"
 #import "SongsViewController.h"
 #import "ToursViewController.h"
@@ -62,16 +63,26 @@ typedef enum {
 	[self createSearchBar];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[self.tableView reloadData];
+}
+
 -(void)dealloc {
 	self.con = nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
+	if(section == 0) {
+		return 1;
+	}
+	
 	return kPhishODMenuItemsCount;
 }
 
@@ -80,11 +91,27 @@ typedef enum {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 	
 	if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
 									  reuseIdentifier:@"cell"];
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	if(indexPath.section == 0) {
+		PhishinShow *show = [AppDelegate sharedDelegate].currentlyPlayingShow;
+		
+		cell.textLabel.text = @"Now Playing";
+
+		if(show != nil) {
+			cell.detailTextLabel.text = show.date;
+		}
+		else {
+			cell.detailTextLabel.text = @"Nothing yet...";
+			cell.accessoryType = UITableViewCellAccessoryNone;
+		}
+		
+		return cell;
+	}
 	
 	int row = indexPath.row;
 	if (row == kPhishODMenuItemYears) {
@@ -112,6 +139,11 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
+	
+	if(indexPath.section == 0) {
+		[self pushViewController:[[ShowViewController alloc] initWithShow:AppDelegate.sharedDelegate.currentlyPlayingShow]];
+		return;
+	}
 	
 	int row = indexPath.row;
 	if(row == kPhishODMenuItemYears) {

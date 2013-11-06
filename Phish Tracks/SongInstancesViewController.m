@@ -221,7 +221,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
-	[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
+	
+	ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
+	showvc.autoplay = YES;
+	showvc.autoplayTrackId = song.id;
+	
+	[self.navigationController pushViewController:showvc
 										 animated:YES];
 }
 

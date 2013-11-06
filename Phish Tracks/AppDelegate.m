@@ -18,6 +18,8 @@
 #import "SettingsViewController.h"
 #import "HomeViewController.h"
 
+#import "ShowViewController.h"
+
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
@@ -38,10 +40,13 @@ static AppDelegate *sharedDelegate;
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	sharedDelegate = self;
-	
-	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
-	[TestFlight takeOff:@"b7d72e8f-eafb-43c2-ac00-238f786848c2"];
+
 	[Crashlytics startWithAPIKey:@"bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4"];
+	
+	[Flurry setBackgroundSessionEnabled:NO];
+	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
+	
+	[TestFlight takeOff:@"b7d72e8f-eafb-43c2-ac00-238f786848c2"];
 
 	[self setupLastFM];
 	[self setupCaching];
@@ -77,9 +82,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	UIColor *lightPhishGreen = COLOR_PHISH_LIGHT_GREEN;
 	UIColor *white = COLOR_PHISH_WHITE;
 	
-	if([[UINavigationBar appearance] respondsToSelector:@selector(setBarTintColor:)]) {
+	if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+		
 		[UINavigationBar appearance].barTintColor = phishGreen;
 		[UINavigationBar appearance].tintColor = white;
+		
+		[UIToolbar appearance].tintColor = phishGreen;
+		[UIToolbar appearance].barTintColor = white;
+		
 		[UISegmentedControl appearance].tintColor = phishGreen;
 	}
 	else {
@@ -141,30 +152,70 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	if([url.scheme isEqualToString:@"phishod"]) {
 		NSArray *comps = url.pathComponents;
 		
-		if(comps.count == 0) {
+		if(comps.count == 1) {
 			// phishod:///
 			// nothing, just opening app
-		}
-		else if(comps.count == 1) {
-			// phishod:///:show_id
-			// open to date
-		}
-		else if(comps.count == 2) {
-			// phishod:///:show_id/:track_id
-			// open to track
-		}
-		else if(comps.count == 3 || comps.count == 4) {
-			// phishod:///:show_id/:track_id/3[/20]
-			// open to 3[:20] on light
-			NSTimeInterval position = [comps[2] integerValue];
 			
-			if(comps.count == 4)  {
-				position += [comps[3] floatValue] / 60.0;
+			return YES;
+		}
+		
+		self.panels.centerPanel = yearsNav;
+		[yearsNav popToRootViewControllerAnimated:NO];
+		
+		if(comps.count == 2) {
+			// phishod:///:show_date
+			// open to date
+			
+			PhishinShow *show = PhishinShow.alloc.init;
+			show.date = comps[1];
+			ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
+			
+			[yearsNav pushViewController:showvc
+								animated:NO];
+			
+			[self.panels dismissViewControllerAnimated:NO
+											completion:nil];
+		}
+		else if(comps.count == 3) {
+			// phishod:///:show_date/:track_id
+			// open to track
+
+			PhishinShow *show = PhishinShow.alloc.init;
+			show.date = comps[1];
+			ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
+			showvc.autoplay = YES;
+			showvc.autoplayTrackId = [comps[2] integerValue];
+			
+			[yearsNav pushViewController:showvc
+								animated:NO];
+			
+			[self.panels dismissViewControllerAnimated:NO
+											completion:nil];
+		}
+		else if(comps.count == 4 || comps.count == 5) {
+			// phishod:///:show_date/:track_id/3[/20]
+			// open to 3[:20] on light
+			NSTimeInterval position = [comps[3] integerValue] * 60;
+			
+			if(comps.count == 5)  {
+				position += [comps[4] integerValue];
 			}
 			
-			NSString *show_id = comps[0];
-			NSString *track_id = comps[1];
+			PhishinShow *show = PhishinShow.alloc.init;
+			show.date = comps[1];
+			ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
+			showvc.autoplay = YES;
+			showvc.autoplayTrackId = [comps[2] integerValue];
+			showvc.autoplaySeekLocation = position;
+			
+			[yearsNav pushViewController:showvc
+								animated:NO];
+			
+			[self.panels dismissViewControllerAnimated:NO
+											completion:nil];
 		}
+		
+		return YES;
 	}
 	
 	return NO;
