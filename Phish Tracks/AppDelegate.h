@@ -25,6 +25,8 @@
 @property UINavigationController *yearsNav;
 @property UITabBarController *tabBar;
 
+@property PhishinShow *currentlyPlayingShow;
+
 @property (nonatomic) BOOL shouldShowNowPlaying;
 @property (nonatomic) BOOL isNowPlayingVisible;
 

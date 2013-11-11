@@ -43,7 +43,9 @@ static CGPoint MapCenter;
         // Custom initialization
         _delegate = adelegate;
         _dataSource = adataSource;
-		self.edgesForExtendedLayout = UIRectEdgeNone;
+		
+		if([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+			self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     return self;
 }

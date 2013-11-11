@@ -65,7 +65,7 @@
     //---create the index---
     NSMutableArray *stateIndex = [[NSMutableArray alloc] init];
     
-	for(PhishSong *s in self.song.tracks) {
+	for(PhishinTrack *s in self.song.tracks) {
         NSString *uniChar = s.index;
 		
 		if(![stateIndex containsObject: uniChar])
@@ -171,10 +171,10 @@ titleForHeaderInSection:(NSInteger)section {
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.detailTextLabel.textColor = [UIColor grayColor];
 	
-//	if(song.isBold)
-//		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
-//	else
-//		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
+	if(song.isBold)
+		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
+	else
+		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
     
     return cell;
 }
@@ -221,7 +221,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
-	[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
+	
+	ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
+	showvc.autoplay = YES;
+	showvc.autoplayTrackId = song.id;
+	
+	[self.navigationController pushViewController:showvc
 										 animated:YES];
 }
 

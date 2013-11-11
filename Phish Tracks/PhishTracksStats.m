@@ -137,16 +137,16 @@
 	[[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_userid"];
 }
 
-- (void)_playedTrack:(PhishSong *)song
-			fromShow:(PhishShow *)show
+- (void)_playedTrack:(PhishinTrack *)track
+			fromShow:(PhishinShow *)show
 			 success:(void (^)(void))cb
 			 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
 	[self postPath:[NSString stringWithFormat:@"played_tracks.json?auth_token=%@", self.sessionKey, nil]
 		parameters:@{ @"played_track": @{
-							  @"track_id": [NSNumber numberWithInt: song.trackId],
-							  @"slug": song.slug,
-							  @"show_id": [NSNumber numberWithInt: show.showId],
-							  @"show_date": show.showDate },
+							  @"track_id": [NSNumber numberWithInt: track.id],
+							  @"slug": track.slug,
+							  @"show_id": [NSNumber numberWithInt: show.id],
+							  @"show_date": show.date },
 					  @"streaming_site": @"phishin" }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			   if(cb) cb();
@@ -156,12 +156,12 @@
 		   }];
 }
 
-- (void)playedTrack:(PhishSong *)song
-		   fromShow:(PhishShow *)show
+- (void)playedTrack:(PhishinTrack *)track
+		   fromShow:(PhishinShow *)show
 		   success:(void (^)(void))cb
 			failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
 	if(self.isAuthenticated) {
-		[self _playedTrack:song
+		[self _playedTrack:track
 				  fromShow:show
 				   success:cb
 				   failure:failure];
@@ -169,7 +169,7 @@
 	else {
 		[self reauth:^(BOOL success) {
 			if(success) {
-				[self _playedTrack:song
+				[self _playedTrack:track
 						  fromShow:show
 						   success:cb
 						   failure:failure];

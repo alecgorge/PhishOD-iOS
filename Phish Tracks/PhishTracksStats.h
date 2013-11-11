@@ -12,7 +12,7 @@
 @interface PhishTracksStats : AFHTTPClient
 
 + (void)initWithAPIKey:(NSString *)apiKey;
-+ (PhishTracksStats*)sharedInstance;
++ (PhishTracksStats *)sharedInstance;
 
 @property NSString *apiKey;
 @property NSString *sessionKey;
@@ -32,8 +32,8 @@
 
 - (void)signOut;
 
-- (void)playedTrack:(PhishSong *)song
-		   fromShow:(PhishShow *)show
+- (void)playedTrack:(PhishinTrack *)track
+		   fromShow:(PhishinShow *)show
 			success:(void (^)(void))cb
 			failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 

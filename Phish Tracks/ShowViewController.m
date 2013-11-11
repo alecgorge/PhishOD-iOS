@@ -28,11 +28,30 @@
     if (self) {
 		self.show = s;
 		self.title = self.show.date;
+		
+		self.autoplay = NO;
+		self.autoplaySeekLocation = 0.0;
     }
     return self;
 }
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	[self setupRightBarButtonItem];
+}
+
+- (void)setupRightBarButtonItem {
+	if([AppDelegate sharedDelegate].currentlyPlayingShow != nil) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Player"
+																				  style:UIBarButtonItemStyleDone
+																				 target:[AppDelegate sharedDelegate]
+																				 action:@selector(nowPlaying)];
+	}
+}
+
 - (void)refresh:(id)sender {
+	self.setlist = nil;
 	[[PhishNetAPI sharedAPI] setlistForDate:self.show.date
 									success:^(PhishNetSetlist *s) {
 										self.setlist = s;
@@ -45,7 +64,42 @@
 								 [self.tableView reloadData];
 								 
 								 [super refresh:sender];
+								 
+								 [self performAutoplayIfNecessary];
 							 } failure:REQUEST_FAILED(self.tableView)];
+}
+
+- (void)performAutoplayIfNecessary {
+	if(self.autoplay) {
+		NSArray *matchingTracks = [self.show.tracks reject:^BOOL(PhishinTrack *object) {
+			return !(object.id == self.autoplayTrackId);
+		}];
+		
+		if(matchingTracks.count > 0) {
+			PhishinTrack *track = matchingTracks[0];
+			
+			[self playTrack:track];
+
+			if(self.autoplaySeekLocation > 0) {
+				[self performSelector:@selector(autoplaySeek)
+						   withObject:nil
+						   afterDelay:0.25];
+			}
+		}
+		
+		self.autoplay = NO;
+	}
+}
+
+- (void)autoplaySeek {
+	if([StreamingMusicViewController sharedInstance].currentProgress > 0) {
+		[[StreamingMusicViewController sharedInstance] seekTo:self.autoplaySeekLocation];
+	}
+	else {
+		[self performSelector:@selector(autoplaySeek)
+				   withObject:nil
+				   afterDelay:0.25];
+	}
 }
 
 #pragma mark - Table view data source
@@ -260,24 +314,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return;
 	}
 	
-	((AppDelegate*)[UIApplication sharedApplication].delegate).shouldShowNowPlaying = YES;
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
+	
+	[self playTrack:track];
+}
+
+- (void)playTrack:(PhishinTrack *)track {
+	[AppDelegate sharedDelegate].shouldShowNowPlaying = YES;
 	StreamingMusicViewController *newPlayer = [StreamingMusicViewController sharedInstance];
 	
 	NSArray *playlist = [self.show.tracks map:^id(id object) {
 		return [[PhishinStreamingPlaylistItem alloc] initWithTrack:object];
 	}];
-
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
-	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-
+	
 	int startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
 		return track.id == [obj id];
 	}];
 	
 	[newPlayer changePlaylist:playlist
 			andStartFromIndex:startIndex];
-
+	
 	[[AppDelegate sharedDelegate] showNowPlaying];
+	[AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
+	
+	[self setupRightBarButtonItem];
 }
 
 @end
