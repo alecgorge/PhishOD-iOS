@@ -53,12 +53,10 @@
 				[self.tableView reloadData];
 			});
 	    }
-		failure:^(NSError *error)
+		failure:^(PhishTracksStatsError *error)
 		{
-			NSLog(@"%@", error);
-
 			[self.refreshControl endRefreshing];
-			[FailureHandler showAlertWithStatsError:error.userInfo];
+			[FailureHandler showAlertWithStatsError:error];
 		}];
 	}
 	else {

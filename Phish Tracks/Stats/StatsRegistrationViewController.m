@@ -167,21 +167,15 @@
 	{
 		[self.navigationController popViewControllerAnimated:YES];
 	}
-	failure:^(NSError *error)
+	failure:^(PhishTracksStatsError *error)
 	{
-		NSArray *validationErrors = error.userInfo[@"errors"];
-		NSString *alertMessage = [validationErrors count] > 0 ? [validationErrors objectAtIndex:0] : error.userInfo[@"message"];
-//		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
-//													message:alertMessage
-//												   delegate:nil
-//										  cancelButtonTitle:@"OK"
-//										  otherButtonTitles:nil];
-//		[a show];
-		[FailureHandler showErrorAlertWithMessage:alertMessage];
+//		NSArray *validationErrors = error.userInfo[@"errors"];
+//		NSString *alertMessage = [validationErrors count] > 0 ? [validationErrors objectAtIndex:0] : error.userInfo[@"message"];
+		[FailureHandler showAlertWithStatsError:error];
 
-		CLS_LOG(@"[stats] createSession failure error_code=%d message='%@'", error.code, error.userInfo[@"message"]);
-		
-		if (error.code == API_KEY_REQUIRED)
+//		CLS_LOG(@"[stats] createSession failure error_code=%d message='%@'", error.code, error.userInfo[@"message"]);
+
+		if (error.code == kStatsApiKeyRequired)
 			[self.navigationController popViewControllerAnimated:YES];
 	}];
 }

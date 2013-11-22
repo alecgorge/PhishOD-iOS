@@ -136,6 +136,7 @@
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
 		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
 		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
+		C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */; };
 		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
 		C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */; };
 		C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */; };
@@ -346,6 +347,8 @@
 		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
 		C54ED74818201FF8007D4261 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; usesTabs = 1; };
+		C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsError.h; path = Stats/PhishTracksStatsError.h; sourceTree = "<group>"; };
+		C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsError.m; path = Stats/PhishTracksStatsError.m; sourceTree = "<group>"; };
 		C5D128B1183EB78200E00ED8 /* StatsQueries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsQueries.h; path = Stats/StatsQueries.h; sourceTree = "<group>"; };
 		C5D128B2183EB78200E00ED8 /* StatsQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsQueries.m; path = Stats/StatsQueries.m; sourceTree = "<group>"; };
 		C5E62D2218394BA000A84114 /* StatsEditSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsEditSessionViewController.h; path = Stats/StatsEditSessionViewController.h; sourceTree = "<group>"; };
@@ -882,6 +885,8 @@
 				7CACD4F117A4584900E84B28 /* Models */,
 				7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */,
 				7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */,
+				C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */,
+				C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */,
 			);
 			name = "PhishTracks Stats";
 			sourceTree = "<group>";
@@ -1127,6 +1132,7 @@
 				C5E62D30183DAFBF00A84114 /* UserTopTracksViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
 				C5E62D35183E5F4500A84114 /* RankingTableViewCell.m in Sources */,
+				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

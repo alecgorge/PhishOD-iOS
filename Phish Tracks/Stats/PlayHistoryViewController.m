@@ -37,17 +37,16 @@
 	    {
 			playEvents =  plays;
 			self.title = [NSString stringWithFormat:@"%@'s Play History", [PhishTracksStats sharedInstance].username];
-//			NSLog(@"%@", result);
 
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[super refresh:sender];
 				[self.tableView reloadData];
 			});
 	    }
-		failure:^(NSError *error)
+		failure:^(PhishTracksStatsError *error)
 		{
-			NSLog(@"%@", error);
-			REQUEST_FAILED(self.tableView);
+			[self.refreshControl endRefreshing];
+			[FailureHandler showAlertWithStatsError:error];
 		}];
 	}
 	else {
@@ -119,7 +118,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == 0) {
+	if (playEvents && section == 0) {
 		return [NSString stringWithFormat:@"Last %ld plays", (long)playEvents.count];
 	}
 	return nil;

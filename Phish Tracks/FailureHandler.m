@@ -25,10 +25,10 @@
 	};
 }
 
-+ (void)showAlertWithStatsError:(NSDictionary *)statsErrorDict
++ (void)showAlertWithStatsError:(PhishTracksStatsError *)statsError
 {
-	[FailureHandler showErrorAlertWithMessage:[NSString stringWithFormat:@"%@ (err# %@)",
-											   statsErrorDict[@"message"], statsErrorDict[@"error_code"]]];
+	[FailureHandler showErrorAlertWithMessage:[NSString stringWithFormat:@"%@",
+											   [statsError primaryErrorMessage]]];
 }
 
 + (void)showErrorAlertWithMessage:(NSString *)message

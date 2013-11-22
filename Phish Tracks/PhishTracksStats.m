@@ -11,16 +11,6 @@
 #import "Configuration.h"
 #import <FXKeychain/FXKeychain.h>
 
-#define FAILURE_RESPONSE_BODY_JSON(error) ( \
-	[[NSJSONSerialization JSONObjectWithData:  \
-		[error.userInfo[@"NSLocalizedRecoverySuggestion"] dataUsingEncoding:NSUTF8StringEncoding]  \
-	options:0                 \
-	error:nil] mutableCopy]  \
-)
-
-#define STATS_LOG_API_ERROR(respJson) (CLSLog(@"[stats] api error. error_code=%@ message='%@'", respJson[@"error_code"], respJson[@"message"]))
-
-
 @implementation PhishTracksStats
 
 static PhishTracksStats *sharedPts;
@@ -39,7 +29,7 @@ static PhishTracksStats *sharedPts;
 
     static dispatch_once_t once;
     dispatch_once(&once, ^ {
-		NSLog(@"PhishTracksStats: configuration=%@ base_url=%@", [Configuration configuration], [Configuration statsApiBaseUrl]);
+		NSLog(@"[stats] configuration=%@ base_url=%@", [Configuration configuration], [Configuration statsApiBaseUrl]);
 		sharedPts = [[self alloc] initWithBaseURL:[NSURL URLWithString: [Configuration statsApiBaseUrl]]];
 		sharedPts.parameterEncoding = AFJSONParameterEncoding;
 	});
@@ -55,6 +45,10 @@ static PhishTracksStats *sharedPts;
 		self.isAuthenticated = self.sessionKey != nil;
 
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
+
+//		[self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+//			CLSLog(@"[stats] reachability status=%ld", (long)status);
+//		}];
 	}
 	return self;
 }
@@ -65,17 +59,11 @@ static PhishTracksStats *sharedPts;
 	return [super requestWithMethod:method path:path parameters:parameters];
 }
 
-//- (void)setAuthHeader {
-//	[self setAuthorizationHeaderWithUsername:self.apiKey password:(self.sessionKey ? self.sessionKey : @"")];
-//}
-
-//- (NSString *)username {
-//	return [FXKeychain defaultKeychain][@"phishtracksstats_username"];
-//}
-
-//- (void)setUsername:(NSString *)username {
-//	[FXKeychain defaultKeychain][@"phishtracksstats_username"] = username;
-//}
+- (id)parseResponseObject:(id)responseObject error:(NSError *)error
+{
+	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+	return dict;
+}
 
 - (void)setLocalSessionWithUsername:(NSString *)username userId:(NSInteger)userId sessionKey:(NSString *)sessionKey
 {
@@ -104,12 +92,41 @@ static PhishTracksStats *sharedPts;
 	[[FXKeychain defaultKeychain] removeObjectForKey:@"phishtracksstats_userid"];
 }
 
+- (void)handleRequestFailure:(AFHTTPRequestOperation *)operation error:(NSError *)error failureCallback:(void (^)(PhishTracksStatsError *))failure
+{
+	if (!failure)
+		return;
+
+	PhishTracksStatsError *statsError = nil;
+	NSHTTPURLResponse *resp = operation.response;
+
+	if (resp) {
+		NSDictionary *responseDict = [self parseJsonString:operation.responseString];
+		statsError = [PhishTracksStatsError errorWithStatsErrorDictionary:responseDict httpStatus:resp.statusCode];
+		CLS_LOG(@"[stats] api error. http_status=%ld api_error_code=%ld api_message='%@'",
+				 (long)statsError.httpStatus, (long)statsError.apiErrorCode, statsError.apiErrorMessage);
+	}
+	else {
+		statsError = [PhishTracksStatsError errorWithError:error];
+		CLS_LOG(@"[stats] non-api request error. response was null. error=%@", statsError);
+	}
+
+	failure(statsError);
+}
+
+- (id)parseJsonString:(NSString *)jsonString
+{
+	NSData *d = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+	return [NSJSONSerialization JSONObjectWithData:d options:NSJSONReadingMutableContainers error:nil];
+}
+
 - (void)checkSessionKey:(NSString *)sessionKey
 {
 //	@"check_session_key.json"
 }
 
-- (void)createSession:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *error))failure;
+- (void)createSession:(NSString *)username password:(NSString *)password
+success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
 {
 	[self postPath:@"sessions.json"
 		parameters:@{ @"login": username, @"password": password }
@@ -125,19 +142,13 @@ static PhishTracksStats *sharedPts;
 		   }
 		   failure:^(AFHTTPRequestOperation *operation, NSError *error)
 	       {
-			   if (failure) {
-				   NSMutableDictionary * respJson = FAILURE_RESPONSE_BODY_JSON(error);
-				   [self clearLocalSession];
-				   int errorCode = [respJson[@"error_code"] integerValue];
-
-				   STATS_LOG_API_ERROR(respJson);
-
-				   failure([NSError errorWithDomain:@"stats" code:errorCode userInfo:respJson]);
-			   }
+			   [self clearLocalSession];
+			   [self handleRequestFailure:operation error:error failureCallback:failure];
 		   }];
 }
 
-- (void)createRegistration:(NSString *)username email:(NSString *)email password:(NSString *)password success:(void (^)())success failure:(void (^)(NSError *))failure
+- (void)createRegistration:(NSString *)username email:(NSString *)email password:(NSString *)password
+success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self postPath:@"registrations.json"
 		parameters:@{ @"user": @{ @"username": username, @"email": email, @"password": password } }
@@ -153,18 +164,13 @@ static PhishTracksStats *sharedPts;
 		   }
 		   failure:^(AFHTTPRequestOperation *operation, NSError *error)
            {
-			   if (failure) {
-				   NSMutableDictionary * respJson = FAILURE_RESPONSE_BODY_JSON(error);
-				   [self clearLocalSession];
-				   int errorCode = [respJson[@"error_code"] integerValue];
-				   STATS_LOG_API_ERROR(respJson);
-				   failure([NSError errorWithDomain:@"stats" code:errorCode userInfo:respJson]);
-			   }
+			   [self clearLocalSession];
+			   [self handleRequestFailure:operation error:error failureCallback:failure];
 		   }];
 
 }
 
-- (void)createPlayedTrack:(PhishinTrack *)track success:(void (^)())success failure:(void (^)(NSError *error))failure
+- (void)createPlayedTrack:(PhishinTrack *)track success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
 {
 	NSDictionary *params = @{ @"track": @{
 									  @"id": [NSNumber numberWithInt: track.id],
@@ -182,18 +188,12 @@ static PhishTracksStats *sharedPts;
 		   }
 		   failure:^(AFHTTPRequestOperation *operation, NSError *error)
 	       {
-			   if (failure) {
-				   NSMutableDictionary * respJson = FAILURE_RESPONSE_BODY_JSON(error);
-				   [respJson setObject:[NSNumber numberWithInt:operation.response.statusCode] forKey:@"http_status"];
-				   int errorCode = [respJson[@"error_code"] integerValue];
-				   STATS_LOG_API_ERROR(respJson);
-				   failure([NSError errorWithDomain:@"stats" code:errorCode userInfo:respJson]);
-			   }
+			   [self handleRequestFailure:operation error:error failureCallback:failure];
 		   }];
 }
 
 - (void)statsHelperWithPath:(NSString *)path statsQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(NSError *))failure
+        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	NSDictionary *params = [statsQuery asParams];
 	
@@ -202,26 +202,22 @@ static PhishTracksStats *sharedPts;
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
 			   if (operation.response.statusCode == 200 && success) {
-				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+//				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+				   NSError *error = nil;
+				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
 				   PhishTracksStatsQueryResults *result = [[PhishTracksStatsQueryResults alloc] initWithDict:dict];
 				   success(result);
 			   }
 		   }
 		   failure:^(AFHTTPRequestOperation *operation, NSError *error)
 	       {
-			   if (failure) {
-				   NSMutableDictionary * respJson = FAILURE_RESPONSE_BODY_JSON(error);
-				   [respJson setObject:[NSNumber numberWithInt:operation.response.statusCode] forKey:@"http_status"];
-				   int errorCode = [respJson[@"error_code"] integerValue];
-				   STATS_LOG_API_ERROR(respJson);
-				   failure([NSError errorWithDomain:@"stats" code:errorCode userInfo:respJson]);
-			   }
+			   [self handleRequestFailure:operation error:error failureCallback:failure];
 		   }];
 
 }
 
 - (void)userStatsWithUserId:(NSInteger)userId statsQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(NSError *))failure
+        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self statsHelperWithPath:[NSString stringWithFormat:@"users/%@/plays/stats.json", [@(userId) stringValue]]
 				   statsQuery:statsQuery
@@ -230,7 +226,7 @@ static PhishTracksStats *sharedPts;
 }
 
 - (void)globalStatsWithQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(NSError *))failure
+        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self statsHelperWithPath:@"plays/stats.json"
 				   statsQuery:statsQuery
@@ -239,7 +235,7 @@ static PhishTracksStats *sharedPts;
 }
 
 - (void)playHistoryHelperWithPath:(NSString *)path limit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(NSError *))failure
+        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self  getPath:path
 		parameters:@{ @"limit": [NSNumber numberWithInteger:limit], @"offset": [NSNumber numberWithInteger:offset] }
@@ -248,27 +244,21 @@ static PhishTracksStats *sharedPts;
 			   if (operation.response.statusCode == 200 && success) {
 				   NSArray *playEvents = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
 
-				   playEvents = Underscore.array(playEvents).map(^ PhishTracksStatsPlayEvent *(NSDictionary *playEvenDict) {
-					   return [[PhishTracksStatsPlayEvent alloc] initWithDict:playEvenDict];
-				   }).unwrap;
+				   playEvents = [playEvents map:^id(id object) {
+					   return [[PhishTracksStatsPlayEvent alloc] initWithDict:object];
+				   }];
 
 				   success(playEvents);
 			   }
 		   }
 		   failure:^(AFHTTPRequestOperation *operation, NSError *error)
 	       {
-			   if (failure) {
-				   NSMutableDictionary * respJson = FAILURE_RESPONSE_BODY_JSON(error);
-				   [respJson setObject:[NSNumber numberWithInt:operation.response.statusCode] forKey:@"http_status"];
-				   int errorCode = [respJson[@"error_code"] integerValue];
-				   STATS_LOG_API_ERROR(respJson);
-				   failure([NSError errorWithDomain:@"stats" code:errorCode userInfo:respJson]);
-			   }
+			   [self handleRequestFailure:operation error:error failureCallback:failure];
 		   }];
 }
 
 - (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(NSError *))failure
+        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self playHistoryHelperWithPath:[NSString stringWithFormat:@"users/%@/plays.json", [@(userId) stringValue]]
 							  limit:limit
@@ -278,7 +268,7 @@ static PhishTracksStats *sharedPts;
 }
 
 - (void)globalPlayHistoryWithLimit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(NSError *))failure
+        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self playHistoryHelperWithPath:@"plays.json"
 							  limit:limit

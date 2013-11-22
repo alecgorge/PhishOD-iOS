@@ -11,6 +11,4 @@
 
 @interface UserTopTracksViewController : BaseStatsViewController
 
-- (id)init;
-
 @end

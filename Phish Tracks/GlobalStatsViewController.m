@@ -32,7 +32,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-//	self.title = @"Global Stats";
 }
 
 - (void)refresh:(id)sender {
@@ -47,10 +46,10 @@
 				[self.tableView reloadData];
 			});
 	    }
-		failure:^(NSError *error)
+		failure:^(PhishTracksStatsError *error)
 		{
-			NSLog(@"%@", error);
-			REQUEST_FAILED(self.tableView);
+			[self.refreshControl endRefreshing];
+			[FailureHandler showAlertWithStatsError:error];
 		}];
 	}
 	else {
@@ -123,13 +122,12 @@
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-//	if(indexPath.section == 1) {
-//		PhishTracksStatsPlayEvent *item = self.history[indexPath.row];
-//		PhishinShow *show = [[PhishinShow alloc] init];
-//		show.date = item.showDate;
-//		[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
-//											 animated:YES];
-//	}
+	if(indexPath.section == 1) {
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:(queryResults.scalarStatCount - 1 + indexPath.section)];
+		PhishTracksStatsPlayEvent *play = [stat.value objectAtIndex:indexPath.row];
+		[self.navigationController pushViewController:[[ShowViewController alloc] initWithShowDate:play.showDate]
+											 animated:YES];
+	}
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
