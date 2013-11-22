@@ -169,12 +169,12 @@ static PhishTracksStats *sharedPts;
 
 - (void)createPlayedTrack:(PhishinTrack *)track success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
 {
-	NSDictionary *params = @{ @"track": @{
-									  @"id": [NSNumber numberWithInt: track.id],
-									  @"slug": track.slug,
+	NSDictionary *params = @{ @"play_event": @{
+									  @"track_id": [NSNumber numberWithInt: track.id],
+									  @"track_slug": track.slug,
 									  @"show_id": [NSNumber numberWithInt: track.show.id],
-									  @"show_date": track.show.date },
-							  @"streaming_site": @"phishin" };
+									  @"show_date": track.show.date,
+									  @"streaming_site": @"phishin" } };
 
 	[self postPath:@"plays.json"
 		parameters:params
