@@ -630,13 +630,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		
 		self.trackHasBeenScrobbled = YES;
 
-		[[PhishTracksStats sharedInstance] createPlayedTrack:((PhishinStreamingPlaylistItem *) self.currentItem).track success:nil
-		    failure:^(NSError *error) {
-			    if (error) {
-					CLS_LOG(@"[stats] createPlayedTrack failure http_status=%@ error_code=%d message='%@'", error.userInfo[@"http_status"],
-							error.code, error.userInfo[@"message"]);
-			    }
-		    }];
+		// This is not a silent failure because failures are logged by the stats client before the callbacks are run.
+		[[PhishTracksStats sharedInstance] createPlayedTrack:((PhishinStreamingPlaylistItem *) self.currentItem).track success:nil failure:nil];
+//		    failure:^(NSError *error) {
+//			    if (error) {
+//					CLS_LOG(@"[stats] createPlayedTrack failure http_status=%@ error_code=%d message='%@'", error.userInfo[@"http_status"],
+//							error.code, error.userInfo[@"message"]);
+//			    }
+//		    }];
 	}
 	
 	[[AppDelegate sharedDelegate].menuPanel updateNowPlayingWithStreamingPlaylistItem:self.currentItem];

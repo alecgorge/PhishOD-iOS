@@ -39,7 +39,7 @@ typedef enum {
 @property NSString *username;
 @property NSInteger userId;
 
-- (void)checkSessionKey:(NSString *)sessionKey;
+//- (void)checkSessionKey:(NSString *)sessionKey;
 
 - (void)createSession:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 

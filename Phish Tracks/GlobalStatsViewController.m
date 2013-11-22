@@ -35,27 +35,21 @@
 }
 
 - (void)refresh:(id)sender {
-	if([PhishTracksStats sharedInstance].isAuthenticated) {
-		[[PhishTracksStats sharedInstance] globalStatsWithQuery:query
-		success:^(PhishTracksStatsQueryResults *result)
-	    {
-			queryResults = result;
+	[[PhishTracksStats sharedInstance] globalStatsWithQuery:query
+	success:^(PhishTracksStatsQueryResults *result)
+	{
+		queryResults = result;
 
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[super refresh:sender];
-				[self.tableView reloadData];
-			});
-	    }
-		failure:^(PhishTracksStatsError *error)
-		{
-			[self.refreshControl endRefreshing];
-			[FailureHandler showAlertWithStatsError:error];
-		}];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[super refresh:sender];
+			[self.tableView reloadData];
+		});
 	}
-	else {
-		[super refresh:sender];
-		[self.tableView reloadData];
-	}
+	failure:^(PhishTracksStatsError *error)
+	{
+		[self.refreshControl endRefreshing];
+		[FailureHandler showAlertWithStatsError:error];
+	}];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

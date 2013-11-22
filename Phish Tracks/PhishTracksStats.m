@@ -19,7 +19,6 @@ static PhishTracksStats *sharedPts;
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
 //	NSLog(@"[stats] stats loaded with apikey=%@ sessionkey=%@", [PhishTracksStats sharedInstance].apiKey, [PhishTracksStats sharedInstance].sessionKey);
-//	[sharedPts setAuthHeader];
 }
 
 + (PhishTracksStats*)sharedInstance {
@@ -45,10 +44,6 @@ static PhishTracksStats *sharedPts;
 		self.isAuthenticated = self.sessionKey != nil;
 
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
-
-//		[self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-//			CLSLog(@"[stats] reachability status=%ld", (long)status);
-//		}];
 	}
 	return self;
 }
@@ -57,12 +52,6 @@ static PhishTracksStats *sharedPts;
 {
 	[self setAuthorizationHeaderWithUsername:self.apiKey password:(self.sessionKey ? self.sessionKey : @"")];
 	return [super requestWithMethod:method path:path parameters:parameters];
-}
-
-- (id)parseResponseObject:(id)responseObject error:(NSError *)error
-{
-	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
-	return dict;
 }
 
 - (void)setLocalSessionWithUsername:(NSString *)username userId:(NSInteger)userId sessionKey:(NSString *)sessionKey
@@ -117,23 +106,30 @@ static PhishTracksStats *sharedPts;
 - (id)parseJsonString:(NSString *)jsonString
 {
 	NSData *d = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-	return [NSJSONSerialization JSONObjectWithData:d options:NSJSONReadingMutableContainers error:nil];
+	return [self parseResponseObject:d error:nil];
 }
 
-- (void)checkSessionKey:(NSString *)sessionKey
+- (id)parseResponseObject:(id)responseObject error:(NSError *)error
 {
-//	@"check_session_key.json"
+	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+	return dict;
 }
+
+//- (void)checkSessionKey:(NSString *)sessionKey
+//{
+//	@"check_session_key.json"
+//}
 
 - (void)createSession:(NSString *)username password:(NSString *)password
-success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
+			  success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
 {
 	[self postPath:@"sessions.json"
 		parameters:@{ @"login": username, @"password": password }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
 			   if (operation.response.statusCode == 201) {
-				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+				   NSError *error = nil;
+				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
 				   [self setLocalSessionWithUsername:dict[@"username"] userId:[dict[@"user_id"] integerValue] sessionKey:dict[@"session_key"]];
 
 				   if (success)
@@ -148,14 +144,15 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))fail
 }
 
 - (void)createRegistration:(NSString *)username email:(NSString *)email password:(NSString *)password
-success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
+				   success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self postPath:@"registrations.json"
 		parameters:@{ @"user": @{ @"username": username, @"email": email, @"password": password } }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
            {
 			   if (operation.response.statusCode == 201) {
-				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+				   NSError *error = nil;
+				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
 				   [self setLocalSessionWithUsername:dict[@"username"] userId:[dict[@"user_id"] integerValue] sessionKey:dict[@"session_key"]];
 
 				   if (success)
@@ -193,7 +190,7 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)statsHelperWithPath:(NSString *)path statsQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
+					success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	NSDictionary *params = [statsQuery asParams];
 	
@@ -202,7 +199,6 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
 			   if (operation.response.statusCode == 200 && success) {
-//				   NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
 				   NSError *error = nil;
 				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
 				   PhishTracksStatsQueryResults *result = [[PhishTracksStatsQueryResults alloc] initWithDict:dict];
@@ -217,7 +213,7 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)userStatsWithUserId:(NSInteger)userId statsQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
+					success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self statsHelperWithPath:[NSString stringWithFormat:@"users/%@/plays/stats.json", [@(userId) stringValue]]
 				   statsQuery:statsQuery
@@ -226,7 +222,7 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)globalStatsWithQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
+					 success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self statsHelperWithPath:@"plays/stats.json"
 				   statsQuery:statsQuery
@@ -235,14 +231,15 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)playHistoryHelperWithPath:(NSString *)path limit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
+						  success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self  getPath:path
 		parameters:@{ @"limit": [NSNumber numberWithInteger:limit], @"offset": [NSNumber numberWithInteger:offset] }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
 			   if (operation.response.statusCode == 200 && success) {
-				   NSArray *playEvents = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+				   NSError *error = nil;
+				   NSArray *playEvents = [self parseResponseObject:responseObject error:error];
 
 				   playEvents = [playEvents map:^id(id object) {
 					   return [[PhishTracksStatsPlayEvent alloc] initWithDict:object];
@@ -258,7 +255,7 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
+						  success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self playHistoryHelperWithPath:[NSString stringWithFormat:@"users/%@/plays.json", [@(userId) stringValue]]
 							  limit:limit
@@ -268,7 +265,7 @@ success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 }
 
 - (void)globalPlayHistoryWithLimit:(NSInteger)limit offset:(NSInteger)offset
-        success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
+						   success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
 	[self playHistoryHelperWithPath:@"plays.json"
 							  limit:limit

@@ -40,8 +40,9 @@ static NSDictionary *stats;
 	else if (name == kGlobalAllTime) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"track" timeframe:@"all_time"];
 		[query addStatWithName:@"play_count"];
-		[query addStatWithName:@"unique_count"];
 		[query addStatWithName:@"total_time_formatted"];
+		[query addStatWithName:@"unique_count"];
+		[query addStatWithName:@"track_count"];
 		[query addStatWithName:@"catalog_progress"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
