@@ -82,7 +82,6 @@
 		7C84C260182A1F370028F7B3 /* Default-Landscape-iOS7~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C84C25C182A1F370028F7B3 /* Default-Landscape-iOS7~ipad.png */; };
 		7C84C261182A1F370028F7B3 /* Default-Portrait-iOS7@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C84C25D182A1F370028F7B3 /* Default-Portrait-iOS7@2x~ipad.png */; };
 		7C84C262182A1F370028F7B3 /* Default-Portrait-iOS7~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C84C25E182A1F370028F7B3 /* Default-Portrait-iOS7~ipad.png */; };
-		7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */; };
 		7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */; };
 		7CACD4FB17A45BD300E84B28 /* 17-bar-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */; };
 		7CACD4FC17A45BD300E84B28 /* 17-bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CACD4FA17A45BD300E84B28 /* 17-bar-chart@2x.png */; };
@@ -137,6 +136,19 @@
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
 		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
 		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
+		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
+		C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */; };
+		C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */; };
+		C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */; };
+		C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */; };
+		C5E62D30183DAFBF00A84114 /* UserTopTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2F183DAFBF00A84114 /* UserTopTracksViewController.m */; };
+		C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */; };
+		C5E62D35183E5F4500A84114 /* RankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D34183E5F4500A84114 /* RankingTableViewCell.m */; };
+		C5E62D38183E6D1A00A84114 /* PlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D37183E6D1A00A84114 /* PlayHistoryViewController.m */; };
+		C5E62D3B183E893B00A84114 /* BaseStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D3A183E893B00A84114 /* BaseStatsViewController.m */; };
+		C5E62D3E183E8CC300A84114 /* PlayHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D3D183E8CC300A84114 /* PlayHistoryTableViewCell.m */; };
+		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
+		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
 		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -255,8 +267,7 @@
 		7C84C25C182A1F370028F7B3 /* Default-Landscape-iOS7~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-iOS7~ipad.png"; sourceTree = "<group>"; };
 		7C84C25D182A1F370028F7B3 /* Default-Portrait-iOS7@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-iOS7@2x~ipad.png"; sourceTree = "<group>"; };
 		7C84C25E182A1F370028F7B3 /* Default-Portrait-iOS7~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-iOS7~ipad.png"; sourceTree = "<group>"; };
-		7CACD4F217A4585C00E84B28 /* PhishTracksStatsHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsHistoryItem.h; sourceTree = "<group>"; };
-		7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsHistoryItem.m; sourceTree = "<group>"; };
+		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD4F617A45AFC00E84B28 /* PhishTracksStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsViewController.h; sourceTree = "<group>"; };
 		7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsViewController.m; sourceTree = "<group>"; };
 		7CACD4F917A45BD300E84B28 /* 17-bar-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17-bar-chart.png"; sourceTree = "<group>"; };
@@ -335,6 +346,31 @@
 		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
 		C54ED74818201FF8007D4261 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; usesTabs = 1; };
+		C5D128B1183EB78200E00ED8 /* StatsQueries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsQueries.h; path = Stats/StatsQueries.h; sourceTree = "<group>"; };
+		C5D128B2183EB78200E00ED8 /* StatsQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsQueries.m; path = Stats/StatsQueries.m; sourceTree = "<group>"; };
+		C5E62D2218394BA000A84114 /* StatsEditSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsEditSessionViewController.h; path = Stats/StatsEditSessionViewController.h; sourceTree = "<group>"; };
+		C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsEditSessionViewController.m; path = Stats/StatsEditSessionViewController.m; sourceTree = "<group>"; };
+		C5E62D25183D58C000A84114 /* PhishTracksStatsQueryResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsQueryResults.h; path = Stats/PhishTracksStatsQueryResults.h; sourceTree = "<group>"; };
+		C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsQueryResults.m; path = Stats/PhishTracksStatsQueryResults.m; sourceTree = "<group>"; };
+		C5E62D28183D5D9E00A84114 /* PhishTracksStatsQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsQuery.h; path = Stats/PhishTracksStatsQuery.h; sourceTree = "<group>"; };
+		C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsQuery.m; path = Stats/PhishTracksStatsQuery.m; sourceTree = "<group>"; };
+		C5E62D2B183DA14F00A84114 /* PhishTracksStatsStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsStat.h; path = Stats/PhishTracksStatsStat.h; sourceTree = "<group>"; };
+		C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsStat.m; path = Stats/PhishTracksStatsStat.m; sourceTree = "<group>"; };
+		C5E62D2E183DAFBF00A84114 /* UserTopTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTopTracksViewController.h; path = Stats/UserTopTracksViewController.h; sourceTree = "<group>"; };
+		C5E62D2F183DAFBF00A84114 /* UserTopTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTopTracksViewController.m; path = Stats/UserTopTracksViewController.m; sourceTree = "<group>"; };
+		C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsPlayEvent.m; sourceTree = "<group>"; };
+		C5E62D33183E5F4500A84114 /* RankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingTableViewCell.h; path = Stats/RankingTableViewCell.h; sourceTree = "<group>"; };
+		C5E62D34183E5F4500A84114 /* RankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingTableViewCell.m; path = Stats/RankingTableViewCell.m; sourceTree = "<group>"; };
+		C5E62D36183E6D1A00A84114 /* PlayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHistoryViewController.h; path = Stats/PlayHistoryViewController.h; sourceTree = "<group>"; };
+		C5E62D37183E6D1A00A84114 /* PlayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayHistoryViewController.m; path = Stats/PlayHistoryViewController.m; sourceTree = "<group>"; };
+		C5E62D39183E893B00A84114 /* BaseStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseStatsViewController.h; path = Stats/BaseStatsViewController.h; sourceTree = "<group>"; };
+		C5E62D3A183E893B00A84114 /* BaseStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseStatsViewController.m; path = Stats/BaseStatsViewController.m; sourceTree = "<group>"; };
+		C5E62D3C183E8CC300A84114 /* PlayHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHistoryTableViewCell.h; path = Stats/PlayHistoryTableViewCell.h; sourceTree = "<group>"; };
+		C5E62D3D183E8CC300A84114 /* PlayHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayHistoryTableViewCell.m; path = Stats/PlayHistoryTableViewCell.m; sourceTree = "<group>"; };
+		C5FB5F6818387F4B004AAB91 /* StatsNewSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsNewSessionViewController.h; path = Stats/StatsNewSessionViewController.h; sourceTree = "<group>"; };
+		C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsNewSessionViewController.m; path = Stats/StatsNewSessionViewController.m; sourceTree = "<group>"; };
+		C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsRegistrationViewController.h; path = Stats/StatsRegistrationViewController.h; sourceTree = "<group>"; };
+		C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsRegistrationViewController.m; path = Stats/StatsRegistrationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,6 +559,12 @@
 			children = (
 				7C518C54175DCEDD005EB2E7 /* SettingsViewController.h */,
 				7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */,
+				C5FB5F6818387F4B004AAB91 /* StatsNewSessionViewController.h */,
+				C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */,
+				C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */,
+				C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */,
+				C5E62D2218394BA000A84114 /* StatsEditSessionViewController.h */,
+				C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */,
 			);
 			name = "Settings Tab";
 			sourceTree = "<group>";
@@ -715,8 +757,16 @@
 		7CACD4F117A4584900E84B28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7CACD4F217A4585C00E84B28 /* PhishTracksStatsHistoryItem.h */,
-				7CACD4F317A4585C00E84B28 /* PhishTracksStatsHistoryItem.m */,
+				7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */,
+				C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */,
+				C5E62D25183D58C000A84114 /* PhishTracksStatsQueryResults.h */,
+				C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */,
+				C5E62D28183D5D9E00A84114 /* PhishTracksStatsQuery.h */,
+				C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */,
+				C5E62D2B183DA14F00A84114 /* PhishTracksStatsStat.h */,
+				C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */,
+				C5D128B1183EB78200E00ED8 /* StatsQueries.h */,
+				C5D128B2183EB78200E00ED8 /* StatsQueries.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -730,6 +780,16 @@
 				7CACD4F717A45AFC00E84B28 /* PhishTracksStatsViewController.m */,
 				7CACD4FD17A4658700E84B28 /* GlobalStatsViewController.h */,
 				7CACD4FE17A4658700E84B28 /* GlobalStatsViewController.m */,
+				C5E62D2E183DAFBF00A84114 /* UserTopTracksViewController.h */,
+				C5E62D2F183DAFBF00A84114 /* UserTopTracksViewController.m */,
+				C5E62D33183E5F4500A84114 /* RankingTableViewCell.h */,
+				C5E62D34183E5F4500A84114 /* RankingTableViewCell.m */,
+				C5E62D36183E6D1A00A84114 /* PlayHistoryViewController.h */,
+				C5E62D37183E6D1A00A84114 /* PlayHistoryViewController.m */,
+				C5E62D39183E893B00A84114 /* BaseStatsViewController.h */,
+				C5E62D3A183E893B00A84114 /* BaseStatsViewController.m */,
+				C5E62D3C183E8CC300A84114 /* PlayHistoryTableViewCell.h */,
+				C5E62D3D183E8CC300A84114 /* PlayHistoryTableViewCell.m */,
 			);
 			name = "Stats Tab";
 			sourceTree = "<group>";
@@ -1000,12 +1060,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */,
+				C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */,
 				7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */,
 				7CB97EC21805E289004A43EE /* ToursViewController.m in Sources */,
 				7C7ED3881800D27A004F55DF /* MenuPanel.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
+				C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */,
 				7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */,
 				7C60302E18206B320088F651 /* RandomShowViewController.m in Sources */,
+				C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */,
 				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
@@ -1017,8 +1081,12 @@
 				7C7ED3A31801B0FF004F55DF /* MapPoint.m in Sources */,
 				7C518C26175D1170005EB2E7 /* PhishTracksAPI.m in Sources */,
 				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
+				C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */,
+				C5E62D3E183E8CC300A84114 /* PlayHistoryTableViewCell.m in Sources */,
 				7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */,
+				C5E62D3B183E893B00A84114 /* BaseStatsViewController.m in Sources */,
 				7C518C29175D1386005EB2E7 /* PhishYear.m in Sources */,
+				C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */,
 				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
 				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
 				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
@@ -1036,13 +1104,14 @@
 				7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */,
 				7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */,
 				7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */,
-				7CACD4F417A4585C00E84B28 /* PhishTracksStatsHistoryItem.m in Sources */,
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
 				7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */,
 				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
+				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
+				C5E62D38183E6D1A00A84114 /* PlayHistoryViewController.m in Sources */,
 				7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
 				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
@@ -1054,7 +1123,10 @@
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
+				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
+				C5E62D30183DAFBF00A84114 /* UserTopTracksViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
+				C5E62D35183E5F4500A84114 /* RankingTableViewCell.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,7 @@
 #import "FailureHandler.h"
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Underscore.h>
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <CKRefreshControl/CKRefreshControl.h>

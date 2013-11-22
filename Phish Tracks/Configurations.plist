@@ -4,23 +4,23 @@
 <dict>
 	<key>Development</key>
 	<dict>
-		<key>PTSApiKey</key>
+		<key>StatsApiKey</key>
 		<string>093170ddfbf3ee44f5ae0973b1f45cc3</string>
-		<key>PTSApiBaseUrl</key>
+		<key>StatsApiBaseUrl</key>
 		<string>http://localhost:5000/api/v2/</string>
 	</dict>
 	<key>Debug</key>
 	<dict>
-		<key>PTSApiKey</key>
+		<key>StatsApiKey</key>
 		<string></string>
-		<key>PTSApiBaseUrl</key>
+		<key>StatsApiBaseUrl</key>
 		<string>https://www.phishtrackstats.com/api/</string>
 	</dict>
 	<key>Release</key>
 	<dict>
-		<key>PTSApiKey</key>
+		<key>StatsApiKey</key>
 		<string></string>
-		<key>PTSApiBaseUrl</key>
+		<key>StatsApiBaseUrl</key>
 		<string>https://www.phishtrackstats.com/api/</string>
 	</dict>
 </dict>

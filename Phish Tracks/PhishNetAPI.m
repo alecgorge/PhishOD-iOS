@@ -57,8 +57,8 @@
 	[self getPath:@"/api.json"
 	   parameters:margs
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
-												 encoding:NSUTF8StringEncoding]);
+//			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
+//												 encoding:NSUTF8StringEncoding]);
 			  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
 															 options:0
 															   error:nil];

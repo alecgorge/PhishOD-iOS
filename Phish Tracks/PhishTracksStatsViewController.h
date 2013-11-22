@@ -11,7 +11,6 @@
 
 @interface PhishTracksStatsViewController : RefreshableTableViewController
 
-@property NSDictionary *stats;
-@property NSArray *history;
+//- (id)init;
 
 @end

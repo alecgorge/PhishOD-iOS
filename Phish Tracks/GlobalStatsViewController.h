@@ -6,11 +6,10 @@
 //  Copyright (c) 2013 Alec Gorge. All rights reserved.
 //
 
-#import "RefreshableTableViewController.h"
+#import "BaseStatsViewController.h"
 
-@interface GlobalStatsViewController : RefreshableTableViewController
+@interface GlobalStatsViewController : BaseStatsViewController
 
-@property NSDictionary *stats;
-@property NSArray *history;
+- (id)initWithTitle:(NSString *)title andStatsQuery:(PhishTracksStatsQuery *)statsQuery;
 
 @end

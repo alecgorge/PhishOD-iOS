@@ -25,4 +25,20 @@
 	};
 }
 
++ (void)showAlertWithStatsError:(NSDictionary *)statsErrorDict
+{
+	[FailureHandler showErrorAlertWithMessage:[NSString stringWithFormat:@"%@ (err# %@)",
+											   statsErrorDict[@"message"], statsErrorDict[@"error_code"]]];
+}
+
++ (void)showErrorAlertWithMessage:(NSString *)message
+{
+	UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
+												message:message
+											   delegate:nil
+									  cancelButtonTitle:@"OK"
+									  otherButtonTitles:nil];
+	[a show];
+}
+
 @end

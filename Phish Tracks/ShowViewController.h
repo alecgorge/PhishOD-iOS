@@ -23,5 +23,6 @@
 @property (nonatomic) NSTimeInterval autoplaySeekLocation;
 
 - (id)initWithShow:(PhishinShow*) s;
+- (id)initWithShowDate:(NSString *)showDate;
 
 @end

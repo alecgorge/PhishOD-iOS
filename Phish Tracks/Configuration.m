@@ -10,8 +10,8 @@
 
 #import "Configuration.h"
 
-#define ConfigurationPTSApiBaseUrl @"PTSApiBaseUrl"
-#define ConfigurationPTSApiKey @"PTSApiKey"
+#define ConfigurationStatsApiBaseUrl @"StatsApiBaseUrl"
+#define ConfigurationStatsApiKey @"StatsApiKey"
 
 @interface Configuration ()
 @property (copy, nonatomic) NSString *configuration;
@@ -39,13 +39,10 @@
     self = [super init];
 
     if (self) {
-        // Fetch Current Configuration
         NSBundle *mainBundle = [NSBundle mainBundle];
         self.configuration = [[mainBundle infoDictionary] objectForKey:@"Configuration"];
-        // Load Configurations
         NSString *path = [mainBundle pathForResource:@"Configurations" ofType:@"plist"];
         NSDictionary *configurations = [NSDictionary dictionaryWithContentsOfFile:path];
-        // Load Variables for Current Configuration
         self.variables = [configurations objectForKey:self.configuration];
     }
     return self;
@@ -56,21 +53,21 @@
     return [[Configuration sharedConfiguration] configuration];
 }
 
-+ (NSString *)ptsApiKey {
++ (NSString *)statsApiKey {
     Configuration *sharedConfiguration = [Configuration sharedConfiguration];
 
     if (sharedConfiguration.variables) {
-        return [sharedConfiguration.variables objectForKey:ConfigurationPTSApiKey];
+        return [sharedConfiguration.variables objectForKey:ConfigurationStatsApiKey];
     }
 
     return nil;
 }
 
-+ (NSString *)ptsApiBaseUrl {
++ (NSString *)statsApiBaseUrl {
     Configuration *sharedConfiguration = [Configuration sharedConfiguration];
 
     if (sharedConfiguration.variables) {
-        return [sharedConfiguration.variables objectForKey:ConfigurationPTSApiBaseUrl];
+        return [sharedConfiguration.variables objectForKey:ConfigurationStatsApiBaseUrl];
     }
 
     return nil;

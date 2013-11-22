@@ -35,6 +35,13 @@
     return self;
 }
 
+- (id)initWithShowDate:(NSString *)showDate
+{
+	PhishinShow *__show = [[PhishinShow alloc] init];
+	__show.date = showDate;
+	return [self initWithShow:__show];
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	

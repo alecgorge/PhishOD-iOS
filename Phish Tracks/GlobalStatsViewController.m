@@ -2,13 +2,17 @@
 //  GlobalStatsViewController.m
 //  Phish Tracks
 //
+//  This controller assumes the stats query has n>0 scalar stats followed by a ranking stat
+//
 //  Created by Alec Gorge on 7/27/13.
 //  Copyright (c) 2013 Alec Gorge. All rights reserved.
 //
 
 #import "GlobalStatsViewController.h"
 #import "PhishTracksStats.h"
+#import "PhishTracksStatsPlayEvent.h"
 #import "ShowViewController.h"
+#import "RankingTableViewCell.h"
 
 @interface GlobalStatsViewController ()
 
@@ -16,111 +20,133 @@
 
 @implementation GlobalStatsViewController
 
+- (id)initWithTitle:(NSString *)title andStatsQuery:(PhishTracksStatsQuery *)statsQuery
+{
+	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+		self.title = title;
+		query = statsQuery;
+	}
+
+	return self;
+}
+
 - (void)viewDidLoad {
-	self.title = @"Global Stats";
 	[super viewDidLoad];
+//	self.title = @"Global Stats";
 }
 
 - (void)refresh:(id)sender {
-	[[PhishTracksStats sharedInstance] globalStats:^(NSDictionary *stats, NSArray *history) {
-		self.stats = stats;
-		self.history = history;
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[super refresh:sender];
-			[self.tableView reloadData];
-		});
+	if([PhishTracksStats sharedInstance].isAuthenticated) {
+		[[PhishTracksStats sharedInstance] globalStatsWithQuery:query
+		success:^(PhishTracksStatsQueryResults *result)
+	    {
+			queryResults = result;
+
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[super refresh:sender];
+				[self.tableView reloadData];
+			});
+	    }
+		failure:^(NSError *error)
+		{
+			NSLog(@"%@", error);
+			REQUEST_FAILED(self.tableView);
+		}];
 	}
-										   failure:REQUEST_FAILED(self.tableView)];
+	else {
+		[super refresh:sender];
+		[self.tableView reloadData];
+	}
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.stats == nil ? 0 : 2;
-}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	if (queryResults) {
+		return queryResults.nonScalarStatCount + 1;  // All scalar stats are in same group
+	}
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section {
-	if(section == 0) {
-		return 2;
-	}
-	else if(section == 1) {
-		return self.history == nil ? 0 : self.history.count;
-	}
-	
 	return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == 0) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (queryResults) {
+		if(section == 0) {  // scalar stats section, if there are scalar stats
+			return queryResults.scalarStatCount;
+		}
+		else {
+			PhishTracksStatsStat *stat = [queryResults getStatAtIndex:(queryResults.scalarStatCount - 1 + section)];
+			return [stat count];
+		}
+	}
+
+	return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (!queryResults) return nil;
+
+	if (indexPath.section == 0) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"value1Cell"];
 		
 		if(cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-										  reuseIdentifier:@"value1Cell"];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"value1Cell"];
 		}
-		
-		if(indexPath.section == 0 && indexPath.row == 0) {
-			cell.textLabel.text = @"Total Plays";
-			cell.detailTextLabel.text = [self.stats[@"play_count"] stringValue];
-			cell.accessoryType = UITableViewCellAccessoryNone;
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		}
-		else if(indexPath.section == 0 && indexPath.row == 1) {
-			cell.textLabel.text = @"Playback Time";
-			cell.detailTextLabel.text = self.stats[@"total_time_formatted"];
-			cell.accessoryType = UITableViewCellAccessoryNone;
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		}
+
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:indexPath.row];
+
+		cell.textLabel.text = stat.prettyName;
+		cell.detailTextLabel.text = [stat valueAsString];
+		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
 		return cell;
 	}
-	else if(indexPath.section == 1) {
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"subtitleCell"];
+	else {
+		static NSString *cellIdentifier = @"RankingCell";
+		RankingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 		
 		if(cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-										  reuseIdentifier:@"subtitleCell"];
+			cell = [[RankingTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
 		}
-		
-		PhishTracksStatsHistoryItem *item = self.history[indexPath.row];
-		cell.textLabel.text = item.title;
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - Played %@ times", item.showDate, item.playCount];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
+
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:(queryResults.scalarStatCount - 1 + indexPath.section)];
+		PhishTracksStatsPlayEvent *play = [stat.value objectAtIndex:indexPath.row];
+		[cell setPlayEvent:play];
+
 		return cell;
 	}
-	
-	return nil;
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath
-							 animated:YES];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	if(indexPath.section == 1) {
-		PhishTracksStatsHistoryItem *item = self.history[indexPath.row];
-		PhishinShow *show = [[PhishinShow alloc] init];
-		show.date = item.showDate;
-		[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
-											 animated:YES];
-	}
+//	if(indexPath.section == 1) {
+//		PhishTracksStatsPlayEvent *item = self.history[indexPath.row];
+//		PhishinShow *show = [[PhishinShow alloc] init];
+//		show.date = item.showDate;
+//		[self.navigationController pushViewController:[[ShowViewController alloc] initWithShow:show]
+//											 animated:YES];
+//	}
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == 1) {
 		return tableView.rowHeight * 1.3;
 	}
-	
+
 	return UITableViewAutomaticDimension;
 }
 
-- (NSString *)tableView:(UITableView *)tableView
-titleForHeaderInSection:(NSInteger)section {
-	if(section == 1) {
-		return @"Top Tracks";
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (queryResults) {
+		if (section == 1) {
+			return [NSString stringWithFormat:@"Top %ld Tracks", (long)[[queryResults getStatAtIndex:queryResults.scalarStatCount] count]];
+		}
 	}
+
 	return nil;
 }
 

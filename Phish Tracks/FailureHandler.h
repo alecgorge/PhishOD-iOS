@@ -12,4 +12,7 @@
 
 +(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error )) returnCallback:(UITableView *)table;
 
++ (void)showAlertWithStatsError:(NSDictionary *)statsErrorDict;
++ (void)showErrorAlertWithMessage:(NSString *)message;
+
 @end

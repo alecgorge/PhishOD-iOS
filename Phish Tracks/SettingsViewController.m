@@ -7,13 +7,16 @@
 //
 
 #import "SettingsViewController.h"
+#import "StatsNewSessionViewController.h"
+#import "StatsEditSessionViewController.h"
+#import "StatsRegistrationViewController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <LastFm.h>
 #import <SVWebViewController.h>
 #import "PhishTracksStats.h"
 
 #define kAlertLastFm 0
-#define kAlertPhishTracksStats 1
+//#define kAlertPhishTracksStats 1
 
 @interface SettingsViewController ()
 
@@ -43,16 +46,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(section == 0) {
+	if(section == 0) { // Last.fm
 		return [LastFm sharedInstance].username ? 2 : 1;
 	}
-	else if(section == 1) {
-		return 2;
+	else if(section == 1) {  // stats
+		if([PhishTracksStats sharedInstance].isAuthenticated)
+			return 1;  // view account
+		else
+			return 2;  // sign in, sign up
+
 	}
-	else if(section == 2) {
-		return 5;
+	else if(section == 2) {  // credits
+		return 6;
 	}
-	else if(section == 3) {
+	else if(section == 3) {  // feedback
 		return 2;
 	}
 	return 0;
@@ -64,7 +71,7 @@ titleForHeaderInSection:(NSInteger)section {
 		return @"Last.FM";
 	}
 	else if(section == 1) {
-		return @"PhishTracksStats";
+		return @"Stats";
 	}
 	else if(section == 2) {
 		return @"Credits";
@@ -99,17 +106,24 @@ titleForHeaderInSection:(NSInteger)section {
 		cell.textLabel.text = @"View Last.FM profile";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 1 && indexPath.row == 0) {
-		if([PhishTracksStats sharedInstance].isAuthenticated) {
-			cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [PhishTracksStats sharedInstance].username];
+	else if(indexPath.section == 1) {
+		if ([PhishTracksStats sharedInstance].isAuthenticated) {
+			if (indexPath.row == 0) {
+				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [PhishTracksStats sharedInstance].username];
+			}
 		}
 		else {
-			cell.textLabel.text = @"Sign in to PhishTracksStats";
+			if (indexPath.row == 0) {
+				cell.textLabel.text = @"Sign in";
+			}
+			else {
+				cell.textLabel.text = @"Register";
+			}
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	else if(indexPath.section == 1 && indexPath.row == 1) {
-		cell.textLabel.text = @"Register/more info";
+		cell.textLabel.text = @"Register";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;		
 	}
 	else if(indexPath.section == 2 && indexPath.row == 0) {
@@ -132,6 +146,10 @@ titleForHeaderInSection:(NSInteger)section {
 	}
 	else if(indexPath.section == 2 && indexPath.row == 4) {
 		cell.textLabel.text = @"Thanks Mockingbird Foundation";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	else if(indexPath.section == 2 && indexPath.row == 5) {
+		cell.textLabel.text = @"Stats by phishtrackstats.com";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	else if(indexPath.section == 3 && indexPath.row == 0) {
@@ -166,19 +184,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 											 animated:YES];
 	}
 	else if(indexPath.section == 1 && indexPath.row == 0) {
-		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Sign into PhishTrackStats"
-													message:nil
-												   delegate:self
-										  cancelButtonTitle:@"Sign Out"
-										  otherButtonTitles:@"Sign In", nil];
-		a.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-		a.tag = kAlertPhishTracksStats;
-		[a show];
+		if ([PhishTracksStats sharedInstance].isAuthenticated) {
+			[self.navigationController pushViewController:[[StatsEditSessionViewController alloc] init] animated:YES];
+		}
+		else {
+			[self.navigationController pushViewController:[[StatsNewSessionViewController alloc] init] animated:YES];
+			[self.tableView reloadData];
+		}
 	}
 	else if(indexPath.section == 1 && indexPath.row == 1) {
-		NSString *add = @"https://www.phishtrackstats.com/";
-		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:add]
-											 animated:YES];
+		[self.navigationController pushViewController:[[StatsRegistrationViewController alloc] init] animated:YES];
 	}
 	else if(indexPath.section == 2 && indexPath.row == 0) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://phish.in/"]
@@ -198,6 +213,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
 	else if(indexPath.section == 2 && indexPath.row == 4) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://mbird.org"]
+											 animated:YES];
+	}
+	else if(indexPath.section == 2 && indexPath.row == 5) {
+		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://www.phishtrackstats.com"]
 											 animated:YES];
 	}
 	else if((indexPath.section == 3 && indexPath.row == 0) || (indexPath.section == 3 && indexPath.row == 1)) {
@@ -249,43 +268,48 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 			[self.tableView reloadData];
 		}
 	}
-	else if(alertView.tag == kAlertPhishTracksStats) {
-		NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-		if([title isEqualToString:@"Sign In"]) {
-			UITextField *username = [alertView textFieldAtIndex:0];
-			UITextField *password = [alertView textFieldAtIndex:1];
-			[SVProgressHUD show];
-			[[PhishTracksStats sharedInstance] checkSessionKey:username.text
-												   password:password.text
-												   callback:^(BOOL success) {
-													   [SVProgressHUD dismiss];
-													   if(success) {
-														   
-													   }
-													   else {
-														   UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
-																									   message:@"Incorrect username or password for PhishTracksStats.com"
-																									  delegate:nil
-																							 cancelButtonTitle:@"OK"
-																							 otherButtonTitles:nil];
-														   [a show];
-													   }
-													   
-													   dispatch_async(dispatch_get_main_queue(), ^{
-														   [self.tableView reloadData];
-													   });
-												   }
-													failure:nil];
-		}
-		else if([title isEqualToString:@"Sign Out"]) {
-			[SVProgressHUD show];
-			[[PhishTracksStats sharedInstance] signOut:^(BOOL success) {
-				[self.tableView reloadData];
-				[SVProgressHUD dismiss];
-			}
-											   failure:nil];
-		}
-	}
+//	else if(alertView.tag == kAlertPhishTracksStats) {
+//		NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+//		if([title isEqualToString:@"Sign In"]) {
+//			UITextField *username = [alertView textFieldAtIndex:0];
+//			UITextField *password = [alertView textFieldAtIndex:1];
+//			[SVProgressHUD show];
+//			[[PhishTracksStats sharedInstance] checkSessionKey:username.text
+//												   password:password.text
+//												   callback:^(BOOL success) {
+//													   [SVProgressHUD dismiss];
+//													   if(success) {
+//														   
+//													   }
+//													   else {
+//														   UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
+//																									   message:@"Incorrect username or password for PhishTracksStats.com"
+//																									  delegate:nil
+//																							 cancelButtonTitle:@"OK"
+//																							 otherButtonTitles:nil];
+//														   [a show];
+//													   }
+//													   
+//													   dispatch_async(dispatch_get_main_queue(), ^{
+//														   [self.tableView reloadData];
+//													   });
+//												   }
+//													failure:nil];
+//		}
+//		else if([title isEqualToString:@"Sign Out"]) {
+//			[SVProgressHUD show];
+//			[[PhishTracksStats sharedInstance] signOut:^(BOOL success) {
+//				[self.tableView reloadData];
+//				[SVProgressHUD dismiss];
+//			}
+//											   failure:nil];
+//		}
+//	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to reload selected cell
 }
 
 @end

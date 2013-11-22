@@ -19,7 +19,7 @@
 + (NSString *)configuration;
 
 #pragma mark -
-+ (NSString *)ptsApiKey;
-+ (NSString *)ptsApiBaseUrl;
++ (NSString *)statsApiKey;
++ (NSString *)statsApiBaseUrl;
 
 @end
