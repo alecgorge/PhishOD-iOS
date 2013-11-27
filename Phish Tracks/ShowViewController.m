@@ -323,7 +323,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-	
+    
 	[self playTrack:track];
 }
 

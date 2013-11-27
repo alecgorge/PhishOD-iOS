@@ -15,7 +15,7 @@
 @property id value;
 @property BOOL isScalar;
 
-- (id)initWithDict:(NSDictionary *)dict;
+- (id)initWithDictionary:(NSDictionary *)dict;
 
 - (NSInteger)count;
 

@@ -12,16 +12,16 @@
 	<key>Debug</key>
 	<dict>
 		<key>StatsApiKey</key>
-		<string></string>
+		<string>90e201bf9e98b06e2c83ca7bc07209dc</string>
 		<key>StatsApiBaseUrl</key>
-		<string>https://www.phishtrackstats.com/api/</string>
+		<string>https://www.phishtrackstats.com/api/v2/</string>
 	</dict>
 	<key>Release</key>
 	<dict>
 		<key>StatsApiKey</key>
-		<string></string>
+		<string>90e201bf9e98b06e2c83ca7bc07209dc</string>
 		<key>StatsApiBaseUrl</key>
-		<string>https://www.phishtrackstats.com/api/</string>
+		<string>https://www.phishtrackstats.com/api/v2/</string>
 	</dict>
 </dict>
 </plist>

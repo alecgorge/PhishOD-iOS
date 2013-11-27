@@ -124,7 +124,8 @@
 	}
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	if(indexPath.section == 1) {
 		return tableView.rowHeight * 1.3;
 	}
@@ -132,7 +133,8 @@
 	return UITableViewAutomaticDimension;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
 	if (queryResults) {
 		if (section == 1) {
 			return [NSString stringWithFormat:@"Top %ld Tracks", (long)[[queryResults getStatAtIndex:queryResults.scalarStatCount] count]];

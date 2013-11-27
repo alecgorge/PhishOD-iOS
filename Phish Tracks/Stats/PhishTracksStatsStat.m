@@ -11,7 +11,7 @@
 
 @implementation PhishTracksStatsStat
 
-- (id)initWithDict:(NSDictionary *)dict
+- (id)initWithDictionary:(NSDictionary *)dict
 {
 	if (self = [super init]) {
 		self.name = dict[@"name"];
@@ -41,7 +41,7 @@
 			NSDictionary *playDict = [val objectForKey:@"play_event"];
 
 			if (playDict) {
-				[playEvents addObject:[[PhishTracksStatsPlayEvent alloc] initWithDict:playDict]];
+				[playEvents addObject:[[PhishTracksStatsPlayEvent alloc] initWithDictionary:playDict]];
 			}
 			else {
 				CLS_LOG(@"expected play_event in stat.value array. got %@", val);
@@ -51,7 +51,7 @@
 		self.value = playEvents;
 	}
 	else if ([rawValue isKindOfClass:[NSDictionary class]] && [rawValue objectForKey:@"play_event"]) {
-		self.value = [[PhishTracksStatsPlayEvent alloc] initWithDict:rawValue];
+		self.value = [[PhishTracksStatsPlayEvent alloc] initWithDictionary:rawValue];
 	}
 }
 

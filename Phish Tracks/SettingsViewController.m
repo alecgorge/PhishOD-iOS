@@ -71,7 +71,7 @@ titleForHeaderInSection:(NSInteger)section {
 		return @"Last.FM";
 	}
 	else if(section == 1) {
-		return @"Stats";
+		return @"Stats & Favorites";
 	}
 	else if(section == 2) {
 		return @"Credits";

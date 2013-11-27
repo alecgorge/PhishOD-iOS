@@ -11,7 +11,7 @@
 
 @implementation PhishTracksStatsQueryResults
 
-- (id)initWithDict:(NSDictionary *)responseDict {
+- (id)initWithDictionary:(NSDictionary *)responseDict {
 	if (self = [super init]) {
 		self.entity = responseDict[@"entity"];
 		self.timeframe = responseDict[@"timeframe"];
@@ -34,7 +34,7 @@
 		self.stats = [NSMutableArray arrayWithCapacity:[responseDict[@"stats"] count]];
 
 		for (id statDict in responseDict[@"stats"]) {
-			PhishTracksStatsStat *stat = [[PhishTracksStatsStat alloc] initWithDict:statDict];
+			PhishTracksStatsStat *stat = [[PhishTracksStatsStat alloc] initWithDictionary:statDict];
 			[self.stats addObject:stat];
 
 			if (stat.isScalar) {

@@ -10,7 +10,7 @@
 
 @implementation PhishTracksStatsPlayEvent
 
-- (id)initWithDict:(NSDictionary *)playDict
+- (id)initWithDictionary:(NSDictionary *)playDict
 {
 	if(self = [super init]) {
 		if ([playDict hasKey:@"play_event"]) {

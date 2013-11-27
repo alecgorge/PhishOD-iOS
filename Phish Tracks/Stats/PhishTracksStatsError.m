@@ -27,9 +27,23 @@
 
 - (id)initWithStatsErrorCode:(NSInteger)errorCode message:(NSString *)message validationErrors:(NSArray *)validationErrors httpStatus:(NSInteger)httpStatus
 {
-	NSMutableDictionary *userInfoDict = [@{ NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"%@ (err# %ld)", message, (long)errorCode],
-											NSLocalizedDescriptionKey: message,
-											@"HttpStatus": [NSNumber numberWithInteger:httpStatus] } mutableCopy];
+//	NSMutableDictionary *userInfoDict = [@{ NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"%@ (err# %ld)", message, (long)errorCode],
+//											NSLocalizedDescriptionKey: message,
+//											@"HttpStatus": [NSNumber numberWithInteger:httpStatus] } mutableCopy];
+    NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionary];
+    
+    [userInfoDict setObject:[NSNumber numberWithInteger:httpStatus] forKey:@"HttpStatus"];
+    
+    if (errorCode > 0 && message) {
+        [userInfoDict setObject:[NSString stringWithFormat:@"%@ (err# %ld)", message, (long)errorCode] forKey:NSLocalizedFailureReasonErrorKey];
+        [userInfoDict setObject:message forKey:NSLocalizedDescriptionKey];
+    }
+    else if (message) {
+        [userInfoDict setObject:message forKey:NSLocalizedDescriptionKey];
+    }
+    else {
+        [userInfoDict setObject:@"An error occurred." forKey:NSLocalizedDescriptionKey];
+    }
 
 	if (validationErrors && validationErrors.count > 0) {
 		[userInfoDict setValue:[validationErrors objectAtIndex:0] forKey:NSLocalizedRecoverySuggestionErrorKey];

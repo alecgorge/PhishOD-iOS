@@ -10,7 +10,7 @@
 
 @interface PhishTracksStatsPlayEvent : NSObject
 
-- (id)initWithDict:(NSDictionary *)playDict;
+- (id)initWithDictionary:(NSDictionary *)playDict;
 
 @property (readonly) NSInteger trackId;
 @property (readonly) NSString *trackSlug;

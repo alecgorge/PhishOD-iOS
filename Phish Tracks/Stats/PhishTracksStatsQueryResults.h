@@ -23,7 +23,7 @@
 @property NSInteger scalarStatCount;
 @property NSInteger nonScalarStatCount;
 
-- (id)initWithDict:(NSDictionary *)responseDict;
+- (id)initWithDictionary:(NSDictionary *)responseDict;
 - (NSString *)description;
 
 - (PhishTracksStatsStat *)getStatAtIndex:(NSInteger)index;

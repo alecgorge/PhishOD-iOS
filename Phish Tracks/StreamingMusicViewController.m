@@ -145,7 +145,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																  target:self
 																  action:@selector(dismiss)];
 	
-	UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share"
+	UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share+Fav"
 																	style:UIBarButtonItemStyleBordered
 																   target:self
 																   action:@selector(share:)];
@@ -634,11 +634,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //		[[PhishTracksStats sharedInstance] createPlayedTrack:((PhishinStreamingPlaylistItem *) self.currentItem).track success:nil failure:nil];
 		[[PhishTracksStats sharedInstance] createPlayedTrack:((PhishinStreamingPlaylistItem *) self.currentItem).track success:nil
 		    failure:^(PhishTracksStatsError *error) {
-				[FailureHandler showAlertWithStatsError:error];
-//			    if (error) {
+			    if (error) {
+					[FailureHandler showAlertWithStatsError:error];
 //					CLS_LOG(@"[stats] createPlayedTrack failure http_status=%@ error_code=%d message='%@'", error.userInfo[@"http_status"],
 //							error.code, error.userInfo[@"message"]);
-//			    }
+			    }
 		    }];
 	}
 	
@@ -656,7 +656,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																 delegate:self
 														cancelButtonTitle:@"Cancel"
 												   destructiveButtonTitle:nil
-														otherButtonTitles:@"Share with time", @"Share without time", nil];
+														otherButtonTitles:@"Share with time", @"Share without time", @"Add Track to Favorites", @"Add Show to Favorites", @"Add Tour to Favorites", @"Add Venue to Favorites", nil];
+//														otherButtonTitles:@"Share with time", @"Share without time", nil];
 		
 		if(IS_IPAD()) {
 			[actionSheet showFromBarButtonItem:self.navigationItem.leftBarButtonItem
@@ -677,7 +678,71 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 2) return;
+	if(buttonIndex == 6) return;  // TODO should be 2 without favorites
+    
+    // TODO temp favorites code...
+    if (buttonIndex == 2) {
+        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
+        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track];
+        [[PhishTracksStats sharedInstance] createUserFavoriteTrack:[PhishTracksStats sharedInstance].userId favorite:fav
+            success:^(PhishTracksStatsFavorite *favorite)
+            {
+            }
+            failure:^(PhishTracksStatsError *error)
+            {
+                [FailureHandler showAlertWithStatsError:error];
+            }];
+        return;
+    }
+    else if (buttonIndex == 3) {
+        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
+        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track.show];
+        [[PhishTracksStats sharedInstance] createUserFavoriteShow:[PhishTracksStats sharedInstance].userId favorite:fav
+            success:^(PhishTracksStatsFavorite *favorite)
+            {
+            }
+            failure:^(PhishTracksStatsError *error)
+            {
+                [FailureHandler showAlertWithStatsError:error];
+            }];
+        return;
+    }
+    else if (buttonIndex == 4) {
+        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
+        
+        __block PhishinTour *tour = [[PhishinTour alloc] initWithDictionary:@{ @"id": [NSNumber numberWithInt:curr.track.show.tour_id] }];
+        [[PhishinAPI sharedAPI] fullTour:tour success:^(PhishinTour *newTour) {
+            tour = newTour;
+            PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:tour];
+            [[PhishTracksStats sharedInstance] createUserFavoriteTour:[PhishTracksStats sharedInstance].userId favorite:fav
+                success:^(PhishTracksStatsFavorite *favorite)
+                {
+                }
+                failure:^(PhishTracksStatsError *error)
+                {
+                    [FailureHandler showAlertWithStatsError:error];
+                }];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [FailureHandler showErrorAlertWithMessage:error.localizedDescription];
+        }];
+        
+        return;
+    }
+    else if (buttonIndex == 5) {
+        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
+        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track.show.venue];
+        [[PhishTracksStats sharedInstance] createUserFavoriteVenue:[PhishTracksStats sharedInstance].userId favorite:fav
+            success:^(PhishTracksStatsFavorite *favorite)
+            {
+            }
+            failure:^(PhishTracksStatsError *error)
+            {
+                [FailureHandler showAlertWithStatsError:error];
+            }];
+        return;
+    }
+    // end test code
+	
 	
 	if(buttonIndex == 1) {
 		self.shareTime = 0;

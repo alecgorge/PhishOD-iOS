@@ -136,6 +136,10 @@
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
 		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
 		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
+		C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */; };
+		C5A31EF21841BC50009B893C /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A31EF11841BC50009B893C /* FavoritesViewController.m */; };
+		C5A31EF518428461009B893C /* BaseFavoritableEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A31EF418428461009B893C /* BaseFavoritableEntityViewController.m */; };
+		C5A31EF818428479009B893C /* FavoriteTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A31EF718428479009B893C /* FavoriteTracksViewController.m */; };
 		C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */; };
 		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
 		C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */; };
@@ -148,6 +152,9 @@
 		C5E62D38183E6D1A00A84114 /* PlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D37183E6D1A00A84114 /* PlayHistoryViewController.m */; };
 		C5E62D3B183E893B00A84114 /* BaseStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D3A183E893B00A84114 /* BaseStatsViewController.m */; };
 		C5E62D3E183E8CC300A84114 /* PlayHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D3D183E8CC300A84114 /* PlayHistoryTableViewCell.m */; };
+		C5E8B59A18451123003D7BDA /* FavoriteShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8B59918451122003D7BDA /* FavoriteShowsViewController.m */; };
+		C5E8B59D18451414003D7BDA /* FavoriteToursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8B59C18451414003D7BDA /* FavoriteToursViewController.m */; };
+		C5E8B5A0184539E1003D7BDA /* FavoriteVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E8B59F184539E1003D7BDA /* FavoriteVenuesViewController.m */; };
 		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
 		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
 		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
@@ -347,6 +354,14 @@
 		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
 		C54ED74818201FF8007D4261 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; usesTabs = 1; };
+		C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsFavorite.h; path = Stats/PhishTracksStatsFavorite.h; sourceTree = "<group>"; };
+		C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsFavorite.m; path = Stats/PhishTracksStatsFavorite.m; sourceTree = "<group>"; };
+		C5A31EF01841BC50009B893C /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesViewController.h; path = Favorites/FavoritesViewController.h; sourceTree = "<group>"; };
+		C5A31EF11841BC50009B893C /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesViewController.m; path = Favorites/FavoritesViewController.m; sourceTree = "<group>"; };
+		C5A31EF318428461009B893C /* BaseFavoritableEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseFavoritableEntityViewController.h; path = Favorites/BaseFavoritableEntityViewController.h; sourceTree = "<group>"; };
+		C5A31EF418428461009B893C /* BaseFavoritableEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseFavoritableEntityViewController.m; path = Favorites/BaseFavoritableEntityViewController.m; sourceTree = "<group>"; };
+		C5A31EF618428479009B893C /* FavoriteTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteTracksViewController.h; path = Favorites/FavoriteTracksViewController.h; sourceTree = "<group>"; };
+		C5A31EF718428479009B893C /* FavoriteTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteTracksViewController.m; path = Favorites/FavoriteTracksViewController.m; sourceTree = "<group>"; };
 		C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishTracksStatsError.h; path = Stats/PhishTracksStatsError.h; sourceTree = "<group>"; };
 		C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishTracksStatsError.m; path = Stats/PhishTracksStatsError.m; sourceTree = "<group>"; };
 		C5D128B1183EB78200E00ED8 /* StatsQueries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsQueries.h; path = Stats/StatsQueries.h; sourceTree = "<group>"; };
@@ -370,6 +385,12 @@
 		C5E62D3A183E893B00A84114 /* BaseStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseStatsViewController.m; path = Stats/BaseStatsViewController.m; sourceTree = "<group>"; };
 		C5E62D3C183E8CC300A84114 /* PlayHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHistoryTableViewCell.h; path = Stats/PlayHistoryTableViewCell.h; sourceTree = "<group>"; };
 		C5E62D3D183E8CC300A84114 /* PlayHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayHistoryTableViewCell.m; path = Stats/PlayHistoryTableViewCell.m; sourceTree = "<group>"; };
+		C5E8B59818451122003D7BDA /* FavoriteShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteShowsViewController.h; path = Favorites/FavoriteShowsViewController.h; sourceTree = "<group>"; };
+		C5E8B59918451122003D7BDA /* FavoriteShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteShowsViewController.m; path = Favorites/FavoriteShowsViewController.m; sourceTree = "<group>"; };
+		C5E8B59B18451414003D7BDA /* FavoriteToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteToursViewController.h; path = Favorites/FavoriteToursViewController.h; sourceTree = "<group>"; };
+		C5E8B59C18451414003D7BDA /* FavoriteToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteToursViewController.m; path = Favorites/FavoriteToursViewController.m; sourceTree = "<group>"; };
+		C5E8B59E184539E1003D7BDA /* FavoriteVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteVenuesViewController.h; path = Favorites/FavoriteVenuesViewController.h; sourceTree = "<group>"; };
+		C5E8B59F184539E1003D7BDA /* FavoriteVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteVenuesViewController.m; path = Favorites/FavoriteVenuesViewController.m; sourceTree = "<group>"; };
 		C5FB5F6818387F4B004AAB91 /* StatsNewSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsNewSessionViewController.h; path = Stats/StatsNewSessionViewController.h; sourceTree = "<group>"; };
 		C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsNewSessionViewController.m; path = Stats/StatsNewSessionViewController.m; sourceTree = "<group>"; };
 		C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsRegistrationViewController.h; path = Stats/StatsRegistrationViewController.h; sourceTree = "<group>"; };
@@ -702,6 +723,7 @@
 				7C02E786180F456000C01CCB /* Search Tab */,
 				7C7ED3AE18020BB5004F55DF /* Venues */,
 				7CACD4F517A45AE100E84B28 /* Stats Tab */,
+				C5A31EEF1841BBB3009B893C /* Favorites Tab */,
 				7CADB30F1760251500B80D54 /* Top Rated Tab */,
 				7C518C53175DCEC7005EB2E7 /* Settings Tab */,
 				7C518C22175D0C62005EB2E7 /* Song Tab */,
@@ -770,6 +792,8 @@
 				C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */,
 				C5D128B1183EB78200E00ED8 /* StatsQueries.h */,
 				C5D128B2183EB78200E00ED8 /* StatsQueries.m */,
+				C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */,
+				C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -889,6 +913,25 @@
 				C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */,
 			);
 			name = "PhishTracks Stats";
+			sourceTree = "<group>";
+		};
+		C5A31EEF1841BBB3009B893C /* Favorites Tab */ = {
+			isa = PBXGroup;
+			children = (
+				C5A31EF01841BC50009B893C /* FavoritesViewController.h */,
+				C5A31EF11841BC50009B893C /* FavoritesViewController.m */,
+				C5A31EF318428461009B893C /* BaseFavoritableEntityViewController.h */,
+				C5A31EF418428461009B893C /* BaseFavoritableEntityViewController.m */,
+				C5A31EF618428479009B893C /* FavoriteTracksViewController.h */,
+				C5A31EF718428479009B893C /* FavoriteTracksViewController.m */,
+				C5E8B59818451122003D7BDA /* FavoriteShowsViewController.h */,
+				C5E8B59918451122003D7BDA /* FavoriteShowsViewController.m */,
+				C5E8B59B18451414003D7BDA /* FavoriteToursViewController.h */,
+				C5E8B59C18451414003D7BDA /* FavoriteToursViewController.m */,
+				C5E8B59E184539E1003D7BDA /* FavoriteVenuesViewController.h */,
+				C5E8B59F184539E1003D7BDA /* FavoriteVenuesViewController.m */,
+			);
+			name = "Favorites Tab";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1075,11 +1118,13 @@
 				7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */,
 				7C60302E18206B320088F651 /* RandomShowViewController.m in Sources */,
 				C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */,
+				C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7C7ED3941801ABD0004F55DF /* VenueViewController.m in Sources */,
 				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
 				7CACD4F817A45AFC00E84B28 /* PhishTracksStatsViewController.m in Sources */,
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
+				C5A31EF21841BC50009B893C /* FavoritesViewController.m in Sources */,
 				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
@@ -1117,22 +1162,27 @@
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
 				C5E62D38183E6D1A00A84114 /* PlayHistoryViewController.m in Sources */,
+				C5E8B5A0184539E1003D7BDA /* FavoriteVenuesViewController.m in Sources */,
 				7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
+				C5E8B59D18451414003D7BDA /* FavoriteToursViewController.m in Sources */,
 				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
+				C5E8B59A18451123003D7BDA /* FavoriteShowsViewController.m in Sources */,
 				C54ED74918201FF8007D4261 /* Configuration.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				7C02E789180F45C300C01CCB /* SearchDelegate.m in Sources */,
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
+				C5A31EF818428479009B893C /* FavoriteTracksViewController.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
 				C5E62D30183DAFBF00A84114 /* UserTopTracksViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
 				C5E62D35183E5F4500A84114 /* RankingTableViewCell.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
+				C5A31EF518428461009B893C /* BaseFavoritableEntityViewController.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

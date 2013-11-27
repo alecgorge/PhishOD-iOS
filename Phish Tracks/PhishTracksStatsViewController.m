@@ -30,16 +30,16 @@
 {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		statsQuery = [StatsQueries predefinedStatQuery:kUserAllTimeScalarStats];
+		isAuthenticated = [PhishTracksStats sharedInstance].isAuthenticated;
+		self.title = @"Stats";
 	}
 
 	return self;
 }
 
-- (void)viewDidLoad {
-	self.title = @"Stats";
-	isAuthenticated = [PhishTracksStats sharedInstance].isAuthenticated;
-	[super viewDidLoad];
-}
+//- (void)viewDidLoad {
+//	[super viewDidLoad];
+//}
 
 - (void)refresh:(id)sender {
 	if([PhishTracksStats sharedInstance].isAuthenticated) {
