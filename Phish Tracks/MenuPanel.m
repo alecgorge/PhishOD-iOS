@@ -16,7 +16,6 @@
 #import "ToursViewController.h"
 #import "TopRatedViewController.h"
 #import "PhishTracksStatsViewController.h"
-#import "FavoritesViewController.h"
 #import "SettingsViewController.h"
 #import "VenuesViewController.h"
 #import "SearchViewController.h"
@@ -26,7 +25,6 @@ typedef enum {
 	kPhishODMenuItemNowPlaying,
 	kPhishODMenuItemHome,
 	kPhishODMenuItemStats,
-	kPhishODMenuItemFavorites,
 	kPhishODMenuItemSettings,
 	kPhishODMenuItemsCount
 } kPhishODMenuItems;
@@ -101,9 +99,6 @@ typedef enum {
 	else if(row == kPhishODMenuItemStats) {
 		cell.textLabel.text = @"Stats";
 	}
-	else if(row == kPhishODMenuItemFavorites) {
-		cell.textLabel.text = @"Favorites";
-	}
 	else if(row == kPhishODMenuItemSettings) {
 		cell.textLabel.text = @"Settings";
 	}
@@ -159,9 +154,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
 	else if(row == kPhishODMenuItemStats) {
 		[self pushViewController:[[PhishTracksStatsViewController alloc] init]];
-	}
-	else if(row == kPhishODMenuItemFavorites) {
-		[self pushViewController:[[FavoritesViewController alloc] init]];
 	}
 	else if(row == kPhishODMenuItemSettings) {
 		[self pushViewController:[[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped]];

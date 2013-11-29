@@ -19,6 +19,7 @@
 #import "SearchViewController.h"
 #import "RandomShowViewController.h"
 #import "SearchDelegate.h"
+#import "FavoritesViewController.h"
 
 typedef enum {
 	kPhishODMenuItemYears,
@@ -27,6 +28,7 @@ typedef enum {
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
 	kPhishODMenuItemRandomShow,
+	kPhishODMenuItemFavorites,
 	kPhishODMenuItemsCount
 } kPhishODMenuItems;
 
@@ -132,6 +134,9 @@ typedef enum {
 	else if(row == kPhishODMenuItemRandomShow) {
 		cell.textLabel.text = @"Random Show";
 	}
+	else if(row == kPhishODMenuItemFavorites) {
+		cell.textLabel.text = @"Favorites";
+	}
 	
 	return cell;
 }
@@ -163,6 +168,9 @@ typedef enum {
 	}
 	else if(row == kPhishODMenuItemRandomShow) {
 		[self pushViewController:[[RandomShowViewController alloc] init]];
+	}
+	else if(row == kPhishODMenuItemFavorites) {
+		[self pushViewController:[[FavoritesViewController alloc] init]];
 	}
 }
 
