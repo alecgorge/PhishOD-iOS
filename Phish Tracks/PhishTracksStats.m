@@ -119,6 +119,9 @@ static PhishTracksStats *sharedPts;
         
         if (responseDict) {
             statsError = [PhishTracksStatsError errorWithStatsErrorDictionary:responseDict httpStatus:resp.statusCode];
+            
+            if (statsError.apiErrorCode == kStatsSessionRequired)
+                [self clearLocalSession];
 //            CLS_LOG(@"[stats] api error. http_status=%ld api_error_code=%ld api_message='%@'",
 //                    (long)statsError.httpStatus, (long)statsError.apiErrorCode, statsError.apiErrorMessage);
         }

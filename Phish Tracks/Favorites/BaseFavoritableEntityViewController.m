@@ -166,7 +166,7 @@
     
     NSArray *section = [self.sections objectForKey:[self.sectionTitles objectAtIndex:indexPath.section]];
     PhishTracksStatsFavorite *fav = [section objectAtIndex:indexPath.row];
-    UITableViewController *c = [self viewControllerToPushForFavorite:fav];
+    UIViewController *c = [self viewControllerToPushForFavorite:fav];
     [self.navigationController pushViewController:c animated:YES];
 }
 

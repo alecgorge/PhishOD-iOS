@@ -23,13 +23,24 @@
     return self;
 }
 
-- (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play
+- (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play showUsername:(BOOL)showUsername
 {
 	self.textLabel.text = play.trackTitle;
-	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@\n%@ - %@",
-								play.timeSincePlayed, play.showDate,
-                                [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
-                                play.venueName, play.location];
+    
+    if (play.username && showUsername == YES) {
+        self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@ - %@\n%@ - %@",
+                                    play.timeSincePlayed, play.showDate,
+                                    [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                    play.username,
+                                    play.venueName, play.location];
+    }
+    else {
+        self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@\n%@ - %@",
+                                    play.timeSincePlayed, play.showDate,
+                                    [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                    play.venueName, play.location];
+        
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

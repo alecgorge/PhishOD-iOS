@@ -11,6 +11,6 @@
 
 @interface PlayHistoryTableViewCell : UITableViewCell
 
-- (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play;
+- (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play showUsername:(BOOL)showUsername;
 
 @end

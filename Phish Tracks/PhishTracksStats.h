@@ -44,20 +44,24 @@ typedef enum {
 
 - (void)createSession:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 
-- (void)createRegistration:(NSString *)username email:(NSString *)email password:(NSString *)password success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
+- (void)createRegistration:(NSString *)username email:(NSString *)email password:(NSString *)password
+                   success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 
 - (void)createPlayedTrack:(PhishinTrack *)track success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 
 - (void)clearLocalSession;
 
 - (void)userStatsWithUserId:(NSInteger)userId statsQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
+                    success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
 
 - (void)globalStatsWithQuery:(PhishTracksStatsQuery *)statsQuery
-        success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
+                     success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
 
 - (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
-		success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure;
+                          success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure;
+
+- (void)globalPlayHistoryWithLimit:(NSInteger)limit offset:(NSInteger)offset
+                           success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure;
 
 #pragma mark -
 #pragma mark Favorite Tracks
