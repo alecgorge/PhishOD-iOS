@@ -66,7 +66,7 @@
 	cell.textLabel.numberOfLines = 0;
 	cell.textLabel.adjustsFontSizeToFitWidth = YES;
 	
-	cell.detailTextLabel.text = [self formatTime: item.duration];
+	cell.detailTextLabel.text = [StreamingMusicViewController formatTime: item.duration];
 	cell.accessoryType = UITableViewCellAccessoryNone;
 	
 	if (indexPath.row == self.currentIndex) {
@@ -446,7 +446,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.playerSubtitle.text = item.subtitle;
 	self.playerTimeElapsed.text = @"00:00";
 	self.playerScrubber.value = 0;
-	self.playerTimeRemaining.text =  [@"-" stringByAppendingString: [self formatTime: item.duration]];
+	self.playerTimeRemaining.text =  [@"-" stringByAppendingString: [StreamingMusicViewController formatTime: item.duration]];
 	
 	[self startTimer];
 }
@@ -520,7 +520,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 						 }];
 }
 
-- (NSString *)formatTime:(NSTimeInterval)dur {
++ (NSString *)formatTime:(NSTimeInterval)dur {
 	int totalSeconds = floor(dur);
     int seconds = totalSeconds % 60;
     int minutes = (totalSeconds / 60) % 60;
@@ -610,8 +610,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	self.playerTitle.text = self.currentItem.title;
 	self.playerSubtitle.text = self.currentItem.subtitle;
-	self.playerTimeElapsed.text = [self formatTime: playbackTime];
-	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [self formatTime: self.currentItem.duration - playbackTime]];
+	self.playerTimeElapsed.text = [StreamingMusicViewController formatTime: playbackTime];
+	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [StreamingMusicViewController formatTime: self.currentItem.duration - playbackTime]];
 	
 	float complete = playbackTime / self.currentItem.duration;
 	
@@ -652,7 +652,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(NSClassFromString(@"UIActivityViewController")) {
 		self.shareTime = CMTimeGetSeconds(self.queuePlayer.currentTime);
 		
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [self formatTime:self.shareTime]]
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [StreamingMusicViewController formatTime:self.shareTime]]
 																 delegate:self
 														cancelButtonTitle:@"Cancel"
 												   destructiveButtonTitle:nil

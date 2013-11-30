@@ -7,6 +7,7 @@
 //
 
 #import "PlayHistoryTableViewCell.h"
+#import "StreamingMusicViewController.h"
 
 @implementation PlayHistoryTableViewCell
 
@@ -15,6 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 		self.detailTextLabel.textColor = [UIColor darkGrayColor];
+        self.detailTextLabel.numberOfLines = 2;
 		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -24,8 +26,10 @@
 - (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play
 {
 	self.textLabel.text = play.trackTitle;
-	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@ - %@",
-								play.timeSincePlayed, play.showDate, play.venueName, play.location];
+	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@\n%@ - %@",
+								play.timeSincePlayed, play.showDate,
+                                [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                play.venueName, play.location];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

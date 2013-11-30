@@ -7,6 +7,7 @@
 //
 
 #import "RankingTableViewCell.h"
+#import "StreamingMusicViewController.h"
 
 @implementation RankingTableViewCell
 
@@ -23,6 +24,7 @@
 		self.indentationWidth = 18.0;
 		self.indentationLevel = 1;
 		self.detailTextLabel.textColor = [UIColor darkGrayColor];
+        self.detailTextLabel.numberOfLines = 2;
 		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -37,8 +39,10 @@
 	[self.rankingLabel sizeToFit];
 	self.textLabel.text = play.trackTitle;
 	NSString *playString = [play.playCount isEqualToString:@"1"] ? @"play" : @"plays";
-	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ - %@ - %@",
-								play.playCount, playString, play.showDate, play.venueName, play.location];
+	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ - %@\n%@ - %@",
+								play.playCount, playString, play.showDate,
+                                 [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                 play.venueName, play.location];
 }
 
 - (void)layoutSubviews

@@ -20,7 +20,7 @@
 		_trackId = [playDict[@"track_id"] integerValue];
 		_trackSlug = playDict[@"track_slug"];
 		_trackTitle = playDict[@"track_title"];
-		_trackDuration = playDict[@"track_duration"];
+		_trackDuration = [playDict[@"track_duration"] integerValue];
 		_showId = [playDict[@"show_id"] integerValue];
 		_showDate = playDict[@"show_date"];
 		_location = playDict[@"location"];
