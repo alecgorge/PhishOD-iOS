@@ -528,6 +528,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 }
 
++ (NSString *)formatTimeWithHours:(NSTimeInterval)dur {
+	int totalSeconds = floor(dur);
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = (totalSeconds / (60*60));
+	
+    return [NSString stringWithFormat:@"%d:%02d:%02d", hours, minutes, seconds];
+}
+
+
 - (void)play {
 	self.isPlaying = YES;
 	[self.queuePlayer play];

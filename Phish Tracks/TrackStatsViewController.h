@@ -8,8 +8,6 @@
 
 #import "BaseStatsViewController.h"
 
-@interface GlobalStatsViewController : BaseStatsViewController
-
-- (id)initWithTitle:(NSString *)title andStatsQuery:(PhishTracksStatsQuery *)statsQuery;
+@interface TrackStatsViewController : BaseStatsViewController
 
 @end

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PhishTracksStatsPlayEvent.h"
+#import "StreamingMusicViewController.h"
 
 @interface RankingTableViewCell : UITableViewCell
 
 @property UILabel *rankingLabel;
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play;
 

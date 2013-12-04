@@ -7,13 +7,12 @@
 //
 
 #import "RankingTableViewCell.h"
-#import "StreamingMusicViewController.h"
 
 @implementation RankingTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
 		_rankingLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 1, 20, 20)];  // origin.y==7 aligns with main cell label baseline.
 		_rankingLabel.font = [_rankingLabel.font fontWithSize:14.0];               // the 1 gets overidden in layoutSubviews.
@@ -37,21 +36,15 @@
 {
 	self.rankingLabel.text = play.ranking;
 	[self.rankingLabel sizeToFit];
-	self.textLabel.text = play.trackTitle;
-	NSString *playString = [play.playCount isEqualToString:@"1"] ? @"play" : @"plays";
-	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ - %@\n%@ - %@",
-								play.playCount, playString, play.showDate,
-                                 [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
-                                 play.venueName, play.location];
 }
 
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
-	CGFloat lh = self.rankingLabel.frame.size.height;
-	CGFloat ch = self.frame.size.height;
+	CGFloat labelHeight = self.rankingLabel.frame.size.height;
+	CGFloat cellHeight = self.frame.size.height;
 	CGRect oldFrame = self.rankingLabel.frame;
-	self.rankingLabel.frame = CGRectMake(oldFrame.origin.x, (ch-lh)/2, oldFrame.size.width, oldFrame.size.height);
+	self.rankingLabel.frame = CGRectMake(oldFrame.origin.x, (cellHeight-labelHeight)/2, oldFrame.size.width, oldFrame.size.height);
 }
 
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -10,19 +10,26 @@
 #import "PhishTracksStatsQuery.h"
 
 typedef enum {
-	kUserAllTimeTopTracks   = 1,
-	kUserAllTimeScalarStats = 2,
-	kGlobalAllTime          = 3,
-	kGlobalToday            = 4,
-	kGlobalThisHour         = 5,
-	kGlobalThisWeek         = 6,
-	kGlobalThisMonth        = 7,
-	kGlobalThisYear         = 8
-
+	kUserAllTimeTopTracks,
+	kUserAllTimeScalarStats,
+	kGlobalAllTime,
+	kGlobalToday,
+	kGlobalThisHour,
+	kGlobalThisWeek,
+	kGlobalThisMonth,
+	kGlobalThisYear,
+    kGlobalTracksOver20Min,
+    kGlobalTopSets,
+    kGlobalTopShows,
+    kGlobalTopTours,
+    kGlobalTopVenues,
+    kGlobalTopYears,
 } StatsPredefinedQueryNames;
 
 @interface StatsQueries : NSObject
 
 + (PhishTracksStatsQuery *)predefinedStatQuery:(StatsPredefinedQueryNames)name;
++ (PhishTracksStatsQuery *)topTracksInYearsQuery:(NSArray *)years;
++ (PhishTracksStatsQuery *)topTracksForEraQuery:(NSString *)era;
 
 @end

@@ -101,29 +101,24 @@
 
 - (void)refreshFavorites
 {
-#warning override in subclass
 }
 
 - (void)deleteActionForFavorite:(PhishTracksStatsFavorite *)favorite
 {
-#warning override in subclass
 }
 
 - (NSString *)textLabelTextForFavorite:(PhishTracksStatsFavorite *)favorite
 {
-#warning override in subclass
     return nil;
 }
 
 - (NSString *)detailTextLabelTextForFavorite:(PhishTracksStatsFavorite *)favorite
 {
-#warning override in subclass
     return nil;
 }
 
 - (UIViewController *)viewControllerToPushForFavorite:(PhishTracksStatsFavorite *)favorite
 {
-#warning override in subclass
     return nil;
 }
 

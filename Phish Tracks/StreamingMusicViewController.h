@@ -60,5 +60,6 @@
 - (IBAction)positionEndAdjustment:(id)sender;
 
 + (NSString *)formatTime:(NSTimeInterval)dur;
++ (NSString *)formatTimeWithHours:(NSTimeInterval)dur;
 
 @end

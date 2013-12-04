@@ -14,7 +14,8 @@
 #import "PhishTracksStatsQueryResults.h"
 #import "PhishTracksStatsStat.h"
 #import "StatsQueries.h"
-#import "GlobalStatsViewController.h"
+#import "TrackStatsViewController.h"
+#import "MoreStatsViewController.h"
 
 //@interface PhishTracksStatsViewController ()
 //@property BOOL showLoginMessage;
@@ -75,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if(section == 0) {
-		return 5;
+		return 6;
 	}
 
 	if (isAuthenticated && userStats) {
@@ -117,6 +118,10 @@
 				cell.textLabel.text = @"All time";
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			}
+			else if (indexPath.row == 5) {
+				cell.textLabel.text = @"More...";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
 		}
 		return cell;
 	}
@@ -155,28 +160,32 @@
 	
 	if(indexPath.section == 0) {
 		if(indexPath.row == 0) {
-			GlobalStatsViewController *c = [[GlobalStatsViewController alloc] initWithTitle:@"Last hour"
+			TrackStatsViewController *c = [[TrackStatsViewController alloc] initWithTitle:@"Last hour"
 																			  andStatsQuery:[StatsQueries predefinedStatQuery:kGlobalThisHour]];
 			[self.navigationController pushViewController:c animated:YES];
 		}
 		else if(indexPath.row == 1) {
-			GlobalStatsViewController *c = [[GlobalStatsViewController alloc] initWithTitle:@"Today"
+			TrackStatsViewController *c = [[TrackStatsViewController alloc] initWithTitle:@"Today"
 																			  andStatsQuery:[StatsQueries predefinedStatQuery:kGlobalToday]];
 			[self.navigationController pushViewController:c animated:YES];
 		}
 		else if(indexPath.row == 2) {
-			GlobalStatsViewController *c = [[GlobalStatsViewController alloc] initWithTitle:@"This week"
+			TrackStatsViewController *c = [[TrackStatsViewController alloc] initWithTitle:@"This week"
 																			  andStatsQuery:[StatsQueries predefinedStatQuery:kGlobalThisWeek]];
 			[self.navigationController pushViewController:c animated:YES];
 		}
 		else if(indexPath.row == 3) {
-			GlobalStatsViewController *c = [[GlobalStatsViewController alloc] initWithTitle:@"This month"
+			TrackStatsViewController *c = [[TrackStatsViewController alloc] initWithTitle:@"This month"
 																			  andStatsQuery:[StatsQueries predefinedStatQuery:kGlobalThisMonth]];
 			[self.navigationController pushViewController:c animated:YES];
 		}
 		else if(indexPath.row == 4) {
-			GlobalStatsViewController *c = [[GlobalStatsViewController alloc] initWithTitle:@"All time"
+			TrackStatsViewController *c = [[TrackStatsViewController alloc] initWithTitle:@"All time"
 																			  andStatsQuery:[StatsQueries predefinedStatQuery:kGlobalAllTime]];
+			[self.navigationController pushViewController:c animated:YES];
+		}
+		else if(indexPath.row == 5) {
+			MoreStatsViewController *c = [[MoreStatsViewController alloc] init];
 			[self.navigationController pushViewController:c animated:YES];
 		}
 	}

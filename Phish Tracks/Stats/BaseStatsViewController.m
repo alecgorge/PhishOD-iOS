@@ -8,6 +8,13 @@
 
 #import "BaseStatsViewController.h"
 #import "PhishTracksStatsPlayEvent.h"
+#import "PhishTracksStats.h"
+
+//typedef enum {
+//    kBaseStatsVCSectionScalarStats,
+//    kBaseStatsVCSectionNonscalarStats,
+//    kBaseStatsVCSectionCount
+//} BaseStatsViewControllerSections;
 
 @interface BaseStatsViewController ()
 
@@ -16,25 +23,158 @@
 @implementation BaseStatsViewController {
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithTitle:(NSString *)title andStatsQuery:(PhishTracksStatsQuery *)statsQuery
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+		self.title = title;
+		query = statsQuery;
+	}
+
+	return self;
+}
+//
+//- (void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//	// Do any additional setup after loading the view.
+//}
+//
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+
+- (void)refresh:(id)sender {
+	[[PhishTracksStats sharedInstance] globalStatsWithQuery:query
+	success:^(PhishTracksStatsQueryResults *result)
+	{
+		queryResults = result;
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[super refresh:sender];
+			[self.tableView reloadData];
+		});
+	}
+	failure:^(PhishTracksStatsError *error)
+	{
+		[self.refreshControl endRefreshing];
+		[FailureHandler showAlertWithStatsError:error];
+	}];
 }
 
-- (void)viewDidLoad
+- (RankingTableViewCell *)cellForPlayEventWithReuseIdentifier:(NSString *)cellIdentifier
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    return nil;
 }
 
-- (void)didReceiveMemoryWarning
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	if (!queryResults) return nil;
+
+	if (queryResults.scalarStatCount > 0 && indexPath.section == 0) {
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"value1Cell"];
+		
+		if(cell == nil) {
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"value1Cell"];
+		}
+
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:indexPath.row];
+
+		cell.textLabel.text = stat.prettyName;
+		cell.detailTextLabel.text = [stat valueAsString];
+		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+		return cell;
+	}
+	else {
+//		NSString *cellIdentifier = [self topNIdentifier];
+		static NSString *cellIdentifier = @"rankingCell";
+		RankingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+		
+		if(cell == nil) {
+			cell = [self cellForPlayEventWithReuseIdentifier:cellIdentifier];
+		}
+        
+        NSInteger idx = queryResults.scalarStatCount > 0 ? (queryResults.scalarStatCount) : 0;
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:idx];
+		PhishTracksStatsPlayEvent *play = [stat.value objectAtIndex:indexPath.row];
+		[cell setPlayEvent:play];
+
+		return cell;
+	}
+}
+
+//- (NSString *)topNIdentifier
+//{
+//    return @"";
+//}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	if (queryResults) {
+		return (queryResults.scalarStatCount > 0 ? 1 : 0) + queryResults.nonScalarStatCount;  // All scalar stats are shown in the same section
+	}
+
+	return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (queryResults) {
+		if(queryResults.scalarStatCount > 0 && section == 0) {  // scalar stats section, if there are scalar stats
+			return queryResults.scalarStatCount;
+		}
+		else {
+            NSInteger idx = queryResults.scalarStatCount > 0 ? (queryResults.scalarStatCount) : 0;
+			PhishTracksStatsStat *stat = [queryResults getStatAtIndex:idx];
+			return [stat count];
+		}
+	}
+
+	return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if(queryResults.scalarStatCount > 0 && indexPath.section == 0)
+        return UITableViewAutomaticDimension;
+	
+    return tableView.rowHeight * 1.5;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	if (queryResults) {
+		if ((queryResults.scalarStatCount == 0 && section == 0) || (queryResults.scalarStatCount > 0 && section == 1)) {
+//			return [NSString stringWithFormat:@"Top %ld%@",
+//                    (long)[[queryResults getStatAtIndex:queryResults.scalarStatCount] count],
+//                    [self topNIdentifier]];
+			return [queryResults getStatAtIndex:queryResults.scalarStatCount].prettyName;
+		}
+	}
+
+	return nil;
+}
+
+- (UIViewController *)viewControllerForPlay:(PhishTracksStatsPlayEvent *)play
+{
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	if((queryResults.scalarStatCount == 0 && indexPath.section == 0) || (queryResults.scalarStatCount > 0 && indexPath.section == 1)) {
+        NSInteger idx = queryResults.scalarStatCount > 0 ? (queryResults.scalarStatCount) : 0;
+		PhishTracksStatsStat *stat = [queryResults getStatAtIndex:idx];
+		PhishTracksStatsPlayEvent *play = [stat.value objectAtIndex:indexPath.row];
+        UIViewController *c = [self viewControllerForPlay:play];
+		[self.navigationController pushViewController:c
+											 animated:YES];
+	}
 }
 
 @end
