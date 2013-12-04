@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PhishTracksStatsError.h"
 
 @interface FailureHandler : NSObject
 
 +(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error )) returnCallback:(UITableView *)table;
+
++ (void)showAlertWithStatsError:(PhishTracksStatsError *)statsError;
++ (void)showErrorAlertWithMessage:(NSString *)message;
 
 @end

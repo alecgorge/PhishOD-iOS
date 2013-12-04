@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Configuration.h"
 #import "RotatableTabBarController.h"
 
 #import "StreamingMusicViewController.h"
@@ -47,6 +48,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
 	
 	[TestFlight takeOff:@"b7d72e8f-eafb-43c2-ac00-238f786848c2"];
+//	[Crashlytics startWithAPIKey:@"bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4"];
+	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
 
 	[self setupLastFM];
 	[self setupCaching];

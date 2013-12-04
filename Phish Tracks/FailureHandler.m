@@ -25,4 +25,20 @@
 	};
 }
 
++ (void)showAlertWithStatsError:(PhishTracksStatsError *)statsError
+{
+	[FailureHandler showErrorAlertWithMessage:[NSString stringWithFormat:@"%@",
+											   [statsError primaryErrorMessage]]];
+}
+
++ (void)showErrorAlertWithMessage:(NSString *)message
+{
+	UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
+												message:message
+											   delegate:nil
+									  cancelButtonTitle:@"OK"
+									  otherButtonTitles:nil];
+	[a show];
+}
+
 @end

@@ -153,7 +153,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 		[self pushViewController:[[HomeViewController alloc] init]];
 	}
 	else if(row == kPhishODMenuItemStats) {
-		[self pushViewController:[[PhishTracksStatsViewController alloc] initWithStyle:UITableViewStyleGrouped]];
+		[self pushViewController:[[PhishTracksStatsViewController alloc] init]];
 	}
 	else if(row == kPhishODMenuItemSettings) {
 		[self pushViewController:[[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped]];

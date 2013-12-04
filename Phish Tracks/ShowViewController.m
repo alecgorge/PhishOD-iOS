@@ -35,6 +35,13 @@
     return self;
 }
 
+- (id)initWithShowDate:(NSString *)showDate
+{
+	PhishinShow *__show = [[PhishinShow alloc] init];
+	__show.date = showDate;
+	return [self initWithShow:__show];
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
@@ -316,7 +323,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-	
+    
 	[self playTrack:track];
 }
 
