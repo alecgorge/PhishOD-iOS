@@ -11,6 +11,8 @@
 
 @interface SongsViewController ()
 
+@property (nonatomic) UISearchDisplayController *con;
+
 @end
 
 @implementation SongsViewController
@@ -21,6 +23,7 @@
         self.title = @"Songs";
 		self.indicies = @[];
 		self.songs = @[];
+		[self createSearchBar];
     }
     return self;
 }
@@ -32,7 +35,47 @@
 		[self.tableView reloadData];
 		[super refresh:sender];
 	}
-							  failure:REQUEST_FAILED(self.tableView)];
+						  failure:REQUEST_FAILED(self.tableView)];
+}
+
+- (void)createSearchBar {
+	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+	
+	self.con = [[UISearchDisplayController alloc] initWithSearchBar:searchBar
+												 contentsController:self];
+	
+	self.searchDisplayController.searchResultsDelegate = self;
+	self.searchDisplayController.searchResultsDataSource = self;
+	self.searchDisplayController.delegate = self;
+	
+	self.tableView.tableHeaderView = searchBar;
+}
+
+- (void)updateFilteredContentForProductName {
+	NSString *src = self.con.searchBar.text;
+	self.results = [self.songs select:^BOOL(id object) {
+		PhishinSong *song = (PhishinSong*)object;
+		
+		return [song.title rangeOfString:src
+								 options:NSCaseInsensitiveSearch].location != NSNotFound;
+	}];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString {
+    [self updateFilteredContentForProductName];
+	
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    [self updateFilteredContentForProductName];
+	
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
 }
 
 - (void)makeIndicies {
@@ -64,15 +107,25 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	if(tableView == self.searchDisplayController.searchResultsTableView) {
+		return 1;
+	}
 	return self.indicies.count;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+	if(tableView == self.searchDisplayController.searchResultsTableView) {
+		return nil;
+	}
 	return self.indicies;
 }
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
+	if(tableView == self.searchDisplayController.searchResultsTableView) {
+		return nil;
+	}
+
 	if(section == 0) {
 		return @"123";
 	}
@@ -91,6 +144,9 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+		return self.results.count;
+	}
 	return [self filterForSection:section].count;
 }
 
@@ -104,7 +160,13 @@ titleForHeaderInSection:(NSInteger)section {
 									  reuseIdentifier:CellIdentifier];
 	}
     
-	PhishinSong *song = [self filterForSection:indexPath.section][indexPath.row];
+	PhishinSong *song;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+		song = self.results[indexPath.row];
+	}
+	else {
+		song = [self filterForSection:indexPath.section][indexPath.row];;
+	}
     cell.textLabel.text = song.title;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -112,12 +174,22 @@ titleForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
+-(void)dealloc {
+	self.con = nil;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PhishinSong *song = [self filterForSection:indexPath.section][indexPath.row];
-
+	PhishinSong *song;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+		song = self.results[indexPath.row];
+	}
+	else {
+		song = [self filterForSection:indexPath.section][indexPath.row];;
+	}
+	
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	[self.navigationController pushViewController:[[SongInstancesViewController alloc] initWithSong:song]

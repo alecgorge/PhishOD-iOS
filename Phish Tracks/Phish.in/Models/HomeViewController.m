@@ -29,10 +29,21 @@ typedef enum {
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
 	kPhishODMenuItemRandomShow,
-	kPhishODMenuItemFavorites,
-	kPhishODMenuItemGlobalActivity,
 	kPhishODMenuItemsCount
 } kPhishODMenuItems;
+
+typedef enum {
+	kPhishODMenuStatsItemFavorites,
+	kPhishODMenuStatsItemGlobalActivity,
+	kPhishODMenuStatsItemsCount
+} kPhishODMenuStatsItems;
+
+typedef enum {
+	kPhishODMenuSectionNowPlaying,
+	kPhishODMenuSectionMenu,
+	kPhishODMenuSectionStats,
+	kPhishODMenuSectionsCount
+} kPhishODMenuSections;
 
 @interface HomeViewController ()
 
@@ -78,16 +89,19 @@ typedef enum {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+	return kPhishODMenuSectionsCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(section == 0) {
+	if(section == kPhishODMenuSectionNowPlaying) {
 		return 1;
 	}
+	else if(section == kPhishODMenuSectionMenu) {
+		return kPhishODMenuItemsCount;
+	}
 	
-	return kPhishODMenuItemsCount;
+	return kPhishODMenuStatsItemsCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -101,7 +115,7 @@ typedef enum {
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
-	if(indexPath.section == 0) {
+	if(indexPath.section == kPhishODMenuSectionNowPlaying) {
 		PhishinShow *show = [AppDelegate sharedDelegate].currentlyPlayingShow;
 		
 		cell.textLabel.text = @"Now Playing";
@@ -118,28 +132,29 @@ typedef enum {
 	}
 	
 	int row = indexPath.row;
-	if (row == kPhishODMenuItemYears) {
+	int section = indexPath.section;
+	if (section == kPhishODMenuSectionMenu && row == kPhishODMenuItemYears) {
 		cell.textLabel.text = @"Years";
 	}
-	else if(row == kPhishODMenuItemSongs) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemSongs) {
 		cell.textLabel.text = @"Songs";
 	}
-	else if(row == kPhishODMenuItemVenues) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemVenues) {
 		cell.textLabel.text = @"Venues";
 	}
-	else if(row == kPhishODMenuItemTours) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemTours) {
 		cell.textLabel.text = @"Tours";
 	}
-	else if(row == kPhishODMenuItemTopRated) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemTopRated) {
 		cell.textLabel.text = @"Top Rated Shows";
 	}
-	else if(row == kPhishODMenuItemRandomShow) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		cell.textLabel.text = @"Random Show";
 	}
-	else if(row == kPhishODMenuItemFavorites) {
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemFavorites) {
 		cell.textLabel.text = @"Favorites";
 	}
-	else if(row == kPhishODMenuItemGlobalActivity) {
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		cell.textLabel.text = @"Recent Activity";
 	}
 	
@@ -150,34 +165,35 @@ typedef enum {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	if(indexPath.section == 0) {
+	if(indexPath.section == 0 && [AppDelegate sharedDelegate].currentlyPlayingShow != nil) {
 		[self pushViewController:[[ShowViewController alloc] initWithShow:AppDelegate.sharedDelegate.currentlyPlayingShow]];
 		return;
 	}
 	
 	int row = indexPath.row;
-	if(row == kPhishODMenuItemYears) {
+	int section = indexPath.section;
+	if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemYears) {
 		[self pushViewController:[[YearsViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemSongs) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemSongs) {
 		[self pushViewController:[[SongsViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemVenues) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemVenues) {
 		[self pushViewController:[[VenuesViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemTours) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemTours) {
 		[self pushViewController:[[ToursViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemTopRated) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemTopRated) {
 		[self pushViewController:[[TopRatedViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemRandomShow) {
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		[self pushViewController:[[RandomShowViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemFavorites) {
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemFavorites) {
 		[self pushViewController:[[FavoritesViewController alloc] init]];
 	}
-	else if(row == kPhishODMenuItemGlobalActivity) {
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		[self pushViewController:[[GlobalActivityViewController alloc] init]];
 	}
 }
@@ -187,5 +203,12 @@ typedef enum {
 										 animated:YES];
 }
 
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+	if(section == kPhishODMenuSectionStats) {
+		return @"Stats";
+	}
+	return nil;
+}
 
 @end

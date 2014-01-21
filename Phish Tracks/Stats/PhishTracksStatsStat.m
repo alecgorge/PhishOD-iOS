@@ -44,7 +44,7 @@
 				[playEvents addObject:[[PhishTracksStatsPlayEvent alloc] initWithDictionary:playDict]];
 			}
 			else {
-				CLS_LOG(@"expected play_event in stat.value array. got %@", val);
+				dbug(@"expected play_event in stat.value array. got %@", val);
 			}
 		}
 

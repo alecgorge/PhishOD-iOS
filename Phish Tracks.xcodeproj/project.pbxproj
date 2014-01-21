@@ -92,7 +92,6 @@
 		7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31F176040B200B80D54 /* NSString+stripHTML.m */; };
 		7CADB323176043F700B80D54 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB322176043F700B80D54 /* SongsViewController.m */; };
 		7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB325176044DF00B80D54 /* SongInstancesViewController.m */; };
-		7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CADB3281760583D00B80D54 /* Crashlytics.framework */; };
 		7CB97EC21805E289004A43EE /* ToursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB97EC11805E289004A43EE /* ToursViewController.m */; };
 		7CB97EC51805E45B004A43EE /* TourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB97EC41805E45B004A43EE /* TourViewController.m */; };
 		7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EA180F5EB700F72F0D /* PhishinEra.m */; };
@@ -134,6 +133,7 @@
 		7CC91A9117A093030047DFF3 /* 08-chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A8F17A093030047DFF3 /* 08-chat@2x.png */; };
 		7CC91A9417A093D40047DFF3 /* glyphicons_151_new_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */; };
 		7CC91A9517A093D40047DFF3 /* glyphicons_151_new_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */; };
+		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
 		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
 		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
 		C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */; };
@@ -214,7 +214,6 @@
 		7C518C40175D2E20005EB2E7 /* YearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearViewController.m; sourceTree = "<group>"; };
 		7C518C42175D9C87005EB2E7 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
 		7C518C43175D9C87005EB2E7 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
-		7C518C4B175DC59E005EB2E7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7C518C51175DC937005EB2E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -307,7 +306,6 @@
 		7CADB322176043F700B80D54 /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
 		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
 		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
-		7CADB3281760583D00B80D54 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7CB97EC01805E289004A43EE /* ToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToursViewController.h; path = ../ToursViewController.h; sourceTree = "<group>"; };
 		7CB97EC11805E289004A43EE /* ToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToursViewController.m; path = ../ToursViewController.m; sourceTree = "<group>"; };
 		7CB97EC31805E45B004A43EE /* TourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
@@ -363,6 +361,7 @@
 		7CC91A8F17A093030047DFF3 /* 08-chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat@2x.png"; sourceTree = "<group>"; };
 		7CC91A9217A093D40047DFF3 /* glyphicons_151_new_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_151_new_window.png; sourceTree = "<group>"; };
 		7CC91A9317A093D40047DFF3 /* glyphicons_151_new_window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_151_new_window@2x.png"; sourceTree = "<group>"; };
+		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
@@ -447,6 +446,7 @@
 				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
 				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
 				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
+				7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */,
 				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
 				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
 				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
@@ -454,7 +454,6 @@
 				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
 				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
 				EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */,
-				7CADB3291760583D00B80D54 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,15 +511,14 @@
 		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */,
 				7C7ED3A91801B22E004F55DF /* CoreLocation.framework */,
 				7C7ED3A71801B219004F55DF /* MapKit.framework */,
 				7C7ED3951801B0F2004F55DF /* PLLocationsMap */,
 				7C7ED39018010620004F55DF /* CoreMedia.framework */,
-				7CADB3281760583D00B80D54 /* Crashlytics.framework */,
 				7C518C51175DC937005EB2E7 /* MediaPlayer.framework */,
 				7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */,
 				7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */,
-				7C518C4B175DC59E005EB2E7 /* Reveal.framework */,
 				7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */,
 				7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */,
 				7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */,
@@ -1315,7 +1313,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
+				PROVISIONING_PROFILE = "ADB0E851-982B-4196-98DC-E0CA1A62298F";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1342,7 +1340,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
+				PROVISIONING_PROFILE = "99A77BF7-92DF-4444-831C-C3CF3091070B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1354,17 +1352,19 @@
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
+					"$(SRCROOT)",
+					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4DB01304-FFE5-49DC-98D8-A387CFE1319C";
+				PROVISIONING_PROFILE = "ADB0E851-982B-4196-98DC-E0CA1A62298F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1374,17 +1374,19 @@
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
+					"$(SRCROOT)",
+					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0BD60313-4A11-4525-A648-098D1BBE4729";
+				PROVISIONING_PROFILE = "99A77BF7-92DF-4444-831C-C3CF3091070B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1417,7 +1419,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "24BEBF7D-A524-4371-AEB4-EC4D4864914C";
+				PROVISIONING_PROFILE = "ADB0E851-982B-4196-98DC-E0CA1A62298F";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1428,17 +1430,19 @@
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
+					"$(SRCROOT)",
+					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4C73A136-2509-4D77-8A0E-DAC48F06DE92";
+				PROVISIONING_PROFILE = "ADB0E851-982B-4196-98DC-E0CA1A62298F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;

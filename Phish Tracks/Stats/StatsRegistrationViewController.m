@@ -173,7 +173,7 @@
 //		NSString *alertMessage = [validationErrors count] > 0 ? [validationErrors objectAtIndex:0] : error.userInfo[@"message"];
 		[FailureHandler showAlertWithStatsError:error];
 
-//		CLS_LOG(@"[stats] createSession failure error_code=%d message='%@'", error.code, error.userInfo[@"message"]);
+//		dbug(@"[stats] createSession failure error_code=%d message='%@'", error.code, error.userInfo[@"message"]);
 
 		if (error.code == kStatsApiKeyRequired)
 			[self.navigationController popViewControllerAnimated:YES];

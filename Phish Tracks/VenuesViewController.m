@@ -159,6 +159,10 @@ titleForHeaderInSection:(NSInteger)section {
 	return [self filterForSection:section].count;
 }
 
+-(void)dealloc {
+	self.con = nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";

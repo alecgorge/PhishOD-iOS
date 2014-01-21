@@ -93,6 +93,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 		
 		[UIToolbar appearance].tintColor = phishGreen;
 		[UIToolbar appearance].barTintColor = white;
+        
+        [UIBarButtonItem appearance].tintColor = white;
 		
 		[UISegmentedControl appearance].tintColor = phishGreen;
 	}

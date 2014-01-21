@@ -122,18 +122,18 @@ static PhishTracksStats *sharedPts;
             
             if (statsError.apiErrorCode == kStatsSessionRequired)
                 [self clearLocalSession];
-//            CLS_LOG(@"[stats] api error. http_status=%ld api_error_code=%ld api_message='%@'",
+//            dbug(@"[stats] api error. http_status=%ld api_error_code=%ld api_message='%@'",
 //                    (long)statsError.httpStatus, (long)statsError.apiErrorCode, statsError.apiErrorMessage);
         }
         else {
             statsError = [PhishTracksStatsError errorWithError:[NSError errorWithDomain:@"PhishTracks Stats" code:kStatsErrorUnparsableBody
                                          userInfo:@{ NSLocalizedDescriptionKey: @"Couldn't parse response body." }]];
         }
-        CLS_LOG(@"[stats] api error. error=%@", statsError);
+        dbug(@"[stats] api error. error=%@", statsError);
 	}
 	else {
 		statsError = [PhishTracksStatsError errorWithError:error];
-		CLS_LOG(@"[stats] non-api request error. response was null. error=%@", statsError);
+		dbug(@"[stats] non-api request error. response was null. error=%@", statsError);
 	}
 
 	failure(statsError);

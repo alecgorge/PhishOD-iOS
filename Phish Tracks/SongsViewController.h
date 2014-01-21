@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RefreshableTableViewController.h"
 
-@interface SongsViewController : RefreshableTableViewController
+@interface SongsViewController : RefreshableTableViewController<UISearchDisplayDelegate>
 
 @property NSArray *songs;
 @property NSArray *indicies;
+@property NSArray *results;
 
 @end

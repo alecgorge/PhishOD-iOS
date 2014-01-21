@@ -348,7 +348,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)playerPreviousTapped:(id)sender {
-	[self previous];
+	if(self.currentProgress > 5.0) {
+		[self seekTo:0.0];
+	}
+	else {
+		[self previous];
+	}
 }
 
 - (IBAction)playerProgressScrubbed:(id)sender {
@@ -646,7 +651,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		    failure:^(PhishTracksStatsError *error) {
 			    if (error) {
 					[FailureHandler showAlertWithStatsError:error];
-//					CLS_LOG(@"[stats] createPlayedTrack failure http_status=%@ error_code=%d message='%@'", error.userInfo[@"http_status"],
+//					dbug(@"[stats] createPlayedTrack failure http_status=%@ error_code=%d message='%@'", error.userInfo[@"http_status"],
 //							error.code, error.userInfo[@"message"]);
 			    }
 		    }];
@@ -769,6 +774,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																			 applicationActivities:nil];
 	
 	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
+    activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
+        [Flurry logEvent:@"share_complete"
+          withParameters:@{@"with_time": @(self.shareTime != 0),
+                           @"activity_type": activityType,
+                           @"completed": @(completed)}];
+    };
 	
 	[self.navigationController presentViewController:activityVC
 											animated:YES

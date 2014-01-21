@@ -92,7 +92,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 	}
 	else {
-		CLS_LOG(@"Unimplemented method '%@'",functionName);
+		dbug(@"Unimplemented method '%@'",functionName);
 	}
 }
 

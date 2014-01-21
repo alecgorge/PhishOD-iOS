@@ -34,7 +34,7 @@
 //            NSLog(@"fav=%@", f);
 //        }
     } failure:^(PhishTracksStatsError *error) {
-        CLS_LOG(@"favorite tracks controller err=%@", error);
+        dbug(@"favorite tracks controller err=%@", error);
         [FailureHandler showAlertWithStatsError:error];
     }];
 }
@@ -65,7 +65,7 @@
             [self refreshFavorites];
         }
         failure:^(PhishTracksStatsError *error) {
-            CLS_LOG(@"favorite tracks controller err=%@", error);
+            dbug(@"favorite tracks controller err=%@", error);
             [FailureHandler showAlertWithStatsError:error];
         }];
 }

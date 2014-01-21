@@ -36,7 +36,7 @@
     [[PhishTracksStats sharedInstance] getAllUserFavoriteShows:[PhishTracksStats sharedInstance].userId success:^(NSArray *favs) {
         [self buildSectionIndices:favs];
     } failure:^(PhishTracksStatsError *error) {
-        CLS_LOG(@"favorite shows controller err=%@", error);
+        dbug(@"favorite shows controller err=%@", error);
         [FailureHandler showAlertWithStatsError:error];
     }];
 }
@@ -65,7 +65,7 @@
             [self refreshFavorites];
         }
         failure:^(PhishTracksStatsError *error) {
-            CLS_LOG(@"favorite tracks controller err=%@", error);
+            dbug(@"favorite tracks controller err=%@", error);
             [FailureHandler showAlertWithStatsError:error];
         }];
 }
