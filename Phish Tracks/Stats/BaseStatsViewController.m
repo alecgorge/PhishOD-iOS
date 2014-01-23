@@ -10,12 +10,6 @@
 #import "PhishTracksStatsPlayEvent.h"
 #import "PhishTracksStats.h"
 
-//typedef enum {
-//    kBaseStatsVCSectionScalarStats,
-//    kBaseStatsVCSectionNonscalarStats,
-//    kBaseStatsVCSectionCount
-//} BaseStatsViewControllerSections;
-
 @interface BaseStatsViewController ()
 
 @end
@@ -32,18 +26,6 @@
 
 	return self;
 }
-//
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//	// Do any additional setup after loading the view.
-//}
-//
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
 
 - (void)refresh:(id)sender {
 	[[PhishTracksStats sharedInstance] globalStatsWithQuery:query
@@ -52,13 +34,13 @@
 		queryResults = result;
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[super refresh:sender];
+            [sender endRefreshing];
 			[self.tableView reloadData];
 		});
 	}
 	failure:^(PhishTracksStatsError *error)
 	{
-		[self.refreshControl endRefreshing];
+		[sender endRefreshing];
 		[FailureHandler showAlertWithStatsError:error];
 	}];
 }
@@ -89,7 +71,6 @@
 		return cell;
 	}
 	else {
-//		NSString *cellIdentifier = [self topNIdentifier];
 		static NSString *cellIdentifier = @"rankingCell";
 		RankingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 		
@@ -105,11 +86,6 @@
 		return cell;
 	}
 }
-
-//- (NSString *)topNIdentifier
-//{
-//    return @"";
-//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -148,9 +124,6 @@
 {
 	if (queryResults) {
 		if ((queryResults.scalarStatCount == 0 && section == 0) || (queryResults.scalarStatCount > 0 && section == 1)) {
-//			return [NSString stringWithFormat:@"Top %ld%@",
-//                    (long)[[queryResults getStatAtIndex:queryResults.scalarStatCount] count],
-//                    [self topNIdentifier]];
 			return [queryResults getStatAtIndex:queryResults.scalarStatCount].prettyName;
 		}
 	}

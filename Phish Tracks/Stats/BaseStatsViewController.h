@@ -23,7 +23,6 @@
 
 - (id)initWithTitle:(NSString *)title andStatsQuery:(PhishTracksStatsQuery *)statsQuery;
 - (RankingTableViewCell *)cellForPlayEventWithReuseIdentifier:(NSString *)cellIdentifier;
-//- (NSString *)topNIdentifier;
 - (UIViewController *)viewControllerForPlay:(PhishTracksStatsPlayEvent *)play;
 
 @end
