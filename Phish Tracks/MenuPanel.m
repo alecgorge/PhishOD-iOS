@@ -92,7 +92,7 @@ typedef enum {
 	int row = indexPath.row;
 
 	if (row == kPhishODMenuItemHome) {
-		cell.textLabel.text = @"Home";
+		cell.textLabel.text = @"Music";
 	}
 	else if(row == kPhishODMenuItemSettings) {
 		cell.textLabel.text = @"Settings";
