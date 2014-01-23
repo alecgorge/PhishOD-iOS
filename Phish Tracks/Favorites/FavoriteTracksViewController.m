@@ -29,10 +29,6 @@
 {
     [[PhishTracksStats sharedInstance] getAllUserFavoriteTracks:[PhishTracksStats sharedInstance].userId success:^(NSArray *favs) {
         [self buildSectionIndices:favs];
-//        NSLog(@"favorites = %@", self.favorites);
-//        for (PhishTracksStatsFavorite *f in favs) {
-//            NSLog(@"fav=%@", f);
-//        }
     } failure:^(PhishTracksStatsError *error) {
         dbug(@"favorite tracks controller err=%@", error);
         [FailureHandler showAlertWithStatsError:error];
