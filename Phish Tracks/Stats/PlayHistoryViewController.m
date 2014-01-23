@@ -37,18 +37,20 @@
 			self.title = [NSString stringWithFormat:@"%@'s Play History", [PhishTracksStats sharedInstance].username];
 
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[super refresh:sender];
+				[sender endRefreshing];
 				[self.tableView reloadData];
 			});
 	    }
 		failure:^(PhishTracksStatsError *error)
 		{
-			[self.refreshControl endRefreshing];
+//			[self.refreshControl endRefreshing];
+            [sender endRefreshing];
 			[FailureHandler showAlertWithStatsError:error];
 		}];
 	}
 	else {
-		[super refresh:sender];
+        [sender endRefreshing];
+//		[super refresh:sender];
 		[self.tableView reloadData];
 	}
 }
@@ -109,7 +111,7 @@
 		PhishTracksStatsPlayEvent *play = [playEvents objectAtIndex:indexPath.row];
 		ShowViewController *c = [[ShowViewController alloc] initWithShowDate:play.showDate];
 		c.autoplayTrackId = play.trackId;
-//		c.autoplay = YES;
+		c.autoplay = [PhishTracksStats sharedInstance].autoplayTracks;
 		[self.navigationController pushViewController:c animated:YES];
 	}
 }

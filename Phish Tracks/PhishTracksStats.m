@@ -26,6 +26,7 @@ static PhishTracksStats *sharedPts;
 + (void)setupWithAPIKey:(NSString *)apiKey {
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
+	sharedPts.autoplayTracks = YES;
 //	NSLog(@"[stats] stats loaded with apikey=%@ sessionkey=%@", [PhishTracksStats sharedInstance].apiKey, [PhishTracksStats sharedInstance].sessionKey);
 }
 
@@ -286,10 +287,11 @@ static PhishTracksStats *sharedPts;
 		parameters:@{ @"limit": [NSNumber numberWithInteger:limit], @"offset": [NSNumber numberWithInteger:offset] }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
-//			   if (operation.response.statusCode == 200 && success) {
 			   if (success) {
 				   NSError *error = nil;
-				   NSArray *playEvents = [self parseResponseObject:responseObject error:error];
+                   NSArray *playEvents = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+                   NSLog(@"%@", playEvents);
+//				   NSArray *playEvents = [self parseResponseObject:responseObject error:error];
 
 				   playEvents = [playEvents map:^id(id object) {
 					   return [[PhishTracksStatsPlayEvent alloc] initWithDictionary:object];
@@ -307,7 +309,7 @@ static PhishTracksStats *sharedPts;
 - (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
 						  success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
-	[self playHistoryHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays.json"]  // [NSString stringWithFormat:@"users/%@/plays.json", [@(userId) stringValue]]
+	[self playHistoryHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays.json"]
 							  limit:limit
 							 offset:offset
 							success:success

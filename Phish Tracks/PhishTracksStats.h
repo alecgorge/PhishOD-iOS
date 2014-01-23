@@ -39,6 +39,7 @@ typedef enum {
 @property BOOL isAuthenticated;
 @property NSString *username;
 @property NSInteger userId;
+@property BOOL autoplayTracks;
 
 //- (void)checkSessionKey:(NSString *)sessionKey;
 

@@ -93,7 +93,7 @@
 		PhishTracksStatsPlayEvent *play = [[queryResults getStatAtIndex:0].value objectAtIndex:indexPath.row];
 		ShowViewController *c = [[ShowViewController alloc] initWithShowDate:play.showDate];
 		c.autoplayTrackId = play.trackId;
-//		c.autoplay = YES;
+		c.autoplay = [PhishTracksStats sharedInstance].autoplayTracks;
 		[self.navigationController pushViewController:c animated:YES];
 	}
 }

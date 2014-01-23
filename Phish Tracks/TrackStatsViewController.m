@@ -8,6 +8,7 @@
 //  Copyright (c) 2013 Alec Gorge. All rights reserved.
 //
 
+#import "PhishTracksStats.h"
 #import "TrackStatsViewController.h"
 #import "ShowViewController.h"
 #import "TrackRankingTableViewCell.h"
@@ -25,7 +26,10 @@
 
 - (UIViewController *)viewControllerForPlay:(PhishTracksStatsPlayEvent *)play
 {
-    return [[ShowViewController alloc] initWithShowDate:play.showDate];
+    ShowViewController * c = [[ShowViewController alloc] initWithShowDate:play.showDate];
+    c.autoplayTrackId = play.trackId;
+    c.autoplay = [PhishTracksStats sharedInstance].autoplayTracks;
+    return c;
 }
 
 @end

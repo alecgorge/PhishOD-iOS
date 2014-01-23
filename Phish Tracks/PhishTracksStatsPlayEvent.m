@@ -20,24 +20,24 @@
 		_streamingSite = playDict[@"streaming_site"];
 
         // track
-		_trackId = [playDict[@"track_id"] integerValue];
+		_trackId = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"track_id"]];
 		_trackSlug = playDict[@"track_slug"];
 		_trackTitle = playDict[@"track_title"];
-		_trackDuration = [playDict[@"track_duration"] integerValue];
+		_trackDuration = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"track_duration"]];
 		_setName = playDict[@"set_name"];
         
         // show
-		_showId = [playDict[@"show_id"] integerValue];
+		_showId = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"show_id"]];
 		_showDate = playDict[@"show_date"];
-		_showDuration = [playDict[@"show_duration"] integerValue];
+        _showDuration = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"show_duration"]];
         
         // venue
-		_venueId = [playDict[@"venue_id"] integerValue];
+		_venueId = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"venue_id"]];
 		_venueSlug = playDict[@"venue_slug"];
 		_venueName = playDict[@"venue_name"];
 		_venuePastNames = playDict[@"venue_past_names"];
 		_location = playDict[@"location"];
-		_venueShowsCount = [playDict[@"venue_shows_count"] integerValue];
+		_venueShowsCount = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"venue_shows_count"]];
         
         if (playDict[@"venue_latitude"] && playDict[@"venue_latitude"] != [NSNull null])
             _venueLatitude = [NSDecimalNumber decimalNumberWithString:playDict[@"venue_latitude"]];
@@ -46,18 +46,18 @@
             _venueLongitude = [NSDecimalNumber decimalNumberWithString:playDict[@"venue_longitude"]];
         
         // tour
-		_tourId = [playDict[@"tour_id"] integerValue];
+		_tourId = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"tour_id"]];
 		_tourSlug = playDict[@"tour_slug"];
 		_tourName = playDict[@"tour_name"];
 		_tourStartsOn = playDict[@"tour_starts_on"];
 		_tourEndsOn = playDict[@"tour_ends_on"];
-		_tourShowsCount = [playDict[@"tour_shows_count"] integerValue];
+		_tourShowsCount = [PhishTracksStatsPlayEvent convertToInteger:playDict[@"tour_shows_count"]];
         
         _year = [NSString stringWithFormat:@"%@", playDict[@"year"]];
 
 		NSDictionary *userDict = playDict[@"user"];
 		if (userDict) {
-			_userId = [userDict[@"id"] integerValue];
+			_userId = [PhishTracksStatsPlayEvent convertToInteger:userDict[@"id"]];
 			_username = userDict[@"username"];
 		}
 
@@ -67,6 +67,14 @@
 		_timeSincePlayed = playDict[@"time_since_played"];
 	}
 	return self;
+}
+
++ (NSInteger)convertToInteger:(id)object {
+    if (object && object != [NSNull null]) {
+        return [object integerValue];
+    }
+    else
+        return 0;
 }
 
 @end
