@@ -33,6 +33,7 @@ typedef enum {
 } kPhishODMenuItems;
 
 typedef enum {
+	kPhishODMenuStatsItemStats,
 	kPhishODMenuStatsItemFavorites,
 	kPhishODMenuStatsItemGlobalActivity,
 	kPhishODMenuStatsItemsCount
@@ -151,6 +152,9 @@ typedef enum {
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		cell.textLabel.text = @"Random Show";
 	}
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemStats) {
+		cell.textLabel.text = @"Stats";
+	}
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemFavorites) {
 		cell.textLabel.text = @"Favorites";
 	}
@@ -189,6 +193,9 @@ typedef enum {
 	}
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		[self pushViewController:[[RandomShowViewController alloc] init]];
+	}
+	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemStats) {
+		[self pushViewController:[[PhishTracksStatsViewController alloc] init]];
 	}
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemFavorites) {
 		[self pushViewController:[[FavoritesViewController alloc] init]];
