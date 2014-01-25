@@ -39,8 +39,7 @@ typedef enum {
 @property BOOL isAuthenticated;
 @property NSString *username;
 @property NSInteger userId;
-
-//- (void)checkSessionKey:(NSString *)sessionKey;
+@property BOOL autoplayTracks;
 
 - (void)createSession:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 

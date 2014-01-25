@@ -29,28 +29,22 @@
 }
 
 - (void)refresh:(id)sender {
-	if([PhishTracksStats sharedInstance].isAuthenticated) {
-		[[PhishTracksStats sharedInstance] globalPlayHistoryWithLimit:100 offset:0
-		success:^(NSArray *plays)
-	    {
-			playEvents =  plays;
-			self.title = @"Recent Activity";
+    [[PhishTracksStats sharedInstance] globalPlayHistoryWithLimit:100 offset:0
+    success:^(NSArray *plays)
+    {
+        playEvents =  plays;
+        self.title = @"Recent Activity";
 
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[super refresh:sender];
-				[self.tableView reloadData];
-			});
-	    }
-		failure:^(PhishTracksStatsError *error)
-		{
-			[self.refreshControl endRefreshing];
-			[FailureHandler showAlertWithStatsError:error];
-		}];
-	}
-	else {
-		[super refresh:sender];
-		[self.tableView reloadData];
-	}
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [super refresh:sender];
+            [self.tableView reloadData];
+        });
+    }
+    failure:^(PhishTracksStatsError *error)
+    {
+        [self.refreshControl endRefreshing];
+        [FailureHandler showAlertWithStatsError:error];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -90,7 +84,7 @@
 		PhishTracksStatsPlayEvent *play = [playEvents objectAtIndex:indexPath.row];
 		ShowViewController *c = [[ShowViewController alloc] initWithShowDate:play.showDate];
 		c.autoplayTrackId = play.trackId;
-//		c.autoplay = YES;
+		c.autoplay = [PhishTracksStats sharedInstance].autoplayTracks;
 		[self.navigationController pushViewController:c animated:YES];
 	}
 }

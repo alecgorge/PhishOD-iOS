@@ -26,6 +26,7 @@ static PhishTracksStats *sharedPts;
 + (void)setupWithAPIKey:(NSString *)apiKey {
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
+	sharedPts.autoplayTracks = YES;
 //	NSLog(@"[stats] stats loaded with apikey=%@ sessionkey=%@", [PhishTracksStats sharedInstance].apiKey, [PhishTracksStats sharedInstance].sessionKey);
 }
 
@@ -161,7 +162,6 @@ static PhishTracksStats *sharedPts;
 		parameters:@{ @"login": username, @"password": password }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
-//			   if (operation.response.statusCode == 201 && success) {
 			   if (success) {
 				   NSError *error = nil;
 				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
@@ -183,7 +183,6 @@ static PhishTracksStats *sharedPts;
 		parameters:@{ @"user": @{ @"username": username, @"email": email, @"password": password } }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
            {
-//			   if (operation.response.statusCode == 201 && success) {
 			   if (success) {
 				   NSError *error = nil;
 				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
@@ -198,12 +197,6 @@ static PhishTracksStats *sharedPts;
 		   }];
 
 }
-
-//- (void)checkSessionKey:(NSString *)sessionKey
-//{
-//	@"check_session_key.json"
-
-//}
 
 #pragma mark -
 #pragma mark Play Events
@@ -221,7 +214,6 @@ static PhishTracksStats *sharedPts;
 		parameters:params
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
-//			   if (operation.response.statusCode == 201 && success)
 			   if (success)
 				   success();
 		   }
@@ -243,7 +235,6 @@ static PhishTracksStats *sharedPts;
 		parameters:params
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
-//			   if (operation.response.statusCode == 200 && success) {
 			   if (success) {
 				   NSError *error = nil;
 				   NSDictionary *dict = [self parseResponseObject:responseObject error:error];
@@ -261,7 +252,7 @@ static PhishTracksStats *sharedPts;
 - (void)userStatsWithUserId:(NSInteger)userId statsQuery:(PhishTracksStatsQuery *)statsQuery
 					success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
-	[self statsHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays/stats.json"]  // [NSString stringWithFormat:@"users/%@/plays/stats.json", [@(userId) stringValue]]
+	[self statsHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays/stats.json"]
 				   statsQuery:statsQuery
 					  success:success
 					  failure:failure];
@@ -286,10 +277,9 @@ static PhishTracksStats *sharedPts;
 		parameters:@{ @"limit": [NSNumber numberWithInteger:limit], @"offset": [NSNumber numberWithInteger:offset] }
 		   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	       {
-//			   if (operation.response.statusCode == 200 && success) {
 			   if (success) {
 				   NSError *error = nil;
-				   NSArray *playEvents = [self parseResponseObject:responseObject error:error];
+                   NSArray *playEvents = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
 
 				   playEvents = [playEvents map:^id(id object) {
 					   return [[PhishTracksStatsPlayEvent alloc] initWithDictionary:object];
@@ -307,7 +297,7 @@ static PhishTracksStats *sharedPts;
 - (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
 						  success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure
 {
-	[self playHistoryHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays.json"]  // [NSString stringWithFormat:@"users/%@/plays.json", [@(userId) stringValue]]
+	[self playHistoryHelperWithPath:[self nestedResourcePathWithUserId:userId resourcePath:@"plays.json"]
 							  limit:limit
 							 offset:offset
 							success:success
@@ -392,65 +382,18 @@ static PhishTracksStats *sharedPts;
 
 - (void)getAllUserFavoriteTracks:(NSInteger)userId success:(void (^)(NSArray *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
-//	[self getPath:[self nestedResourcePathWithUserId:userId resourcePath:@"favorite_tracks.json"]
-//	   parameters:nil
-//		  success:^(AFHTTPRequestOperation *operation, id responseObject)
-//		  {
-//			   if (success) {
-//				   NSError *error = nil;
-//				   NSArray *favorites = [self parseResponseObject:responseObject error:error];
-//
-//				   favorites = [favorites map:^id(id object) {
-//					   return [[PhishTracksStatsFavorite alloc] initWithDictionary:object andType:kStatsFavoriteTrack];
-//				   }];
-//
-//				   success(favorites);
-//			   }
-//		  }
-//		  failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//		  {
-//			  [self handleRequestFailure:operation error:error failureCallback:failure];
-//		  }];
     [self getAllFavoritesHelper:kStatsFavoriteTrack resourcePath:@"favorite_tracks.json" userId:userId success:success failure:failure];
 }
 
 - (void)createUserFavoriteTrack:(NSInteger)userId favorite:(PhishTracksStatsFavorite *)favorite
                         success:(void (^)(PhishTracksStatsFavorite *))success failure:(void (^)(PhishTracksStatsError *))failure
 {
-//    [self postPath:[self nestedResourcePathWithUserId:userId resourcePath:@"favorite_tracks.json"]
-//        parameters:[favorite asDictionary]
-//           success:^(AFHTTPRequestOperation *operation, id responseObject)
-//           {
-//			   if (success) {
-//				   NSError *error = nil;
-//				   NSDictionary *favDict = [self parseResponseObject:responseObject error:error];
-//                   PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithDictionary:favDict andType:kStatsFavoriteTrack];
-//				   success(fav);
-//			   }
-//           }
-//           failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//           {
-//			  [self handleRequestFailure:operation error:error failureCallback:failure];
-//           }];
-    
     [self createUserFavoriteHelper:kStatsFavoriteTrack resourcePath:@"favorite_tracks.json" userId:userId favorite:favorite success:success failure:failure];
     
 }
 
 - (void)destroyUserFavoriteTrack:(NSInteger)userId favoriteId:(NSInteger)favoriteId success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure
 {
-//	[self deletePath:[self nestedResourcePathWithUserId:userId resourcePath:[NSString stringWithFormat:@"favorite_tracks/%ld.json", (long)favoriteId]]
-//	   parameters:nil
-//		  success:^(AFHTTPRequestOperation *operation, id responseObject)
-//		  {
-//			   if (success)
-//				   success();
-//		  }
-//		  failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//		  {
-//			  [self handleRequestFailure:operation error:error failureCallback:failure];
-//		  }];
-    
     [self destroyUserFavoriteHelper:@"favorite_tracks" userId:userId favoriteId:favoriteId success:success failure:failure];
 }
 

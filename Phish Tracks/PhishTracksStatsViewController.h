@@ -11,6 +11,4 @@
 
 @interface PhishTracksStatsViewController : RefreshableTableViewController
 
-//- (id)init;
-
 @end

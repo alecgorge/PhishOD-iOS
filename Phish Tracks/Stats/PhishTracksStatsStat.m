@@ -68,7 +68,6 @@
 - (NSString *)valueAsString
 {
 	return [NSString stringWithFormat:@"%@", self.value];
-//	return [NSString stringWithFormat:@"VALUE", self.value];
 }
 
 @end

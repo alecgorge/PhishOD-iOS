@@ -84,37 +84,31 @@ static NSDictionary *stats;
         [query addFilterWithAttrName:@"track_duration" filterOperator:@"gte" attrValue:@1200000];
 		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"unique_count"];
-//		[query addStatWithName:@"duration_sum_fmt"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
     else if (name == kGlobalTopSets) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"sets" timeframe:@"all_time"];
-//		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
     else if (name == kGlobalTopShows) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"shows" timeframe:@"all_time"];
-//		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"unique_count"];
 		[query addStatWithName:@"total_count"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
     else if (name == kGlobalTopTours) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"tours" timeframe:@"all_time"];
-//		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"total_count"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
     else if (name == kGlobalTopVenues) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"venues" timeframe:@"all_time"];
-//		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"unique_count"];
 		[query addStatWithName:@"total_count"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
     else if (name == kGlobalTopYears) {
 		query = [[PhishTracksStatsQuery alloc] initWithEntity:@"years" timeframe:@"all_time"];
-//		[query addStatWithName:@"play_count"];
 		[query addStatWithName:@"play_count_ranking" andOptions:@{ @"limit": @100, @"offset": @0 }];
 	}
 

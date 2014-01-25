@@ -35,12 +35,6 @@
     [self refreshFavorites];
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-
 - (void)rightBarButtonAction
 {
     if (self.tableView.editing) {
@@ -88,7 +82,6 @@
     }
     
     NSArray *sectionTitles = [[sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-//    NSLog(@"titles = %@", sectionTitles);
     self.sectionTitles = sectionTitles;
     self.sections = sections;
     

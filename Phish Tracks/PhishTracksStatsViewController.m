@@ -17,10 +17,6 @@
 #import "TrackStatsViewController.h"
 #import "MoreStatsViewController.h"
 
-//@interface PhishTracksStatsViewController ()
-//@property BOOL showLoginMessage;
-//@end
-
 @implementation PhishTracksStatsViewController {
 	PhishTracksStatsQueryResults *userStats;
 	PhishTracksStatsQuery *statsQuery;
@@ -37,10 +33,6 @@
 
 	return self;
 }
-
-//- (void)viewDidLoad {
-//	[super viewDidLoad];
-//}
 
 - (void)refresh:(id)sender {
 	if([PhishTracksStats sharedInstance].isAuthenticated) {
@@ -200,15 +192,6 @@
 		}
 	}
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//	if(indexPath.section == 2) {
-//		return tableView.rowHeight * 1.3;
-//	}
-//	
-//	return UITableViewAutomaticDimension;
-//}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

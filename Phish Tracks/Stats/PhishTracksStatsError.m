@@ -27,9 +27,6 @@
 
 - (id)initWithStatsErrorCode:(NSInteger)errorCode message:(NSString *)message validationErrors:(NSArray *)validationErrors httpStatus:(NSInteger)httpStatus
 {
-//	NSMutableDictionary *userInfoDict = [@{ NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"%@ (err# %ld)", message, (long)errorCode],
-//											NSLocalizedDescriptionKey: message,
-//											@"HttpStatus": [NSNumber numberWithInteger:httpStatus] } mutableCopy];
     NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionary];
     
     [userInfoDict setObject:[NSNumber numberWithInteger:httpStatus] forKey:@"HttpStatus"];
