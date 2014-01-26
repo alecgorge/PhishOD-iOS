@@ -60,9 +60,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.shouldShowNowPlaying = NO;
 	
 	[self setupNowPlaying];
+    
+    self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	
 	HomeViewController *years = [[HomeViewController alloc] init];
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
+    self.yearsNav.delegate = self.navDelegate;
 	self.yearsNav.navigationBar.translucent = NO;
 	
 	self.panels = [[JASidePanelController alloc] init];
@@ -82,7 +85,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 - (void)setupAppearance {
 	UIColor *phishGreen = COLOR_PHISH_GREEN;
-	UIColor *lightPhishGreen = COLOR_PHISH_LIGHT_GREEN;
 	UIColor *white = COLOR_PHISH_WHITE;
 	
 	if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {

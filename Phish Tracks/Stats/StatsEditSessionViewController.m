@@ -55,7 +55,7 @@
 	}
 	else {
 		cell.textLabel.text = @"Sign out";
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
 	}
 
 	return cell;

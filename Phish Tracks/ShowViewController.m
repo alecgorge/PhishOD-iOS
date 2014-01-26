@@ -13,6 +13,8 @@
 #import "StreamingMusicViewController.h"
 #import "VenueViewController.h"
 
+#import "PhishTracksStatsFavoritePopover.h"
+
 @interface ShowViewController ()
 
 @end
@@ -49,12 +51,18 @@
 }
 
 - (void)setupRightBarButtonItem {
-	if([AppDelegate sharedDelegate].currentlyPlayingShow != nil) {
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Player"
-																				  style:UIBarButtonItemStyleDone
-																				 target:[AppDelegate sharedDelegate]
-																				 action:@selector(nowPlaying)];
-	}
+    UIImage *customImage = [UIImage imageNamed:@"white_glyphicons_012_heart"];
+    UIBarButtonItem *customBarButtonItem = [[UIBarButtonItem alloc] initWithImage:customImage
+                                                                            style:UIBarButtonItemStyleBordered
+                                                                           target:self
+                                                                           action:@selector(favoriteTapped:)];
+    
+    self.navigationItem.rightBarButtonItem = customBarButtonItem;
+}
+
+- (void)favoriteTapped:(id)sender {
+    [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
+                                                                   inView:self.view];
 }
 
 - (void)refresh:(id)sender {
@@ -258,11 +266,11 @@ titleForHeaderInSection:(NSInteger)section {
 								   reuseIdentifier:CellIdentifier];
 	}
 	
-	PhishSet *set = (PhishSet*)self.show.sets[indexPath.section-1];
-	PhishSong *track = (PhishSong*)set.tracks[indexPath.row];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
 	cell.textLabel.text = track.title;
 	cell.textLabel.numberOfLines = 2;
-	cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	cell.textLabel.font = [UIFont boldSystemFontOfSize: 14.0];
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.detailTextLabel.text = [self formattedStringForDuration: track.duration];
@@ -341,11 +349,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[newPlayer changePlaylist:playlist
 			andStartFromIndex:startIndex];
-	
+    
 	[[AppDelegate sharedDelegate] showNowPlaying];
 	[AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
-	
-	[self setupRightBarButtonItem];
 }
 
 @end

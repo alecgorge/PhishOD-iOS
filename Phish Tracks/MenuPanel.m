@@ -20,6 +20,10 @@
 #import "SearchViewController.h"
 #import "HomeViewController.h"
 
+#import "AppDelegate.h"
+
+#import "NavigationControllerAutoShrinkerForNowPlaying.h"
+
 typedef enum {
 	kPhishODMenuItemNowPlaying,
 	kPhishODMenuItemHome,
@@ -156,6 +160,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	UINavigationController *nav = (UINavigationController*)self.sidePanelController.centerPanel;
 	nav.viewControllers = @[vc];
 	nav.navigationBar.translucent = NO;
+    nav.delegate = AppDelegate.sharedDelegate.navDelegate;
 	
 	[self.sidePanelController showCenterPanelAnimated:YES];
 }

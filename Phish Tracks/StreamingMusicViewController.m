@@ -145,7 +145,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																  target:self
 																  action:@selector(dismiss)];
 	
-	UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share+Fav"
+	UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share"
 																	style:UIBarButtonItemStyleBordered
 																   target:self
 																   action:@selector(share:)];
@@ -314,9 +314,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		
 		if(rate == 0) {
 			self.playerPauseButton.hidden = YES;
+            self.isPlaying = NO;
 		}
 		else {
 			self.playerPauseButton.hidden = NO;
+            self.isPlaying = YES;
 		}
 		
 		if(self.currentIndex == 0) {
@@ -612,7 +614,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																MPNowPlayingInfoPropertyPlaybackRate		: [NSNumber numberWithFloat:self.queuePlayer.rate],
 																MPNowPlayingInfoPropertyElapsedPlaybackTime	: [NSNumber numberWithInt: CMTimeGetSeconds(self.queuePlayer.currentItem.currentTime)]
 																}];
-	
+	    
 	NSTimeInterval playbackTime = 0;
 	if(self.currentProgress == 0
 	   || self.queuePlayer.currentItem.status != AVPlayerItemStatusReadyToPlay) {
@@ -625,8 +627,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	self.playerTitle.text = self.currentItem.title;
 	self.playerSubtitle.text = self.currentItem.subtitle;
-	self.playerTimeElapsed.text = [StreamingMusicViewController formatTime: playbackTime];
-	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [StreamingMusicViewController formatTime: self.currentItem.duration - playbackTime]];
+	self.playerTimeElapsed.text = [StreamingMusicViewController formatTime: floor(playbackTime)];
+	self.playerTimeRemaining.text = [@"-" stringByAppendingString: [StreamingMusicViewController formatTime: self.currentItem.duration - floor(playbackTime)]];
 	
 	float complete = playbackTime / self.currentItem.duration;
 	
@@ -671,8 +673,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 																 delegate:self
 														cancelButtonTitle:@"Cancel"
 												   destructiveButtonTitle:nil
-														otherButtonTitles:@"Share with time", @"Share without time", @"Add Track to Favorites", @"Add Show to Favorites", @"Add Tour to Favorites", @"Add Venue to Favorites", nil];
-//														otherButtonTitles:@"Share with time", @"Share without time", nil];
+														otherButtonTitles:@"Share with time", @"Share without time", nil];
 		
 		if(IS_IPAD()) {
 			[actionSheet showFromBarButtonItem:self.navigationItem.leftBarButtonItem
@@ -693,71 +694,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 6) return;  // TODO should be 2 without favorites
-    
-    // TODO temp favorites code...
-    if (buttonIndex == 2) {
-        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
-        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track];
-        [[PhishTracksStats sharedInstance] createUserFavoriteTrack:[PhishTracksStats sharedInstance].userId favorite:fav
-            success:^(PhishTracksStatsFavorite *favorite)
-            {
-            }
-            failure:^(PhishTracksStatsError *error)
-            {
-                [FailureHandler showAlertWithStatsError:error];
-            }];
-        return;
-    }
-    else if (buttonIndex == 3) {
-        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
-        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track.show];
-        [[PhishTracksStats sharedInstance] createUserFavoriteShow:[PhishTracksStats sharedInstance].userId favorite:fav
-            success:^(PhishTracksStatsFavorite *favorite)
-            {
-            }
-            failure:^(PhishTracksStatsError *error)
-            {
-                [FailureHandler showAlertWithStatsError:error];
-            }];
-        return;
-    }
-    else if (buttonIndex == 4) {
-        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
-        
-        __block PhishinTour *tour = [[PhishinTour alloc] initWithDictionary:@{ @"id": [NSNumber numberWithInt:curr.track.show.tour_id] }];
-        [[PhishinAPI sharedAPI] fullTour:tour success:^(PhishinTour *newTour) {
-            tour = newTour;
-            PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:tour];
-            [[PhishTracksStats sharedInstance] createUserFavoriteTour:[PhishTracksStats sharedInstance].userId favorite:fav
-                success:^(PhishTracksStatsFavorite *favorite)
-                {
-                }
-                failure:^(PhishTracksStatsError *error)
-                {
-                    [FailureHandler showAlertWithStatsError:error];
-                }];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [FailureHandler showErrorAlertWithMessage:error.localizedDescription];
-        }];
-        
-        return;
-    }
-    else if (buttonIndex == 5) {
-        PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) self.currentItem;
-        PhishTracksStatsFavorite *fav = [[PhishTracksStatsFavorite alloc] initWithPhishinEntity:curr.track.show.venue];
-        [[PhishTracksStats sharedInstance] createUserFavoriteVenue:[PhishTracksStats sharedInstance].userId favorite:fav
-            success:^(PhishTracksStatsFavorite *favorite)
-            {
-            }
-            failure:^(PhishTracksStatsError *error)
-            {
-                [FailureHandler showAlertWithStatsError:error];
-            }];
-        return;
-    }
-    // end test code
-	
+	if(buttonIndex == 2) return;  // TODO should be 2 without favorites
 	
 	if(buttonIndex == 1) {
 		self.shareTime = 0;

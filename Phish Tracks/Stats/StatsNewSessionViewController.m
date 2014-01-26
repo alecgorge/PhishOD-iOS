@@ -114,7 +114,7 @@
 										  reuseIdentifier:CellIdentifier];
 		}
 
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
 		cell.textLabel.text = @"Sign in";
 	}
 	else {
@@ -126,7 +126,7 @@
 										  reuseIdentifier:CellIdentifier];
 		}
 
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.textLabel.text = @"Forgot password";
 	}

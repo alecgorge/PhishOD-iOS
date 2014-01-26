@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <JASidePanels/JASidePanelController.h>
 
+#import "NavigationControllerAutoShrinkerForNowPlaying.h"
+
 #import "MenuPanel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
@@ -29,6 +31,8 @@
 
 @property (nonatomic) BOOL shouldShowNowPlaying;
 @property (nonatomic) BOOL isNowPlayingVisible;
+
+@property (nonatomic) NavigationControllerAutoShrinkerForNowPlaying *navDelegate;
 
 - (void)toggleNowPlaying;
 - (void)showNowPlaying;

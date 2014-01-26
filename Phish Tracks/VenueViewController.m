@@ -14,8 +14,10 @@
 
 typedef enum {
 	kPhishODVenueName,
+    kPhishODVenuePastNames,
 	kPhishODVenueCity,
 	kPhishODVenueShowCount,
+    kPhishODVenueRowCount
 } kPhishODVenueRow;
 
 typedef enum {
@@ -55,7 +57,7 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section  {
 	if(section == kPhishODVenueInfoSection) {
-		return 3;
+		return kPhishODVenueRowCount;
 	}
 	else {
 		return self.venue.show_dates.count;
@@ -107,6 +109,13 @@ typedef enum {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.accessoryType = UITableViewCellAccessoryNone;
 		}
+        else if(indexPath.row == kPhishODVenuePastNames) {
+            cell.textLabel.text = @"Past Names";
+            cell.detailTextLabel.text = self.venue.past_names;
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
 	}
 	else {
 		NSString *show_date = self.venue.show_dates[indexPath.row];
