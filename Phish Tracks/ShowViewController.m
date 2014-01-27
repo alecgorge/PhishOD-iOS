@@ -62,7 +62,8 @@
 
 - (void)favoriteTapped:(id)sender {
     [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
-                                                                   inView:self.view];
+                                                                   inView:self.view
+                                                        withPhishinObject:show];
 }
 
 - (void)refresh:(id)sender {

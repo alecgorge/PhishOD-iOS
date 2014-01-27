@@ -7,6 +7,7 @@
 //
 
 #import "TourViewController.h"
+#import "PhishTracksStatsFavoritePopover.h"
 
 @implementation TourViewController
 
@@ -22,6 +23,23 @@
 	[super viewDidLoad];
 	
 	self.title = self.tour.name;
+	[self setupRightBarButtonItem];
+}
+
+- (void)setupRightBarButtonItem {
+    UIImage *customImage = [UIImage imageNamed:@"white_glyphicons_012_heart"];
+    UIBarButtonItem *customBarButtonItem = [[UIBarButtonItem alloc] initWithImage:customImage
+                                                                            style:UIBarButtonItemStyleBordered
+                                                                           target:self
+                                                                           action:@selector(favoriteTapped:)];
+    
+    self.navigationItem.rightBarButtonItem = customBarButtonItem;
+}
+
+- (void)favoriteTapped:(id)sender {
+    [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
+                                                                   inView:self.view
+                                                        withPhishinObject:_tour];
 }
 
 - (void)refresh:(id)sender {
