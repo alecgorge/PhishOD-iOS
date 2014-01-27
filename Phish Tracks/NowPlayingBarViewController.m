@@ -56,8 +56,10 @@
 }
 
 - (IBAction)favoriteTapped:(id)sender {
+    PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) StreamingMusicViewController.sharedInstance.currentItem;
     [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
-                                                                   inView:self.view.superview];
+                                                                   inView:self.view.superview
+                                                        withPhishinObject:curr.track];
 }
 
 - (BOOL)shouldShowBar {

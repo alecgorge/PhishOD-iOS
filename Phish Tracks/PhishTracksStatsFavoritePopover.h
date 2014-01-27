@@ -12,6 +12,7 @@
 
 + (instancetype)sharedInstance;
 
-- (void)showFromBarButtonItem:(UIView*)item inView:(UIView *)view;
+//- (void)showFromBarButtonItem:(UIView*)item inView:(UIView *)view;
+- (void)showFromBarButtonItem:(UIView *)item inView:(UIView *)view withPhishinObject:(id)phishinObject;
 
 @end

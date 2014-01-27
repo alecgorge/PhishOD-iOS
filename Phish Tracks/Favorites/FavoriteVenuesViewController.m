@@ -61,7 +61,7 @@
 
 - (void)deleteActionForFavorite:(PhishTracksStatsFavorite *)favorite
 {
-    [[PhishTracksStats sharedInstance] destroyUserFavoriteTrack:[PhishTracksStats sharedInstance].userId
+    [[PhishTracksStats sharedInstance] destroyUserFavoriteVenue:[PhishTracksStats sharedInstance].userId
                                                      favoriteId:[favorite.favoriteId integerValue]
         success:^{
             [self refreshFavorites];
