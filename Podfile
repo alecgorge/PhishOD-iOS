@@ -9,7 +9,6 @@ pod 'LastFm'
 pod 'SVProgressHUD'
 pod 'TestFlightSDK'
 pod 'FXKeychain'
-pod 'CKRefreshControl'
 pod 'ObjectiveSugar'
 pod 'JASidePanels'
 

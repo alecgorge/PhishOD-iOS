@@ -291,7 +291,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)remoteControlReceivedWithEvent:(NSNotification *)note {
-    UIEvent *event = note.object;
+    UIEvent *event;
+	if([note isKindOfClass:[UIEvent class]]) {
+		event = (UIEvent*)note;
+	}
+	else {
+		event = note.object;
+	}
     //if it is a remote control event handle it correctly
     if (event.type == UIEventTypeRemoteControl) {
         if (event.subtype == UIEventSubtypeRemoteControlPlay) {

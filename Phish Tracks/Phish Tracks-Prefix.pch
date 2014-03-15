@@ -25,7 +25,6 @@
 #import <Crashlytics/Crashlytics.h>
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
-#import <CKRefreshControl/CKRefreshControl.h>
 
 #define IS_IPAD() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
