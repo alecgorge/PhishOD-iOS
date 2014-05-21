@@ -1421,8 +1421,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
@@ -1434,7 +1434,7 @@
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B4A505ED-3F56-42A1-9221-7EC3A97DC70D";
+				PROVISIONING_PROFILE = "917A09CC-00FF-4D93-B940-4FFFCE588DE7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1443,8 +1443,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
@@ -1461,7 +1461,7 @@
 			};
 			name = Release;
 		};
-		C54ED743182019F7007D4261 /* Development */ = {
+		7C8BF73D192D2517006ABDE8 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1475,32 +1475,26 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ADB0E851-982B-4196-98DC-E0CA1A62298F";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "99A77BF7-92DF-4444-831C-C3CF3091070B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Development;
+			name = Adhoc;
 		};
-		C54ED744182019F7007D4261 /* Development */ = {
+		7C8BF73E192D2517006ABDE8 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries\\\"",
@@ -1512,10 +1506,10 @@
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B4A505ED-3F56-42A1-9221-7EC3A97DC70D";
+				PROVISIONING_PROFILE = "0BD60313-4A11-4525-A648-098D1BBE4729";
 				WRAPPER_EXTENSION = app;
 			};
-			name = Development;
+			name = Adhoc;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1524,8 +1518,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1C175D0C32005EB2E7 /* Debug */,
-				C54ED743182019F7007D4261 /* Development */,
 				7C518C1D175D0C32005EB2E7 /* Release */,
+				7C8BF73D192D2517006ABDE8 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1534,8 +1528,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1F175D0C32005EB2E7 /* Debug */,
-				C54ED744182019F7007D4261 /* Development */,
 				7C518C20175D0C32005EB2E7 /* Release */,
+				7C8BF73E192D2517006ABDE8 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
