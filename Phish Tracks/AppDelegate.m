@@ -24,7 +24,6 @@
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
-#import <TestFlight.h>
 
 static AppDelegate *sharedDelegate;
 
@@ -47,8 +46,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[Flurry setBackgroundSessionEnabled:NO];
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
 	
-	[TestFlight takeOff:@"b7d72e8f-eafb-43c2-ac00-238f786848c2"];
-//	[Crashlytics startWithAPIKey:@"bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4"];
 	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
 
 	[self setupLastFM];

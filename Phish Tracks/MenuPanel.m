@@ -93,7 +93,7 @@ typedef enum {
 									  reuseIdentifier:@"cell"];
 	}
 	
-	int row = indexPath.row;
+	NSInteger row = indexPath.row;
 
 	if (row == kPhishODMenuItemHome) {
 		cell.textLabel.text = @"Music";
@@ -144,7 +144,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	int row = indexPath.row;
+	NSInteger row = indexPath.row;
 	if(row == kPhishODMenuItemNowPlaying && self.item) {
 		[[AppDelegate sharedDelegate] showNowPlaying];
 	}
@@ -167,7 +167,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	int row = indexPath.row;
+	NSInteger row = indexPath.row;
 	if (row == kPhishODMenuItemNowPlaying) {
 		return tableView.rowHeight * 3;
 	}

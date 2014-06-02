@@ -13,9 +13,9 @@
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict;
 
-@property (nonatomic, assign) int id;
+@property (nonatomic, assign) NSInteger id;
 @property (nonatomic) NSString *title;
-@property (nonatomic, assign) int tracks_count;
+@property (nonatomic, assign) NSInteger tracks_count;
 @property (nonatomic) NSString *slug;
 @property (nonatomic) NSArray *tracks;
 

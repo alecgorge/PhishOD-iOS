@@ -19,7 +19,7 @@
 @property PhishNetSetlist *setlist;
 
 @property (nonatomic) BOOL autoplay;
-@property (nonatomic) int autoplayTrackId;
+@property (nonatomic) NSInteger autoplayTrackId;
 @property (nonatomic) NSTimeInterval autoplaySeekLocation;
 
 - (id)initWithShow:(PhishinShow*) s;

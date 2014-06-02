@@ -145,7 +145,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (NSString*)formattedStringForDuration:(NSTimeInterval)duration {
     NSInteger minutes = floor(duration/60);
     NSInteger seconds = round(duration - minutes * 60);
-    return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
+    return [NSString stringWithFormat:@"%ld:%02ld", (long)minutes, (long)seconds];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -203,7 +203,7 @@ titleForHeaderInSection:(NSInteger)section {
 				cell.accessoryType = UITableViewCellAccessoryNone;
 			}
 			else {
-				cell.textLabel.text = [NSString stringWithFormat:@"%d Reviews", self.setlist.reviews.count];
+				cell.textLabel.text = [NSString stringWithFormat:@"%lu Reviews", (unsigned long)self.setlist.reviews.count];
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			}
 			
@@ -344,7 +344,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return [[PhishinStreamingPlaylistItem alloc] initWithTrack:object];
 	}];
 	
-	int startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+	int startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
 		return track.id == [obj id];
 	}];
 	

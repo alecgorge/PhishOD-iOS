@@ -156,7 +156,7 @@ typedef enum {
 	
 	if(indexPath.section == kPhishODVenueShowsSection) {
 		NSString *show_date = self.venue.show_dates[indexPath.row];
-		int show_id = [self.venue.show_ids[indexPath.row] integerValue];
+		NSInteger show_id = [self.venue.show_ids[indexPath.row] integerValue];
 		
 		PhishinShow *show = [[PhishinShow alloc] init];
 		show.id = show_id;

@@ -14,14 +14,14 @@
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict andShow:(PhishinShow*)show;
 
-@property (nonatomic, assign) int id;
+@property (nonatomic, assign) NSInteger id;
 @property (nonatomic) NSString *title;
-@property (nonatomic, assign) int position;
+@property (nonatomic, assign) NSInteger position;
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic) NSString *set;
-@property (nonatomic, assign) int likes_count;
+@property (nonatomic, assign) NSInteger likes_count;
 @property (nonatomic) NSString *show_date;
-@property (nonatomic, assign) int show_id;
+@property (nonatomic, assign) NSInteger show_id;
 @property (nonatomic) NSString *slug;
 @property (nonatomic) NSURL *mp3;
 @property (nonatomic) NSArray *song_ids;

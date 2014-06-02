@@ -132,8 +132,8 @@ typedef enum {
 		return cell;
 	}
 	
-	int row = indexPath.row;
-	int section = indexPath.section;
+	NSInteger row = indexPath.row;
+	NSInteger section = indexPath.section;
 	if (section == kPhishODMenuSectionMenu && row == kPhishODMenuItemYears) {
 		cell.textLabel.text = @"Years";
 	}
@@ -174,8 +174,8 @@ typedef enum {
 		return;
 	}
 	
-	int row = indexPath.row;
-	int section = indexPath.section;
+	NSInteger row = indexPath.row;
+	NSInteger section = indexPath.section;
 	if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemYears) {
 		[self pushViewController:[[YearsViewController alloc] init]];
 	}
