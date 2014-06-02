@@ -1064,9 +1064,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C518C00175D0C32005EB2E7 /* Phish OD */ = {
+		7C518C00175D0C32005EB2E7 /* PhishOD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish OD" */;
+			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishOD" */;
 			buildPhases = (
 				0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */,
 				7C518BFD175D0C32005EB2E7 /* Sources */,
@@ -1079,7 +1079,7 @@
 			);
 			dependencies = (
 			);
-			name = "Phish OD";
+			name = PhishOD;
 			productName = "Phish Tracks";
 			productReference = 7C518C01175D0C32005EB2E7 /* Phish OD.app */;
 			productType = "com.apple.product-type.application";
@@ -1110,7 +1110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C518C00175D0C32005EB2E7 /* Phish OD */,
+				7C518C00175D0C32005EB2E7 /* PhishOD */,
 			);
 		};
 /* End PBXProject section */
@@ -1421,6 +1421,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1434,7 +1435,7 @@
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "917A09CC-00FF-4D93-B940-4FFFCE588DE7";
+				PROVISIONING_PROFILE = "2D4DF5A6-46D7-4C4B-AEB5-A232EE91CDC2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1443,6 +1444,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1493,6 +1495,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1505,8 +1508,8 @@
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0BD60313-4A11-4525-A648-098D1BBE4729";
+				PRODUCT_NAME = "PhishOD Beta";
+				PROVISIONING_PROFILE = "DB8DC5E2-CB67-426F-A342-126A6FE8E7BE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;
@@ -1524,7 +1527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "Phish OD" */ = {
+		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishOD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C518C1F175D0C32005EB2E7 /* Debug */,
