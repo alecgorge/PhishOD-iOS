@@ -1223,7 +1223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
+			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4\n./Pods/CrashlyticsFramework/Crashlytics.framework/submit bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
 		};
 		F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1508,7 +1508,7 @@
 				GCC_PREFIX_HEADER = "Phish Tracks/Phish Tracks-Prefix.pch";
 				INFOPLIST_FILE = "Phish Tracks/Phish Tracks-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "PhishOD Beta";
+				PRODUCT_NAME = "PhishOD β";
 				PROVISIONING_PROFILE = "DB8DC5E2-CB67-426F-A342-126A6FE8E7BE";
 				WRAPPER_EXTENSION = app;
 			};
