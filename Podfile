@@ -11,4 +11,5 @@ pod 'TestFlightSDK'
 pod 'FXKeychain'
 pod 'ObjectiveSugar'
 pod 'JASidePanels'
+pod 'CrashlyticsFramework'
 

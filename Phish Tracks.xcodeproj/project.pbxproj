@@ -194,7 +194,7 @@
 		7C02E787180F45C300C01CCB /* SearchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDelegate.h; sourceTree = "<group>"; };
 		7C02E788180F45C300C01CCB /* SearchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDelegate.m; sourceTree = "<group>"; };
 		7C1B438917984D8D00CB1255 /* scrape_jams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scrape_jams.js; sourceTree = "<group>"; };
-		7C518C01175D0C32005EB2E7 /* Phish OD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phish OD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C518C01175D0C32005EB2E7 /* PhishOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -534,7 +534,7 @@
 		7C518C02175D0C32005EB2E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C518C01175D0C32005EB2E7 /* Phish OD.app */,
+				7C518C01175D0C32005EB2E7 /* PhishOD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1081,7 +1081,7 @@
 			);
 			name = PhishOD;
 			productName = "Phish Tracks";
-			productReference = 7C518C01175D0C32005EB2E7 /* Phish OD.app */;
+			productReference = 7C518C01175D0C32005EB2E7 /* PhishOD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1223,7 +1223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4";
+			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
 		};
 		F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
