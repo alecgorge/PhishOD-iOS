@@ -11,7 +11,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>http://install.diawi.com/app-application/7cfd40d1f5d761834cf3341ef39244a664c078b1.ipa</string>
+					<string>https://ci.alecgorge.com/job/PhishOD/lastSuccessfulBuild/artifact/ipa/PhishOD%20Beta.ipa</string>
 				</dict>
 			</array>
 			<key>metadata</key>
