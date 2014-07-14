@@ -1,0 +1,63 @@
+//
+// Prefix header for all source files of the 'Phish Tracks' target in the 'Phish Tracks' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+	#import <Foundation/Foundation.h>
+#endif
+
+#define PHISH_TRACKS_PATH @"http://www.phishtracks.com"
+
+#import<SystemConfiguration/SystemConfiguration.h>
+#import<MobileCoreServices/MobileCoreServices.h>
+
+#import "PhishTracksAPI.h"
+#import "PhishNetAPI.h"
+#import "FailureHandler.h"
+#import <FlurrySDK/Flurry.h>
+#import <Crashlytics/Crashlytics.h>
+
+#import <ObjectiveSugar/ObjectiveSugar.h>
+
+#define IS_IPAD() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+#define REQUEST_FAILED(x) [FailureHandler returnCallback:x]
+
+// #define ramblingwood_DEBUG_MODE
+#define TAKING_LAUNCH_SCREEN 0
+
+#ifdef ramblingwood_DEBUG_MODE
+#define dbug( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define MARK() NSLog( @"MARKED: <%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, nil)
+#else
+#define dbug( s, ... ) CLS_LOG( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define MARK()
+#endif
+
+#import "PhishinAPI.h"
+#import "UIImage+Icons.h"
+
+#define COLOR_PHISH_GREEN [UIColor colorWithRed:0.0/255.0\
+									       green:128.0/255.0\
+									        blue:95.0/255.0\
+								          alpha:1.0]
+
+#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0.0/255.0\
+								 			    green:183.0/255.0\
+												 blue:132.0/255.0\
+												alpha:0.2]
+
+#define COLOR_PHISH_WHITE [UIColor whiteColor]
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
