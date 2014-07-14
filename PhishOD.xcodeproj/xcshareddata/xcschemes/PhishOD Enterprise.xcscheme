@@ -35,7 +35,7 @@
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
             BuildableName = "PhishOD.app"
             BlueprintName = "PhishOD"
-            ReferencedContainer = "container:Phish Tracks.xcodeproj">
+            ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,7 +54,7 @@
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
             BuildableName = "PhishOD.app"
             BlueprintName = "PhishOD"
-            ReferencedContainer = "container:Phish Tracks.xcodeproj">
+            ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

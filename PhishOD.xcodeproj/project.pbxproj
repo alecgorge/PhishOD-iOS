@@ -223,7 +223,6 @@ fi
 				<string>7C518C15175D0C32005EB2E7</string>
 				<string>F1B48B51197383E000DDF5C3</string>
 				<string>7CC16605180F5EB700F72F0D</string>
-				<string>7C7ED3A31801B0FF004F55DF</string>
 				<string>7C518C26175D1170005EB2E7</string>
 				<string>7CC16602180F5EB700F72F0D</string>
 				<string>C5E62D2418394BA000A84114</string>
@@ -231,6 +230,7 @@ fi
 				<string>F1B48B3A1973836800DDF5C3</string>
 				<string>7C518C29175D1386005EB2E7</string>
 				<string>C5FB5F6D1838804F004AAB91</string>
+				<string>F1B48B5D1973B02600DDF5C3</string>
 				<string>7CC165FF180F5EB700F72F0D</string>
 				<string>7C518C2C175D13BF005EB2E7</string>
 				<string>F1B48B3C1973836800DDF5C3</string>
@@ -362,7 +362,7 @@ fi
 			<key>name</key>
 			<string>PhishOD</string>
 			<key>productName</key>
-			<string>Phish Tracks</string>
+			<string>PhishOD</string>
 			<key>productReference</key>
 			<string>7C518C01175D0C32005EB2E7</string>
 			<key>productType</key>
@@ -398,10 +398,10 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
+				<string>F1B48B5E1973B0CF00DDF5C3</string>
 				<string>7CF41C37188EDFAE00EE11D3</string>
 				<string>7C7ED3A91801B22E004F55DF</string>
 				<string>7C7ED3A71801B219004F55DF</string>
-				<string>7C7ED3951801B0F2004F55DF</string>
 				<string>7C7ED39018010620004F55DF</string>
 				<string>7C518C51175DC937005EB2E7</string>
 				<string>7C518C4F175DC5B2005EB2E7</string>
@@ -491,13 +491,11 @@ fi
 				<string>7C518C13175D0C32005EB2E7</string>
 				<string>7C518C14175D0C32005EB2E7</string>
 				<string>7C518C0B175D0C32005EB2E7</string>
-				<string>7CACD50017A4718900E84B28</string>
-				<string>7CACD50117A4718A00E84B28</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>path</key>
-			<string>Phish Tracks</string>
+			<string>PhishOD</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -505,6 +503,7 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
+				<string>F1B48B5F1973B0FA00DDF5C3</string>
 				<string>F1B48B551973867E00DDF5C3</string>
 				<string>7C6AE5121788AFCD00AAED06</string>
 				<string>7C6AE4FB1787BA1700AAED06</string>
@@ -513,15 +512,12 @@ fi
 				<string>7C518C0D175D0C32005EB2E7</string>
 				<string>7C518C10175D0C32005EB2E7</string>
 				<string>7C518C12175D0C32005EB2E7</string>
-				<string>7C518C3C175D2C1B005EB2E7</string>
-				<string>7C518C3D175D2C1B005EB2E7</string>
+				<string>F1B48B601973B10C00DDF5C3</string>
 				<string>7C518C57175DDCE8005EB2E7</string>
 				<string>7CADB31E176040B200B80D54</string>
 				<string>7CADB31F176040B200B80D54</string>
 				<string>7C6AE5161788B97200AAED06</string>
-				<string>C54ED74518201CF1007D4261</string>
-				<string>C54ED74718201FF8007D4261</string>
-				<string>C54ED74818201FF8007D4261</string>
+				<string>F1B48B611973B11600DDF5C3</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -537,7 +533,7 @@ fi
 			<key>lastKnownFileType</key>
 			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>Phish Tracks-Info.plist</string>
+			<string>PhishOD-Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -599,7 +595,7 @@ fi
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>Phish Tracks-Prefix.pch</string>
+			<string>PhishOD-Prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -794,9 +790,9 @@ fi
 				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
 				<string>YES</string>
 				<key>GCC_PREFIX_HEADER</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Prefix.pch</string>
+				<string>PhishOD/Supporting Files/PhishOD-Prefix.pch</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Info.plist</string>
+				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>6.0</string>
 				<key>PRODUCT_NAME</key>
@@ -837,9 +833,9 @@ fi
 				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
 				<string>YES</string>
 				<key>GCC_PREFIX_HEADER</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Prefix.pch</string>
+				<string>PhishOD/Supporting Files/PhishOD-Prefix.pch</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Info.plist</string>
+				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>6.0</string>
 				<key>PRODUCT_NAME</key>
@@ -866,8 +862,6 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Year</string>
 			<key>path</key>
 			<string>Year</string>
 			<key>sourceTree</key>
@@ -885,8 +879,6 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Song</string>
 			<key>path</key>
 			<string>Song</string>
 			<key>sourceTree</key>
@@ -1344,8 +1336,6 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Settings</string>
 			<key>path</key>
 			<string>Settings</string>
 			<key>sourceTree</key>
@@ -2015,64 +2005,14 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
-				<string>7C7ED3961801B0FF004F55DF</string>
-				<string>7C7ED3971801B0FF004F55DF</string>
-				<string>7C7ED3981801B0FF004F55DF</string>
-				<string>7C7ED3991801B0FF004F55DF</string>
+				<string>F1B48B5B1973B02600DDF5C3</string>
+				<string>F1B48B5C1973B02600DDF5C3</string>
 				<string>7C7ED39A1801B0FF004F55DF</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>PLLocationsMap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C7ED3961801B0FF004F55DF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
 			<key>path</key>
-			<string>close-button.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C7ED3971801B0FF004F55DF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>mappin.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C7ED3981801B0FF004F55DF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>MapPoint.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C7ED3991801B0FF004F55DF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>MapPoint.m</string>
+			<string>PDLocationsMap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2171,13 +2111,6 @@ fi
 			<string>PDLocationsMapViewController.xib</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C7ED3A31801B0FF004F55DF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7C7ED3991801B0FF004F55DF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>7C7ED3A41801B0FF004F55DF</key>
 		<dict>
@@ -2336,9 +2269,9 @@ fi
 				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
 				<string>YES</string>
 				<key>GCC_PREFIX_HEADER</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Prefix.pch</string>
+				<string>PhishOD/Supporting Files/PhishOD-Prefix.pch</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Phish Tracks/Supporting Files/Phish Tracks-Info.plist</string>
+				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>6.0</string>
 				<key>PRODUCT_NAME</key>
@@ -2446,8 +2379,6 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Top Rated</string>
 			<key>path</key>
 			<string>Top Rated</string>
 			<key>sourceTree</key>
@@ -4935,8 +4866,6 @@ fi
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>folder.assetcatalog</string>
-			<key>name</key>
-			<string>Images.xcassets</string>
 			<key>path</key>
 			<string>Images.xcassets</string>
 			<key>sourceTree</key>
@@ -4957,8 +4886,6 @@ fi
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIImage+Icons.h</string>
 			<key>path</key>
 			<string>UIImage+Icons.h</string>
 			<key>sourceTree</key>
@@ -4972,8 +4899,6 @@ fi
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImage+Icons.m</string>
 			<key>path</key>
 			<string>UIImage+Icons.m</string>
 			<key>sourceTree</key>
@@ -4995,10 +4920,99 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Icons</string>
 			<key>path</key>
 			<string>Icons</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B5B1973B02600DDF5C3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MapPoint.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B5C1973B02600DDF5C3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MapPoint.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B5D1973B02600DDF5C3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F1B48B5C1973B02600DDF5C3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F1B48B5E1973B0CF00DDF5C3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7C7ED3951801B0F2004F55DF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Third Party Static</string>
+			<key>path</key>
+			<string>PhishOD/Third Party Static</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B5F1973B0FA00DDF5C3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7CACD50017A4718900E84B28</string>
+				<string>7CACD50117A4718A00E84B28</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Rotatable TabBarController</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B601973B10C00DDF5C3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7C518C3C175D2C1B005EB2E7</string>
+				<string>7C518C3D175D2C1B005EB2E7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FailureHandler</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F1B48B611973B11600DDF5C3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C54ED74518201CF1007D4261</string>
+				<string>C54ED74718201FF8007D4261</string>
+				<string>C54ED74818201FF8007D4261</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Configuration</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
