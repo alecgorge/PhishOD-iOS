@@ -10,6 +10,8 @@
 #import "StreamingPlaylistItem.h"
 #import "PhishinStreamingPlaylistItem.h"
 
+#import "RandomShowViewController.h"
+
 @interface MenuPanel : UITableViewController
 
 - (void)updateNowPlayingWithStreamingPlaylistItem:(StreamingPlaylistItem*)item;

@@ -95,6 +95,8 @@ typedef enum {
 	
 	NSInteger row = indexPath.row;
 
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
 	if (row == kPhishODMenuItemHome) {
 		cell.textLabel.text = @"Music";
 	}
@@ -122,7 +124,9 @@ typedef enum {
 		}
 		else {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			cell.textLabel.text = @"Nothing playing...";
+			cell.textLabel.text = @"Nothing playing.  Yet.";
+            cell.detailTextLabel.numberOfLines = 2;
+            cell.detailTextLabel.text = @"Feeling adventurous?\nTap here for a random show.";
 			cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage playIconWhite]];
 		}
 	}
@@ -143,8 +147,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 							 animated:YES];
 	
 	NSInteger row = indexPath.row;
-	if(row == kPhishODMenuItemNowPlaying && self.item) {
-		[[AppDelegate sharedDelegate] showNowPlaying];
+	if(row == kPhishODMenuItemNowPlaying) {
+        if (self.item) {
+            [[AppDelegate sharedDelegate] showNowPlaying];
+        }
+        else {
+            [self pushViewControllerFromHome:[[RandomShowViewController alloc] init]];
+        }
 	}
 	else if(row == kPhishODMenuItemHome) {
 		[self pushViewController:[[HomeViewController alloc] init]];
@@ -163,6 +172,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.sidePanelController showCenterPanelAnimated:YES];
 }
 
+- (void)pushViewControllerFromHome:(UIViewController *)vc {
+    [self pushViewController:[[HomeViewController alloc] init]];
+    
+	UINavigationController *nav = (UINavigationController*)self.sidePanelController.centerPanel;
+	HomeViewController *home = (HomeViewController *)nav.topViewController;
+    home.title = @"PhishOD";
+	
+	[home.navigationController pushViewController:[[RandomShowViewController alloc] init] animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSInteger row = indexPath.row;
@@ -172,5 +191,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	return UITableViewAutomaticDimension;
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    return [UIView new];
+//}
 
 @end
