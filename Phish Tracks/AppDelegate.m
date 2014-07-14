@@ -90,8 +90,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 		[UINavigationBar appearance].barTintColor = phishGreen;
 		[UINavigationBar appearance].tintColor = white;
 		
-		[UIToolbar appearance].tintColor = phishGreen;
-		[UIToolbar appearance].barTintColor = white;
+		[UIToolbar appearance].barTintColor = phishGreen;
+		[UIToolbar appearance].tintColor = white;
         
         [UIBarButtonItem appearance].tintColor = white;
 		
