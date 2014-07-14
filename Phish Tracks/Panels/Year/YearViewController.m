@@ -24,7 +24,7 @@
 		NSArray *itemArray = @[@"All", @"SBD or Remastered"];
         control = [[UISegmentedControl alloc] initWithItems:itemArray];
 		control.segmentedControlStyle = UISegmentedControlStyleBar;
-        control.frame = CGRectMake(10.0, 10.0, 305.0, 30.0);
+        control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
 		control.selectedSegmentIndex = 0;
 		[control addTarget:self
 					action:@selector(doFilterShows)
@@ -99,14 +99,15 @@
 viewForHeaderInSection:(NSInteger)section {
 	if(section == 0) {
         UIToolbar *headerView = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, tableView.frame.size.width, 44)];
-		
-		CGRect newFrame = control.frame;
-		newFrame.size.width = (305.0/320.0) * tableView.frame.size.width;
+		headerView.barTintColor = [UIColor whiteColor];
+        
 		control.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		control.frame = newFrame;
+        
+        
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		
-        [headerView setItems:@[[[UIBarButtonItem alloc] initWithCustomView:control]]];
+        [headerView setItems:@[flexibleSpace,[[UIBarButtonItem alloc] initWithCustomView:control],flexibleSpace]];
         return headerView;
 	}
 	return nil;
