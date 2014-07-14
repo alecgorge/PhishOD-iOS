@@ -130,6 +130,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.title = @"";
 	self.playerTimeElapsed.text = @"";
 	self.playerTimeRemaining.text = @"";
+    self.playerScrubber.tintColor = COLOR_PHISH_GREEN;
 	
 	[self customizeAirPlayButton];
 	
