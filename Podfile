@@ -11,6 +11,5 @@ pod 'LastFm'
 pod 'SVProgressHUD'
 pod 'FXKeychain'
 pod 'ObjectiveSugar'
-pod 'JASidePanels'
 pod 'CrashlyticsFramework'
 

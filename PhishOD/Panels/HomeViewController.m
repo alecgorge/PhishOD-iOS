@@ -76,6 +76,11 @@ typedef enum {
     [super viewDidLoad];
 	
 	self.title = @"PhishOD";
+    
+    
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage settingsNavigationIcon] style:UIBarButtonItemStylePlain target:self action:@selector(presentSettings)];
+    self.navigationItem.rightBarButtonItem = settingsButton;
+    
 	[self createSearchBar];
 }
 
@@ -87,6 +92,12 @@ typedef enum {
 
 -(void)dealloc {
 	self.con = nil;
+}
+
+- (void)presentSettings {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[SettingsViewController new]];
+    
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

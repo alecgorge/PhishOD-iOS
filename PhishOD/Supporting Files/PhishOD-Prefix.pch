@@ -13,22 +13,34 @@
 	#import <Foundation/Foundation.h>
 #endif
 
-#define PHISH_TRACKS_PATH @"http://www.phishtracks.com"
+// Standard iOS frameworks
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-#import<SystemConfiguration/SystemConfiguration.h>
-#import<MobileCoreServices/MobileCoreServices.h>
-
+// Phish APIs
 #import "PhishTracksAPI.h"
 #import "PhishNetAPI.h"
+#import "PhishinAPI.h"
+
+// Convenice Categories
+#import "UIImage+Icons.h"
+
+// Error handlers
 #import "FailureHandler.h"
+
+// Streaming classes
+#import "StreamingPlaylistItem.h"
+#import "PhishinStreamingPlaylistItem.h"
+
+// Cocoapods frameworks
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
-
 #import <ObjectiveSugar/ObjectiveSugar.h>
 
-#define IS_IPAD() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-
+// Error handler for FailureHandler
 #define REQUEST_FAILED(x) [FailureHandler returnCallback:x]
+
+// Debugging
 
 // #define ramblingwood_DEBUG_MODE
 #define TAKING_LAUNCH_SCREEN 0
@@ -41,21 +53,18 @@
 #define MARK()
 #endif
 
-#import "PhishinAPI.h"
-#import "UIImage+Icons.h"
+// Phish Tracks path
+#define PHISH_TRACKS_PATH @"http://www.phishtracks.com"
 
-#define COLOR_PHISH_GREEN [UIColor colorWithRed:0.0/255.0\
-									       green:128.0/255.0\
-									        blue:95.0/255.0\
-								          alpha:1.0]
-
-#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0.0/255.0\
-								 			    green:183.0/255.0\
-												 blue:132.0/255.0\
-												alpha:0.2]
-
+// My colors
+#define COLOR_PHISH_GREEN [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:95.0/255.0 alpha:1.0]
+#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0.0/255.0 green:183.0/255.0 blue:132.0/255.0 alpha:0.2]
 #define COLOR_PHISH_WHITE [UIColor whiteColor]
 
+// Is the device an iPad?
+#define IS_IPAD() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+// Check the iOS version
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)

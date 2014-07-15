@@ -24,5 +24,6 @@
 + (instancetype)rewindIcon;
 + (instancetype)rewindIconWhite;
 
++ (instancetype)settingsNavigationIcon;
 
 @end

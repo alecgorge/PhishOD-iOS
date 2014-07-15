@@ -97,7 +97,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
 	if(section == self.indicies.count && self.song.tracks.count > 15) {
-		return [NSString stringWithFormat:@"%d times", self.song.tracks.count];
+		return [NSString stringWithFormat:@"%lu times", (unsigned long)self.song.tracks.count];
 	}
 	return nil;
 }
@@ -126,7 +126,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (NSString*)formattedStringForDuration:(NSTimeInterval)duration {
     NSInteger minutes = floor(duration/60);
     NSInteger seconds = round(duration - minutes * 60);
-    return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
+    return [NSString stringWithFormat:@"%ld:%02ld", (long)minutes, (long)seconds];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -216,7 +216,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	PhishinTrack *song = [self filteredForSection:indexPath.section][indexPath.row];
 	
 	PhishinShow *show = [[PhishinShow alloc] init];
-	show.id = song.show_id;
+	show.id = (int)song.show_id;
 	show.date = song.show_date;
 	
 	[tableView deselectRowAtIndexPath:indexPath

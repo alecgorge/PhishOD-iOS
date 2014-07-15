@@ -94,7 +94,7 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption {
 	}
 	
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44.0f)];
-	label.text = [NSString stringWithFormat:@"%d Songs", self.songs.count];
+	label.text = [NSString stringWithFormat:@"%lu Songs", (unsigned long)self.songs.count];
 	label.textAlignment = NSTextAlignmentCenter;
 	label.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
 	label.textColor = [UIColor lightGrayColor];

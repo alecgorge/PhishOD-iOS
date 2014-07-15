@@ -36,6 +36,13 @@
 	[super viewDidLoad];
 	
 	self.title = @"Settings";
+    
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+}
+
+- (void)close {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source

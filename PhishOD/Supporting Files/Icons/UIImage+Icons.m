@@ -46,4 +46,8 @@
     return [UIImage imageNamed:@"rewind-icon-white"];
 }
 
++ (instancetype)settingsNavigationIcon {
+    return [UIImage imageNamed:@"settings-navigation-icon"];
+}
+
 @end

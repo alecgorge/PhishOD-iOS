@@ -167,7 +167,7 @@
 - (void)fullSong:(PhishinSong *)song
 		 success:(void (^)(PhishinSong *))success
 		 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self getPath:[@"songs/" stringByAppendingFormat:@"%d", song.id]
+	[self getPath:[@"songs/" stringByAppendingFormat:@"%ld", (long)song.id]
 	   parameters:nil
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			  responseObject = [self parseJSON:responseObject];

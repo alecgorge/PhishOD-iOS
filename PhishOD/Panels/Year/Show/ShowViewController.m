@@ -344,7 +344,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return [[PhishinStreamingPlaylistItem alloc] initWithTrack:object];
 	}];
 	
-	int startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
+	NSInteger startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
 		return track.id == [obj id];
 	}];
 	

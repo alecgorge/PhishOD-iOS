@@ -56,7 +56,7 @@
 	}
 	
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44.0f)];
-	label.text = [NSString stringWithFormat:@"%d Venues", self.venues.count];
+	label.text = [NSString stringWithFormat:@"%lu Venues", (unsigned long)self.venues.count];
 	label.textAlignment = NSTextAlignmentCenter;
 	label.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
 	label.textColor = [UIColor lightGrayColor];

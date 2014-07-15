@@ -8,6 +8,15 @@
 
 #import "BaseFavoritableEntityViewController.h"
 
+// See http://stackoverflow.com/a/7933931 for below macro
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
 @interface BaseFavoritableEntityViewController ()
 
 @end
@@ -69,11 +78,17 @@
     NSMutableDictionary *sections = [[NSMutableDictionary alloc] init];
     
     favorites = [favorites sortedArrayUsingComparator:^NSComparisonResult(PhishTracksStatsFavorite *fav1, PhishTracksStatsFavorite *fav2) {
-        return [[fav1 performSelector:sectionIndexTitlesSelector] compare:[fav2 performSelector:sectionIndexTitlesSelector]];
+        SuppressPerformSelectorLeakWarning(
+            return [[fav1 performSelector:sectionIndexTitlesSelector] compare:[fav2 performSelector:sectionIndexTitlesSelector]];
+        );
     }];
     
     for (PhishTracksStatsFavorite *favorite in favorites) {
-        NSString *sectionIndexTitle = [self sectionIndexTitleForString:[favorite performSelector:sectionIndexTitlesSelector]];
+        NSString *sectionIndexTitle;
+        
+        SuppressPerformSelectorLeakWarning(
+            sectionIndexTitle = [self sectionIndexTitleForString:[favorite performSelector:sectionIndexTitlesSelector]];
+        );
         
         if (![sections hasKey:sectionIndexTitle])
             [sections setObject:[NSMutableArray array] forKey:sectionIndexTitle];
