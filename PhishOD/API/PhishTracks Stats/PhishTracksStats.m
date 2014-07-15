@@ -204,7 +204,7 @@ static PhishTracksStats *sharedPts;
 - (void)createPlayedTrack:(PhishinTrack *)track success:(void (^)())success failure:(void (^)(PhishTracksStatsError *error))failure
 {
 	NSDictionary *params = @{ @"play_event": @{
-									  @"track_id": [NSNumber numberWithInt: track.id],
+									  @"track_id": [NSNumber numberWithInt:(int)track.id],
 									  @"track_slug": track.slug,
 									  @"show_id": [NSNumber numberWithInt: track.show.id],
 									  @"show_date": track.show.date,

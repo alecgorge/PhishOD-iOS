@@ -159,7 +159,7 @@ typedef enum {
 		NSInteger show_id = [self.venue.show_ids[indexPath.row] integerValue];
 		
 		PhishinShow *show = [[PhishinShow alloc] init];
-		show.id = show_id;
+		show.id = (int)show_id;
 		show.date = show_date;
 		
 		ShowViewController *vc = [[ShowViewController alloc] initWithShow:show];

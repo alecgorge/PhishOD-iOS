@@ -99,7 +99,7 @@ typedef enum {
     
     
     if (isTrack) {
-        buttonIndecies[@"track"] = [NSNumber numberWithInt:[actionSheet addButtonWithTitle:@"Add Track to Favorites"]];
+        buttonIndecies[@"track"] = [NSNumber numberWithInteger:[actionSheet addButtonWithTitle:@"Add Track to Favorites"]];
         _track = phishinObject;
         _show = _track.show;
         _venue = _show.venue;
@@ -122,22 +122,22 @@ typedef enum {
     }
     
     if (isTrack || isShow) {
-        buttonIndecies[@"show"] = [NSNumber numberWithInt:[actionSheet addButtonWithTitle:@"Add Show to Favorites"]];
+        buttonIndecies[@"show"] = [NSNumber numberWithInteger:[actionSheet addButtonWithTitle:@"Add Show to Favorites"]];
 //        buttonCount++;
     }
     
     if (isTrack || isShow || isVenue) {
-        buttonIndecies[@"venue"] = [NSNumber numberWithInt:[actionSheet addButtonWithTitle:@"Add Venue to Favorites"]];
+        buttonIndecies[@"venue"] = [NSNumber numberWithInteger:[actionSheet addButtonWithTitle:@"Add Venue to Favorites"]];
 //        buttonCount++;
     }
     
     if (isTrack || isShow || isTour) {
-        buttonIndecies[@"tour"] = [NSNumber numberWithInt:[actionSheet addButtonWithTitle:@"Add Tour to Favorites"]];
+        buttonIndecies[@"tour"] = [NSNumber numberWithInteger:[actionSheet addButtonWithTitle:@"Add Tour to Favorites"]];
 //        buttonCount++;
     }
     
     actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
-    buttonIndecies[@"cancel"] = [NSNumber numberWithInt:actionSheet.cancelButtonIndex];
+    buttonIndecies[@"cancel"] = [NSNumber numberWithInteger:actionSheet.cancelButtonIndex];
     
     if(IS_IPAD()) {
         if([item isKindOfClass:[UIBarButtonItem class]]) {
