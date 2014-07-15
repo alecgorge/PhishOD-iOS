@@ -64,16 +64,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
     self.yearsNav.delegate = self.navDelegate;
 	self.yearsNav.navigationBar.translucent = NO;
-	
-	self.panels = [[JASidePanelController alloc] init];
-	self.menuPanel = [[MenuPanel alloc] init];
-	
-	self.panels.leftFixedWidth = 256.0;
-	
-	self.panels.leftPanel = self.menuPanel;
-	self.panels.centerPanel = yearsNav;
-	
-	self.window.rootViewController = self.panels;
+
+	self.window.rootViewController = self.yearsNav;
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -135,7 +127,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)nowPlaying {
-	[self.panels presentViewController:self.nowPlayingNav
+	[self.window.rootViewController presentViewController:self.nowPlayingNav
 							  animated:YES
 							completion:^{}];
 }
@@ -163,7 +155,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 			return YES;
 		}
 		
-		self.panels.centerPanel = yearsNav;
+        self.window.rootViewController = self.yearsNav;
 		[yearsNav popToRootViewControllerAnimated:NO];
 		
 		if(comps.count == 2) {
@@ -176,9 +168,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 			
 			[yearsNav pushViewController:showvc
 								animated:NO];
-			
-			[self.panels dismissViewControllerAnimated:NO
-											completion:nil];
 		}
 		else if(comps.count == 3) {
 			// phishod:///:show_date/:track_id
@@ -192,9 +181,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 			
 			[yearsNav pushViewController:showvc
 								animated:NO];
-			
-			[self.panels dismissViewControllerAnimated:NO
-											completion:nil];
 		}
 		else if(comps.count == 4 || comps.count == 5) {
 			// phishod:///:show_date/:track_id/3[/20]
@@ -214,9 +200,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 			
 			[yearsNav pushViewController:showvc
 								animated:NO];
-			
-			[self.panels dismissViewControllerAnimated:NO
-											completion:nil];
 		}
 		
 		return YES;

@@ -666,8 +666,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		    }];
 	}
 	
-	[[AppDelegate sharedDelegate].menuPanel updateNowPlayingWithStreamingPlaylistItem:self.currentItem];
-	
 	[self fixPlayPauseButtonImage];
 	[self.playerTableView reloadData];
 }
