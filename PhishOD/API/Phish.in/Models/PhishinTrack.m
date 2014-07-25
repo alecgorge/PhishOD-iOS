@@ -45,4 +45,8 @@
 	return url;
 }
 
+- (NSInteger)track {
+    return _position;
+}
+
 @end

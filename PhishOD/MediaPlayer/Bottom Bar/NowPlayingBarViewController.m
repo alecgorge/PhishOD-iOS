@@ -11,8 +11,10 @@
 #import "NowPlayingBarViewController.h"
 #import "AppDelegate.h"
 
+#import "AGMediaPlayerViewController.h"
 #import "StreamingMusicViewController.h"
 #import "PhishTracksStatsFavoritePopover.h"
+#import "IGDurationHelper.h"
 
 @interface NowPlayingBarViewController ()
 
@@ -90,41 +92,42 @@
                              [AppDelegate.sharedDelegate.navDelegate fixForViewController:AppDelegate.sharedDelegate.navDelegate.lastViewController];
                          }];
     }
+
+
+    self.labelTitle.text = AGMediaPlayerViewController.sharedInstance.currentItem.title;
+    self.labelSubTitle.text = AGMediaPlayerViewController.sharedInstance.currentItem.album;
     
-    self.labelTitle.text = StreamingMusicViewController.sharedInstance.playerTitle.text;
-    self.labelSubTitle.text = StreamingMusicViewController.sharedInstance.playerSubtitle.text;
+    self.labelTimeElapsed.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.progress * AGMediaPlayerViewController.sharedInstance.duration];
+    self.labelTimeRemaining.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.duration];
     
-    self.labelTimeElapsed.text = StreamingMusicViewController.sharedInstance.playerTimeElapsed.text;
-    self.labelTimeRemaining.text = StreamingMusicViewController.sharedInstance.playerTimeRemaining.text;
+    self.buttonPause.hidden = !AGMediaPlayerViewController.sharedInstance.playing;
+    self.buttonPlay.hidden = AGMediaPlayerViewController.sharedInstance.playing;
     
-    self.buttonPause.hidden = StreamingMusicViewController.sharedInstance.playerPauseButton.hidden;
-    self.buttonPlay.hidden = StreamingMusicViewController.sharedInstance.playerPlayPauseButton.hidden;
+    self.buttonPrevious.enabled = YES;
+    self.buttonPrevious.alpha = 1.0;
     
-    self.buttonPrevious.enabled = StreamingMusicViewController.sharedInstance.playerPreviousButton.enabled;
-    self.buttonPrevious.alpha = StreamingMusicViewController.sharedInstance.playerPreviousButton.alpha;
-    
-    self.buttonNext.enabled = StreamingMusicViewController.sharedInstance.playerNextButton.enabled;
-    self.buttonNext.alpha = StreamingMusicViewController.sharedInstance.playerNextButton.alpha;
+    self.buttonNext.enabled = YES;
+    self.buttonNext.alpha = 1.0;
 }
 
 - (IBAction)nextPressed:(id)sender {
-    [StreamingMusicViewController.sharedInstance next];
+    [AGMediaPlayerViewController.sharedInstance forward];
 }
 
 - (IBAction)previousPressed:(id)sender {
-    [StreamingMusicViewController.sharedInstance previous];
+    [AGMediaPlayerViewController.sharedInstance backward];
 }
 
 - (IBAction)pausePressed:(id)sender {
-    [StreamingMusicViewController.sharedInstance pause];
+    [AGMediaPlayerViewController.sharedInstance pause];
 }
 
 - (IBAction)playPressed:(id)sender {
-    [StreamingMusicViewController.sharedInstance play];
+    [AGMediaPlayerViewController.sharedInstance play];
 }
 
 - (IBAction)showFullPlayer:(id)sender {
-    [AppDelegate.sharedDelegate showNowPlaying];
+    [AppDelegate.sharedDelegate presentMusicPlayer];
 }
 
 - (UIImage*)maskImage:(UIImage*)image withColor:(UIColor*)color {

@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 
+#import "LivePhishAuth.h"
+
 #import "AppDelegate.h"
 #import "YearsViewController.h"
 #import "SongsViewController.h"
@@ -21,8 +23,10 @@
 #import "SearchDelegate.h"
 #import "FavoritesViewController.h"
 #import "GlobalActivityViewController.h"
+#import "LivePhishBrowseViewController.h"
+#import "LivePhishCategoryViewController.h"
 
-typedef enum {
+NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemYears,
 	kPhishODMenuItemSongs,
 	kPhishODMenuItemVenues,
@@ -30,21 +34,28 @@ typedef enum {
 	kPhishODMenuItemTopRated,
 	kPhishODMenuItemRandomShow,
 	kPhishODMenuItemsCount
-} kPhishODMenuItems;
+};
 
-typedef enum {
+NS_ENUM(NSInteger, kPhishODMenuStatsItems) {
 	kPhishODMenuStatsItemStats,
 	kPhishODMenuStatsItemFavorites,
 	kPhishODMenuStatsItemGlobalActivity,
 	kPhishODMenuStatsItemsCount
-} kPhishODMenuStatsItems;
+};
 
-typedef enum {
+NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
+    kPhishODMenuLivePhishItemBrowse,
+    kPhishODMenuLivePhishItemStash,
+    kPhishODMenuLivePhishItemsCount,
+};
+
+NS_ENUM(NSInteger, kPhishODMenuSections) {
 	kPhishODMenuSectionNowPlaying,
 	kPhishODMenuSectionMenu,
+	kPhishODMenuSectionLivePhish,
 	kPhishODMenuSectionStats,
 	kPhishODMenuSectionsCount
-} kPhishODMenuSections;
+};
 
 @interface HomeViewController ()
 
@@ -112,6 +123,9 @@ typedef enum {
 	else if(section == kPhishODMenuSectionMenu) {
 		return kPhishODMenuItemsCount;
 	}
+    else if(section == kPhishODMenuSectionLivePhish) {
+        return kPhishODMenuLivePhishItemsCount;
+    }
 	
 	return kPhishODMenuStatsItemsCount;
 }
@@ -172,6 +186,12 @@ typedef enum {
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		cell.textLabel.text = @"Recent Activity";
 	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
+		cell.textLabel.text = @"Browse";
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
+		cell.textLabel.text = @"My Stash";
+	}
 	
 	return cell;
 }
@@ -214,6 +234,19 @@ typedef enum {
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		[self pushViewController:[[GlobalActivityViewController alloc] init]];
 	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
+        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
+                                                 success:^{
+                                                     [self pushViewController:LivePhishBrowseViewController.alloc.init];
+                                                 }];
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
+        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
+                                                 success:^{
+                                                     [self pushViewController:[LivePhishCategoryViewController.alloc initWithStash]];
+                                                 }];
+	}
+
 }
 
 - (void)pushViewController:(UIViewController*)vc {
@@ -226,6 +259,10 @@ titleForHeaderInSection:(NSInteger)section {
 	if(section == kPhishODMenuSectionStats) {
 		return @"Stats";
 	}
+    else if(section == kPhishODMenuSectionLivePhish) {
+        return @"LivePhish.com";
+    }
+    
 	return nil;
 }
 

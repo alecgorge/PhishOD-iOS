@@ -10,7 +10,16 @@
 
 @class PhishinShow;
 
-@interface PhishinTrack : NSObject
+@protocol PHODGenericTrack <NSObject>
+
+- (NSString *)title;
+- (NSTimeInterval)duration;
+- (NSInteger)id;
+- (NSInteger)track;
+
+@end
+
+@interface PhishinTrack : NSObject <PHODGenericTrack>
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict andShow:(PhishinShow*)show;
 
@@ -26,6 +35,8 @@
 @property (nonatomic) NSURL *mp3;
 @property (nonatomic) NSArray *song_ids;
 @property (nonatomic) NSString *index;
+
+@property (nonatomic, readonly) NSInteger track;
 
 @property (nonatomic) BOOL isBold;
 

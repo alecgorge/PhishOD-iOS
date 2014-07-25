@@ -18,6 +18,7 @@
 #import "PhishTracksStatsViewController.h"
 #import "SettingsViewController.h"
 #import "HomeViewController.h"
+#import "AGMediaPlayerViewController.h"
 
 #import "ShowViewController.h"
 
@@ -130,6 +131,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self.window.rootViewController presentViewController:self.nowPlayingNav
 							  animated:YES
 							completion:^{}];
+}
+
+- (void)presentMusicPlayer {
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AGMediaPlayerViewController sharedInstance]];
+    [self.yearsNav presentViewController:nav
+                                animated:YES
+                              completion:NULL];
 }
 
 - (void)toggleNowPlaying {

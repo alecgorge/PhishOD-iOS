@@ -32,6 +32,6 @@
 - (void)toggleNowPlaying;
 - (void)showNowPlaying;
 
-
+- (void)presentMusicPlayer;
 
 @end
