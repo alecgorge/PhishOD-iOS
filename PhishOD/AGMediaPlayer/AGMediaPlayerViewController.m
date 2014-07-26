@@ -139,26 +139,30 @@
 }
 
 - (void)setupBar {
-    MarqueeLabel *label = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)
-                                                         rate:10.0
-                                                andFadeLength:10.0];
+    static MarqueeLabel *label = nil;
     
-    label.backgroundColor = [UIColor clearColor];
-    label.numberOfLines = 1;
-    label.font = [UIFont boldSystemFontOfSize: 14.0f];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.lineBreakMode = NSLineBreakByClipping;
-    label.marqueeType = MLContinuous;
+    if(!label) {
+        label = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)
+                                               rate:10.0
+                                      andFadeLength:10.0];
+
+        label.backgroundColor = [UIColor clearColor];
+        label.numberOfLines = 1;
+        label.font = [UIFont boldSystemFontOfSize: 14.0f];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.lineBreakMode = NSLineBreakByClipping;
+        label.marqueeType = MLContinuous;
+        
+        self.navigationItem.titleView = label;
+    }
     label.text = [NSString stringWithFormat:@"%@ — %@", self.currentItem.displayText, self.currentItem.displaySubText];
     
     self.navigationController.navigationBar.barTintColor = COLOR_PHISH_GREEN;
 	
     self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
 
-    self.navigationItem.titleView = label;
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_halflings_113_chevron-down"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self

@@ -304,7 +304,9 @@ label.layer.masksToBounds = YES;
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:trks
                                                            startIndex:row];
     
-    [AppDelegate.sharedDelegate presentMusicPlayer];
+    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue || AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+        [AppDelegate.sharedDelegate presentMusicPlayer];
+    }
 }
 
 @end

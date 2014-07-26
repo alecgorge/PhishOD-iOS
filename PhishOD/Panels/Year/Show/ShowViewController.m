@@ -7,23 +7,29 @@
 //
 
 #import "ShowViewController.h"
-#import <TDBadgedCell/TDBadgedCell.h>
+
+#import <SVWebViewController/SVWebViewController.h>
+#import <CSNNotificationObserver/CSNNotificationObserver.h>
+
 #import "AppDelegate.h"
 #import "SongInstancesViewController.h"
-#import "StreamingMusicViewController.h"
+#import "AGMediaPlayerViewController.h"
 #import "VenueViewController.h"
+#import "PhishinMediaItem.h"
+#import "PHODTrackCell.h"
+#import "MEExpandableHeaderView.h"
 
 #import "PhishTracksStatsFavoritePopover.h"
 
+
 @interface ShowViewController ()
+
+@property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
+@property (nonatomic) MEExpandableHeaderView *headerView;
 
 @end
 
 @implementation ShowViewController
-
-@synthesize show;
-@synthesize control;
-@synthesize setlist;
 
 - (id)initWithShow:(PhishinShow*)s {
     self = [super initWithStyle: UITableViewStylePlain];
@@ -48,6 +54,17 @@
 	[super viewDidLoad];
 	
 	[self setupRightBarButtonItem];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
+                                               bundle:NSBundle.mainBundle]
+         forCellReuseIdentifier:@"track"];
+    
+    self.trackChangedEvent = [[CSNNotificationObserver alloc] initWithName:@"AGMediaItemStateChanged"
+                                                                    object:nil queue:NSOperationQueue.mainQueue
+                                                                usingBlock:^(NSNotification *notification) {
+                                                                    [self.tableView reloadData];
+                                                                }];
+    
 }
 
 - (void)setupRightBarButtonItem {
@@ -63,7 +80,7 @@
 - (void)favoriteTapped:(id)sender {
     [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
                                                                    inView:self.view
-                                                        withPhishinObject:show];
+                                                        withPhishinObject:self.show];
 }
 
 - (void)refresh:(id)sender {
@@ -80,7 +97,9 @@
 								 [self.tableView reloadData];
 								 
 								 [super refresh:sender];
+                                 [self.refreshControl removeFromSuperview];
 								 
+                                 [self setupTableHeaderWithImage:[UIImage imageNamed:@"stock_header_chris_tank.jpg"]];
 								 [self performAutoplayIfNecessary];
 							 } failure:REQUEST_FAILED(self.tableView)];
 }
@@ -108,14 +127,34 @@
 }
 
 - (void)autoplaySeek {
-	if([StreamingMusicViewController sharedInstance].currentProgress > 0) {
-		[[StreamingMusicViewController sharedInstance] seekTo:self.autoplaySeekLocation];
+	if(AGMediaPlayerViewController.sharedInstance.progress > 0) {
+		AGMediaPlayerViewController.sharedInstance.progress = self.autoplaySeekLocation / AGMediaPlayerViewController.sharedInstance.duration;
 	}
 	else {
 		[self performSelector:@selector(autoplaySeek)
 				   withObject:nil
 				   afterDelay:0.25];
 	}
+}
+
+- (void)setupTableHeaderWithImage:(UIImage *)backgroundImage {
+    self.tableView.tableHeaderView = nil;
+    CGSize headerViewSize = CGSizeMake(self.tableView.bounds.size.width, 200);
+    
+    NSArray *pages = @[];
+    
+    MEExpandableHeaderView *headerView = [[MEExpandableHeaderView alloc] initWithSize:headerViewSize
+                                                                      backgroundImage:backgroundImage
+                                                                         contentPages:pages];
+    
+    self.tableView.tableHeaderView = headerView;
+    self.headerView = headerView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(scrollView == self.tableView) {
+        [self.headerView offsetDidUpdate:scrollView.contentOffset];
+    }
 }
 
 #pragma mark - Table view data source
@@ -129,7 +168,7 @@
 		return ((PhishSet*)self.show.sets[section-1]).tracks.count;
 	}
 	else if(section == 0) {
-		return self.setlist == nil ? (self.show == nil ? 0 : 5) : 5;
+		return self.setlist == nil ? (self.show == nil ? 0 : 6) : 6;
 	}
 	return 0;
 }
@@ -226,7 +265,21 @@ titleForHeaderInSection:(NSInteger)section {
 				cell.textLabel.text = @"Setlist Notes";
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			}
-
+            
+			return cell;
+		}
+		else if(indexPath.row == 5) {
+			static NSString *CellIdentifier = @"InfoCell";
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			
+			if(cell == nil) {
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+											  reuseIdentifier:CellIdentifier];
+			}
+			
+            cell.textLabel.text = @"Taper Notes";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
 			return cell;
 		}
 		else if(indexPath.row == 0 && self.show != nil) {
@@ -244,9 +297,9 @@ titleForHeaderInSection:(NSInteger)section {
 			
 			if(self.show.sbd && self.show.remastered) {
 				cell.detailTextLabel.text = @"Soundboard, Remastered";
-			} else if(show.remastered) {
+			} else if(self.show.remastered) {
 				cell.detailTextLabel.text = @"Remastered";
-			} else if(show.sbd) {
+			} else if(self.show.sbd) {
 				cell.detailTextLabel.text = @"Soundboard";
 			} else {
 				cell.detailTextLabel.text = @"None";
@@ -259,37 +312,30 @@ titleForHeaderInSection:(NSInteger)section {
 		return [[UITableViewCell alloc] init];
 	}
 	
-    static NSString *CellIdentifier = @"MusicCell";
-    TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-	if(cell == nil) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleValue1
-								   reuseIdentifier:CellIdentifier];
-	}
+    PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
+                                                          forIndexPath:indexPath];
 	
 	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-	cell.textLabel.text = track.title;
-	cell.textLabel.numberOfLines = 2;
-	cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-	cell.textLabel.font = [UIFont boldSystemFontOfSize: 14.0];
-	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
-	cell.detailTextLabel.text = [self formattedStringForDuration: track.duration];
-	
-//	if(self.show.isSoundboard && self.show.isRemastered) {
-//		cell.badgeString = @"SDB+REMAST";
-//		cell.badgeColor = [UIColor darkGrayColor];
-//	} else if(self.show.isRemastered) {
-//		cell.badgeString = @"REMAST";
-//		cell.badgeColor = [UIColor blueColor];
-//	} else if(self.show.isSoundboard) {
-//		cell.badgeString = @"SBD";
-//		cell.badgeColor = [UIColor redColor];
-//	}
-	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    [cell updateCellWithTrack:track
+                  inTableView:tableView];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 0) {
+        return UITableViewAutomaticDimension;
+    }
+    
+    PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
+    
+    return [cell heightForCellWithTrack:track
+                            inTableView:tableView];
 }
 
 #pragma mark - Table view delegate
@@ -316,6 +362,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 			[self.navigationController pushViewController:rev
 												 animated:YES];
 		}
+		if(indexPath.row == 5) {
+            NSString *url = [NSString stringWithFormat:@"http://phish-taper-info.app.alecgorge.com/notes/%@.txt", self.show.date];
+			SVWebViewController *vc = [SVWebViewController.alloc initWithAddress:url];
+			[self.navigationController pushViewController:vc
+												 animated:YES];
+		}
 		else if(indexPath.row == 3) {
 			ConcertInfoViewController *info = [[ConcertInfoViewController alloc] initWithSetlist:self.setlist];
 			[self.navigationController pushViewController:info
@@ -337,22 +389,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)playTrack:(PhishinTrack *)track {
-	[AppDelegate sharedDelegate].shouldShowNowPlaying = YES;
-	StreamingMusicViewController *newPlayer = [StreamingMusicViewController sharedInstance];
-	
 	NSArray *playlist = [self.show.tracks map:^id(id object) {
-		return [[PhishinStreamingPlaylistItem alloc] initWithTrack:object];
+		return [PhishinMediaItem.alloc initWithTrack:object];
 	}];
 	
 	NSInteger startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
 		return track.id == [obj id];
 	}];
 	
-	[newPlayer changePlaylist:playlist
-			andStartFromIndex:startIndex];
+    [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
+                                                           startIndex:startIndex];
     
-	[[AppDelegate sharedDelegate] showNowPlaying];
-	[AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
+    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue || AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+        [AppDelegate.sharedDelegate presentMusicPlayer];
+    }
 }
 
 @end

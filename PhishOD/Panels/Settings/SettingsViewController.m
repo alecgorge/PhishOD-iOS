@@ -258,6 +258,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 											});
 										}
 										failureHandler:^(NSError *error) {
+                                            [SVProgressHUD dismiss];
 											UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
 																						message:[error localizedDescription]
 																					   delegate:nil

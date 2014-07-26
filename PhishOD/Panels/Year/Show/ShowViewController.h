@@ -14,9 +14,9 @@
 
 @interface ShowViewController : RefreshableTableViewController
 
-@property UISegmentedControl *control;
-@property PhishinShow *show;
-@property PhishNetSetlist *setlist;
+@property (nonatomic) UISegmentedControl *control;
+@property (nonatomic) PhishinShow *show;
+@property (nonatomic) PhishNetSetlist *setlist;
 
 @property (nonatomic) BOOL autoplay;
 @property (nonatomic) NSInteger autoplayTrackId;

@@ -7,7 +7,6 @@
 //
 
 #import "MEExpandableHeaderView.h"
-#import "UIImage+ImageEffects.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MEExpandableHeaderView()<UIScrollViewDelegate>
