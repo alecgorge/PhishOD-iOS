@@ -10,6 +10,7 @@
 #import "PhishNetSetlist.h"
 #import "PhishNetReview.h"
 #import "PhishNetTopShow.h"
+#import "PhishNetJamChartEntry.h"
 #import "PhishinSong.h"
 
 #define PHISH_NET_API_KEY @"B6570BEDA805B616AB6C"

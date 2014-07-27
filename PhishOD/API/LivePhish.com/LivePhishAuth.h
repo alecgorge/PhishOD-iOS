@@ -25,4 +25,6 @@
 - (void)ensureSignedInFrom:(UIViewController *)vc
                    success:(void (^)(void))success;
 
+- (void)signOut;
+
 @end

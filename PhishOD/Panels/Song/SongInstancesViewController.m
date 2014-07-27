@@ -7,11 +7,14 @@
 //
 
 #import "SongInstancesViewController.h"
-#import <TDBadgedCell/TDBadgedCell.h>
 #import "ShowViewController.h"
 #import <SVWebViewController/SVWebViewController.h>
 
+#import "JamChartEntryViewController.h"
+
 @interface SongInstancesViewController ()
+
+@property (nonatomic, readonly) NSArray *filteredSongs;
 
 @end
 
@@ -23,40 +26,70 @@
         self.title = s.title;
 		self.song = s;
 		self.indicies = @[];
+		
+		NSArray *itemArray = @[@"All", @"Jam Charts"];
+        control = [[UISegmentedControl alloc] initWithItems:itemArray];
+		control.segmentedControlStyle = UISegmentedControlStyleBar;
+        control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
+		control.selectedSegmentIndex = 0;
+		[control addTarget:self
+					action:@selector(doFilterSongs)
+		  forControlEvents:UIControlEventValueChanged];
     }
     return self;
+}
+
+- (NSArray *)doFilterSongs {
+	if(control.selectedSegmentIndex == 0) {
+		filteredSongs = self.song.tracks;
+	}
+	else if(control.selectedSegmentIndex == 1) {
+		NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(PhishinTrack *t, NSDictionary *bindings) {
+			return t.jamChartEntry != nil;
+		}];
+		filteredSongs = [self.song.tracks filteredArrayUsingPredicate:pred];
+	}
+	else {
+		filteredSongs = self.song.tracks;
+	}
+	
+	[self.tableView reloadData];
+	
+	return filteredSongs;
+}
+
+- (NSArray *)filteredSongs {
+	if(filteredSongs != nil) {
+		return filteredSongs;
+	}
+	else {
+		return [self doFilterSongs];
+	}
 }
 
 - (void)refresh:(id)sender {
 	[[PhishinAPI sharedAPI] fullSong:self.song
 							 success:^(PhishinSong *ss) {
 								 self.song = ss;
-								 [[PhishNetAPI sharedAPI] jamsForSong:self.song
-															  success:^(NSArray *dates) {
-																  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-																	  for (PhishinTrack *track in self.song.tracks) {
-																		  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-																		  formatter.dateFormat = @"yyyy-MM-dd";
-																		  if([dates containsObject:[formatter dateFromString: track.show_date]]) {
-																			  track.isBold = YES;
-																		  }
-																	  }
-																	  dispatch_async(dispatch_get_main_queue(), ^{
-																		  [self.tableView reloadData];
-																	  });
-																  });
-																  
-															  }];
 								 
-								 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-									 [self makeIndicies];
-									 
-									 dispatch_async(dispatch_get_main_queue(), ^{
-										 [self.tableView reloadData];
-										 
-										 [super refresh:sender];
-									 });
-								 });
+								 [self makeIndicies];
+								 
+								 [[PhishNetAPI sharedAPI] jamsForSong:self.song
+															  success:^(NSArray *jamCharts) {
+																  for (PhishNetJamChartEntry *e in jamCharts) {
+																	  PhishinTrack *track = [self.song.tracks detect:^BOOL(PhishinTrack *object) {
+																		  return [object.date isEqualToDate:e.date];
+																	  }];
+																	  
+																	  if(track) {
+																		  track.jamChartEntry = e;
+																	  }
+																  }
+																  
+																  [self.tableView reloadData];
+																  
+																  [super refresh:sender];
+															  }];
 							 }
 							 failure:REQUEST_FAILED(self.tableView)];
 }
@@ -81,7 +114,7 @@
 	}
     NSString *alphabet = self.indicies[section-1];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.index == %@", alphabet];
-    return [self.song.tracks filteredArrayUsingPredicate:predicate];
+    return [self.filteredSongs filteredArrayUsingPredicate:predicate];
 }
 
 #pragma mark - Table view data source
@@ -110,10 +143,36 @@
 	return [self filteredForSection: section].count;
 }
 
+- (UIView *)tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section {
+	if(section == 0) {
+        UIToolbar *headerView = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, tableView.frame.size.width, 44)];
+		headerView.barTintColor = [UIColor whiteColor];
+        
+		control.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        
+        
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+		
+        [headerView setItems:@[flexibleSpace,[[UIBarButtonItem alloc] initWithCustomView:control],flexibleSpace]];
+        return headerView;
+	}
+	return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section {
+	if(section == 0) {
+		return 44.0f;
+	}
+	return 22.0f;
+}
+
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
 	if(section == 0) {
-		return @"Song Info";
+		return nil;
 	}
 	else {
 		if(self.song.tracks.count) {
@@ -147,7 +206,7 @@ titleForHeaderInSection:(NSInteger)section {
 			cell.textLabel.text = @"Song Lyrics";
 		}
 		else if(indexPath.row == 2) {
-			cell.textLabel.text = @"Jamming Charts";
+			cell.textLabel.text = @"Complete Jamming Charts";
 		}
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -155,26 +214,35 @@ titleForHeaderInSection:(NSInteger)section {
 	}
     
     static NSString *CellIdentifier = @"BadgedCell";
-    TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if(cell == nil) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleValue1
-								   reuseIdentifier:CellIdentifier];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+									  reuseIdentifier:CellIdentifier];
 	}
 	
 	PhishinTrack *song = [self filteredForSection:indexPath.section][indexPath.row];
     cell.textLabel.text = song.show_date;
-//	cell.detailTextLabel.text = song.showLocation;
-//	cell.detailTextLabel.numberOfLines = 2;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.detailTextLabel.textColor = [UIColor grayColor];
 	
-	if(song.isBold)
-		cell.detailTextLabel.text = [NSString stringWithFormat: @"Jam Chart, %@", [self formattedStringForDuration: song.duration], nil];
-	else
+	if(song.jamChartEntry) {
+		NSString *type = @"Jam Chart";
+		
+		if(song.jamChartEntry.isKey) {
+			type = @"Key Jam";
+		}
+		else if(song.jamChartEntry.isNoteworthy) {
+			type = @"Noteworthy Jam";
+		}
+		
+		cell.detailTextLabel.text = [NSString stringWithFormat: @"%@, %@", type, [self formattedStringForDuration: song.duration], nil];
+	}
+	else {
 		cell.detailTextLabel.text = [self formattedStringForDuration:song.duration];
+	}
     
     return cell;
 }
@@ -193,6 +261,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath
+							 animated:YES];
+	
 	if(indexPath.section == 0) {
 		if(indexPath.row == 0) {
 			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/history", self.song.netSlug];
@@ -206,7 +277,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 												 animated:YES];
 		}
 		else if(indexPath.row == 2) {
-			NSString *addr = [NSString stringWithFormat:@"http://phish.net/song/%@/jamming-chart", self.song.netSlug];
+			NSString *addr = [NSString stringWithFormat:@"http://phish.net/jamcharts/song/%@", self.song.netSlug];
 			[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:addr]
 												 animated:YES];
 		}
@@ -215,19 +286,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	PhishinTrack *song = [self filteredForSection:indexPath.section][indexPath.row];
 	
-	PhishinShow *show = [[PhishinShow alloc] init];
-	show.id = (int)song.show_id;
-	show.date = song.show_date;
-	
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	ShowViewController *showvc = [[ShowViewController alloc] initWithShow:show];
-	showvc.autoplay = YES;
-	showvc.autoplayTrackId = song.id;
-	
-	[self.navigationController pushViewController:showvc
-										 animated:YES];
+	if(song.jamChartEntry) {
+		JamChartEntryViewController *vc = [JamChartEntryViewController.alloc initWithJamChartEntry:song.jamChartEntry
+																						  andTrack:song];
+		
+		[self.navigationController pushViewController:vc
+											 animated:YES];
+	}
+	else {
+		PhishinShow *show = [[PhishinShow alloc] init];
+		show.id = (int)song.show_id;
+		show.date = song.show_date;
+		
+		ShowViewController *showvc = [ShowViewController.alloc initWithShow:show];
+		showvc.autoplay = YES;
+		showvc.autoplayTrackId = song.id;
+		
+		[self.navigationController pushViewController:showvc
+											 animated:YES];
+	}
 }
 
 @end

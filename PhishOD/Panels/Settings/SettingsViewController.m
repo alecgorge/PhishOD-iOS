@@ -14,9 +14,19 @@
 #import <LastFm.h>
 #import <SVWebViewController.h>
 #import "PhishTracksStats.h"
+#import "LivePhishAuth.h"
 
 #define kAlertLastFm 0
 //#define kAlertPhishTracksStats 1
+
+typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
+	PhishODSettingsSectionLastFM,
+	PhishODSettingsSectionLivePhish,
+	PhishODSettingsSectionStats,
+	PhishODSettingsSectionCredits,
+	PhishODSettingsSectionFeedback,
+	PhishODSettingsSectionCount,
+};
 
 @interface SettingsViewController ()
 
@@ -48,25 +58,33 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return PhishODSettingsSectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(section == 0) { // Last.fm
+	if(section == PhishODSettingsSectionLastFM) { // Last.fm
 		return [LastFm sharedInstance].username ? 2 : 1;
 	}
-	else if(section == 1) {  // stats
+	else if(section == PhishODSettingsSectionStats) {  // stats
 		if([PhishTracksStats sharedInstance].isAuthenticated)
 			return 1;  // view account
 		else
 			return 2;  // sign in, sign up
 
 	}
-	else if(section == 2) {  // credits
+	else if(section == PhishODSettingsSectionLivePhish) {
+		if(LivePhishAuth.sharedInstance.hasCredentials) {
+			return 2;
+		}
+		else {
+			return 1;
+		}
+	}
+	else if(section == PhishODSettingsSectionCredits) {  // credits
 		return 6;
 	}
-	else if(section == 3) {  // feedback
+	else if(section == PhishODSettingsSectionFeedback) {  // feedback
 		return 2;
 	}
 	return 0;
@@ -74,16 +92,19 @@
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-	if(section == 0) {
+	if(section == PhishODSettingsSectionLastFM) {
 		return @"Last.FM";
 	}
-	else if(section == 1) {
+	else if(section == PhishODSettingsSectionLivePhish) {
+		return @"LivePhish.com";
+	}
+	else if(section == PhishODSettingsSectionStats) {
 		return @"Stats & Favorites";
 	}
-	else if(section == 2) {
+	else if(section == PhishODSettingsSectionCredits) {
 		return @"Credits";
 	}
-	else if(section == 3) {
+	else if(section == PhishODSettingsSectionFeedback) {
 		return @"Bugs & Features";
 	}
 	
@@ -100,7 +121,7 @@ titleForHeaderInSection:(NSInteger)section {
 									  reuseIdentifier:CellIdentifier];
 	}
 	
-	if(indexPath.section == 0 && indexPath.row == 0) {
+	if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 0) {
 		if([LastFm sharedInstance].username) {
 			cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [LastFm sharedInstance].username];
 		}
@@ -109,11 +130,28 @@ titleForHeaderInSection:(NSInteger)section {
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 0 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 1) {
 		cell.textLabel.text = @"View Last.FM profile";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 1) {
+	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
+		if(LivePhishAuth.sharedInstance.hasCredentials) {
+			if(indexPath.row == 0) {
+				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as: %@", LivePhishAuth.sharedInstance.username];
+				cell.accessoryType = UITableViewCellAccessoryNone;
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			}
+			else if(indexPath.row == 1) {
+				cell.textLabel.text = @"Sign out";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+		}
+		else {
+			cell.textLabel.text = @"Sign in";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+	}
+	else if(indexPath.section == PhishODSettingsSectionStats) {
 		if ([PhishTracksStats sharedInstance].isAuthenticated) {
 			if (indexPath.row == 0) {
 				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [PhishTracksStats sharedInstance].username];
@@ -129,41 +167,41 @@ titleForHeaderInSection:(NSInteger)section {
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 1 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionStats && indexPath.row == 1) {
 		cell.textLabel.text = @"Register";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;		
 	}
-	else if(indexPath.section == 2 && indexPath.row == 0) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 0) {
 		cell.textLabel.text = @"Streaming by phish.in";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 2 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 1) {
 		cell.textLabel.text = @"App by Alec Gorge";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 2 && indexPath.row == 2) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 2) {
 		cell.textLabel.text = @"Contribute on Github";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 2 && indexPath.row == 3) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 3) {
 		cell.textLabel.text = @"Some data from phish.net";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 2 && indexPath.row == 4) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 4) {
 		cell.textLabel.text = @"Thanks Mockingbird Foundation";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 2 && indexPath.row == 5) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 5) {
 		cell.textLabel.text = @"Stats by phishtrackstats.com";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 3 && indexPath.row == 0) {
+	else if(indexPath.section == PhishODSettingsSectionFeedback && indexPath.row == 0) {
 		cell.textLabel.text = @"Report a bug";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == 3 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionFeedback && indexPath.row == 1) {
 		cell.textLabel.text = @"Request a feature";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
@@ -175,7 +213,7 @@ titleForHeaderInSection:(NSInteger)section {
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
-	if(indexPath.section == 0 && indexPath.row == 0) {
+	if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 0) {
 		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Sign into Last.FM"
 													message:nil
 												   delegate:self
@@ -185,12 +223,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		a.tag = kAlertLastFm;
 		[a show];
 	}
-	else if(indexPath.section == 0 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 1) {
 		NSString *add = [NSString stringWithFormat:@"http://last.fm/user/%@", [LastFm sharedInstance].username];
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:add]
 											 animated:YES];
 	}
-	else if(indexPath.section == 1 && indexPath.row == 0) {
+	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
+		if(LivePhishAuth.sharedInstance.hasCredentials) {
+			if(indexPath.row == 0) {
+				
+			}
+			else if(indexPath.row == 1) {
+				[LivePhishAuth.sharedInstance signOut];
+				[self.tableView reloadData];
+			}
+		}
+		else {
+			[LivePhishAuth.sharedInstance ensureSignedInFrom:self
+													 success:^{
+														 [self.tableView reloadData];
+													 }];
+		}
+	}
+	else if(indexPath.section == PhishODSettingsSectionStats && indexPath.row == 0) {
 		if ([PhishTracksStats sharedInstance].isAuthenticated) {
 			[self.navigationController pushViewController:[[StatsEditSessionViewController alloc] init] animated:YES];
 		}
@@ -199,34 +254,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 			[self.tableView reloadData];
 		}
 	}
-	else if(indexPath.section == 1 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionStats && indexPath.row == 1) {
 		[self.navigationController pushViewController:[[StatsRegistrationViewController alloc] init] animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 0) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 0) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://phish.in/"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 1) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 1) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"http://alecgorge.com/phish"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 2) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 2) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishOD-iOS"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 3) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 3) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://phish.net"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 4) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 4) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://mbird.org"]
 											 animated:YES];
 	}
-	else if(indexPath.section == 2 && indexPath.row == 5) {
+	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 5) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://www.phishtrackstats.com"]
 											 animated:YES];
 	}
-	else if((indexPath.section == 3 && indexPath.row == 0) || (indexPath.section == 3 && indexPath.row == 1)) {
+	else if((indexPath.section == PhishODSettingsSectionFeedback && indexPath.row == 0) || (indexPath.section == PhishODSettingsSectionFeedback && indexPath.row == 1)) {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishOD-iOS/issues"]
 											 animated:YES];
 	}
@@ -276,43 +331,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 			[self.tableView reloadData];
 		}
 	}
-//	else if(alertView.tag == kAlertPhishTracksStats) {
-//		NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-//		if([title isEqualToString:@"Sign In"]) {
-//			UITextField *username = [alertView textFieldAtIndex:0];
-//			UITextField *password = [alertView textFieldAtIndex:1];
-//			[SVProgressHUD show];
-//			[[PhishTracksStats sharedInstance] checkSessionKey:username.text
-//												   password:password.text
-//												   callback:^(BOOL success) {
-//													   [SVProgressHUD dismiss];
-//													   if(success) {
-//														   
-//													   }
-//													   else {
-//														   UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
-//																									   message:@"Incorrect username or password for PhishTracksStats.com"
-//																									  delegate:nil
-//																							 cancelButtonTitle:@"OK"
-//																							 otherButtonTitles:nil];
-//														   [a show];
-//													   }
-//													   
-//													   dispatch_async(dispatch_get_main_queue(), ^{
-//														   [self.tableView reloadData];
-//													   });
-//												   }
-//													failure:nil];
-//		}
-//		else if([title isEqualToString:@"Sign Out"]) {
-//			[SVProgressHUD show];
-//			[[PhishTracksStats sharedInstance] signOut:^(BOOL success) {
-//				[self.tableView reloadData];
-//				[SVProgressHUD dismiss];
-//			}
-//											   failure:nil];
-//		}
-//	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {

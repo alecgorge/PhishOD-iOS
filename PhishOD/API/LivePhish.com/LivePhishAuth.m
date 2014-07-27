@@ -130,4 +130,9 @@ static NSString *kPHLivePhishPasswordKeychainKey = @"lp_p";
     self.signInBlock = nil;
 }
 
+- (void)signOut {
+	FXKeychain.defaultKeychain[kPHLivePhishUsernameKeychainKey] = nil;
+	FXKeychain.defaultKeychain[kPHLivePhishPasswordKeychainKey] = nil;
+}
+
 @end

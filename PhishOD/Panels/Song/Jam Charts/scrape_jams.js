@@ -1,10 +1,11 @@
 function jquery_cb($) {
-    return success($('#tblMain tr').slice(2).map(function () {
+    return success($('table tr').slice(1).map(function () {
         $this = $(this);
         $tds = $this.find('td');
         return {
-            is_bold: $tds.eq(1).hasClass('s5'),
-            date: $tds.eq(1).text(),
+		    isKey: $this.hasClass('keyversion'),
+		    isNoteworthy: $this.hasClass('noteworthy'),
+            date: $tds.eq(0).find('a').text(),
             length: $tds.eq(2).text(),
             notes: $tds.eq(3).text()
         };

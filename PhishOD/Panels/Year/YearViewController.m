@@ -9,6 +9,7 @@
 #import "YearViewController.h"
 #import <TDBadgedCell/TDBadgedCell.h>
 #import "ShowViewController.h"
+#import "ShowCell.h"
 
 @interface YearViewController ()
 
@@ -37,6 +38,10 @@
     [super viewDidLoad];
 	
 	self.title = self.year.year;
+	
+	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(ShowCell.class)
+											   bundle:NSBundle.mainBundle]
+		 forCellReuseIdentifier:@"show"];
 }
 
 - (void)refresh:(id)sender {
@@ -125,46 +130,11 @@ heightForHeaderInSection:(NSInteger)section {
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
 	
-	UITableViewCell *cell;
-	
-	if(show.remastered || show.sbd) {
-		static NSString *CellIdentifier = @"BadgedCell";
-		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		
-		if(cell == nil) {
-			cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-									   reuseIdentifier:CellIdentifier];
-		}
-	}
-	else {
-		static NSString *CellIdentifier = @"NormalCell";
-		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		
-		if(cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-										  reuseIdentifier:CellIdentifier];
-		}
-	}
-	
-	cell.textLabel.text = show.date;
-	cell.detailTextLabel.text = [show.location stringByAppendingFormat:@" - %@", show.venue_name];
-	cell.detailTextLabel.numberOfLines = 2;
+	ShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"
+													 forIndexPath:indexPath];
 
-	if(show.sbd || show.remastered) {
-		TDBadgedCell *tcell = (TDBadgedCell*)cell;
-		if(show.sbd && show.remastered) {
-			tcell.badgeString = @"SDB+REMAST";
-			tcell.badgeColor = [UIColor darkGrayColor];
-		} else if(show.remastered) {
-			tcell.badgeString = @"REMAST";
-			tcell.badgeColor = [UIColor blueColor];
-		} else if(show.sbd) {
-			tcell.badgeString = @"SBD";
-			tcell.badgeColor = [UIColor redColor];
-		}
-	}
-	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	[cell updateCellWithShow:show
+				 inTableView:tableView];
     
     return cell;
 }
@@ -183,7 +153,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return tableView.rowHeight * 1.3;
+	ShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"];
+	
+	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
+
+	return [cell heightForCellWithShow:show
+						   inTableView:tableView];
 }
 
 @end

@@ -95,43 +95,28 @@
 
 - (void)jamsForSong:(PhishinSong *)date
 			success:(void (^)(NSArray *))success {
-	[self getPath:[NSString stringWithFormat:@"http://phish.net/song/%@/jamming-chart", date.netSlug , nil]
+	[self getPath:[NSString stringWithFormat:@"http://phish.net/jamcharts/song/%@", date.netSlug , nil]
 	   parameters:nil
 		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			  NSString *page = [[NSString alloc] initWithData:responseObject
 													 encoding:NSASCIIStringEncoding];
-			  NSArray *matches = [findIframe matchesInString:page
-													 options:0
-													   range:NSMakeRange(0, [page length])];
-
-			  if(matches.count == 0) return;
 			  
-			  NSString *gDocsUrl = [page substringWithRange: [matches[0] rangeAtIndex:1]];
-			  [self getPath:gDocsUrl
-				 parameters:nil
-					success:^(AFHTTPRequestOperation *operation, id responseObject) {
-						NSString *page2 = [[NSString alloc] initWithData:responseObject
-															   encoding:NSUTF8StringEncoding];
-						jQuery *$ = [[jQuery alloc] initWithHTML:page2
-													   andScript:@"scrape_jams"];
-						
-						[$ start:^(NSError *err, id res) {
-							NSMutableArray *r = [NSMutableArray array];
-							
-							NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-							formatter.dateFormat = @"M/d/yyyy";
-							
-							for (NSDictionary *dict in res) {
-								NSDate *d = [formatter dateFromString:dict[@"date"]];
-								if(d)
-									[r addObject:d];
-							}
-							success(r);
-						}];
-					}
-					failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-						
-					}];
+			  jQuery *$ = [jQuery.alloc initWithHTML:page
+										   andScript:@"scrape_jams"];
+			  
+			  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+			  formatter.dateFormat = @"yyyy-MM-dd";
+
+			  [$ start:^(NSError *err, NSArray *res) {
+				  res = [res map:^id(NSDictionary *object) {
+					  NSMutableDictionary *obj = object.mutableCopy;
+					  obj[@"date"] = [formatter dateFromString:obj[@"date"]];
+					  
+					  return [PhishNetJamChartEntry.alloc initWithDictionary:obj];
+				  }];
+				  
+				  success(res);
+			  }];
 		  }
 		  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			  

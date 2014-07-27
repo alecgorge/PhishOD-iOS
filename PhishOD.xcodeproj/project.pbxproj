@@ -89,6 +89,10 @@
 		7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
+		7C79EB7E198559F20064C177 /* ShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB7C198559F20064C177 /* ShowCell.m */; };
+		7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C79EB7D198559F20064C177 /* ShowCell.xib */; };
+		7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */; };
+		7C79EB85198578D70064C177 /* JamChartEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB84198578D70064C177 /* JamChartEntryViewController.m */; };
 		7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED39018010620004F55DF /* CoreMedia.framework */; };
 		7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED39C1801B0FF004F55DF /* PDLocation.m */; };
 		7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED39F1801B0FF004F55DF /* PDLocationsMapViewController.m */; };
@@ -309,6 +313,13 @@
 		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
 		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		7C79EB7B198559F20064C177 /* ShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCell.h; sourceTree = "<group>"; };
+		7C79EB7C198559F20064C177 /* ShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCell.m; sourceTree = "<group>"; };
+		7C79EB7D198559F20064C177 /* ShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCell.xib; sourceTree = "<group>"; };
+		7C79EB80198572480064C177 /* PhishNetJamChartEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetJamChartEntry.h; sourceTree = "<group>"; };
+		7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetJamChartEntry.m; sourceTree = "<group>"; };
+		7C79EB83198578D70064C177 /* JamChartEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JamChartEntryViewController.h; sourceTree = "<group>"; };
+		7C79EB84198578D70064C177 /* JamChartEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JamChartEntryViewController.m; sourceTree = "<group>"; };
 		7C7ED39018010620004F55DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		7C7ED39B1801B0FF004F55DF /* PDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocation.h; sourceTree = "<group>"; };
 		7C7ED39C1801B0FF004F55DF /* PDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocation.m; sourceTree = "<group>"; };
@@ -516,6 +527,8 @@
 			isa = PBXGroup;
 			children = (
 				7C1B438917984D8D00CB1255 /* scrape_jams.js */,
+				7C79EB83198578D70064C177 /* JamChartEntryViewController.h */,
+				7C79EB84198578D70064C177 /* JamChartEntryViewController.m */,
 			);
 			path = "Jam Charts";
 			sourceTree = "<group>";
@@ -742,6 +755,9 @@
 				7C518C3F175D2E20005EB2E7 /* YearViewController.h */,
 				7C518C40175D2E20005EB2E7 /* YearViewController.m */,
 				7C518C77175FD229005EB2E7 /* Show */,
+				7C79EB7B198559F20064C177 /* ShowCell.h */,
+				7C79EB7C198559F20064C177 /* ShowCell.m */,
+				7C79EB7D198559F20064C177 /* ShowCell.xib */,
 			);
 			path = Year;
 			sourceTree = "<group>";
@@ -834,6 +850,8 @@
 				7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */,
 				7CADB3181760352900B80D54 /* PhishNetTopShow.h */,
 				7CADB3191760352900B80D54 /* PhishNetTopShow.m */,
+				7C79EB80198572480064C177 /* PhishNetJamChartEntry.h */,
+				7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1201,7 +1219,7 @@
 				ORGANIZATIONNAME = "Alec Gorge";
 				TargetAttributes = {
 					7C518C00175D0C32005EB2E7 = {
-						DevelopmentTeam = BJ4837B5SY;
+						DevelopmentTeam = HT7ELV3Q35;
 					};
 				};
 			};
@@ -1252,6 +1270,7 @@
 				7C1C3C6D198219FD00555ACB /* glyphicons_184_volume_up.png in Resources */,
 				7C1C3C70198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png in Resources */,
 				7C1C3C65198219FD00555ACB /* glyphicons_173_play.png in Resources */,
+				7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */,
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
 				7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */,
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
@@ -1324,6 +1343,7 @@
 				7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */,
 				7C2345FF1981BC5D002A46D5 /* LivePhishCategory.m in Sources */,
 				F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */,
+				7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */,
 				F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
 				F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */,
@@ -1361,6 +1381,7 @@
 				7C1C3C401982100300555ACB /* AGMediaItem.m in Sources */,
 				F1B48B5D1973B02600DDF5C3 /* MapPoint.m in Sources */,
 				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
+				7C79EB85198578D70064C177 /* JamChartEntryViewController.m in Sources */,
 				7C518C2C175D13BF005EB2E7 /* PhishShow.m in Sources */,
 				F1B48B3C1973836800DDF5C3 /* ShowStatsViewController.m in Sources */,
 				F1B48B3E1973836800DDF5C3 /* TrackStatsViewController.m in Sources */,
@@ -1428,6 +1449,7 @@
 				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
+				7C79EB7E198559F20064C177 /* ShowCell.m in Sources */,
 				F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */,
 				7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
@@ -1529,7 +1551,7 @@
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AD79C8B-0B49-4BE9-9346-4A9D75127F8F";
+				PROVISIONING_PROFILE = "231B874F-16EF-4A95-BDF0-10602EC8AE43";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1541,7 +1563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1593,7 +1615,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RefreshableTableViewController.h"
 
-@interface SongInstancesViewController : RefreshableTableViewController
+@interface SongInstancesViewController : RefreshableTableViewController {
+	UISegmentedControl *control;
+	NSArray *filteredSongs;
+}
 
 @property PhishinSong *song;
 @property NSArray *indicies;

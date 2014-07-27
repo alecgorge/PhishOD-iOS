@@ -26,9 +26,23 @@
 		self.show_id = [dict[@"show_id"] intValue];
 		
 		self.show = show;
-		self.isBold = NO;
     }
     return self;
+}
+
+- (NSDate *)date {
+	static NSDateFormatter *formatter = nil;
+	
+	if(formatter == nil) {
+		formatter = NSDateFormatter.alloc.init;
+		formatter.dateFormat = @"yyyy-MM-dd";
+	}
+	
+	if(_date == nil) {
+		_date = [formatter dateFromString:self.show_date];
+	}
+	
+	return _date;
 }
 
 - (void)setShow_date:(NSString *)show_date {

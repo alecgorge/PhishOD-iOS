@@ -17,7 +17,6 @@
 #import "VenueViewController.h"
 #import "PhishinMediaItem.h"
 #import "PHODTrackCell.h"
-#import "MEExpandableHeaderView.h"
 
 #import "PhishTracksStatsFavoritePopover.h"
 
@@ -25,7 +24,6 @@
 @interface ShowViewController ()
 
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
-@property (nonatomic) MEExpandableHeaderView *headerView;
 
 @end
 
@@ -97,9 +95,6 @@
 								 [self.tableView reloadData];
 								 
 								 [super refresh:sender];
-                                 [self.refreshControl removeFromSuperview];
-								 
-                                 [self setupTableHeaderWithImage:[UIImage imageNamed:@"stock_header_chris_tank.jpg"]];
 								 [self performAutoplayIfNecessary];
 							 } failure:REQUEST_FAILED(self.tableView)];
 }
@@ -135,26 +130,6 @@
 				   withObject:nil
 				   afterDelay:0.25];
 	}
-}
-
-- (void)setupTableHeaderWithImage:(UIImage *)backgroundImage {
-    self.tableView.tableHeaderView = nil;
-    CGSize headerViewSize = CGSizeMake(self.tableView.bounds.size.width, 200);
-    
-    NSArray *pages = @[];
-    
-    MEExpandableHeaderView *headerView = [[MEExpandableHeaderView alloc] initWithSize:headerViewSize
-                                                                      backgroundImage:backgroundImage
-                                                                         contentPages:pages];
-    
-    self.tableView.tableHeaderView = headerView;
-    self.headerView = headerView;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(scrollView == self.tableView) {
-        [self.headerView offsetDidUpdate:scrollView.contentOffset];
-    }
 }
 
 #pragma mark - Table view data source

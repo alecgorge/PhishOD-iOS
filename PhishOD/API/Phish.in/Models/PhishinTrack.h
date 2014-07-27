@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PhishinShow;
+@class PhishNetJamChartEntry;
 
 @protocol PHODGenericTrack <NSObject>
 
@@ -38,7 +39,8 @@
 
 @property (nonatomic, readonly) NSInteger track;
 
-@property (nonatomic) BOOL isBold;
+@property (nonatomic) PhishNetJamChartEntry *jamChartEntry;
+@property (nonatomic) NSDate *date;
 
 @property (nonatomic) PhishinShow *show;
 
