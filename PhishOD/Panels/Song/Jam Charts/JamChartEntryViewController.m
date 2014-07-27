@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, PhishODJamChartEntrySections) {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(section == PhishODJamChartEntrySectionPlay) {
-		return 1;
+		return 2;
 	}
 	else if(section == PhishODJamChartEntrySectionInfo) {
 		return 3;
@@ -90,6 +90,10 @@ typedef NS_ENUM(NSInteger, PhishODJamChartEntrySections) {
 	if(indexPath.section == PhishODJamChartEntrySectionPlay) {
 		if(indexPath.row == 0) {
 			cell.textLabel.text = @"Play song";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+		else if(indexPath.row == 1) {
+			cell.textLabel.text = @"View show";
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 	}
@@ -155,14 +159,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section != PhishODJamChartEntrySectionPlay) {
 		return;
 	}
-	
+		
 	PhishinShow *show = [[PhishinShow alloc] init];
 	show.id = (int)self.track.show_id;
 	show.date = self.track.show_date;
 	
 	ShowViewController *showvc = [ShowViewController.alloc initWithShow:show];
-	showvc.autoplay = YES;
-	showvc.autoplayTrackId = self.track.id;
+	
+	if(indexPath.row == 1) {
+		showvc.autoplay = YES;
+		showvc.autoplayTrackId = self.track.id;
+	}
 	
 	[self.navigationController pushViewController:showvc
 										 animated:YES];
