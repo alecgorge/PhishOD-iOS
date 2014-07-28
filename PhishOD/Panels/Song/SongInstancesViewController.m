@@ -27,7 +27,7 @@
 		self.song = s;
 		self.indicies = @[];
 		
-		NSArray *itemArray = @[@"All", @"Jam Charts"];
+		NSArray *itemArray = @[@"All", @"Key", @"Notable", @"Charted"];
         control = [[UISegmentedControl alloc] initWithItems:itemArray];
 		control.segmentedControlStyle = UISegmentedControlStyleBar;
         control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
@@ -44,6 +44,18 @@
 		filteredSongs = self.song.tracks;
 	}
 	else if(control.selectedSegmentIndex == 1) {
+		NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(PhishinTrack *t, NSDictionary *bindings) {
+			return t.jamChartEntry != nil && t.jamChartEntry.isKey;
+		}];
+		filteredSongs = [self.song.tracks filteredArrayUsingPredicate:pred];
+	}
+	else if(control.selectedSegmentIndex == 2) {
+		NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(PhishinTrack *t, NSDictionary *bindings) {
+			return t.jamChartEntry != nil && t.jamChartEntry.isNoteworthy;
+		}];
+		filteredSongs = [self.song.tracks filteredArrayUsingPredicate:pred];
+	}
+	else if(control.selectedSegmentIndex == 3) {
 		NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(PhishinTrack *t, NSDictionary *bindings) {
 			return t.jamChartEntry != nil;
 		}];
@@ -172,7 +184,7 @@ heightForHeaderInSection:(NSInteger)section {
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
 	if(section == 0) {
-		return nil;
+		return @"Song Info";
 	}
 	else {
 		if(self.song.tracks.count) {

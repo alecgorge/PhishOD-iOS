@@ -166,7 +166,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	ShowViewController *showvc = [ShowViewController.alloc initWithShow:show];
 	
-	if(indexPath.row == 1) {
+	if(indexPath.row == 0) {
 		showvc.autoplay = YES;
 		showvc.autoplayTrackId = self.track.id;
 	}
