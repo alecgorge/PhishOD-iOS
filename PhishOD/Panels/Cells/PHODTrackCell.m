@@ -16,6 +16,7 @@
 #import "PhishinTrack.h"
 
 @interface PHODTrackCell ()
+
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackTitle;
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackRunningTime;
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackNumber;
@@ -30,7 +31,7 @@
     self.uiTrackNumber.text = @(track.track).stringValue;
     self.uiTrackTitle.text = track.title;
     self.uiTrackRunningTime.text = [IGDurationHelper formattedTimeWithInterval:track.duration];
-    
+	
     self.uiPlaybackIndicator.tintColor = COLOR_PHISH_GREEN;
     if(track.id == AGMediaPlayerViewController.sharedInstance.currentItem.id) {
         self.uiTrackNumber.hidden = YES;

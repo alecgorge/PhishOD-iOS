@@ -17,8 +17,9 @@
 
 #import "IGDurationHelper.h" 
 #import "NowPlayingBarViewController.h"
-
+#import "PhishTracksStats.h"
 #import "PHODTrackCell.h"
+#import "PhishinMediaItem.h"
 
 @interface AGMediaPlayerViewController ()
 
@@ -570,6 +571,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 									 failureHandler:nil];
         
 		self.currentTrackHasBeenScrobbled = YES;
+		
+		if([self.currentItem isKindOfClass:PhishinMediaItem.class]) {
+			PhishinTrack *track = ((PhishinMediaItem*)self.currentItem).phishinTrack;
+			[PhishTracksStats.sharedInstance createPlayedTrack:track
+													   success:nil
+													   failure:^(PhishTracksStatsError *error) {
+														   if (error) {
+															   [FailureHandler showAlertWithStatsError:error];
+														   }
+													   }];
+		}
     }
 }
 
