@@ -372,12 +372,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return track.id == [obj id];
 	}];
 	
-    [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
-                                                           startIndex:startIndex];
-    
-    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue || AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue
+	|| AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
         [AppDelegate.sharedDelegate presentMusicPlayer];
     }
+
+    [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
+                                                           startIndex:startIndex];
 }
 
 @end

@@ -301,12 +301,13 @@ label.layer.masksToBounds = YES;
                                    andCompleteContainer:self.completeContainer];
     }];
     
-    [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:trks
-                                                           startIndex:row];
-    
-    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue || AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue
+	|| AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
         [AppDelegate.sharedDelegate presentMusicPlayer];
     }
+
+    [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:trks
+                                                           startIndex:row];
 }
 
 @end

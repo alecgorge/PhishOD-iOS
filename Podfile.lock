@@ -1,4 +1,6 @@
 PODS:
+  - AFHTTPRequestOperationLogger (1.0.0):
+    - AFNetworking (~> 1.0)
   - AFNetworking (1.3.4)
   - Appirater (2.0.2)
   - CrashlyticsFramework (2.2.1)
@@ -49,6 +51,7 @@ PODS:
   - TDBadgedCell (HEAD based on 2.6)
 
 DEPENDENCIES:
+  - AFHTTPRequestOperationLogger
   - AFNetworking (~> 1.3.2)
   - Appirater
   - CrashlyticsFramework
@@ -68,6 +71,7 @@ DEPENDENCIES:
   - TDBadgedCell (HEAD)
 
 SPEC CHECKSUMS:
+  AFHTTPRequestOperationLogger: 890afab1adb178314d33c4de9d2aa5a42cc594b9
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
   Appirater: a5e00fb01d47a9a6acf4b2f22323b4ccf4f23fbb
   CrashlyticsFramework: a9d172599c3a34e68067e16446a764041b980162

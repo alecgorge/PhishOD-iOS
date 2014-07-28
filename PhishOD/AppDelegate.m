@@ -25,6 +25,7 @@
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
+#import <AFHTTPRequestOperationLogger/AFHTTPRequestOperationLogger.h>
 
 static AppDelegate *sharedDelegate;
 
@@ -46,6 +47,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	[Flurry setBackgroundSessionEnabled:NO];
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
+	
+	[AFHTTPRequestOperationLogger.sharedLogger startLogging];
 	
 	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
 
