@@ -15,7 +15,7 @@ pod 'CrashlyticsFramework'
 pod 'JSONModel'
 pod 'SDWebImage'
 pod 'NAKPlaybackIndicatorView'
-pod 'StreamingKit'
+pod 'StreamingKit', :git => 'https://github.com/alecgorge/StreamingKit.git'
 pod 'CSNNotificationObserver'
 pod 'MarqueeLabel'
 pod "DBGHTMLEntities"
