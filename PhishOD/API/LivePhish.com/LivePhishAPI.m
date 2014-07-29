@@ -40,7 +40,7 @@
                         success:(void (^)(BOOL, NSString *))success
                         failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
     [self secureApiMethod:@"session.getUserToken"
-                   params:@{@"user": username, @"pw": password}
+                   params:@{@"user": username ? username : @"", @"pw": password ? password : @""}
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       NSDictionary *dict = [self parseJSON:responseObject][@"Response"];
                       
