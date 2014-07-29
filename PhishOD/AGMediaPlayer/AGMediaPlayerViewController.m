@@ -536,6 +536,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+#define STR_IF_NIL(x) (x?x:@"")
+
 // no expensive calculations, just make UI is synced
 - (void)redrawUI {
     self.uiPauseButton.hidden = !(self.playing || self.buffering);
@@ -550,10 +552,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.uiProgressSlider.value = self.progress;
     
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:@{
-        MPMediaItemPropertyAlbumTitle				: self.currentItem.album,
-        MPMediaItemPropertyTitle					: self.currentItem.title,
+        MPMediaItemPropertyAlbumTitle				: STR_IF_NIL(self.currentItem.album),
+        MPMediaItemPropertyTitle					: STR_IF_NIL(self.currentItem.title),
         MPMediaItemPropertyAlbumTrackCount			: @(self.playbackQueue.count),
-        MPMediaItemPropertyArtist					: self.currentItem.artist,
+        MPMediaItemPropertyArtist					: STR_IF_NIL(self.currentItem.artist),
         MPMediaItemPropertyPlaybackDuration			: @(self.audioPlayer.duration),
         MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.playbackQueue.count),
         MPNowPlayingInfoPropertyPlaybackQueueIndex	: @(self.currentIndex),
