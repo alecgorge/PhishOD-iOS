@@ -57,7 +57,13 @@
 
 - (void)refresh:(id)sender {
 	[[PhishinAPI sharedAPI] eras:^(NSArray *phishYears) {
+		phishYears = [phishYears map:^id(PhishinEra *object) {
+			object.years = object.years.reverse;
+			return object;
+		}].reverse;
+		
 		self.eras = phishYears;
+		
 		[self.tableView reloadData];
 		
 		[super refresh:sender];
