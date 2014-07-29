@@ -141,7 +141,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        return @"Your email and password are stored securely and are only used solely for direct communication with LivePhish.com\n\nPhishOD is not affiliated with Phish, nugs.net or LivePhish in any way. This is simply provided as a free service to the community until the LivePhish app is updated.";
+        return @"Your email and password are stored securely in your device's keychain and are only used solely for direct communication with LivePhish.com\n\nPhishOD is not affiliated with Phish, nugs.net or LivePhish in any way. This is simply provided as a free service to the community until the LivePhish app is updated.";
     }
     
     return nil;
