@@ -29,7 +29,6 @@
 		
 		NSArray *itemArray = @[@"All", @"Key", @"Notable", @"Charted"];
         control = [[UISegmentedControl alloc] initWithItems:itemArray];
-		control.segmentedControlStyle = UISegmentedControlStyleBar;
         control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
 		control.selectedSegmentIndex = 0;
 		[control addTarget:self

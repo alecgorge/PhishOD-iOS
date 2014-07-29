@@ -21,15 +21,6 @@
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
 		self.year = y;
-		
-		NSArray *itemArray = @[@"All", @"SBD or Remastered"];
-        control = [[UISegmentedControl alloc] initWithItems:itemArray];
-		control.segmentedControlStyle = UISegmentedControlStyleBar;
-        control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
-		control.selectedSegmentIndex = 0;
-		[control addTarget:self
-					action:@selector(doFilterShows)
-		  forControlEvents:UIControlEventValueChanged];
     }
     return self;
 }
@@ -38,6 +29,14 @@
     [super viewDidLoad];
 	
 	self.title = self.year.year;
+	
+	NSArray *itemArray = @[@"All", @"SBD or Remastered"];
+	control = [[UISegmentedControl alloc] initWithItems:itemArray];
+	control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
+	control.selectedSegmentIndex = 0;
+	[control addTarget:self
+				action:@selector(doFilterShows)
+	  forControlEvents:UIControlEventValueChanged];
 	
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(ShowCell.class)
 											   bundle:NSBundle.mainBundle]

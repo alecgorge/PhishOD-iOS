@@ -100,7 +100,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 		[UINavigationBar appearance].tintColor = phishGreen;
 	}
 
-	[UINavigationBar appearance].titleTextAttributes = @{UITextAttributeTextColor: white};
+	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: white};
 	
 //	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
 }
