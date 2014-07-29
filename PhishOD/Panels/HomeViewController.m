@@ -44,6 +44,7 @@ NS_ENUM(NSInteger, kPhishODMenuStatsItems) {
 };
 
 NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
+	kPhishODMenuLivePhishItemFeatured,
     kPhishODMenuLivePhishItemBrowse,
     kPhishODMenuLivePhishItemStash,
     kPhishODMenuLivePhishItemsCount,
@@ -186,6 +187,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		cell.textLabel.text = @"Recent Activity";
 	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemFeatured) {
+		cell.textLabel.text = @"Featured";
+	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
 		cell.textLabel.text = @"Browse";
 	}
@@ -238,6 +242,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
         [LivePhishAuth.sharedInstance ensureSignedInFrom:self
                                                  success:^{
                                                      [self pushViewController:LivePhishBrowseViewController.alloc.init];
+                                                 }];
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemFeatured) {
+        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
+                                                 success:^{
+                                                     [self pushViewController:[LivePhishCategoryViewController.alloc initWithFeaturedContent]];
                                                  }];
 	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {

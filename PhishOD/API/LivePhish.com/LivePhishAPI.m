@@ -11,6 +11,7 @@
 #import "LivePhishAuth.h"
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
+#import <StreamingKit/STKHTTPDataSource.h>
 
 @implementation LivePhishAPI
 
@@ -25,6 +26,8 @@
         
         [inst setDefaultHeader:@"User-Agent"
                          value:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"];
+		
+		[STKHTTPDataSource setDefaultUserAgent:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"];
 	});
     return inst;
 }
@@ -140,6 +143,27 @@
                 }]);
             }
               error:failure];
+}
+
+- (void)featuredContainers:(void (^)(NSArray *))success
+				   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self apiMethod:@"catalog.featuredMerchandised"
+			 params:nil
+			success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success([[self parseJSON:responseObject][@"Response"][@"containers"] map:^id(NSDictionary *object) {
+                    NSError *err;
+                    
+                    id obj = [LivePhishContainer.alloc initWithDictionary:object
+                                                                    error:&err];
+                    
+                    if(err) {
+                        dbug(@"JSON Validation Error on %@: %@", object, err);
+                    }
+                    
+                    return obj;
+                }]);
+			}
+			  error:failure];
 }
 
 - (void)containersForCategory:(LivePhishCategory *)cat

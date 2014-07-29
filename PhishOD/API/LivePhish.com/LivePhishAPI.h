@@ -20,6 +20,9 @@
 - (void)categories:(void ( ^ ) ( NSArray *categories ))success
            failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
+- (void)featuredContainers:(void ( ^ ) ( NSArray *categories ))success
+				   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
 - (void)containersForCategory:(LivePhishCategory *)cat
                       success:(void ( ^ ) ( NSArray *containers ))success
                       failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;

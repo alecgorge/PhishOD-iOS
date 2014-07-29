@@ -14,5 +14,6 @@
 
 - (instancetype)initWithCategory:(LivePhishCategory *)cat;
 - (instancetype)initWithStash;
+- (instancetype)initWithFeaturedContent;
 
 @end

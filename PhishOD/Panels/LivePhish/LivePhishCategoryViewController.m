@@ -14,7 +14,16 @@
 #import "LargeImageTableViewCell.h"
 #import "LivePhishContainerViewController.h"
 
+typedef NS_ENUM(NSInteger, LivePhishCategoryViewControllerMode) {
+	LivePhishCategoryViewControllerCategoryMode,
+	LivePhishCategoryViewControllerStashMode,
+	LivePhishCategoryViewControllerFeaturedContentMode,
+	LivePhishCategoryViewControllerModeCount,
+};
+
 @interface LivePhishCategoryViewController ()
+
+@property (nonatomic) LivePhishCategoryViewControllerMode viewMode;
 
 @property (nonatomic) LivePhishCategory *category;
 @property (nonatomic) LivePhishStash *stash;
@@ -28,6 +37,7 @@
 - (instancetype)initWithCategory:(LivePhishCategory *)cat {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         self.category = cat;
+		self.viewMode = LivePhishCategoryViewControllerCategoryMode;
     }
     
     return self;
@@ -35,13 +45,22 @@
 
 - (instancetype)initWithStash {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
+		self.viewMode = LivePhishCategoryViewControllerStashMode;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithFeaturedContent {
+    if (self = [super initWithStyle:UITableViewStylePlain]) {
+		self.viewMode = LivePhishCategoryViewControllerFeaturedContentMode;
     }
     
     return self;
 }
 
 -(void)refresh:(id)sender {
-    if(self.category) {
+    if(self.viewMode == LivePhishCategoryViewControllerCategoryMode) {
         [LivePhishAPI.sharedInstance containersForCategory:self.category
                                                    success:^(NSArray *containers) {
                                                        self.containers = containers;
@@ -51,7 +70,7 @@
                                                    }
                                                    failure:REQUEST_FAILED(self.tableView)];
     }
-    else {
+    else if(self.viewMode == LivePhishCategoryViewControllerStashMode) {
         [LivePhishAPI.sharedInstance userStash:^(LivePhishStash *stash) {
             self.stash = stash;
             self.containers = stash.passes;
@@ -61,17 +80,30 @@
         }
                                        failure:REQUEST_FAILED(self.tableView)];
     }
+	else if(self.viewMode == LivePhishCategoryViewControllerFeaturedContentMode) {
+        [LivePhishAPI.sharedInstance featuredContainers:^(NSArray *containers) {
+			self.containers = containers;
+			
+			[self.tableView reloadData];
+			[super refresh:sender];
+		}
+                                       failure:REQUEST_FAILED(self.tableView)];
+		
+	}
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(self.category) {
+    if(self.viewMode == LivePhishCategoryViewControllerCategoryMode) {
         self.title = self.category.name.capitalizedString;
     }
-    else {
+    else if(self.viewMode == LivePhishCategoryViewControllerStashMode) {
         self.title = @"My Stash";
     }
+	else if(self.viewMode == LivePhishCategoryViewControllerFeaturedContentMode) {
+        self.title = @"Featured";
+	}
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
