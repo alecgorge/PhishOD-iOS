@@ -49,6 +49,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
 	
 	[AFHTTPRequestOperationLogger.sharedLogger startLogging];
+	AFHTTPRequestOperationLogger.sharedLogger.filterPredicate = [NSPredicate predicateWithBlock:^BOOL(AFHTTPRequestOperation *op, NSDictionary *bindings) {
+		return [op.request.URL.query containsString:@"session.getUserToken"];
+	}];
 	
 	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
 
