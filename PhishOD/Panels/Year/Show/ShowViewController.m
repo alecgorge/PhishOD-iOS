@@ -372,6 +372,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		return track.id == [obj id];
 	}];
 	
+	[AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
+	
     if(!AGMediaPlayerViewController.sharedInstance.playbackQueue
 	|| AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
         [AppDelegate.sharedDelegate presentMusicPlayer];

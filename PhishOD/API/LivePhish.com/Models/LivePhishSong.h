@@ -21,7 +21,9 @@
 @property (nonatomic) NSInteger track;
 @property (nonatomic) NSInteger set;
 @property (nonatomic) NSURL *clipURL;
-@property (nonatomic) NSInteger trackId;
+@property (nonatomic) NSInteger songId;
 @property (nonatomic) NSTimeInterval runningTime;
+
+@property (nonatomic, readonly) NSInteger trackId;
 
 @end

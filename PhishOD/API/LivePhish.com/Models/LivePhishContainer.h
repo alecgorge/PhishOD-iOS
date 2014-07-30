@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, LivePhishContainerType) {
 @property (nonatomic) NSString *relativeImagePath;
 @property (nonatomic) NSString<Optional> *relativePagePath;
 
+@property (nonatomic) UIImage<Ignore> *image;
 @property (nonatomic, readonly) NSURL *imageURL;
 @property (nonatomic, readonly) NSURL *livePhishPageURL;
 

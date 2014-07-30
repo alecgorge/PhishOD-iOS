@@ -74,7 +74,7 @@
 
 - (NSString *)displayTextWithDate {
     if (self.type == LivePhishContainerTypeShow) {
-        return [NSString stringWithFormat:@"%@ — %@ — %@", self.artist, self.date, self.venue];
+        return [NSString stringWithFormat:@"%@ — %@", self.date, self.venue];
     }
     else if(self.type == LivePhishContainerTypeAlbum) {
         if(self.album) {

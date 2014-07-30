@@ -122,6 +122,7 @@ typedef NS_ENUM(NSInteger, LivePhishContainerViewInfoRows) {
                                                         dbug(@"image error: %@", error);
                                                     }
                                                     else {
+														self.completeContainer.image = image;
                                                         [self setupTableHeaderWithImage:image];
                                                         [self.tableView reloadData];
                                                     }

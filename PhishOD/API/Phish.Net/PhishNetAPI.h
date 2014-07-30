@@ -11,6 +11,9 @@
 #import "PhishNetReview.h"
 #import "PhishNetTopShow.h"
 #import "PhishNetJamChartEntry.h"
+#import "PhishNetBlogItem.h"
+#import "PhishNetNewsItem.h"
+#import "PhishNetShow.h"
 #import "PhishinSong.h"
 
 #define PHISH_NET_API_KEY @"B6570BEDA805B616AB6C"
@@ -39,5 +42,14 @@
 
 -(void)topRatedShowsWithSuccess:(void ( ^ ) (NSArray *))success
 						failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+
+- (void)news:(void ( ^ ) (NSArray *))success
+	 failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+
+- (void)blog:(void ( ^ ) (NSArray *))success
+	 failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+
+- (void)showsForCurrentUser:(void ( ^ ) (NSArray *))success
+					failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 
 @end

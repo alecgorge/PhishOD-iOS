@@ -370,12 +370,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     self.currentTrackHasBeenScrobbled = NO;
     
-    [[LastFm sharedInstance] sendNowPlayingTrack:self.currentItem.title
-                                       byArtist:self.currentItem.artist
-                                        onAlbum:self.currentItem.album
-                                   withDuration:self.audioPlayer.duration
-                                 successHandler:nil
-                                 failureHandler:nil];
+    [LastFm.sharedInstance sendNowPlayingTrack:self.currentItem.title
+									  byArtist:self.currentItem.artist
+									   onAlbum:self.currentItem.album
+								  withDuration:self.audioPlayer.duration
+								successHandler:nil
+								failureHandler:nil];
     
     [self.uiPlaybackQueueTable reloadData];
     [self redrawUI];
@@ -567,17 +567,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.uiProgressSlider.value = self.progress;
     
-    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:@{
-        MPMediaItemPropertyAlbumTitle				: STR_IF_NIL(self.currentItem.album),
-        MPMediaItemPropertyTitle					: STR_IF_NIL(self.currentItem.title),
-        MPMediaItemPropertyAlbumTrackCount			: @(self.playbackQueue.count),
-        MPMediaItemPropertyArtist					: STR_IF_NIL(self.currentItem.artist),
-        MPMediaItemPropertyPlaybackDuration			: @(self.audioPlayer.duration),
-        MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.playbackQueue.count),
-        MPNowPlayingInfoPropertyPlaybackQueueIndex	: @(self.currentIndex),
-        MPNowPlayingInfoPropertyPlaybackRate		: @(self.playing ? 1.0 : 0),
-        MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.audioPlayer.progress)
-    }];
+	NSMutableDictionary *dict = @{
+								  MPMediaItemPropertyAlbumTitle					: STR_IF_NIL(self.currentItem.album),
+								  MPMediaItemPropertyTitle						: STR_IF_NIL(self.currentItem.title),
+								  MPMediaItemPropertyAlbumTrackCount			: @(self.playbackQueue.count),
+								  MPMediaItemPropertyArtist						: STR_IF_NIL(self.currentItem.artist),
+								  MPMediaItemPropertyPlaybackDuration			: @(self.audioPlayer.duration),
+								  MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.playbackQueue.count),
+								  MPNowPlayingInfoPropertyPlaybackQueueIndex	: @(self.currentIndex),
+								  MPNowPlayingInfoPropertyPlaybackRate			: @(self.playing ? 1.0 : 0),
+								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.audioPlayer.progress)
+								  }.mutableCopy;
+	
+	if(self.currentItem.albumArt) {
+		dict[MPMediaItemPropertyArtwork] = [MPMediaItemArtwork.alloc initWithImage:self.currentItem.albumArt];
+	}
+	
+    [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];
     
 	if(!self.currentTrackHasBeenScrobbled && self.progress > .5) {
 		[[LastFm sharedInstance] sendScrobbledTrack:self.currentItem.title

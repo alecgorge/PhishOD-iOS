@@ -80,7 +80,7 @@
 			  newYear.year = year.year;
 			  newYear.shows = [responseObject[@"data"] map:^id(id object) {
 				  return [[PhishinShow alloc] initWithDictionary:object];
-			  }];
+			  }].reverse;
 			  
 			  success(newYear);
 		  }

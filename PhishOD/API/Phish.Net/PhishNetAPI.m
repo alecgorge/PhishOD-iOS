@@ -49,7 +49,7 @@
 		 withArguments:(NSDictionary*)args
 			   success:(void ( ^ ) ( AFHTTPRequestOperation *operation , id responseObject ))success
 			   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure {
-	NSMutableDictionary *margs = [args mutableCopy];
+	NSMutableDictionary *margs = [args ? args : @{} mutableCopy];
 	margs[@"api"] = @"2.0";
 	margs[@"method"] = method;
 	margs[@"apikey"] = PHISH_NET_API_KEY;
@@ -183,6 +183,75 @@
 				 }
 				 failure:failure];
 	
+}
+
+- (void)news:(void (^)(NSArray *))success
+	 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self makeAPIRequest:@"pnet.news.get"
+		   withArguments:nil
+				 success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+					 success([responseObject map:^id(NSDictionary *object) {
+						 NSError *err;
+						 
+						 PhishNetNewsItem *o = [PhishNetNewsItem.alloc initWithDictionary:object
+																					error:&err];
+						 
+						 if (err) {
+							 dbug(@"json error: %@", err);
+						 }
+						 
+						 return o;
+					 }].reverse);
+				 }
+				 failure:failure];
+}
+
+- (void)blog:(void (^)(NSArray *))success
+	 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self makeAPIRequest:@"pnet.blog.get"
+		   withArguments:nil
+				 success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+					 success([[responseObject.allValues map:^id(NSDictionary *object) {
+						 NSError *err;
+						 
+						 PhishNetBlogItem *o = [PhishNetBlogItem.alloc initWithDictionary:object
+																					error:&err];
+						 
+						 if (err) {
+							 dbug(@"json error: %@", err);
+						 }
+						 
+						 return o;
+					 }] sortedArrayUsingComparator:^NSComparisonResult(PhishNetBlogItem *obj1, PhishNetBlogItem *obj2) {
+						 return [obj2.id compare:obj1.id
+										 options:0
+										   range:NSMakeRange(0, obj2.id.length)];
+					 }]);
+				 }
+				 failure:failure];
+}
+
+- (void)showsForCurrentUser:(void (^)(NSArray *))success
+					failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self makeAPIRequest:@"pnet.user.myshows.get"
+		   withArguments:@{@"username": @"alecgorge"}
+				 success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+					 success([[responseObject reject:^BOOL(NSDictionary *object) {
+						 return [object[@"artist"] isEqualToString:@"1"];
+					 }] map:^id(NSDictionary *object) {
+						 NSError *err;
+						 
+						 PhishNetShow *o = [PhishNetShow.alloc initWithDictionary:object
+																			error:&err];
+						 
+						 if (err) {
+							 dbug(@"json error: %@", err);
+						 }
+						 
+						 return o;
+					 }].reverse);
+				 }
+				 failure:failure];
 }
 
 @end

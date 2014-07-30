@@ -99,6 +99,13 @@
 		7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */; };
 		7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A71801B219004F55DF /* MapKit.framework */; };
 		7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A91801B22E004F55DF /* CoreLocation.framework */; };
+		7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */; };
+		7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */; };
+		7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367D1988894A00AFEA56 /* PhishNetShow.m */; };
+		7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */; };
+		7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */; };
+		7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */; };
+		7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -329,6 +336,19 @@
 		7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDLocationsMapViewController.xib; sourceTree = "<group>"; };
 		7C7ED3A71801B219004F55DF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7C7ED3A91801B22E004F55DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetNewsItem.h; sourceTree = "<group>"; };
+		7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetNewsItem.m; sourceTree = "<group>"; };
+		7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetBlogItem.h; sourceTree = "<group>"; };
+		7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetBlogItem.m; sourceTree = "<group>"; };
+		7C94367C1988894A00AFEA56 /* PhishNetShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetShow.h; sourceTree = "<group>"; };
+		7C94367D1988894A00AFEA56 /* PhishNetShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetShow.m; sourceTree = "<group>"; };
+		7C94368019888ACE00AFEA56 /* PhishNetBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishNetBlogViewController.h; path = Phish.net/PhishNetBlogViewController.h; sourceTree = "<group>"; };
+		7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishNetBlogViewController.m; path = Phish.net/PhishNetBlogViewController.m; sourceTree = "<group>"; };
+		7C94368319888C5400AFEA56 /* Value1SubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Value1SubtitleCell.h; sourceTree = "<group>"; };
+		7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Value1SubtitleCell.m; sourceTree = "<group>"; };
+		7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Value1SubtitleCell.xib; sourceTree = "<group>"; };
+		7C94368819894E5900AFEA56 /* PhishNetNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishNetNewsViewController.h; path = Phish.net/PhishNetNewsViewController.h; sourceTree = "<group>"; };
+		7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishNetNewsViewController.m; path = Phish.net/PhishNetNewsViewController.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -539,6 +559,9 @@
 				7C1C3C3519820F2100555ACB /* PHODTrackCell.h */,
 				7C1C3C3619820F2100555ACB /* PHODTrackCell.m */,
 				7C1C3C3719820F2100555ACB /* PHODTrackCell.xib */,
+				7C94368319888C5400AFEA56 /* Value1SubtitleCell.h */,
+				7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */,
+				7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -852,6 +875,12 @@
 				7CADB3191760352900B80D54 /* PhishNetTopShow.m */,
 				7C79EB80198572480064C177 /* PhishNetJamChartEntry.h */,
 				7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */,
+				7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */,
+				7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */,
+				7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */,
+				7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */,
+				7C94367C1988894A00AFEA56 /* PhishNetShow.h */,
+				7C94367D1988894A00AFEA56 /* PhishNetShow.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -914,6 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				7C1C3C3419820EFC00555ACB /* Cells */,
+				7C94367F19888A9300AFEA56 /* Phish.net */,
 				7C23461B1981E9A9002A46D5 /* LivePhish */,
 				7C60302B18206B1F0088F651 /* Random Show */,
 				7C02E785180F455100C01CCB /* Tours */,
@@ -963,6 +993,17 @@
 				F1B48AE51973813100DDF5C3 /* VenueViewController.m */,
 			);
 			path = Venues;
+			sourceTree = "<group>";
+		};
+		7C94367F19888A9300AFEA56 /* Phish.net */ = {
+			isa = PBXGroup;
+			children = (
+				7C94368019888ACE00AFEA56 /* PhishNetBlogViewController.h */,
+				7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */,
+				7C94368819894E5900AFEA56 /* PhishNetNewsViewController.h */,
+				7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */,
+			);
+			name = Phish.net;
 			sourceTree = "<group>";
 		};
 		7CACD4F117A4584900E84B28 /* Models */ = {
@@ -1274,6 +1315,7 @@
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
 				7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */,
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
+				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
 				7C1C3C61198219FD00555ACB /* glyphicons_083_random.png in Resources */,
 				7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */,
 				7C1C3C69198219FD00555ACB /* glyphicons_175_stop.png in Resources */,
@@ -1345,8 +1387,10 @@
 				F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */,
 				7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */,
 				F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */,
+				7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
 				F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */,
+				7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */,
 				C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */,
 				F1B48B52197383E000DDF5C3 /* FavoriteToursViewController.m in Sources */,
 				C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */,
@@ -1402,6 +1446,7 @@
 				7C2346081981D34D002A46D5 /* LivePhishSong.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
+				7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */,
 				7C1C3C451982105000555ACB /* IGDurationHelper.m in Sources */,
 				F1B48B081973831A00DDF5C3 /* RankingTableViewCell.m in Sources */,
 				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
@@ -1418,6 +1463,7 @@
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
+				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
 				7C23460E1981D405002A46D5 /* LivePhishReview.m in Sources */,
 				F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */,
 				F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */,
@@ -1426,6 +1472,7 @@
 				7C518C73175E6465005EB2E7 /* ConcertInfoViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
 				7C2345FB1981BBC7002A46D5 /* LivePhishAPI.m in Sources */,
+				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
 				7C23461A1981E77B002A46D5 /* LivePhishAccessList.m in Sources */,
 				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
 				7C2346171981E51C002A46D5 /* LivePhishStash.m in Sources */,
@@ -1451,6 +1498,7 @@
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
 				7C79EB7E198559F20064C177 /* ShowCell.m in Sources */,
 				F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */,
+				7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */,
 				7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
 			);

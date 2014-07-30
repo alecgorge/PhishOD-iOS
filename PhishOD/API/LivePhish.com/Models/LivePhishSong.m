@@ -12,13 +12,13 @@
 
 + (JSONKeyMapper *)keyMapper {
     NSDictionary *dict = @{
-                           @"songID": @"id",
+                           @"trackID": @"id",
                            @"songTitle": @"title",
                            @"discNum": @"disc",
                            @"trackNum": @"track",
                            @"setNum": @"set",
                            @"clipURL": @"clipURL",
-                           @"trackID": @"trackId",
+                           @"songID": @"songId",
                            @"totalRunningTime": @"runningTime",
                            };
     
@@ -27,6 +27,10 @@
 
 - (NSTimeInterval)duration {
     return self.runningTime;
+}
+
+- (NSInteger)trackId {
+	return self.id;
 }
 
 @end

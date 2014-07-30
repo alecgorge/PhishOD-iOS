@@ -25,6 +25,8 @@
 #import "GlobalActivityViewController.h"
 #import "LivePhishBrowseViewController.h"
 #import "LivePhishCategoryViewController.h"
+#import "PhishNetBlogViewController.h"
+#import "PhishNetNewsViewController.h"
 
 NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemYears,
@@ -50,10 +52,19 @@ NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
     kPhishODMenuLivePhishItemsCount,
 };
 
+NS_ENUM(NSInteger, kPhishODMenuSectionPhishNetItems) {
+	kPhishODMenuPhishNetItemMyShows,
+//	kPhishODMenuPhishNetItemForum,
+	kPhishODMenuPhishNetItemNews,
+	kPhishODMenuPhishNetItemBlog,
+	kPhishODMenuPhishNetItemCount,
+};
+
 NS_ENUM(NSInteger, kPhishODMenuSections) {
 	kPhishODMenuSectionNowPlaying,
 	kPhishODMenuSectionMenu,
 	kPhishODMenuSectionLivePhish,
+	kPhishODMenuSectionPhishNet,
 	kPhishODMenuSectionStats,
 	kPhishODMenuSectionsCount
 };
@@ -127,6 +138,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
     else if(section == kPhishODMenuSectionLivePhish) {
         return kPhishODMenuLivePhishItemsCount;
     }
+    else if(section == kPhishODMenuSectionPhishNet) {
+        return kPhishODMenuPhishNetItemCount;
+    }
 	
 	return kPhishODMenuStatsItemsCount;
 }
@@ -141,6 +155,7 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	cell.detailTextLabel.text = nil;
 	
 	if(indexPath.section == kPhishODMenuSectionNowPlaying) {
 		PhishinShow *show = [AppDelegate sharedDelegate].currentlyPlayingShow;
@@ -196,6 +211,18 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
 		cell.textLabel.text = @"My Stash";
 	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemBlog) {
+		cell.textLabel.text = @"Blog";
+	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemNews) {
+		cell.textLabel.text = @"News";
+	}
+//	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemForum) {
+//		cell.textLabel.text = @"Forum";
+//	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemMyShows) {
+		cell.textLabel.text = @"My Shows";
+	}
 	
 	return cell;
 }
@@ -238,6 +265,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		[self pushViewController:[[GlobalActivityViewController alloc] init]];
 	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemBlog) {
+		[self pushViewController:PhishNetBlogViewController.alloc.init];
+	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemNews) {
+		[self pushViewController:PhishNetNewsViewController.alloc.init];
+	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
         [LivePhishAuth.sharedInstance ensureSignedInFrom:self
                                                  success:^{
@@ -271,6 +304,9 @@ titleForHeaderInSection:(NSInteger)section {
 	}
     else if(section == kPhishODMenuSectionLivePhish) {
         return @"LivePhish.com";
+    }
+    else if(section == kPhishODMenuSectionPhishNet) {
+        return @"Phish.net";
     }
     
 	return nil;

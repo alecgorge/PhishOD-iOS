@@ -17,7 +17,21 @@
 
         ga('create', 'UA-27002013-2', 'auto');
         ga('send', 'pageview');
+      </script>
+      <script>
+        function iOSversion() {
+          if (/iP(hone|od|ad)/.test(navigator.platform)) {
+            // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+            var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+            return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+          }
+        }
 
+        ver = iOSversion();
+
+        if (ver[0] < 7) {
+          alert('PhishOD Beta is only supported on devices running iOS 7 or later.');
+        }
       </script>
     </ul>
   </body>

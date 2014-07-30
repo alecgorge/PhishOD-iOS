@@ -17,6 +17,8 @@
     if (self = [super init]) {
         self.song = song;
         self.completeContainer = cont;
+		
+		self.albumArt = self.completeContainer.image;
         
         self.title = song.title;
         self.album = cont.displayTextWithDate;
@@ -53,7 +55,7 @@
 }
 
 - (NSString *)shareText {
-    return [NSString stringWithFormat:@"#nowplaying %@ — %@ via @phishod", self.title, self.album];
+    return [NSString stringWithFormat:@"#nowplaying %@ — %@ via @phishod", self.title, self.completeContainer.displayTextWithDate];
 }
 
 @end

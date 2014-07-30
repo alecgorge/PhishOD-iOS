@@ -55,7 +55,7 @@
 		cell.textLabel.text = self.setlist.setlistHTML;
 	}
 
-	cell.textLabel.font = [UIFont systemFontOfSize: [UIFont systemFontSize]];
+	cell.textLabel.font = [UIFont systemFontOfSize: UIFont.systemFontSize];
 	cell.textLabel.numberOfLines = 0;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -76,11 +76,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Get a CGSize for the width and, effectively, unlimited height
 	CGSize constraint = CGSizeMake(tableView.frame.size.width - 20.0f - (10.0f * 2), 20000.0f);
 	// Get the size of the text given the CGSize we just made as a constraint
-	CGSize size = [text sizeWithFont:[UIFont systemFontOfSize: [UIFont systemFontSize]]
-				   constrainedToSize:constraint
-					   lineBreakMode:NSLineBreakByWordWrapping];
+	CGRect rect = [text boundingRectWithSize:constraint
+									 options:NSStringDrawingUsesLineFragmentOrigin
+								  attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:UIFont.systemFontSize]}
+									 context:nil];
 	// Get the height of our measurement, with a minimum of 44 (standard cell size)
-	CGFloat height = MAX(size.height, tableView.rowHeight);
+	CGFloat height = MAX(rect.size.height, tableView.rowHeight);
 	// return the height, with a bit of extra padding in
 	return height + (10.0f * 2);
 }
