@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import <StreamingKit/STKAutoRecoveringHTTPDataSource.h>
 
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
@@ -37,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UIView *uiBottomBar;
 @property (weak, nonatomic) IBOutlet UIView *uiTopBar;
 @property (weak, nonatomic) IBOutlet MPVolumeView *uiVolumeView;
+
+@property BOOL registeredAudioSession;
 
 @property BOOL doneAppearance;
 @property (nonatomic) NSTimeInterval shareTime;
@@ -71,9 +74,6 @@
     if (self = [super initWithNibName:nibNameOrNil
                                bundle:nibBundleOrNil]) {
         self.playbackQueue = [NSMutableArray array];
-        
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [[AVAudioSession sharedInstance] setActive:YES error:nil];
         
         self.audioPlayer = STKAudioPlayer.alloc.init;
         self.audioPlayer.delegate = self;        
@@ -333,24 +333,40 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 - (void)queueNextItem {
     if (self.nextItem) {
-        AGMediaItem *n = self.nextItem;
-        [n streamURL:^(NSURL *file) {
-            [self.audioPlayer queueURL:file
-                       withQueueItemId:n];
-        }];
+		[self.audioPlayer queueDataSource:[self dataSourceForItem:self.nextItem]
+						  withQueueItemId:self.nextItem];
     }
+}
 
+- (STKAutoRecoveringHTTPDataSource *)dataSourceForItem:(AGMediaItem *) item {
+	STKHTTPDataSource *http = [STKHTTPDataSource.alloc initWithAsyncURLProvider:^(STKHTTPDataSource *dataSource, BOOL forSeek, STKURLBlock callback) {
+		[item streamURL:callback];
+	}];
+	
+	return [STKAutoRecoveringHTTPDataSource.alloc initWithHTTPDataSource:http];
 }
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex {
     _currentIndex = currentIndex;
-    
-    [self.currentItem streamURL:^(NSURL *file) {
-        [self.audioPlayer playURL:file
-                  withQueueItemID:self.currentItem];
-        
-        [self queueNextItem];
-    }];
+	
+	if (!self.registeredAudioSession) {
+		[AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
+											 error:nil];
+		
+        [AVAudioSession.sharedInstance setActive:YES
+										   error:nil];
+		
+		self.registeredAudioSession = YES;
+	}
+	
+	[self.audioPlayer playDataSource:[self dataSourceForItem:self.currentItem]
+					 withQueueItemID:self.currentItem];
+	
+	for(NSUInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
+        AGMediaItem *m = self.playbackQueue[i];
+        [self.audioPlayer queueDataSource:[self dataSourceForItem:m]
+						  withQueueItemId:m];
+    }
     
     self.currentTrackHasBeenScrobbled = NO;
     
@@ -632,8 +648,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSUInteger index = [self.playbackQueue indexOfObject:queueItemId];
     _currentIndex = index;
-    
-    [self queueNextItem];
     
     self.currentTrackHasBeenScrobbled = NO;
     
