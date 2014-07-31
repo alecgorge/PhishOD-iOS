@@ -21,11 +21,11 @@
     dispatch_once(&once, ^ {
 		inst = [self.alloc initWithBaseURL:[NSURL URLWithString: @"https://www.livephish.com"]];
         
-		[inst setDefaultHeader:@"Accept"
-                         value:@"application/json"];
+		[inst.requestSerializer setValue:@"application/json"
+					  forHTTPHeaderField:@"Accept"];
         
-        [inst setDefaultHeader:@"User-Agent"
-                         value:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"];
+		[inst.requestSerializer setValue:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
+					  forHTTPHeaderField:@"User-Agent"];
 		
 		[STKHTTPDataSource setDefaultUserAgent:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"];
 	});
@@ -33,9 +33,7 @@
 }
 
 - (id)parseJSON:(id)data {
-	return [NSJSONSerialization JSONObjectWithData: data
-										   options: NSJSONReadingMutableContainers
-											 error: nil];
+	return data;
 }
 
 - (void)getUserTokenForUsername:(NSString *)username
@@ -67,10 +65,10 @@
         [params addEntriesFromDictionary:dict];
     }
     
-    [self getPath:@"/api.aspx"
-       parameters:params
-          success:success
-          failure:error];
+    [self GET:@"/api.aspx"
+   parameters:params
+	  success:success
+	  failure:error];
 }
 
 - (void)secureApiMethod:(NSString *)apiMethod
@@ -87,10 +85,10 @@
         [params addEntriesFromDictionary:dict];
     }
     
-    [self getPath:@"/secureApi.aspx"
-       parameters:params
-          success:success
-          failure:error];
+    [self GET:@"/secureApi.aspx"
+   parameters:params
+	  success:success
+	  failure:error];
 }
 
 - (NSError *)livePhishAuthError {
@@ -195,22 +193,22 @@
                                     success:success
                                     failure:failure];
     /*
-    [self apiMethod:@"catalog.container"
-             params:@{@"containerID": @(cont.id)}
-            success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSError *err;
-                
-                id object = [self parseJSON:responseObject][@"Response"];
-                id obj = [LivePhishCompleteContainer.alloc initWithDictionary:object
-                                                                        error:&err];
-                
-                if(err) {
-                    dbug(@"JSON Validation Error on %@: %@", object, err);
-                }
-                
-                success(obj);
-            }
-              error:failure];
+	 [self apiMethod:@"catalog.container"
+	 params:@{@"containerID": @(cont.id)}
+	 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	 NSError *err;
+	 
+	 id object = [self parseJSON:responseObject][@"Response"];
+	 id obj = [LivePhishCompleteContainer.alloc initWithDictionary:object
+	 error:&err];
+	 
+	 if(err) {
+	 dbug(@"JSON Validation Error on %@: %@", object, err);
+	 }
+	 
+	 success(obj);
+	 }
+	 error:failure];
      */
 }
 

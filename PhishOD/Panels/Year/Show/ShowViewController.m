@@ -150,7 +150,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(self.show.sets.count > 0 && section != 0) {
-		return ((PhishSet*)self.show.sets[section-1]).tracks.count;
+		return ((PhishinSet*)self.show.sets[section-1]).tracks.count;
 	}
 	else if(section == 0) {
 		return self.setlist == nil ? (self.show == nil ? 0 : 6) : 6;

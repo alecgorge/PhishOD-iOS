@@ -10,6 +10,8 @@
 #import "NowPlayingBarViewController.h"
 #import "StreamingMusicViewController.h"
 
+static char const * const HasFixedKey = "FixedKey";
+
 @implementation NavigationControllerAutoShrinkerForNowPlaying
 
 - (void)navigationController:(UINavigationController *)navigationController
@@ -44,6 +46,12 @@
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {
+	id assoc = objc_getAssociatedObject(viewController, HasFixedKey);
+	
+	if(assoc) {
+		return;
+	}
+	
     if([viewController isKindOfClass:[UITableViewController class]]) {
 		UITableView *t = [(UITableViewController*)viewController tableView];
 		
@@ -66,6 +74,8 @@
 		edges.bottom += NowPlayingBarViewController.sharedNowPlayingBar.view.bounds.size.height;
 		t.scrollIndicatorInsets = edges;
 	}
+	
+	objc_setAssociatedObject(viewController, HasFixedKey, @(YES), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

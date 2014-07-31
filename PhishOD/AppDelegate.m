@@ -25,7 +25,9 @@
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
-#import <AFHTTPRequestOperationLogger/AFHTTPRequestOperationLogger.h>
+#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+
+#import <PSUpdateApp/PSUpdateApp.h>
 
 static AppDelegate *sharedDelegate;
 
@@ -48,11 +50,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[Flurry setBackgroundSessionEnabled:NO];
 	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
 	
-	[AFHTTPRequestOperationLogger.sharedLogger startLogging];
+	[AFNetworkActivityLogger.sharedLogger startLogging];
 	
 	// prevent LivePhish.com and Phish.net from logging passwords in plaintext
-	AFHTTPRequestOperationLogger.sharedLogger.filterPredicate = [NSPredicate predicateWithBlock:^BOOL(AFHTTPRequestOperation *op, NSDictionary *bindings) {
-		return [op.request.URL.query containsString:@"session.getUserToken"] || [op.request.URL.query containsString:@"passwd="];
+	AFNetworkActivityLogger.sharedLogger.filterPredicate = [NSPredicate predicateWithBlock:^BOOL(NSURLRequest *op, NSDictionary *bindings) {
+		return [op.URL.query containsString:@"session.getUserToken"] || [op.URL.query containsString:@"passwd="];
 	}];
 	
 	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
@@ -78,7 +80,20 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+	
+	[self checkForUpdates];
+	
     return YES;
+}
+
+- (void)checkForUpdates {
+#if defined(ADHOC)
+    [PSUpdateApp.manager startWithRoute:@"http://phishapp.alecgorge.com/beta/data.json"];
+    [PSUpdateApp.manager setStrategy:ForceStrategy];
+    
+    PSUpdateApp.manager.alertTitle = @"Update Available";
+	PSUpdateApp.manager.alertForceMessage = @"A new PhishOD beta is available. You need to update to continue using the beta.";
+#endif
 }
 
 - (void)setupAppearance {

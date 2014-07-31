@@ -334,6 +334,9 @@ titleForHeaderInSection:(NSInteger)section {
     else if(section == kPhishODMenuSectionPhishNet) {
         return @"Phish.net";
     }
+	else if(section == kPhishODMenuSectionTickets) {
+		return @"Tickets";
+	}
     
 	return nil;
 }

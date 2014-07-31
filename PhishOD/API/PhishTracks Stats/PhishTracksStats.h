@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+
 #import "PhishTracksStatsError.h"
 #import "PhishTracksStatsFavorite.h"
 #import "PhishTracksStatsQuery.h"
@@ -29,7 +30,7 @@ typedef enum {
 	kStatsParamMissing             = 14
 } StatsErrorCodes;
 
-@interface PhishTracksStats : AFHTTPClient
+@interface PhishTracksStats : AFHTTPRequestOperationManager
 
 + (void)setupWithAPIKey:(NSString *)apiKey;
 + (PhishTracksStats *)sharedInstance;

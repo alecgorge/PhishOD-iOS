@@ -82,7 +82,7 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption {
     //---create the index---
     NSMutableArray *stateIndex = [[NSMutableArray alloc] init];
     
-	for(PhishSong *s in self.songs) {
+	for(PhishinTrack *s in self.songs) {
 		char alpha = [s.title characterAtIndex:0];
         NSString *uniChar = [NSString stringWithFormat:@"%c", alpha];
 		if(alpha >= 48 && alpha <= 57) {

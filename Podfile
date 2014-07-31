@@ -2,7 +2,7 @@ platform :ios, '7.0'
 
 inhibit_all_warnings!
 
-pod 'AFNetworking', 	'~> 1.3.2'
+pod 'AFNetworking'
 pod 'SVWebViewController'
 pod 'Appirater'
 pod 'FlurrySDK'
@@ -19,5 +19,6 @@ pod 'StreamingKit', :git => 'https://github.com/alecgorge/StreamingKit.git'
 pod 'CSNNotificationObserver'
 pod 'MarqueeLabel'
 pod "DBGHTMLEntities"
-pod 'AFHTTPRequestOperationLogger'
+pod 'AFNetworkActivityLogger'
+pod 'PSUpdateApp', :git => 'https://github.com/alecgorge/PSUpdateApp.git'
 

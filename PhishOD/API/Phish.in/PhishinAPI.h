@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Alec Gorge. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
+#import <AFNetworking/AFNetworking.h>
+
 #import "PhishinYear.h"
 #import "PhishinShow.h"
 #import "PhishinEra.h"
@@ -14,7 +15,7 @@
 #import "PhishinTour.h"
 #import "PhishinSearchResults.h"
 
-@interface PhishinAPI : AFHTTPClient
+@interface PhishinAPI : AFHTTPRequestOperationManager
 
 +(instancetype)sharedAPI;
 

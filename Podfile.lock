@@ -1,9 +1,30 @@
 PODS:
-  - AFHTTPRequestOperationLogger (1.0.0):
-    - AFNetworking (~> 1.0)
-  - AFNetworking (1.3.4)
+  - AFNetworkActivityLogger (2.0.3):
+    - AFNetworking/NSURLConnection (~> 2.0)
+    - AFNetworking/NSURLSession (~> 2.0)
+  - AFNetworking (2.3.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - Appirater (2.0.2)
-  - CrashlyticsFramework (2.2.1)
+  - CrashlyticsFramework (2.2.2)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
   - FlurrySDK (5.2.0):
@@ -35,6 +56,8 @@ PODS:
   - MarqueeLabel (2.0.0)
   - NAKPlaybackIndicatorView (0.0.3)
   - ObjectiveSugar (1.1.0)
+  - PSUpdateApp (2.0.5):
+    - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
     - SDWebImage/MapKit
@@ -51,8 +74,8 @@ PODS:
   - TDBadgedCell (HEAD based on 2.6)
 
 DEPENDENCIES:
-  - AFHTTPRequestOperationLogger
-  - AFNetworking (~> 1.3.2)
+  - AFNetworkActivityLogger
+  - AFNetworking
   - Appirater
   - CrashlyticsFramework
   - CSNNotificationObserver
@@ -64,6 +87,7 @@ DEPENDENCIES:
   - MarqueeLabel
   - NAKPlaybackIndicatorView
   - ObjectiveSugar
+  - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
   - SDWebImage
   - StreamingKit (from `https://github.com/alecgorge/StreamingKit.git`)
   - SVProgressHUD (HEAD)
@@ -71,14 +95,16 @@ DEPENDENCIES:
   - TDBadgedCell (HEAD)
 
 EXTERNAL SOURCES:
+  PSUpdateApp:
+    :git: https://github.com/alecgorge/PSUpdateApp.git
   StreamingKit:
     :git: https://github.com/alecgorge/StreamingKit.git
 
 SPEC CHECKSUMS:
-  AFHTTPRequestOperationLogger: 890afab1adb178314d33c4de9d2aa5a42cc594b9
-  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  AFNetworkActivityLogger: d6a2d2755fada3a1fbf1f490ec0dd92224e092a4
+  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   Appirater: a5e00fb01d47a9a6acf4b2f22323b4ccf4f23fbb
-  CrashlyticsFramework: a9d172599c3a34e68067e16446a764041b980162
+  CrashlyticsFramework: bce4c0e83b50f22aafde946b41a34a6b8ca7acd0
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
   FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047
@@ -90,6 +116,7 @@ SPEC CHECKSUMS:
   MarqueeLabel: ac6dce3e3be5ab2bea2fc56b9329c2ff7c857411
   NAKPlaybackIndicatorView: 3211fff8fbc229661d4de69e86cef1b9b2e49e41
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  PSUpdateApp: ee6d181405d4ac41a6e569109133e541d254cb9e
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   StreamingKit: 07aa7edd05e9ed3f33f7b469158234e921347932
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50

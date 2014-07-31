@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
+#import <AFNetworking/AFNetworking.h>
 
 #import "LivePhishCategory.h"
 #import "LivePhishContainer.h"
 #import "LivePhishCompleteContainer.h"
 #import "LivePhishStash.h"
 
-@interface LivePhishAPI : AFHTTPClient
+@interface LivePhishAPI : AFHTTPRequestOperationManager
 
 +(instancetype)sharedInstance;
 

@@ -56,73 +56,73 @@
 	margs[@"method"] = method;
 	margs[@"apikey"] = PHISH_NET_API_KEY;
 	
-	[self getPath:@"/api.json"
-	   parameters:margs
-		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
-//												 encoding:NSUTF8StringEncoding]);
-			  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
-															 options:0
-															   error:nil];
-			  success(operation, responseObject);
-		  }
-		  failure:failure];
+	[self GET:@"/api.json"
+   parameters:margs
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		  //			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
+		  //												 encoding:NSUTF8StringEncoding]);
+		  //		  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
+		  //														   options:0
+		  //															 error:nil];
+		  success(operation, responseObject);
+	  }
+	  failure:failure];
 }
 
 - (void)topRatedShowsWithSuccess:(void (^)(NSArray *))success
 						 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self getPath:@"http://phish.net/ratings"
-	   parameters:nil
-		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSString *page = [[NSString alloc] initWithData:responseObject
-													 encoding:NSASCIIStringEncoding];
-			  NSArray *matches = [findTopRatings matchesInString:page
-														 options:0
-														   range:NSMakeRange(0, [page length])];
-			  
-			  NSMutableArray *topShows = [[NSMutableArray alloc] initWithCapacity: matches.count];
-			  for(NSTextCheckingResult *res in matches) {
-				  PhishNetTopShow *show = [[PhishNetTopShow alloc] init];
-				  show.showDate = [page substringWithRange:[res rangeAtIndex:1]];
-				  show.rating = [page substringWithRange:[res rangeAtIndex:3]];
-				  show.ratingCount = [page substringWithRange:[res rangeAtIndex:2]];
-				  [topShows addObject:show];
-			  }
-			  
-			  success(topShows);
+	[self GET:@"http://phish.net/ratings"
+   parameters:nil
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		  NSString *page = [[NSString alloc] initWithData:responseObject
+												 encoding:NSASCIIStringEncoding];
+		  NSArray *matches = [findTopRatings matchesInString:page
+													 options:0
+													   range:NSMakeRange(0, [page length])];
+		  
+		  NSMutableArray *topShows = [[NSMutableArray alloc] initWithCapacity: matches.count];
+		  for(NSTextCheckingResult *res in matches) {
+			  PhishNetTopShow *show = [[PhishNetTopShow alloc] init];
+			  show.showDate = [page substringWithRange:[res rangeAtIndex:1]];
+			  show.rating = [page substringWithRange:[res rangeAtIndex:3]];
+			  show.ratingCount = [page substringWithRange:[res rangeAtIndex:2]];
+			  [topShows addObject:show];
 		  }
-		  failure:failure];
-
+		  
+		  success(topShows);
+	  }
+	  failure:failure];
+	
 }
 
 - (void)jamsForSong:(PhishinSong *)date
 			success:(void (^)(NSArray *))success {
-	[self getPath:[NSString stringWithFormat:@"http://phish.net/jamcharts/song/%@", date.netSlug , nil]
-	   parameters:nil
-		  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			  NSString *page = [[NSString alloc] initWithData:responseObject
-													 encoding:NSASCIIStringEncoding];
-			  
-			  jQuery *$ = [jQuery.alloc initWithHTML:page
-										   andScript:@"scrape_jams"];
-			  
-			  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-			  formatter.dateFormat = @"yyyy-MM-dd";
-
-			  [$ start:^(NSError *err, NSArray *res) {
-				  res = [res map:^id(NSDictionary *object) {
-					  NSMutableDictionary *obj = object.mutableCopy;
-					  obj[@"date"] = [formatter dateFromString:obj[@"date"]];
-					  
-					  return [PhishNetJamChartEntry.alloc initWithDictionary:obj];
-				  }];
+	[self GET:[NSString stringWithFormat:@"http://phish.net/jamcharts/song/%@", date.netSlug , nil]
+   parameters:nil
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		  NSString *page = [[NSString alloc] initWithData:responseObject
+												 encoding:NSASCIIStringEncoding];
+		  
+		  jQuery *$ = [jQuery.alloc initWithHTML:page
+									   andScript:@"scrape_jams"];
+		  
+		  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		  formatter.dateFormat = @"yyyy-MM-dd";
+		  
+		  [$ start:^(NSError *err, NSArray *res) {
+			  res = [res map:^id(NSDictionary *object) {
+				  NSMutableDictionary *obj = object.mutableCopy;
+				  obj[@"date"] = [formatter dateFromString:obj[@"date"]];
 				  
-				  success(res);
+				  return [PhishNetJamChartEntry.alloc initWithDictionary:obj];
 			  }];
-		  }
-		  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			  
+			  success(res);
 		  }];
+	  }
+	  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		  
+	  }];
 }
 
 -(void)setlistForDate:(NSString *)date
@@ -137,29 +137,29 @@
 								  success:^(NSArray *reviews) {
 									  set.reviews = reviews;
 									  
-									  [self getPath:@"http://phish.net/setlists/"
-										 parameters:@{@"showid": set.showId}
-											success:^(AFHTTPRequestOperation *operation, id responseObject) {
-												NSString *page = [[NSString alloc] initWithData:responseObject
-																					   encoding:NSASCIIStringEncoding];
-												NSTextCheckingResult *match = [findRating firstMatchInString:page
-																									 options:0
-																									   range:NSMakeRange(0, [page length])];
-												
-												NSTextCheckingResult *matca = [findVotes firstMatchInString:page
-																									options:0
-																									  range:NSMakeRange(0, [page length])];
-												
-												if(match) {
-													set.rating = [page substringWithRange:[match rangeAtIndex:1]];
-												}
-												if(matca) {
-													set.ratingCount = [page substringWithRange:[matca rangeAtIndex:1]];
-												}
-												
-												success(set);
+									  [self GET:@"http://phish.net/setlists/"
+									 parameters:@{@"showid": set.showId}
+										success:^(AFHTTPRequestOperation *operation, id responseObject) {
+											NSString *page = [[NSString alloc] initWithData:responseObject
+																				   encoding:NSASCIIStringEncoding];
+											NSTextCheckingResult *match = [findRating firstMatchInString:page
+																								 options:0
+																								   range:NSMakeRange(0, [page length])];
+											
+											NSTextCheckingResult *matca = [findVotes firstMatchInString:page
+																								options:0
+																								  range:NSMakeRange(0, [page length])];
+											
+											if(match) {
+												set.rating = [page substringWithRange:[match rangeAtIndex:1]];
 											}
-											failure:failure];
+											if(matca) {
+												set.ratingCount = [page substringWithRange:[matca rangeAtIndex:1]];
+											}
+											
+											success(set);
+										}
+										failure:failure];
 								  }
 								  failure:failure];
 				 }
