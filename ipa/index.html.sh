@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+cat <<EOT
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <head>
@@ -5,9 +7,9 @@
   </head>
   <body>
     <ul>
-      <h2 id="Apps">The &beta;leeding edge</h2>
+      <h2 id="Apps">PhishOD &beta; Build #${BUILD_NUMBER}</h2>
       <p>You need to open this page (<a href="http://alecgorge.com/phish/beta/">http://alecgorge.com/phish/beta/</a>) on your phone.</p>
-      <li><a href="itms-services://?action=download-manifest&url=https%3A%2F%2Fci.alecgorge.com%2Fjob%2FPhishOD%2FlastSuccessfulBuild%2Fartifact%2Fipa%2FPhishODBeta.plist">Install PhishOD &beta;</a></li>
+      <li><a href="itms-services://?action=download-manifest&url=https%3A%2F%2Fci.alecgorge.com%2Fjob%2FPhishOD%2F${BUILD_NUMBER}%2Fartifact%2Fipa%2FPhishODBeta.plist">Install PhishOD &beta; #${BUILD_NUMBER}</a></li>
 
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -36,3 +38,4 @@
     </ul>
   </body>
 </html>
+EOT

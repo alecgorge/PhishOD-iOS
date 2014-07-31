@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+cat <<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -11,15 +13,13 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://ci.alecgorge.com/job/PhishOD/lastSuccessfulBuild/artifact/ipa/PhishOD%20Beta.ipa</string>
+					<string>https://ci.alecgorge.com/job/PhishOD/${BUILD_NUMBER}/artifact/ipa/PhishOD%20Beta.ipa</string>
 				</dict>
 			</array>
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
 				<string>com.alecgorge.Phish-Tracks-Beta</string>
-				<key>bundle-version</key>
-				<string>2.2.0</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>title</key>
@@ -29,3 +29,4 @@
 	</array>
 </dict>
 </plist>
+EOT
