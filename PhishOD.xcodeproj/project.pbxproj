@@ -131,6 +131,9 @@
 		7CC91A6717A07D0F0047DFF3 /* jQueryAPI.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */; };
 		7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5F179F875A0047DFF3 /* NativeBridge.js */; };
 		7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */ = {isa = PBXBuildFile; fileRef = 7C1B438917984D8D00CB1255 /* scrape_jams.js */; };
+		7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */; };
+		7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */; };
+		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
 		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
 		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
 		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
@@ -392,6 +395,11 @@
 		7CC91A5D179F875A0047DFF3 /* jquery2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery2.min.js; sourceTree = "<group>"; };
 		7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jQueryAPI.js; sourceTree = "<group>"; };
 		7CC91A5F179F875A0047DFF3 /* NativeBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NativeBridge.js; sourceTree = "<group>"; };
+		7CDF2B7E198AB66900D17353 /* ShowHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowHeaderView.h; sourceTree = "<group>"; };
+		7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowHeaderView.m; sourceTree = "<group>"; };
+		7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowHeaderView.xib; sourceTree = "<group>"; };
+		7CDF2B83198AC59100D17353 /* ShowDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailsViewController.h; sourceTree = "<group>"; };
+		7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailsViewController.m; sourceTree = "<group>"; };
 		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
@@ -865,6 +873,11 @@
 				7C518C72175E6465005EB2E7 /* ConcertInfoViewController.m */,
 				7C518C74175FD224005EB2E7 /* ReviewsViewController.h */,
 				7C518C75175FD224005EB2E7 /* ReviewsViewController.m */,
+				7CDF2B7E198AB66900D17353 /* ShowHeaderView.h */,
+				7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */,
+				7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */,
+				7CDF2B83198AC59100D17353 /* ShowDetailsViewController.h */,
+				7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */,
 			);
 			path = Show;
 			sourceTree = "<group>";
@@ -1283,6 +1296,7 @@
 				7C1C3C6A198219FD00555ACB /* glyphicons_175_stop@2x.png in Resources */,
 				7C1C3C6B198219FD00555ACB /* glyphicons_176_forward.png in Resources */,
 				7C1C3C60198219FD00555ACB /* glyphicons_076_headphones@2x.png in Resources */,
+				7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */,
 				7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */,
 				7C1C3C64198219FD00555ACB /* glyphicons_172_rewind@2x.png in Resources */,
 				7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */,
@@ -1392,6 +1406,7 @@
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
 				F1B48AF0197382A500DDF5C3 /* SearchViewController.m in Sources */,
 				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
+				7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */,
 				7C2346141981E061002A46D5 /* LivePhishAuth.m in Sources */,
 				7C2346021981BE28002A46D5 /* LivePhishContainer.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
@@ -1414,6 +1429,7 @@
 				F1B48B3D1973836800DDF5C3 /* TourStatsViewController.m in Sources */,
 				7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */,
 				7C60302A182068DA0088F651 /* HomeViewController.m in Sources */,
+				7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
 				F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */,
 				7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */,

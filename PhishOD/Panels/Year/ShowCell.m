@@ -30,6 +30,30 @@
 	
 	self.uiRemasteredLabel.layer.cornerRadius =
 	self.uiSoundboardLabel.layer.cornerRadius = 5.0f;
+}
+
+- (NSAttributedString *)attributedStringForShow:(PhishinShow *)show {
+	NSMutableAttributedString *att = [NSMutableAttributedString.alloc initWithString:[show.venue_name stringByAppendingFormat:@"\n%@", show.location]];
+	
+	[att addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.0],
+						 NSForegroundColorAttributeName: UIColor.darkGrayColor,
+						 }
+				 range:NSMakeRange(show.venue_name.length + 1, show.location.length)];
+
+	return att;
+}
+
+- (void)updateCellWithShow:(PhishinShow *)show
+			   inTableView:(UITableView *)tableView {
+	self.uiDateLabel.text = show.date;
+	self.uiDurationLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration / 1000.0f];
+	self.uiSoundboardLabel.hidden = !show.sbd;
+	self.uiRemasteredLabel.hidden = !show.remastered;
+		
+	self.uiDescriptionLabel.attributedText = [self attributedStringForShow:show];
+	
+	self.shiftRemasteredLabelLeft = show.remastered && !show.sbd;
+	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	CGRect f = self.uiRemasteredLabel.frame;
 	if(self.shiftRemasteredLabelLeft) {
@@ -42,18 +66,6 @@
 	self.uiRemasteredLabel.frame = f;
 }
 
-- (void)updateCellWithShow:(PhishinShow *)show
-			   inTableView:(UITableView *)tableView {
-	self.uiDateLabel.text = show.date;
-	self.uiDurationLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration / 1000.0f];
-	self.uiSoundboardLabel.hidden = !show.sbd;
-	self.uiRemasteredLabel.hidden = !show.remastered;
-	self.uiDescriptionLabel.text = [show.venue_name stringByAppendingFormat:@" — %@", show.location];
-	
-	self.shiftRemasteredLabelLeft = show.remastered && !show.sbd;
-	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-}
-
 - (CGFloat)heightForCellWithShow:(PhishinShow *)show
 					 inTableView:(UITableView *)tableView {
     CGFloat leftMargin = 10;
@@ -61,11 +73,10 @@
     
     CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - leftMargin - rightMargin, MAXFLOAT);
 	
-	NSString *showDisText = [show.venue_name stringByAppendingFormat:@" — %@", show.location];
-    CGRect labelSize = [showDisText boundingRectWithSize:constraintSize
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0]}
-                                                 context:nil];
+	NSAttributedString *att = [self attributedStringForShow:show];
+    CGRect labelSize = [att boundingRectWithSize:constraintSize
+										 options:NSStringDrawingUsesLineFragmentOrigin
+										 context:nil];
     
     return MAX(tableView.rowHeight, labelSize.size.height + 35 + 10);
 }

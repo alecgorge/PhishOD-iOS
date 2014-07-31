@@ -19,11 +19,13 @@
 #import "PHODTrackCell.h"
 
 #import "PhishTracksStatsFavoritePopover.h"
-
+#import "ShowHeaderView.h"
+#import "ShowDetailsViewController.h"
 
 @interface ShowViewController ()
 
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
+@property (nonatomic) ShowDetailsViewController *detailsVc;
 
 @end
 
@@ -41,8 +43,7 @@
     return self;
 }
 
-- (id)initWithShowDate:(NSString *)showDate
-{
+- (id)initWithShowDate:(NSString *)showDate {
 	PhishinShow *__show = [[PhishinShow alloc] init];
 	__show.date = showDate;
 	return [self initWithShow:__show];
@@ -52,17 +53,33 @@
 	[super viewDidLoad];
 	
 	[self setupRightBarButtonItem];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
-                                               bundle:NSBundle.mainBundle]
-         forCellReuseIdentifier:@"track"];
+	[self setupTableView];
     
     self.trackChangedEvent = [[CSNNotificationObserver alloc] initWithName:@"AGMediaItemStateChanged"
                                                                     object:nil queue:NSOperationQueue.mainQueue
                                                                 usingBlock:^(NSNotification *notification) {
                                                                     [self.tableView reloadData];
                                                                 }];
-    
+}
+
+- (void)setupTableView {
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
+                                               bundle:NSBundle.mainBundle]
+         forCellReuseIdentifier:@"track"];
+	
+	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(ShowHeaderView.class)
+											   bundle:NSBundle.mainBundle]
+forHeaderFooterViewReuseIdentifier:@"showHeader"];
+	
+	CGRect frame = self.tableView.bounds;
+	
+	frame.origin.y = -frame.size.height;
+	UIView* grayView = [UIView.alloc initWithFrame:frame];
+	grayView.backgroundColor = [UIColor colorWithWhite:0.975 alpha:1.000];
+	
+	self.tableView.backgroundView = grayView;
+	
+	self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
 }
 
 - (void)setupRightBarButtonItem {
@@ -87,12 +104,20 @@
 									success:^(PhishNetSetlist *s) {
 										self.setlist = s;
 										[self.tableView reloadData];
+										
+										if(self.detailsVc) {
+											[self.detailsVc.tableView reloadData];
+										}
 									}
 									failure:REQUEST_FAILED(self.tableView)];
 	[[PhishinAPI sharedAPI] fullShow:self.show
 							 success:^(PhishinShow *ss) {
 								 self.show = ss;
 								 [self.tableView reloadData];
+								 
+								 if(self.detailsVc) {
+									 [self.detailsVc.tableView reloadData];
+								 }
 								 
 								 if(self.show.missing) {
 									 UIAlertView *a = [UIAlertView.alloc initWithTitle:@"Recording Missing"
@@ -145,25 +170,59 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.show.sets.count+1;
+	return self.show ? self.show.sets.count : 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-	if(self.show.sets.count > 0 && section != 0) {
-		return ((PhishinSet*)self.show.sets[section-1]).tracks.count;
+	if(self.show && self.show.sets.count > 0) {
+		return ((PhishinSet*)self.show.sets[section]).tracks.count;
 	}
-	else if(section == 0) {
-		return self.setlist == nil ? (self.show == nil ? 0 : 6) : 6;
-	}
+
 	return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
 	if(section == 0) {
-		return @"Concert Info";
+		return @"Show Info";
 	}
-	return self.show.sets.count > 0 ? ((PhishinSet*)self.show.sets[section-1]).title : nil;
+	return self.show.sets.count > 0 ? ((PhishinSet*)self.show.sets[section]).title : nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section {
+	if (section == 0) {
+		return [ShowHeaderView cellHeightForShow:self.show
+									 inTableView:tableView];
+	}
+	
+	return tableView.sectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        ShowHeaderView *h = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"showHeader"];
+		
+		h.headerTapped = ^{
+			if(!self.show && !self.setlist) {
+				// we need one thing loaded first
+				return;
+			}
+			
+			self.detailsVc = [ShowDetailsViewController.alloc initWithShowViewController:self];
+			[self.navigationController pushViewController:self.detailsVc
+												 animated:YES];
+		};
+		
+		[h updateCellForShow:self.show
+				 withSetlist:self.setlist
+				 inTableView:tableView];
+		
+		return h;
+	}
+	
+    return nil;
 }
 
 - (NSString*)formattedStringForDuration:(NSTimeInterval)duration {
@@ -174,133 +233,10 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == 0) {
-		if(indexPath.row == 2) {
-			static NSString *CellIdentifier = @"RatingCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-											  reuseIdentifier:CellIdentifier];
-			}
-			
-			cell.textLabel.text = @"Rating";
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			cell.accessoryType = UITableViewCellAccessoryNone;
-			
-			if(self.setlist == nil) {
-				cell.detailTextLabel.text = @"Loading...";
-			}
-			else {
-				cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/5.00 (%@ ratings)", self.setlist.rating, self.setlist.ratingCount];
-			}
-			
-			return cell;
-		}
-		else if(indexPath.row == 1) {
-			static NSString *CellIdentifier = @"RatingCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-											  reuseIdentifier:CellIdentifier];
-			}
-
-			cell.textLabel.text = @"Venue";
-			cell.detailTextLabel.text = self.show.venue.name;
-			cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			
-			return cell;
-		}
-		else if(indexPath.row == 4) {
-			static NSString *CellIdentifier = @"InfoCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-											  reuseIdentifier:CellIdentifier];
-			}
-			
-			if(self.setlist == nil) {
-				cell.textLabel.text = @"Loading Reviews";
-				cell.accessoryType = UITableViewCellAccessoryNone;
-			}
-			else {
-				cell.textLabel.text = [NSString stringWithFormat:@"%lu Reviews", (unsigned long)self.setlist.reviews.count];
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			}
-			
-			return cell;
-		}
-		else if(indexPath.row == 3) {
-			static NSString *CellIdentifier = @"InfoCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-											  reuseIdentifier:CellIdentifier];
-			}
-			
-			if(self.setlist == nil) {
-				cell.textLabel.text = @"Loading Setlist Notes";
-				cell.accessoryType = UITableViewCellAccessoryNone;
-			}
-			else {
-				cell.textLabel.text = @"Setlist Notes";
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			}
-            
-			return cell;
-		}
-		else if(indexPath.row == 5) {
-			static NSString *CellIdentifier = @"InfoCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-											  reuseIdentifier:CellIdentifier];
-			}
-			
-            cell.textLabel.text = @"Taper Notes";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-			return cell;
-		}
-		else if(indexPath.row == 0 && self.show != nil) {
-			static NSString *CellIdentifier = @"RatingCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if(cell == nil) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-											  reuseIdentifier:CellIdentifier];
-			}
-			
-			cell.textLabel.text = @"Features";
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			cell.accessoryType = UITableViewCellAccessoryNone;
-			
-			if(self.show.sbd && self.show.remastered) {
-				cell.detailTextLabel.text = @"Soundboard, Remastered";
-			} else if(self.show.remastered) {
-				cell.detailTextLabel.text = @"Remastered";
-			} else if(self.show.sbd) {
-				cell.detailTextLabel.text = @"Soundboard";
-			} else {
-				cell.detailTextLabel.text = @"None";
-			}
-			
-			return cell;
-		}
-	}
-	else if(indexPath.section == 0 && self.setlist == nil) {
-		return [[UITableViewCell alloc] init];
-	}
-	
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
                                                           forIndexPath:indexPath];
 	
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
     
     [cell updateCellWithTrack:track
@@ -316,7 +252,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
     
     return [cell heightForCellWithTrack:track
@@ -327,7 +263,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
 	PhishinSong *song = [[PhishinSong alloc] init];
 	song.id = [track.song_ids[0] integerValue];
@@ -341,33 +277,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	if(indexPath.section == 0) {
-		if(indexPath.row == 4) {
-			ReviewsViewController *rev = [[ReviewsViewController alloc] initWithSetlist:self.setlist];
-			[self.navigationController pushViewController:rev
-												 animated:YES];
-		}
-		if(indexPath.row == 5) {
-            NSString *url = [NSString stringWithFormat:@"http://phish-taper-info.app.alecgorge.com/notes/%@.txt", self.show.date];
-			SVWebViewController *vc = [SVWebViewController.alloc initWithAddress:url];
-			[self.navigationController pushViewController:vc
-												 animated:YES];
-		}
-		else if(indexPath.row == 3) {
-			ConcertInfoViewController *info = [[ConcertInfoViewController alloc] initWithSetlist:self.setlist];
-			[self.navigationController pushViewController:info
-												 animated:YES];
-		}
-		else if(indexPath.row == 1) {
-			VenueViewController *vc = [[VenueViewController alloc] initWithVenue:self.show.venue];
-			[self.navigationController pushViewController:vc
-												 animated:YES];
-		}
-		
-		return;
-	}
-	
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section-1];
+	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
 	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
     
 	[self playTrack:track];

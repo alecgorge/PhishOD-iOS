@@ -24,6 +24,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Appirater (2.0.2)
+  - AXRatingView (0.9.7)
   - CrashlyticsFramework (2.2.2)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - AFNetworkActivityLogger
   - AFNetworking
   - Appirater
+  - AXRatingView
   - CrashlyticsFramework
   - CSNNotificationObserver
   - DBGHTMLEntities
@@ -104,6 +106,7 @@ SPEC CHECKSUMS:
   AFNetworkActivityLogger: d6a2d2755fada3a1fbf1f490ec0dd92224e092a4
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   Appirater: a5e00fb01d47a9a6acf4b2f22323b4ccf4f23fbb
+  AXRatingView: 3e2d0125dbdb0b2f537e4c9b7d7239dd0fa07e33
   CrashlyticsFramework: bce4c0e83b50f22aafde946b41a34a6b8ca7acd0
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3

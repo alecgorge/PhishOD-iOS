@@ -21,4 +21,5 @@ pod 'MarqueeLabel'
 pod "DBGHTMLEntities"
 pod 'AFNetworkActivityLogger'
 pod 'PSUpdateApp', :git => 'https://github.com/alecgorge/PSUpdateApp.git'
+pod 'AXRatingView'
 
