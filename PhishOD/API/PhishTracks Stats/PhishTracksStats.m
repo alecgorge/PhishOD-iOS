@@ -27,6 +27,9 @@ static PhishTracksStats *sharedPts;
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
 	sharedPts.autoplayTracks = YES;
+
+	[sharedPts.requestSerializer setAuthorizationHeaderFieldWithUsername:sharedPts.apiKey
+																password:(sharedPts.sessionKey ? sharedPts.sessionKey : @"")];
 	//	NSLog(@"[stats] stats loaded with apikey=%@ sessionkey=%@", [PhishTracksStats sharedInstance].apiKey, [PhishTracksStats sharedInstance].sessionKey);
 }
 
@@ -147,8 +150,9 @@ static PhishTracksStats *sharedPts;
 
 - (id)parseResponseObject:(id)responseObject error:(NSError *)error
 {
-	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
-	return dict;
+	return responseObject;
+//	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+//	return dict;
 }
 
 #pragma mark -
@@ -274,12 +278,9 @@ static PhishTracksStats *sharedPts;
 {
 	[self  GET:path
 	parameters:@{ @"limit": [NSNumber numberWithInteger:limit], @"offset": [NSNumber numberWithInteger:offset] }
-	   success:^(AFHTTPRequestOperation *operation, id responseObject)
+	   success:^(AFHTTPRequestOperation *operation, NSArray *playEvents)
 	 {
 		 if (success) {
-			 NSError *error = nil;
-			 NSArray *playEvents = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
-			 
 			 playEvents = [playEvents map:^id(id object) {
 				 return [[PhishTracksStatsPlayEvent alloc] initWithDictionary:object];
 			 }];

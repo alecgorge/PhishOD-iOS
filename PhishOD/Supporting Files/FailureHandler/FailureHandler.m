@@ -14,7 +14,7 @@
 + (void (^)(AFHTTPRequestOperation *, NSError *))returnCallback:(RefreshableTableViewController *)table {
 	return ^(AFHTTPRequestOperation *op, NSError *err) {
 		UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error!"
-													message:[err localizedDescription]
+													message:[NSString stringWithFormat:@"%@\n\n%@", [err localizedDescription], err]
 												   delegate:nil
 										  cancelButtonTitle:@"OK"
 										  otherButtonTitles:nil];

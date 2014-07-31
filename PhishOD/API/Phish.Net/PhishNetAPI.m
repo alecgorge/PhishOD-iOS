@@ -18,6 +18,10 @@
     static PhishNetAPI *sharedFoo;
     dispatch_once(&once, ^ {
 		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"https://api.phish.net/"]];
+		
+		sharedFoo.responseSerializer = AFHTTPResponseSerializer.serializer;
+		
+		sharedFoo.responseSerializer.acceptableContentTypes = [sharedFoo.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
 	});
     return sharedFoo;
 }
@@ -61,9 +65,9 @@
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  //			  dbug(@"%@", [[NSString alloc] initWithData:responseObject
 		  //												 encoding:NSUTF8StringEncoding]);
-		  //		  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
-		  //														   options:0
-		  //															 error:nil];
+		  responseObject = [NSJSONSerialization JSONObjectWithData:responseObject
+														   options:0
+															 error:nil];
 		  success(operation, responseObject);
 	  }
 	  failure:failure];
