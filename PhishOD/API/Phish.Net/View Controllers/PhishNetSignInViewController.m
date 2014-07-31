@@ -1,23 +1,21 @@
 //
-//  LivePhishSignInViewController.m
+//  PhishNetSignInViewController.m
 //  PhishOD
 //
-//  Created by Alec Gorge on 7/24/14.
+//  Created by Alec Gorge on 7/31/14.
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "LivePhishSignInViewController.h"
+#import "PhishNetSignInViewController.h"
 
-#import "LivePhishAuth.h"
-
-@interface LivePhishSignInViewController () <UITextFieldDelegate>
+@interface PhishNetSignInViewController () <UITextFieldDelegate>
 
 @property (nonatomic) UITextField *uiUsername;
 @property (nonatomic) UITextField *uiPassword;
 
 @end
 
-@implementation LivePhishSignInViewController
+@implementation PhishNetSignInViewController
 
 - (id)init {
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -30,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Sign in to LivePhish";
+    self.title = @"Sign in to Phish.net";
     
     [self.tableView registerClass:UITableViewCell.class
            forCellReuseIdentifier:@"cell"];
@@ -90,12 +88,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if(indexPath.row == 0) {
-            cell.textLabel.text = @"Email";
+            cell.textLabel.text = @"Username";
             
             self.uiUsername = [UITextField.alloc initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width / 1.75, 30.f)];
             
-            self.uiUsername.placeholder = @"demo@example.com";
-            self.uiUsername.keyboardType = UIKeyboardTypeEmailAddress;
+            self.uiUsername.placeholder = @"trey@phish.com";
+            self.uiUsername.keyboardType = UIKeyboardTypeDefault;
             self.uiUsername.autocorrectionType = UITextAutocorrectionTypeNo;
             self.uiUsername.autocapitalizationType = UITextAutocapitalizationTypeNone;
             self.uiUsername.returnKeyType = UIReturnKeyNext;
@@ -141,7 +139,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        return @"Your email and password are stored securely in your device's keychain and are only used solely for direct communication with LivePhish.com\n\nPhishOD is not affiliated with Phish, nugs.net or LivePhish in any way. This is simply provided as a free service to the community until the LivePhish app is updated.";
+        return @"Your email and password are stored securely in your device's keychain and are only used solely for direct communication with phish.net and api.phish.net\n\nPhishOD is not affiliated with Phish, Phish.net, or the Mockingbird Foundation in any way.";
     }
     
     return nil;

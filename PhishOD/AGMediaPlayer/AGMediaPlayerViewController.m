@@ -579,8 +579,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.audioPlayer.progress)
 								  }.mutableCopy;
 	
-	if(self.currentItem.albumArt) {
-		dict[MPMediaItemPropertyArtwork] = [MPMediaItemArtwork.alloc initWithImage:self.currentItem.albumArt];
+	if(self.currentItem.artwork) {
+		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
 	}
 	
     [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];

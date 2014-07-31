@@ -23,10 +23,14 @@
 #import "SearchDelegate.h"
 #import "FavoritesViewController.h"
 #import "GlobalActivityViewController.h"
+
 #import "LivePhishBrowseViewController.h"
 #import "LivePhishCategoryViewController.h"
+
+#import "PhishNetAuth.h"
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
+#import "PhishNetShowsViewController.h"
 
 NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemYears,
@@ -270,6 +274,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	}
 	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemNews) {
 		[self pushViewController:PhishNetNewsViewController.alloc.init];
+	}
+	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemMyShows) {
+		[PhishNetAuth.sharedInstance ensureSignedInFrom:self
+												success:^{
+													[self pushViewController:PhishNetShowsViewController.alloc.init];
+												}];
 	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
         [LivePhishAuth.sharedInstance ensureSignedInFrom:self

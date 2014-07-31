@@ -13,9 +13,11 @@
 @property (nonatomic) NSString *id;
 @property (nonatomic) NSString *dateString;
 
-@property (nonatomic) NSString *venue;
+@property (nonatomic) NSString *venueName;
 @property (nonatomic) NSString *city;
 @property (nonatomic) NSString *state;
 @property (nonatomic) NSString *country;
+
+@property (nonatomic, readonly) NSString *venue;
 
 @end

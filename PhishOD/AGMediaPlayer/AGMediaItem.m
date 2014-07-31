@@ -24,4 +24,12 @@
     NSAssert(NO, @"this needs to be overridden");
 }
 
+- (MPMediaItemArtwork *)artwork {
+	if (_artwork == nil && self.albumArt != nil) {
+		_artwork = [MPMediaItemArtwork.alloc initWithImage:self.albumArt];
+	}
+	
+	return _artwork;
+}
+
 @end

@@ -78,7 +78,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Get the text so we can measure it
 	NSString *text = ((PhishNetReview*)self.setlist.reviews[indexPath.section]).review;
 	// Get a CGSize for the width and, effectively, unlimited height
-	CGSize constraint = CGSizeMake(tableView.frame.size.width - 20.0f - (10.0f * 2), 20000.0f);
+	CGSize constraint = CGSizeMake(tableView.frame.size.width - 30.0f, CGFLOAT_MAX);
 	// Get the size of the text given the CGSize we just made as a constraint
 	CGRect rect = [text boundingRectWithSize:constraint
 									 options:NSStringDrawingUsesLineFragmentOrigin

@@ -50,7 +50,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	[AFHTTPRequestOperationLogger.sharedLogger startLogging];
 	AFHTTPRequestOperationLogger.sharedLogger.filterPredicate = [NSPredicate predicateWithBlock:^BOOL(AFHTTPRequestOperation *op, NSDictionary *bindings) {
-		return [op.request.URL.query containsString:@"session.getUserToken"];
+		return [op.request.URL.query containsString:@"session.getUserToken"] || [op.request.URL.query containsString:@"passwd="];
 	}];
 	
 	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];

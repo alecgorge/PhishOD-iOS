@@ -9,6 +9,8 @@
 #import "PhishNetAPI.h"
 #import "jQuery.h"
 
+#import "PhishNetAuth.h"
+
 @implementation PhishNetAPI
 
 + (PhishNetAPI*)sharedAPI {
@@ -234,10 +236,10 @@
 - (void)showsForCurrentUser:(void (^)(NSArray *))success
 					failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
 	[self makeAPIRequest:@"pnet.user.myshows.get"
-		   withArguments:@{@"username": @"alecgorge"}
+		   withArguments:@{@"username": PhishNetAuth.sharedInstance.username}
 				 success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
 					 success([[responseObject reject:^BOOL(NSDictionary *object) {
-						 return [object[@"artist"] isEqualToString:@"1"];
+						 return ![object[@"artist"] isEqualToString:@"1"];
 					 }] map:^id(NSDictionary *object) {
 						 NSError *err;
 						 
@@ -250,6 +252,23 @@
 						 
 						 return o;
 					 }].reverse);
+				 }
+				 failure:failure];
+}
+
+- (void)authorizeUsername:(NSString *)username
+			 withPassword:(NSString *)password
+				  success:(void (^)(BOOL, NSString *))success
+				  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	[self makeAPIRequest:@"pnet.api.authorize"
+		   withArguments:@{@"username": username, @"passwd": password}
+				 success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+					 if ([responseObject[@"success"] boolValue]) {
+						 success(YES, responseObject[@"authkey"]);
+					 }
+					 else {
+						 success(NO, nil);
+					 }
 				 }
 				 failure:failure];
 }

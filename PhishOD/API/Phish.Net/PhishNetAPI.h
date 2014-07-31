@@ -52,4 +52,9 @@
 - (void)showsForCurrentUser:(void ( ^ ) (NSArray *))success
 					failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
 
+- (void)authorizeUsername:(NSString *)username
+			 withPassword:(NSString *)password
+				  success:(void ( ^ ) (BOOL success, NSString *authkey))success
+				  failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))failure;
+
 @end

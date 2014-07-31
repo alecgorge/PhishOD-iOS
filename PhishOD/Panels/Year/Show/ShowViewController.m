@@ -94,13 +94,23 @@
 								 self.show = ss;
 								 [self.tableView reloadData];
 								 
+								 if(self.show.missing) {
+									 UIAlertView *a = [UIAlertView.alloc initWithTitle:@"Recording Missing"
+																			   message:@"Unfortunately, we don't have a recording for this show :(. If you think you have a recording that should be up here please contact phish.in.music@gmail.com"
+																			  delegate:nil
+																	 cancelButtonTitle:@"OK :("
+																	 otherButtonTitles:nil];
+									 
+									 [a show];
+								 }
+								 
 								 [super refresh:sender];
 								 [self performAutoplayIfNecessary];
 							 } failure:REQUEST_FAILED(self.tableView)];
 }
 
 - (void)performAutoplayIfNecessary {
-	if(self.autoplay) {
+	if(self.autoplay && self.show.tracks) {
 		NSArray *matchingTracks = [self.show.tracks reject:^BOOL(PhishinTrack *object) {
 			return !(object.id == self.autoplayTrackId);
 		}];

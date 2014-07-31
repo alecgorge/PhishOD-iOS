@@ -13,7 +13,8 @@
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
-		if([dict[@"missing"] boolValue]) {
+		if([dict isKindOfClass:NSNull.class] || [dict[@"missing"] boolValue]) {
+			self.missing = YES;
 			return self;
 		}
 		

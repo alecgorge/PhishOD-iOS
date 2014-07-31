@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 #import "PhishinSong.h"
 
@@ -19,6 +20,8 @@
 @property (nonatomic) NSString *album;
 @property (nonatomic, assign) NSInteger track;
 @property (nonatomic) UIImage *albumArt;
+
+@property (nonatomic) MPMediaItemArtwork *artwork;
 
 - (void)streamURL:(void(^)(NSURL *file))callback;
 

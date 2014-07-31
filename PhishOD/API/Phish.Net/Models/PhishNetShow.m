@@ -14,11 +14,15 @@
 	return [JSONKeyMapper.alloc initWithDictionary:@{
 													 @"showid": @"id",
 													 @"showdate": @"dateString",
-													 @"venuename": @"venue",
+													 @"venuename": @"venueName",
 													 @"city": @"city",
 													 @"state": @"state",
 													 @"country": @"country",
 													 }];
+}
+
+- (NSString *)venue {
+	return [NSString stringWithFormat:@"%@ in %@, %@", self.venueName, self.city, self.state];
 }
 
 @end
