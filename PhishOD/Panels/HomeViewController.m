@@ -8,7 +8,10 @@
 
 #import "HomeViewController.h"
 
+#import <SVWebViewController/SVWebViewController.h>
+
 #import "LivePhishAuth.h"
+#import "PhishNetAuth.h"
 
 #import "AppDelegate.h"
 #import "YearsViewController.h"
@@ -27,7 +30,6 @@
 #import "LivePhishBrowseViewController.h"
 #import "LivePhishCategoryViewController.h"
 
-#import "PhishNetAuth.h"
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
 #import "PhishNetShowsViewController.h"
@@ -56,6 +58,11 @@ NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
     kPhishODMenuLivePhishItemsCount,
 };
 
+NS_ENUM(NSInteger, kPhishODMenuTicketsItems) {
+    kPhishODMenuTicketsItemCashOrTrade,
+    kPhishODMenuTicketsItemsCount,
+};
+
 NS_ENUM(NSInteger, kPhishODMenuSectionPhishNetItems) {
 	kPhishODMenuPhishNetItemMyShows,
 //	kPhishODMenuPhishNetItemForum,
@@ -70,6 +77,7 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	kPhishODMenuSectionLivePhish,
 	kPhishODMenuSectionPhishNet,
 	kPhishODMenuSectionStats,
+	kPhishODMenuSectionTickets,
 	kPhishODMenuSectionsCount
 };
 
@@ -145,6 +153,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
     else if(section == kPhishODMenuSectionPhishNet) {
         return kPhishODMenuPhishNetItemCount;
     }
+	else if(section == kPhishODMenuSectionTickets) {
+		return kPhishODMenuTicketsItemsCount;
+	}
 	
 	return kPhishODMenuStatsItemsCount;
 }
@@ -227,6 +238,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemMyShows) {
 		cell.textLabel.text = @"My Shows";
 	}
+	else if(section == kPhishODMenuSectionTickets && row == kPhishODMenuTicketsItemCashOrTrade) {
+		cell.textLabel.text = @"Face Value Tickets";
+	}
 	
 	return cell;
 }
@@ -299,7 +313,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
                                                      [self pushViewController:[LivePhishCategoryViewController.alloc initWithStash]];
                                                  }];
 	}
-
+	else if(section == kPhishODMenuSectionTickets && row == kPhishODMenuTicketsItemCashOrTrade) {
+		[self pushViewController:[SVWebViewController.alloc initWithAddress:@"http://m.cashortrade.org/"]];
+	}
 }
 
 - (void)pushViewController:(UIViewController*)vc {

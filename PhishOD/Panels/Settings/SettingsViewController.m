@@ -15,6 +15,7 @@
 #import <SVWebViewController.h>
 #import "PhishTracksStats.h"
 #import "LivePhishAuth.h"
+#import "PhishNetAuth.h"
 
 #define kAlertLastFm 0
 //#define kAlertPhishTracksStats 1
@@ -22,6 +23,7 @@
 typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 	PhishODSettingsSectionLastFM,
 	PhishODSettingsSectionLivePhish,
+	PhishODSettingsSectionPhishNet,
 	PhishODSettingsSectionStats,
 	PhishODSettingsSectionCredits,
 	PhishODSettingsSectionFeedback,
@@ -87,6 +89,15 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 	else if(section == PhishODSettingsSectionFeedback) {  // feedback
 		return 2;
 	}
+	else if(section == PhishODSettingsSectionPhishNet) {
+		if(PhishNetAuth.sharedInstance.hasCredentials) {
+			return 2;
+		}
+		else {
+			return 1;
+		}
+	}
+	
 	return 0;
 }
 
@@ -106,6 +117,9 @@ titleForHeaderInSection:(NSInteger)section {
 	}
 	else if(section == PhishODSettingsSectionFeedback) {
 		return @"Bugs & Features";
+	}
+	else if(section == PhishODSettingsSectionPhishNet) {
+		return @"Phish.net";
 	}
 	
 	return nil;
@@ -137,7 +151,24 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
 		if(LivePhishAuth.sharedInstance.hasCredentials) {
 			if(indexPath.row == 0) {
-				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as: %@", LivePhishAuth.sharedInstance.username];
+				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", LivePhishAuth.sharedInstance.username];
+				cell.accessoryType = UITableViewCellAccessoryNone;
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			}
+			else if(indexPath.row == 1) {
+				cell.textLabel.text = @"Sign out";
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+		}
+		else {
+			cell.textLabel.text = @"Sign in";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+	}
+	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
+		if(LivePhishAuth.sharedInstance.hasCredentials) {
+			if(indexPath.row == 0) {
+				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", PhishNetAuth.sharedInstance.username];
 				cell.accessoryType = UITableViewCellAccessoryNone;
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			}
@@ -243,6 +274,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 													 success:^{
 														 [self.tableView reloadData];
 													 }];
+		}
+	}
+	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
+		if(PhishNetAuth.sharedInstance.hasCredentials) {
+			if(indexPath.row == 0) {
+				
+			}
+			else if(indexPath.row == 1) {
+				[PhishNetAuth.sharedInstance signOut];
+				[self.tableView reloadData];
+			}
+		}
+		else {
+			[PhishNetAuth.sharedInstance ensureSignedInFrom:self
+													success:^{
+														[self.tableView reloadData];
+													}];
 		}
 	}
 	else if(indexPath.section == PhishODSettingsSectionStats && indexPath.row == 0) {
