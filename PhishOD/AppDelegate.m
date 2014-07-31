@@ -93,7 +93,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     PSUpdateApp.manager.alertTitle = @"Update Available";
 	PSUpdateApp.manager.alertForceMessage = @"A new PhishOD beta is available. You need to update to continue using the beta.";
+	
+	[PSUpdateApp.manager detectAppVersion:nil];
 #endif
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	[self checkForUpdates];
 }
 
 - (void)setupAppearance {
