@@ -26,5 +26,5 @@ pod 'FCFileManager'
 pod 'KVOController'
 pod 'LLACircularProgressView'
 pod 'EGOCache'
-pod 'NSObject-NSCoding'
+pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git'
 
