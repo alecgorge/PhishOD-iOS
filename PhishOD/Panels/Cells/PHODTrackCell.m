@@ -157,7 +157,7 @@
 - (CGFloat)heightForCellWithTrack:(NSObject<PHODGenericTrack> *)track
                       inTableView:(UITableView *)tableView {
     CGFloat leftMargin = 49;
-    CGFloat rightMargin = 66;
+    CGFloat rightMargin = 83;
     
     CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - leftMargin - rightMargin, MAXFLOAT);
     CGRect labelSize = [track.title boundingRectWithSize:constraintSize

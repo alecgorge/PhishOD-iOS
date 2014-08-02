@@ -7,75 +7,101 @@
 //
 
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
-#import "NowPlayingBarViewController.h"
-#import "StreamingMusicViewController.h"
 
-static char const * const HasFixedKey = "FixedKey";
+#import "NowPlayingBarViewController.h"
+#import "AGMediaPlayerViewController.h"
 
 @implementation NavigationControllerAutoShrinkerForNowPlaying
+
 
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
-    if([navigationController.view viewWithTag:NowPlayingBarViewController.sharedNowPlayingBar.view.tag] == nil) {
-        UIView *v = NowPlayingBarViewController.sharedNowPlayingBar.view;
+	self.lastViewController = viewController;
+    NowPlayingBarViewController.sharedInstance.navigationContainer = navigationController;
+	[self fixForViewController:viewController];
+    
+	[self addBarToView:navigationController.view];
+}
+
+- (void)addBarToView:(UIView *)view {
+    if([view viewWithTag:NowPlayingBarViewController.sharedInstance.view.tag] == nil) {
+        UIView *v = NowPlayingBarViewController.sharedInstance.view;
         [v removeFromSuperview];
         
         CGRect r = v.bounds;
         
-        r.origin.y = navigationController.view.bounds.size.height;
-        r.size.width = navigationController.view.bounds.size.width;
+        r.origin.y = view.bounds.size.height;
+        r.size.width = view.bounds.size.width;
         
-        if (NowPlayingBarViewController.sharedNowPlayingBar.shouldShowBar) {
-            r.origin.y = navigationController.view.bounds.size.height - r.size.height;
+        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+            r.origin.y = view.bounds.size.height - r.size.height;
         }
         
         v.frame = r;
         
-        [navigationController.view addSubview:v];
-        [navigationController.view bringSubviewToFront:v];
+        [view addSubview:v];
+        [view bringSubviewToFront:v];
     }
     
-    self.lastViewController = viewController;
+	[view bringSubviewToFront:NowPlayingBarViewController.sharedInstance.view];
     
-    if(!NowPlayingBarViewController.sharedNowPlayingBar.shouldShowBar) {
-        return;
+    if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+        CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
+        r.origin.y = view.bounds.size.height - r.size.height;
+        NowPlayingBarViewController.sharedInstance.view.frame = r;
     }
-    
-    [self fixForViewController:viewController];
+    else {
+        CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
+        r.origin.y = view.bounds.size.height;
+        NowPlayingBarViewController.sharedInstance.view.frame = r;
+    }
+}
+
+- (void)addBarToViewController:(UIViewController *)vc {
+	[self addBarToView:vc.navigationController.view];
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {
-	id assoc = objc_getAssociatedObject(viewController, HasFixedKey);
-	
-	if(assoc) {
-		return;
+    if([viewController isKindOfClass:UINavigationController.class]) {
+		for(UIViewController *vc2 in ((UINavigationController*)viewController).viewControllers) {
+			[self fixForViewController:vc2];
+		}
 	}
-	
-    if([viewController isKindOfClass:[UITableViewController class]]) {
+	else if([viewController isKindOfClass:[UITableViewController class]]) {
 		UITableView *t = [(UITableViewController*)viewController tableView];
-		
+        
 		UIEdgeInsets edges = t.contentInset;
-		edges.bottom += NowPlayingBarViewController.sharedNowPlayingBar.view.bounds.size.height;
+        
+		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
 		t.contentInset = edges;
         
 		edges = t.scrollIndicatorInsets;
-		edges.bottom += NowPlayingBarViewController.sharedNowPlayingBar.view.bounds.size.height;
+        
+		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
 		t.scrollIndicatorInsets = edges;
 	}
 	else if ([viewController.view isKindOfClass:[UIScrollView class]]) {
 		UIScrollView *t = (UIScrollView*)viewController.view;
         
 		UIEdgeInsets edges = t.contentInset;
-		edges.bottom += NowPlayingBarViewController.sharedNowPlayingBar.view.bounds.size.height;
+        
+		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
 		t.contentInset = edges;
-		
+        
 		edges = t.scrollIndicatorInsets;
-		edges.bottom += NowPlayingBarViewController.sharedNowPlayingBar.view.bounds.size.height;
+        
+		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
 		t.scrollIndicatorInsets = edges;
 	}
-	
-	objc_setAssociatedObject(viewController, HasFixedKey, @(YES), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

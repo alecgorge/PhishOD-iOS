@@ -15,6 +15,7 @@
 #import <ObjectiveSugar/ObjectiveSugar.h>
 
 #import "AppDelegate.h"
+#import "NowPlayingBarViewController.h"
 #import "SongInstancesViewController.h"
 #import "AGMediaPlayerViewController.h"
 #import "VenueViewController.h"
@@ -303,10 +304,6 @@ viewForHeaderInSection:(NSInteger)section {
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 0) {
-        return UITableViewAutomaticDimension;
-    }
-    
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
 	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
     
@@ -345,13 +342,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
 	
-    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue
-	|| AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+    if(!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
         [AppDelegate.sharedDelegate presentMusicPlayer];
     }
 
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
                                                            startIndex:startIndex];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 @end

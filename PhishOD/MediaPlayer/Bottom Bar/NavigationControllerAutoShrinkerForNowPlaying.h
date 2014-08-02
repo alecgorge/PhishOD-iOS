@@ -13,5 +13,6 @@
 @property (nonatomic) UIViewController *lastViewController;
 
 - (void)fixForViewController:(UIViewController*)vc;
+- (void)addBarToViewController:(UIViewController *)vc;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "PhishinTrack.h"
 
+#import "PhishinShow.h"
+
 @implementation PhishinTrack
 
 - (id)initWithDictionary:(NSDictionary *)dict andShow:(PhishinShow *)show {
@@ -26,6 +28,14 @@
 		self.show_id = [dict[@"show_id"] intValue];
 		
 		self.show = show;
+        
+        if(show == nil && dict[@"show_id"] && dict[@"show_date"]) {
+            show = PhishinShow.alloc.init;
+            show.id = [dict[@"show_id"] intValue];
+            show.date = dict[@"show_date"];
+            
+            self.show = show;
+        }
     }
     return self;
 }

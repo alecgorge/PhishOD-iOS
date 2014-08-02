@@ -231,7 +231,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleLightContent;
 
     if(!self.doneAppearance) {
         [self setupAppearance];
@@ -241,7 +240,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)dismiss {
@@ -354,6 +352,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex {
+    NowPlayingBarViewController.sharedInstance.shouldShowBar = YES;
+    
     _currentIndex = currentIndex;
 	
 	if (!self.registeredAudioSession) {

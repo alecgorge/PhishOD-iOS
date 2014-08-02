@@ -7,6 +7,7 @@
 //
 
 #import <MediaPlayer/MediaPlayer.h>
+#import <MarqueeLabel/MarqueeLabel.h>
 
 #import "NowPlayingBarViewController.h"
 #import "AppDelegate.h"
@@ -15,6 +16,7 @@
 #import "StreamingMusicViewController.h"
 #import "PhishTracksStatsFavoritePopover.h"
 #import "IGDurationHelper.h"
+#import "PhishinMediaItem.h"
 
 @interface NowPlayingBarViewController ()
 
@@ -22,18 +24,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonPrevious;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPause;
-@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-@property (weak, nonatomic) IBOutlet UILabel *labelSubTitle;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *labelTitle;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *labelSubTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeElapsed;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeRemaining;
 
 @property (nonatomic) NSDictionary *nowPlayingInfo;
 
+@property (nonatomic) BOOL hasChanged;
+
 @end
 
 @implementation NowPlayingBarViewController
 
-+ (instancetype)sharedNowPlayingBar {
++ (instancetype)sharedInstance {
     static dispatch_once_t once;
     static NowPlayingBarViewController *sharedFoo;
     dispatch_once(&once, ^ {
@@ -55,17 +59,24 @@
     self.labelSubTitle.textColor = COLOR_PHISH_WHITE;
     self.labelTimeElapsed.textColor = COLOR_PHISH_WHITE;
     self.labelTimeRemaining.textColor = COLOR_PHISH_WHITE;
+    
+    self.labelTitle.fadeLength =
+    self.labelSubTitle.fadeLength = 10.0f;
+    
+    self.labelTitle.animationDelay =
+    self.labelSubTitle.animationDelay = 5.0f;
 }
 
 - (IBAction)favoriteTapped:(id)sender {
-    PhishinStreamingPlaylistItem *curr = (PhishinStreamingPlaylistItem *) StreamingMusicViewController.sharedInstance.currentItem;
-    [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
-                                                                   inView:self.view.superview
-                                                        withPhishinObject:curr.track];
-}
-
-- (BOOL)shouldShowBar {
-    return ![self.labelTitle.text isEqualToString:@"NOT_LOADED"];
+    AGMediaItem *item = AGMediaPlayerViewController.sharedInstance.currentItem;
+    
+    if([item isKindOfClass:PhishinMediaItem.class]) {
+        PhishinMediaItem *pi = (PhishinMediaItem *)item;
+        
+        [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
+                                                                       inView:self.view.superview
+                                                            withPhishinObject:pi.phishinTrack];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -73,6 +84,8 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     if([keyPath isEqualToString:@"nowPlayingInfo"]) {
+        self.hasChanged = YES;
+        
         NSDictionary *nowPlayingInfo = [change objectForKey:NSKeyValueChangeNewKey];
         self.nowPlayingInfo = nowPlayingInfo;
         
@@ -81,21 +94,16 @@
 }
 
 - (void)updateUI {
-    if(!self.shouldShowBar) {
-        [UIView animateWithDuration:0.3
-                         animations:^{
-                             CGRect f = self.view.frame;
-                             f.origin.y -= f.size.height;
-                             self.view.frame = f;
-                         }
-                         completion:^(BOOL finished) {
-                             [AppDelegate.sharedDelegate.navDelegate fixForViewController:AppDelegate.sharedDelegate.navDelegate.lastViewController];
-                         }];
+    NSString *newTitle = AGMediaPlayerViewController.sharedInstance.currentItem.title;
+    NSString *newSubTitle = AGMediaPlayerViewController.sharedInstance.currentItem.album;
+    
+    if(![self.labelTitle.text isEqualToString:newTitle]) {
+        self.labelTitle.text = newTitle;
     }
-
-
-    self.labelTitle.text = AGMediaPlayerViewController.sharedInstance.currentItem.title;
-    self.labelSubTitle.text = AGMediaPlayerViewController.sharedInstance.currentItem.album;
+    
+    if(![self.labelSubTitle.text isEqualToString:newSubTitle]) {
+        self.labelSubTitle.text = newSubTitle;
+    }
     
     self.labelTimeElapsed.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.progress * AGMediaPlayerViewController.sharedInstance.duration];
     self.labelTimeRemaining.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.duration];
