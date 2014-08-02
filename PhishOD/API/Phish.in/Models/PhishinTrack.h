@@ -10,6 +10,7 @@
 
 @class PhishinShow;
 @class PhishNetJamChartEntry;
+@class PhishinDownloader;
 
 @protocol PHODGenericTrack <NSObject>
 
@@ -17,27 +18,31 @@
 - (NSTimeInterval)duration;
 - (NSInteger)id;
 - (NSInteger)track;
+- (BOOL)isCacheable;
+- (PhishinDownloader *)downloader;
+- (BOOL)isCached;
 
 @end
 
-@interface PhishinTrack : NSObject <PHODGenericTrack>
+@interface PhishinTrack : NSObject <PHODGenericTrack, NSCoding>
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict andShow:(PhishinShow*)show;
 
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic) NSInteger id;
 @property (nonatomic) NSString *title;
-@property (nonatomic, assign) NSInteger position;
-@property (nonatomic, assign) NSTimeInterval duration;
+@property (nonatomic) NSInteger position;
+@property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) NSString *set;
-@property (nonatomic, assign) NSInteger likes_count;
+@property (nonatomic) NSInteger likes_count;
 @property (nonatomic) NSString *show_date;
-@property (nonatomic, assign) NSInteger show_id;
+@property (nonatomic) NSInteger show_id;
 @property (nonatomic) NSString *slug;
 @property (nonatomic) NSURL *mp3;
 @property (nonatomic) NSArray *song_ids;
 @property (nonatomic) NSString *index;
 
 @property (nonatomic, readonly) NSInteger track;
+@property (nonatomic, readonly) BOOL isDownloadingOrQueued;
 
 @property (nonatomic) PhishNetJamChartEntry *jamChartEntry;
 @property (nonatomic) NSDate *date;

@@ -22,4 +22,9 @@ pod "DBGHTMLEntities"
 pod 'AFNetworkActivityLogger'
 pod 'PSUpdateApp', :git => 'https://github.com/alecgorge/PSUpdateApp.git'
 pod 'AXRatingView'
+pod 'FCFileManager'
+pod 'KVOController'
+pod 'LLACircularProgressView'
+pod 'EGOCache'
+pod 'NSObject-NSCoding'
 

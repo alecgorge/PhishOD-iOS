@@ -34,6 +34,9 @@
 #import "PhishNetNewsViewController.h"
 #import "PhishNetShowsViewController.h"
 
+#import "PhishinDownloadedShowsViewController.h"
+#import "DownloadQueueViewController.h"
+
 NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemYears,
 	kPhishODMenuItemSongs,
@@ -41,6 +44,8 @@ NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
 	kPhishODMenuItemRandomShow,
+	kPhishODMenuItemDownloaded,
+	kPhishODMenuItemDownloadQueue,
 	kPhishODMenuItemsCount
 };
 
@@ -208,6 +213,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		cell.textLabel.text = @"Random Show";
 	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloaded) {
+		cell.textLabel.text = @"Downloaded Shows";
+	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloadQueue) {
+		cell.textLabel.text = @"Download Queue";
+	}
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemStats) {
 		cell.textLabel.text = @"Stats";
 	}
@@ -273,6 +284,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	}
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemRandomShow) {
 		[self pushViewController:[[RandomShowViewController alloc] init]];
+	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloaded) {
+		[self pushViewController:PhishinDownloadedShowsViewController.alloc.init];
+	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloadQueue) {
+		[self pushViewController:DownloadQueueViewController.alloc.init];
 	}
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemStats) {
 		[self pushViewController:[[PhishTracksStatsViewController alloc] init]];

@@ -12,6 +12,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <StreamingKit/STKAutoRecoveringHTTPDataSource.h>
+#import <StreamingKit/STKLocalFileDataSource.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
@@ -218,7 +220,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
         [Flurry logEvent:@"share_complete"
           withParameters:@{@"with_time": @(self.shareTime != 0),
-                           @"activity_type": activityType,
+                           @"activity_type": activityType ? activityType : @"",
                            @"completed": @(completed)}];
     };
     
@@ -338,7 +340,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     }
 }
 
-- (STKAutoRecoveringHTTPDataSource *)dataSourceForItem:(AGMediaItem *) item {
+- (STKDataSource *)dataSourceForItem:(AGMediaItem *) item {
+	NSURL *file = item.cachedStreamURL;
+	if(file) {
+		return [STKLocalFileDataSource.alloc initWithFilePath:file.path];
+	}
+	
 	STKHTTPDataSource *http = [STKHTTPDataSource.alloc initWithAsyncURLProvider:^(STKHTTPDataSource *dataSource, BOOL forSeek, STKURLBlock callback) {
 		[item streamURL:callback];
 	}];
@@ -596,15 +603,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
 		self.currentTrackHasBeenScrobbled = YES;
 		
-		if([self.currentItem isKindOfClass:PhishinMediaItem.class]) {
-			PhishinTrack *track = ((PhishinMediaItem*)self.currentItem).phishinTrack;
-			[PhishTracksStats.sharedInstance createPlayedTrack:track
-													   success:nil
-													   failure:^(PhishTracksStatsError *error) {
-														   if (error) {
-															   [FailureHandler showAlertWithStatsError:error];
-														   }
-													   }];
+		if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
+			if([self.currentItem isKindOfClass:PhishinMediaItem.class]) {
+				PhishinTrack *track = ((PhishinMediaItem*)self.currentItem).phishinTrack;
+				[PhishTracksStats.sharedInstance createPlayedTrack:track
+														   success:nil
+														   failure:^(PhishTracksStatsError *error) {
+															   if (error) {
+																   [FailureHandler showAlertWithStatsError:error];
+															   }
+														   }];
+			}
 		}
     }
 }

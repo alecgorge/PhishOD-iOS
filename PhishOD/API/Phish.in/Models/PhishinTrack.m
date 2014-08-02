@@ -30,6 +30,23 @@
     return self;
 }
 
+- (BOOL)isCacheable {
+	return YES;
+}
+
+- (BOOL)isCached {
+	return [self.downloader isTrackCached:self
+								   inShow:self.show] != nil;
+}
+
+- (BOOL)isDownloadingOrQueued {
+	return [self.downloader isTrackDownloadedOrQueued:self];
+}
+
+- (PhishinDownloader *)downloader {
+	return PhishinAPI.sharedAPI.downloader;
+}
+
 - (NSDate *)date {
 	static NSDateFormatter *formatter = nil;
 	
@@ -61,6 +78,43 @@
 
 - (NSInteger)track {
     return _position;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		self.id 			= [aDecoder decodeIntegerForKey:@"id"];
+		self.title 			= [aDecoder decodeObjectForKey:@"title"];
+		self.position 		= [aDecoder decodeIntegerForKey:@"position"];
+		self.duration 		= [aDecoder decodeDoubleForKey:@"duration"];
+		self.set 			= [aDecoder decodeObjectForKey:@"set"];
+		self.likes_count 	= [aDecoder decodeIntegerForKey:@"likes_count"];
+		self.show_date 		= [aDecoder decodeObjectForKey:@"show_date"];
+		self.show_id 		= [aDecoder decodeIntegerForKey:@"show_id"];
+		self.slug 			= [aDecoder decodeObjectForKey:@"slug"];
+		self.mp3 			= [aDecoder decodeObjectForKey:@"mp3"];
+		self.song_ids 		= [aDecoder decodeObjectForKey:@"song_ids"];
+		self.index 			= [aDecoder decodeObjectForKey:@"index"];
+		self.date 			= [aDecoder decodeObjectForKey:@"date"];
+		self.show 			= [aDecoder decodeObjectForKey:@"show"];
+	}
+	return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+	[coder encodeInteger:self.id forKey:@"id"];
+	[coder encodeObject:self.title forKey:@"title"];
+	[coder encodeInteger:self.position forKey:@"position"];
+	[coder encodeDouble:self.duration forKey:@"duration"];
+	[coder encodeObject:self.set forKey:@"set"];
+	[coder encodeInteger:self.likes_count forKey:@"likes_count"];
+	[coder encodeObject:self.show_date forKey:@"show_date"];
+	[coder encodeInteger:self.show_id forKey:@"show_id"];
+	[coder encodeObject:self.slug forKey:@"slug"];
+	[coder encodeObject:self.mp3 forKey:@"mp3"];
+	[coder encodeObject:self.song_ids forKey:@"song_ids"];
+	[coder encodeObject:self.index forKey:@"index"];
+	[coder encodeObject:self.date forKey:@"date"];
+	[coder encodeObject:self.show forKey:@"show"];
 }
 
 @end

@@ -24,6 +24,22 @@
     NSAssert(NO, @"this needs to be overridden");
 }
 
+- (BOOL)isCacheable {
+	return NO;
+}
+
+- (BOOL)isCached {
+	return NO;
+}
+
+- (PhishinDownloader *)downloader {
+	return nil;
+}
+
+- (NSURL *)cachedStreamURL {
+	return nil;
+}
+
 - (MPMediaItemArtwork *)artwork {
 	if (_artwork == nil && self.albumArt != nil) {
 		_artwork = [MPMediaItemArtwork.alloc initWithImage:self.albumArt];

@@ -12,15 +12,24 @@
 #import "PhishinShow.h"
 #import "PhishinEra.h"
 #import "PhishinSong.h"
+#import "PhishinTrack.h"
 #import "PhishinTour.h"
 #import "PhishinSearchResults.h"
+#import "PhishinDownloader.h"
+#import "PhishinPlaylist.h"
 
 @interface PhishinAPI : AFHTTPRequestOperationManager
 
 +(instancetype)sharedAPI;
 
+@property (nonatomic, readonly) PhishinDownloader *downloader;
+
 -(void)eras:(void ( ^ ) ( NSArray *phishYears ))success
 	failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+-(void)playlistForSlug:(NSString *)slug
+			   success:(void ( ^ )( PhishinPlaylist *playlist ))success
+			   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
 -(void)fullYear:(PhishinYear *)year
 		success:(void ( ^ ) ( PhishinYear * ))success

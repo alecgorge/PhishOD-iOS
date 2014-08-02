@@ -9,6 +9,7 @@
 #import "ShowDetailsViewController.h"
 
 #import <SVWebViewController/SVWebViewController.h>
+#import <DBGHTMLEntities/DBGHTMLEntityDecoder.h>
 
 #import "VenueViewController.h"
 #import "ShowViewController.h"
@@ -48,7 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 6 + (self.show.taperNotes != nil);
 }
 
 
@@ -134,6 +135,20 @@
 			return cell;
 		}
 		else if(indexPath.row == 5) {
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+			
+			if(cell == nil) {
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+											  reuseIdentifier:@"InfoCell"];
+			}
+
+			cell.textLabel.text = @"View on phish.net";
+			cell.detailTextLabel.text = nil;
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			
+			return cell;
+		}
+		else if(indexPath.row == 6) {
 			static NSString *CellIdentifier = @"InfoCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
@@ -147,7 +162,7 @@
             
 			return cell;
 		}
-		else if(indexPath.row == 0 && self.show != nil) {
+		else if(indexPath.row == 0) {
 			static NSString *CellIdentifier = @"RatingCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
@@ -188,13 +203,22 @@
 												 animated:YES];
 		}
 		if(indexPath.row == 5) {
-            NSString *url = [NSString stringWithFormat:@"http://phish-taper-info.app.alecgorge.com/notes/%@.txt", self.show.date];
-			SVWebViewController *vc = [SVWebViewController.alloc initWithAddress:url];
+			SVWebViewController *rev = [SVWebViewController.alloc initWithAddress:[NSString stringWithFormat:@"http://phish.net/setlists/?d=%@", self.show.date]];
+			[self.navigationController pushViewController:rev
+												 animated:YES];
+		}
+		if(indexPath.row == 6) {
+			LongStringViewController *vc = [LongStringViewController.alloc initWithString:self.show.taperNotes];
+			vc.title = @"Taper Notes";
+			vc.monospace = YES;
 			[self.navigationController pushViewController:vc
 												 animated:YES];
 		}
 		else if(indexPath.row == 3) {
-			ConcertInfoViewController *info = [[ConcertInfoViewController alloc] initWithSetlist:self.setlist];
+			DBGHTMLEntityDecoder *decoder = DBGHTMLEntityDecoder.alloc.init;
+			NSString *decoded = [decoder decodeString:self.setlist.setlistNotes];
+			LongStringViewController *info = [LongStringViewController.alloc initWithString:decoded];
+			info.title = @"Concert Notes";
 			[self.navigationController pushViewController:info
 												 animated:YES];
 		}

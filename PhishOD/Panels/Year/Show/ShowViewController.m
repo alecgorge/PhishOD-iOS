@@ -10,6 +10,9 @@
 
 #import <SVWebViewController/SVWebViewController.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
+#import <EGOCache/EGOCache.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
+#import <ObjectiveSugar/ObjectiveSugar.h>
 
 #import "AppDelegate.h"
 #import "SongInstancesViewController.h"
@@ -26,6 +29,8 @@
 
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
 @property (nonatomic) ShowDetailsViewController *detailsVc;
+
+@property (nonatomic) BOOL loadedFromCompleteShow;
 
 @end
 
@@ -49,8 +54,23 @@
 	return [self initWithShow:__show];
 }
 
+- (instancetype)initWithCompleteShow:(PhishinShow *)completeShow {
+	self = [self initWithShow:completeShow];
+	
+	self.setlist = completeShow.setlist;
+	self.loadedFromCompleteShow = YES;
+	
+	return self;
+}
+
 - (void)viewDidLoad {
-	[super viewDidLoad];
+	// super viewDidLoad triggers the refresh
+	if(self.loadedFromCompleteShow) {
+		[self.refreshControl removeFromSuperview];
+	}
+	else {
+		[super viewDidLoad];
+	}
 	
 	[self setupRightBarButtonItem];
 	[self setupTableView];
@@ -60,6 +80,10 @@
                                                                 usingBlock:^(NSNotification *notification) {
                                                                     [self.tableView reloadData];
                                                                 }];
+	
+	[AFNetworkReachabilityManager.sharedManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+		[self.tableView reloadData];
+	}];
 }
 
 - (void)setupTableView {
@@ -103,6 +127,11 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	[[PhishNetAPI sharedAPI] setlistForDate:self.show.date
 									success:^(PhishNetSetlist *s) {
 										self.setlist = s;
+										if(self.show && !self.show.setlist) {
+											self.show.setlist = s;
+											[self.show cache];
+										}
+										
 										[self.tableView reloadData];
 										
 										if(self.detailsVc) {
@@ -110,9 +139,15 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 										}
 									}
 									failure:REQUEST_FAILED(self.tableView)];
+	
 	[[PhishinAPI sharedAPI] fullShow:self.show
 							 success:^(PhishinShow *ss) {
 								 self.show = ss;
+								 if(self.setlist && !self.show.setlist) {
+									 self.show.setlist = self.setlist;
+									 [self.show cache];
+								 }
+								 
 								 [self.tableView reloadData];
 								 
 								 if(self.detailsVc) {
@@ -167,6 +202,28 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	}
 }
 
+- (NSArray *)tracksForSections:(NSInteger) section {
+	PhishinSet *set = self.show.sets[section];
+	
+//	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+//		return [set.tracks reject:^BOOL(PhishinTrack *tr) {
+//			return !tr.isCached;
+//		}];
+//	}
+	
+	return set.tracks;
+}
+
+- (NSArray *)allTracks {
+	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+		return [self.show.tracks reject:^BOOL(PhishinTrack *tr) {
+			return !tr.isCached;
+		}];
+	}
+	
+	return self.show.tracks;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -175,7 +232,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(self.show && self.show.sets.count > 0) {
-		return ((PhishinSet*)self.show.sets[section]).tracks.count;
+		return [self tracksForSections:section].count;
 	}
 
 	return 0;
@@ -236,8 +293,7 @@ viewForHeaderInSection:(NSInteger)section {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
                                                           forIndexPath:indexPath];
 	
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
-	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
+	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
     
     [cell updateCellWithTrack:track
                   inTableView:tableView];
@@ -252,8 +308,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
-	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
+	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
     
     return [cell heightForCellWithTrack:track
                             inTableView:tableView];
@@ -262,33 +317,29 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView
-accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
-	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-	PhishinSong *song = [[PhishinSong alloc] init];
-	song.id = [track.song_ids[0] integerValue];
-	
-	[self.navigationController pushViewController:[[SongInstancesViewController alloc] initWithSong:song]
-										 animated:YES];	
-}
-
-- (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	PhishinSet *set = (PhishinSet*)self.show.sets[indexPath.section];
-	PhishinTrack *track = (PhishinTrack*)set.tracks[indexPath.row];
-    
+	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
+	
+	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable
+	&& !track.isCached) {
+		return;
+	}
+	
 	[self playTrack:track];
 }
 
 - (void)playTrack:(PhishinTrack *)track {
-	NSArray *playlist = [self.show.tracks map:^id(id object) {
-		return [PhishinMediaItem.alloc initWithTrack:object];
+	NSArray *tracks = [self allTracks];
+	
+	NSArray *playlist = [tracks map:^id(id object) {
+		return [PhishinMediaItem.alloc initWithTrack:object
+											  inShow:self.show];
 	}];
 	
-	NSInteger startIndex = [self.show.tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
+	NSInteger startIndex = [tracks indexOfObjectPassingTest:^BOOL(PhishinTrack *obj, NSUInteger idx, BOOL *stop) {
 		return track.id == [obj id];
 	}];
 	

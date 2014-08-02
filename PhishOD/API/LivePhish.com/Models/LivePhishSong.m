@@ -29,8 +29,20 @@
     return self.runningTime;
 }
 
+- (PhishinDownloader *)downloader {
+	return nil;
+}
+
 - (NSInteger)trackId {
 	return self.id;
+}
+
+- (BOOL)isCacheable {
+	return NO;
+}
+
+- (BOOL)isCached {
+	return NO;
 }
 
 @end

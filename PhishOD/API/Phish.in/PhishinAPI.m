@@ -15,13 +15,23 @@
     static PhishinAPI *sharedFoo;
     dispatch_once(&once, ^ {
 		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"http://phish.in/api/v1/"]];
-		
-		sharedFoo.responseSerializer.acceptableContentTypes = [sharedFoo.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-		
-		[sharedFoo.requestSerializer setValue:@"application/json"
-						   forHTTPHeaderField:@"Accept"];
 	});
     return sharedFoo;
+}
+
+- (PhishinDownloader *)downloader {
+	return PhishinDownloader.sharedInstance;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url {
+	if (self = [super initWithBaseURL:url]) {
+		self.responseSerializer.acceptableContentTypes = [self.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+		
+		[self.requestSerializer setValue:@"application/json"
+					  forHTTPHeaderField:@"Accept"];
+	}
+	
+	return self;
 }
 
 - (id)parseJSON:(id)data {
@@ -49,6 +59,17 @@
 		  }
 		  
 		  success(arr);
+	  }
+	  failure:failure];
+}
+
+-(void)playlistForSlug:(NSString *)slug
+			   success:(void ( ^ )( PhishinPlaylist *playlist ))success
+			   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure {
+	[self GET:[@"playlists/" stringByAppendingString:slug]
+   parameters:nil
+	  success:^(AFHTTPRequestOperation *operation, NSDictionary *res) {
+		  success([PhishinPlaylist.alloc initWithDictionary:res[@"data"]]);
 	  }
 	  failure:failure];
 }
@@ -105,7 +126,10 @@
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  responseObject = [self parseJSON:responseObject];
 		  
-		  success([[PhishinShow alloc] initWithDictionary:responseObject[@"data"]]);
+		  PhishinShow *show = [PhishinShow.alloc initWithDictionary:responseObject[@"data"]];
+		  [show cache];
+
+		  success(show);
 	  }
 	  failure:failure];
 }

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConcertInfoViewController : UITableViewController
+@interface LongStringViewController : UITableViewController
 
-@property PhishNetSetlist *setlist;
+@property (nonatomic) BOOL monospace;
 
-- (id)initWithSetlist:(PhishNetSetlist*)s;
+- (id)initWithString:(NSString*)s;
 
 @end

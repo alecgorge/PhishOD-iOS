@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishinSet : NSObject
+@interface PhishinSet : NSObject<NSCoding>
 
 - (instancetype)initWithTitle:(NSString *)name andTracks:(NSArray*)tracks;
 

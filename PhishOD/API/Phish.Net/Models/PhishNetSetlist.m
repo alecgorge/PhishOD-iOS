@@ -9,6 +9,9 @@
 #import "PhishNetSetlist.h"
 #import "NSString+stripHTML.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+#import <EGOCache/EGOCache.h>
+
 @implementation PhishNetSetlist
 
 @synthesize setlistHTML;
@@ -27,6 +30,17 @@
 		self.reviews = @[];
 	}
 	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		[self autoDecode:aDecoder];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[self autoEncodeWithCoder:aCoder];
 }
 
 @end

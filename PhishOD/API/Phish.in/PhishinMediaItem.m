@@ -8,11 +8,15 @@
 
 #import "PhishinMediaItem.h"
 
+#import "PhishinDownloader.h"
+
 @implementation PhishinMediaItem
 
-- (instancetype)initWithTrack:(PhishinTrack*)track {
+- (instancetype)initWithTrack:(PhishinTrack*)track
+					   inShow:(PhishinShow *)show {
 	if (self = [super init]) {
 		self.phishinTrack = track;
+		self.phishinShow = show;
         
         self.title = track.title;
         self.album = [NSString stringWithFormat:@"%@ - %@ - %@", track.show.date, track.show.venue.name, track.show.venue.location, nil];
@@ -28,8 +32,31 @@
 	return self;
 }
 
+- (NSURL *)cachedStreamURL {
+	return [PhishinDownloadOperation isTrackCached:self.phishinTrack
+											inShow:self.phishinShow];
+}
+
 - (void)streamURL:(void (^)(NSURL *))callback {
-    callback(self.phishinTrack.mp3);
+	NSURL *file = self.cachedStreamURL;
+	if(file) {
+		callback(file);
+	}
+	else {
+		callback(self.phishinTrack.mp3);
+	}
+}
+
+- (BOOL)isCacheable {
+	return self.phishinTrack.isCacheable;
+}
+
+- (BOOL)isCached {
+	return self.phishinTrack.isCached;
+}
+
+- (PhishinDownloader *)downloader {
+	return self.phishinTrack.downloader;
 }
 
 - (NSURL *)shareURL {

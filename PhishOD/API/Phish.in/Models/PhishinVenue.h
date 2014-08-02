@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishinVenue : NSObject
+@interface PhishinVenue : NSObject<NSCoding>
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict;
 

@@ -8,6 +8,8 @@
 
 #import "PhishinVenue.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+
 @implementation PhishinVenue
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
@@ -44,6 +46,17 @@
 		}
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		[self autoDecode:aDecoder];
+	}
+	return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+	[self autoEncodeWithCoder:coder];
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import "PhishNetReview.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+
 @implementation PhishNetReview
 
 - (id)initWithJSON:(NSDictionary *)dict {
@@ -18,6 +20,18 @@
 		self.review = dict[@"review"];
 	}
 	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		[self autoDecode:aDecoder];
+	}
+	
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[self autoEncodeWithCoder:aCoder];
 }
 
 @end

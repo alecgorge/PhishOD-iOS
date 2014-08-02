@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishNetReview : NSObject
+@interface PhishNetReview : NSObject<NSCoding>
 
 @property NSString *commentId;
 @property NSDate *timestamp;

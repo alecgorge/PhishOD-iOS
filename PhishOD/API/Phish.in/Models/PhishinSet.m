@@ -8,6 +8,8 @@
 
 #import "PhishinSet.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+
 @implementation PhishinSet
 
 - (id)initWithTitle:(NSString *)name andTracks:(NSArray *)tracks {
@@ -17,6 +19,17 @@
 		self.tracks = tracks;
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		[self autoDecode:aDecoder];
+	}
+	return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+	[self autoEncodeWithCoder:coder];
 }
 
 @end

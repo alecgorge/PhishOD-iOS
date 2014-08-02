@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ConcertInfoViewController.h"
+#import "LongStringViewController.h"
 #import "ReviewsViewController.h"
 #import "RefreshableTableViewController.h"
 #import "PhishinStreamingPlaylistItem.h"
@@ -24,5 +24,6 @@
 
 - (id)initWithShow:(PhishinShow*) s;
 - (id)initWithShowDate:(NSString *)showDate;
+- (instancetype)initWithCompleteShow:(PhishinShow *) completeShow;
 
 @end

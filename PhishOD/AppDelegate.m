@@ -26,6 +26,8 @@
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
+#import <EGOCache/EGOCache.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
@@ -83,6 +85,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	[self checkForUpdates];
 	
+	[AFNetworkReachabilityManager.sharedManager startMonitoring];
+	
     return YES;
 }
 
@@ -133,8 +137,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)setupCaching {
-	[[NSURLCache sharedURLCache] setMemoryCapacity:1024 * 1024 * 10];
-	[[NSURLCache sharedURLCache] setDiskCapacity:1024 * 1024 * 256];
+	EGOCache.globalCache.defaultTimeoutInterval = 60 * 60 * 24 * 365 * 10;
 }
 
 - (void)setupLastFM {

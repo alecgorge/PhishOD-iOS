@@ -8,6 +8,9 @@
 
 #import "PhishinShow.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+#import <EGOCache/EGOCache.h>
+
 @implementation PhishinShow
 
 - (id)initWithDictionary:(NSDictionary *)dict {
@@ -28,6 +31,7 @@
 		self.tour_id = [dict[@"tour_id"] intValue];
 		self.venue_id = [dict[@"venue_id"] intValue];
 		self.likes_count = [dict[@"likes_count"] intValue];
+		self.taperNotes = [dict[@"taper_notes"] isKindOfClass:NSNull.class] ? nil : dict[@"taper_notes"];
 		
 		if (dict[@"venue"]) {
 			self.venue = [[PhishinVenue alloc] initWithDictionary:dict[@"venue"]];
@@ -66,8 +70,54 @@
     return self;
 }
 
+- (NSString *)venue_name {
+	if (_venue_name) {
+		return _venue_name;
+	}
+	
+	return self.venue.name;
+}
+
+- (NSString *)location {
+	if (_location) {
+		return _location;
+	}
+	
+	return self.venue.location;
+}
+
 - (NSString *)fullLocation {
 	return [self.location stringByAppendingFormat:@" - %@", self.venue_name];
+}
+
+- (NSString *)cacheKey {
+	return [PhishinShow cacheKeyForShowDate:self.date];
+}
+
+- (PhishinShow *)cache {
+	[EGOCache.globalCache setObject:self
+							 forKey:self.cacheKey];
+	
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super init]) {
+		[self autoDecode:aDecoder];
+	}
+	return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+	[self autoEncodeWithCoder:coder];
+}
+
++ (NSString *)cacheKeyForShowDate:(NSString *)date {
+	return [@"phishin.show." stringByAppendingString:date];
+}
+
++ (PhishinShow *)loadShowFromCacheForShowDate:(NSString *)date {
+	return (PhishinShow *)[EGOCache.globalCache objectForKey:[self cacheKeyForShowDate:date]];
 }
 
 @end

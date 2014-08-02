@@ -10,7 +10,9 @@
 
 #import "PhishNetReview.h"
 
-@interface PhishNetSetlist : NSObject
+@interface PhishNetSetlist : NSObject<NSCoding>
+
+- (id)initWithJSON:(NSDictionary*)dict;
 
 @property NSString *setlistNotes;
 @property NSString *setlistHTML;
@@ -19,7 +21,5 @@
 @property NSString *showId;
 
 @property NSArray *reviews;
-
-- (id)initWithJSON:(NSDictionary*)dict;
 
 @end

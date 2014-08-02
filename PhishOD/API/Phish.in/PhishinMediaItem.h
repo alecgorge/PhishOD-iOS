@@ -12,8 +12,10 @@
 
 @interface PhishinMediaItem : AGMediaItem
 
-- (instancetype)initWithTrack:(PhishinTrack*) track;
+- (instancetype)initWithTrack:(PhishinTrack*) track
+					   inShow:(PhishinShow *) show;
 
 @property (nonatomic) PhishinTrack *phishinTrack;
+@property (nonatomic) PhishinShow *phishinShow;
 
 @end
