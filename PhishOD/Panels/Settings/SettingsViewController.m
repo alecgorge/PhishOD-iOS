@@ -191,7 +191,7 @@ titleForFooterInSection:(NSInteger)section {
 		}
 	}
 	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
-		if(LivePhishAuth.sharedInstance.hasCredentials) {
+		if(PhishNetAuth.sharedInstance.hasCredentials) {
 			if(indexPath.row == 0) {
 				cell.textLabel.text = @"Signed in as";
                 cell.detailTextLabel.text = PhishNetAuth.sharedInstance.username;
