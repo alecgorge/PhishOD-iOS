@@ -9,10 +9,14 @@
 #import "LongStringViewController.h"
 #import "ReviewsViewController.h"
 #import "NSString+stripHTML.h"
+#import "LongStringTableViewCell.h"
 
 @interface LongStringViewController ()
 
+@property (nonatomic) BOOL useAttributedString;
+
 @property (nonatomic) NSString *contentString;
+@property (nonatomic) NSAttributedString *attributedString;
 
 @end
 
@@ -26,7 +30,38 @@
     return self;
 }
 
+- (instancetype)initWithAttributedString:(NSAttributedString *)s {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        self.attributedString = s;
+        self.useAttributedString = YES;
+    }
+    return self;
+}
+
+- (instancetype)initWithHTML:(NSString *)s {
+    NSMutableAttributedString *a = [[NSAttributedString alloc] initWithData:[s dataUsingEncoding:NSUTF8StringEncoding]
+                                                                    options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                                              NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                                                         documentAttributes:nil
+                                                                      error:nil].mutableCopy;
+    
+    [a addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize: UIFont.systemFontSize]}
+               range:NSMakeRange(0, a.length)];
+    
+    if (self = [self initWithAttributedString:a]) {
+        
+    }
+    return self;
+}
+
 #pragma mark - Table view data source
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.tableView registerClass:LongStringTableViewCell.class
+           forCellReuseIdentifier:@"cell"];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
@@ -39,56 +74,47 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    LongStringTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"
+                                                                    forIndexPath:indexPath];
     
-    if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-									  reuseIdentifier:CellIdentifier];
-	}
-	
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	cell.textLabel.text = self.contentString;
-
-	cell.textLabel.font = [UIFont systemFontOfSize: UIFont.systemFontSize];
-	
-	if(self.monospace) {
-		cell.textLabel.font = [UIFont fontWithName:@"Courier"
-											  size:13.0f];
-	}
-	
-	cell.textLabel.numberOfLines = 0;
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Get the text so we can measure it
-	NSString *text = self.contentString;
-	
-	UIFont *font = [UIFont systemFontOfSize: UIFont.systemFontSize];
+    UIFont *font = [UIFont systemFontOfSize: UIFont.systemFontSize];
 	
 	if(self.monospace) {
 		font = [UIFont fontWithName:@"Courier"
 							   size:13.0f];
 	}
 
-	// Get a CGSize for the width and, effectively, unlimited height
-	CGSize constraint = CGSizeMake(tableView.frame.size.width - (15.0f * 2), CGFLOAT_MAX);
+    if(self.useAttributedString) {
+        [cell updateCellWithAttributedString:self.attributedString];
+    }
+    else {
+        [cell updateCellWithString:self.contentString
+                           andFont:font];
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LongStringTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    UIFont *font = [UIFont systemFontOfSize: UIFont.systemFontSize];
 	
-	// Get the size of the text given the CGSize we just made as a constraint
-	CGRect rect = [text boundingRectWithSize:constraint
-									 options:NSStringDrawingUsesLineFragmentOrigin
-								  attributes:@{NSFontAttributeName: font}
-									 context:nil];
-	
-	// Get the height of our measurement, with a minimum of 44 (standard cell size)
-	CGFloat height = MAX(rect.size.height, tableView.rowHeight);
-	
-	// return the height, with a bit of extra padding in
-	return height + (10.0f * 2);
+	if(self.monospace) {
+		font = [UIFont fontWithName:@"Courier"
+							   size:13.0f];
+	}
+    
+    if(self.useAttributedString) {
+        return [cell heightForCellWithAttributedString:self.attributedString
+                                           inTableView:tableView];
+    }
+    else {
+        return [cell heightForCellWithString:self.contentString
+                                     andFont:font
+                                 inTableView:tableView];
+    }
 }
 
 @end

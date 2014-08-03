@@ -12,6 +12,8 @@
 
 @property (nonatomic) BOOL monospace;
 
-- (id)initWithString:(NSString*)s;
+- (instancetype)initWithString:(NSString*)s;
+- (instancetype)initWithAttributedString:(NSAttributedString*)s;
+- (instancetype)initWithHTML:(NSString*)s;
 
 @end

@@ -28,4 +28,5 @@ pod 'LLACircularProgressView'
 pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git'
 pod 'DZNEmptyDataSet'
+pod 'TTTAttributedLabel'
 

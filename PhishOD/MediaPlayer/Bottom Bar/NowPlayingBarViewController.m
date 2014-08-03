@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet MarqueeLabel *labelSubTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeElapsed;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeRemaining;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressIndicator;
 
 @property (nonatomic) NSDictionary *nowPlayingInfo;
 
@@ -65,6 +66,10 @@
     
     self.labelTitle.animationDelay =
     self.labelSubTitle.animationDelay = 5.0f;
+    
+    self.progressIndicator.backgroundColor = COLOR_PHISH_GREEN;
+    self.progressIndicator.tintColor = COLOR_PHISH_LIGHT_GREEN;
+    self.progressIndicator.progressTintColor = COLOR_PHISH_WHITE;
 }
 
 - (IBAction)favoriteTapped:(id)sender {
@@ -116,6 +121,9 @@
     
     self.buttonNext.enabled = YES;
     self.buttonNext.alpha = 1.0;
+    
+    [self.progressIndicator setProgress:AGMediaPlayerViewController.sharedInstance.progress
+                               animated:YES];
 }
 
 - (IBAction)nextPressed:(id)sender {

@@ -77,7 +77,7 @@
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
             BuildableName = "PhishOD.app"
             BlueprintName = "PhishOD"
-            ReferencedContainer = "container:Phish Tracks.xcodeproj">
+            ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -86,7 +86,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "PhishTracks"
+      customArchiveName = "PhishOD"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

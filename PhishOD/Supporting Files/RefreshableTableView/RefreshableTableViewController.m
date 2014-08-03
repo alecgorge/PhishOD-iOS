@@ -23,6 +23,8 @@
 forControlEvents:UIControlEventValueChanged];
 	self.refreshControl = c;
 	[self beginRefreshingTableView];
+    
+    self.tableView.sectionIndexColor = COLOR_PHISH_GREEN;
 	
 	[self refresh: self.refreshControl];
 }

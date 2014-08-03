@@ -132,6 +132,19 @@ titleForHeaderInSection:(NSInteger)section {
 	return nil;
 }
 
+- (NSString *)tableView:(UITableView *)tableView
+titleForFooterInSection:(NSInteger)section {
+    if(section == PhishODSettingsSectionFeedback) {
+        NSDictionary *infoDict = NSBundle.mainBundle.infoDictionary;
+        NSString *appVersion   = infoDict[@"CFBundleShortVersionString"]; // example: 1.0.0
+        NSNumber *buildNumber  = infoDict[@"CFBundleVersion"]; // example: 42
+        
+        return [NSString stringWithFormat:@"PhishOD %@ (build %@)",  appVersion, buildNumber];
+    }
+    
+    return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";

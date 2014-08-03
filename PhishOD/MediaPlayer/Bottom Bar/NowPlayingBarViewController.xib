@@ -15,6 +15,7 @@
                 <outlet property="labelTimeElapsed" destination="5Sf-bD-N3F" id="sf0-je-IP6"/>
                 <outlet property="labelTimeRemaining" destination="vCU-Cu-7Lb" id="oQV-rU-t67"/>
                 <outlet property="labelTitle" destination="sND-kc-nyz" id="GZq-EX-sFl"/>
+                <outlet property="progressIndicator" destination="Y5g-qt-hsH" id="mb4-KY-y6h"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -141,6 +142,10 @@
                         <outletCollection property="gestureRecognizers" destination="UTu-ln-nGW" appends="YES" id="Yxs-Df-WNm"/>
                     </connections>
                 </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="Y5g-qt-hsH">
+                    <rect key="frame" x="0.0" y="86" width="320" height="2"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>

@@ -54,6 +54,7 @@ PODS:
   - SVProgressHUD (HEAD based on 1.0)
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 2.6)
+  - TTTAttributedLabel (1.10.1)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - SVProgressHUD (HEAD)
   - SVWebViewController
   - TDBadgedCell (HEAD)
+  - TTTAttributedLabel
 
 EXTERNAL SOURCES:
   FCFileManager:
@@ -122,5 +124,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
+  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
 
 COCOAPODS: 0.33.1

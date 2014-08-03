@@ -8,6 +8,8 @@
 
 #import "ReviewsViewController.h"
 
+#import "LongStringTableViewCell.h"
+
 @interface ReviewsViewController ()
 
 @end
@@ -21,6 +23,9 @@
     if (self) {
 		self.setlist = s;
         self.title = @"Reviews";
+        
+        [self.tableView registerClass:LongStringTableViewCell.class
+               forCellReuseIdentifier:@"reviewText"];
     }
     return self;
 }
@@ -38,20 +43,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell;
     
-    if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-									  reuseIdentifier:CellIdentifier];
-	}
-	
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
 	PhishNetReview *review = self.setlist.reviews[indexPath.section];
 	if(indexPath.row == 0) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-									  reuseIdentifier:CellIdentifier];
+									  reuseIdentifier:@"cell"];
 
 		NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
@@ -61,11 +58,17 @@
 		cell.detailTextLabel.text = dateString;
 	}
 	else if(indexPath.row == 1) {
-		cell.textLabel.text = review.review;
-		cell.textLabel.font = [UIFont systemFontOfSize: [UIFont systemFontSize]];
-		cell.textLabel.numberOfLines = 0;
+        LongStringTableViewCell *lsc = [tableView dequeueReusableCellWithIdentifier:@"reviewText"
+                                                                       forIndexPath:indexPath];
+        
+        [lsc updateCellWithString:review.review
+                          andFont:nil];
+        
+        cell = lsc;
 	}
     
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
     return cell;
 }
 
@@ -75,19 +78,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 		return tableView.rowHeight;
 	}
 	
-	// Get the text so we can measure it
-	NSString *text = ((PhishNetReview*)self.setlist.reviews[indexPath.section]).review;
-	// Get a CGSize for the width and, effectively, unlimited height
-	CGSize constraint = CGSizeMake(tableView.frame.size.width - 30.0f, CGFLOAT_MAX);
-	// Get the size of the text given the CGSize we just made as a constraint
-	CGRect rect = [text boundingRectWithSize:constraint
-									 options:NSStringDrawingUsesLineFragmentOrigin
-								  attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:UIFont.systemFontSize]}
-									 context:nil];
-	// Get the height of our measurement, with a minimum of 44 (standard cell size)
-	CGFloat height = MAX(rect.size.height, tableView.rowHeight);
-	// return the height, with a bit of extra padding in
-	return height + (10.0f * 2);
+	PhishNetReview *review = self.setlist.reviews[indexPath.section];
+
+	LongStringTableViewCell *lsc = [tableView dequeueReusableCellWithIdentifier:@"reviewText"];
+    return [lsc heightForCellWithString:review.review
+                                andFont:nil
+                            inTableView:tableView];
 }
 
 @end

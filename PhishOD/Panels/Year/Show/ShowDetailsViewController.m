@@ -215,9 +215,7 @@
 												 animated:YES];
 		}
 		else if(indexPath.row == 3) {
-			DBGHTMLEntityDecoder *decoder = DBGHTMLEntityDecoder.alloc.init;
-			NSString *decoded = [decoder decodeString:self.setlist.setlistNotes];
-			LongStringViewController *info = [LongStringViewController.alloc initWithString:decoded];
+			LongStringViewController *info = [LongStringViewController.alloc initWithHTML:self.setlist.setlistNotes];
 			info.title = @"Concert Notes";
 			[self.navigationController pushViewController:info
 												 animated:YES];

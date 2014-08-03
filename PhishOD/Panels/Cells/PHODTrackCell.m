@@ -98,7 +98,9 @@
 		else if(self.track.isDownloadingOrQueued) {
 			self.uiCircularProgress.hidden = NO;
 			self.uiDownloadButton.hidden = YES;
-			self.uiCircularProgress.progress = [self.track.downloader progressForTrack:self.track.downloadItem];
+            
+            [self.uiCircularProgress setProgress:[self.track.downloader progressForTrack:self.track.downloadItem]
+                                        animated:YES];
 			
 			[self pollForProgressUpdates];
 		}

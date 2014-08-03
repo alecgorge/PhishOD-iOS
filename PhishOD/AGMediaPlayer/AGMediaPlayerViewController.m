@@ -18,7 +18,7 @@
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
 
-#import "IGDurationHelper.h" 
+#import "IGDurationHelper.h"
 #import "NowPlayingBarViewController.h"
 #import "PhishTracksStats.h"
 #import "PHODTrackCell.h"
@@ -78,7 +78,7 @@
         self.playbackQueue = [NSMutableArray array];
         
         self.audioPlayer = STKAudioPlayer.alloc.init;
-        self.audioPlayer.delegate = self;        
+        self.audioPlayer.delegate = self;
     }
     
     return self;
