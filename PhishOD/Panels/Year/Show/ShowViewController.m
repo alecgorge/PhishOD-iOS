@@ -105,6 +105,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	self.tableView.backgroundView = grayView;
 	
 	self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 - (void)setupRightBarButtonItem {
@@ -283,12 +284,6 @@ viewForHeaderInSection:(NSInteger)section {
     return nil;
 }
 
-- (NSString*)formattedStringForDuration:(NSTimeInterval)duration {
-    NSInteger minutes = floor(duration/60);
-    NSInteger seconds = round(duration - minutes * 60);
-    return [NSString stringWithFormat:@"%ld:%02ld", (long)minutes, (long)seconds];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
@@ -311,7 +306,25 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                             inTableView:tableView];
 }
 
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
+    return track.isCached;
+}
+
 #pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
+        [track.downloadItem delete];
+        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -25,6 +25,9 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 + (NSString *)provider;
 + (NSString *)cacheDir;
 
++ (long long)completeCachedSize;
++ (void)deleteEntireCache;
+
 - (instancetype)initWithId:(NSInteger)eyed
               andCachePath:(NSString *)cachePath;
 
@@ -36,6 +39,7 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 
 - (void)downloadURL:(void(^)(NSURL *))dl;
 - (void)cache;
+- (void)delete;
 
 @end
 

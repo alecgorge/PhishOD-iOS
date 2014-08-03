@@ -63,6 +63,10 @@
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {
+    if (!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+        return;
+    }
+    
     if([viewController isKindOfClass:UINavigationController.class]) {
 		for(UIViewController *vc2 in ((UINavigationController*)viewController).viewControllers) {
 			[self fixForViewController:vc2];

@@ -28,6 +28,7 @@ PODS:
   - CrashlyticsFramework (2.2.2)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
+  - DZNEmptyDataSet (1.4.1)
   - EGOCache (2.1)
   - FCFileManager (1.0.2)
   - FlurrySDK (5.2.0):
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - CrashlyticsFramework
   - CSNNotificationObserver
   - DBGHTMLEntities
+  - DZNEmptyDataSet
   - EGOCache
   - FCFileManager (from `https://github.com/alecgorge/FCFileManager.git`, branch `patch-1`)
   - FlurrySDK
@@ -100,6 +102,7 @@ SPEC CHECKSUMS:
   CrashlyticsFramework: bce4c0e83b50f22aafde946b41a34a6b8ca7acd0
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
+  DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
   FCFileManager: 20641d71c692511776eaaf271b176abd8d6504ff
   FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047

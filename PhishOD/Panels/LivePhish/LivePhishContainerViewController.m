@@ -293,6 +293,26 @@ label.layer.masksToBounds = YES;
     return set.name;
 }
 
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    LivePhishSong *song = [self songForIndexPath:indexPath];
+    return song.isCached;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        LivePhishSong *song = [self songForIndexPath:indexPath];
+        [song.downloadItem delete];
+        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];

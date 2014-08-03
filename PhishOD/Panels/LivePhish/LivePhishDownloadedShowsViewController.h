@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "RefreshableTableViewController.h"
+#import "PhishinDownloadedShowsViewController.h"
 
-@interface LivePhishDownloadedShowsViewController : RefreshableTableViewController
+@interface LivePhishDownloadedShowsViewController : PhishinDownloadedShowsViewController
 
 @end

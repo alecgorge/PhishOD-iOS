@@ -52,7 +52,7 @@
                     <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WwM-CR-byt">
                         <rect key="frame" x="225" y="0.0" width="62" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                        <state key="normal" image="glyphicons_364_cloud_download.png">
+                        <state key="normal" image="cloud_download_22.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -72,6 +72,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="glyphicons_364_cloud_download.png" width="25" height="22"/>
+        <image name="cloud_download_22.png" width="22" height="22"/>
     </resources>
 </document>

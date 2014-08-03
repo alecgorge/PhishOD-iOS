@@ -8,6 +8,8 @@
 
 #import "RefreshableTableViewController.h"
 
-@interface PhishinDownloadedShowsViewController : RefreshableTableViewController
+#import "UIScrollView+EmptyDataSet.h"
+
+@interface PhishinDownloadedShowsViewController : RefreshableTableViewController<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @end

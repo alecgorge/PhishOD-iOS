@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 	PhishODSettingsSectionLivePhish,
 	PhishODSettingsSectionPhishNet,
 	PhishODSettingsSectionStats,
+	PhishODSettingsSectionDownloads,
 	PhishODSettingsSectionCredits,
 	PhishODSettingsSectionFeedback,
 	PhishODSettingsSectionCount,
@@ -97,6 +98,9 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 			return 1;
 		}
 	}
+    else if(section == PhishODSettingsSectionDownloads) {
+        return 2;
+    }
 	
 	return 0;
 }
@@ -121,6 +125,9 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(section == PhishODSettingsSectionPhishNet) {
 		return @"Phish.net";
 	}
+    else if(section == PhishODSettingsSectionDownloads) {
+        return @"Downloads";
+    }
 	
 	return nil;
 }
@@ -131,13 +138,16 @@ titleForHeaderInSection:(NSInteger)section {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
 									  reuseIdentifier:CellIdentifier];
 	}
+    
+    cell.detailTextLabel.text = nil;
 	
 	if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 0) {
 		if([LastFm sharedInstance].username) {
-			cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [LastFm sharedInstance].username];
+            cell.textLabel.text = @"Signed in as";
+            cell.detailTextLabel.text = LastFm.sharedInstance.username;
 		}
 		else {
 			cell.textLabel.text = @"Scrobble with Last.FM account";
@@ -151,7 +161,9 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
 		if(LivePhishAuth.sharedInstance.hasCredentials) {
 			if(indexPath.row == 0) {
-				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", LivePhishAuth.sharedInstance.username];
+				cell.textLabel.text = @"Signed in as";
+                cell.detailTextLabel.text = LivePhishAuth.sharedInstance.username;
+
 				cell.accessoryType = UITableViewCellAccessoryNone;
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			}
@@ -168,7 +180,9 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
 		if(LivePhishAuth.sharedInstance.hasCredentials) {
 			if(indexPath.row == 0) {
-				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", PhishNetAuth.sharedInstance.username];
+				cell.textLabel.text = @"Signed in as";
+                cell.detailTextLabel.text = PhishNetAuth.sharedInstance.username;
+                
 				cell.accessoryType = UITableViewCellAccessoryNone;
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			}
@@ -185,7 +199,8 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(indexPath.section == PhishODSettingsSectionStats) {
 		if ([PhishTracksStats sharedInstance].isAuthenticated) {
 			if (indexPath.row == 0) {
-				cell.textLabel.text = [NSString stringWithFormat:@"Signed in as %@", [PhishTracksStats sharedInstance].username];
+				cell.textLabel.text = @"Signed in as";
+                cell.detailTextLabel.text = PhishTracksStats.sharedInstance.username;
 			}
 		}
 		else {
@@ -236,6 +251,21 @@ titleForHeaderInSection:(NSInteger)section {
 		cell.textLabel.text = @"Request a feature";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
+    else if(indexPath.section == PhishODSettingsSectionDownloads) {
+        if(indexPath.row == 0) {
+            cell.textLabel.text = @"Downloaded music size";
+            cell.detailTextLabel.text = [NSByteCountFormatter stringFromByteCount:[PHODDownloadItem completeCachedSize]
+                                                                       countStyle:NSByteCountFormatterCountStyleFile];
+            
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else if(indexPath.row == 1) {
+            cell.textLabel.text = @"Delete all downloaded tracks";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        }
+    }
 
     return cell;
 }
@@ -333,6 +363,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:@"https://github.com/alecgorge/PhishOD-iOS/issues"]
 											 animated:YES];
 	}
+    else if(indexPath.section == PhishODSettingsSectionDownloads) {
+        if(indexPath.row == 0) {
+        }
+        else if(indexPath.row == 1) {
+            [PHODDownloadItem deleteEntireCache];
+            [self.tableView reloadData];
+        }
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView

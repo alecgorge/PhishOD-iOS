@@ -25,7 +25,24 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 }
 
 + (NSString *)cacheDir {
-	return [FCFileManager pathForCachesDirectoryWithPath:@"com.alecgorge.phish.cache/com.alecgorge.phish.cache"];
+	return [FCFileManager pathForCachesDirectoryWithPath:@"com.alecgorge.phish.cache/"];
+}
+
++ (long long)completeCachedSize {
+    long long size = 0;
+    for (NSString *path in [FCFileManager listItemsInDirectoryAtPath:[self cacheDir]
+                                                                deep:YES]) {
+        size += [FCFileManager sizeOfItemAtPath:path].longLongValue;
+    }
+    
+    return size;
+}
+
++ (void)deleteEntireCache {
+    for (NSString *path in [FCFileManager listItemsInDirectoryAtPath:[self cacheDir]
+                                                                deep:YES]) {
+        [FCFileManager removeItemAtPath:path];
+    }
 }
 
 + (void)showsWithCachedTracks:(void (^)(NSArray *))success {
@@ -65,17 +82,29 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 }
 
 - (NSURL *)cachedFile {
-    return [NSURL URLWithString:self.completeCachePath];
+    NSString *path = self.completeCachePath;
+
+    return [FCFileManager existsItemAtPath:path] ? [NSURL fileURLWithPath:path] : nil;
 }
 
 - (BOOL)isCached {
-    NSString *path = self.cachedFile.path;
-	
-	return [FCFileManager existsItemAtPath:path] ? [NSURL fileURLWithPath:path] : nil;
+	return (self.cachedFile != nil);
 }
 
 - (void)cache {
     
+}
+
+- (void)delete {
+    [FCFileManager removeItemAtPath:[self completeCachePath]];
+    
+    // remove 1234.mp3 from Library/Caches/....cache/...cache/phish.in/2012-08-19/1234.mp3
+    NSString *showDir = [self.completeCachePath stringByDeletingLastPathComponent];
+    NSArray *contents = [FCFileManager listFilesInDirectoryAtPath:showDir];
+    
+    if(contents.count == 0) {
+        [FCFileManager removeItemAtPath:showDir];
+    }
 }
 
 - (void)downloadURL:(void (^)(NSURL *))dl {
