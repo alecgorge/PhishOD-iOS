@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "PhishinDownloadedShowsViewController.h"
+#import "RefreshableTableViewController.h"
 
-@interface LivePhishDownloadedShowsViewController : PhishinDownloadedShowsViewController
+#import "UIScrollView+EmptyDataSet.h"
+
+@interface LivePhishDownloadedShowsViewController : RefreshableTableViewController<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @end

@@ -27,6 +27,9 @@
     [super viewDidLoad];
 	
 	self.title = @"Downloaded Shows";
+
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 - (void)refresh:(id)sender {
@@ -109,5 +112,50 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                          animated:YES];
 }
 
+#pragma mark - Empty Data Set
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"No Downloaded Shows :(";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:22.0],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [NSAttributedString.alloc initWithString:text
+                                         attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    
+    NSString *text = @"You can download individual tracks or complete shows from the show screen and then they will show up here.\n\nJust tap the cloud icon by the track to start the download.";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [NSAttributedString.alloc initWithString:text
+                                         attributes:attributes];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"music_128"];
+}
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    BOOL empty = self.shows && self.shows.count == 0;
+    
+    if(empty) {
+        self.tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectZero];
+    }
+    
+    return empty;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
+    return NO;
+}
 
 @end

@@ -47,7 +47,11 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
 + (void)showsWithCachedTracks:(void (^)(NSArray *))success {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
-		NSArray *arr = [FCFileManager listItemsInDirectoryAtPath:[[self cacheDir] stringByAppendingPathComponent:[self provider]]
+        NSString *path = [[self cacheDir] stringByAppendingPathComponent:[self provider]];
+        
+        dbug(@"searching %@", path);
+        
+		NSArray *arr = [FCFileManager listItemsInDirectoryAtPath:path
 															deep:NO];
 		
 		arr = [arr map:^id(NSString *path) {
