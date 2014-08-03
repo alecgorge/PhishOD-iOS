@@ -13,5 +13,6 @@
 @interface LivePhishContainerViewController : RefreshableTableViewController
 
 - (instancetype)initWithContainer:(LivePhishContainer *)container;
+- (instancetype)initWithCompleteContainer:(LivePhishCompleteContainer *) completeContainer;
 
 @end

@@ -31,7 +31,7 @@
 }
 
 - (void)refresh:(id)sender {
-	[PhishinAPI.sharedAPI.downloader showsWithCachedTracks:^(NSArray *shows) {
+	[PhishinDownloadItem showsWithCachedTracks:^(NSArray *shows) {
 		self.shows = [shows sortedArrayUsingComparator:^NSComparisonResult(PhishinShow *s1, PhishinShow *s2) {
 			return [s2.date compare:s1.date];
 		}];

@@ -24,6 +24,10 @@
     NSAssert(NO, @"this needs to be overridden");
 }
 
+- (BOOL)isDownloadingOrQueued {
+    return NO;
+}
+
 - (BOOL)isCacheable {
 	return NO;
 }
@@ -32,11 +36,15 @@
 	return NO;
 }
 
+- (PHODDownloadItem *)downloadItem {
+    return nil;
+}
+
 - (PhishinDownloader *)downloader {
 	return nil;
 }
 
-- (NSURL *)cachedStreamURL {
+- (NSURL *)cachedFile {
 	return nil;
 }
 

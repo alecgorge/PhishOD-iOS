@@ -23,7 +23,6 @@
 
 @property (nonatomic) MPMediaItemArtwork *artwork;
 
-@property (nonatomic, readonly) NSURL *cachedStreamURL;
 - (void)streamURL:(void(^)(NSURL *file))callback;
 
 @property (nonatomic) NSString *displayText;

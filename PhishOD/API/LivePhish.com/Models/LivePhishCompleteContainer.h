@@ -38,4 +38,8 @@
 @property (nonatomic) NSURL<Optional> *videoURL;
 @property (nonatomic) NSString<Optional> *videoTitle;
 
+@property (nonatomic, readonly) NSString *cacheKey;
++ (LivePhishCompleteContainer *)loadContainerFromCacheForId:(NSInteger)id;
+- (void)cache;
+
 @end

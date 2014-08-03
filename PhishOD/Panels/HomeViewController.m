@@ -29,6 +29,8 @@
 
 #import "LivePhishBrowseViewController.h"
 #import "LivePhishCategoryViewController.h"
+#import "LivePhishDownloadedShowsViewController.h"
+#import "LivePhishDownloadQueueViewController.h"
 
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
@@ -60,6 +62,8 @@ NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
 	kPhishODMenuLivePhishItemFeatured,
     kPhishODMenuLivePhishItemBrowse,
     kPhishODMenuLivePhishItemStash,
+	kPhishODMenuLivePhishItemDownloaded,
+	kPhishODMenuLivePhishItemDownloadQueue,
     kPhishODMenuLivePhishItemsCount,
 };
 
@@ -237,6 +241,12 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
 		cell.textLabel.text = @"My Stash";
 	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
+		cell.textLabel.text = @"Downloaded Shows";
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloadQueue) {
+		cell.textLabel.text = @"Download Queue";
+	}
 	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemBlog) {
 		cell.textLabel.text = @"Blog";
 	}
@@ -328,6 +338,18 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
         [LivePhishAuth.sharedInstance ensureSignedInFrom:self
                                                  success:^{
                                                      [self pushViewController:[LivePhishCategoryViewController.alloc initWithStash]];
+                                                 }];
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
+        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
+                                                 success:^{
+                                                     [self pushViewController:LivePhishDownloadedShowsViewController.alloc.init];
+                                                 }];
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloadQueue) {
+        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
+                                                 success:^{
+                                                     [self pushViewController:LivePhishDownloadQueueViewController.alloc.init];
                                                  }];
 	}
 	else if(section == kPhishODMenuSectionTickets && row == kPhishODMenuTicketsItemCashOrTrade) {

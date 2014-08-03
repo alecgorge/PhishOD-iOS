@@ -10,6 +10,8 @@
 
 #import "PhishinTrack.h"
 
+@class LivePhishCompleteContainer;
+
 @protocol LivePhishSong
 @end
 
@@ -23,6 +25,8 @@
 @property (nonatomic) NSURL *clipURL;
 @property (nonatomic) NSInteger songId;
 @property (nonatomic) NSTimeInterval runningTime;
+
+@property (nonatomic) LivePhishCompleteContainer<Ignore> *container;
 
 @property (nonatomic, readonly) NSInteger trackId;
 

@@ -8,46 +8,61 @@
 
 #import <Foundation/Foundation.h>
 
-@class PhishinDownloadOperation;
+#import "LivePhishAPI.h"
 
-typedef NS_ENUM(NSInteger, PhishinDownloadState) {
-	PhishinDownloadStateReady = 0,
-	PhishinDownloadStateDownloading,
-	PhishinDownloadStateDone,
-	PhishinDownloadStateCancelled,
-	PhishinDownloadStateFailed,
+typedef NS_ENUM(NSInteger, PHODDownloadState) {
+	PHODDownloadStateReady = 0,
+	PHODDownloadStateDownloading,
+    PHODDownloadStateDone,
+	PHODDownloadStateCancelled,
+	PHODDownloadStateFailed,
 };
 
-@interface PhishinDownloader : NSObject
+@interface PHODDownloadItem : NSObject
 
-@property (nonatomic) NSOperationQueue *queue;
++ (id)showForPath:(NSString *)path;
++ (void)showsWithCachedTracks:(void(^)(NSArray *))success;
++ (NSString *)provider;
++ (NSString *)cacheDir;
 
-+(instancetype)sharedInstance;
+- (instancetype)initWithId:(NSInteger)eyed
+              andCachePath:(NSString *)cachePath;
 
--(PhishinDownloadOperation *)downloadTrack:(PhishinTrack *)track
-									inShow:(PhishinShow *)show
-								  progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-								   success:(void (^)(NSURL *fileURL)) success
-								   failure:(void ( ^ ) ( NSError *error ))failure;
+@property (nonatomic, readonly) NSInteger id;
+@property (nonatomic, readonly) NSString *cachePath;
+@property (nonatomic, readonly) NSString *provider;
+@property (nonatomic, readonly) NSURL *cachedFile;
+@property (nonatomic, readonly) BOOL isCached;
 
--(PhishinDownloadOperation *)downloadTrack:(PhishinTrack *)track
-									inShow:(PhishinShow *)show;
-
-- (NSURL *)isTrackCached:(PhishinTrack *)track
-				  inShow:(PhishinShow *)show;
-
-- (PhishinDownloadOperation *)findOperationForTrackInQueue:(PhishinTrack *)track;
-- (BOOL)isTrackDownloadedOrQueued:(PhishinTrack *)track;
-- (CGFloat)progressForTrack:(PhishinTrack *)track;
-
-- (void)showsWithCachedTracks:(void(^)(NSArray *))success;
+- (void)downloadURL:(void(^)(NSURL *))dl;
+- (void)cache;
 
 @end
 
-@interface PhishinDownloadOperation : NSOperation
+@interface PhishinDownloadItem : PHODDownloadItem
 
-@property (nonatomic) PhishinTrack *track;
-@property (nonatomic) PhishinShow *show;
+@property (nonatomic, readonly) PhishinTrack *track;
+@property (nonatomic, readonly) PhishinShow *show;
+
+- (instancetype)initWithTrack:(PhishinTrack *)track
+                      andShow:(PhishinShow *)show;
+
+@end
+
+@interface LivePhishDownloadItem : PHODDownloadItem
+
+@property (nonatomic, readonly) LivePhishSong *song;
+@property (nonatomic, readonly) LivePhishCompleteContainer *container;
+
+- (instancetype)initWithSong:(LivePhishSong *)song
+                andContainer:(LivePhishCompleteContainer *)container;
+
+@end
+
+@interface PHODDownloadOperation : NSOperation
+
+@property (nonatomic) PHODDownloadState state;
+@property (nonatomic) PHODDownloadItem *item;
 
 @property (nonatomic) int64_t totalBytes;
 @property (nonatomic) int64_t completedBytes;
@@ -57,19 +72,52 @@ typedef NS_ENUM(NSInteger, PhishinDownloadState) {
 @property (nonatomic, copy) void (^success)(NSURL *fileURL);
 @property (nonatomic, copy) void (^failure)(NSError *error);
 
-@property (nonatomic) PhishinDownloadState state;
-
-+ (NSString *)cacheDir;
-
-+ (NSURL *)isTrackCached:(PhishinTrack *)track
-				  inShow:(PhishinShow *)show;
-
-- (instancetype)initWithTrack:(PhishinTrack *)track
-					   inShow:(PhishinShow *)show
-					 progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-					  success:(void (^)(NSURL *fileURL)) success
-					  failure:(void ( ^ ) ( NSError *error ))failure;
+- (instancetype)initWithDownloadItem:(PHODDownloadItem *)item
+                            progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
+                             success:(void (^)(NSURL *fileURL)) success
+                             failure:(void ( ^ ) ( NSError *error ))failure;
 
 - (void)cancelDownload;
+
+@end
+
+@interface PHODDownloader : NSObject
+
+@property (nonatomic) NSOperationQueue *queue;
+
+- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item
+                               progress:(void (^)(int64_t, int64_t))progress
+                                success:(void (^)(NSURL *))success
+                                failure:(void (^)(NSError *))failure;
+
+- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item;
+
+- (PHODDownloadOperation *)findOperationForTrackInQueue:(PHODDownloadItem *)track;
+- (BOOL)isTrackDownloadedOrQueued:(PHODDownloadItem *)track;
+- (CGFloat)progressForTrack:(PHODDownloadItem *)track;
+
+@end
+
+@interface PhishinDownloader : PHODDownloader
+
++(instancetype)sharedInstance;
+
+-(PHODDownloadOperation *)downloadTrack:(PhishinTrack *)track
+                                 inShow:(PhishinShow *)show
+                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
+                                success:(void (^)(NSURL *fileURL)) success
+                                failure:(void ( ^ ) ( NSError *error ))failure;
+
+@end
+
+@interface LivePhishDownloader : PHODDownloader
+
++(instancetype)sharedInstance;
+
+-(PHODDownloadOperation *)downloadSong:(LivePhishSong *)song
+                           inContainer:(LivePhishCompleteContainer *)container
+                              progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
+                               success:(void (^)(NSURL *fileURL)) success
+                               failure:(void ( ^ ) ( NSError *error ))failure;
 
 @end

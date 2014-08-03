@@ -57,6 +57,8 @@
 		7C23462A1981F85D002A46D5 /* LargeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346291981F85D002A46D5 /* LargeImageTableViewCell.m */; };
 		7C23462D19820251002A46D5 /* LivePhishContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23462C19820251002A46D5 /* LivePhishContainerViewController.m */; };
 		7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23463019820630002A46D5 /* MEExpandableHeaderView.m */; };
+		7C24926A198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */; };
+		7C24926D198DE90A00C9275A /* LivePhishDownloadQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */; };
 		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
@@ -271,6 +273,10 @@
 		7C23462C19820251002A46D5 /* LivePhishContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishContainerViewController.m; sourceTree = "<group>"; };
 		7C23462F19820630002A46D5 /* MEExpandableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEExpandableHeaderView.h; sourceTree = "<group>"; };
 		7C23463019820630002A46D5 /* MEExpandableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEExpandableHeaderView.m; sourceTree = "<group>"; };
+		7C249268198DE70B00C9275A /* LivePhishDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishDownloadedShowsViewController.h; sourceTree = "<group>"; };
+		7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishDownloadedShowsViewController.m; sourceTree = "<group>"; };
+		7C24926B198DE90A00C9275A /* LivePhishDownloadQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishDownloadQueueViewController.h; sourceTree = "<group>"; };
+		7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishDownloadQueueViewController.m; sourceTree = "<group>"; };
 		7C518C01175D0C32005EB2E7 /* PhishOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -691,6 +697,10 @@
 				7C1C3C781982499F00555ACB /* LivePhishNotesViewController.m */,
 				7C1C3C7A19824E3800555ACB /* LivePhishReviewsViewController.h */,
 				7C1C3C7B19824E3800555ACB /* LivePhishReviewsViewController.m */,
+				7C249268198DE70B00C9275A /* LivePhishDownloadedShowsViewController.h */,
+				7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */,
+				7C24926B198DE90A00C9275A /* LivePhishDownloadQueueViewController.h */,
+				7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */,
 			);
 			path = LivePhish;
 			sourceTree = "<group>";
@@ -1421,6 +1431,7 @@
 				F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */,
 				7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
+				7C24926A198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m in Sources */,
 				F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */,
 				7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */,
 				7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */,
@@ -1514,6 +1525,7 @@
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
 				C54ED74918201FF8007D4261 /* Configuration.m in Sources */,
+				7C24926D198DE90A00C9275A /* LivePhishDownloadQueueViewController.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */,
 				F1B48B391973836800DDF5C3 /* PhishTracksStatsViewController.m in Sources */,

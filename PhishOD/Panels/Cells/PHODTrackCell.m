@@ -14,8 +14,6 @@
 #import "IGDurationHelper.h"
 #import "AGMediaPlayerViewController.h"
 
-#import "PhishinTrack.h"
-
 @interface PHODTrackCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackTitle;
@@ -90,20 +88,17 @@
 		self.uiDownloadButton.hidden = YES;
 	}
 	else {
-		// phishin track
-		PhishinTrack *pt = (PhishinTrack *)self.track;
-		
-		if(pt.isCached
+		if(self.track.isCached
 		|| AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
 			self.uiCircularProgress.hidden =
 			self.uiDownloadButton.hidden = YES;
 			
 			[self stopProgressUpdates];
 		}
-		else if([pt respondsToSelector:@selector(isDownloadingOrQueued)] && pt.isDownloadingOrQueued) {
+		else if(self.track.isDownloadingOrQueued) {
 			self.uiCircularProgress.hidden = NO;
 			self.uiDownloadButton.hidden = YES;
-			self.uiCircularProgress.progress = [pt.downloader progressForTrack:pt];
+			self.uiCircularProgress.progress = [self.track.downloader progressForTrack:self.track.downloadItem];
 			
 			[self pollForProgressUpdates];
 		}
@@ -134,9 +129,7 @@
 		return;
 	}
 	
-	PhishinTrack *pt = (PhishinTrack *)self.track;
-	[pt.downloader downloadTrack:pt
-						  inShow:pt.show];
+	[self.track.downloader downloadItem:self.track.downloadItem];
 	
 	[self updateDownloadButtons];
 }
@@ -146,9 +139,7 @@
 		return;
 	}
 	
-	PhishinTrack *pt = (PhishinTrack *)self.track;
-	PhishinDownloadOperation *op = [pt.downloader findOperationForTrackInQueue:pt];
-	
+	PHODDownloadOperation *op = [self.track.downloader findOperationForTrackInQueue:self.track.downloadItem];
 	[op cancelDownload];
 	
 	[self updateDownloadButtons];

@@ -11,6 +11,8 @@
 @class PhishinShow;
 @class PhishNetJamChartEntry;
 @class PhishinDownloader;
+@class PHODDownloader;
+@class PHODDownloadItem;
 
 @protocol PHODGenericTrack <NSObject>
 
@@ -18,9 +20,14 @@
 - (NSTimeInterval)duration;
 - (NSInteger)id;
 - (NSInteger)track;
+
+- (PHODDownloader *)downloader;
+
 - (BOOL)isCacheable;
-- (PhishinDownloader *)downloader;
 - (BOOL)isCached;
+- (BOOL)isDownloadingOrQueued;
+- (NSURL *)cachedFile;
+- (PHODDownloadItem *)downloadItem;
 
 @end
 
@@ -42,7 +49,6 @@
 @property (nonatomic) NSString *index;
 
 @property (nonatomic, readonly) NSInteger track;
-@property (nonatomic, readonly) BOOL isDownloadingOrQueued;
 
 @property (nonatomic) PhishNetJamChartEntry *jamChartEntry;
 @property (nonatomic) NSDate *date;

@@ -8,6 +8,8 @@
 
 #import "LivePhishCompleteContainer.h"
 
+#import <EGOCache/EGOCache.h>
+
 @implementation LivePhishSet
 @end
 
@@ -86,6 +88,24 @@
     }
     
     return _sets;
+}
+
++ (NSString *)cacheKeyForId:(NSInteger)id {
+	return [@"livephish.show." stringByAppendingString:@(id).stringValue];
+}
+
+- (NSString *)cacheKey {
+    return [LivePhishCompleteContainer cacheKeyForId:self.id];
+}
+
++ (LivePhishCompleteContainer *)loadContainerFromCacheForId:(NSInteger)id {
+	return (LivePhishCompleteContainer *)[EGOCache.globalCache objectForKey:[self cacheKeyForId:id]];
+}
+
+- (void)cache {
+    EGOCache *cache = EGOCache.globalCache;
+    [cache setObject:self
+              forKey:self.cacheKey];
 }
 
 @end

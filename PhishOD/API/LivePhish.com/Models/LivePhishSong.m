@@ -29,8 +29,8 @@
     return self.runningTime;
 }
 
-- (PhishinDownloader *)downloader {
-	return nil;
+- (PHODDownloader *)downloader {
+	return LivePhishDownloader.sharedInstance;
 }
 
 - (NSInteger)trackId {
@@ -38,11 +38,30 @@
 }
 
 - (BOOL)isCacheable {
-	return NO;
+	return YES;
 }
 
 - (BOOL)isCached {
-	return NO;
+	return self.downloadItem.isCached;
+}
+
+- (BOOL)isDownloadingOrQueued {
+    LivePhishDownloadItem *item = [LivePhishDownloadItem.alloc initWithSong:self
+                                                               andContainer:self.container];
+    
+	return [self.downloader isTrackDownloadedOrQueued:item];
+}
+
+- (NSURL *)cachedFile {
+    LivePhishDownloadItem *item = [LivePhishDownloadItem.alloc initWithSong:self
+                                                               andContainer:self.container];
+        
+    return item.cachedFile;
+}
+
+- (PHODDownloadItem *)downloadItem {
+    return [LivePhishDownloadItem.alloc initWithSong:self
+                                        andContainer:self.container];
 }
 
 @end

@@ -32,13 +32,8 @@
 	return self;
 }
 
-- (NSURL *)cachedStreamURL {
-	return [PhishinDownloadOperation isTrackCached:self.phishinTrack
-											inShow:self.phishinShow];
-}
-
 - (void)streamURL:(void (^)(NSURL *))callback {
-	NSURL *file = self.cachedStreamURL;
+	NSURL *file = self.cachedFile;
 	if(file) {
 		callback(file);
 	}
@@ -55,8 +50,20 @@
 	return self.phishinTrack.isCached;
 }
 
-- (PhishinDownloader *)downloader {
+- (PHODDownloader *)downloader {
 	return self.phishinTrack.downloader;
+}
+
+- (PHODDownloadItem *)downloadItem {
+    return self.phishinTrack.downloadItem;
+}
+
+- (NSURL *)cachedFile {
+    return self.phishinTrack.cachedFile;
+}
+
+- (BOOL)isDownloadingOrQueued {
+	return self.phishinTrack.isDownloadingOrQueued;
 }
 
 - (NSURL *)shareURL {

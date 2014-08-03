@@ -58,4 +58,28 @@
     return [NSString stringWithFormat:@"#nowplaying %@ — %@ via @phishod", self.title, self.completeContainer.displayTextWithDate];
 }
 
+- (BOOL)isCacheable {
+	return self.song.isCacheable;
+}
+
+- (BOOL)isCached {
+	return self.song.isCached;
+}
+
+- (PHODDownloader *)downloader {
+	return self.song.downloader;
+}
+
+- (PHODDownloadItem *)downloadItem {
+    return self.song.downloadItem;
+}
+
+- (NSURL *)cachedFile {
+    return self.song.cachedFile;
+}
+
+- (BOOL)isDownloadingOrQueued {
+	return self.song.isDownloadingOrQueued;
+}
+
 @end

@@ -1,25 +1,25 @@
 //
-//  DownloadQueueViewController.m
+//  LivePhishDownloadQueueViewController.m
 //  PhishOD
 //
-//  Created by Alec Gorge on 8/1/14.
+//  Created by Alec Gorge on 8/2/14.
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "DownloadQueueViewController.h"
+#import "LivePhishDownloadQueueViewController.h"
 
 #import <KVOController/FBKVOController.h>
 
 #import "PHODTrackCell.h"
 
-@interface DownloadQueueViewController ()
+@interface LivePhishDownloadQueueViewController ()
 
 @property (nonatomic) NSOperationQueue *queue;
 @property (nonatomic) FBKVOController *kvo;
 
 @end
 
-@implementation DownloadQueueViewController
+@implementation LivePhishDownloadQueueViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +30,7 @@
 											   bundle:NSBundle.mainBundle]
 		 forCellReuseIdentifier:@"trackCell"];
 	
-	self.queue = PhishinAPI.sharedAPI.downloader.queue;
+	self.queue = LivePhishDownloader.sharedInstance.queue;
     
     self.kvo = [FBKVOController.alloc initWithObserver:self];
     
@@ -65,9 +65,9 @@ titleForHeaderInSection:(NSInteger)section {
     
     if(indexPath.row >= self.queue.operations.count) {
         PHODDownloadOperation *op = self.queue.operations[indexPath.row];
-        PhishinDownloadItem *track = (PhishinDownloadItem *)op.item;
+        LivePhishDownloadItem *track = (LivePhishDownloadItem *)op.item;
         
-        [cell updateCellWithTrack:track.track
+        [cell updateCellWithTrack:track.song
                       inTableView:tableView];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -79,11 +79,11 @@ titleForHeaderInSection:(NSInteger)section {
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell"];
-
+    
 	PHODDownloadOperation *op = self.queue.operations[indexPath.row];
-	PhishinDownloadItem *track = (PhishinDownloadItem *)op.item;
+	LivePhishDownloadItem *track = (LivePhishDownloadItem *)op.item;
 	
-    return [cell heightForCellWithTrack:track.track
+    return [cell heightForCellWithTrack:track.song
 							inTableView:tableView];
 }
 

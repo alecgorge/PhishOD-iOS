@@ -241,11 +241,16 @@
                               NSError *err;
                               
                               id object = [self parseJSON:responseObject][@"Response"];
-                              id obj = [LivePhishCompleteContainer.alloc initWithDictionary:object
-                                                                                      error:&err];
+                              LivePhishCompleteContainer *obj = [LivePhishCompleteContainer.alloc initWithDictionary:object
+                                                                                                               error:&err];
                               
                               if(err) {
                                   dbug(@"JSON Validation Error on %@: %@", object, err);
+                              }
+                              else {
+                                  [obj.songs each:^(LivePhishSong *song) {
+                                      song.container = obj;
+                                  }];
                               }
                               
                               success(obj);

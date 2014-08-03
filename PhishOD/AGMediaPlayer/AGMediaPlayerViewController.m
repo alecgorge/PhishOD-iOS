@@ -339,7 +339,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (STKDataSource *)dataSourceForItem:(AGMediaItem *) item {
-	NSURL *file = item.cachedStreamURL;
+	NSURL *file = item.cachedFile;
 	if(file) {
 		return [STKLocalFileDataSource.alloc initWithFilePath:file.path];
 	}

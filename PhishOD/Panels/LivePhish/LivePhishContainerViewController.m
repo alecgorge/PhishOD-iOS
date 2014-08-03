@@ -13,6 +13,7 @@
 #import <SVWebViewController/SVWebViewController.h>
 #import "MEExpandableHeaderView.h"
 
+#import "NowPlayingBarViewController.h"
 #import "AGMediaPlayerViewController.h"
 #import "IGDurationHelper.h"
 #import "LivePhishAPI.h"
@@ -45,6 +46,8 @@ typedef NS_ENUM(NSInteger, LivePhishContainerViewInfoRows) {
 
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
 
+@property (nonatomic) BOOL loadedFromCompleteContainer;
+
 @end
 
 @implementation LivePhishContainerViewController
@@ -54,6 +57,17 @@ typedef NS_ENUM(NSInteger, LivePhishContainerViewInfoRows) {
         self.container = container;
     }
     
+    return self;
+}
+
+- (instancetype)initWithCompleteContainer:(LivePhishCompleteContainer *)completeContainer {
+    if (self = [super initWithStyle:UITableViewStylePlain]) {
+        self.container = self.completeContainer = completeContainer;
+        self.loadedFromCompleteContainer = YES;
+        
+        [self setupTableHeaderWithImage:[UIImage imageNamed:@"stock_header_chris_tank.jpg"]];
+        [self downloadAlbumArt];
+    }
     return self;
 }
 
@@ -74,9 +88,18 @@ typedef NS_ENUM(NSInteger, LivePhishContainerViewInfoRows) {
                                                                 usingBlock:^(NSNotification *notification) {
                                                                     [self.tableView reloadData];
                                                                 }];
+    
+	[AFNetworkReachabilityManager.sharedManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+		[self.tableView reloadData];
+	}];
 }
 
 - (void)refresh:(id)sender {
+    if(self.loadedFromCompleteContainer) {
+        [super refresh:sender];
+        return;
+    }
+    
     [LivePhishAPI.sharedInstance completeContainerForContainer:self.container
                                                        success:^(LivePhishCompleteContainer *container) {
                                                            self.completeContainer = container;
@@ -163,6 +186,16 @@ label.layer.masksToBounds = YES;
     }
 }
 
+- (NSArray *)allTracks {
+	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+		return [self.completeContainer.songs reject:^BOOL(LivePhishSong *tr) {
+			return !tr.isCached;
+		}];
+	}
+	
+	return self.completeContainer.songs;
+}
+
 #pragma mark - Table view data source
 
 - (LivePhishSong *)songForIndexPath:(NSIndexPath *)indexPath {
@@ -230,7 +263,9 @@ label.layer.masksToBounds = YES;
         [tc updateCellWithTrack:song
                     inTableView:tableView];
         
-        tc.selectionStyle = self.completeContainer.canStream ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+        if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
+            tc.selectionStyle = self.completeContainer.canStream ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+        }
     }
     
     return cell;
@@ -290,9 +325,14 @@ label.layer.masksToBounds = YES;
     
     LivePhishSong *song = [self songForIndexPath:indexPath];
     
+	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable
+    && !song.isCached) {
+		return;
+	}
+    
     __block NSInteger row = 0;
     __block NSInteger i = 0;
-    NSArray *trks = [self.completeContainer.songs map:^id(LivePhishSong *item) {
+    NSArray *trks = [[self allTracks] map:^id(LivePhishSong *item) {
         if (song.id == item.id) {
             row = i;
         }
@@ -302,13 +342,15 @@ label.layer.masksToBounds = YES;
                                    andCompleteContainer:self.completeContainer];
     }];
     
-    if(!AGMediaPlayerViewController.sharedInstance.playbackQueue
-	|| AGMediaPlayerViewController.sharedInstance.playbackQueue.count == 0) {
+    if(!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
         [AppDelegate.sharedDelegate presentMusicPlayer];
     }
-
+    
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:trks
                                                            startIndex:row];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 @end

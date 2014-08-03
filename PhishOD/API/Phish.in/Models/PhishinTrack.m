@@ -45,16 +45,24 @@
 }
 
 - (BOOL)isCached {
-	return [self.downloader isTrackCached:self
-								   inShow:self.show] != nil;
+	return self.downloadItem.isCached;
 }
 
 - (BOOL)isDownloadingOrQueued {
-	return [self.downloader isTrackDownloadedOrQueued:self];
+	return [self.downloader isTrackDownloadedOrQueued:self.downloadItem];
+}
+
+- (NSURL *)cachedFile {
+    return self.downloadItem.cachedFile;
 }
 
 - (PhishinDownloader *)downloader {
 	return PhishinAPI.sharedAPI.downloader;
+}
+
+- (PHODDownloadItem *)downloadItem {
+    return [PhishinDownloadItem.alloc initWithTrack:self
+                                            andShow:self.show];
 }
 
 - (NSDate *)date {

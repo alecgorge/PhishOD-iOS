@@ -14,9 +14,219 @@
 
 static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
-@interface PhishinDownloader ()
+@implementation PHODDownloadItem
+
++ (id)showForPath:(NSString *)path {
+    return nil;
+}
+
++ (NSString *)provider {
+    return nil;
+}
+
++ (NSString *)cacheDir {
+	return [FCFileManager pathForCachesDirectoryWithPath:@"com.alecgorge.phish.cache/com.alecgorge.phish.cache"];
+}
+
++ (void)showsWithCachedTracks:(void (^)(NSArray *))success {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+		NSArray *arr = [FCFileManager listItemsInDirectoryAtPath:[[self cacheDir] stringByAppendingPathComponent:[self provider]]
+															deep:NO];
+		
+		arr = [arr map:^id(NSString *path) {
+			return [self showForPath:path];
+		}];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			success(arr);
+		});
+	});
+}
+
+- (instancetype)initWithId:(NSInteger)eyed
+              andCachePath:(NSString *)cachePath {
+    if (self = [super init]) {
+        _id = eyed;
+        _cachePath = cachePath;
+    }
+    return self;
+}
+
+- (NSString *)provider {
+    return [PHODDownloadItem provider];
+}
+
+- (NSString *)completeCachePath {
+	return [[PHODDownloadItem cacheDir] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@", self.provider, self.cachePath]];
+}
+
+- (NSString *)incompleteCachePath {
+	return [[PHODDownloadItem cacheDir] stringByAppendingPathComponent:[NSString stringWithFormat:@"incomplete/%@/%@", self.provider, self.cachePath]];
+}
+
+- (NSURL *)cachedFile {
+    return [NSURL URLWithString:self.completeCachePath];
+}
+
+- (BOOL)isCached {
+    NSString *path = self.cachedFile.path;
+	
+	return [FCFileManager existsItemAtPath:path] ? [NSURL fileURLWithPath:path] : nil;
+}
+
+- (void)cache {
+    
+}
+
+- (void)downloadURL:(void (^)(NSURL *))dl {
+    NSAssert(NO, @"this needs to be overriden");
+}
+
+@end
+
+@implementation PhishinDownloadItem
+
++ (NSString *)provider {
+    return @"phish.in";
+}
+
++ (id)showForPath:(NSString *)path {
+    return [PhishinShow loadShowFromCacheForShowDate:path.lastPathComponent];
+}
+
+- (instancetype)initWithTrack:(PhishinTrack *)track
+                      andShow:(PhishinShow *)show {
+    if (self = [super init]) {
+        _track = track;
+        _show = show;
+    }
+    return self;
+}
+
+- (NSString *)cachePath {
+    return [NSString stringWithFormat:@"%@/%@.mp3", self.show.date, @(self.track.id).stringValue];
+}
+
+- (NSString *)provider {
+    return [PhishinDownloadItem provider];
+}
+
+- (NSInteger)id {
+    return self.track.id;
+}
+
+- (void)downloadURL:(void (^)(NSURL *))dl {
+    dl(self.track.mp3);
+}
+
+- (void)cache {
+    [self.show cache];
+}
+
+@end
+
+@implementation LivePhishDownloadItem
+
++ (NSString *)provider {
+    return @"livephish.com";
+}
+
++ (id)showForPath:(NSString *)path {
+    return [LivePhishCompleteContainer loadContainerFromCacheForId:path.lastPathComponent.integerValue];
+}
+
+- (instancetype)initWithSong:(LivePhishSong *)song
+                andContainer:(LivePhishCompleteContainer *)container {
+    if (self = [super init]) {
+        _song = song;
+        _container = container;
+    }
+    return self;
+}
+
+- (NSString *)cachePath {
+    return [NSString stringWithFormat:@"%@/%@.mp3", @(self.container.id).stringValue, @(self.song.id).stringValue];
+}
+
+- (NSString *)provider {
+    return [LivePhishDownloadItem provider];
+}
+
+- (NSInteger)id {
+    return self.song.id;
+}
+
+- (void)downloadURL:(void (^)(NSURL *))dl {
+    [LivePhishAPI.sharedInstance streamURLForSong:self.song
+                            withCompleteContainer:self.container
+                                          success:dl
+                                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              dbug(@"err: %@", error);
+                                          }];
+}
+
+- (void)cache {
+    [self.container cache];
+}
+
+@end
+
+@interface PHODDownloader ()
 
 @property (nonatomic, readonly) NSString *cacheDir;
+
+@end
+
+@implementation PHODDownloader
+
+- (id)init {
+	if (self = [super init]) {
+		self.queue = NSOperationQueue.alloc.init;
+		self.queue.maxConcurrentOperationCount = 3;		
+	}
+	return self;
+}
+
+- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item
+                               progress:(void (^)(int64_t, int64_t))progress
+                                success:(void (^)(NSURL *))success
+                                failure:(void (^)(NSError *))failure {
+	PHODDownloadOperation *op = [PHODDownloadOperation.alloc initWithDownloadItem:item
+                                                                         progress:progress
+                                                                          success:success
+                                                                          failure:failure];
+	
+	[self.queue addOperation:op];
+	
+	return op;
+}
+
+- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item {
+    return [self downloadItem:item
+                     progress:nil
+                      success:nil
+                      failure:nil];
+}
+
+- (PHODDownloadOperation *)findOperationForTrackInQueue:(PHODDownloadItem *)track {
+	return [self.queue.operations detect:^BOOL(PHODDownloadOperation *op) {
+		return op.item.id == track.id;
+	}];
+}
+
+- (BOOL)isTrackDownloadedOrQueued:(PHODDownloadItem *)track {
+	return [self findOperationForTrackInQueue:track] != nil;
+}
+
+- (CGFloat)progressForTrack:(PHODDownloadItem *)track {
+	PHODDownloadOperation *o = [self findOperationForTrackInQueue:track];
+	
+	if(!o) {
+		return 0.0f;
+	}
+	
+	return o.downloadProgress;
+}
 
 @end
 
@@ -31,103 +241,60 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
     return sharedFoo;
 }
 
-- (id)init {
-	if (self = [super init]) {
-		self.queue = NSOperationQueue.alloc.init;
-		self.queue.maxConcurrentOperationCount = 3;		
-	}
-	return self;
-}
-
-- (PhishinDownloadOperation *)downloadTrack:(PhishinTrack *)track
-									 inShow:(PhishinShow *)show
-								   progress:(void (^)(int64_t, int64_t))progress
-									success:(void (^)(NSURL *))success
-									failure:(void (^)(NSError *))failure {
-	PhishinDownloadOperation *op = [PhishinDownloadOperation.alloc initWithTrack:track
-																		  inShow:show
-																		progress:progress
-																		 success:success
-																		 failure:failure];
-	
-	[self.queue addOperation:op];
-	
-	return op;
-}
-
-- (PhishinDownloadOperation *)downloadTrack:(PhishinTrack *)track
-									 inShow:(PhishinShow *)show {
-	PhishinDownloadOperation *op = [PhishinDownloadOperation.alloc initWithTrack:track
-																		  inShow:show
-																		progress:nil
-																		 success:nil
-																		 failure:nil];
-	
-	[self.queue addOperation:op];
-	
-	return op;
-}
-
-- (NSURL *)isTrackCached:(PhishinTrack *)track
-				  inShow:(PhishinShow *)show {
-	return [PhishinDownloadOperation isTrackCached:track
-											inShow:show];
-}
-
-- (PhishinDownloadOperation *)findOperationForTrackInQueue:(PhishinTrack *)track {
-	return [self.queue.operations detect:^BOOL(PhishinDownloadOperation *op) {
-		return op.track.id == track.id;
-	}];
-}
-
-- (BOOL)isTrackDownloadedOrQueued:(PhishinTrack *)track {
-	return [self findOperationForTrackInQueue:track] != nil;
-}
-
-- (CGFloat)progressForTrack:(PhishinTrack *)track {
-	PhishinDownloadOperation *o = [self findOperationForTrackInQueue:track];
-	
-	if(!o) {
-		return 0.0f;
-	}
-	
-	return o.downloadProgress;
-}
-
-- (void)showsWithCachedTracks:(void (^)(NSArray *))success {
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
-		NSArray *arr = [FCFileManager listItemsInDirectoryAtPath:[PhishinDownloadOperation.cacheDir stringByAppendingPathComponent:@"phish.in"]
-															deep:NO];
-		
-		arr = [arr map:^id(NSString *path) {
-			PhishinShow *s = [PhishinShow loadShowFromCacheForShowDate:path.lastPathComponent];
-			return s;
-		}];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			success(arr);
-		});
-	});
+- (PHODDownloadOperation *)downloadTrack:(PhishinTrack *)track
+                                  inShow:(PhishinShow *)show
+                                progress:(void (^)(int64_t, int64_t))progress
+                                 success:(void (^)(NSURL *))success
+                                 failure:(void (^)(NSError *))failure {
+    return [self downloadItem:[PhishinDownloadItem.alloc initWithTrack:track
+                                                               andShow:show]
+                     progress:progress
+                      success:success
+                      failure:failure];
 }
 
 @end
 
-@interface PhishinDownloadOperation ()
+@implementation LivePhishDownloader
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t once;
+    static LivePhishDownloader *sharedFoo;
+    dispatch_once(&once, ^ {
+		sharedFoo = [self.alloc init];
+	});
+    return sharedFoo;
+}
+
+- (PHODDownloadOperation *)downloadSong:(LivePhishSong *)song
+                            inContainer:(LivePhishCompleteContainer *)container
+                               progress:(void (^)(int64_t, int64_t))progress
+                                success:(void (^)(NSURL *))success
+                                failure:(void (^)(NSError *))failure {
+    return [self downloadItem:[LivePhishDownloadItem.alloc initWithSong:song
+                                                           andContainer:container]
+                     progress:progress
+                      success:success
+                      failure:failure];
+}
+
+@end
+
+@interface PHODDownloadOperation ()
 
 @property (nonatomic) NSURLSessionDownloadTask *dl;
+@property (nonatomic) NSProgress *rootProgress;
 
 @end
 
-@implementation PhishinDownloadOperation
+@implementation PHODDownloadOperation
 
-- (instancetype)initWithTrack:(PhishinTrack *)track
-					   inShow:(PhishinShow *)show
-					 progress:(void (^)(int64_t, int64_t))progress
-					  success:(void (^)(NSURL *))success
-					  failure:(void (^)(NSError *))failure{
+- (instancetype)initWithDownloadItem:(PHODDownloadItem *)item
+                            progress:(void (^)(int64_t, int64_t))progress
+                             success:(void (^)(NSURL *))success
+                             failure:(void (^)(NSError *))failure{
 	if (self = [super init]) {
-		self.track = track;
-		self.show = show;
+		self.item = item;
 		
 		self.progress = progress;
 		self.success = success;
@@ -136,40 +303,11 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 	return self;
 }
 
-+ (NSString *)cacheDir {
-	return [FCFileManager pathForCachesDirectoryWithPath:@"com.alecgorge.phish.cache/com.alecgorge.phish.cache"];
-}
-
-+ (NSString *)cachePathForTrack:(PhishinTrack *)track
-						 inShow:(PhishinShow *)show {
-	return [self.cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"phish.in/%@/%@.mp3", show.date, @(track.id).stringValue]];
-}
-
-+ (NSString *)incompleteCachePathForTrack:(PhishinTrack *)track
-								   inShow:(PhishinShow *)show {
-	return [self.cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"incomplete/phish.in/%@/%@.mp3", show.date, @(track.id).stringValue]];
-}
-
-+ (NSURL *)isTrackCached:(PhishinTrack *)track
-				  inShow:(PhishinShow *)show {
-	NSAssert(show != nil, @"show cannot be nil");
-	NSAssert(track != nil, @"track cannot be nil");
-
-	NSString *path = [self cachePathForTrack:track
-									  inShow:show];
-	
-	return [FCFileManager existsItemAtPath:path] ? [NSURL fileURLWithPath:path] : nil;
-}
-
 - (CGFloat)downloadProgress {
 	return self.totalBytes == 0 ? 0 : (1.0f * self.completedBytes / self.totalBytes);
 }
 
-- (void)downloadTrack:(PhishinTrack *)track
-			   inShow:(PhishinShow *)show
-			 progress:(void (^)(int64_t, int64_t))progress
-			  success:(void (^)(NSURL *fileURL)) success
-			  failure:(void ( ^ ) ( NSError *error ))failure {
+- (void)download {
 	static NSURLSessionConfiguration *downloadConfig = nil;
 	static AFURLSessionManager *manager = nil;
 	static FBKVOController *kvo = nil;
@@ -179,19 +317,20 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 	}
 	
 	if(!downloadConfig || !manager) {
-		downloadConfig = [NSURLSessionConfiguration backgroundSessionConfiguration:@"phishin"];
-		
+		downloadConfig = [NSURLSessionConfiguration backgroundSessionConfiguration:@"phishod"];
+        downloadConfig.HTTPAdditionalHeaders = @{
+                                                 @"User-Agent": @"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
+                                                 };
+        
 		manager = [AFURLSessionManager.alloc initWithSessionConfiguration:downloadConfig];
 	}
 	
-	NSString *incompleteCachePath = [PhishinDownloadOperation incompleteCachePathForTrack:track
-																				   inShow:show];
-	NSString *completeCachePath = [PhishinDownloadOperation cachePathForTrack:track
-																	   inShow:show];
+	NSString *incompleteCachePath = [self.item incompleteCachePath];
+	NSString *completeCachePath = [self.item completeCachePath];
 	
 	if ([FCFileManager existsItemAtPath:completeCachePath]) {
-		if(success) {
-			success([NSURL fileURLWithPath:completeCachePath]);
+		if(self.success) {
+			self.success([NSURL fileURLWithPath:completeCachePath]);
 		}
 		
 		return;
@@ -202,11 +341,12 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 											error:nil];
 	[FCFileManager createDirectoriesForFileAtPath:completeCachePath
 											error:nil];
-	
-	NSURL *downloadURL = track.mp3;
+    
+    dbug(@"incompleteCachePath: %@", incompleteCachePath);
+    dbug(@"completeCachePath: %@", completeCachePath);
 	
 	// setup blocks for new & resume download
-	NSProgress *rootProgress = nil;
+    __block NSProgress * rootProgress;
 	NSURL* (^destination)(NSURL *, NSURLResponse *) = ^(NSURL *targetPath, NSURLResponse *response) {
 		return [NSURL fileURLWithPath:incompleteCachePath];
 	};
@@ -215,10 +355,10 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 		if(error) {
 			dbug(@"download error: %@", error);
 			
-			self.state = PhishinDownloadStateFailed;
+			self.state = PHODDownloadStateFailed;
 			
-			if (failure) {
-				failure(error);
+			if (self.failure) {
+				self.failure(error);
 			}
 			
 			return;
@@ -226,20 +366,27 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 		else {
 			dbug(@"download completed: %@. moving to %@", filePath.path, completeCachePath);
 			
-			self.state = PhishinDownloadStateDone;
+			self.state = PHODDownloadStateDone;
 			
 			[FCFileManager moveItemAtPath:filePath.path
 								   toPath:completeCachePath];
 		
-			EGOCache *cache = EGOCache.globalCache;
-			[cache setObject:show
-					  forKey:show.cacheKey];
+            [self.item cache];
 			
-			if(success) {
-				success([NSURL URLWithString:completeCachePath]);
+			if(self.success) {
+				self.success([NSURL URLWithString:completeCachePath]);
 			}
 		}
 	};
+    
+    void (^observeBlock)(id, NSProgress *, NSDictionary *) = ^(id observer, NSProgress *p, NSDictionary *change) {
+        self.totalBytes = p.totalUnitCount;
+        self.completedBytes = p.completedUnitCount;
+        
+        if(self.progress) {
+            self.progress(p.totalUnitCount, p.completedUnitCount);
+        }
+    };
 	// end blocks
 	
 	if([FCFileManager existsItemAtPath:incompleteCachePath]) {
@@ -247,41 +394,48 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 											 progress:&rootProgress
 										  destination:destination
 									completionHandler:completion];
-	}
+        
+        [kvo observe:rootProgress
+             keyPath:@"fractionCompleted"
+             options:NSKeyValueObservingOptionNew
+               block:observeBlock];
+
+		[self.dl resume];
+    }
 	else {
-		self.dl = [manager downloadTaskWithRequest:[NSURLRequest requestWithURL:downloadURL]
-										  progress:&rootProgress
-									   destination:destination
-								 completionHandler:completion];
+        [self.item downloadURL:^(NSURL *downloadURL) {
+            // work around for __autoreleasing ns progress
+            NSProgress *ppp;
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL];
+            [request setValue:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
+           forHTTPHeaderField:@"User-Agent"];
+            
+            self.dl = [manager downloadTaskWithRequest:request
+                                              progress:&ppp
+                                           destination:destination
+                                     completionHandler:completion];
+            
+            rootProgress = ppp;
+            
+            [kvo observe:ppp
+                 keyPath:@"fractionCompleted"
+                 options:NSKeyValueObservingOptionNew
+                   block:observeBlock];
+            
+        	[self.dl resume];
+        }];
 	}
-	
-	[kvo observe:rootProgress
-		 keyPath:@"fractionCompleted"
-		 options:NSKeyValueObservingOptionNew
-		   block:^(id observer, NSProgress *p, NSDictionary *change) {
-			   self.totalBytes = p.totalUnitCount;
-			   self.completedBytes = p.completedUnitCount;
-			   
-			   if(progress) {
-				   progress(p.totalUnitCount, p.completedUnitCount);
-			   }
-		   }];
-	
-	[self.dl resume];
 }
 
 - (void)start {
-	self.state = PhishinDownloadStateDownloading;
+	self.state = PHODDownloadStateDownloading;
 	
-	[self downloadTrack:self.track
-				 inShow:self.show
-			   progress:self.progress
-				success:self.success
-				failure:self.failure];
+	[self download];
 }
 
 - (void)cancelDownload {
-	self.state = PhishinDownloadStateCancelled;
+	self.state = PHODDownloadStateCancelled;
 
 	[self cancel];
 	
@@ -289,20 +443,20 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 }
 
 - (BOOL)isExecuting {
-	return self.state == PhishinDownloadStateDownloading;
+	return self.state == PHODDownloadStateDownloading;
 }
 
 - (BOOL)isFinished {
-	return self.state == PhishinDownloadStateDone ||
-		   self.state == PhishinDownloadStateCancelled ||
-		   self.state == PhishinDownloadStateFailed;
+	return self.state == PHODDownloadStateDone ||
+		   self.state == PHODDownloadStateCancelled ||
+		   self.state == PHODDownloadStateFailed;
 }
 
 - (BOOL)isConcurrent {
 	return YES;
 }
 
-- (void)setState:(PhishinDownloadState)state {
+- (void)setState:(PHODDownloadState)state {
     [self willChangeValueForKey:@"isExecuting"];
     [self willChangeValueForKey:@"isFinished"];
 	
