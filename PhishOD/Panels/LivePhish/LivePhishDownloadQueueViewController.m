@@ -63,7 +63,7 @@ titleForHeaderInSection:(NSInteger)section {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell"
 														  forIndexPath:indexPath];
     
-    if(indexPath.row >= self.queue.operations.count) {
+    if(indexPath.row < self.queue.operations.count) {
         PHODDownloadOperation *op = self.queue.operations[indexPath.row];
         LivePhishDownloadItem *track = (LivePhishDownloadItem *)op.item;
         
