@@ -14,6 +14,10 @@
     NSString *retVal = @"At time of event";
     if (interval == 0) return retVal;
     
+    if (interval == FLT_MIN) {
+        return @"∞";
+    }
+    
     int second = 1;
     int minute = second * 60;
     int hour = minute * 60;
@@ -38,6 +42,10 @@
 }
 
 + (NSString *)formattedTimeWithInterval:(NSTimeInterval)interval {
+    if (interval == FLT_MIN) {
+        return @"∞";
+    }
+
     NSInteger ti = (NSInteger)interval;
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;

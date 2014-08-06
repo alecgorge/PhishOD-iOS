@@ -118,7 +118,7 @@ static PhishTracksStats *sharedPts;
 	NSHTTPURLResponse *resp = operation.response;
 	
 	if (resp) {
-		NSDictionary *responseDict = [self parseJsonString:operation.responseString];
+		NSDictionary *responseDict = operation.responseObject;
         
         if (responseDict) {
             statsError = [PhishTracksStatsError errorWithStatsErrorDictionary:responseDict httpStatus:resp.statusCode];

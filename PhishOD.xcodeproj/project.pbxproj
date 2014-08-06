@@ -87,6 +87,7 @@
 		7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* LongStringViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
+		7C609599198FE056007C2ED3 /* LivePhishRadioMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */; };
 		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
 		7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE502178872E500AAED06 /* StreamingMusicViewController.m */; };
 		7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE503178872E500AAED06 /* StreamingMusicViewController.xib */; };
@@ -325,6 +326,8 @@
 		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
 		7C603028182068DA0088F651 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		7C609596198FE056007C2ED3 /* LivePhishRadioMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishRadioMediaItem.h; sourceTree = "<group>"; };
+		7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishRadioMediaItem.m; sourceTree = "<group>"; };
 		7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshableTableViewController.h; sourceTree = "<group>"; };
 		7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshableTableViewController.m; sourceTree = "<group>"; };
 		7C6AE4FF1787BCBC00AAED06 /* Refreshable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Refreshable.h; sourceTree = "<group>"; };
@@ -712,6 +715,8 @@
 				7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */,
 				7C24926B198DE90A00C9275A /* LivePhishDownloadQueueViewController.h */,
 				7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */,
+				7C609596198FE056007C2ED3 /* LivePhishRadioMediaItem.h */,
+				7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */,
 			);
 			path = LivePhish;
 			sourceTree = "<group>";
@@ -1530,6 +1535,7 @@
 				7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
 				7C2345FB1981BBC7002A46D5 /* LivePhishAPI.m in Sources */,
+				7C609599198FE056007C2ED3 /* LivePhishRadioMediaItem.m in Sources */,
 				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
 				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
 				7C23461A1981E77B002A46D5 /* LivePhishAccessList.m in Sources */,
@@ -1650,7 +1656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1662,7 +1668,7 @@
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AD79C8B-0B49-4BE9-9346-4A9D75127F8F";
+				PROVISIONING_PROFILE = "23303284-836F-488D-A812-42D8CF8766CF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

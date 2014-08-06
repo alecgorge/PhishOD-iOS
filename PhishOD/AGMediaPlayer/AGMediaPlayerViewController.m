@@ -98,9 +98,6 @@
 												 name:@"RemoteControlEventReceived"
 											   object:nil];
     
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    [self becomeFirstResponder];
-    
     [self startUpdates];
 }
 
@@ -141,6 +138,12 @@
     }
 }
 
+- (void)redrawUICompletely {
+    [self.uiPlaybackQueueTable reloadData];
+    [self setupBar];
+    [self redrawUI];
+}
+
 - (void)setupBar {
     static MarqueeLabel *label = nil;
     
@@ -159,6 +162,8 @@
         label.marqueeType = MLContinuous;
         
         self.navigationItem.titleView = label;
+        
+        [label restartLabel];
     }
     label.text = [NSString stringWithFormat:@"%@ — %@", self.currentItem.displayText, self.currentItem.displaySubText];
     
@@ -195,6 +200,10 @@
 }
 
 - (float)duration {
+    if(self.currentItem.duration != 0) {
+        return self.currentItem.duration;
+    }
+    
     return self.audioPlayer.duration;
 }
 
@@ -211,7 +220,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
 	NSString *textToShare = self.currentItem.shareText;
 	NSURL *urlToShare = [self.currentItem shareURLWithTime:self.shareTime];
-	NSArray *itemsToShare = @[textToShare, urlToShare];
+    
+	NSArray *itemsToShare;
+    if(urlToShare) {
+        itemsToShare = @[textToShare, urlToShare];
+    }
+    else {
+        itemsToShare = @[textToShare];
+    }
     
 	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
 																			 applicationActivities:nil];
@@ -306,7 +322,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (NSUInteger) nextIndex {
-    if(self.loop || self.playbackQueue.count == 1) {
+    if(self.loop) {
         return self.currentIndex;
     }
     else if(self.shuffle) {
@@ -314,6 +330,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         while(randomIndex == -1 || randomIndex == self.currentIndex)
             randomIndex = arc4random_uniform((u_int32_t)self.playbackQueue.count);
         return randomIndex;
+    }
+    else if(self.playbackQueue.count == 1) {
+        return -1;
     }
     
     if(self.currentIndex + 1 >= self.playbackQueue.count) {
@@ -341,12 +360,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 - (STKDataSource *)dataSourceForItem:(AGMediaItem *) item {
 	NSURL *file = item.cachedFile;
 	if(file) {
-		return [STKLocalFileDataSource.alloc initWithFilePath:file.path];
+		STKLocalFileDataSource *dataSource = [STKLocalFileDataSource.alloc initWithFilePath:file.path];
+        item.dataSource = dataSource;
+        
+        return dataSource;
 	}
 	
 	STKHTTPDataSource *http = [STKHTTPDataSource.alloc initWithAsyncURLProvider:^(STKHTTPDataSource *dataSource, BOOL forSeek, STKURLBlock callback) {
 		[item streamURL:callback];
 	}];
+    
+    item.dataSource = http;
 	
 	return [STKAutoRecoveringHTTPDataSource.alloc initWithHTTPDataSource:http];
 }
@@ -369,10 +393,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[self.audioPlayer playDataSource:[self dataSourceForItem:self.currentItem]
 					 withQueueItemID:self.currentItem];
 	
-	for(NSUInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
-        AGMediaItem *m = self.playbackQueue[i];
-        [self.audioPlayer queueDataSource:[self dataSourceForItem:m]
-						  withQueueItemId:m];
+    if (self.nextIndex > -1) {
+        for(NSUInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
+            AGMediaItem *m = self.playbackQueue[i];
+            [self.audioPlayer queueDataSource:[self dataSourceForItem:m]
+                              withQueueItemId:m];
+        }
     }
     
     self.currentTrackHasBeenScrobbled = NO;
@@ -394,6 +420,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     }
     
     return self.audioPlayer.progress / self.audioPlayer.duration;
+}
+
+- (NSTimeInterval)elapsed {
+    return self.audioPlayer.progress;
 }
 
 - (void)setProgress:(float)progress {
@@ -569,8 +599,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.uiBackwardButton.enabled = self.currentIndex != 0;
     self.uiForwardButton.enabled = self.currentIndex < self.playbackQueue.count;
     
-    self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.audioPlayer.progress];
-    self.uiTimeLeftLabel.text = [IGDurationHelper formattedTimeWithInterval:self.audioPlayer.duration];
+    self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.elapsed];
+    self.uiTimeLeftLabel.text = [IGDurationHelper formattedTimeWithInterval:self.duration];
     
     self.uiProgressSlider.value = self.progress;
     
@@ -579,16 +609,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 								  MPMediaItemPropertyTitle						: STR_IF_NIL(self.currentItem.title),
 								  MPMediaItemPropertyAlbumTrackCount			: @(self.playbackQueue.count),
 								  MPMediaItemPropertyArtist						: STR_IF_NIL(self.currentItem.artist),
-								  MPMediaItemPropertyPlaybackDuration			: @(self.audioPlayer.duration),
 								  MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.playbackQueue.count),
 								  MPNowPlayingInfoPropertyPlaybackQueueIndex	: @(self.currentIndex),
 								  MPNowPlayingInfoPropertyPlaybackRate			: @(self.playing ? 1.0 : 0),
-								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.audioPlayer.progress)
+								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.elapsed)
 								  }.mutableCopy;
 	
 	if(self.currentItem.artwork) {
 		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
 	}
+    
+    if(self.duration >= 0) {
+        dict[MPMediaItemPropertyPlaybackDuration] = @(self.duration);
+    }
 	
     [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];
     

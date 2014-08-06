@@ -34,9 +34,9 @@
         r.origin.y = view.bounds.size.height;
         r.size.width = view.bounds.size.width;
         
-        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
-            r.origin.y = view.bounds.size.height - r.size.height;
-        }
+//        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+//            r.origin.y = view.bounds.size.height - r.size.height;
+//        }
         
         v.frame = r;
         
@@ -46,16 +46,19 @@
     
 	[view bringSubviewToFront:NowPlayingBarViewController.sharedInstance.view];
     
-    if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
-        CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
-        r.origin.y = view.bounds.size.height - r.size.height;
-        NowPlayingBarViewController.sharedInstance.view.frame = r;
-    }
-    else {
-        CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
-        r.origin.y = view.bounds.size.height;
-        NowPlayingBarViewController.sharedInstance.view.frame = r;
-    }
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+                             CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
+                             r.origin.y = view.bounds.size.height - r.size.height;
+                             NowPlayingBarViewController.sharedInstance.view.frame = r;
+                         }
+                         else {
+                             CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
+                             r.origin.y = view.bounds.size.height;
+                             NowPlayingBarViewController.sharedInstance.view.frame = r;
+                         }
+                     }];
 }
 
 - (void)addBarToViewController:(UIViewController *)vc {

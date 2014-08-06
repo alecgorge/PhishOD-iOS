@@ -22,6 +22,7 @@
 
 #import "ShowViewController.h"
 
+#import <GVMusicPlayerController/GVMusicPlayerController.h>
 #import <LastFm.h>
 #import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
@@ -86,6 +87,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self checkForUpdates];
 	
 	[AFNetworkReachabilityManager.sharedManager startMonitoring];
+
+    [UIApplication.sharedApplication beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
 	
     return YES;
 }

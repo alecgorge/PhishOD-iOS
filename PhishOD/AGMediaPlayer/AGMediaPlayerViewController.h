@@ -37,6 +37,7 @@
 @property (nonatomic) BOOL shuffle;
 @property (nonatomic) BOOL loop;
 @property (nonatomic) float progress;
+@property (nonatomic) NSTimeInterval elapsed;
 @property (nonatomic, readonly) float duration;
 
 - (void)forward;
@@ -44,5 +45,7 @@
 - (void)pause;
 - (void)backward;
 - (void)togglePlayPause;
+
+- (void)redrawUICompletely;
 
 @end

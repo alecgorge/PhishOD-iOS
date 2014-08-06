@@ -64,8 +64,14 @@
     self.labelTitle.fadeLength =
     self.labelSubTitle.fadeLength = 10.0f;
     
+    self.labelTitle.marqueeType =
+    self.labelSubTitle.marqueeType = MLContinuous;
+    
     self.labelTitle.animationDelay =
-    self.labelSubTitle.animationDelay = 5.0f;
+    self.labelSubTitle.animationDelay = 6.0f;
+    
+    self.labelTitle.rate =
+    self.labelSubTitle.rate = 20.0f;
     
     self.progressIndicator.backgroundColor = COLOR_PHISH_GREEN;
     self.progressIndicator.tintColor = COLOR_PHISH_LIGHT_GREEN;
@@ -104,13 +110,15 @@
     
     if(![self.labelTitle.text isEqualToString:newTitle]) {
         self.labelTitle.text = newTitle;
+        [self.labelTitle restartLabel];
     }
     
     if(![self.labelSubTitle.text isEqualToString:newSubTitle]) {
         self.labelSubTitle.text = newSubTitle;
+        [self.labelSubTitle restartLabel];
     }
     
-    self.labelTimeElapsed.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.progress * AGMediaPlayerViewController.sharedInstance.duration];
+    self.labelTimeElapsed.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.elapsed];
     self.labelTimeRemaining.text = [IGDurationHelper formattedTimeWithInterval:AGMediaPlayerViewController.sharedInstance.duration];
     
     self.buttonPause.hidden = !AGMediaPlayerViewController.sharedInstance.playing;

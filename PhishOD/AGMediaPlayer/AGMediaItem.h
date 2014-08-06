@@ -11,6 +11,8 @@
 
 #import "PhishinSong.h"
 
+@class STKDataSource;
+
 @interface AGMediaItem : NSObject <PHODGenericTrack>
 
 @property (nonatomic) NSInteger id;
@@ -34,5 +36,7 @@
 - (NSURL *)shareURLWithTime:(NSTimeInterval)seconds;
 
 @property (nonatomic, assign) NSTimeInterval duration;
+
+@property (nonatomic) STKDataSource *dataSource;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "LivePhishSong.h"
 
+#import "LivePhishCompleteContainer.h"
+
 @implementation LivePhishSong
 
 + (JSONKeyMapper *)keyMapper {
@@ -38,6 +40,10 @@
 }
 
 - (BOOL)isCacheable {
+    if(self.container && !self.container.canStream) {
+        return NO;
+    }
+    
 	return YES;
 }
 

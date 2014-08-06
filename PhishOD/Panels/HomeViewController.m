@@ -31,6 +31,7 @@
 #import "LivePhishCategoryViewController.h"
 #import "LivePhishDownloadedShowsViewController.h"
 #import "LivePhishDownloadQueueViewController.h"
+#import "LivePhishRadioMediaItem.h"
 
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
@@ -62,6 +63,7 @@ NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
 	kPhishODMenuLivePhishItemFeatured,
     kPhishODMenuLivePhishItemBrowse,
     kPhishODMenuLivePhishItemStash,
+    kPhishODMenuLivePhishItemRadio,
 	kPhishODMenuLivePhishItemDownloaded,
 	kPhishODMenuLivePhishItemDownloadQueue,
     kPhishODMenuLivePhishItemsCount,
@@ -241,6 +243,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
 		cell.textLabel.text = @"My Stash";
 	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemRadio) {
+		cell.textLabel.text = @"LivePhish Radio";
+	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
 		cell.textLabel.text = @"Downloaded Shows";
 	}
@@ -339,6 +344,11 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
                                                  success:^{
                                                      [self pushViewController:[LivePhishCategoryViewController.alloc initWithStash]];
                                                  }];
+	}
+	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemRadio) {
+        [LivePhishRadioMediaItem playLivePhishRadio];
+        [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 	}
 	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
         [LivePhishAuth.sharedInstance ensureSignedInFrom:self
