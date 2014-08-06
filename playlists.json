@@ -1,0 +1,187 @@
+{
+	"playlist_groups": [
+		{
+			"name": "Every Phish.net Key Jam",
+			"playlists_keys": [
+				{
+					"name": "Phish.net Key Jams Pt 1",
+					"key": "phishnet-key-jams-pt-1",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "mfhgreyboy"
+				},
+				{
+					"name": "Phish.net Key Jams Pt 2",
+					"key": "phishnet-key-jams-pt-2",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "mfhgreyboy"
+				}
+			]
+		},
+		{
+			"name": "Every Phish.net Recommended Jam",
+			"playlists_keys": [
+				{
+					"name": "Phish.net Recommended Jams Pt. 1",
+					"key": "phishnet-recommended-jams-pt-1",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 2",
+					"key": "phishnet-recommended-jams-pt-2",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 3",
+					"key": "phishnet-recommended-jams-pt-3",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 4",
+					"key": "phishnet-recommended-jams-pt-4",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 5",
+					"key": "phishnet-recommended-jams-pt-5",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 6",
+					"key": "phishnet-recommended-jams-pt-6",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				},
+				{
+					"name": "Phish.net Recommended Jams Pt. 7",
+					"key": "phishnet-recommended-jams-pt-7",
+					"phishnet_author": "surroundsound",
+					"phishin_author": "srndsnd1"
+				}
+			]
+		},
+		{
+			"name": "Recommended & Key Jams by Year",
+			"playlists_keys": [
+				{
+					"name": "Recommended & Key Jams 1990",
+					"key": "highly-recommended-and-key-versions-1990",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1991",
+					"key": "highly-recommended-and-key-versions-1991",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1992",
+					"key": "highly-recommended-and-key-versions-1992",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1993",
+					"key": "highly-recommended-and-key-versions-1993",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1994 Pt. 1",
+					"key": "highly-recommended-and-key-versions-1-1994",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1994 Pt. 2",
+					"key": "highly-recommended-and-key-versions-2-1994",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1995",
+					"key": "highly-recommended-and-key-versions-1995",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1996",
+					"key": "highly-recommended-and-key-versions-1996",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1997",
+					"key": "highly-recommended-and-key-versions-1997",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1998",
+					"key": "highly-recommended-and-key-versions-1998",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 1999",
+					"key": "highly-recommended-and-key-versions-1999",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2000",
+					"key": "highly-recommended-and-key-versions-2000",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2003",
+					"key": "highly-recommended-and-key-versions-2003",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2004",
+					"key": "highly-recommended-and-key-versions-2004",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2009",
+					"key": "highly-recommended-and-key-versions-2009",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2010",
+					"key": "highly-recommended-and-key-versions-2010",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2011",
+					"key": "highly-recommended-and-key-versions-2011",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2012",
+					"key": "highly-recommended-and-key-versions-2012",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				},
+				{
+					"name": "Recommended & Key Jams 2013",
+					"key": "highly-recommended-and-key-versions-2013",
+					"phishin_author": "L1verK1ck",
+					"phishnet_author": "L1verK1ck"
+				}
+			]
+		}
+	]
+}
