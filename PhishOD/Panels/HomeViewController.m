@@ -26,6 +26,7 @@
 #import "SearchDelegate.h"
 #import "FavoritesViewController.h"
 #import "GlobalActivityViewController.h"
+#import "CuratedPlaylistsViewController.h"
 
 #import "LivePhishBrowseViewController.h"
 #import "LivePhishCategoryViewController.h"
@@ -47,6 +48,7 @@ NS_ENUM(NSInteger, kPhishODMenuItems) {
 	kPhishODMenuItemTours,
 	kPhishODMenuItemTopRated,
 	kPhishODMenuItemRandomShow,
+	kPhishODMenuItemPlaylists,
 	kPhishODMenuItemDownloaded,
 	kPhishODMenuItemDownloadQueue,
 	kPhishODMenuItemsCount
@@ -222,6 +224,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloaded) {
 		cell.textLabel.text = @"Downloaded Shows";
 	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemPlaylists) {
+		cell.textLabel.text = @"Curated Playlists";
+	}
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloadQueue) {
 		cell.textLabel.text = @"Download Queue";
 	}
@@ -302,6 +307,9 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	}
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloaded) {
 		[self pushViewController:PhishinDownloadedShowsViewController.alloc.init];
+	}
+	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemPlaylists) {
+		[self pushViewController:CuratedPlaylistsViewController.alloc.init];
 	}
 	else if(section == kPhishODMenuSectionMenu && row == kPhishODMenuItemDownloadQueue) {
 		[self pushViewController:DownloadQueueViewController.alloc.init];

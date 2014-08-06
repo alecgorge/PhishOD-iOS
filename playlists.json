@@ -1,6 +1,17 @@
 {
 	"playlist_groups": [
 		{
+			"name": "Misc",
+			"playlists_keys": [
+				{
+					"name": "Bittersweet Motel (& DVD Extras)",
+					"key": "bittersweet-motel",
+					"phishnet_author": "bl002e",
+					"phishin_author": "bl002e"
+				}
+			]
+		},
+		{
 			"name": "Every Phish.net Key Jam",
 			"playlists_keys": [
 				{

@@ -171,12 +171,12 @@
 	
     self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_halflings_113_chevron-down"]
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_halflings_113_chevron-down"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(dismiss)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                           target:self
                                                                                           action:@selector(share)];
 }
@@ -321,7 +321,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     return self.playbackQueue[self.currentIndex];
 }
 
-- (NSUInteger) nextIndex {
+- (NSInteger) nextIndex {
     if(self.loop) {
         return self.currentIndex;
     }
@@ -375,7 +375,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 	return [STKAutoRecoveringHTTPDataSource.alloc initWithHTTPDataSource:http];
 }
 
-- (void)setCurrentIndex:(NSUInteger)currentIndex {
+- (void)setCurrentIndex:(NSInteger)currentIndex {
     NowPlayingBarViewController.sharedInstance.shouldShowBar = YES;
     
     _currentIndex = currentIndex;
@@ -394,7 +394,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 					 withQueueItemID:self.currentItem];
 	
     if (self.nextIndex > -1) {
-        for(NSUInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
+        for(NSInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
             AGMediaItem *m = self.playbackQueue[i];
             [self.audioPlayer queueDataSource:[self dataSourceForItem:m]
                               withQueueItemId:m];
@@ -467,7 +467,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.playbackQueue addObjectsFromArray:queue];
 }
 
-- (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSUInteger)index {
+- (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSInteger)index {
     self.playbackQueue = [queue mutableCopy];
     self.currentIndex = index;
     
@@ -694,7 +694,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId {
     dbug(@"[audioPlayer] didStartPlayingQueueItemId: %@", queueItemId);
     
-    NSUInteger index = [self.playbackQueue indexOfObject:queueItemId];
+    NSInteger index = [self.playbackQueue indexOfObject:queueItemId];
     _currentIndex = index;
     
     self.currentTrackHasBeenScrobbled = NO;

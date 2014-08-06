@@ -17,6 +17,7 @@
 #import "PhishinSearchResults.h"
 #import "PhishinDownloader.h"
 #import "PhishinPlaylist.h"
+#import "PhishinPlaylistGroup.h"
 
 @interface PhishinAPI : AFHTTPRequestOperationManager
 
@@ -30,6 +31,9 @@
 -(void)playlistForSlug:(NSString *)slug
 			   success:(void ( ^ )( PhishinPlaylist *playlist ))success
 			   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+-(void)curatedPlaylists:(void (^)(NSArray *))success
+                failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
 -(void)fullYear:(PhishinYear *)year
 		success:(void ( ^ ) ( PhishinYear * ))success

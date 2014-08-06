@@ -26,15 +26,36 @@
 @property (nonatomic) NSObject<PHODGenericTrack> *track;
 @property (nonatomic) NSTimer *progressTimer;
 
+@property (nonatomic) BOOL hasSubtitle;
+
 @end
 
 @implementation PHODTrackCell
+
+- (NSAttributedString *)attributedStringForTrack:(NSObject<PHODGenericTrack> *)track {
+    NSMutableAttributedString *att = [NSMutableAttributedString.alloc initWithString:track.title
+                                                                          attributes:@{NSFontAttributeName: self.uiTrackTitle.font}];
+    if([track respondsToSelector:@selector(show_date)]) {
+        NSString *showdate = [track performSelector:@selector(show_date)];
+        
+        if(showdate) {
+            NSAttributedString *str = [NSAttributedString.alloc initWithString:[NSString stringWithFormat:@"\n%@", showdate]
+                                                                    attributes:@{
+                                                                                 NSFontAttributeName: [UIFont systemFontOfSize:12.0f],
+                                                                                 NSForegroundColorAttributeName: UIColor.darkGrayColor
+                                                                                 }];
+            [att appendAttributedString:str];
+        }
+    }
+    
+    return att;
+}
 
 - (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
                 inTableView:(UITableView *)tableView {
 	self.track = track;
     self.uiTrackNumber.text = @(track.track).stringValue;
-    self.uiTrackTitle.text = track.title;
+    self.uiTrackTitle.attributedText = [self attributedStringForTrack:track];
     self.uiTrackRunningTime.text = [IGDurationHelper formattedTimeWithInterval:track.duration];
 	
 	[self updateDownloadButtons];
@@ -152,11 +173,13 @@
     CGFloat leftMargin = 49;
     CGFloat rightMargin = 83;
     
-    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - leftMargin - rightMargin, MAXFLOAT);
-    CGRect labelSize = [track.title boundingRectWithSize:constraintSize
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0]}
-                                                 context:nil];
+    CGFloat detail = self.hasSubtitle ? self.detailTextLabel.frame.size.width : 0;
+    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - leftMargin - rightMargin - detail, MAXFLOAT);
+    
+    NSAttributedString *att = [self attributedStringForTrack:track];
+    CGRect labelSize = [att boundingRectWithSize:constraintSize
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                         context:nil];
     
     return MAX(tableView.rowHeight, labelSize.size.height + 24);
 }

@@ -17,10 +17,14 @@
 		self.slug = dict[@"slug"];
 		self.name = dict[@"name"];
 		
-		self.duration = [dict[@"duration"] doubleValue];
+		self.duration = [dict[@"duration"] doubleValue] / 1000.0f;
+        
+        __block NSInteger i = 1;
 		self.tracks = [dict[@"tracks"] map:^id(NSDictionary *o) {
-			return [PhishinTrack.alloc initWithDictionary:o
-												  andShow:nil];
+			PhishinTrack *track = [PhishinTrack.alloc initWithDictionary:o
+                                                                 andShow:nil];
+            track.position = i++;
+            return track;
 		}];
 	}
 	return self;

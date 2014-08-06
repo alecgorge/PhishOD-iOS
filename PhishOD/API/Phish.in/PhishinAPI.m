@@ -74,6 +74,18 @@
 	  failure:failure];
 }
 
+- (void)curatedPlaylists:(void (^)(NSArray *))success
+                 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    [self GET:@"https://s3.amazonaws.com/phishod/playlists.json"
+   parameters:nil
+      success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+          success([responseObject[@"playlist_groups"] map:^id(NSDictionary *object) {
+              return [PhishinPlaylistGroup.alloc initWithDictionary:object];
+          }]);
+      }
+      failure:failure];
+}
+
 - (void)years:(void (^)(NSArray *))success
 	  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
 	[self GET:@"years"

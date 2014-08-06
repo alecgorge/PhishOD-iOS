@@ -27,9 +27,9 @@
 @property (nonatomic) NSMutableArray *playbackQueue;
 @property (nonatomic, readonly) AGMediaItem *currentItem;
 @property (nonatomic, readonly) AGMediaItem *nextItem;
-@property (nonatomic, readonly) NSUInteger nextIndex;
+@property (nonatomic, readonly) NSInteger nextIndex;
 
-@property (nonatomic) NSUInteger currentIndex;
+@property (nonatomic) NSInteger currentIndex;
 
 - (void)replaceQueueWithItems:(NSArray *) queue startIndex:(NSUInteger)index;
 - (void)addItemsToQueue:(NSArray *)queue;

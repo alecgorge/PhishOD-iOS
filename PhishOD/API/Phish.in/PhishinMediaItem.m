@@ -19,7 +19,14 @@
 		self.phishinShow = show;
         
         self.title = track.title;
-        self.album = [NSString stringWithFormat:@"%@ - %@ - %@", track.show.date, track.show.venue.name, track.show.venue.location, nil];
+        
+        if(track.show.venue) {
+            self.album = [NSString stringWithFormat:@"%@ - %@ - %@", track.show.date, track.show.venue.name, track.show.venue.location, nil];
+        }
+        else {
+            self.album = [NSString stringWithFormat:@"%@", track.show.date, nil];
+        }
+
         self.artist = @"Phish";
         self.id = track.id;
         self.track = track.track;
