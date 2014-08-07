@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Release</key>
+	<dict>
+		<key>amazon_insights_enabled</key>
+		<true/>
+		<key>amazon_insights_key_public</key>
+		<string>b66cdbdf001d453c9c9263bcf232afb5</string>
+		<key>amazon_insights_key_private</key>
+		<string>FVfqltqBufb96u7VINn4VdrhdAj1+0K9KNqhoXiAKAk=</string>
+	</dict>
+	<key>Adhoc</key>
+	<dict>
+		<key>amazon_insights_enabled</key>
+		<true/>
+		<key>amazon_insights_key_public</key>
+		<string>dace7f87b96f4c6ab1d4f37a5bb5fe4c</string>
+		<key>amazon_insights_key_private</key>
+		<string>gXhC4QAbKW4gvMfYQ6DEzD85RnKjwfoOrLq5CR8rAOQ=</string>
+	</dict>
+	<key>Debug</key>
+	<dict>
+		<key>amazon_insights_enabled</key>
+		<true/>
+		<key>amazon_insights_key_public</key>
+		<string>b66cdbdf001d453c9c9263bcf232afb5</string>
+		<key>amazon_insights_key_private</key>
+		<string>FVfqltqBufb96u7VINn4VdrhdAj1+0K9KNqhoXiAKAk=</string>
+	</dict>
+	<key>All</key>
+	<dict>
+		<key>phishnet_enabled</key>
+		<true/>
+		<key>phishnet_pubkey</key>
+		<string>E52DD6B46196E92CFB16</string>
+		<key>phishnet_apikey</key>
+		<string>B6570BEDA805B616AB6C</string>
+		<key>lastfm_enabled</key>
+		<true/>
+		<key>lastfm_key</key>
+		<string>f2b89dbc431a938a385203bb218e5310</string>
+		<key>lastfm_secret</key>
+		<string>5c1ace2f9e7cdbb4c0b2fbbcc9ddb426</string>
+		<key>crashlytics_enabled</key>
+		<true/>
+		<key>crashlytics_key</key>
+		<string>bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4</string>
+	</dict>
+</dict>
+</plist>
