@@ -15,9 +15,10 @@
 #import "PhishNetNewsItem.h"
 #import "PhishNetShow.h"
 #import "PhishinSong.h"
+#import "IGThirdPartyKeys.h"
 
-#define PHISH_NET_API_KEY @"B6570BEDA805B616AB6C"
-#define PHISH_NET_PUB_KEY @"E52DD6B46196E92CFB16"
+#define PHISH_NET_API_KEY IGThirdPartyKeys.sharedInstance.phishNetApiKey
+#define PHISH_NET_PUB_KEY IGThirdPartyKeys.sharedInstance.phishNetPubKey
 
 @interface PhishNetAPI : AFHTTPRequestOperationManager {
 	NSRegularExpression *findRating;

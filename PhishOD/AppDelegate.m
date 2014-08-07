@@ -10,8 +10,6 @@
 #import "Configuration.h"
 #import "RotatableTabBarController.h"
 
-#import "StreamingMusicViewController.h"
-
 #import "YearsViewController.h"
 #import "SongsViewController.h"
 #import "TopRatedViewController.h"
@@ -19,12 +17,11 @@
 #import "SettingsViewController.h"
 #import "HomeViewController.h"
 #import "AGMediaPlayerViewController.h"
-
+#import "IGThirdPartyKeys.h"
 #import "ShowViewController.h"
+#import "IGEvents.h"
 
-#import <GVMusicPlayerController/GVMusicPlayerController.h>
 #import <LastFm.h>
-#import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
@@ -48,11 +45,12 @@ static AppDelegate *sharedDelegate;
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	sharedDelegate = self;
 
-	[Crashlytics startWithAPIKey:@"bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4"];
+    if(IGThirdPartyKeys.sharedInstance.isCrashlyticsEnabled) {
+        [Crashlytics startWithAPIKey:IGThirdPartyKeys.sharedInstance.crashlyticsApiKey];
+    }
 	
-	[Flurry setBackgroundSessionEnabled:NO];
-	[Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
-	
+    [IGEvents setup];
+    
 	[AFNetworkActivityLogger.sharedLogger startLogging];
 	
 	// prevent LivePhish.com and Phish.net from logging passwords in plaintext
@@ -70,8 +68,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	self.shouldShowNowPlaying = NO;
 	
-	[self setupNowPlaying];
-    
     self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	
 	HomeViewController *years = [[HomeViewController alloc] init];
@@ -145,16 +141,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)setupLastFM {
-    [LastFm sharedInstance].apiKey = @"f2b89dbc431a938a385203bb218e5310";
-    [LastFm sharedInstance].apiSecret = @"5c1ace2f9e7cdbb4c0b2fbbcc9ddb426";
-    [LastFm sharedInstance].session = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastfm_session_key"];
-    [LastFm sharedInstance].username = [[NSUserDefaults standardUserDefaults] stringForKey:@"lastfm_username_key"];
-}
-
-- (void)setupNowPlaying {
-	StreamingMusicViewController *nowPlaying = [StreamingMusicViewController sharedInstance];
-	self.nowPlayingNav = [[UINavigationController alloc] initWithRootViewController:nowPlaying];
-	self.nowPlayingNav.navigationBar.translucent = NO;
+    if(IGThirdPartyKeys.sharedInstance.isLastFmEnabled) {
+        LastFm.sharedInstance.apiKey = IGThirdPartyKeys.sharedInstance.lastFmApiKey;
+        LastFm.sharedInstance.apiSecret = IGThirdPartyKeys.sharedInstance.lastFmApiSecret;
+        LastFm.sharedInstance.session = [NSUserDefaults.standardUserDefaults stringForKey:@"lastfm_session_key"];
+        LastFm.sharedInstance.username = [NSUserDefaults.standardUserDefaults stringForKey:@"lastfm_username_key"];
+    }
 }
 
 

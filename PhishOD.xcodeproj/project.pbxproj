@@ -68,6 +68,8 @@
 		7C27BA6E1992D46B00E5AEAE /* CuratedPlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */; };
 		7C27BA711992D57400E5AEAE /* SubtitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */; };
 		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
+		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
+		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
 		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
@@ -92,10 +94,10 @@
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
 		7C609599198FE056007C2ED3 /* LivePhishRadioMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */; };
+		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
+		7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */; };
+		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
 		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
-		7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE502178872E500AAED06 /* StreamingMusicViewController.m */; };
-		7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE503178872E500AAED06 /* StreamingMusicViewController.xib */; };
-		7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
 		7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */; };
@@ -134,7 +136,6 @@
 		7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EE180F5EB700F72F0D /* PhishinSet.m */; };
 		7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F0180F5EB700F72F0D /* PhishinShow.m */; };
 		7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F2180F5EB700F72F0D /* PhishinSong.m */; };
-		7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */; };
 		7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F6180F5EB700F72F0D /* PhishinTour.m */; };
 		7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F8180F5EB700F72F0D /* PhishinTrack.m */; };
 		7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FA180F5EB700F72F0D /* PhishinVenue.m */; };
@@ -293,12 +294,15 @@
 		7C249277198E972E00C9275A /* LongStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongStringTableViewCell.m; sourceTree = "<group>"; };
 		7C27BA681992D2E400E5AEAE /* PhishinPlaylistGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinPlaylistGroup.h; sourceTree = "<group>"; };
 		7C27BA691992D2E400E5AEAE /* PhishinPlaylistGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinPlaylistGroup.m; sourceTree = "<group>"; };
-		7C27BA6C1992D46B00E5AEAE /* CuratedPlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CuratedPlaylistsViewController.h; path = Playlists/CuratedPlaylistsViewController.h; sourceTree = "<group>"; };
-		7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CuratedPlaylistsViewController.m; path = Playlists/CuratedPlaylistsViewController.m; sourceTree = "<group>"; };
+		7C27BA6C1992D46B00E5AEAE /* CuratedPlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuratedPlaylistsViewController.h; sourceTree = "<group>"; };
+		7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuratedPlaylistsViewController.m; sourceTree = "<group>"; };
 		7C27BA6F1992D57400E5AEAE /* SubtitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleTableViewCell.h; sourceTree = "<group>"; };
 		7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleTableViewCell.m; sourceTree = "<group>"; };
-		7C27BA721992DAAE00E5AEAE /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistViewController.h; path = Playlists/PlaylistViewController.h; sourceTree = "<group>"; };
-		7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistViewController.m; path = Playlists/PlaylistViewController.m; sourceTree = "<group>"; };
+		7C27BA721992DAAE00E5AEAE /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
+		7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
+		7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGThirdPartyKeys.h; sourceTree = "<group>"; };
+		7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGThirdPartyKeys.m; sourceTree = "<group>"; };
+		7C27BA7B19942FC000E5AEAE /* API keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API keys.plist"; sourceTree = "<group>"; };
 		7C518C01175D0C32005EB2E7 /* PhishOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -340,14 +344,13 @@
 		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7C609596198FE056007C2ED3 /* LivePhishRadioMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishRadioMediaItem.h; sourceTree = "<group>"; };
 		7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishRadioMediaItem.m; sourceTree = "<group>"; };
+		7C63C7CE199437730022F37F /* IGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEvents.h; sourceTree = "<group>"; };
+		7C63C7CF199437730022F37F /* IGEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEvents.m; sourceTree = "<group>"; };
+		7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmazonInsightsSDK.framework; sourceTree = "<group>"; };
+		7C63C7D3199445AD0022F37F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshableTableViewController.h; sourceTree = "<group>"; };
 		7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshableTableViewController.m; sourceTree = "<group>"; };
 		7C6AE4FF1787BCBC00AAED06 /* Refreshable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Refreshable.h; sourceTree = "<group>"; };
-		7C6AE501178872E500AAED06 /* StreamingMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingMusicViewController.h; sourceTree = "<group>"; };
-		7C6AE502178872E500AAED06 /* StreamingMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingMusicViewController.m; sourceTree = "<group>"; };
-		7C6AE503178872E500AAED06 /* StreamingMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingMusicViewController.xib; sourceTree = "<group>"; };
-		7C6AE50F1788786E00AAED06 /* StreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlaylistItem.h; sourceTree = "<group>"; };
-		7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingPlaylistItem.m; sourceTree = "<group>"; };
 		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
 		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -418,8 +421,6 @@
 		7CC165F0180F5EB700F72F0D /* PhishinShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinShow.m; sourceTree = "<group>"; };
 		7CC165F1180F5EB700F72F0D /* PhishinSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSong.h; sourceTree = "<group>"; };
 		7CC165F2180F5EB700F72F0D /* PhishinSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSong.m; sourceTree = "<group>"; };
-		7CC165F3180F5EB700F72F0D /* PhishinStreamingPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinStreamingPlaylistItem.h; sourceTree = "<group>"; };
-		7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinStreamingPlaylistItem.m; sourceTree = "<group>"; };
 		7CC165F5180F5EB700F72F0D /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTour.h; sourceTree = "<group>"; };
 		7CC165F6180F5EB700F72F0D /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTour.m; sourceTree = "<group>"; };
 		7CC165F7180F5EB700F72F0D /* PhishinTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTrack.h; sourceTree = "<group>"; };
@@ -546,6 +547,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */,
 				7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */,
 				7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */,
 				7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */,
@@ -554,6 +556,7 @@
 				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
 				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
 				7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */,
+				7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */,
 				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
 				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
 				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
@@ -770,7 +773,19 @@
 				7C27BA721992DAAE00E5AEAE /* PlaylistViewController.h */,
 				7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */,
 			);
-			name = Playlists;
+			path = Playlists;
+			sourceTree = "<group>";
+		};
+		7C27BA7719942D6000E5AEAE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7C27BA7B19942FC000E5AEAE /* API keys.plist */,
+				7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */,
+				7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */,
+				7C63C7CE199437730022F37F /* IGEvents.h */,
+				7C63C7CF199437730022F37F /* IGEvents.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7C518BF8175D0C32005EB2E7 = {
@@ -794,6 +809,8 @@
 		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C63C7D3199445AD0022F37F /* libz.dylib */,
+				7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */,
 				7C1C3C741982223600555ACB /* Accelerate.framework */,
 				F1B48B5E1973B0CF00DDF5C3 /* Third Party Static */,
 				7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */,
@@ -817,6 +834,7 @@
 		7C518C0A175D0C32005EB2E7 /* PhishOD */ = {
 			isa = PBXGroup;
 			children = (
+				7C27BA7719942D6000E5AEAE /* Helpers */,
 				7C1C3C3A19820FF600555ACB /* AGMediaPlayer */,
 				7C6AE5001788725800AAED06 /* MediaPlayer */,
 				7C7ED3851800D259004F55DF /* Panels */,
@@ -831,6 +849,7 @@
 		7C518C0B175D0C32005EB2E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F1B48B611973B11600DDF5C3 /* Configuration */,
 				7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */,
 				7C23462E19820630002A46D5 /* MEExpandableHeaderView */,
 				F1B48B5F1973B0FA00DDF5C3 /* Rotatable TabBarController */,
@@ -847,7 +866,6 @@
 				7CADB31E176040B200B80D54 /* NSString+stripHTML.h */,
 				7CADB31F176040B200B80D54 /* NSString+stripHTML.m */,
 				7C6AE5161788B97200AAED06 /* Entitlements.plist */,
-				F1B48B611973B11600DDF5C3 /* Configuration */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -985,11 +1003,6 @@
 			isa = PBXGroup;
 			children = (
 				7CADCE491894407900841A92 /* Bottom Bar */,
-				7C6AE501178872E500AAED06 /* StreamingMusicViewController.h */,
-				7C6AE502178872E500AAED06 /* StreamingMusicViewController.m */,
-				7C6AE503178872E500AAED06 /* StreamingMusicViewController.xib */,
-				7C6AE50F1788786E00AAED06 /* StreamingPlaylistItem.h */,
-				7C6AE5101788786E00AAED06 /* StreamingPlaylistItem.m */,
 			);
 			path = MediaPlayer;
 			sourceTree = "<group>";
@@ -1159,8 +1172,6 @@
 				7CC165F0180F5EB700F72F0D /* PhishinShow.m */,
 				7CC165F1180F5EB700F72F0D /* PhishinSong.h */,
 				7CC165F2180F5EB700F72F0D /* PhishinSong.m */,
-				7CC165F3180F5EB700F72F0D /* PhishinStreamingPlaylistItem.h */,
-				7CC165F4180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m */,
 				7CC165F5180F5EB700F72F0D /* PhishinTour.h */,
 				7CC165F6180F5EB700F72F0D /* PhishinTour.m */,
 				7CC165F7180F5EB700F72F0D /* PhishinTrack.h */,
@@ -1389,6 +1400,7 @@
 				7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */,
 				7C1C3C64198219FD00555ACB /* glyphicons_172_rewind@2x.png in Resources */,
 				7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */,
+				7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */,
 				7C1C3C66198219FD00555ACB /* glyphicons_173_play@2x.png in Resources */,
 				7C1C3C5E198219FD00555ACB /* 03-loopback@2x.png in Resources */,
 				7C1C3C6E198219FD00555ACB /* glyphicons_184_volume_up@2x.png in Resources */,
@@ -1400,7 +1412,6 @@
 				7C249271198E8FD100C9275A /* music_128@2x.png in Resources */,
 				7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */,
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
-				7C6AE505178872E500AAED06 /* StreamingMusicViewController.xib in Resources */,
 				7C249270198E8FD000C9275A /* music_128.png in Resources */,
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
 				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
@@ -1508,6 +1519,7 @@
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				F1B48B51197383E000DDF5C3 /* FavoritesViewController.m in Sources */,
 				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
+				7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */,
 				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
 				C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */,
 				7C23461F1981E9E3002A46D5 /* LivePhishBrowseViewController.m in Sources */,
@@ -1544,9 +1556,7 @@
 				F1B48B081973831A00DDF5C3 /* RankingTableViewCell.m in Sources */,
 				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
 				7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */,
-				7C6AE504178872E500AAED06 /* StreamingMusicViewController.m in Sources */,
 				7C27BA711992D57400E5AEAE /* SubtitleTableViewCell.m in Sources */,
-				7C6AE5111788786E00AAED06 /* StreamingPlaylistItem.m in Sources */,
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
 				7C2346051981BFB6002A46D5 /* LivePhishCompleteContainer.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
@@ -1555,6 +1565,7 @@
 				7C2346221981EB09002A46D5 /* LivePhishCategoryViewController.m in Sources */,
 				F1B48B3B1973836800DDF5C3 /* SetStatsViewController.m in Sources */,
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
+				7C63C7D0199437730022F37F /* IGEvents.m in Sources */,
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
 				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
@@ -1572,7 +1583,6 @@
 				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
 				7C23461A1981E77B002A46D5 /* LivePhishAccessList.m in Sources */,
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
-				7CC16604180F5EB700F72F0D /* PhishinStreamingPlaylistItem.m in Sources */,
 				7C2346171981E51C002A46D5 /* LivePhishStash.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
@@ -1687,13 +1697,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUILD_CONFIGURATION = Debug;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
@@ -1711,13 +1722,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
@@ -1764,13 +1776,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUILD_CONFIGURATION = Adhoc;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"/Users/alecgorge/Dropbox/Projects/objc/Phish\\ Tracks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";

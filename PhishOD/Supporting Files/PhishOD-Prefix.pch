@@ -27,12 +27,7 @@
 // Error handlers
 #import "FailureHandler.h"
 
-// Streaming classes
-#import "StreamingPlaylistItem.h"
-#import "PhishinStreamingPlaylistItem.h"
-
 // Cocoapods frameworks
-#import <FlurrySDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 

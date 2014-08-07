@@ -10,7 +10,6 @@
 #import "LongStringViewController.h"
 #import "ReviewsViewController.h"
 #import "RefreshableTableViewController.h"
-#import "PhishinStreamingPlaylistItem.h"
 
 @interface ShowViewController : RefreshableTableViewController
 

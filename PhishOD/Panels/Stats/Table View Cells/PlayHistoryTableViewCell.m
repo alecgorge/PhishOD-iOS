@@ -7,7 +7,7 @@
 //
 
 #import "PlayHistoryTableViewCell.h"
-#import "StreamingMusicViewController.h"
+#import "IGDurationHelper.h"
 
 @implementation PlayHistoryTableViewCell
 
@@ -30,14 +30,14 @@
     if (play.username && showUsername == YES) {
         self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@ - %@\n%@ - %@",
                                     play.timeSincePlayed, play.showDate,
-                                    [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                    [IGDurationHelper formattedTimeWithInterval:play.trackDuration / 1000.0f],
                                     play.username,
                                     play.venueName, play.location];
     }
     else {
         self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@\n%@ - %@",
                                     play.timeSincePlayed, play.showDate,
-                                    [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                    [IGDurationHelper formattedTimeWithInterval:play.trackDuration / 1000.0f],
                                     play.venueName, play.location];
         
     }

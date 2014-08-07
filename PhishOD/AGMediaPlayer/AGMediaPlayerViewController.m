@@ -24,6 +24,9 @@
 #import "PHODTrackCell.h"
 #import "PhishinMediaItem.h"
 
+#import "IGEvents.h"
+#import "IGThirdPartyKeys.h"
+
 @interface AGMediaPlayerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *uiPlayButton;
@@ -215,9 +218,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		self.shareTime = 0;
 	}
     
-	[Flurry logEvent:@"share"
-	  withParameters:@{@"with_time": @(self.shareTime != 0)}];
-    
 	NSString *textToShare = self.currentItem.shareText;
 	NSURL *urlToShare = [self.currentItem shareURLWithTime:self.shareTime];
     
@@ -229,15 +229,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         itemsToShare = @[textToShare];
     }
     
+    IGEvent *e = [IGEvents startTimedEvent:@"share"];
+    
 	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
 																			 applicationActivities:nil];
     
 	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
-        [Flurry logEvent:@"share_complete"
-          withParameters:@{@"with_time": @(self.shareTime != 0),
-                           @"activity_type": activityType ? activityType : @"",
-                           @"completed": @(completed)}];
+        [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0),
+                                         @"activity_type": activityType ? activityType : @"",
+                                         @"completed": @(completed)
+                                         }
+                            andMetrics:@{}];
     };
     
 	[self.navigationController presentViewController:activityVC
@@ -626,13 +629,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];
     
 	if(!self.currentTrackHasBeenScrobbled && self.progress > .5) {
-		[[LastFm sharedInstance] sendScrobbledTrack:self.currentItem.title
-										   byArtist:self.currentItem.artist
-											onAlbum:self.currentItem.album
-									   withDuration:self.audioPlayer.duration
-										atTimestamp:(int)[[NSDate date] timeIntervalSince1970]
-									 successHandler:nil
-									 failureHandler:nil];
+        if (IGThirdPartyKeys.sharedInstance.isLastFmEnabled) {
+            [[LastFm sharedInstance] sendScrobbledTrack:self.currentItem.title
+                                               byArtist:self.currentItem.artist
+                                                onAlbum:self.currentItem.album
+                                           withDuration:self.audioPlayer.duration
+                                            atTimestamp:(int)[[NSDate date] timeIntervalSince1970]
+                                         successHandler:nil
+                                         failureHandler:nil];
+        }
+        
+        [IGEvents trackEvent:@"played_track"
+              withAttributes:@{@"provider": NSStringFromClass(self.currentItem.class),
+                               @"title": self.currentItem.title,
+                               @"album": self.currentItem.album,
+                               @"is_cached_attr": @(self.currentItem.isCached),
+                               @"artist": self.currentItem.artist}
+                  andMetrics:@{@"duration": @(self.duration),
+                               @"is_cached": @(self.currentItem.isCached)}];
         
 		self.currentTrackHasBeenScrobbled = YES;
 		

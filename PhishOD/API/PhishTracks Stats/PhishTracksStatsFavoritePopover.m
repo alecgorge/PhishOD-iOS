@@ -10,9 +10,6 @@
 
 #import "PhishTracksStatsFavoritePopover.h"
 
-#import "StreamingMusicViewController.h"
-#import "PhishinStreamingPlaylistItem.h"
-
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsFavorite.h"
 

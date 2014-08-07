@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PhishTracksStatsPlayEvent.h"
-#import "StreamingMusicViewController.h"
 
 @interface RankingTableViewCell : UITableViewCell
 

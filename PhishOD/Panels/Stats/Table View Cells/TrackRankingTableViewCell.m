@@ -8,6 +8,8 @@
 
 #import "TrackRankingTableViewCell.h"
 
+#import "IGDurationHelper.h"
+
 @implementation TrackRankingTableViewCell
 
 - (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play
@@ -18,7 +20,7 @@
 	NSString *playString = [play.playCount isEqualToString:@"1"] ? @"play" : @"plays";
 	self.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ - %@\n%@ - %@",
 								play.playCount, playString, play.showDate,
-                                 [StreamingMusicViewController formatTime:play.trackDuration / 1000.0f],
+                                 [IGDurationHelper formattedTimeWithInterval:play.trackDuration / 1000.0f],
                                  play.venueName, play.location];
 }
 

@@ -13,7 +13,6 @@
 #import "AppDelegate.h"
 
 #import "AGMediaPlayerViewController.h"
-#import "StreamingMusicViewController.h"
 #import "PhishTracksStatsFavoritePopover.h"
 #import "IGDurationHelper.h"
 #import "PhishinMediaItem.h"

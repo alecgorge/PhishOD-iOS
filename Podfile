@@ -5,7 +5,6 @@ inhibit_all_warnings!
 pod 'AFNetworking'
 pod 'SVWebViewController'
 pod 'Appirater'
-pod 'FlurrySDK'
 pod 'TDBadgedCell', :head
 pod 'LastFm'
 pod 'SVProgressHUD', :head
@@ -29,5 +28,3 @@ pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git'
 pod 'DZNEmptyDataSet'
 pod 'TTTAttributedLabel'
-pod 'GVMusicPlayerController', '~> 0.4'
-
