@@ -470,9 +470,9 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 - (void)cancelDownload {
 	self.state = PHODDownloadStateCancelled;
 
-	[self cancel];
-	
 	[self.dl cancel];
+
+	[self cancel];
 }
 
 - (BOOL)isExecuting {

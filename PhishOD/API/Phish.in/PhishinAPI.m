@@ -45,7 +45,7 @@
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  NSMutableArray *arr = [NSMutableArray array];
 		  responseObject = [self parseJSON:responseObject][@"data"];
-		  
+      
 		  for (NSString *eraName in [[responseObject allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
 			  PhishinEra *era = [[PhishinEra alloc] initWithName:eraName
 														andYears:[responseObject[eraName] map:^id(id object) {

@@ -40,13 +40,33 @@
                    withPassword:(NSString *)password
                         success:(void (^)(BOOL, NSString *))success
                         failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    NSDictionary *dict = @{@"user": username ? username : @"", @"pw": password ? password : @""};
+    
     [self secureApiMethod:@"session.getUserToken"
-                   params:@{@"user": username ? username : @"", @"pw": password ? password : @""}
+                   params:dict
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       NSDictionary *dict = [self parseJSON:responseObject][@"Response"];
                       
                       if([dict[@"returnCode"] boolValue]) {
-                          success(YES, dict[@"tokenValue"]);
+                          if (!dict[@"tokenValue"]) {
+                              [self secureApiMethod:@"session.getUserToken"
+                                             params:dict
+                                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                NSDictionary *dict = [self parseJSON:responseObject][@"Response"];
+                                                
+                                                if([dict[@"returnCode"] boolValue]) {
+                                                    success(YES, dict[@"tokenValue"]);
+                                                }
+                                                else {
+                                                    success(NO, nil);
+                                                }
+                                                
+                                            }
+                                              error:failure];
+                          }
+                          else {
+                              success(YES, dict[@"tokenValue"]);
+                          }
                       }
                       else {
                           success(NO, nil);
@@ -104,7 +124,7 @@
     [self getUserTokenForUsername:LivePhishAuth.sharedInstance.username
                      withPassword:LivePhishAuth.sharedInstance.password
                           success:^(BOOL validCredentials, NSString *token) {
-                              if(!validCredentials) {
+                              if(!validCredentials || !token) {
                                   error(nil, [self livePhishAuthError]);
                               }
                               

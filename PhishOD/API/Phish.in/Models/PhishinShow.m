@@ -95,6 +95,10 @@
 }
 
 - (PhishinShow *)cache {
+    if(!self.date) {
+        return nil;
+    }
+    
 	[EGOCache.globalCache setObject:self
 							 forKey:self.cacheKey];
 	

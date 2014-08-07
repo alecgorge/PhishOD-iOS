@@ -33,6 +33,10 @@
 @implementation PHODTrackCell
 
 - (NSAttributedString *)attributedStringForTrack:(NSObject<PHODGenericTrack> *)track {
+    if (!track || !track.title) {
+        return nil;
+    }
+    
     NSMutableAttributedString *att = [NSMutableAttributedString.alloc initWithString:track.title
                                                                           attributes:@{NSFontAttributeName: self.uiTrackTitle.font}];
     if([track respondsToSelector:@selector(show_date)]) {
