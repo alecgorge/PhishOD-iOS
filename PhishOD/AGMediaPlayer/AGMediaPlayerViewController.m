@@ -236,9 +236,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
 	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
-        [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0),
+        [e endTimedEventWithAttributes:@{@"with_time": [NSNumber numberWithBool:self.shareTime != 0],
                                          @"activity_type": activityType ? activityType : @"",
-                                         @"completed": @(completed)
+                                         @"completed": [NSNumber numberWithBool:completed]
                                          }
                             andMetrics:@{}];
     };
@@ -643,10 +643,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
               withAttributes:@{@"provider": NSStringFromClass(self.currentItem.class),
                                @"title": self.currentItem.title,
                                @"album": self.currentItem.album,
-                               @"is_cached_attr": @(self.currentItem.isCached),
+                               @"is_cached_attr": [NSNumber numberWithBool:self.currentItem.isCached],
                                @"artist": self.currentItem.artist}
-                  andMetrics:@{@"duration": @(self.duration),
-                               @"is_cached": @(self.currentItem.isCached)}];
+                  andMetrics:@{@"duration": [NSNumber numberWithFloat:self.duration],
+                               @"is_cached": [NSNumber numberWithBool:self.currentItem.isCached]}];
         
 		self.currentTrackHasBeenScrobbled = YES;
 		
