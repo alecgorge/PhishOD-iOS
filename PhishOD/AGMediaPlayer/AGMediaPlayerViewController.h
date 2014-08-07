@@ -31,7 +31,7 @@
 
 @property (nonatomic) NSInteger currentIndex;
 
-- (void)replaceQueueWithItems:(NSArray *) queue startIndex:(NSUInteger)index;
+- (void)replaceQueueWithItems:(NSArray *) queue startIndex:(NSInteger)index;
 - (void)addItemsToQueue:(NSArray *)queue;
 
 @property (nonatomic) BOOL shuffle;
