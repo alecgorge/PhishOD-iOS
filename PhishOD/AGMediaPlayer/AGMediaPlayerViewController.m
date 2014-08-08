@@ -236,11 +236,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
 	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
-        [e endTimedEventWithAttributes:@{@"with_time": [NSNumber numberWithBool:self.shareTime != 0],
+        [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0).stringValue,
                                          @"activity_type": activityType ? activityType : @"",
-                                         @"completed": [NSNumber numberWithBool:completed]
+                                         @"completed": @(completed).stringValue
                                          }
-                            andMetrics:@{}];
+                            andMetrics:@{@"completed": [NSNumber numberWithBool:completed],
+                                         @"with_time": [NSNumber numberWithBool:self.shareTime != 0]}];
     };
     
 	[self.navigationController presentViewController:activityVC
@@ -643,7 +644,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
               withAttributes:@{@"provider": NSStringFromClass(self.currentItem.class),
                                @"title": self.currentItem.title,
                                @"album": self.currentItem.album,
-                               @"is_cached_attr": [NSNumber numberWithBool:self.currentItem.isCached],
+                               @"is_cached_attr": @(self.currentItem.isCached).stringValue,
                                @"artist": self.currentItem.artist}
                   andMetrics:@{@"duration": [NSNumber numberWithFloat:self.duration],
                                @"is_cached": [NSNumber numberWithBool:self.currentItem.isCached]}];
