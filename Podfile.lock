@@ -37,21 +37,6 @@ PODS:
   - KVOController (1.0.1)
   - LastFm (1.15.0):
     - KissXML (~> 5.0)
-  - libwebp (0.4.0):
-    - libwebp/dec
-    - libwebp/demux
-    - libwebp/dsp
-    - libwebp/enc
-    - libwebp/mux
-    - libwebp/utils
-    - libwebp/webp
-  - libwebp/dec (0.4.0)
-  - libwebp/demux (0.4.0)
-  - libwebp/dsp (0.4.0)
-  - libwebp/enc (0.4.0)
-  - libwebp/mux (0.4.0)
-  - libwebp/utils (0.4.0)
-  - libwebp/webp (0.4.0)
   - LLACircularProgressView (0.1.1)
   - MarqueeLabel (2.0.1)
   - NAKPlaybackIndicatorView (0.0.3)
@@ -61,14 +46,7 @@ PODS:
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
-    - SDWebImage/MapKit
-    - SDWebImage/WebP
   - SDWebImage/Core (3.7.1)
-  - SDWebImage/MapKit (3.7.1):
-    - SDWebImage/Core
-  - SDWebImage/WebP (3.7.1):
-    - libwebp
-    - SDWebImage/Core
   - StreamingKit (0.1.19)
   - SVProgressHUD (HEAD based on 1.0)
   - SVWebViewController (1.0)
@@ -130,7 +108,6 @@ SPEC CHECKSUMS:
   KissXML: e537c38b18ede903ee6de45953a9bd86c131ebe9
   KVOController: e6ad4a058ab0ceed546802361adb89d322a22cf2
   LastFm: 26cffa0ee5b39a4ad8c9451e882d75ce27036d3e
-  libwebp: 7774a1ee15d19c0f70a992a7e4e4a23f3874a253
   LLACircularProgressView: 97fb4c9f115367b50c67a1fbafc5c881e7d745ec
   MarqueeLabel: efe4c245fe903725954a781edc0da04a110b36c5
   NAKPlaybackIndicatorView: 3211fff8fbc229661d4de69e86cef1b9b2e49e41
@@ -144,4 +121,4 @@ SPEC CHECKSUMS:
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
