@@ -158,52 +158,6 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
 @end
 
-@implementation LivePhishDownloadItem
-
-+ (NSString *)provider {
-    return @"livephish.com";
-}
-
-+ (id)showForPath:(NSString *)path {
-    return [LivePhishCompleteContainer loadContainerFromCacheForId:path.lastPathComponent.integerValue];
-}
-
-- (instancetype)initWithSong:(LivePhishSong *)song
-                andContainer:(LivePhishCompleteContainer *)container {
-    if (self = [super init]) {
-        _song = song;
-        _container = container;
-    }
-    return self;
-}
-
-- (NSString *)cachePath {
-    return [NSString stringWithFormat:@"%@/%@.mp3", @(self.container.id).stringValue, @(self.song.id).stringValue];
-}
-
-- (NSString *)provider {
-    return [LivePhishDownloadItem provider];
-}
-
-- (NSInteger)id {
-    return self.song.id;
-}
-
-- (void)downloadURL:(void (^)(NSURL *))dl {
-    [LivePhishAPI.sharedInstance streamURLForSong:self.song
-                            withCompleteContainer:self.container
-                                          success:dl
-                                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                              dbug(@"err: %@", error);
-                                          }];
-}
-
-- (void)cache {
-    [self.container cache];
-}
-
-@end
-
 @interface PHODDownloader ()
 
 @property (nonatomic, readonly) NSString *cacheDir;
@@ -281,31 +235,6 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
                                  failure:(void (^)(NSError *))failure {
     return [self downloadItem:[PhishinDownloadItem.alloc initWithTrack:track
                                                                andShow:show]
-                     progress:progress
-                      success:success
-                      failure:failure];
-}
-
-@end
-
-@implementation LivePhishDownloader
-
-+ (instancetype)sharedInstance {
-    static dispatch_once_t once;
-    static LivePhishDownloader *sharedFoo;
-    dispatch_once(&once, ^ {
-		sharedFoo = [self.alloc init];
-	});
-    return sharedFoo;
-}
-
-- (PHODDownloadOperation *)downloadSong:(LivePhishSong *)song
-                            inContainer:(LivePhishCompleteContainer *)container
-                               progress:(void (^)(int64_t, int64_t))progress
-                                success:(void (^)(NSURL *))success
-                                failure:(void (^)(NSError *))failure {
-    return [self downloadItem:[LivePhishDownloadItem.alloc initWithSong:song
-                                                           andContainer:container]
                      progress:progress
                       success:success
                       failure:failure];

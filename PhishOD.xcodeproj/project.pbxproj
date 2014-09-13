@@ -36,29 +36,9 @@
 		7C1C3C6E198219FD00555ACB /* glyphicons_184_volume_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5A198219FD00555ACB /* glyphicons_184_volume_up@2x.png */; };
 		7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5B198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png */; };
 		7C1C3C70198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */; };
-		7C1C3C7319821EC200555ACB /* LivePhishMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C7219821EC200555ACB /* LivePhishMediaItem.m */; };
 		7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1C3C741982223600555ACB /* Accelerate.framework */; };
-		7C1C3C791982499F00555ACB /* LivePhishNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C781982499F00555ACB /* LivePhishNotesViewController.m */; };
-		7C1C3C7C19824E3800555ACB /* LivePhishReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C7B19824E3800555ACB /* LivePhishReviewsViewController.m */; };
 		7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */; };
-		7C2345FB1981BBC7002A46D5 /* LivePhishAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2345FA1981BBC7002A46D5 /* LivePhishAPI.m */; };
-		7C2345FF1981BC5D002A46D5 /* LivePhishCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2345FE1981BC5D002A46D5 /* LivePhishCategory.m */; };
-		7C2346021981BE28002A46D5 /* LivePhishContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346011981BE28002A46D5 /* LivePhishContainer.m */; };
-		7C2346051981BFB6002A46D5 /* LivePhishCompleteContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346041981BFB6002A46D5 /* LivePhishCompleteContainer.m */; };
-		7C2346081981D34D002A46D5 /* LivePhishSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346071981D34D002A46D5 /* LivePhishSong.m */; };
-		7C23460E1981D405002A46D5 /* LivePhishReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23460D1981D405002A46D5 /* LivePhishReview.m */; };
-		7C2346111981D4B4002A46D5 /* LivePhishNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346101981D4B4002A46D5 /* LivePhishNote.m */; };
-		7C2346141981E061002A46D5 /* LivePhishAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346131981E061002A46D5 /* LivePhishAuth.m */; };
-		7C2346171981E51C002A46D5 /* LivePhishStash.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346161981E51C002A46D5 /* LivePhishStash.m */; };
-		7C23461A1981E77B002A46D5 /* LivePhishAccessList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346191981E77B002A46D5 /* LivePhishAccessList.m */; };
-		7C23461F1981E9E3002A46D5 /* LivePhishBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23461E1981E9E3002A46D5 /* LivePhishBrowseViewController.m */; };
-		7C2346221981EB09002A46D5 /* LivePhishCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346211981EB09002A46D5 /* LivePhishCategoryViewController.m */; };
-		7C2346261981EF33002A46D5 /* LivePhishSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346251981EF33002A46D5 /* LivePhishSignInViewController.m */; };
-		7C23462A1981F85D002A46D5 /* LargeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2346291981F85D002A46D5 /* LargeImageTableViewCell.m */; };
-		7C23462D19820251002A46D5 /* LivePhishContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23462C19820251002A46D5 /* LivePhishContainerViewController.m */; };
 		7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23463019820630002A46D5 /* MEExpandableHeaderView.m */; };
-		7C24926A198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */; };
-		7C24926D198DE90A00C9275A /* LivePhishDownloadQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */; };
 		7C249270198E8FD000C9275A /* music_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926E198E8FD000C9275A /* music_128.png */; };
 		7C249271198E8FD100C9275A /* music_128@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926F198E8FD000C9275A /* music_128@2x.png */; };
 		7C249274198E919000C9275A /* cloud_download_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C249272198E919000C9275A /* cloud_download_22.png */; };
@@ -93,7 +73,6 @@
 		7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* LongStringViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
-		7C609599198FE056007C2ED3 /* LivePhishRadioMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */; };
 		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
 		7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */; };
 		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
@@ -241,51 +220,11 @@
 		7C1C3C5A198219FD00555ACB /* glyphicons_184_volume_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_184_volume_up@2x.png"; sourceTree = "<group>"; };
 		7C1C3C5B198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_halflings_113_chevron-down.png"; sourceTree = "<group>"; };
 		7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_halflings_113_chevron-down@2x.png"; sourceTree = "<group>"; };
-		7C1C3C7119821EC200555ACB /* LivePhishMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishMediaItem.h; sourceTree = "<group>"; };
-		7C1C3C7219821EC200555ACB /* LivePhishMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishMediaItem.m; sourceTree = "<group>"; };
 		7C1C3C741982223600555ACB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		7C1C3C771982499F00555ACB /* LivePhishNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishNotesViewController.h; sourceTree = "<group>"; };
-		7C1C3C781982499F00555ACB /* LivePhishNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishNotesViewController.m; sourceTree = "<group>"; };
-		7C1C3C7A19824E3800555ACB /* LivePhishReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishReviewsViewController.h; sourceTree = "<group>"; };
-		7C1C3C7B19824E3800555ACB /* LivePhishReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishReviewsViewController.m; sourceTree = "<group>"; };
 		7C1C3C7D1982C60B00555ACB /* PhishinMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinMediaItem.h; sourceTree = "<group>"; };
 		7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinMediaItem.m; sourceTree = "<group>"; };
-		7C2345F91981BBC7002A46D5 /* LivePhishAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishAPI.h; sourceTree = "<group>"; };
-		7C2345FA1981BBC7002A46D5 /* LivePhishAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishAPI.m; sourceTree = "<group>"; };
-		7C2345FD1981BC5D002A46D5 /* LivePhishCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishCategory.h; sourceTree = "<group>"; };
-		7C2345FE1981BC5D002A46D5 /* LivePhishCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishCategory.m; sourceTree = "<group>"; };
-		7C2346001981BE28002A46D5 /* LivePhishContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishContainer.h; sourceTree = "<group>"; };
-		7C2346011981BE28002A46D5 /* LivePhishContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishContainer.m; sourceTree = "<group>"; };
-		7C2346031981BFB6002A46D5 /* LivePhishCompleteContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishCompleteContainer.h; sourceTree = "<group>"; };
-		7C2346041981BFB6002A46D5 /* LivePhishCompleteContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishCompleteContainer.m; sourceTree = "<group>"; };
-		7C2346061981D34D002A46D5 /* LivePhishSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishSong.h; sourceTree = "<group>"; };
-		7C2346071981D34D002A46D5 /* LivePhishSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishSong.m; sourceTree = "<group>"; };
-		7C23460C1981D405002A46D5 /* LivePhishReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishReview.h; sourceTree = "<group>"; };
-		7C23460D1981D405002A46D5 /* LivePhishReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishReview.m; sourceTree = "<group>"; };
-		7C23460F1981D4B4002A46D5 /* LivePhishNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishNote.h; sourceTree = "<group>"; };
-		7C2346101981D4B4002A46D5 /* LivePhishNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishNote.m; sourceTree = "<group>"; };
-		7C2346121981E061002A46D5 /* LivePhishAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishAuth.h; sourceTree = "<group>"; };
-		7C2346131981E061002A46D5 /* LivePhishAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishAuth.m; sourceTree = "<group>"; };
-		7C2346151981E51C002A46D5 /* LivePhishStash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishStash.h; sourceTree = "<group>"; };
-		7C2346161981E51C002A46D5 /* LivePhishStash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishStash.m; sourceTree = "<group>"; };
-		7C2346181981E77B002A46D5 /* LivePhishAccessList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishAccessList.h; sourceTree = "<group>"; };
-		7C2346191981E77B002A46D5 /* LivePhishAccessList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishAccessList.m; sourceTree = "<group>"; };
-		7C23461D1981E9E3002A46D5 /* LivePhishBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishBrowseViewController.h; sourceTree = "<group>"; };
-		7C23461E1981E9E3002A46D5 /* LivePhishBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishBrowseViewController.m; sourceTree = "<group>"; };
-		7C2346201981EB09002A46D5 /* LivePhishCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishCategoryViewController.h; sourceTree = "<group>"; };
-		7C2346211981EB09002A46D5 /* LivePhishCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishCategoryViewController.m; sourceTree = "<group>"; };
-		7C2346241981EF33002A46D5 /* LivePhishSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishSignInViewController.h; sourceTree = "<group>"; };
-		7C2346251981EF33002A46D5 /* LivePhishSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishSignInViewController.m; sourceTree = "<group>"; };
-		7C2346281981F85D002A46D5 /* LargeImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeImageTableViewCell.h; sourceTree = "<group>"; };
-		7C2346291981F85D002A46D5 /* LargeImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeImageTableViewCell.m; sourceTree = "<group>"; };
-		7C23462B19820251002A46D5 /* LivePhishContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishContainerViewController.h; sourceTree = "<group>"; };
-		7C23462C19820251002A46D5 /* LivePhishContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishContainerViewController.m; sourceTree = "<group>"; };
 		7C23462F19820630002A46D5 /* MEExpandableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEExpandableHeaderView.h; sourceTree = "<group>"; };
 		7C23463019820630002A46D5 /* MEExpandableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEExpandableHeaderView.m; sourceTree = "<group>"; };
-		7C249268198DE70B00C9275A /* LivePhishDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishDownloadedShowsViewController.h; sourceTree = "<group>"; };
-		7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishDownloadedShowsViewController.m; sourceTree = "<group>"; };
-		7C24926B198DE90A00C9275A /* LivePhishDownloadQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishDownloadQueueViewController.h; sourceTree = "<group>"; };
-		7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishDownloadQueueViewController.m; sourceTree = "<group>"; };
 		7C24926E198E8FD000C9275A /* music_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_128.png; sourceTree = "<group>"; };
 		7C24926F198E8FD000C9275A /* music_128@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_128@2x.png"; sourceTree = "<group>"; };
 		7C249272198E919000C9275A /* cloud_download_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_download_22.png; sourceTree = "<group>"; };
@@ -342,8 +281,6 @@
 		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
 		7C603028182068DA0088F651 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		7C609596198FE056007C2ED3 /* LivePhishRadioMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePhishRadioMediaItem.h; sourceTree = "<group>"; };
-		7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePhishRadioMediaItem.m; sourceTree = "<group>"; };
 		7C63C7CE199437730022F37F /* IGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEvents.h; sourceTree = "<group>"; };
 		7C63C7CF199437730022F37F /* IGEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEvents.m; sourceTree = "<group>"; };
 		7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmazonInsightsSDK.framework; sourceTree = "<group>"; };
@@ -676,86 +613,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		7C2345F81981BBA7002A46D5 /* LivePhish.com */ = {
-			isa = PBXGroup;
-			children = (
-				7C2346231981EEEF002A46D5 /* View Controllers */,
-				7C2345FC1981BC41002A46D5 /* Models */,
-				7C2345F91981BBC7002A46D5 /* LivePhishAPI.h */,
-				7C2345FA1981BBC7002A46D5 /* LivePhishAPI.m */,
-				7C2346121981E061002A46D5 /* LivePhishAuth.h */,
-				7C2346131981E061002A46D5 /* LivePhishAuth.m */,
-			);
-			path = LivePhish.com;
-			sourceTree = "<group>";
-		};
-		7C2345FC1981BC41002A46D5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7C2345FD1981BC5D002A46D5 /* LivePhishCategory.h */,
-				7C2345FE1981BC5D002A46D5 /* LivePhishCategory.m */,
-				7C2346001981BE28002A46D5 /* LivePhishContainer.h */,
-				7C2346011981BE28002A46D5 /* LivePhishContainer.m */,
-				7C2346031981BFB6002A46D5 /* LivePhishCompleteContainer.h */,
-				7C2346041981BFB6002A46D5 /* LivePhishCompleteContainer.m */,
-				7C2346061981D34D002A46D5 /* LivePhishSong.h */,
-				7C2346071981D34D002A46D5 /* LivePhishSong.m */,
-				7C23460C1981D405002A46D5 /* LivePhishReview.h */,
-				7C23460D1981D405002A46D5 /* LivePhishReview.m */,
-				7C23460F1981D4B4002A46D5 /* LivePhishNote.h */,
-				7C2346101981D4B4002A46D5 /* LivePhishNote.m */,
-				7C2346151981E51C002A46D5 /* LivePhishStash.h */,
-				7C2346161981E51C002A46D5 /* LivePhishStash.m */,
-				7C2346181981E77B002A46D5 /* LivePhishAccessList.h */,
-				7C2346191981E77B002A46D5 /* LivePhishAccessList.m */,
-				7C1C3C7119821EC200555ACB /* LivePhishMediaItem.h */,
-				7C1C3C7219821EC200555ACB /* LivePhishMediaItem.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7C23461B1981E9A9002A46D5 /* LivePhish */ = {
-			isa = PBXGroup;
-			children = (
-				7C2346271981F83C002A46D5 /* Cells */,
-				7C23461D1981E9E3002A46D5 /* LivePhishBrowseViewController.h */,
-				7C23461E1981E9E3002A46D5 /* LivePhishBrowseViewController.m */,
-				7C2346201981EB09002A46D5 /* LivePhishCategoryViewController.h */,
-				7C2346211981EB09002A46D5 /* LivePhishCategoryViewController.m */,
-				7C23462B19820251002A46D5 /* LivePhishContainerViewController.h */,
-				7C23462C19820251002A46D5 /* LivePhishContainerViewController.m */,
-				7C1C3C771982499F00555ACB /* LivePhishNotesViewController.h */,
-				7C1C3C781982499F00555ACB /* LivePhishNotesViewController.m */,
-				7C1C3C7A19824E3800555ACB /* LivePhishReviewsViewController.h */,
-				7C1C3C7B19824E3800555ACB /* LivePhishReviewsViewController.m */,
-				7C249268198DE70B00C9275A /* LivePhishDownloadedShowsViewController.h */,
-				7C249269198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m */,
-				7C24926B198DE90A00C9275A /* LivePhishDownloadQueueViewController.h */,
-				7C24926C198DE90A00C9275A /* LivePhishDownloadQueueViewController.m */,
-				7C609596198FE056007C2ED3 /* LivePhishRadioMediaItem.h */,
-				7C609597198FE056007C2ED3 /* LivePhishRadioMediaItem.m */,
-			);
-			path = LivePhish;
-			sourceTree = "<group>";
-		};
-		7C2346231981EEEF002A46D5 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7C2346241981EF33002A46D5 /* LivePhishSignInViewController.h */,
-				7C2346251981EF33002A46D5 /* LivePhishSignInViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		7C2346271981F83C002A46D5 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				7C2346281981F85D002A46D5 /* LargeImageTableViewCell.h */,
-				7C2346291981F85D002A46D5 /* LargeImageTableViewCell.m */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		7C23462E19820630002A46D5 /* MEExpandableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -900,7 +757,6 @@
 		7C518C23175D115A005EB2E7 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				7C2345F81981BBA7002A46D5 /* LivePhish.com */,
 				7CC165E7180F5EB700F72F0D /* Phish.in */,
 				7CC91A57179F75E40047DFF3 /* PhishTracks Stats */,
 				7C518C66175E59C1005EB2E7 /* Phish.Net */,
@@ -1022,7 +878,6 @@
 				7C1C3C3419820EFC00555ACB /* Cells */,
 				7C0623EF198BFAA3002D31E5 /* Downloaded */,
 				7C94367F19888A9300AFEA56 /* Phish.net */,
-				7C23461B1981E9A9002A46D5 /* LivePhish */,
 				7C60302B18206B1F0088F651 /* Random Show */,
 				7C02E785180F455100C01CCB /* Tours */,
 				7C02E786180F456000C01CCB /* Search */,
@@ -1477,18 +1332,15 @@
 			files = (
 				F1B48B53197383E000DDF5C3 /* FavoriteTracksViewController.m in Sources */,
 				F1B48B50197383E000DDF5C3 /* FavoriteShowsViewController.m in Sources */,
-				7C1C3C7C19824E3800555ACB /* LivePhishReviewsViewController.m in Sources */,
 				F1B48B0B1973831A00DDF5C3 /* TourRankingTableViewCell.m in Sources */,
 				C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */,
 				C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */,
 				7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */,
-				7C2345FF1981BC5D002A46D5 /* LivePhishCategory.m in Sources */,
 				F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */,
 				7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */,
 				F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */,
 				7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */,
 				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
-				7C24926A198DE70B00C9275A /* LivePhishDownloadedShowsViewController.m in Sources */,
 				F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */,
 				7C27BA6E1992D46B00E5AEAE /* CuratedPlaylistsViewController.m in Sources */,
 				7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */,
@@ -1508,21 +1360,17 @@
 				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
 				7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */,
 				F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */,
-				7C1C3C7319821EC200555ACB /* LivePhishMediaItem.m in Sources */,
 				F1B48B321973836800DDF5C3 /* GlobalActivityViewController.m in Sources */,
 				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
 				F1B48AF0197382A500DDF5C3 /* SearchViewController.m in Sources */,
 				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
 				7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */,
-				7C2346141981E061002A46D5 /* LivePhishAuth.m in Sources */,
-				7C2346021981BE28002A46D5 /* LivePhishContainer.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				F1B48B51197383E000DDF5C3 /* FavoritesViewController.m in Sources */,
 				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
 				7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */,
 				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
 				C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */,
-				7C23461F1981E9E3002A46D5 /* LivePhishBrowseViewController.m in Sources */,
 				7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */,
 				F1B48B3A1973836800DDF5C3 /* PlayHistoryViewController.m in Sources */,
 				C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */,
@@ -1544,11 +1392,8 @@
 				F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */,
 				7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */,
 				F1B48B0E1973831A00DDF5C3 /* YearRankingTableViewCell.m in Sources */,
-				7C23462D19820251002A46D5 /* LivePhishContainerViewController.m in Sources */,
-				7C2346111981D4B4002A46D5 /* LivePhishNote.m in Sources */,
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
 				7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */,
-				7C2346081981D34D002A46D5 /* LivePhishSong.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
 				7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */,
@@ -1558,18 +1403,15 @@
 				7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */,
 				7C27BA711992D57400E5AEAE /* SubtitleTableViewCell.m in Sources */,
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
-				7C2346051981BFB6002A46D5 /* LivePhishCompleteContainer.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
 				7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */,
 				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
-				7C2346221981EB09002A46D5 /* LivePhishCategoryViewController.m in Sources */,
 				F1B48B3B1973836800DDF5C3 /* SetStatsViewController.m in Sources */,
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
 				7C63C7D0199437730022F37F /* IGEvents.m in Sources */,
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
 				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
-				7C23460E1981D405002A46D5 /* LivePhishReview.m in Sources */,
 				F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */,
 				F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */,
 				F1B48B401973836800DDF5C3 /* VenueStatsViewController.m in Sources */,
@@ -1577,17 +1419,12 @@
 				7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */,
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
 				7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */,
-				7C2345FB1981BBC7002A46D5 /* LivePhishAPI.m in Sources */,
-				7C609599198FE056007C2ED3 /* LivePhishRadioMediaItem.m in Sources */,
 				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
 				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
-				7C23461A1981E77B002A46D5 /* LivePhishAccessList.m in Sources */,
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
-				7C2346171981E51C002A46D5 /* LivePhishStash.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
 				C54ED74918201FF8007D4261 /* Configuration.m in Sources */,
-				7C24926D198DE90A00C9275A /* LivePhishDownloadQueueViewController.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */,
 				F1B48B391973836800DDF5C3 /* PhishTracksStatsViewController.m in Sources */,
@@ -1595,13 +1432,10 @@
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
 				7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */,
-				7C2346261981EF33002A46D5 /* LivePhishSignInViewController.m in Sources */,
 				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
-				7C1C3C791982499F00555ACB /* LivePhishNotesViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
-				7C23462A1981F85D002A46D5 /* LargeImageTableViewCell.m in Sources */,
 				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,

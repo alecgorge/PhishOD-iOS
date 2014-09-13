@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "LivePhishAPI.h"
-
 typedef NS_ENUM(NSInteger, PHODDownloadState) {
 	PHODDownloadStateReady = 0,
 	PHODDownloadStateDownloading,
@@ -50,16 +48,6 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 
 - (instancetype)initWithTrack:(PhishinTrack *)track
                       andShow:(PhishinShow *)show;
-
-@end
-
-@interface LivePhishDownloadItem : PHODDownloadItem
-
-@property (nonatomic, readonly) LivePhishSong *song;
-@property (nonatomic, readonly) LivePhishCompleteContainer *container;
-
-- (instancetype)initWithSong:(LivePhishSong *)song
-                andContainer:(LivePhishCompleteContainer *)container;
 
 @end
 
@@ -111,17 +99,5 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
                                progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
                                 success:(void (^)(NSURL *fileURL)) success
                                 failure:(void ( ^ ) ( NSError *error ))failure;
-
-@end
-
-@interface LivePhishDownloader : PHODDownloader
-
-+(instancetype)sharedInstance;
-
--(PHODDownloadOperation *)downloadSong:(LivePhishSong *)song
-                           inContainer:(LivePhishCompleteContainer *)container
-                              progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-                               success:(void (^)(NSURL *fileURL)) success
-                               failure:(void ( ^ ) ( NSError *error ))failure;
 
 @end

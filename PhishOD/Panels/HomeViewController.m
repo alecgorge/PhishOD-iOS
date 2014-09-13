@@ -10,7 +10,6 @@
 
 #import <SVWebViewController/SVWebViewController.h>
 
-#import "LivePhishAuth.h"
 #import "PhishNetAuth.h"
 
 #import "AppDelegate.h"
@@ -27,12 +26,6 @@
 #import "FavoritesViewController.h"
 #import "GlobalActivityViewController.h"
 #import "CuratedPlaylistsViewController.h"
-
-#import "LivePhishBrowseViewController.h"
-#import "LivePhishCategoryViewController.h"
-#import "LivePhishDownloadedShowsViewController.h"
-#import "LivePhishDownloadQueueViewController.h"
-#import "LivePhishRadioMediaItem.h"
 
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
@@ -61,16 +54,6 @@ NS_ENUM(NSInteger, kPhishODMenuStatsItems) {
 	kPhishODMenuStatsItemsCount
 };
 
-NS_ENUM(NSInteger, kPhishODMenuLivePhishItems) {
-	kPhishODMenuLivePhishItemFeatured,
-    kPhishODMenuLivePhishItemBrowse,
-    kPhishODMenuLivePhishItemStash,
-    kPhishODMenuLivePhishItemRadio,
-	kPhishODMenuLivePhishItemDownloaded,
-	kPhishODMenuLivePhishItemDownloadQueue,
-    kPhishODMenuLivePhishItemsCount,
-};
-
 NS_ENUM(NSInteger, kPhishODMenuTicketsItems) {
     kPhishODMenuTicketsItemCashOrTrade,
     kPhishODMenuTicketsItemsCount,
@@ -87,7 +70,6 @@ NS_ENUM(NSInteger, kPhishODMenuSectionPhishNetItems) {
 NS_ENUM(NSInteger, kPhishODMenuSections) {
 	kPhishODMenuSectionNowPlaying,
 	kPhishODMenuSectionMenu,
-	kPhishODMenuSectionLivePhish,
 	kPhishODMenuSectionPhishNet,
 	kPhishODMenuSectionStats,
 	kPhishODMenuSectionTickets,
@@ -160,9 +142,6 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	else if(section == kPhishODMenuSectionMenu) {
 		return kPhishODMenuItemsCount;
 	}
-    else if(section == kPhishODMenuSectionLivePhish) {
-        return kPhishODMenuLivePhishItemsCount;
-    }
     else if(section == kPhishODMenuSectionPhishNet) {
         return kPhishODMenuPhishNetItemCount;
     }
@@ -238,24 +217,6 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 	}
 	else if(section == kPhishODMenuSectionStats && row == kPhishODMenuStatsItemGlobalActivity) {
 		cell.textLabel.text = @"Recent Activity";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemFeatured) {
-		cell.textLabel.text = @"Featured";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
-		cell.textLabel.text = @"Browse";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
-		cell.textLabel.text = @"My Stash";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemRadio) {
-		cell.textLabel.text = @"LivePhish Radio";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
-		cell.textLabel.text = @"Downloaded Shows";
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloadQueue) {
-		cell.textLabel.text = @"Download Queue";
 	}
 	else if(section == kPhishODMenuSectionPhishNet && row == kPhishODMenuPhishNetItemBlog) {
 		cell.textLabel.text = @"Blog";
@@ -335,41 +296,6 @@ NS_ENUM(NSInteger, kPhishODMenuSections) {
 													[self pushViewController:PhishNetShowsViewController.alloc.init];
 												}];
 	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemBrowse) {
-        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
-                                                 success:^{
-                                                     [self pushViewController:LivePhishBrowseViewController.alloc.init];
-                                                 }];
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemFeatured) {
-        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
-                                                 success:^{
-                                                     [self pushViewController:[LivePhishCategoryViewController.alloc initWithFeaturedContent]];
-                                                 }];
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemStash) {
-        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
-                                                 success:^{
-                                                     [self pushViewController:[LivePhishCategoryViewController.alloc initWithStash]];
-                                                 }];
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemRadio) {
-        [LivePhishRadioMediaItem playLivePhishRadio];
-        [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
-        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloaded) {
-        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
-                                                 success:^{
-                                                     [self pushViewController:LivePhishDownloadedShowsViewController.alloc.init];
-                                                 }];
-	}
-	else if(section == kPhishODMenuSectionLivePhish && row == kPhishODMenuLivePhishItemDownloadQueue) {
-        [LivePhishAuth.sharedInstance ensureSignedInFrom:self
-                                                 success:^{
-                                                     [self pushViewController:LivePhishDownloadQueueViewController.alloc.init];
-                                                 }];
-	}
 	else if(section == kPhishODMenuSectionTickets && row == kPhishODMenuTicketsItemCashOrTrade) {
 		[self pushViewController:[SVWebViewController.alloc initWithAddress:@"http://m.cashortrade.org/"]];
 	}
@@ -385,9 +311,6 @@ titleForHeaderInSection:(NSInteger)section {
 	if(section == kPhishODMenuSectionStats) {
 		return @"Stats";
 	}
-    else if(section == kPhishODMenuSectionLivePhish) {
-        return @"LivePhish.com";
-    }
     else if(section == kPhishODMenuSectionPhishNet) {
         return @"Phish.net";
     }

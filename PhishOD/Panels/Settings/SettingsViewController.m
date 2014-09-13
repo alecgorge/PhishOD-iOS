@@ -14,7 +14,6 @@
 #import <LastFm.h>
 #import <SVWebViewController.h>
 #import "PhishTracksStats.h"
-#import "LivePhishAuth.h"
 #import "PhishNetAuth.h"
 
 #define kAlertLastFm 0
@@ -22,7 +21,6 @@
 
 typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 	PhishODSettingsSectionLastFM,
-	PhishODSettingsSectionLivePhish,
 	PhishODSettingsSectionPhishNet,
 	PhishODSettingsSectionStats,
 	PhishODSettingsSectionDownloads,
@@ -76,14 +74,6 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 			return 2;  // sign in, sign up
 
 	}
-	else if(section == PhishODSettingsSectionLivePhish) {
-		if(LivePhishAuth.sharedInstance.hasCredentials) {
-			return 2;
-		}
-		else {
-			return 1;
-		}
-	}
 	else if(section == PhishODSettingsSectionCredits) {  // credits
 		return 6;
 	}
@@ -109,9 +99,6 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 titleForHeaderInSection:(NSInteger)section {
 	if(section == PhishODSettingsSectionLastFM) {
 		return @"Last.FM";
-	}
-	else if(section == PhishODSettingsSectionLivePhish) {
-		return @"LivePhish.com";
 	}
 	else if(section == PhishODSettingsSectionStats) {
 		return @"Stats & Favorites";
@@ -170,25 +157,6 @@ titleForFooterInSection:(NSInteger)section {
 	else if(indexPath.section == PhishODSettingsSectionLastFM && indexPath.row == 1) {
 		cell.textLabel.text = @"View Last.FM profile";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
-		if(LivePhishAuth.sharedInstance.hasCredentials) {
-			if(indexPath.row == 0) {
-				cell.textLabel.text = @"Signed in as";
-                cell.detailTextLabel.text = LivePhishAuth.sharedInstance.username;
-
-				cell.accessoryType = UITableViewCellAccessoryNone;
-				cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			}
-			else if(indexPath.row == 1) {
-				cell.textLabel.text = @"Sign out";
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			}
-		}
-		else {
-			cell.textLabel.text = @"Sign in";
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
 	}
 	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
 		if(PhishNetAuth.sharedInstance.hasCredentials) {
@@ -301,23 +269,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		NSString *add = [NSString stringWithFormat:@"http://last.fm/user/%@", [LastFm sharedInstance].username];
 		[self.navigationController pushViewController:[[SVWebViewController alloc] initWithAddress:add]
 											 animated:YES];
-	}
-	else if(indexPath.section == PhishODSettingsSectionLivePhish) {
-		if(LivePhishAuth.sharedInstance.hasCredentials) {
-			if(indexPath.row == 0) {
-				
-			}
-			else if(indexPath.row == 1) {
-				[LivePhishAuth.sharedInstance signOut];
-				[self.tableView reloadData];
-			}
-		}
-		else {
-			[LivePhishAuth.sharedInstance ensureSignedInFrom:self
-													 success:^{
-														 [self.tableView reloadData];
-													 }];
-		}
 	}
 	else if(indexPath.section == PhishODSettingsSectionPhishNet) {
 		if(PhishNetAuth.sharedInstance.hasCredentials) {
