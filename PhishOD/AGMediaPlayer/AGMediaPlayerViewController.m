@@ -83,10 +83,12 @@
                                bundle:nibBundleOrNil]) {
         self.playbackQueue = [NSMutableArray array];
         
-        self.audioPlayer = STKAudioPlayer.alloc.init;
+        self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){
+            .bufferSizeInSeconds = 20.0f,
+            .secondsRequiredToStartPlaying = 5.0f,
+            .secondsRequiredToStartPlayingAfterBufferUnderun = 20.0f
+        }];
         self.audioPlayer.delegate = self;
-        
-        
     }
     
     return self;
