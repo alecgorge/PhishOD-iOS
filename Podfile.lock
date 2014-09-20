@@ -30,7 +30,7 @@ PODS:
   - DBGHTMLEntities (0.2.0)
   - DZNEmptyDataSet (1.4.1)
   - EGOCache (2.1)
-  - FCFileManager (1.0.2)
+  - FCFileManager (1.0.3)
   - FXKeychain (1.5.1)
   - JSONModel (0.13.0)
   - KissXML (5.0)
@@ -47,7 +47,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
-  - StreamingKit (0.1.19)
+  - StreamingKit (0.1.23)
   - SVProgressHUD (HEAD based on 1.0)
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 2.6)
@@ -63,7 +63,7 @@ DEPENDENCIES:
   - DBGHTMLEntities
   - DZNEmptyDataSet
   - EGOCache
-  - FCFileManager (from `https://github.com/alecgorge/FCFileManager.git`, branch `patch-1`)
+  - FCFileManager (~> 1.0.3)
   - FXKeychain
   - JSONModel
   - KVOController
@@ -75,22 +75,17 @@ DEPENDENCIES:
   - ObjectiveSugar
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
   - SDWebImage
-  - StreamingKit (from `https://github.com/alecgorge/StreamingKit.git`)
+  - StreamingKit (~> 0.1.23)
   - SVProgressHUD (HEAD)
   - SVWebViewController
   - TDBadgedCell (HEAD)
   - TTTAttributedLabel
 
 EXTERNAL SOURCES:
-  FCFileManager:
-    :branch: patch-1
-    :git: https://github.com/alecgorge/FCFileManager.git
   NSObject-NSCoding:
     :git: https://github.com/alecgorge/NSObject-NSCoding.git
   PSUpdateApp:
     :git: https://github.com/alecgorge/PSUpdateApp.git
-  StreamingKit:
-    :git: https://github.com/alecgorge/StreamingKit.git
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: d6a2d2755fada3a1fbf1f490ec0dd92224e092a4
@@ -102,7 +97,7 @@ SPEC CHECKSUMS:
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
   EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
-  FCFileManager: 20641d71c692511776eaaf271b176abd8d6504ff
+  FCFileManager: 1b8718124e9264ee7ba18cbb38508522b5d13575
   FXKeychain: beb642a4218ba783507af08865eda05e9b26a612
   JSONModel: 62ea96b49ea18a8b91ef89c249dba291d8601d82
   KissXML: e537c38b18ede903ee6de45953a9bd86c131ebe9
@@ -115,7 +110,7 @@ SPEC CHECKSUMS:
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   PSUpdateApp: ee6d181405d4ac41a6e569109133e541d254cb9e
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  StreamingKit: 07aa7edd05e9ed3f33f7b469158234e921347932
+  StreamingKit: 97f1dd5a76693fd55f616e8dfb13b3f456dd11c7
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
