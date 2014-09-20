@@ -75,7 +75,7 @@
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.row == 0) {
-		return tableView.rowHeight;
+		return (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight);
 	}
 	
 	PhishNetReview *review = self.setlist.reviews[indexPath.section];

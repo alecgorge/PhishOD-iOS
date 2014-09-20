@@ -16,7 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 		self.detailTextLabel.textColor = [UIColor darkGrayColor];
-        self.detailTextLabel.numberOfLines = 2;
+        self.detailTextLabel.numberOfLines = 0;
 		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -25,7 +25,7 @@
 
 - (void)setPlayEvent:(PhishTracksStatsPlayEvent *)play showUsername:(BOOL)showUsername
 {
-	self.textLabel.text = play.trackTitle;
+    self.textLabel.text = play.trackTitle;
     
     if (play.username && showUsername == YES) {
         self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago - %@ - %@ - %@\n%@ - %@",

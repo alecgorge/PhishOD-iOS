@@ -265,7 +265,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == 0) {
 		return UITableViewAutomaticDimension;
 	}
-	return tableView.rowHeight * 1.5;
+	return (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight) * 1.5;
 }
 
 #pragma mark - Table view delegate

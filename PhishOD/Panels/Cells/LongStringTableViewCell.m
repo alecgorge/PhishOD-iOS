@@ -84,7 +84,7 @@
                                   context:nil];
 	
 	// Get the height of our measurement, with a minimum of 44 (standard cell size)
-	CGFloat height = MAX(rect.size.height, tableView.rowHeight);
+	CGFloat height = MAX(rect.size.height, (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight));
 	
 	// return the height, with a bit of extra padding in
 	return height + (10.0f * 2);
@@ -101,7 +101,7 @@
                                      context:nil];
 	
 	// Get the height of our measurement, with a minimum of 44 (standard cell size)
-	CGFloat height = MAX(rect.size.height, tableView.rowHeight);
+	CGFloat height = MAX(rect.size.height, (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight));
 	
 	// return the height, with a bit of extra padding in
 	return height + (10.0f * 2);

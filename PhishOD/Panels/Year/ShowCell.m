@@ -68,7 +68,7 @@
 										 options:NSStringDrawingUsesLineFragmentOrigin
 										 context:nil];
     
-    return MAX(tableView.rowHeight, labelSize.size.height + 35 + 10);
+    return MAX((tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight), labelSize.size.height + 35 + 10);
 }
 
 @end

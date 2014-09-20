@@ -75,7 +75,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 										attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.0]}
 										   context:nil];
 	
-	return MAX(tableView.rowHeight + 15, 7 + 20 + rect.size.height + 7);
+	return MAX((tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight) + 15, 7 + 20 + rect.size.height + 7);
 }
 
 - (void)tableView:(UITableView *)tableView

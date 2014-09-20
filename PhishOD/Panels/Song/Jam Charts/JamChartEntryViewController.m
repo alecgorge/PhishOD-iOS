@@ -145,7 +145,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 												  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0]}
 													 context:nil];
 		
-		return MAX(tableView.rowHeight, labelSize.size.height + 20);
+		return MAX((tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight), labelSize.size.height + 20);
 	}
 	
 	return UITableViewAutomaticDimension;

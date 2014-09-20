@@ -109,7 +109,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return tableView.rowHeight * 1.5;
+	return (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight) * 1.5;
 }
 
 @end

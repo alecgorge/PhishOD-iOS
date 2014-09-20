@@ -222,6 +222,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)guardedSearch {
+    if(self.searchString.length == 0) {
+        return;
+    }
+    
 	[[PhishinAPI sharedAPI] search:self.searchString
 						   success:^(PhishinSearchResults *results) {
 							   self.results = results;

@@ -23,7 +23,7 @@
 		self.indentationWidth = 18.0;
 		self.indentationLevel = 1;
 		self.detailTextLabel.textColor = [UIColor darkGrayColor];
-        self.detailTextLabel.numberOfLines = 2;
+        self.detailTextLabel.numberOfLines = 0;
 		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
 
