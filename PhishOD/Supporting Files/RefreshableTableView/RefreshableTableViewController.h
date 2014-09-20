@@ -11,5 +11,6 @@
 
 @interface RefreshableTableViewController : UITableViewController<Refreshable>
 
+@property (nonatomic) BOOL preventRefresh;
 
 @end

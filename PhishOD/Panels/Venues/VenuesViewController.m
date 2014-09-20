@@ -210,9 +210,4 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 										 animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return tableView.rowHeight * 1.2;
-}
-
 @end

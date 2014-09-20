@@ -86,7 +86,7 @@ static CGPoint MapCenter;
     for (PDLocation *location in aLocations) {
         MapPoint *mapPoint = [[MapPoint alloc] initWithCoordinate:location.location
 															title:location.name
-														 subTitle:location.description];
+														 subTitle:location.desc];
         [self.mapView addAnnotation:mapPoint];
     }
 	

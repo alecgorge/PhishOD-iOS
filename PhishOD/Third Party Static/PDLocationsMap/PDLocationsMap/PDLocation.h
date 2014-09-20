@@ -12,7 +12,7 @@
 @interface PDLocation : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *desc;
 @property (nonatomic, assign) CGFloat distance;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 

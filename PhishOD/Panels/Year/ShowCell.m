@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiRemasteredLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiDescriptionLabel;
 
-@property (nonatomic) BOOL shiftRemasteredLabelLeft;
-
 @end
 
 @implementation ShowCell
@@ -35,7 +33,7 @@
 - (NSAttributedString *)attributedStringForShow:(PhishinShow *)show {
 	NSMutableAttributedString *att = [NSMutableAttributedString.alloc initWithString:[show.venue_name stringByAppendingFormat:@"\n%@", show.location]];
 	
-	[att addAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.0],
+	[att addAttributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote],
 						 NSForegroundColorAttributeName: UIColor.darkGrayColor,
 						 }
 				 range:NSMakeRange(show.venue_name.length + 1, show.location.length)];
@@ -45,25 +43,17 @@
 
 - (void)updateCellWithShow:(PhishinShow *)show
 			   inTableView:(UITableView *)tableView {
+    // dynamic type
+    self.uiDateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.uiDurationLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+    self.uiDescriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    
 	self.uiDateLabel.text = show.date;
 	self.uiDurationLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration / 1000.0f];
 	self.uiSoundboardLabel.hidden = !show.sbd;
 	self.uiRemasteredLabel.hidden = !show.remastered;
 		
 	self.uiDescriptionLabel.attributedText = [self attributedStringForShow:show];
-	
-	self.shiftRemasteredLabelLeft = show.remastered && !show.sbd;
-	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
-	CGRect f = self.uiRemasteredLabel.frame;
-	if(self.shiftRemasteredLabelLeft) {
-		f.origin.x = self.uiSoundboardLabel.frame.origin.x;
-	}
-	else {
-		f.origin.x = self.uiSoundboardLabel.frame.origin.x + self.uiSoundboardLabel.frame.size.width + 4;
-	}
-	
-	self.uiRemasteredLabel.frame = f;
 }
 
 - (CGFloat)heightForCellWithShow:(PhishinShow *)show

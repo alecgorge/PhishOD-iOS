@@ -67,11 +67,10 @@
 - (void)viewDidLoad {
 	// super viewDidLoad triggers the refresh
 	if(self.loadedFromCompleteShow) {
-		[self.refreshControl removeFromSuperview];
+        self.preventRefresh = YES;
 	}
-	else {
-		[super viewDidLoad];
-	}
+    
+	[super viewDidLoad];
 	
 	[self setupRightBarButtonItem];
 	[self setupTableView];
@@ -181,6 +180,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 			PhishinTrack *track = matchingTracks[0];
 			
 			[self playTrack:track];
+            
 
 			if(self.autoplaySeekLocation > 0) {
 				[self performSelector:@selector(autoplaySeek)
@@ -297,14 +297,14 @@ viewForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
-	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
-    
-    return [cell heightForCellWithTrack:track
-                            inTableView:tableView];
-}
+//- (CGFloat)tableView:(UITableView *)tableView
+//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
+//	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
+//    
+//    return [cell heightForCellWithTrack:track
+//                            inTableView:tableView];
+//}
 
 - (BOOL)tableView:(UITableView *)tableView
 canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -1210,6 +1210,11 @@
 				TargetAttributes = {
 					7C518C00175D0C32005EB2E7 = {
 						DevelopmentTeam = UH6Q9M9L78;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1543,9 +1548,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23303284-836F-488D-A812-42D8CF8766CF";
+				PROVISIONING_PROFILE = "fb81cb8f-88a5-4845-8dad-e26225346a28";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1568,7 +1573,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "619F6193-1539-4F0F-AC91-C1711AFAE94D";
 				WRAPPER_EXTENSION = app;
@@ -1622,7 +1627,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "PhishOD β";
 				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
 				WRAPPER_EXTENSION = app;

@@ -57,6 +57,16 @@
 
 - (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
                 inTableView:(UITableView *)tableView {
+    // dynamic type
+    UIFontDescriptor *boldSubhead = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline];
+    boldSubhead = [boldSubhead fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    
+    self.uiTrackTitle.font = [UIFont fontWithDescriptor:boldSubhead
+                                                   size:0.0f];
+    self.uiTrackRunningTime.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+    self.uiTrackNumber.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    
+    
 	self.track = track;
     self.uiTrackNumber.text = @(track.track).stringValue;
     self.uiTrackTitle.attributedText = [self attributedStringForTrack:track];

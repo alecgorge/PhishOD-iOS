@@ -14,9 +14,9 @@
        andLocation:(CLLocationCoordinate2D)lCoordinate {
     self = [super init];
     if (self) {
-        _name = lName;
-        _description = lDescription;
-        _location = lCoordinate;
+        self.name = lName;
+        self.desc = lDescription;
+        self.location = lCoordinate;
     }
     
     return self;

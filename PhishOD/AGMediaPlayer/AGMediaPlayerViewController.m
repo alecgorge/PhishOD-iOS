@@ -99,6 +99,8 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    self.uiPlaybackQueueTable.estimatedRowHeight = 44;
+    self.uiPlaybackQueueTable.rowHeight = UITableViewAutomaticDimension;
     [self.uiPlaybackQueueTable registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
                                                           bundle:nil]
                     forCellReuseIdentifier:@"track"];

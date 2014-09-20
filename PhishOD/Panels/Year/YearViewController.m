@@ -150,14 +150,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 										 animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	ShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"];
-	
-	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
-
-	return [cell heightForCellWithShow:show
-						   inTableView:tableView];
-}
+//- (CGFloat)tableView:(UITableView *)tableView
+//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//	ShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"];
+//	
+//	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
+//
+//	return [cell heightForCellWithShow:show
+//						   inTableView:tableView];
+//}
 
 @end

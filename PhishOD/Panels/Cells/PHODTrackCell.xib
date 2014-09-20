@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,44 +14,55 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1966" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w7J-kL-9Yf">
-                        <rect key="frame" x="49" y="11" width="188" height="21"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1966" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7J-kL-9Yf">
+                        <rect key="frame" x="50" y="8" width="178" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="QZb-V7-d18"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:48:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rUU-dg-B4L">
-                        <rect key="frame" x="262" y="11" width="46" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1:48:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-dg-B4L">
+                        <rect key="frame" x="266" y="11" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="uYy-p1-VHO"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="euE-3F-M5d">
-                        <rect key="frame" x="14" y="15" width="20" height="13"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3F-M5d">
+                        <rect key="frame" x="15" y="13" width="30" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="oax-ab-GCO"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view appearanceType="aqua" tag="2" contentMode="scaleToFill" id="qXW-ld-nrJ" customClass="NAKPlaybackIndicatorView">
+                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-ld-nrJ" customClass="NAKPlaybackIndicatorView">
                         <rect key="frame" x="15" y="16" width="13" height="12"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="DoT-dZ-DMp"/>
+                            <constraint firstAttribute="height" constant="12" id="bC6-C9-rRO"/>
+                        </constraints>
                     </view>
-                    <view appearanceType="aqua" contentMode="scaleToFill" id="m2c-7D-P09" customClass="LLACircularProgressView">
-                        <rect key="frame" x="245" y="11" width="22" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-7D-P09" customClass="LLACircularProgressView">
+                        <rect key="frame" x="236" y="11" width="22" height="22"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.50895065069198608" blue="0.36556175351142883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="6WT-2t-Xcx"/>
+                            <constraint firstAttribute="width" constant="22" id="SUk-VH-5WB"/>
+                        </constraints>
                         <connections>
                             <action selector="cancelDownload:" destination="EQz-9i-ftB" eventType="touchUpInside" id="eSs-VO-6U5"/>
                         </connections>
                     </view>
-                    <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WwM-CR-byt">
-                        <rect key="frame" x="225" y="0.0" width="62" height="44"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwM-CR-byt">
+                        <rect key="frame" x="207" y="0.0" width="80" height="43"/>
                         <state key="normal" image="cloud_download_22.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -60,6 +71,26 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" id="16q-n0-dtO"/>
+                    <constraint firstItem="w7J-kL-9Yf" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="trailing" constant="5" id="5T6-wy-WPx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rUU-dg-B4L" secondAttribute="trailing" constant="4" id="Aoi-9C-clL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="w7J-kL-9Yf" secondAttribute="bottom" id="DhP-O2-hyd"/>
+                    <constraint firstItem="rUU-dg-B4L" firstAttribute="leading" secondItem="m2c-7D-P09" secondAttribute="leading" constant="30" id="E9c-5t-Flz"/>
+                    <constraint firstItem="m2c-7D-P09" firstAttribute="centerX" secondItem="WwM-CR-byt" secondAttribute="centerX" id="Efp-uR-uHI"/>
+                    <constraint firstItem="qXW-ld-nrJ" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="FPt-Yx-hLf"/>
+                    <constraint firstItem="w7J-kL-9Yf" firstAttribute="bottom" secondItem="rUU-dg-B4L" secondAttribute="bottom" constant="3" id="G5J-aJ-80h"/>
+                    <constraint firstItem="m2c-7D-P09" firstAttribute="leading" secondItem="w7J-kL-9Yf" secondAttribute="trailing" constant="8" symbolic="YES" id="IRF-HY-1Vb"/>
+                    <constraint firstItem="WwM-CR-byt" firstAttribute="centerY" secondItem="m2c-7D-P09" secondAttribute="centerY" id="LKb-zW-CyN"/>
+                    <constraint firstItem="rUU-dg-B4L" firstAttribute="top" secondItem="w7J-kL-9Yf" secondAttribute="top" constant="3" id="SD7-Id-YAa"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WwM-CR-byt" secondAttribute="trailing" constant="25" id="WbJ-qL-8kX"/>
+                    <constraint firstItem="w7J-kL-9Yf" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="topMargin" id="YXZ-WW-mKs"/>
+                    <constraint firstItem="qXW-ld-nrJ" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="leading" id="efN-v6-kYz"/>
+                    <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" id="jI1-Rl-MWt"/>
+                    <constraint firstAttribute="bottom" secondItem="WwM-CR-byt" secondAttribute="bottom" id="tiC-FZ-vcD"/>
+                    <constraint firstItem="w7J-kL-9Yf" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="wLN-UU-X2b"/>
+                    <constraint firstItem="euE-3F-M5d" firstAttribute="leading" secondItem="2LD-6t-Saw" secondAttribute="leadingMargin" constant="7" id="x5G-Le-RJL"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="uiCircularProgress" destination="m2c-7D-P09" id="6D0-s7-DKt"/>
@@ -74,4 +105,9 @@
     <resources>
         <image name="cloud_download_22.png" width="22" height="22"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

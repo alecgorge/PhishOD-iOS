@@ -8,7 +8,11 @@
 
 #import "RefreshableTableViewController.h"
 
-@interface RefreshableTableViewController ()
+#import <CSNNotificationObserver/CSNNotificationObserver.h>
+
+@interface RefreshableTableViewController () {
+    CSNNotificationObserver *_contentResizeNotification;
+}
 
 @end
 
@@ -17,20 +21,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	UIRefreshControl *c = [[UIRefreshControl alloc] init];
-	[c addTarget:self
-		  action:@selector(refresh:)
-forControlEvents:UIControlEventValueChanged];
-	self.refreshControl = c;
-	[self beginRefreshingTableView];
-    
+    self.tableView.estimatedRowHeight = 55;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+    self.tableView.sectionFooterHeight = UITableViewAutomaticDimension;
     self.tableView.sectionIndexColor = COLOR_PHISH_GREEN;
-	
-	[self refresh: self.refreshControl];
+    
+    if(!self.preventRefresh) {
+        UIRefreshControl *c = [[UIRefreshControl alloc] init];
+        [c addTarget:self
+              action:@selector(refresh:)
+    forControlEvents:UIControlEventValueChanged];
+        self.refreshControl = c;
+        [self beginRefreshingTableView];
+        
+        [self refresh: self.refreshControl];
+    }
+    
+    _contentResizeNotification = [CSNNotificationObserver.alloc initWithName:UIContentSizeCategoryDidChangeNotification
+                                                                      object:nil
+                                                                       queue:NSOperationQueue.mainQueue
+                                                                  usingBlock:^(NSNotification *notification) {
+                                                                      [self.tableView reloadData];
+                                                                  }];
 }
 
 - (void)refresh:(id)sender {
-	[sender endRefreshing];
+    [sender endRefreshing];
 }
 
 - (void)beginRefreshingTableView {
