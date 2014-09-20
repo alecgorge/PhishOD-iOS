@@ -17,6 +17,7 @@
 
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
+#import <CSNNotificationObserver/CSNNotificationObserver.h>
 
 #import "IGDurationHelper.h"
 #import "NowPlayingBarViewController.h"
@@ -61,6 +62,8 @@
 - (IBAction)pressedShuffle:(id)sender;
 - (IBAction)pressedPlay:(id)sender;
 
+@property (nonatomic) CSNNotificationObserver *headphoneObserver;
+
 @end
 
 @implementation AGMediaPlayerViewController
@@ -82,6 +85,8 @@
         
         self.audioPlayer = STKAudioPlayer.alloc.init;
         self.audioPlayer.delegate = self;
+        
+        
     }
     
     return self;
@@ -390,6 +395,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		
         [AVAudioSession.sharedInstance setActive:YES
 										   error:nil];
+        
+        self.headphoneObserver = [CSNNotificationObserver.alloc initWithName:AVAudioSessionRouteChangeNotification
+                                                                      object:nil
+                                                                       queue:NSOperationQueue.mainQueue
+                                                                  usingBlock:^(NSNotification *notification) {
+                                                                      NSNumber *reason = notification.userInfo[AVAudioSessionRouteChangeReasonKey];
+                                                                      
+                                                                      if(reason.integerValue == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
+                                                                          [self pause];
+                                                                      }
+                                                                  }];
 		
 		self.registeredAudioSession = YES;
 	}
