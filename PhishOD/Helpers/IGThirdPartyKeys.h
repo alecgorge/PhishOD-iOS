@@ -27,4 +27,7 @@
 @property (readonly) BOOL isCrashlyticsEnabled;
 @property (readonly) NSString *crashlyticsApiKey;
 
+//@property (readonly) BOOL isPhishtracksStatsEnabled;
+@property (readonly) NSString *phishtracksStatsApiKey;
+
 @end

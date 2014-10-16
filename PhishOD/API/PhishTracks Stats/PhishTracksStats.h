@@ -32,10 +32,9 @@ typedef enum {
 
 @interface PhishTracksStats : AFHTTPRequestOperationManager
 
-+ (void)setupWithAPIKey:(NSString *)apiKey;
++ (void)setupWithAPIKey:(NSString *)apiKey andBaseUrl:(NSString *)baseUrl;
 + (PhishTracksStats *)sharedInstance;
 
-@property NSString *apiKey;
 @property NSString *sessionKey;
 @property BOOL isAuthenticated;
 @property NSString *username;

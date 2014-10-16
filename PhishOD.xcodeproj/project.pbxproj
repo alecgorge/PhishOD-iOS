@@ -131,8 +131,6 @@
 		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
 		7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */; };
 		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
-		C54ED74618201CF1007D4261 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54ED74518201CF1007D4261 /* Configurations.plist */; };
-		C54ED74918201FF8007D4261 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C54ED74818201FF8007D4261 /* Configuration.m */; };
 		C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */; };
 		C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */; };
 		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
@@ -384,9 +382,6 @@
 		7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloader.m; sourceTree = "<group>"; };
 		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C54ED74518201CF1007D4261 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
-		C54ED74718201FF8007D4261 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; usesTabs = 1; };
-		C54ED74818201FF8007D4261 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; usesTabs = 1; };
 		C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsFavorite.h; sourceTree = "<group>"; };
 		C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsFavorite.m; sourceTree = "<group>"; };
 		C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsError.h; sourceTree = "<group>"; };
@@ -706,7 +701,6 @@
 		7C518C0B175D0C32005EB2E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F1B48B611973B11600DDF5C3 /* Configuration */,
 				7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */,
 				7C23462E19820630002A46D5 /* MEExpandableHeaderView */,
 				F1B48B5F1973B0FA00DDF5C3 /* Rotatable TabBarController */,
@@ -1166,16 +1160,6 @@
 			path = FailureHandler;
 			sourceTree = "<group>";
 		};
-		F1B48B611973B11600DDF5C3 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				C54ED74518201CF1007D4261 /* Configurations.plist */,
-				C54ED74718201FF8007D4261 /* Configuration.h */,
-				C54ED74818201FF8007D4261 /* Configuration.m */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1189,6 +1173,7 @@
 				7C518BFF175D0C32005EB2E7 /* Resources */,
 				F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */,
 				7CADB327176057AB00B80D54 /* ShellScript */,
+				C5167BCE19F03C9600E11AB7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1245,7 +1230,6 @@
 				7C1C3C68198219FD00555ACB /* glyphicons_174_pause@2x.png in Resources */,
 				7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */,
 				7C1C3C5F198219FD00555ACB /* glyphicons_076_headphones.png in Resources */,
-				C54ED74618201CF1007D4261 /* Configurations.plist in Resources */,
 				7CC91A6617A07D0F0047DFF3 /* jquery2.min.js in Resources */,
 				7C1C3C63198219FD00555ACB /* glyphicons_172_rewind.png in Resources */,
 				7CC91A6717A07D0F0047DFF3 /* jQueryAPI.js in Resources */,
@@ -1313,6 +1297,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4\n";
+		};
+		C5167BCE19F03C9600E11AB7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# ---------------------------- IMPORTANT ----------------------------\n# You must set RESTServer to something like 'Set by build script' in the file\n# file '<Project Name>-Info.plist' in the 'Supporting Files' group\n# -------------------------------------------------------------------\n#\n# determin server based on user name\n#\n\nSERVER=${STATS_SERVER}\n\n# Only use developer servers for debug never for release\nif [ \"$CONFIGURATION\" != \"Debug\" ] ; then\n    exit\nfi\n\nif [ \"$USER\" == \"bird\" ] ; then\n    SERVER=\"http://localhost:5000/api/v2/\"\nfi\n\necho $SERVER\n\n#\n# Set the server info in plist file in the build product not the source tree\n#\n/usr/libexec/PlistBuddy -c \"Set :StatsServer $SERVER\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
 		};
 		F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1429,7 +1426,6 @@
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
-				C54ED74918201FF8007D4261 /* Configuration.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */,
 				F1B48B391973836800DDF5C3 /* PhishTracksStatsViewController.m in Sources */,
@@ -1551,6 +1547,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "fb81cb8f-88a5-4845-8dad-e26225346a28";
+				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1576,6 +1573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "619F6193-1539-4F0F-AC91-C1711AFAE94D";
+				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1630,6 +1628,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "PhishOD β";
 				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
+				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;

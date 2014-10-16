@@ -9,21 +9,36 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsPlayEvent.h"
 #import "PhishTracksStatsFavorite.h"
-#import "Configuration.h"
 #import <FXKeychain/FXKeychain.h>
 
 typedef enum {
     kStatsErrorUnparsableBody = 100
 } PhishTracksStatsApiErrors;
 
-@implementation PhishTracksStats
+@interface PhishTracksStats ()
+
+@property NSString *apiKey;
+
+@end
+
+@implementation PhishTracksStats// {
+//	NSString *_apiKey;
+//}
 
 static PhishTracksStats *sharedPts;
 
 #pragma mark -
 #pragma mark Initialization
 
-+ (void)setupWithAPIKey:(NSString *)apiKey {
++ (void)setupWithAPIKey:(NSString *)apiKey andBaseUrl:(NSString *)baseUrl {
+	static dispatch_once_t once;
+    dispatch_once(&once, ^ {
+		NSLog(@"[stats] base_url=%@", baseUrl);
+		sharedPts = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+		sharedPts.requestSerializer = AFJSONRequestSerializer.serializer;
+		sharedPts.responseSerializer.acceptableContentTypes = [sharedPts.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+	});
+	
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
 	sharedPts.autoplayTracks = YES;
@@ -34,20 +49,9 @@ static PhishTracksStats *sharedPts;
 }
 
 + (PhishTracksStats*)sharedInstance {
-	if (sharedPts != nil) {
-		return sharedPts;
+	if (!sharedPts) {
+		NSLog(@"[stats] setup must be called before using the shared instance");
 	}
-	
-    static dispatch_once_t once;
-    dispatch_once(&once, ^ {
-		NSLog(@"[stats] configuration=%@ base_url=%@", [Configuration configuration], [Configuration statsApiBaseUrl]);
-		sharedPts = [[self alloc] initWithBaseURL:[NSURL URLWithString: [Configuration statsApiBaseUrl]]];
-		sharedPts.requestSerializer = AFJSONRequestSerializer.serializer;
-		
-		sharedPts.responseSerializer.acceptableContentTypes = [sharedPts.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-		
-
-	});
 	
     return sharedPts;
 }
