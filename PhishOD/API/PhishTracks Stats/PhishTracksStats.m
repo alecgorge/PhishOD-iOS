@@ -9,6 +9,7 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsPlayEvent.h"
 #import "PhishTracksStatsFavorite.h"
+#import "PTSHeatmapResults.h"
 #import <FXKeychain/FXKeychain.h>
 
 typedef enum {
@@ -21,9 +22,7 @@ typedef enum {
 
 @end
 
-@implementation PhishTracksStats// {
-//	NSString *_apiKey;
-//}
+@implementation PhishTracksStats
 
 static PhishTracksStats *sharedPts;
 
@@ -318,6 +317,34 @@ static PhishTracksStats *sharedPts;
 							failure:failure];
 }
 
+
+#pragma mark - Heatmaps
+
+- (void)globalHeatmapWithQuery:(PTSHeatmapQuery *)query
+					   success:(void (^)(PTSHeatmapResults *))success
+					   failure:(void (^)(PhishTracksStatsError *))failure
+{
+	NSDictionary *params = [query asParams];
+	
+	[self POST:@"plays/heatmaps.json"
+	parameters:params
+	   success:^(AFHTTPRequestOperation *operation, id responseObject)
+	 {
+		 if (success) {
+			 NSError *error = nil;
+			 NSDictionary *dict = [self parseResponseObject:responseObject error:error];
+//			 NSLog(@"%@", dict);
+			 PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:dict];
+			 success(result);
+		 }
+	 }
+	   failure:^(AFHTTPRequestOperation *operation, NSError *error)
+	 {
+		 [self handleRequestFailure:operation error:error failureCallback:failure];
+	 }];
+}
+
+
 #pragma mark -
 #pragma mark Favorites Helpers
 
@@ -461,5 +488,15 @@ static PhishTracksStats *sharedPts;
     [self destroyUserFavoriteHelper:@"favorite_venues" userId:userId favoriteId:favoriteId success:success failure:failure];
 }
 
+
+#pragma mark - Utils
+
++ (NSString *)tzOffset
+{
+    NSDate *sourceDate = [NSDate date];
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    float timeZoneOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate] / 3600.0;
+	return [NSString stringWithFormat:@"%f", timeZoneOffset];
+}
 
 @end

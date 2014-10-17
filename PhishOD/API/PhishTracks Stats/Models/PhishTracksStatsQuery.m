@@ -7,17 +7,16 @@
 //
 
 #import "PhishTracksStatsQuery.h"
+#import "PhishTracksStats.h"
 
-@implementation PhishTracksStatsQuery {
-	
-}
+@implementation PhishTracksStatsQuery
 
 - (id)initWithEntity:(NSString *)entity timeframe:(NSString *)timeframe
 {
 	if (self = [super init]) {
 		self.entity = entity;
 		self.timeframe = timeframe;
-		self.timezone = nil;
+		self.timezone = [PhishTracksStats tzOffset];
 		self.filters = [NSMutableArray arrayWithCapacity:10];
 		self.stats = [NSMutableArray arrayWithCapacity:10];
 	}
@@ -58,10 +57,7 @@
 	NSMutableDictionary *query = [NSMutableDictionary dictionaryWithCapacity:5];
 	[query setValue:self.entity forKey:@"entity"];
 	[query setValue:self.timeframe forKey:@"timeframe"];
-
-	if (self.timezone) {
-		[query setValue:self.timezone forKey:@"timezome"];
-	}
+	[query setValue:self.timezone forKey:@"timezome"];
 
 	if (self.filters.count > 0) {
 		[query setValue:self.filters forKey:@"filters"];

@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet NAKPlaybackIndicatorView *uiPlaybackIndicator;
 @property (weak, nonatomic) IBOutlet LLACircularProgressView *uiCircularProgress;
 @property (weak, nonatomic) IBOutlet UIButton *uiDownloadButton;
+@property (weak, nonatomic) IBOutlet UIView *heatmapView;
+@property (weak, nonatomic) IBOutlet UIView *heatmapValue;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heatmapValueHeight;
 
 @property (nonatomic) NSObject<PHODGenericTrack> *track;
 @property (nonatomic) NSTimer *progressTimer;
@@ -196,6 +199,16 @@
                                          context:nil];
     
     return MAX((tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight), labelSize.size.height + 24);
+}
+
+- (void)updateHeatmapLabelWithValue:(float)val {
+	// with hue=48, we get the same color as the ratings stars
+	CGFloat max_height = self.heatmapView.frame.size.height;
+	self.heatmapValueHeight.constant = max_height * val;
+	float min_hue = 48.0/0xFF;
+	float max_hue = 0;
+	float hue = (min_hue - max_hue) * (1.0 - val);
+	self.heatmapValue.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:1.0 alpha:1.0];
 }
 
 @end
