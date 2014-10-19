@@ -10,12 +10,17 @@
 #import <TDBadgedCell/TDBadgedCell.h>
 #import "ShowViewController.h"
 #import "ShowCell.h"
+#import "PhishTracksStats.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
 
 @interface YearViewController ()
 
 @end
 
-@implementation YearViewController
+@implementation YearViewController {
+	PTSHeatmapResults *_yearHeatmap;
+}
 
 - (id)initWithYear:(PhishinYear*)y {
     self = [super initWithStyle: UITableViewStylePlain];
@@ -57,6 +62,19 @@
 								 [super refresh:sender];
 							 }
 							 failure:REQUEST_FAILED(self.tableView)];
+	[self refreshHeatmap];
+}
+
+- (void)refreshHeatmap {
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"year" timeframe:@"all_time" filter:self.year.year];
+	
+	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
+        success:^(PTSHeatmapResults *results) {
+			_yearHeatmap = results;
+			[self.tableView reloadData];
+    	}
+        failure:nil
+    	];
 }
 
 #pragma mark - Table view data source
@@ -141,6 +159,13 @@ heightForHeaderInSection:(NSInteger)section {
 				 inTableView:tableView];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	ShowCell *scell = (ShowCell *)cell;
+	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
+	float heatmapValue = [_yearHeatmap floatValueForKey:show.date];
+	[scell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 #pragma mark - Table view delegate

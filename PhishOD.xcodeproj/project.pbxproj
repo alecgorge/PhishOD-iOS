@@ -133,6 +133,7 @@
 		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
 		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
 		C56C2B5619F05979004F5637 /* PTSHeatmapResults.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmapResults.m */; };
+		C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */; };
 		C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */; };
 		C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */; };
 		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
@@ -388,6 +389,8 @@
 		C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapQuery.m; sourceTree = "<group>"; };
 		C56C2B5419F05979004F5637 /* PTSHeatmapResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapResults.h; sourceTree = "<group>"; };
 		C56C2B5519F05979004F5637 /* PTSHeatmapResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapResults.m; sourceTree = "<group>"; };
+		C56C2B5719F3687B004F5637 /* BadgeAndHeatmapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeAndHeatmapCell.h; sourceTree = "<group>"; };
+		C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeAndHeatmapCell.m; sourceTree = "<group>"; };
 		C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsFavorite.h; sourceTree = "<group>"; };
 		C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsFavorite.m; sourceTree = "<group>"; };
 		C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsError.h; sourceTree = "<group>"; };
@@ -568,6 +571,8 @@
 				7C249277198E972E00C9275A /* LongStringTableViewCell.m */,
 				7C27BA6F1992D57400E5AEAE /* SubtitleTableViewCell.h */,
 				7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */,
+				C56C2B5719F3687B004F5637 /* BadgeAndHeatmapCell.h */,
+				C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1414,6 +1419,7 @@
 				F1B48B59197388C200DDF5C3 /* UIImage+Icons.m in Sources */,
 				F1B48B3D1973836800DDF5C3 /* TourStatsViewController.m in Sources */,
 				7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */,
+				C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */,
 				7C60302A182068DA0088F651 /* HomeViewController.m in Sources */,
 				7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */,
 				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,

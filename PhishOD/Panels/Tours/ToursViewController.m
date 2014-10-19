@@ -9,10 +9,16 @@
 #import "ToursViewController.h"
 
 #import "TourViewController.h"
+#import "BadgeAndHeatmapCell.h"
+#import "PhishTracksStats.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
 
-#import <TDBadgedCell/TDBadgedCell.h>
+//#import <TDBadgedCell/TDBadgedCell.h>
 
-@implementation ToursViewController
+@implementation ToursViewController {
+	PTSHeatmapResults *_toursHeatmap;
+}
 
 - (id)init {
     self = [super initWithStyle:UITableViewStylePlain];
@@ -31,6 +37,21 @@
 		[super refresh:sender];
 	}
 						  failure:REQUEST_FAILED(self.tableView)];
+	
+	[self refreshHeatmap];
+}
+
+- (void)refreshHeatmap {
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"tours" timeframe:@"all_time" filter:nil];
+	
+	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
+													success:^(PTSHeatmapResults *results) {
+														NSLog(@"%@", results.heatmap);
+														_toursHeatmap = results;
+														[self.tableView reloadData];
+													}
+													failure:nil
+	 ];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -43,10 +64,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
+//	TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
+	BadgeAndHeatmapCell *cell = (BadgeAndHeatmapCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
 	
 	if(!cell) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+		cell = [[BadgeAndHeatmapCell alloc] initWithStyle:UITableViewCellStyleSubtitle
 								   reuseIdentifier:@"Cell"];
 	}
 	
@@ -74,6 +96,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return (tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight) * 1.2;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	BadgeAndHeatmapCell *scell = (BadgeAndHeatmapCell *)cell;
+	PhishinTour *tour = self.tours[indexPath.row];
+	float heatmapValue = [_toursHeatmap floatValueForKey:tour.slug];
+	[scell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 @end

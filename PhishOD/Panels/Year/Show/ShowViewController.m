@@ -187,7 +187,6 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
         success:^(PTSHeatmapResults *results) {
-			NSLog(@"%@", results.heatmap);
 			_showHeatmap = results;
 			[self.tableView reloadData];
     	}

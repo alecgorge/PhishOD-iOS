@@ -29,7 +29,9 @@
 	[query setValue:self.entity forKey:@"entity"];
 	[query setValue:self.timeframe forKey:@"timeframe"];
 	[query setValue:self.timezone forKey:@"timezome"];
-	[query setValue:self.filter forKey:@"filter"];
+	if (self.filter) {
+    	[query setValue:self.filter forKey:@"filter"];
+	}
 
 	return @{ @"heatmap_query": query };
 }

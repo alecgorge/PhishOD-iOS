@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiSoundboardLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiRemasteredLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIView *heatmapView;
+@property (weak, nonatomic) IBOutlet UIView *heatmapValue;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heatmapValueWidth;
 
 @end
 
@@ -69,6 +72,11 @@
 										 context:nil];
     
     return MAX((tableView.rowHeight < 0 ? 44.0 : tableView.rowHeight), labelSize.size.height + 35 + 10);
+}
+
+- (void)updateHeatmapLabelWithValue:(float)val {
+	CGFloat max_width = self.heatmapView.frame.size.width;
+	self.heatmapValueWidth.constant = max_width * val;
 }
 
 @end

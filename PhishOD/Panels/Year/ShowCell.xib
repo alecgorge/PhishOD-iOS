@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -15,21 +15,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="1994/04/05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgX-f1-ztw">
-                        <rect key="frame" x="10" y="10" width="88" height="21"/>
+                        <rect key="frame" x="10" y="10" width="88" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a very long label that could be used to help the user locate the show's venue, city and state" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQw-0n-9En">
-                        <rect key="frame" x="10" y="33" width="300" height="46"/>
+                        <rect key="frame" x="10" y="32" width="300" height="47.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:04:24" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q68-Uc-LO7">
-                        <rect key="frame" x="243" y="15" width="67" height="15"/>
+                        <rect key="frame" x="255" y="15" width="55" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="67" id="TU7-I7-mEq"/>
+                            <constraint firstAttribute="width" constant="55" id="TU7-I7-mEq"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
@@ -56,13 +56,36 @@
                         <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-f4-Orb" userLabel="Heatmap View">
+                        <rect key="frame" x="210" y="21" width="43" height="4"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Cn-DI-Gmy" userLabel="Heatmap Value">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="4"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="1Fb-JF-kej" userLabel="Heatmap Value Width"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71764705880000002" blue="0.51764705879999995" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="9kQ-Q0-gQ0"/>
+                            <constraint firstAttribute="height" constant="4" id="Cct-oa-KoJ"/>
+                            <constraint firstItem="8Cn-DI-Gmy" firstAttribute="leading" secondItem="fbC-f4-Orb" secondAttribute="leading" id="KR3-5C-wp7"/>
+                            <constraint firstItem="8Cn-DI-Gmy" firstAttribute="top" secondItem="fbC-f4-Orb" secondAttribute="top" id="jpG-F5-0Xh"/>
+                            <constraint firstAttribute="bottom" secondItem="8Cn-DI-Gmy" secondAttribute="bottom" id="wpr-wL-hZt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Q68-Uc-LO7" firstAttribute="centerY" secondItem="fbC-f4-Orb" secondAttribute="centerY" id="00K-xg-054"/>
                     <constraint firstItem="siV-jS-XmS" firstAttribute="leading" secondItem="Btb-2C-MBJ" secondAttribute="trailing" constant="5" id="0MI-2v-7BT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="uQw-0n-9En" secondAttribute="bottom" constant="2" id="12u-p0-J5x"/>
                     <constraint firstItem="siV-jS-XmS" firstAttribute="centerY" secondItem="Btb-2C-MBJ" secondAttribute="centerY" id="Fh7-O3-MrW"/>
                     <constraint firstItem="uQw-0n-9En" firstAttribute="top" secondItem="TgX-f1-ztw" secondAttribute="bottom" constant="2" id="J87-bn-jr8"/>
+                    <constraint firstItem="fbC-f4-Orb" firstAttribute="leading" secondItem="siV-jS-XmS" secondAttribute="trailing" constant="5" id="NAM-Mm-VZQ"/>
                     <constraint firstItem="Q68-Uc-LO7" firstAttribute="trailing" secondItem="uQw-0n-9En" secondAttribute="trailing" id="Tg2-KY-Vuw"/>
+                    <constraint firstItem="Q68-Uc-LO7" firstAttribute="leading" secondItem="fbC-f4-Orb" secondAttribute="trailing" constant="2" id="Wrt-le-7YG"/>
                     <constraint firstItem="Btb-2C-MBJ" firstAttribute="trailing" secondItem="TgX-f1-ztw" secondAttribute="trailing" constant="46" id="dZf-Sb-Kws"/>
                     <constraint firstItem="TgX-f1-ztw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="egi-hj-wBW"/>
                     <constraint firstItem="uQw-0n-9En" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hY3-RX-OK2"/>
@@ -73,12 +96,16 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heatmapValue" destination="8Cn-DI-Gmy" id="hm5-k2-Zfi"/>
+                <outlet property="heatmapValueWidth" destination="1Fb-JF-kej" id="0P7-pg-XtZ"/>
+                <outlet property="heatmapView" destination="fbC-f4-Orb" id="5c4-md-DFZ"/>
                 <outlet property="uiDateLabel" destination="TgX-f1-ztw" id="T72-wu-NIj"/>
                 <outlet property="uiDescriptionLabel" destination="uQw-0n-9En" id="Pjz-u9-xDl"/>
                 <outlet property="uiDurationLabel" destination="Q68-Uc-LO7" id="NJA-Mw-1xA"/>
                 <outlet property="uiRemasteredLabel" destination="siV-jS-XmS" id="Ged-aN-7G2"/>
                 <outlet property="uiSoundboardLabel" destination="Btb-2C-MBJ" id="0eR-dJ-gt4"/>
             </connections>
+            <point key="canvasLocation" x="288" y="262"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
