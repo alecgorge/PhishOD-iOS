@@ -68,10 +68,10 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlf-N8-X59" userLabel="Heatmap View">
-                        <rect key="frame" x="308" y="8" width="4" height="27.5"/>
+                        <rect key="frame" x="308" y="5" width="4" height="32"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-Nf-q4m" userLabel="Heatmap Value">
-                                <rect key="frame" x="0.0" y="23" width="4" height="5"/>
+                                <rect key="frame" x="0.0" y="27" width="4" height="5"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="B96-4t-r7I" userLabel="Heatmap Value Height"/>
@@ -81,6 +81,7 @@
                         <color key="backgroundColor" red="0.0" green="0.71764705880000002" blue="0.51764705879999995" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="H7n-Nf-q4m" secondAttribute="bottom" id="IN4-QY-VRb"/>
+                            <constraint firstAttribute="height" constant="32" id="T7o-K3-Hah"/>
                             <constraint firstAttribute="width" constant="4" id="XzW-zr-gyX"/>
                             <constraint firstItem="H7n-Nf-q4m" firstAttribute="leading" secondItem="tlf-N8-X59" secondAttribute="leading" id="ee4-dm-HWX"/>
                             <constraint firstAttribute="trailing" secondItem="H7n-Nf-q4m" secondAttribute="trailing" id="h6p-ii-NOK"/>
@@ -89,7 +90,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" id="16q-n0-dtO"/>
-                    <constraint firstItem="tlf-N8-X59" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="topMargin" id="5DL-1A-0qe"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="trailing" constant="5" id="5T6-wy-WPx"/>
                     <constraint firstAttribute="bottomMargin" secondItem="w7J-kL-9Yf" secondAttribute="bottom" id="DhP-O2-hyd"/>
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="leading" secondItem="m2c-7D-P09" secondAttribute="leading" constant="25" id="E9c-5t-Flz"/>
@@ -102,13 +102,13 @@
                     <constraint firstAttribute="trailingMargin" secondItem="WwM-CR-byt" secondAttribute="trailing" constant="25" id="WbJ-qL-8kX"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="topMargin" id="YXZ-WW-mKs"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tlf-N8-X59" secondAttribute="trailing" id="Zz3-LA-MrE"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="tlf-N8-X59" secondAttribute="bottom" id="aUY-sS-OTk"/>
                     <constraint firstItem="tlf-N8-X59" firstAttribute="leading" secondItem="rUU-dg-B4L" secondAttribute="trailing" constant="4" id="cPz-J1-zWQ"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="leading" id="efN-v6-kYz"/>
                     <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" id="jI1-Rl-MWt"/>
                     <constraint firstAttribute="bottom" secondItem="WwM-CR-byt" secondAttribute="bottom" id="tiC-FZ-vcD"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="wLN-UU-X2b"/>
                     <constraint firstItem="euE-3F-M5d" firstAttribute="leading" secondItem="2LD-6t-Saw" secondAttribute="leadingMargin" constant="7" id="x5G-Le-RJL"/>
+                    <constraint firstItem="rUU-dg-B4L" firstAttribute="centerY" secondItem="tlf-N8-X59" secondAttribute="centerY" id="x9e-MG-k1I"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
