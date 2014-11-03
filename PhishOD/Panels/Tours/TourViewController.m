@@ -7,9 +7,15 @@
 //
 
 #import "TourViewController.h"
+#import "PhishTracksStats.h"
 #import "PhishTracksStatsFavoritePopover.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
+#import "ShowCell.h"
 
-@implementation TourViewController
+@implementation TourViewController {
+	PTSHeatmapResults *_tourHeatmap;
+}
 
 - (id)initWithTour:(PhishinTour *)tour {
     self = [super initWithYear:nil];
@@ -51,10 +57,30 @@
 								 [sender endRefreshing];
 							 }
 							 failure:REQUEST_FAILED(self.tableView)];
+	[self refreshHeatmap];
+}
+
+- (void)refreshHeatmap {
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"tour" timeframe:@"all_time" filter:self.tour.name];
+	
+	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
+        success:^(PTSHeatmapResults *results) {
+			_tourHeatmap = results;
+			[self.tableView reloadData];
+    	}
+        failure:nil//^(PhishTracksStatsError *err) {
+    	];
 }
 
 - (NSArray *)shows {
 	return self.tour.shows;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	ShowCell *scell = (ShowCell *)cell;
+	PhishinShow *show = (PhishinShow*)[self shows][indexPath.row];
+	float heatmapValue = [_tourHeatmap floatValueForKey:show.date];
+	[scell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 @end

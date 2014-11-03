@@ -15,4 +15,6 @@
 
 - (CGFloat)heightForCellWithTrack:(NSObject<PHODGenericTrack> *)track
                       inTableView:(UITableView *)tableView;
+
+- (void)updateHeatmapLabelWithValue:(float)val;
 @end

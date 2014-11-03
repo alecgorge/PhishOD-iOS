@@ -47,6 +47,8 @@
 		<true/>
 		<key>crashlytics_key</key>
 		<string>bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4</string>
+		<key>phishtrackstats_key</key>
+		<string>90e201bf9e98b06e2c83ca7bc07209dc</string>
 	</dict>
 </dict>
 </plist>

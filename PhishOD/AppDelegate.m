@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Configuration.h"
 #import "RotatableTabBarController.h"
 
 #import "YearsViewController.h"
@@ -58,7 +57,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 		return [op.URL.query containsString:@"session.getUserToken"] || [op.URL.query containsString:@"passwd="];
 	}];
 	
-	[PhishTracksStats setupWithAPIKey:[Configuration statsApiKey]];
+	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+	NSString *ptsServer = infoDictionary[@"StatsServer"];
+	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
 
 	[self setupLastFM];
 	[self setupCaching];

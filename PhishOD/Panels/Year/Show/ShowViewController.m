@@ -22,7 +22,10 @@
 #import "PhishinMediaItem.h"
 #import "PHODTrackCell.h"
 
+#import "PhishTracksStats.h"
 #import "PhishTracksStatsFavoritePopover.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
 #import "ShowHeaderView.h"
 #import "ShowDetailsViewController.h"
 
@@ -35,7 +38,9 @@
 
 @end
 
-@implementation ShowViewController
+@implementation ShowViewController {
+	PTSHeatmapResults *_showHeatmap;
+}
 
 - (id)initWithShow:(PhishinShow*)s {
     self = [super initWithStyle: UITableViewStylePlain];
@@ -173,6 +178,20 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 								 [super refresh:sender];
 								 [self performAutoplayIfNecessary];
 							 } failure:REQUEST_FAILED(self.tableView)];
+	
+	[self refreshHeatmap];
+}
+
+- (void)refreshHeatmap {
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"show" timeframe:@"all_time" filter:self.show.date];
+	
+	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
+        success:^(PTSHeatmapResults *results) {
+			_showHeatmap = results;
+			[self.tableView reloadData];
+    	}
+        failure:nil//^(PhishTracksStatsError *err) {
+    	];
 }
 
 - (void)performAutoplayIfNecessary {
@@ -295,10 +314,10 @@ viewForHeaderInSection:(NSInteger)section {
                                                           forIndexPath:indexPath];
 	
 	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
-    
+	
     [cell updateCellWithTrack:track
                   inTableView:tableView];
-    
+	
     return cell;
 }
 
@@ -315,6 +334,13 @@ viewForHeaderInSection:(NSInteger)section {
 canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
     return track.isCached;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	PHODTrackCell *pcell = (PHODTrackCell *)cell;
+	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
+	float heatmapValue = [_showHeatmap floatValueForKey:track.slug];
+	[pcell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 #pragma mark - Table view delegate

@@ -100,4 +100,12 @@
     return [self stringForKeypath:@"crashlytics_key"];
 }
 
+//- (BOOL)isPhishtracksStatsEnabled {
+//    return [self boolForKeypath:@"phishtrackstats_enabled"];
+//}
+
+- (NSString *)phishtracksStatsApiKey {
+    return [self stringForKeypath:@"phishtrackstats_key"];
+}
+
 @end

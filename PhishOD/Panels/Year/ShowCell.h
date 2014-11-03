@@ -16,4 +16,6 @@
 - (CGFloat)heightForCellWithShow:(PhishinShow *)show
                       inTableView:(UITableView *)tableView;
 
+- (void)updateHeatmapLabelWithValue:(float)val;
+
 @end

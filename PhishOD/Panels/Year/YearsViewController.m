@@ -9,6 +9,10 @@
 #import "YearsViewController.h"
 #import "YearViewController.h"
 #import "SearchDelegate.h"
+#import "BadgeAndHeatmapCell.h"
+#import "PhishTracksStats.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
 
 @interface YearsViewController ()
 
@@ -18,7 +22,9 @@
 
 @end
 
-@implementation YearsViewController
+@implementation YearsViewController {
+	PTSHeatmapResults *_yearsHeatmap;
+}
 
 - (id)init {
     self = [super initWithStyle: UITableViewStylePlain];
@@ -69,6 +75,20 @@
 		[super refresh:sender];
 	}
 						  failure:REQUEST_FAILED(self.tableView)];
+	
+	[self refreshHeatmap];
+}
+
+- (void)refreshHeatmap {
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"years" timeframe:@"all_time" filter:nil];
+	
+	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
+													success:^(PTSHeatmapResults *results) {
+														_yearsHeatmap = results;
+														[self.tableView reloadData];
+													}
+													failure:nil
+	 ];
 }
 
 #pragma mark - Table view data source
@@ -91,10 +111,10 @@ titleForHeaderInSection:(NSInteger)section {
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BadgeAndHeatmapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	if(cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+		cell = [[BadgeAndHeatmapCell alloc] initWithStyle:UITableViewCellStyleDefault
 									  reuseIdentifier:CellIdentifier];
 	}
 	
@@ -103,6 +123,14 @@ titleForHeaderInSection:(NSInteger)section {
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	BadgeAndHeatmapCell *scell = (BadgeAndHeatmapCell *)cell;
+	PhishinEra *era = self.eras[indexPath.section];
+	PhishinYear *year = ((PhishinYear*)era.years[indexPath.row]);
+	float heatmapValue = [_yearsHeatmap floatValueForKey:year.year];
+	[scell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 #pragma mark - Table view delegate

@@ -9,12 +9,18 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsPlayEvent.h"
 #import "PhishTracksStatsFavorite.h"
-#import "Configuration.h"
+#import "PTSHeatmapResults.h"
 #import <FXKeychain/FXKeychain.h>
 
 typedef enum {
     kStatsErrorUnparsableBody = 100
 } PhishTracksStatsApiErrors;
+
+@interface PhishTracksStats ()
+
+@property NSString *apiKey;
+
+@end
 
 @implementation PhishTracksStats
 
@@ -23,7 +29,15 @@ static PhishTracksStats *sharedPts;
 #pragma mark -
 #pragma mark Initialization
 
-+ (void)setupWithAPIKey:(NSString *)apiKey {
++ (void)setupWithAPIKey:(NSString *)apiKey andBaseUrl:(NSString *)baseUrl {
+	static dispatch_once_t once;
+    dispatch_once(&once, ^ {
+		NSLog(@"[stats] base_url=%@", baseUrl);
+		sharedPts = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+		sharedPts.requestSerializer = AFJSONRequestSerializer.serializer;
+		sharedPts.responseSerializer.acceptableContentTypes = [sharedPts.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+	});
+	
 	sharedPts = [PhishTracksStats sharedInstance];
 	sharedPts.apiKey = apiKey;
 	sharedPts.autoplayTracks = YES;
@@ -34,20 +48,9 @@ static PhishTracksStats *sharedPts;
 }
 
 + (PhishTracksStats*)sharedInstance {
-	if (sharedPts != nil) {
-		return sharedPts;
+	if (!sharedPts) {
+		NSLog(@"[stats] setup must be called before using the shared instance");
 	}
-	
-    static dispatch_once_t once;
-    dispatch_once(&once, ^ {
-		NSLog(@"[stats] configuration=%@ base_url=%@", [Configuration configuration], [Configuration statsApiBaseUrl]);
-		sharedPts = [[self alloc] initWithBaseURL:[NSURL URLWithString: [Configuration statsApiBaseUrl]]];
-		sharedPts.requestSerializer = AFJSONRequestSerializer.serializer;
-		
-		sharedPts.responseSerializer.acceptableContentTypes = [sharedPts.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-		
-
-	});
 	
     return sharedPts;
 }
@@ -314,6 +317,34 @@ static PhishTracksStats *sharedPts;
 							failure:failure];
 }
 
+
+#pragma mark - Heatmaps
+
+- (void)globalHeatmapWithQuery:(PTSHeatmapQuery *)query
+					   success:(void (^)(PTSHeatmapResults *))success
+					   failure:(void (^)(PhishTracksStatsError *))failure
+{
+	NSDictionary *params = [query asParams];
+	
+	[self POST:@"plays/heatmaps.json"
+	parameters:params
+	   success:^(AFHTTPRequestOperation *operation, id responseObject)
+	 {
+		 if (success) {
+			 NSError *error = nil;
+			 NSDictionary *dict = [self parseResponseObject:responseObject error:error];
+//			 NSLog(@"%@", dict);
+			 PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:dict];
+			 success(result);
+		 }
+	 }
+	   failure:^(AFHTTPRequestOperation *operation, NSError *error)
+	 {
+		 [self handleRequestFailure:operation error:error failureCallback:failure];
+	 }];
+}
+
+
 #pragma mark -
 #pragma mark Favorites Helpers
 
@@ -457,5 +488,15 @@ static PhishTracksStats *sharedPts;
     [self destroyUserFavoriteHelper:@"favorite_venues" userId:userId favoriteId:favoriteId success:success failure:failure];
 }
 
+
+#pragma mark - Utils
+
++ (NSString *)tzOffset
+{
+    NSDate *sourceDate = [NSDate date];
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    float timeZoneOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate] / 3600.0;
+	return [NSString stringWithFormat:@"%f", timeZoneOffset];
+}
 
 @end

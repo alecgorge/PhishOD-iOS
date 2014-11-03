@@ -12,6 +12,8 @@
 #import "PhishTracksStatsFavorite.h"
 #import "PhishTracksStatsQuery.h"
 #import "PhishTracksStatsQueryResults.h"
+#import "PTSHeatmapQuery.h"
+#import "PTSHeatmapResults.h"
 
 typedef enum {
 	kStatsApiClientPermissionFalse = 1,
@@ -32,15 +34,22 @@ typedef enum {
 
 @interface PhishTracksStats : AFHTTPRequestOperationManager
 
-+ (void)setupWithAPIKey:(NSString *)apiKey;
+#pragma mark - Initializers
+
++ (void)setupWithAPIKey:(NSString *)apiKey andBaseUrl:(NSString *)baseUrl;
 + (PhishTracksStats *)sharedInstance;
 
-@property NSString *apiKey;
+
+#pragma mark - Properties
+
 @property NSString *sessionKey;
 @property BOOL isAuthenticated;
 @property NSString *username;
 @property NSInteger userId;
 @property BOOL autoplayTracks;
+
+
+#pragma mark - API Endpoints
 
 - (void)createSession:(NSString *)username password:(NSString *)password success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
 
@@ -51,17 +60,37 @@ typedef enum {
 
 - (void)clearLocalSession;
 
+#pragma mark - Stats
+
 - (void)userStatsWithUserId:(NSInteger)userId statsQuery:(PhishTracksStatsQuery *)statsQuery
-                    success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
+                    success:(void (^)(PhishTracksStatsQueryResults *))success
+					failure:(void (^)(PhishTracksStatsError *))failure;
 
 - (void)globalStatsWithQuery:(PhishTracksStatsQuery *)statsQuery
-                     success:(void (^)(PhishTracksStatsQueryResults *))success failure:(void (^)(PhishTracksStatsError *))failure;
+                     success:(void (^)(PhishTracksStatsQueryResults *))success
+					 failure:(void (^)(PhishTracksStatsError *))failure;
 
-- (void)userPlayHistoryWithUserId:(NSInteger)userId limit:(NSInteger)limit offset:(NSInteger)offset
-                          success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure;
+#pragma mark - Play history/activity
 
-- (void)globalPlayHistoryWithLimit:(NSInteger)limit offset:(NSInteger)offset
-                           success:(void (^)(NSArray *playEvents))success failure:(void (^)(PhishTracksStatsError *))failure;
+- (void)userPlayHistoryWithUserId:(NSInteger)userId
+							limit:(NSInteger)limit
+						   offset:(NSInteger)offset
+                          success:(void (^)(NSArray *playEvents))success
+						  failure:(void (^)(PhishTracksStatsError *))failure;
+
+- (void)globalPlayHistoryWithLimit:(NSInteger)limit
+							offset:(NSInteger)offset
+                           success:(void (^)(NSArray *playEvents))success
+						   failure:(void (^)(PhishTracksStatsError *))failure;
+
+#pragma mark - Heatmaps
+
+/*
+ * POST /plays/heatmaps.json
+ */
+- (void)globalHeatmapWithQuery:(PTSHeatmapQuery *)query
+					   success:(void (^)(PTSHeatmapResults *))success
+					   failure:(void (^)(PhishTracksStatsError *))failure;
 
 #pragma mark -
 #pragma mark Favorite Tracks
@@ -144,5 +173,9 @@ typedef enum {
  * DELETE /users/:user_id/favorite_venues
  */
 - (void)destroyUserFavoriteVenue:(NSInteger)userId favoriteId:(NSInteger)favoriteId success:(void (^)())success failure:(void (^)(PhishTracksStatsError *))failure;
+
+#pragma mark - Utils
+
++ (NSString *)tzOffset;
 
 @end
