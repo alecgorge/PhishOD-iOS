@@ -14,7 +14,20 @@
     static dispatch_once_t once;
     static PhishinAPI *sharedFoo;
     dispatch_once(&once, ^ {
-		sharedFoo = [[self alloc] initWithBaseURL:[NSURL URLWithString: @"http://phish.in/api/v1/"]];
+        NSString *domain = [NSUserDefaults.standardUserDefaults objectForKey:@"api_domain"];
+        
+        if(!domain || domain.length == 0) {
+            domain = @"phish.in";
+        }
+        
+		sharedFoo = [self.alloc initWithBaseURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://%@/api/v1/", domain]]];
+        
+        sharedFoo.apiDomain = domain;
+        sharedFoo.mp3Domain = [NSUserDefaults.standardUserDefaults objectForKey:@"mp3_domain"];
+        
+        if(!sharedFoo.mp3Domain || sharedFoo.mp3Domain.length == 0) {
+            sharedFoo.mp3Domain = @"phish.in";
+        }
 	});
     return sharedFoo;
 }

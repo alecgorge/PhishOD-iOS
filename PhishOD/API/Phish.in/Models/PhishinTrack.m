@@ -10,6 +10,8 @@
 
 #import "PhishinShow.h"
 
+#import "PhishinAPI.h"
+
 @implementation PhishinTrack
 
 - (id)initWithDictionary:(NSDictionary *)dict andShow:(PhishinShow *)show {
@@ -23,6 +25,14 @@
 		self.likes_count = [dict[@"likes_count"] intValue];
 		self.slug = dict[@"slug"];
 		self.mp3 = [NSURL URLWithString:dict[@"mp3"]];
+        
+        NSURLComponents *comps = [NSURLComponents componentsWithURL:self.mp3
+                                            resolvingAgainstBaseURL:NO];
+        
+        comps.host = PhishinAPI.sharedAPI.mp3Domain;
+        
+        self.mp3 = comps.URL;
+        
 		self.song_ids = dict[@"song_ids"];
 		self.show_date = dict[@"show_date"];
 		self.show_id = [dict[@"show_id"] intValue];

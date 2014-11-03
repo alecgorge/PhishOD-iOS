@@ -25,6 +25,7 @@
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <EGOCache/EGOCache.h>
+#import <GroundControl/NSUserDefaults+GroundControl.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
@@ -60,6 +61,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 	NSString *ptsServer = infoDictionary[@"StatsServer"];
 	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
+    
+    [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
 
 	[self setupLastFM];
 	[self setupCaching];

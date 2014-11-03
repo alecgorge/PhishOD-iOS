@@ -23,6 +23,9 @@
 
 +(instancetype)sharedAPI;
 
+@property (nonatomic) NSString *apiDomain;
+@property (nonatomic) NSString *mp3Domain;
+
 @property (nonatomic, readonly) PhishinDownloader *downloader;
 
 -(void)eras:(void ( ^ ) ( NSArray *phishYears ))success

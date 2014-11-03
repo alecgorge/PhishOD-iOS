@@ -1,5 +1,7 @@
 platform :ios, '7.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 inhibit_all_warnings!
 
 pod 'AFNetworking'
@@ -28,3 +30,5 @@ pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git'
 pod 'DZNEmptyDataSet'
 pod 'TTTAttributedLabel'
+pod 'GroundControl', '~> 2.1.0'
+pod 'CrittercismSDK'
