@@ -1,1710 +1,3 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		7C0623F2198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */; };
-		7C0623F5198C2AEC002D31E5 /* DownloadQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0623F4198C2AEC002D31E5 /* DownloadQueueViewController.m */; };
-		7C1C3C331982097600555ACB /* stock_header_chris_tank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */; };
-		7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3619820F2100555ACB /* PHODTrackCell.m */; };
-		7C1C3C3919820F2100555ACB /* PHODTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3719820F2100555ACB /* PHODTrackCell.xib */; };
-		7C1C3C401982100300555ACB /* AGMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3C1982100300555ACB /* AGMediaItem.m */; };
-		7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3E1982100300555ACB /* AGMediaPlayerViewController.m */; };
-		7C1C3C421982100300555ACB /* AGMediaPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3F1982100300555ACB /* AGMediaPlayerViewController.xib */; };
-		7C1C3C451982105000555ACB /* IGDurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C441982105000555ACB /* IGDurationHelper.m */; };
-		7C1C3C5D198219FD00555ACB /* 03-loopback.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C49198219FD00555ACB /* 03-loopback.png */; };
-		7C1C3C5E198219FD00555ACB /* 03-loopback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4A198219FD00555ACB /* 03-loopback@2x.png */; };
-		7C1C3C5F198219FD00555ACB /* glyphicons_076_headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4B198219FD00555ACB /* glyphicons_076_headphones.png */; };
-		7C1C3C60198219FD00555ACB /* glyphicons_076_headphones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4C198219FD00555ACB /* glyphicons_076_headphones@2x.png */; };
-		7C1C3C61198219FD00555ACB /* glyphicons_083_random.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4D198219FD00555ACB /* glyphicons_083_random.png */; };
-		7C1C3C62198219FD00555ACB /* glyphicons_083_random@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4E198219FD00555ACB /* glyphicons_083_random@2x.png */; };
-		7C1C3C63198219FD00555ACB /* glyphicons_172_rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C4F198219FD00555ACB /* glyphicons_172_rewind.png */; };
-		7C1C3C64198219FD00555ACB /* glyphicons_172_rewind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C50198219FD00555ACB /* glyphicons_172_rewind@2x.png */; };
-		7C1C3C65198219FD00555ACB /* glyphicons_173_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C51198219FD00555ACB /* glyphicons_173_play.png */; };
-		7C1C3C66198219FD00555ACB /* glyphicons_173_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C52198219FD00555ACB /* glyphicons_173_play@2x.png */; };
-		7C1C3C67198219FD00555ACB /* glyphicons_174_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C53198219FD00555ACB /* glyphicons_174_pause.png */; };
-		7C1C3C68198219FD00555ACB /* glyphicons_174_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C54198219FD00555ACB /* glyphicons_174_pause@2x.png */; };
-		7C1C3C69198219FD00555ACB /* glyphicons_175_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C55198219FD00555ACB /* glyphicons_175_stop.png */; };
-		7C1C3C6A198219FD00555ACB /* glyphicons_175_stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C56198219FD00555ACB /* glyphicons_175_stop@2x.png */; };
-		7C1C3C6B198219FD00555ACB /* glyphicons_176_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C57198219FD00555ACB /* glyphicons_176_forward.png */; };
-		7C1C3C6C198219FD00555ACB /* glyphicons_176_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C58198219FD00555ACB /* glyphicons_176_forward@2x.png */; };
-		7C1C3C6D198219FD00555ACB /* glyphicons_184_volume_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C59198219FD00555ACB /* glyphicons_184_volume_up.png */; };
-		7C1C3C6E198219FD00555ACB /* glyphicons_184_volume_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5A198219FD00555ACB /* glyphicons_184_volume_up@2x.png */; };
-		7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5B198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png */; };
-		7C1C3C70198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */; };
-		7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1C3C741982223600555ACB /* Accelerate.framework */; };
-		7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */; };
-		7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23463019820630002A46D5 /* MEExpandableHeaderView.m */; };
-		7C249270198E8FD000C9275A /* music_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926E198E8FD000C9275A /* music_128.png */; };
-		7C249271198E8FD100C9275A /* music_128@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926F198E8FD000C9275A /* music_128@2x.png */; };
-		7C249274198E919000C9275A /* cloud_download_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C249272198E919000C9275A /* cloud_download_22.png */; };
-		7C249275198E919000C9275A /* cloud_download_22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C249273198E919000C9275A /* cloud_download_22@2x.png */; };
-		7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C249277198E972E00C9275A /* LongStringTableViewCell.m */; };
-		7C27BA6A1992D2E400E5AEAE /* PhishinPlaylistGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA691992D2E400E5AEAE /* PhishinPlaylistGroup.m */; };
-		7C27BA6E1992D46B00E5AEAE /* CuratedPlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */; };
-		7C27BA711992D57400E5AEAE /* SubtitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */; };
-		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
-		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
-		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
-		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
-		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
-		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
-		7C518C0F175D0C32005EB2E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C0D175D0C32005EB2E7 /* InfoPlist.strings */; };
-		7C518C11175D0C32005EB2E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C10175D0C32005EB2E7 /* main.m */; };
-		7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C14175D0C32005EB2E7 /* AppDelegate.m */; };
-		7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */; };
-		7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */; };
-		7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C38175D2A90005EB2E7 /* YearsViewController.m */; };
-		7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */; };
-		7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */; };
-		7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C40175D2E20005EB2E7 /* YearViewController.m */; };
-		7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C43175D9C87005EB2E7 /* ShowViewController.m */; };
-		7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */; };
-		7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */; };
-		7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C51175DC937005EB2E7 /* MediaPlayer.framework */; };
-		7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */; };
-		7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */; };
-		7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */; };
-		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
-		7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* LongStringViewController.m */; };
-		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
-		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
-		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
-		7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */; };
-		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
-		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
-		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
-		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
-		7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */; };
-		7C79EB7E198559F20064C177 /* ShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB7C198559F20064C177 /* ShowCell.m */; };
-		7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C79EB7D198559F20064C177 /* ShowCell.xib */; };
-		7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */; };
-		7C79EB85198578D70064C177 /* JamChartEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB84198578D70064C177 /* JamChartEntryViewController.m */; };
-		7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED39018010620004F55DF /* CoreMedia.framework */; };
-		7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED39C1801B0FF004F55DF /* PDLocation.m */; };
-		7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED39F1801B0FF004F55DF /* PDLocationsMapViewController.m */; };
-		7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */; };
-		7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A71801B219004F55DF /* MapKit.framework */; };
-		7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A91801B22E004F55DF /* CoreLocation.framework */; };
-		7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */; };
-		7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */; };
-		7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367D1988894A00AFEA56 /* PhishNetShow.m */; };
-		7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */; };
-		7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */; };
-		7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */; };
-		7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */; };
-		7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */; };
-		7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */; };
-		7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */; };
-		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
-		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
-		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
-		7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31F176040B200B80D54 /* NSString+stripHTML.m */; };
-		7CADB323176043F700B80D54 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB322176043F700B80D54 /* SongsViewController.m */; };
-		7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB325176044DF00B80D54 /* SongInstancesViewController.m */; };
-		7CADCE4318943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCE4218943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m */; };
-		7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCE451894407000841A92 /* NowPlayingBarViewController.m */; };
-		7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CADCE461894407000841A92 /* NowPlayingBarViewController.xib */; };
-		7CADCE6018946A8400841A92 /* PhishTracksStatsFavoritePopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */; };
-		7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EA180F5EB700F72F0D /* PhishinEra.m */; };
-		7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */; };
-		7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EE180F5EB700F72F0D /* PhishinSet.m */; };
-		7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F0180F5EB700F72F0D /* PhishinShow.m */; };
-		7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F2180F5EB700F72F0D /* PhishinSong.m */; };
-		7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F6180F5EB700F72F0D /* PhishinTour.m */; };
-		7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165F8180F5EB700F72F0D /* PhishinTrack.m */; };
-		7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FA180F5EB700F72F0D /* PhishinVenue.m */; };
-		7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FC180F5EB700F72F0D /* PhishinYear.m */; };
-		7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165FE180F5EB700F72F0D /* PhishinAPI.m */; };
-		7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */; };
-		7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC91A5C179F875A0047DFF3 /* jQuery.m */; };
-		7CC91A6617A07D0F0047DFF3 /* jquery2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5D179F875A0047DFF3 /* jquery2.min.js */; };
-		7CC91A6717A07D0F0047DFF3 /* jQueryAPI.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */; };
-		7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5F179F875A0047DFF3 /* NativeBridge.js */; };
-		7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */ = {isa = PBXBuildFile; fileRef = 7C1B438917984D8D00CB1255 /* scrape_jams.js */; };
-		7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */; };
-		7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */; };
-		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
-		7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */; };
-		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
-		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
-		C56C2B5619F05979004F5637 /* PTSHeatmapResults.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmapResults.m */; };
-		C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */; };
-		C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */; };
-		C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */; };
-		C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D128B2183EB78200E00ED8 /* StatsQueries.m */; };
-		C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */; };
-		C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */; };
-		C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */; };
-		C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */; };
-		C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */; };
-		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
-		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
-		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
-		F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE31973813100DDF5C3 /* VenuesViewController.m */; };
-		F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE51973813100DDF5C3 /* VenueViewController.m */; };
-		F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */; };
-		F1B48AEF197382A500DDF5C3 /* SearchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AEC197382A500DDF5C3 /* SearchDelegate.m */; };
-		F1B48AF0197382A500DDF5C3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AEE197382A500DDF5C3 /* SearchViewController.m */; };
-		F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AF2197382AD00DDF5C3 /* ToursViewController.m */; };
-		F1B48AF6197382AD00DDF5C3 /* TourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AF4197382AD00DDF5C3 /* TourViewController.m */; };
-		F1B48B071973831A00DDF5C3 /* PlayHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AF81973831A00DDF5C3 /* PlayHistoryTableViewCell.m */; };
-		F1B48B081973831A00DDF5C3 /* RankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AFA1973831A00DDF5C3 /* RankingTableViewCell.m */; };
-		F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AFC1973831A00DDF5C3 /* SetRankingTableViewCell.m */; };
-		F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AFE1973831A00DDF5C3 /* ShowRankingTableViewCell.m */; };
-		F1B48B0B1973831A00DDF5C3 /* TourRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B001973831A00DDF5C3 /* TourRankingTableViewCell.m */; };
-		F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B021973831A00DDF5C3 /* TrackRankingTableViewCell.m */; };
-		F1B48B0D1973831A00DDF5C3 /* VenueRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B041973831A00DDF5C3 /* VenueRankingTableViewCell.m */; };
-		F1B48B0E1973831A00DDF5C3 /* YearRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B061973831A00DDF5C3 /* YearRankingTableViewCell.m */; };
-		F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B101973836800DDF5C3 /* BaseStatsViewController.m */; };
-		F1B48B321973836800DDF5C3 /* GlobalActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B121973836800DDF5C3 /* GlobalActivityViewController.m */; };
-		F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B141973836800DDF5C3 /* MoreStatsViewController.m */; };
-		F1B48B391973836800DDF5C3 /* PhishTracksStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B201973836800DDF5C3 /* PhishTracksStatsViewController.m */; };
-		F1B48B3A1973836800DDF5C3 /* PlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B221973836800DDF5C3 /* PlayHistoryViewController.m */; };
-		F1B48B3B1973836800DDF5C3 /* SetStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B241973836800DDF5C3 /* SetStatsViewController.m */; };
-		F1B48B3C1973836800DDF5C3 /* ShowStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B261973836800DDF5C3 /* ShowStatsViewController.m */; };
-		F1B48B3D1973836800DDF5C3 /* TourStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B281973836800DDF5C3 /* TourStatsViewController.m */; };
-		F1B48B3E1973836800DDF5C3 /* TrackStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B2A1973836800DDF5C3 /* TrackStatsViewController.m */; };
-		F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B2C1973836800DDF5C3 /* UserTopTracksViewController.m */; };
-		F1B48B401973836800DDF5C3 /* VenueStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B2E1973836800DDF5C3 /* VenueStatsViewController.m */; };
-		F1B48B411973836800DDF5C3 /* YearStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B301973836800DDF5C3 /* YearStatsViewController.m */; };
-		F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B44197383E000DDF5C3 /* BaseFavoritableEntityViewController.m */; };
-		F1B48B50197383E000DDF5C3 /* FavoriteShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B46197383E000DDF5C3 /* FavoriteShowsViewController.m */; };
-		F1B48B51197383E000DDF5C3 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B48197383E000DDF5C3 /* FavoritesViewController.m */; };
-		F1B48B52197383E000DDF5C3 /* FavoriteToursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B4A197383E000DDF5C3 /* FavoriteToursViewController.m */; };
-		F1B48B53197383E000DDF5C3 /* FavoriteTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B4C197383E000DDF5C3 /* FavoriteTracksViewController.m */; };
-		F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B4E197383E000DDF5C3 /* FavoriteVenuesViewController.m */; };
-		F1B48B561973867E00DDF5C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B48B551973867E00DDF5C3 /* Images.xcassets */; };
-		F1B48B59197388C200DDF5C3 /* UIImage+Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B58197388C200DDF5C3 /* UIImage+Icons.m */; };
-		F1B48B5D1973B02600DDF5C3 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B5C1973B02600DDF5C3 /* MapPoint.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		0835065E67C54644AE7E0BA1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		7C0623F0198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloadedShowsViewController.h; sourceTree = "<group>"; };
-		7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloadedShowsViewController.m; sourceTree = "<group>"; };
-		7C0623F3198C2AEC002D31E5 /* DownloadQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadQueueViewController.h; sourceTree = "<group>"; };
-		7C0623F4198C2AEC002D31E5 /* DownloadQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueueViewController.m; sourceTree = "<group>"; };
-		7C1B438917984D8D00CB1255 /* scrape_jams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scrape_jams.js; sourceTree = "<group>"; };
-		7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stock_header_chris_tank.jpg; sourceTree = "<group>"; };
-		7C1C3C3519820F2100555ACB /* PHODTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODTrackCell.h; sourceTree = "<group>"; };
-		7C1C3C3619820F2100555ACB /* PHODTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODTrackCell.m; sourceTree = "<group>"; };
-		7C1C3C3719820F2100555ACB /* PHODTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHODTrackCell.xib; sourceTree = "<group>"; };
-		7C1C3C3B1982100300555ACB /* AGMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMediaItem.h; sourceTree = "<group>"; };
-		7C1C3C3C1982100300555ACB /* AGMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMediaItem.m; sourceTree = "<group>"; };
-		7C1C3C3D1982100300555ACB /* AGMediaPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMediaPlayerViewController.h; sourceTree = "<group>"; };
-		7C1C3C3E1982100300555ACB /* AGMediaPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMediaPlayerViewController.m; sourceTree = "<group>"; };
-		7C1C3C3F1982100300555ACB /* AGMediaPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGMediaPlayerViewController.xib; sourceTree = "<group>"; };
-		7C1C3C431982105000555ACB /* IGDurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDurationHelper.h; sourceTree = "<group>"; };
-		7C1C3C441982105000555ACB /* IGDurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDurationHelper.m; sourceTree = "<group>"; };
-		7C1C3C49198219FD00555ACB /* 03-loopback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-loopback.png"; sourceTree = "<group>"; };
-		7C1C3C4A198219FD00555ACB /* 03-loopback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-loopback@2x.png"; sourceTree = "<group>"; };
-		7C1C3C4B198219FD00555ACB /* glyphicons_076_headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_076_headphones.png; sourceTree = "<group>"; };
-		7C1C3C4C198219FD00555ACB /* glyphicons_076_headphones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_076_headphones@2x.png"; sourceTree = "<group>"; };
-		7C1C3C4D198219FD00555ACB /* glyphicons_083_random.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_083_random.png; sourceTree = "<group>"; };
-		7C1C3C4E198219FD00555ACB /* glyphicons_083_random@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_083_random@2x.png"; sourceTree = "<group>"; };
-		7C1C3C4F198219FD00555ACB /* glyphicons_172_rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_172_rewind.png; sourceTree = "<group>"; };
-		7C1C3C50198219FD00555ACB /* glyphicons_172_rewind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_172_rewind@2x.png"; sourceTree = "<group>"; };
-		7C1C3C51198219FD00555ACB /* glyphicons_173_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_173_play.png; sourceTree = "<group>"; };
-		7C1C3C52198219FD00555ACB /* glyphicons_173_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_173_play@2x.png"; sourceTree = "<group>"; };
-		7C1C3C53198219FD00555ACB /* glyphicons_174_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_174_pause.png; sourceTree = "<group>"; };
-		7C1C3C54198219FD00555ACB /* glyphicons_174_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_174_pause@2x.png"; sourceTree = "<group>"; };
-		7C1C3C55198219FD00555ACB /* glyphicons_175_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_175_stop.png; sourceTree = "<group>"; };
-		7C1C3C56198219FD00555ACB /* glyphicons_175_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_175_stop@2x.png"; sourceTree = "<group>"; };
-		7C1C3C57198219FD00555ACB /* glyphicons_176_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_176_forward.png; sourceTree = "<group>"; };
-		7C1C3C58198219FD00555ACB /* glyphicons_176_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_176_forward@2x.png"; sourceTree = "<group>"; };
-		7C1C3C59198219FD00555ACB /* glyphicons_184_volume_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_184_volume_up.png; sourceTree = "<group>"; };
-		7C1C3C5A198219FD00555ACB /* glyphicons_184_volume_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_184_volume_up@2x.png"; sourceTree = "<group>"; };
-		7C1C3C5B198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_halflings_113_chevron-down.png"; sourceTree = "<group>"; };
-		7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_halflings_113_chevron-down@2x.png"; sourceTree = "<group>"; };
-		7C1C3C741982223600555ACB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		7C1C3C7D1982C60B00555ACB /* PhishinMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinMediaItem.h; sourceTree = "<group>"; };
-		7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinMediaItem.m; sourceTree = "<group>"; };
-		7C23462F19820630002A46D5 /* MEExpandableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEExpandableHeaderView.h; sourceTree = "<group>"; };
-		7C23463019820630002A46D5 /* MEExpandableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEExpandableHeaderView.m; sourceTree = "<group>"; };
-		7C24926E198E8FD000C9275A /* music_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_128.png; sourceTree = "<group>"; };
-		7C24926F198E8FD000C9275A /* music_128@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_128@2x.png"; sourceTree = "<group>"; };
-		7C249272198E919000C9275A /* cloud_download_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_download_22.png; sourceTree = "<group>"; };
-		7C249273198E919000C9275A /* cloud_download_22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud_download_22@2x.png"; sourceTree = "<group>"; };
-		7C249276198E972E00C9275A /* LongStringTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongStringTableViewCell.h; sourceTree = "<group>"; };
-		7C249277198E972E00C9275A /* LongStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongStringTableViewCell.m; sourceTree = "<group>"; };
-		7C27BA681992D2E400E5AEAE /* PhishinPlaylistGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinPlaylistGroup.h; sourceTree = "<group>"; };
-		7C27BA691992D2E400E5AEAE /* PhishinPlaylistGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinPlaylistGroup.m; sourceTree = "<group>"; };
-		7C27BA6C1992D46B00E5AEAE /* CuratedPlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuratedPlaylistsViewController.h; sourceTree = "<group>"; };
-		7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuratedPlaylistsViewController.m; sourceTree = "<group>"; };
-		7C27BA6F1992D57400E5AEAE /* SubtitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleTableViewCell.h; sourceTree = "<group>"; };
-		7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleTableViewCell.m; sourceTree = "<group>"; };
-		7C27BA721992DAAE00E5AEAE /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
-		7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
-		7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGThirdPartyKeys.h; sourceTree = "<group>"; };
-		7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGThirdPartyKeys.m; sourceTree = "<group>"; };
-		7C27BA7B19942FC000E5AEAE /* API keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API keys.plist"; sourceTree = "<group>"; };
-		7C518C01175D0C32005EB2E7 /* PhishOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7C518C0C175D0C32005EB2E7 /* PhishOD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhishOD-Info.plist"; sourceTree = "<group>"; };
-		7C518C0E175D0C32005EB2E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7C518C10175D0C32005EB2E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7C518C12175D0C32005EB2E7 /* PhishOD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhishOD-Prefix.pch"; sourceTree = "<group>"; };
-		7C518C13175D0C32005EB2E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C518C14175D0C32005EB2E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7C518C37175D2A90005EB2E7 /* YearsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearsViewController.h; sourceTree = "<group>"; };
-		7C518C38175D2A90005EB2E7 /* YearsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearsViewController.m; sourceTree = "<group>"; };
-		7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		7C518C3C175D2C1B005EB2E7 /* FailureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailureHandler.h; sourceTree = "<group>"; };
-		7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailureHandler.m; sourceTree = "<group>"; };
-		7C518C3F175D2E20005EB2E7 /* YearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearViewController.h; sourceTree = "<group>"; };
-		7C518C40175D2E20005EB2E7 /* YearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearViewController.m; sourceTree = "<group>"; };
-		7C518C42175D9C87005EB2E7 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
-		7C518C43175D9C87005EB2E7 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
-		7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		7C518C51175DC937005EB2E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		7C518C54175DCEDD005EB2E7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		7C518C57175DDCE8005EB2E7 /* ColorSpaceUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorSpaceUtils.h; sourceTree = "<group>"; };
-		7C518C67175E59D6005EB2E7 /* PhishNetAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetAPI.h; sourceTree = "<group>"; };
-		7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PhishNetAPI.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		7C518C6B175E5CD8005EB2E7 /* PhishNetSetlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSetlist.h; sourceTree = "<group>"; };
-		7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSetlist.m; sourceTree = "<group>"; };
-		7C518C6E175E5EE5005EB2E7 /* PhishNetReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetReview.h; sourceTree = "<group>"; };
-		7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetReview.m; sourceTree = "<group>"; };
-		7C518C71175E6465005EB2E7 /* LongStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongStringViewController.h; sourceTree = "<group>"; };
-		7C518C72175E6465005EB2E7 /* LongStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongStringViewController.m; sourceTree = "<group>"; };
-		7C518C74175FD224005EB2E7 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
-		7C518C75175FD224005EB2E7 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
-		7C603028182068DA0088F651 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		7C63C7CE199437730022F37F /* IGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEvents.h; sourceTree = "<group>"; };
-		7C63C7CF199437730022F37F /* IGEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEvents.m; sourceTree = "<group>"; };
-		7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmazonInsightsSDK.framework; sourceTree = "<group>"; };
-		7C63C7D3199445AD0022F37F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshableTableViewController.h; sourceTree = "<group>"; };
-		7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshableTableViewController.m; sourceTree = "<group>"; };
-		7C6AE4FF1787BCBC00AAED06 /* Refreshable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Refreshable.h; sourceTree = "<group>"; };
-		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
-		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
-		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		7C750A20198D6F4200EA52DD /* PhishinPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinPlaylist.h; sourceTree = "<group>"; };
-		7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinPlaylist.m; sourceTree = "<group>"; };
-		7C79EB7B198559F20064C177 /* ShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCell.h; sourceTree = "<group>"; };
-		7C79EB7C198559F20064C177 /* ShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCell.m; sourceTree = "<group>"; };
-		7C79EB7D198559F20064C177 /* ShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCell.xib; sourceTree = "<group>"; };
-		7C79EB80198572480064C177 /* PhishNetJamChartEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetJamChartEntry.h; sourceTree = "<group>"; };
-		7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetJamChartEntry.m; sourceTree = "<group>"; };
-		7C79EB83198578D70064C177 /* JamChartEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JamChartEntryViewController.h; sourceTree = "<group>"; };
-		7C79EB84198578D70064C177 /* JamChartEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JamChartEntryViewController.m; sourceTree = "<group>"; };
-		7C7ED39018010620004F55DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		7C7ED39B1801B0FF004F55DF /* PDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocation.h; sourceTree = "<group>"; };
-		7C7ED39C1801B0FF004F55DF /* PDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocation.m; sourceTree = "<group>"; };
-		7C7ED39D1801B0FF004F55DF /* PDLocationsMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationsMap.h; sourceTree = "<group>"; };
-		7C7ED39E1801B0FF004F55DF /* PDLocationsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationsMapViewController.h; sourceTree = "<group>"; };
-		7C7ED39F1801B0FF004F55DF /* PDLocationsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationsMapViewController.m; sourceTree = "<group>"; };
-		7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDLocationsMapViewController.xib; sourceTree = "<group>"; };
-		7C7ED3A71801B219004F55DF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		7C7ED3A91801B22E004F55DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetNewsItem.h; sourceTree = "<group>"; };
-		7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetNewsItem.m; sourceTree = "<group>"; };
-		7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetBlogItem.h; sourceTree = "<group>"; };
-		7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetBlogItem.m; sourceTree = "<group>"; };
-		7C94367C1988894A00AFEA56 /* PhishNetShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetShow.h; sourceTree = "<group>"; };
-		7C94367D1988894A00AFEA56 /* PhishNetShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetShow.m; sourceTree = "<group>"; };
-		7C94368019888ACE00AFEA56 /* PhishNetBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetBlogViewController.h; sourceTree = "<group>"; };
-		7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetBlogViewController.m; sourceTree = "<group>"; };
-		7C94368319888C5400AFEA56 /* Value1SubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Value1SubtitleCell.h; sourceTree = "<group>"; };
-		7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Value1SubtitleCell.m; sourceTree = "<group>"; };
-		7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Value1SubtitleCell.xib; sourceTree = "<group>"; };
-		7C94368819894E5900AFEA56 /* PhishNetNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetNewsViewController.h; sourceTree = "<group>"; };
-		7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetNewsViewController.m; sourceTree = "<group>"; };
-		7C94368B1989F04B00AFEA56 /* PhishNetShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetShowsViewController.h; sourceTree = "<group>"; };
-		7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetShowsViewController.m; sourceTree = "<group>"; };
-		7C94368E1989F7FC00AFEA56 /* PhishNetAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetAuth.h; sourceTree = "<group>"; };
-		7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAuth.m; sourceTree = "<group>"; };
-		7C9436921989FA7600AFEA56 /* PhishNetSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSignInViewController.h; sourceTree = "<group>"; };
-		7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSignInViewController.m; sourceTree = "<group>"; };
-		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
-		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
-		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
-		7CADB3181760352900B80D54 /* PhishNetTopShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetTopShow.h; sourceTree = "<group>"; };
-		7CADB3191760352900B80D54 /* PhishNetTopShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetTopShow.m; sourceTree = "<group>"; };
-		7CADB31B176035E100B80D54 /* TopRatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopRatedViewController.h; sourceTree = "<group>"; };
-		7CADB31C176035E100B80D54 /* TopRatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopRatedViewController.m; sourceTree = "<group>"; };
-		7CADB31E176040B200B80D54 /* NSString+stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+stripHTML.h"; sourceTree = "<group>"; };
-		7CADB31F176040B200B80D54 /* NSString+stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+stripHTML.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		7CADB321176043F700B80D54 /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
-		7CADB322176043F700B80D54 /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
-		7CADB324176044DF00B80D54 /* SongInstancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInstancesViewController.h; sourceTree = "<group>"; };
-		7CADB325176044DF00B80D54 /* SongInstancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInstancesViewController.m; sourceTree = "<group>"; };
-		7CADCE4118943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationControllerAutoShrinkerForNowPlaying.h; sourceTree = "<group>"; };
-		7CADCE4218943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerAutoShrinkerForNowPlaying.m; sourceTree = "<group>"; };
-		7CADCE441894407000841A92 /* NowPlayingBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingBarViewController.h; sourceTree = "<group>"; };
-		7CADCE451894407000841A92 /* NowPlayingBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingBarViewController.m; sourceTree = "<group>"; };
-		7CADCE461894407000841A92 /* NowPlayingBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NowPlayingBarViewController.xib; sourceTree = "<group>"; };
-		7CADCE5E18946A8400841A92 /* PhishTracksStatsFavoritePopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsFavoritePopover.h; sourceTree = "<group>"; };
-		7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsFavoritePopover.m; sourceTree = "<group>"; };
-		7CC165E9180F5EB700F72F0D /* PhishinEra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinEra.h; sourceTree = "<group>"; };
-		7CC165EA180F5EB700F72F0D /* PhishinEra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinEra.m; sourceTree = "<group>"; };
-		7CC165EB180F5EB700F72F0D /* PhishinSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSearchResults.h; sourceTree = "<group>"; };
-		7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSearchResults.m; sourceTree = "<group>"; };
-		7CC165ED180F5EB700F72F0D /* PhishinSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSet.h; sourceTree = "<group>"; };
-		7CC165EE180F5EB700F72F0D /* PhishinSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSet.m; sourceTree = "<group>"; };
-		7CC165EF180F5EB700F72F0D /* PhishinShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinShow.h; sourceTree = "<group>"; };
-		7CC165F0180F5EB700F72F0D /* PhishinShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinShow.m; sourceTree = "<group>"; };
-		7CC165F1180F5EB700F72F0D /* PhishinSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSong.h; sourceTree = "<group>"; };
-		7CC165F2180F5EB700F72F0D /* PhishinSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinSong.m; sourceTree = "<group>"; };
-		7CC165F5180F5EB700F72F0D /* PhishinTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTour.h; sourceTree = "<group>"; };
-		7CC165F6180F5EB700F72F0D /* PhishinTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTour.m; sourceTree = "<group>"; };
-		7CC165F7180F5EB700F72F0D /* PhishinTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinTrack.h; sourceTree = "<group>"; };
-		7CC165F8180F5EB700F72F0D /* PhishinTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinTrack.m; sourceTree = "<group>"; };
-		7CC165F9180F5EB700F72F0D /* PhishinVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinVenue.h; sourceTree = "<group>"; };
-		7CC165FA180F5EB700F72F0D /* PhishinVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinVenue.m; sourceTree = "<group>"; };
-		7CC165FB180F5EB700F72F0D /* PhishinYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinYear.h; sourceTree = "<group>"; };
-		7CC165FC180F5EB700F72F0D /* PhishinYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinYear.m; sourceTree = "<group>"; };
-		7CC165FD180F5EB700F72F0D /* PhishinAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinAPI.h; sourceTree = "<group>"; };
-		7CC165FE180F5EB700F72F0D /* PhishinAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinAPI.m; sourceTree = "<group>"; };
-		7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStats.h; sourceTree = "<group>"; };
-		7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStats.m; sourceTree = "<group>"; };
-		7CC91A5B179F875A0047DFF3 /* jQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jQuery.h; sourceTree = "<group>"; };
-		7CC91A5C179F875A0047DFF3 /* jQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jQuery.m; sourceTree = "<group>"; };
-		7CC91A5D179F875A0047DFF3 /* jquery2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery2.min.js; sourceTree = "<group>"; };
-		7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jQueryAPI.js; sourceTree = "<group>"; };
-		7CC91A5F179F875A0047DFF3 /* NativeBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NativeBridge.js; sourceTree = "<group>"; };
-		7CDF2B7E198AB66900D17353 /* ShowHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowHeaderView.h; sourceTree = "<group>"; };
-		7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowHeaderView.m; sourceTree = "<group>"; };
-		7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowHeaderView.xib; sourceTree = "<group>"; };
-		7CDF2B83198AC59100D17353 /* ShowDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailsViewController.h; sourceTree = "<group>"; };
-		7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailsViewController.m; sourceTree = "<group>"; };
-		7CDF2B89198AEAE600D17353 /* PhishinDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloader.h; sourceTree = "<group>"; };
-		7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloader.m; sourceTree = "<group>"; };
-		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapQuery.h; sourceTree = "<group>"; };
-		C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapQuery.m; sourceTree = "<group>"; };
-		C56C2B5419F05979004F5637 /* PTSHeatmapResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapResults.h; sourceTree = "<group>"; };
-		C56C2B5519F05979004F5637 /* PTSHeatmapResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapResults.m; sourceTree = "<group>"; };
-		C56C2B5719F3687B004F5637 /* BadgeAndHeatmapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeAndHeatmapCell.h; sourceTree = "<group>"; };
-		C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeAndHeatmapCell.m; sourceTree = "<group>"; };
-		C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsFavorite.h; sourceTree = "<group>"; };
-		C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsFavorite.m; sourceTree = "<group>"; };
-		C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsError.h; sourceTree = "<group>"; };
-		C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsError.m; sourceTree = "<group>"; };
-		C5D128B1183EB78200E00ED8 /* StatsQueries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsQueries.h; sourceTree = "<group>"; };
-		C5D128B2183EB78200E00ED8 /* StatsQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsQueries.m; sourceTree = "<group>"; };
-		C5E62D2218394BA000A84114 /* StatsEditSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsEditSessionViewController.h; sourceTree = "<group>"; };
-		C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsEditSessionViewController.m; sourceTree = "<group>"; };
-		C5E62D25183D58C000A84114 /* PhishTracksStatsQueryResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsQueryResults.h; sourceTree = "<group>"; };
-		C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsQueryResults.m; sourceTree = "<group>"; };
-		C5E62D28183D5D9E00A84114 /* PhishTracksStatsQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsQuery.h; sourceTree = "<group>"; };
-		C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsQuery.m; sourceTree = "<group>"; };
-		C5E62D2B183DA14F00A84114 /* PhishTracksStatsStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsStat.h; sourceTree = "<group>"; };
-		C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsStat.m; sourceTree = "<group>"; };
-		C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsPlayEvent.m; sourceTree = "<group>"; };
-		C5FB5F6818387F4B004AAB91 /* StatsNewSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsNewSessionViewController.h; sourceTree = "<group>"; };
-		C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsNewSessionViewController.m; sourceTree = "<group>"; };
-		C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsRegistrationViewController.h; sourceTree = "<group>"; };
-		C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsRegistrationViewController.m; sourceTree = "<group>"; };
-		F1B48AE21973813100DDF5C3 /* VenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenuesViewController.h; sourceTree = "<group>"; };
-		F1B48AE31973813100DDF5C3 /* VenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenuesViewController.m; sourceTree = "<group>"; };
-		F1B48AE41973813100DDF5C3 /* VenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueViewController.h; sourceTree = "<group>"; };
-		F1B48AE51973813100DDF5C3 /* VenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueViewController.m; sourceTree = "<group>"; };
-		F1B48AE81973828F00DDF5C3 /* RandomShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomShowViewController.h; sourceTree = "<group>"; };
-		F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomShowViewController.m; sourceTree = "<group>"; };
-		F1B48AEB197382A500DDF5C3 /* SearchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDelegate.h; sourceTree = "<group>"; };
-		F1B48AEC197382A500DDF5C3 /* SearchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDelegate.m; sourceTree = "<group>"; };
-		F1B48AED197382A500DDF5C3 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		F1B48AEE197382A500DDF5C3 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		F1B48AF1197382AD00DDF5C3 /* ToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToursViewController.h; sourceTree = "<group>"; };
-		F1B48AF2197382AD00DDF5C3 /* ToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToursViewController.m; sourceTree = "<group>"; };
-		F1B48AF3197382AD00DDF5C3 /* TourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
-		F1B48AF4197382AD00DDF5C3 /* TourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourViewController.m; sourceTree = "<group>"; };
-		F1B48AF71973831A00DDF5C3 /* PlayHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayHistoryTableViewCell.h; sourceTree = "<group>"; };
-		F1B48AF81973831A00DDF5C3 /* PlayHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayHistoryTableViewCell.m; sourceTree = "<group>"; };
-		F1B48AF91973831A00DDF5C3 /* RankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48AFA1973831A00DDF5C3 /* RankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48AFB1973831A00DDF5C3 /* SetRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48AFC1973831A00DDF5C3 /* SetRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48AFD1973831A00DDF5C3 /* ShowRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48AFE1973831A00DDF5C3 /* ShowRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48AFF1973831A00DDF5C3 /* TourRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48B001973831A00DDF5C3 /* TourRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48B011973831A00DDF5C3 /* TrackRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48B021973831A00DDF5C3 /* TrackRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48B031973831A00DDF5C3 /* VenueRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48B041973831A00DDF5C3 /* VenueRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48B051973831A00DDF5C3 /* YearRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearRankingTableViewCell.h; sourceTree = "<group>"; };
-		F1B48B061973831A00DDF5C3 /* YearRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearRankingTableViewCell.m; sourceTree = "<group>"; };
-		F1B48B0F1973836800DDF5C3 /* BaseStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B101973836800DDF5C3 /* BaseStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B111973836800DDF5C3 /* GlobalActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalActivityViewController.h; sourceTree = "<group>"; };
-		F1B48B121973836800DDF5C3 /* GlobalActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalActivityViewController.m; sourceTree = "<group>"; };
-		F1B48B131973836800DDF5C3 /* MoreStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B141973836800DDF5C3 /* MoreStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B1F1973836800DDF5C3 /* PhishTracksStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B201973836800DDF5C3 /* PhishTracksStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B211973836800DDF5C3 /* PlayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayHistoryViewController.h; sourceTree = "<group>"; };
-		F1B48B221973836800DDF5C3 /* PlayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayHistoryViewController.m; sourceTree = "<group>"; };
-		F1B48B231973836800DDF5C3 /* SetStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B241973836800DDF5C3 /* SetStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B251973836800DDF5C3 /* ShowStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B261973836800DDF5C3 /* ShowStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B271973836800DDF5C3 /* TourStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B281973836800DDF5C3 /* TourStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B291973836800DDF5C3 /* TrackStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B2A1973836800DDF5C3 /* TrackStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B2B1973836800DDF5C3 /* UserTopTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTopTracksViewController.h; sourceTree = "<group>"; };
-		F1B48B2C1973836800DDF5C3 /* UserTopTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTopTracksViewController.m; sourceTree = "<group>"; };
-		F1B48B2D1973836800DDF5C3 /* VenueStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B2E1973836800DDF5C3 /* VenueStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B2F1973836800DDF5C3 /* YearStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearStatsViewController.h; sourceTree = "<group>"; };
-		F1B48B301973836800DDF5C3 /* YearStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearStatsViewController.m; sourceTree = "<group>"; };
-		F1B48B43197383E000DDF5C3 /* BaseFavoritableEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFavoritableEntityViewController.h; sourceTree = "<group>"; };
-		F1B48B44197383E000DDF5C3 /* BaseFavoritableEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFavoritableEntityViewController.m; sourceTree = "<group>"; };
-		F1B48B45197383E000DDF5C3 /* FavoriteShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteShowsViewController.h; sourceTree = "<group>"; };
-		F1B48B46197383E000DDF5C3 /* FavoriteShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteShowsViewController.m; sourceTree = "<group>"; };
-		F1B48B47197383E000DDF5C3 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
-		F1B48B48197383E000DDF5C3 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
-		F1B48B49197383E000DDF5C3 /* FavoriteToursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteToursViewController.h; sourceTree = "<group>"; };
-		F1B48B4A197383E000DDF5C3 /* FavoriteToursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteToursViewController.m; sourceTree = "<group>"; };
-		F1B48B4B197383E000DDF5C3 /* FavoriteTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTracksViewController.h; sourceTree = "<group>"; };
-		F1B48B4C197383E000DDF5C3 /* FavoriteTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTracksViewController.m; sourceTree = "<group>"; };
-		F1B48B4D197383E000DDF5C3 /* FavoriteVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteVenuesViewController.h; sourceTree = "<group>"; };
-		F1B48B4E197383E000DDF5C3 /* FavoriteVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteVenuesViewController.m; sourceTree = "<group>"; };
-		F1B48B551973867E00DDF5C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F1B48B57197388C200DDF5C3 /* UIImage+Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Icons.h"; sourceTree = "<group>"; };
-		F1B48B58197388C200DDF5C3 /* UIImage+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Icons.m"; sourceTree = "<group>"; };
-		F1B48B5B1973B02600DDF5C3 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
-		F1B48B5C1973B02600DDF5C3 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		7C518BFE175D0C32005EB2E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */,
-				7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */,
-				7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */,
-				7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */,
-				7C7ED39118010620004F55DF /* CoreMedia.framework in Frameworks */,
-				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
-				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
-				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
-				7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */,
-				7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */,
-				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
-				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
-				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
-				7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */,
-				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
-				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
-				EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		7C02E785180F455100C01CCB /* Tours */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48AF1197382AD00DDF5C3 /* ToursViewController.h */,
-				F1B48AF2197382AD00DDF5C3 /* ToursViewController.m */,
-				F1B48AF3197382AD00DDF5C3 /* TourViewController.h */,
-				F1B48AF4197382AD00DDF5C3 /* TourViewController.m */,
-			);
-			path = Tours;
-			sourceTree = "<group>";
-		};
-		7C02E786180F456000C01CCB /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48AEB197382A500DDF5C3 /* SearchDelegate.h */,
-				F1B48AEC197382A500DDF5C3 /* SearchDelegate.m */,
-				F1B48AED197382A500DDF5C3 /* SearchViewController.h */,
-				F1B48AEE197382A500DDF5C3 /* SearchViewController.m */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		7C0623EF198BFAA3002D31E5 /* Downloaded */ = {
-			isa = PBXGroup;
-			children = (
-				7C24926E198E8FD000C9275A /* music_128.png */,
-				7C24926F198E8FD000C9275A /* music_128@2x.png */,
-				7C0623F0198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.h */,
-				7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */,
-				7C0623F3198C2AEC002D31E5 /* DownloadQueueViewController.h */,
-				7C0623F4198C2AEC002D31E5 /* DownloadQueueViewController.m */,
-			);
-			path = Downloaded;
-			sourceTree = "<group>";
-		};
-		7C1B438817984D6A00CB1255 /* Jam Charts */ = {
-			isa = PBXGroup;
-			children = (
-				7C1B438917984D8D00CB1255 /* scrape_jams.js */,
-				7C79EB83198578D70064C177 /* JamChartEntryViewController.h */,
-				7C79EB84198578D70064C177 /* JamChartEntryViewController.m */,
-			);
-			path = "Jam Charts";
-			sourceTree = "<group>";
-		};
-		7C1C3C3419820EFC00555ACB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				7C249272198E919000C9275A /* cloud_download_22.png */,
-				7C249273198E919000C9275A /* cloud_download_22@2x.png */,
-				7C1C3C3519820F2100555ACB /* PHODTrackCell.h */,
-				7C1C3C3619820F2100555ACB /* PHODTrackCell.m */,
-				7C1C3C3719820F2100555ACB /* PHODTrackCell.xib */,
-				7C94368319888C5400AFEA56 /* Value1SubtitleCell.h */,
-				7C94368419888C5400AFEA56 /* Value1SubtitleCell.m */,
-				7C94368519888C5400AFEA56 /* Value1SubtitleCell.xib */,
-				7C249276198E972E00C9275A /* LongStringTableViewCell.h */,
-				7C249277198E972E00C9275A /* LongStringTableViewCell.m */,
-				7C27BA6F1992D57400E5AEAE /* SubtitleTableViewCell.h */,
-				7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */,
-				C56C2B5719F3687B004F5637 /* BadgeAndHeatmapCell.h */,
-				C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		7C1C3C3A19820FF600555ACB /* AGMediaPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				7C1C3C48198219F500555ACB /* Assets */,
-				7C1C3C431982105000555ACB /* IGDurationHelper.h */,
-				7C1C3C441982105000555ACB /* IGDurationHelper.m */,
-				7C1C3C3B1982100300555ACB /* AGMediaItem.h */,
-				7C1C3C3C1982100300555ACB /* AGMediaItem.m */,
-				7C1C3C3D1982100300555ACB /* AGMediaPlayerViewController.h */,
-				7C1C3C3E1982100300555ACB /* AGMediaPlayerViewController.m */,
-				7C1C3C3F1982100300555ACB /* AGMediaPlayerViewController.xib */,
-			);
-			path = AGMediaPlayer;
-			sourceTree = "<group>";
-		};
-		7C1C3C48198219F500555ACB /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				7C1C3C49198219FD00555ACB /* 03-loopback.png */,
-				7C1C3C4A198219FD00555ACB /* 03-loopback@2x.png */,
-				7C1C3C4B198219FD00555ACB /* glyphicons_076_headphones.png */,
-				7C1C3C4C198219FD00555ACB /* glyphicons_076_headphones@2x.png */,
-				7C1C3C4D198219FD00555ACB /* glyphicons_083_random.png */,
-				7C1C3C4E198219FD00555ACB /* glyphicons_083_random@2x.png */,
-				7C1C3C4F198219FD00555ACB /* glyphicons_172_rewind.png */,
-				7C1C3C50198219FD00555ACB /* glyphicons_172_rewind@2x.png */,
-				7C1C3C51198219FD00555ACB /* glyphicons_173_play.png */,
-				7C1C3C52198219FD00555ACB /* glyphicons_173_play@2x.png */,
-				7C1C3C53198219FD00555ACB /* glyphicons_174_pause.png */,
-				7C1C3C54198219FD00555ACB /* glyphicons_174_pause@2x.png */,
-				7C1C3C55198219FD00555ACB /* glyphicons_175_stop.png */,
-				7C1C3C56198219FD00555ACB /* glyphicons_175_stop@2x.png */,
-				7C1C3C57198219FD00555ACB /* glyphicons_176_forward.png */,
-				7C1C3C58198219FD00555ACB /* glyphicons_176_forward@2x.png */,
-				7C1C3C59198219FD00555ACB /* glyphicons_184_volume_up.png */,
-				7C1C3C5A198219FD00555ACB /* glyphicons_184_volume_up@2x.png */,
-				7C1C3C5B198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png */,
-				7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		7C23462E19820630002A46D5 /* MEExpandableHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				7C23462F19820630002A46D5 /* MEExpandableHeaderView.h */,
-				7C23463019820630002A46D5 /* MEExpandableHeaderView.m */,
-			);
-			path = MEExpandableHeaderView;
-			sourceTree = "<group>";
-		};
-		7C27BA6B1992D44200E5AEAE /* Playlists */ = {
-			isa = PBXGroup;
-			children = (
-				7C27BA6C1992D46B00E5AEAE /* CuratedPlaylistsViewController.h */,
-				7C27BA6D1992D46B00E5AEAE /* CuratedPlaylistsViewController.m */,
-				7C27BA721992DAAE00E5AEAE /* PlaylistViewController.h */,
-				7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */,
-			);
-			path = Playlists;
-			sourceTree = "<group>";
-		};
-		7C27BA7719942D6000E5AEAE /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				7C27BA7B19942FC000E5AEAE /* API keys.plist */,
-				7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */,
-				7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */,
-				7C63C7CE199437730022F37F /* IGEvents.h */,
-				7C63C7CF199437730022F37F /* IGEvents.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		7C518BF8175D0C32005EB2E7 = {
-			isa = PBXGroup;
-			children = (
-				7C518C0A175D0C32005EB2E7 /* PhishOD */,
-				7C518C03175D0C32005EB2E7 /* Frameworks */,
-				7C518C02175D0C32005EB2E7 /* Products */,
-				0835065E67C54644AE7E0BA1 /* Pods.xcconfig */,
-			);
-			sourceTree = "<group>";
-		};
-		7C518C02175D0C32005EB2E7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C01175D0C32005EB2E7 /* PhishOD.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7C63C7D3199445AD0022F37F /* libz.dylib */,
-				7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */,
-				7C1C3C741982223600555ACB /* Accelerate.framework */,
-				F1B48B5E1973B0CF00DDF5C3 /* Third Party Static */,
-				7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */,
-				7C7ED3A91801B22E004F55DF /* CoreLocation.framework */,
-				7C7ED3A71801B219004F55DF /* MapKit.framework */,
-				7C7ED39018010620004F55DF /* CoreMedia.framework */,
-				7C518C51175DC937005EB2E7 /* MediaPlayer.framework */,
-				7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */,
-				7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */,
-				7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */,
-				7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */,
-				7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */,
-				7C518C04175D0C32005EB2E7 /* UIKit.framework */,
-				7C518C06175D0C32005EB2E7 /* Foundation.framework */,
-				7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */,
-				A7BC2DD37E37437D9490C12C /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7C518C0A175D0C32005EB2E7 /* PhishOD */ = {
-			isa = PBXGroup;
-			children = (
-				7C27BA7719942D6000E5AEAE /* Helpers */,
-				7C1C3C3A19820FF600555ACB /* AGMediaPlayer */,
-				7C6AE5001788725800AAED06 /* MediaPlayer */,
-				7C7ED3851800D259004F55DF /* Panels */,
-				7C518C23175D115A005EB2E7 /* API */,
-				7C518C13175D0C32005EB2E7 /* AppDelegate.h */,
-				7C518C14175D0C32005EB2E7 /* AppDelegate.m */,
-				7C518C0B175D0C32005EB2E7 /* Supporting Files */,
-			);
-			path = PhishOD;
-			sourceTree = "<group>";
-		};
-		7C518C0B175D0C32005EB2E7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */,
-				7C23462E19820630002A46D5 /* MEExpandableHeaderView */,
-				F1B48B5F1973B0FA00DDF5C3 /* Rotatable TabBarController */,
-				F1B48B551973867E00DDF5C3 /* Images.xcassets */,
-				7C6AE5121788AFCD00AAED06 /* EventInterceptingWindow */,
-				7C6AE4FB1787BA1700AAED06 /* RefreshableTableView */,
-				7C518C0C175D0C32005EB2E7 /* PhishOD-Info.plist */,
-				F1B48B5A197388C600DDF5C3 /* Icons */,
-				7C518C0D175D0C32005EB2E7 /* InfoPlist.strings */,
-				7C518C10175D0C32005EB2E7 /* main.m */,
-				7C518C12175D0C32005EB2E7 /* PhishOD-Prefix.pch */,
-				F1B48B601973B10C00DDF5C3 /* FailureHandler */,
-				7C518C57175DDCE8005EB2E7 /* ColorSpaceUtils.h */,
-				7CADB31E176040B200B80D54 /* NSString+stripHTML.h */,
-				7CADB31F176040B200B80D54 /* NSString+stripHTML.m */,
-				7C6AE5161788B97200AAED06 /* Entitlements.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7C518C21175D0C4E005EB2E7 /* Year */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C37175D2A90005EB2E7 /* YearsViewController.h */,
-				7C518C38175D2A90005EB2E7 /* YearsViewController.m */,
-				7C518C3F175D2E20005EB2E7 /* YearViewController.h */,
-				7C518C40175D2E20005EB2E7 /* YearViewController.m */,
-				7C518C77175FD229005EB2E7 /* Show */,
-				7C79EB7B198559F20064C177 /* ShowCell.h */,
-				7C79EB7C198559F20064C177 /* ShowCell.m */,
-				7C79EB7D198559F20064C177 /* ShowCell.xib */,
-			);
-			path = Year;
-			sourceTree = "<group>";
-		};
-		7C518C22175D0C62005EB2E7 /* Song */ = {
-			isa = PBXGroup;
-			children = (
-				7C1B438817984D6A00CB1255 /* Jam Charts */,
-				7CADB321176043F700B80D54 /* SongsViewController.h */,
-				7CADB322176043F700B80D54 /* SongsViewController.m */,
-				7CADB324176044DF00B80D54 /* SongInstancesViewController.h */,
-				7CADB325176044DF00B80D54 /* SongInstancesViewController.m */,
-			);
-			path = Song;
-			sourceTree = "<group>";
-		};
-		7C518C23175D115A005EB2E7 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				7CC165E7180F5EB700F72F0D /* Phish.in */,
-				7CC91A57179F75E40047DFF3 /* PhishTracks Stats */,
-				7C518C66175E59C1005EB2E7 /* Phish.Net */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		7C518C53175DCEC7005EB2E7 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C54175DCEDD005EB2E7 /* SettingsViewController.h */,
-				7C518C55175DCEDD005EB2E7 /* SettingsViewController.m */,
-				C5FB5F6818387F4B004AAB91 /* StatsNewSessionViewController.h */,
-				C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */,
-				C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */,
-				C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */,
-				C5E62D2218394BA000A84114 /* StatsEditSessionViewController.h */,
-				C5E62D2318394BA000A84114 /* StatsEditSessionViewController.m */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		7C518C66175E59C1005EB2E7 /* Phish.Net */ = {
-			isa = PBXGroup;
-			children = (
-				7C9436911989FA5A00AFEA56 /* View Controllers */,
-				7C518C6A175E5C97005EB2E7 /* Models */,
-				7C518C67175E59D6005EB2E7 /* PhishNetAPI.h */,
-				7C518C68175E59D6005EB2E7 /* PhishNetAPI.m */,
-				7CC91A5B179F875A0047DFF3 /* jQuery.h */,
-				7CC91A5C179F875A0047DFF3 /* jQuery.m */,
-				7CC91A5D179F875A0047DFF3 /* jquery2.min.js */,
-				7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */,
-				7CC91A5F179F875A0047DFF3 /* NativeBridge.js */,
-				7C94368E1989F7FC00AFEA56 /* PhishNetAuth.h */,
-				7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */,
-			);
-			path = Phish.Net;
-			sourceTree = "<group>";
-		};
-		7C518C6A175E5C97005EB2E7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C6B175E5CD8005EB2E7 /* PhishNetSetlist.h */,
-				7C518C6C175E5CD8005EB2E7 /* PhishNetSetlist.m */,
-				7C518C6E175E5EE5005EB2E7 /* PhishNetReview.h */,
-				7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */,
-				7CADB3181760352900B80D54 /* PhishNetTopShow.h */,
-				7CADB3191760352900B80D54 /* PhishNetTopShow.m */,
-				7C79EB80198572480064C177 /* PhishNetJamChartEntry.h */,
-				7C79EB81198572480064C177 /* PhishNetJamChartEntry.m */,
-				7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */,
-				7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */,
-				7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */,
-				7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */,
-				7C94367C1988894A00AFEA56 /* PhishNetShow.h */,
-				7C94367D1988894A00AFEA56 /* PhishNetShow.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7C518C77175FD229005EB2E7 /* Show */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C42175D9C87005EB2E7 /* ShowViewController.h */,
-				7C518C43175D9C87005EB2E7 /* ShowViewController.m */,
-				7C518C71175E6465005EB2E7 /* LongStringViewController.h */,
-				7C518C72175E6465005EB2E7 /* LongStringViewController.m */,
-				7C518C74175FD224005EB2E7 /* ReviewsViewController.h */,
-				7C518C75175FD224005EB2E7 /* ReviewsViewController.m */,
-				7CDF2B7E198AB66900D17353 /* ShowHeaderView.h */,
-				7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */,
-				7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */,
-				7CDF2B83198AC59100D17353 /* ShowDetailsViewController.h */,
-				7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */,
-			);
-			path = Show;
-			sourceTree = "<group>";
-		};
-		7C60302B18206B1F0088F651 /* Random Show */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48AE81973828F00DDF5C3 /* RandomShowViewController.h */,
-				F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */,
-			);
-			path = "Random Show";
-			sourceTree = "<group>";
-		};
-		7C6AE4FB1787BA1700AAED06 /* RefreshableTableView */ = {
-			isa = PBXGroup;
-			children = (
-				7C6AE4FF1787BCBC00AAED06 /* Refreshable.h */,
-				7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */,
-				7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */,
-			);
-			path = RefreshableTableView;
-			sourceTree = "<group>";
-		};
-		7C6AE5001788725800AAED06 /* MediaPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				7CADCE491894407900841A92 /* Bottom Bar */,
-			);
-			path = MediaPlayer;
-			sourceTree = "<group>";
-		};
-		7C6AE5121788AFCD00AAED06 /* EventInterceptingWindow */ = {
-			isa = PBXGroup;
-			children = (
-				7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */,
-				7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */,
-			);
-			path = EventInterceptingWindow;
-			sourceTree = "<group>";
-		};
-		7C7ED3851800D259004F55DF /* Panels */ = {
-			isa = PBXGroup;
-			children = (
-				7C1C3C3419820EFC00555ACB /* Cells */,
-				7C0623EF198BFAA3002D31E5 /* Downloaded */,
-				7C94367F19888A9300AFEA56 /* Phish.net */,
-				7C60302B18206B1F0088F651 /* Random Show */,
-				7C02E785180F455100C01CCB /* Tours */,
-				7C02E786180F456000C01CCB /* Search */,
-				7C7ED3AE18020BB5004F55DF /* Venues */,
-				7C27BA6B1992D44200E5AEAE /* Playlists */,
-				7CACD4F517A45AE100E84B28 /* Stats */,
-				C5A31EEF1841BBB3009B893C /* Favorites */,
-				7CADB30F1760251500B80D54 /* Top Rated */,
-				7C518C53175DCEC7005EB2E7 /* Settings */,
-				7C518C22175D0C62005EB2E7 /* Song */,
-				7C518C21175D0C4E005EB2E7 /* Year */,
-				7C603028182068DA0088F651 /* HomeViewController.h */,
-				7C603029182068DA0088F651 /* HomeViewController.m */,
-			);
-			path = Panels;
-			sourceTree = "<group>";
-		};
-		7C7ED3951801B0F2004F55DF /* PDLocationsMap */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48B5B1973B02600DDF5C3 /* MapPoint.h */,
-				F1B48B5C1973B02600DDF5C3 /* MapPoint.m */,
-				7C7ED39A1801B0FF004F55DF /* PDLocationsMap */,
-			);
-			path = PDLocationsMap;
-			sourceTree = "<group>";
-		};
-		7C7ED39A1801B0FF004F55DF /* PDLocationsMap */ = {
-			isa = PBXGroup;
-			children = (
-				7C7ED39B1801B0FF004F55DF /* PDLocation.h */,
-				7C7ED39C1801B0FF004F55DF /* PDLocation.m */,
-				7C7ED39D1801B0FF004F55DF /* PDLocationsMap.h */,
-				7C7ED39E1801B0FF004F55DF /* PDLocationsMapViewController.h */,
-				7C7ED39F1801B0FF004F55DF /* PDLocationsMapViewController.m */,
-				7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */,
-			);
-			path = PDLocationsMap;
-			sourceTree = "<group>";
-		};
-		7C7ED3AE18020BB5004F55DF /* Venues */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48AE21973813100DDF5C3 /* VenuesViewController.h */,
-				F1B48AE31973813100DDF5C3 /* VenuesViewController.m */,
-				F1B48AE41973813100DDF5C3 /* VenueViewController.h */,
-				F1B48AE51973813100DDF5C3 /* VenueViewController.m */,
-			);
-			path = Venues;
-			sourceTree = "<group>";
-		};
-		7C94367F19888A9300AFEA56 /* Phish.net */ = {
-			isa = PBXGroup;
-			children = (
-				7C94368019888ACE00AFEA56 /* PhishNetBlogViewController.h */,
-				7C94368119888ACE00AFEA56 /* PhishNetBlogViewController.m */,
-				7C94368819894E5900AFEA56 /* PhishNetNewsViewController.h */,
-				7C94368919894E5900AFEA56 /* PhishNetNewsViewController.m */,
-				7C94368B1989F04B00AFEA56 /* PhishNetShowsViewController.h */,
-				7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */,
-			);
-			path = Phish.net;
-			sourceTree = "<group>";
-		};
-		7C9436911989FA5A00AFEA56 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7C9436921989FA7600AFEA56 /* PhishNetSignInViewController.h */,
-				7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		7CACD4F117A4584900E84B28 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C56C2B4C19F0493B004F5637 /* Stats */,
-				C56C2B4B19F04933004F5637 /* Heatmaps */,
-				7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */,
-				C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */,
-				C582FD1618417D860000E8CD /* PhishTracksStatsFavorite.h */,
-				C582FD1718417D860000E8CD /* PhishTracksStatsFavorite.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7CACD4F517A45AE100E84B28 /* Stats */ = {
-			isa = PBXGroup;
-			children = (
-				C5E8B5AD184E93CE003D7BDA /* Table View Cells */,
-				F1B48B421973836E00DDF5C3 /* View Controllers */,
-			);
-			path = Stats;
-			sourceTree = "<group>";
-		};
-		7CADB30F1760251500B80D54 /* Top Rated */ = {
-			isa = PBXGroup;
-			children = (
-				7CADB31B176035E100B80D54 /* TopRatedViewController.h */,
-				7CADB31C176035E100B80D54 /* TopRatedViewController.m */,
-			);
-			path = "Top Rated";
-			sourceTree = "<group>";
-		};
-		7CADCE491894407900841A92 /* Bottom Bar */ = {
-			isa = PBXGroup;
-			children = (
-				7CADCE4118943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.h */,
-				7CADCE4218943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m */,
-				7CADCE441894407000841A92 /* NowPlayingBarViewController.h */,
-				7CADCE451894407000841A92 /* NowPlayingBarViewController.m */,
-				7CADCE461894407000841A92 /* NowPlayingBarViewController.xib */,
-			);
-			path = "Bottom Bar";
-			sourceTree = "<group>";
-		};
-		7CC165E7180F5EB700F72F0D /* Phish.in */ = {
-			isa = PBXGroup;
-			children = (
-				7CC165E8180F5EB700F72F0D /* Models */,
-				7CC165FD180F5EB700F72F0D /* PhishinAPI.h */,
-				7CC165FE180F5EB700F72F0D /* PhishinAPI.m */,
-				7C1C3C7D1982C60B00555ACB /* PhishinMediaItem.h */,
-				7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */,
-				7CDF2B89198AEAE600D17353 /* PhishinDownloader.h */,
-				7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */,
-			);
-			path = Phish.in;
-			sourceTree = "<group>";
-		};
-		7CC165E8180F5EB700F72F0D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7CC165E9180F5EB700F72F0D /* PhishinEra.h */,
-				7CC165EA180F5EB700F72F0D /* PhishinEra.m */,
-				7CC165EB180F5EB700F72F0D /* PhishinSearchResults.h */,
-				7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */,
-				7CC165ED180F5EB700F72F0D /* PhishinSet.h */,
-				7CC165EE180F5EB700F72F0D /* PhishinSet.m */,
-				7CC165EF180F5EB700F72F0D /* PhishinShow.h */,
-				7CC165F0180F5EB700F72F0D /* PhishinShow.m */,
-				7CC165F1180F5EB700F72F0D /* PhishinSong.h */,
-				7CC165F2180F5EB700F72F0D /* PhishinSong.m */,
-				7CC165F5180F5EB700F72F0D /* PhishinTour.h */,
-				7CC165F6180F5EB700F72F0D /* PhishinTour.m */,
-				7CC165F7180F5EB700F72F0D /* PhishinTrack.h */,
-				7CC165F8180F5EB700F72F0D /* PhishinTrack.m */,
-				7CC165F9180F5EB700F72F0D /* PhishinVenue.h */,
-				7CC165FA180F5EB700F72F0D /* PhishinVenue.m */,
-				7CC165FB180F5EB700F72F0D /* PhishinYear.h */,
-				7CC165FC180F5EB700F72F0D /* PhishinYear.m */,
-				7C750A20198D6F4200EA52DD /* PhishinPlaylist.h */,
-				7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */,
-				7C27BA681992D2E400E5AEAE /* PhishinPlaylistGroup.h */,
-				7C27BA691992D2E400E5AEAE /* PhishinPlaylistGroup.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7CC91A57179F75E40047DFF3 /* PhishTracks Stats */ = {
-			isa = PBXGroup;
-			children = (
-				7CACD4F117A4584900E84B28 /* Models */,
-				7CC91A58179F75FB0047DFF3 /* PhishTracksStats.h */,
-				7CC91A59179F75FB0047DFF3 /* PhishTracksStats.m */,
-				C5BCEACE183FB510001024E7 /* PhishTracksStatsError.h */,
-				C5BCEACF183FB510001024E7 /* PhishTracksStatsError.m */,
-				7CADCE5E18946A8400841A92 /* PhishTracksStatsFavoritePopover.h */,
-				7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */,
-			);
-			path = "PhishTracks Stats";
-			sourceTree = "<group>";
-		};
-		C56C2B4B19F04933004F5637 /* Heatmaps */ = {
-			isa = PBXGroup;
-			children = (
-				C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */,
-				C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */,
-				C56C2B5419F05979004F5637 /* PTSHeatmapResults.h */,
-				C56C2B5519F05979004F5637 /* PTSHeatmapResults.m */,
-			);
-			name = Heatmaps;
-			sourceTree = "<group>";
-		};
-		C56C2B4C19F0493B004F5637 /* Stats */ = {
-			isa = PBXGroup;
-			children = (
-				C5E62D25183D58C000A84114 /* PhishTracksStatsQueryResults.h */,
-				C5E62D26183D58C000A84114 /* PhishTracksStatsQueryResults.m */,
-				C5E62D28183D5D9E00A84114 /* PhishTracksStatsQuery.h */,
-				C5E62D29183D5D9E00A84114 /* PhishTracksStatsQuery.m */,
-				C5E62D2B183DA14F00A84114 /* PhishTracksStatsStat.h */,
-				C5E62D2C183DA14F00A84114 /* PhishTracksStatsStat.m */,
-				C5D128B1183EB78200E00ED8 /* StatsQueries.h */,
-				C5D128B2183EB78200E00ED8 /* StatsQueries.m */,
-			);
-			name = Stats;
-			sourceTree = "<group>";
-		};
-		C5A31EEF1841BBB3009B893C /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48B43197383E000DDF5C3 /* BaseFavoritableEntityViewController.h */,
-				F1B48B44197383E000DDF5C3 /* BaseFavoritableEntityViewController.m */,
-				F1B48B45197383E000DDF5C3 /* FavoriteShowsViewController.h */,
-				F1B48B46197383E000DDF5C3 /* FavoriteShowsViewController.m */,
-				F1B48B47197383E000DDF5C3 /* FavoritesViewController.h */,
-				F1B48B48197383E000DDF5C3 /* FavoritesViewController.m */,
-				F1B48B49197383E000DDF5C3 /* FavoriteToursViewController.h */,
-				F1B48B4A197383E000DDF5C3 /* FavoriteToursViewController.m */,
-				F1B48B4B197383E000DDF5C3 /* FavoriteTracksViewController.h */,
-				F1B48B4C197383E000DDF5C3 /* FavoriteTracksViewController.m */,
-				F1B48B4D197383E000DDF5C3 /* FavoriteVenuesViewController.h */,
-				F1B48B4E197383E000DDF5C3 /* FavoriteVenuesViewController.m */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
-		C5E8B5AD184E93CE003D7BDA /* Table View Cells */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48AF71973831A00DDF5C3 /* PlayHistoryTableViewCell.h */,
-				F1B48AF81973831A00DDF5C3 /* PlayHistoryTableViewCell.m */,
-				F1B48AF91973831A00DDF5C3 /* RankingTableViewCell.h */,
-				F1B48AFA1973831A00DDF5C3 /* RankingTableViewCell.m */,
-				F1B48AFB1973831A00DDF5C3 /* SetRankingTableViewCell.h */,
-				F1B48AFC1973831A00DDF5C3 /* SetRankingTableViewCell.m */,
-				F1B48AFD1973831A00DDF5C3 /* ShowRankingTableViewCell.h */,
-				F1B48AFE1973831A00DDF5C3 /* ShowRankingTableViewCell.m */,
-				F1B48AFF1973831A00DDF5C3 /* TourRankingTableViewCell.h */,
-				F1B48B001973831A00DDF5C3 /* TourRankingTableViewCell.m */,
-				F1B48B011973831A00DDF5C3 /* TrackRankingTableViewCell.h */,
-				F1B48B021973831A00DDF5C3 /* TrackRankingTableViewCell.m */,
-				F1B48B031973831A00DDF5C3 /* VenueRankingTableViewCell.h */,
-				F1B48B041973831A00DDF5C3 /* VenueRankingTableViewCell.m */,
-				F1B48B051973831A00DDF5C3 /* YearRankingTableViewCell.h */,
-				F1B48B061973831A00DDF5C3 /* YearRankingTableViewCell.m */,
-			);
-			path = "Table View Cells";
-			sourceTree = "<group>";
-		};
-		F1B48B421973836E00DDF5C3 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48B0F1973836800DDF5C3 /* BaseStatsViewController.h */,
-				F1B48B101973836800DDF5C3 /* BaseStatsViewController.m */,
-				F1B48B111973836800DDF5C3 /* GlobalActivityViewController.h */,
-				F1B48B121973836800DDF5C3 /* GlobalActivityViewController.m */,
-				F1B48B131973836800DDF5C3 /* MoreStatsViewController.h */,
-				F1B48B141973836800DDF5C3 /* MoreStatsViewController.m */,
-				F1B48B1F1973836800DDF5C3 /* PhishTracksStatsViewController.h */,
-				F1B48B201973836800DDF5C3 /* PhishTracksStatsViewController.m */,
-				F1B48B211973836800DDF5C3 /* PlayHistoryViewController.h */,
-				F1B48B221973836800DDF5C3 /* PlayHistoryViewController.m */,
-				F1B48B231973836800DDF5C3 /* SetStatsViewController.h */,
-				F1B48B241973836800DDF5C3 /* SetStatsViewController.m */,
-				F1B48B251973836800DDF5C3 /* ShowStatsViewController.h */,
-				F1B48B261973836800DDF5C3 /* ShowStatsViewController.m */,
-				F1B48B271973836800DDF5C3 /* TourStatsViewController.h */,
-				F1B48B281973836800DDF5C3 /* TourStatsViewController.m */,
-				F1B48B291973836800DDF5C3 /* TrackStatsViewController.h */,
-				F1B48B2A1973836800DDF5C3 /* TrackStatsViewController.m */,
-				F1B48B2B1973836800DDF5C3 /* UserTopTracksViewController.h */,
-				F1B48B2C1973836800DDF5C3 /* UserTopTracksViewController.m */,
-				F1B48B2D1973836800DDF5C3 /* VenueStatsViewController.h */,
-				F1B48B2E1973836800DDF5C3 /* VenueStatsViewController.m */,
-				F1B48B2F1973836800DDF5C3 /* YearStatsViewController.h */,
-				F1B48B301973836800DDF5C3 /* YearStatsViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		F1B48B5A197388C600DDF5C3 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				F1B48B57197388C200DDF5C3 /* UIImage+Icons.h */,
-				F1B48B58197388C200DDF5C3 /* UIImage+Icons.m */,
-			);
-			path = Icons;
-			sourceTree = "<group>";
-		};
-		F1B48B5E1973B0CF00DDF5C3 /* Third Party Static */ = {
-			isa = PBXGroup;
-			children = (
-				7C7ED3951801B0F2004F55DF /* PDLocationsMap */,
-			);
-			name = "Third Party Static";
-			path = "PhishOD/Third Party Static";
-			sourceTree = "<group>";
-		};
-		F1B48B5F1973B0FA00DDF5C3 /* Rotatable TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				7CACD50017A4718900E84B28 /* RotatableTabBarController.h */,
-				7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */,
-			);
-			path = "Rotatable TabBarController";
-			sourceTree = "<group>";
-		};
-		F1B48B601973B10C00DDF5C3 /* FailureHandler */ = {
-			isa = PBXGroup;
-			children = (
-				7C518C3C175D2C1B005EB2E7 /* FailureHandler.h */,
-				7C518C3D175D2C1B005EB2E7 /* FailureHandler.m */,
-			);
-			path = FailureHandler;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		7C518C00175D0C32005EB2E7 /* PhishOD */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishOD" */;
-			buildPhases = (
-				0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */,
-				7C518BFD175D0C32005EB2E7 /* Sources */,
-				7C518BFE175D0C32005EB2E7 /* Frameworks */,
-				7C518BFF175D0C32005EB2E7 /* Resources */,
-				F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */,
-				7CADB327176057AB00B80D54 /* ShellScript */,
-				C5167BCE19F03C9600E11AB7 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PhishOD;
-			productName = PhishOD;
-			productReference = 7C518C01175D0C32005EB2E7 /* PhishOD.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		7C518BF9175D0C32005EB2E7 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Alec Gorge";
-				TargetAttributes = {
-					7C518C00175D0C32005EB2E7 = {
-						DevelopmentTeam = UH6Q9M9L78;
-						SystemCapabilities = {
-							com.apple.Maps.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-				};
-			};
-			buildConfigurationList = 7C518BFC175D0C32005EB2E7 /* Build configuration list for PBXProject "PhishOD" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7C518BF8175D0C32005EB2E7;
-			productRefGroup = 7C518C02175D0C32005EB2E7 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				7C518C00175D0C32005EB2E7 /* PhishOD */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		7C518BFF175D0C32005EB2E7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C518C0F175D0C32005EB2E7 /* InfoPlist.strings in Resources */,
-				F1B48B561973867E00DDF5C3 /* Images.xcassets in Resources */,
-				7C1C3C68198219FD00555ACB /* glyphicons_174_pause@2x.png in Resources */,
-				7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */,
-				7C1C3C5F198219FD00555ACB /* glyphicons_076_headphones.png in Resources */,
-				7CC91A6617A07D0F0047DFF3 /* jquery2.min.js in Resources */,
-				7C1C3C63198219FD00555ACB /* glyphicons_172_rewind.png in Resources */,
-				7CC91A6717A07D0F0047DFF3 /* jQueryAPI.js in Resources */,
-				7C1C3C421982100300555ACB /* AGMediaPlayerViewController.xib in Resources */,
-				7C1C3C5D198219FD00555ACB /* 03-loopback.png in Resources */,
-				7C1C3C3919820F2100555ACB /* PHODTrackCell.xib in Resources */,
-				7C1C3C6A198219FD00555ACB /* glyphicons_175_stop@2x.png in Resources */,
-				7C249274198E919000C9275A /* cloud_download_22.png in Resources */,
-				7C1C3C6B198219FD00555ACB /* glyphicons_176_forward.png in Resources */,
-				7C1C3C60198219FD00555ACB /* glyphicons_076_headphones@2x.png in Resources */,
-				7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */,
-				7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */,
-				7C1C3C64198219FD00555ACB /* glyphicons_172_rewind@2x.png in Resources */,
-				7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */,
-				7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */,
-				7C1C3C66198219FD00555ACB /* glyphicons_173_play@2x.png in Resources */,
-				7C1C3C5E198219FD00555ACB /* 03-loopback@2x.png in Resources */,
-				7C1C3C6E198219FD00555ACB /* glyphicons_184_volume_up@2x.png in Resources */,
-				7C249275198E919000C9275A /* cloud_download_22@2x.png in Resources */,
-				7C1C3C331982097600555ACB /* stock_header_chris_tank.jpg in Resources */,
-				7C1C3C6D198219FD00555ACB /* glyphicons_184_volume_up.png in Resources */,
-				7C1C3C70198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png in Resources */,
-				7C1C3C65198219FD00555ACB /* glyphicons_173_play.png in Resources */,
-				7C249271198E8FD100C9275A /* music_128@2x.png in Resources */,
-				7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */,
-				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
-				7C249270198E8FD000C9275A /* music_128.png in Resources */,
-				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
-				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
-				7C1C3C61198219FD00555ACB /* glyphicons_083_random.png in Resources */,
-				7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */,
-				7C1C3C69198219FD00555ACB /* glyphicons_175_stop.png in Resources */,
-				7C1C3C67198219FD00555ACB /* glyphicons_174_pause.png in Resources */,
-				7C1C3C62198219FD00555ACB /* glyphicons_083_random@2x.png in Resources */,
-				7C1C3C6C198219FD00555ACB /* glyphicons_176_forward@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0D1FF48CCC754A3A80BC954F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
-		7CADB327176057AB00B80D54 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4\n";
-		};
-		C5167BCE19F03C9600E11AB7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# ---------------------------- IMPORTANT ----------------------------\n# You must set RESTServer to something like 'Set by build script' in the file\n# file '<Project Name>-Info.plist' in the 'Supporting Files' group\n# -------------------------------------------------------------------\n#\n# determin server based on user name\n#\n\nSERVER=${STATS_SERVER}\n\n# Only use developer servers for debug never for release\nif [ \"$CONFIGURATION\" != \"Debug\" ] ; then\n    exit\nfi\n\nif [ \"$USER\" == \"bird\" ] ; then\n    SERVER=\"http://localhost:5000/api/v2/\"\nfi\n\necho $SERVER\n\n#\n# Set the server info in plist file in the build product not the source tree\n#\n/usr/libexec/PlistBuddy -c \"Set :StatsServer $SERVER\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
-		};
-		F77AAE8B6D1E4AEDA3DF84BA /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		7C518BFD175D0C32005EB2E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1B48B53197383E000DDF5C3 /* FavoriteTracksViewController.m in Sources */,
-				F1B48B50197383E000DDF5C3 /* FavoriteShowsViewController.m in Sources */,
-				F1B48B0B1973831A00DDF5C3 /* TourRankingTableViewCell.m in Sources */,
-				C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */,
-				C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */,
-				7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */,
-				F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */,
-				7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */,
-				F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */,
-				7C94368A19894E5900AFEA56 /* PhishNetNewsViewController.m in Sources */,
-				7CC91A60179F875A0047DFF3 /* jQuery.m in Sources */,
-				F1B48B54197383E000DDF5C3 /* FavoriteVenuesViewController.m in Sources */,
-				7C27BA6E1992D46B00E5AEAE /* CuratedPlaylistsViewController.m in Sources */,
-				7C94368619888C5400AFEA56 /* Value1SubtitleCell.m in Sources */,
-				7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */,
-				C5E62D27183D58C000A84114 /* PhishTracksStatsQueryResults.m in Sources */,
-				F1B48B52197383E000DDF5C3 /* FavoriteToursViewController.m in Sources */,
-				C5E62D2A183D5D9E00A84114 /* PhishTracksStatsQuery.m in Sources */,
-				F1B48B071973831A00DDF5C3 /* PlayHistoryTableViewCell.m in Sources */,
-				F1B48AEF197382A500DDF5C3 /* SearchDelegate.m in Sources */,
-				C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */,
-				7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */,
-				F1B48AF6197382AD00DDF5C3 /* TourViewController.m in Sources */,
-				F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */,
-				7CADCE4318943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */,
-				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
-				F1B48B411973836800DDF5C3 /* YearStatsViewController.m in Sources */,
-				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
-				7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */,
-				F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */,
-				F1B48B321973836800DDF5C3 /* GlobalActivityViewController.m in Sources */,
-				7C518C11175D0C32005EB2E7 /* main.m in Sources */,
-				F1B48AF0197382A500DDF5C3 /* SearchViewController.m in Sources */,
-				7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */,
-				7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */,
-				C56C2B5619F05979004F5637 /* PTSHeatmapResults.m in Sources */,
-				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
-				F1B48B51197383E000DDF5C3 /* FavoritesViewController.m in Sources */,
-				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
-				7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */,
-				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
-				C5E62D2418394BA000A84114 /* StatsEditSessionViewController.m in Sources */,
-				7CC16608180F5EB700F72F0D /* PhishinYear.m in Sources */,
-				F1B48B3A1973836800DDF5C3 /* PlayHistoryViewController.m in Sources */,
-				C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */,
-				7C1C3C401982100300555ACB /* AGMediaItem.m in Sources */,
-				F1B48B5D1973B02600DDF5C3 /* MapPoint.m in Sources */,
-				7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */,
-				7C79EB85198578D70064C177 /* JamChartEntryViewController.m in Sources */,
-				F1B48B3C1973836800DDF5C3 /* ShowStatsViewController.m in Sources */,
-				7C0623F5198C2AEC002D31E5 /* DownloadQueueViewController.m in Sources */,
-				F1B48B3E1973836800DDF5C3 /* TrackStatsViewController.m in Sources */,
-				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
-				F1B48B59197388C200DDF5C3 /* UIImage+Icons.m in Sources */,
-				F1B48B3D1973836800DDF5C3 /* TourStatsViewController.m in Sources */,
-				7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */,
-				C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */,
-				7C60302A182068DA0088F651 /* HomeViewController.m in Sources */,
-				7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */,
-				7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */,
-				7C27BA6A1992D2E400E5AEAE /* PhishinPlaylistGroup.m in Sources */,
-				F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */,
-				7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */,
-				F1B48B0E1973831A00DDF5C3 /* YearRankingTableViewCell.m in Sources */,
-				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
-				7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */,
-				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
-				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
-				7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */,
-				7C1C3C451982105000555ACB /* IGDurationHelper.m in Sources */,
-				F1B48B081973831A00DDF5C3 /* RankingTableViewCell.m in Sources */,
-				7C518C44175D9C87005EB2E7 /* ShowViewController.m in Sources */,
-				7CC16609180F5EB700F72F0D /* PhishinAPI.m in Sources */,
-				7C27BA711992D57400E5AEAE /* SubtitleTableViewCell.m in Sources */,
-				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
-				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
-				7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */,
-				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
-				F1B48B3B1973836800DDF5C3 /* SetStatsViewController.m in Sources */,
-				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
-				7C63C7D0199437730022F37F /* IGEvents.m in Sources */,
-				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
-				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
-				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
-				F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */,
-				F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */,
-				F1B48B401973836800DDF5C3 /* VenueStatsViewController.m in Sources */,
-				F1B48B0D1973831A00DDF5C3 /* VenueRankingTableViewCell.m in Sources */,
-				7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */,
-				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
-				7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */,
-				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
-				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
-				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
-				C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */,
-				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
-				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
-				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
-				F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */,
-				F1B48B391973836800DDF5C3 /* PhishTracksStatsViewController.m in Sources */,
-				7CADCE6018946A8400841A92 /* PhishTracksStatsFavoritePopover.m in Sources */,
-				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
-				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
-				7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */,
-				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
-				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
-				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
-				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
-				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
-				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
-				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
-				7C79EB7E198559F20064C177 /* ShowCell.m in Sources */,
-				F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */,
-				7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */,
-				7C0623F2198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m in Sources */,
-				7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */,
-				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		7C518C0D175D0C32005EB2E7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7C518C0E175D0C32005EB2E7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		7C518C1C175D0C32005EB2E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0AD79C8B-0B49-4BE9-9346-4A9D75127F8F";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7C518C1D175D0C32005EB2E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "99A77BF7-92DF-4444-831C-C3CF3091070B";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		7C518C1F175D0C32005EB2E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUILD_CONFIGURATION = Debug;
-				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
-				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb81cb8f-88a5-4845-8dad-e26225346a28";
-				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
-				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		7C518C20175D0C32005EB2E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUILD_CONFIGURATION = Release;
-				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
-				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "619F6193-1539-4F0F-AC91-C1711AFAE94D";
-				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
-				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		7C8BF73D192D2517006ABDE8 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "ADHOC=1";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Adhoc;
-		};
-		7C8BF73E192D2517006ABDE8 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0835065E67C54644AE7E0BA1 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUILD_CONFIGURATION = Adhoc;
-				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
-				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "PhishOD β";
-				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
-				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
-				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Adhoc;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		7C518BFC175D0C32005EB2E7 /* Build configuration list for PBXProject "PhishOD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7C518C1C175D0C32005EB2E7 /* Debug */,
-				7C518C1D175D0C32005EB2E7 /* Release */,
-				7C8BF73D192D2517006ABDE8 /* Adhoc */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7C518C1E175D0C32005EB2E7 /* Build configuration list for PBXNativeTarget "PhishOD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7C518C1F175D0C32005EB2E7 /* Debug */,
-				7C518C20175D0C32005EB2E7 /* Release */,
-				7C8BF73E192D2517006ABDE8 /* Adhoc */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 7C518BF9175D0C32005EB2E7 /* Project object */;
-}
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -1744,6 +37,36 @@ EOM
     exit 1
 fi
 </string>
+		</dict>
+		<key>3875788D3908365C67487089</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.adhoc.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.adhoc.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>50E0BDA5FC9C3902A351CB71</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7C02E785180F455100C01CCB</key>
 		<dict>
@@ -1923,6 +246,8 @@ fi
 				<string>7C249277198E972E00C9275A</string>
 				<string>7C27BA6F1992D57400E5AEAE</string>
 				<string>7C27BA701992D57400E5AEAE</string>
+				<string>C56C2B5719F3687B004F5637</string>
+				<string>C56C2B5819F3687B004F5637</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2945,7 +1270,7 @@ fi
 				<string>7C518C0A175D0C32005EB2E7</string>
 				<string>7C518C03175D0C32005EB2E7</string>
 				<string>7C518C02175D0C32005EB2E7</string>
-				<string>A7CF91AAB506006C446E2332</string>
+				<string>E6F5E887D0D4EC4571B0D1D1</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3062,6 +1387,7 @@ fi
 				<string>F1B48AF0197382A500DDF5C3</string>
 				<string>7CACD50217A4718A00E84B28</string>
 				<string>7CDF2B85198AC59100D17353</string>
+				<string>C56C2B5619F05979004F5637</string>
 				<string>7C518C15175D0C32005EB2E7</string>
 				<string>F1B48B51197383E000DDF5C3</string>
 				<string>7CC16605180F5EB700F72F0D</string>
@@ -3082,6 +1408,7 @@ fi
 				<string>F1B48B59197388C200DDF5C3</string>
 				<string>F1B48B3D1973836800DDF5C3</string>
 				<string>7C94368D1989F04B00AFEA56</string>
+				<string>C56C2B5919F3687B004F5637</string>
 				<string>7C60302A182068DA0088F651</string>
 				<string>7CDF2B80198AB66900D17353</string>
 				<string>7C6AE4FE1787BA2300AAED06</string>
@@ -3119,9 +1446,9 @@ fi
 				<string>7C94367B19885A2100AFEA56</string>
 				<string>7C9436941989FA7600AFEA56</string>
 				<string>7C249278198E972E00C9275A</string>
+				<string>C56C2B5319F04A11004F5637</string>
 				<string>7CC16607180F5EB700F72F0D</string>
 				<string>7CADB31A1760352900B80D54</string>
-				<string>C54ED74918201FF8007D4261</string>
 				<string>7CADB31D176035E100B80D54</string>
 				<string>F1B48B331973836800DDF5C3</string>
 				<string>F1B48B391973836800DDF5C3</string>
@@ -3188,7 +1515,6 @@ fi
 				<string>7C1C3C68198219FD00555ACB</string>
 				<string>7C6AE5171788B97200AAED06</string>
 				<string>7C1C3C5F198219FD00555ACB</string>
-				<string>C54ED74618201CF1007D4261</string>
 				<string>7CC91A6617A07D0F0047DFF3</string>
 				<string>7C1C3C63198219FD00555ACB</string>
 				<string>7CC91A6717A07D0F0047DFF3</string>
@@ -3242,6 +1568,7 @@ fi
 				<string>7C518BFF175D0C32005EB2E7</string>
 				<string>F77AAE8B6D1E4AEDA3DF84BA</string>
 				<string>7CADB327176057AB00B80D54</string>
+				<string>C5167BCE19F03C9600E11AB7</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -3398,7 +1725,6 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
-				<string>F1B48B611973B11600DDF5C3</string>
 				<string>7C1C3C321982097600555ACB</string>
 				<string>7C23462E19820630002A46D5</string>
 				<string>F1B48B5F1973B0FA00DDF5C3</string>
@@ -3666,7 +1992,7 @@ fi
 		<key>7C518C1F175D0C32005EB2E7</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>96565258200B6D5CCA8B426A</string>
+			<string>F4589C29B163E5D36E0B550B</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
@@ -3677,6 +2003,8 @@ fi
 				<string>Debug</string>
 				<key>BUNDLE_ID</key>
 				<string>com.alecgorge.Phish-Tracks</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
 				<key>CODE_SIGN_IDENTITY</key>
 				<string></string>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3695,10 +2023,18 @@ fi
 				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>PROVISIONING_PROFILE</key>
 				<string>fb81cb8f-88a5-4845-8dad-e26225346a28</string>
+				<key>STATS_SERVER</key>
+				<string>https://www.phishtrackstats.com/api/v2/</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
 				<key>WRAPPER_EXTENSION</key>
 				<string>app</string>
 			</dict>
@@ -3710,7 +2046,7 @@ fi
 		<key>7C518C20175D0C32005EB2E7</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>F11615E0B9EF4FB392949EDB</string>
+			<string>50E0BDA5FC9C3902A351CB71</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
@@ -3721,6 +2057,8 @@ fi
 				<string>Release</string>
 				<key>BUNDLE_ID</key>
 				<string>com.alecgorge.Phish-Tracks</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
 				<key>CODE_SIGN_IDENTITY</key>
 				<string>iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)</string>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3739,10 +2077,16 @@ fi
 				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>PROVISIONING_PROFILE</key>
 				<string>619F6193-1539-4F0F-AC91-C1711AFAE94D</string>
+				<key>STATS_SERVER</key>
+				<string>https://www.phishtrackstats.com/api/v2/</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h</string>
 				<key>WRAPPER_EXTENSION</key>
 				<string>app</string>
 			</dict>
@@ -5064,7 +3408,7 @@ fi
 		<key>7C8BF73E192D2517006ABDE8</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>B4F72A4D27ABD2938F1D5053</string>
+			<string>3875788D3908365C67487089</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
@@ -5075,6 +3419,8 @@ fi
 				<string>Adhoc</string>
 				<key>BUNDLE_ID</key>
 				<string>com.alecgorge.Phish-Tracks-Beta</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
 				<key>CODE_SIGN_IDENTITY</key>
 				<string>iPhone Developer</string>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -5093,10 +3439,16 @@ fi
 				<string>PhishOD/Supporting Files/PhishOD-Info.plist</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
 				<key>PRODUCT_NAME</key>
 				<string>PhishOD &#946;</string>
 				<key>PROVISIONING_PROFILE</key>
 				<string>031C5471-2CCA-4BD3-B446-77B0CD1DF8DA</string>
+				<key>STATS_SERVER</key>
+				<string>https://www.phishtrackstats.com/api/v2/</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h</string>
 				<key>WRAPPER_EXTENSION</key>
 				<string>app</string>
 			</dict>
@@ -5458,16 +3810,10 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
+				<string>C56C2B4C19F0493B004F5637</string>
+				<string>C56C2B4B19F04933004F5637</string>
 				<string>7CACD4F217A4585C00E84B28</string>
 				<string>C5E62D31183E46F400A84114</string>
-				<string>C5E62D25183D58C000A84114</string>
-				<string>C5E62D26183D58C000A84114</string>
-				<string>C5E62D28183D5D9E00A84114</string>
-				<string>C5E62D29183D5D9E00A84114</string>
-				<string>C5E62D2B183DA14F00A84114</string>
-				<string>C5E62D2C183DA14F00A84114</string>
-				<string>C5D128B1183EB78200E00ED8</string>
-				<string>C5D128B2183EB78200E00ED8</string>
 				<string>C582FD1618417D860000E8CD</string>
 				<string>C582FD1718417D860000E8CD</string>
 			</array>
@@ -6549,21 +4895,6 @@ fi
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>96565258200B6D5CCA8B426A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>A7BC2DD37E37437D9490C12C</key>
 		<dict>
 			<key>explicitFileType</key>
@@ -6577,57 +4908,86 @@ fi
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>A7CF91AAB506006C446E2332</key>
+		<key>C5167BCE19F03C9600E11AB7</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string># ---------------------------- IMPORTANT ----------------------------
+# You must set RESTServer to something like 'Set by build script' in the file
+# file '&lt;Project Name&gt;-Info.plist' in the 'Supporting Files' group
+# -------------------------------------------------------------------
+#
+# determin server based on user name
+#
+
+SERVER=${STATS_SERVER}
+
+# Only use developer servers for debug never for release
+if [ "$CONFIGURATION" != "Debug" ] ; then
+    exit
+fi
+
+if [ "$USER" == "bird" ] ; then
+    SERVER="http://localhost:5000/api/v2/"
+fi
+
+echo $SERVER
+
+#
+# Set the server info in plist file in the build product not the source tree
+#
+/usr/libexec/PlistBuddy -c "Set :StatsServer $SERVER" "${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"</string>
+		</dict>
+		<key>C56C2B4B19F04933004F5637</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>96565258200B6D5CCA8B426A</string>
-				<string>F11615E0B9EF4FB392949EDB</string>
-				<string>B4F72A4D27ABD2938F1D5053</string>
+				<string>C56C2B5119F04A11004F5637</string>
+				<string>C56C2B5219F04A11004F5637</string>
+				<string>C56C2B5419F05979004F5637</string>
+				<string>C56C2B5519F05979004F5637</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Pods</string>
+			<string>Heatmaps</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B4F72A4D27ABD2938F1D5053</key>
+		<key>C56C2B4C19F0493B004F5637</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>C5E62D25183D58C000A84114</string>
+				<string>C5E62D26183D58C000A84114</string>
+				<string>C5E62D28183D5D9E00A84114</string>
+				<string>C5E62D29183D5D9E00A84114</string>
+				<string>C5E62D2B183DA14F00A84114</string>
+				<string>C5E62D2C183DA14F00A84114</string>
+				<string>C5D128B1183EB78200E00ED8</string>
+				<string>C5D128B2183EB78200E00ED8</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Pods.adhoc.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.adhoc.xcconfig</string>
+			<string>Stats</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C54ED74518201CF1007D4261</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Configurations.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C54ED74618201CF1007D4261</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C54ED74518201CF1007D4261</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C54ED74718201FF8007D4261</key>
+		<key>C56C2B5119F04A11004F5637</key>
 		<dict>
 			<key>fileEncoding</key>
 			<string>4</string>
@@ -6636,13 +4996,11 @@ fi
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>Configuration.h</string>
+			<string>PTSHeatmapQuery.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-			<key>usesTabs</key>
-			<string>1</string>
 		</dict>
-		<key>C54ED74818201FF8007D4261</key>
+		<key>C56C2B5219F04A11004F5637</key>
 		<dict>
 			<key>fileEncoding</key>
 			<string>4</string>
@@ -6651,16 +5009,80 @@ fi
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>Configuration.m</string>
+			<string>PTSHeatmapQuery.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-			<key>usesTabs</key>
-			<string>1</string>
 		</dict>
-		<key>C54ED74918201FF8007D4261</key>
+		<key>C56C2B5319F04A11004F5637</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C54ED74818201FF8007D4261</string>
+			<string>C56C2B5219F04A11004F5637</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C56C2B5419F05979004F5637</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PTSHeatmapResults.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C56C2B5519F05979004F5637</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PTSHeatmapResults.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C56C2B5619F05979004F5637</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C56C2B5519F05979004F5637</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C56C2B5719F3687B004F5637</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>BadgeAndHeatmapCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C56C2B5819F3687B004F5637</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>BadgeAndHeatmapCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C56C2B5919F3687B004F5637</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C56C2B5819F3687B004F5637</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -7033,27 +5455,27 @@ fi
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>E6F5E887D0D4EC4571B0D1D1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F4589C29B163E5D36E0B550B</string>
+				<string>50E0BDA5FC9C3902A351CB71</string>
+				<string>3875788D3908365C67487089</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>EBE1977BC8824EE298E82496</key>
 		<dict>
 			<key>fileRef</key>
 			<string>A7BC2DD37E37437D9490C12C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>F11615E0B9EF4FB392949EDB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F1B48AE21973813100DDF5C3</key>
 		<dict>
@@ -8321,18 +6743,18 @@ fi
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F1B48B611973B11600DDF5C3</key>
+		<key>F4589C29B163E5D36E0B550B</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>C54ED74518201CF1007D4261</string>
-				<string>C54ED74718201FF8007D4261</string>
-				<string>C54ED74818201FF8007D4261</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
 			<key>path</key>
-			<string>Configuration</string>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>

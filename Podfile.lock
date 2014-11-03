@@ -3,12 +3,12 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.0)
     - AFNetworking/NSURLSession (~> 2.0)
   - AFNetworking (2.3.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.3.1)
+    - AFNetworking/NSURLSession (= 2.3.1)
+    - AFNetworking/Reachability (= 2.3.1)
+    - AFNetworking/Security (= 2.3.1)
+    - AFNetworking/Serialization (= 2.3.1)
+    - AFNetworking/UIKit (= 2.3.1)
   - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -48,12 +48,12 @@ PODS:
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
-    - SDWebImage/Core
+    - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - StreamingKit (0.1.23)
-  - SVProgressHUD (HEAD based on 1.0)
+  - SVProgressHUD (1.0)
   - SVWebViewController (1.0)
-  - TDBadgedCell (HEAD based on 2.6)
+  - TDBadgedCell (2.6)
   - TTTAttributedLabel (1.10.1)
 
 DEPENDENCIES:
@@ -123,4 +123,4 @@ SPEC CHECKSUMS:
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0.rc1
