@@ -13,7 +13,7 @@
 
 @class STKDataSource;
 
-@interface AGMediaItem : NSObject <PHODGenericTrack>
+@interface AGMediaItem : NSObject <PHODGenericTrack, NSCoding>
 
 @property (nonatomic) NSInteger id;
 

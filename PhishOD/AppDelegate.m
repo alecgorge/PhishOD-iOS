@@ -93,6 +93,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [UIApplication.sharedApplication beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
+    
+    [self hydrateFromSavedState];
 	
     return YES;
 }
@@ -160,6 +162,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived"
 														object:event];
+    [self saveCurrentState];
 }
 
 - (void)nowPlaying {
@@ -249,6 +252,52 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	}
 	
 	return NO;
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [self saveCurrentState];
+}
+
+- (void)saveCurrentState {
+    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.playbackQueue
+                             forKey:@"current.queue"];
+    
+    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.currentIndex)
+                             forKey:@"current.index"];
+    
+    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.elapsed)
+                             forKey:@"current.elapsed"];
+    
+    [EGOCache.globalCache setObject:self.currentlyPlayingShow
+                             forKey:@"current.show"];
+}
+
+- (void)hydrateFromSavedState {
+    NSArray *queue = (NSArray *)[EGOCache.globalCache objectForKey:@"current.queue"];
+    NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
+    NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.elapsed"]).floatValue;
+    PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
+    
+    if(!(queue && queue.count > 0 && show)) {
+        return;
+    }
+    
+    AGMediaPlayerViewController *player = AGMediaPlayerViewController.sharedInstance;
+    [player replaceQueueWithItems:queue
+                       startIndex:pos];
+    
+    [player pause];
+    
+    if(elapsed != 0.0f) {
+        player.elapsed = elapsed;
+    }
+    
+    self.currentlyPlayingShow = show;
+    
+    [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
+    
+    [self.navDelegate addBarToViewController:self.yearsNav.viewControllers.lastObject];
+    [self.navDelegate fixForViewController:self.yearsNav.viewControllers.lastObject];
 }
 
 @end

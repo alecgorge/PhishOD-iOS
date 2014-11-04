@@ -34,4 +34,6 @@
 
 - (void)presentMusicPlayer;
 
+- (void)saveCurrentState;
+
 @end

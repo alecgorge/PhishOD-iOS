@@ -6,9 +6,22 @@
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+
 #import "AGMediaItem.h"
 
 @implementation AGMediaItem
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        [self autoDecode:aDecoder];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+    [self autoEncodeWithCoder:coder];
+}
 
 - (NSURL *)shareURLWithTime:(NSTimeInterval)seconds {
     return self.shareURL;

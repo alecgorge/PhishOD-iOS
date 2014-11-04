@@ -25,6 +25,7 @@
 #import "PHODTrackCell.h"
 #import "PhishinMediaItem.h"
 
+#import "AppDelegate.h"
 #import "IGEvents.h"
 #import "IGThirdPartyKeys.h"
 
@@ -648,6 +649,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 	
     [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];
+    
+    if ((NSInteger)self.elapsed % 5 == 0) {
+        [AppDelegate.sharedDelegate saveCurrentState];
+    }
     
 	if(!self.currentTrackHasBeenScrobbled && self.progress > .5) {
         if (IGThirdPartyKeys.sharedInstance.isLastFmEnabled) {
