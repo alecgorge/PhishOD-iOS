@@ -12,6 +12,7 @@
 
 @interface RefreshableTableViewController () {
     CSNNotificationObserver *_contentResizeNotification;
+    BOOL _requestedPreventRefresh;
 }
 
 @end
@@ -43,23 +44,39 @@
 }
 
 - (void)refresh:(id)sender {
-    [sender endRefreshing];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    _requestedPreventRefresh = YES;
+    [self.refreshControl endRefreshing];
 }
 
 - (void)beginRefreshingTableView {
-	
+	// send to iteration of redraw loop
+//    [self _beginRefreshing];
+    
+    _requestedPreventRefresh = NO;
+    [self performSelector:@selector(_beginRefreshing)
+               withObject:nil
+               afterDelay:0.2];
+}
+
+- (void)_beginRefreshing {
+    if(_requestedPreventRefresh == YES) {
+        _requestedPreventRefresh = NO;
+        return;
+    }
+    
     [self.refreshControl beginRefreshing];
-	
+    
     if (self.tableView.contentOffset.y == 0) {
-		
+        
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
-			
+            
             self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
-			
+            
         } completion:^(BOOL finished){
-			
+            
         }];
-		
+        
     }
 }
 

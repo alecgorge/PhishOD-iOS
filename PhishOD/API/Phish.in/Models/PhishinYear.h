@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishinYear : NSObject
+@interface PhishinYear : NSObject<NSCoding>
 
 @property (nonatomic) NSString *year;
 @property (nonatomic) NSArray *shows;
+
+- (BOOL)isEqualToPhishinYear:(PhishinYear *)year;
+
+- (PhishinYear *)cache;
+
++ (NSString *)cacheKeyForYear:(NSString *)year;
++ (PhishinYear *)loadYearFromCacheForYear:(NSString *)year;
 
 @end

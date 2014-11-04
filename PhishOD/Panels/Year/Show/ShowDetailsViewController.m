@@ -28,6 +28,7 @@
 - (instancetype)initWithShowViewController:(ShowViewController *)showVc {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.showVc = showVc;
+        self.title = @"Details";
 	}
 	
 	return self;

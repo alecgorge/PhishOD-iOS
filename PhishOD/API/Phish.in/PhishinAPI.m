@@ -8,6 +8,8 @@
 
 #import "PhishinAPI.h"
 
+#import <EGOCache/EGOCache.h>
+
 @implementation PhishinAPI
 
 + (instancetype)sharedAPI {
@@ -53,7 +55,16 @@
 
 - (void)eras:(void (^)(NSArray *))success
 	 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self GET:@"eras"
+    __block NSArray *cachedYears = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+        cachedYears = (NSArray *)[EGOCache.globalCache objectForKey:@"eras"];
+        
+        if(cachedYears) {
+            success(cachedYears);
+        }
+    });
+
+    [self GET:@"eras"
    parameters:nil
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  NSMutableArray *arr = [NSMutableArray array];
@@ -71,7 +82,12 @@
 			  [arr addObject: era];
 		  }
 		  
-		  success(arr);
+          [EGOCache.globalCache setObject:arr
+                                   forKey:@"phishin.eras"];
+          
+          if(!cachedYears || (arr.count != cachedYears.count)) {
+              success(arr);
+          }
 	  }
 	  failure:failure];
 }
@@ -101,17 +117,33 @@
 
 - (void)years:(void (^)(NSArray *))success
 	  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    __block NSArray *cachedYears = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+        cachedYears = (NSArray *)[EGOCache.globalCache objectForKey:@"phishin.years"];
+        
+        if(cachedYears) {
+            success(cachedYears);
+        }
+    });
+    
 	[self GET:@"years"
    parameters:nil
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  responseObject = [self parseJSON:responseObject];
 		  
-		  success([responseObject[@"data"] map:^id(id object) {
-			  PhishinYear *year = [[PhishinYear alloc] init];
-			  year.year = object;
-			  year.shows = @[];
-			  return year;
-		  }]);
+          NSArray *arr = [responseObject[@"data"] map:^id(id object) {
+              PhishinYear *year = [[PhishinYear alloc] init];
+              year.year = object;
+              year.shows = @[];
+              return year;
+          }];
+          
+          [EGOCache.globalCache setObject:arr
+                                   forKey:@"phishin.years"];
+          
+          if(!cachedYears || (arr.count != cachedYears.count)) {
+              success(arr);
+          }
 	  }
 	  failure:failure];
 }
@@ -119,7 +151,18 @@
 - (void)fullYear:(PhishinYear *)year
 		 success:(void (^)(PhishinYear *))success
 		 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-	[self GET:[@"years/" stringByAppendingString:year.year]
+    __block PhishinYear *cachedYear = nil;
+    if(year.year) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+            cachedYear = [PhishinYear loadYearFromCacheForYear:year.year];
+            
+            if(cachedYear) {
+                success(cachedYear);
+            }
+        });
+    }
+
+    [self GET:[@"years/" stringByAppendingString:year.year]
    parameters:nil
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		  responseObject = [self parseJSON:responseObject];
@@ -129,8 +172,12 @@
 		  newYear.shows = [responseObject[@"data"] map:^id(id object) {
 			  return [[PhishinShow alloc] initWithDictionary:object];
 		  }].reverse;
-		  
-		  success(newYear);
+          
+          [newYear cache];
+          
+          if(![newYear isEqualToPhishinYear:cachedYear]) {
+              success(newYear);
+          }
 	  }
 	  failure:failure];
 }
@@ -145,6 +192,17 @@
 	else {
 		path = [@"show-on-date/" stringByAppendingFormat:@"%@", show.date];
 	}
+    
+    __block PhishinShow *cachedShow = nil;
+    if(show.date) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+            cachedShow = [PhishinShow loadShowFromCacheForShowDate:show.date];
+            
+            if(cachedShow) {
+                success(cachedShow);
+            }
+        });
+    }
 	
 	[self GET:path
    parameters:nil
@@ -153,8 +211,10 @@
 		  
 		  PhishinShow *show = [PhishinShow.alloc initWithDictionary:responseObject[@"data"]];
 		  [show cache];
-
-		  success(show);
+          
+          if(![show isEqual:cachedShow]) {
+              success(show);              
+          }
 	  }
 	  failure:failure];
 }

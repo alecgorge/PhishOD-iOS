@@ -26,6 +26,7 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <EGOCache/EGOCache.h>
 #import <GroundControl/NSUserDefaults+GroundControl.h>
+#import <CrittercismSDK/Crittercism.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
@@ -63,6 +64,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
     
     [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
+    
+    [Crittercism enableWithAppID:@"5457fcb70729df5bd6000007"];
 
 	[self setupLastFM];
 	[self setupCaching];

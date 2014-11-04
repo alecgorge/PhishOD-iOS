@@ -7,6 +7,7 @@
 //
 
 #import "PhishinEra.h"
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
 
 @implementation PhishinEra
 
@@ -17,6 +18,17 @@
 		self.years = years;
 	}
 	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        [self autoDecode:aDecoder];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+    [self autoEncodeWithCoder:coder];
 }
 
 @end

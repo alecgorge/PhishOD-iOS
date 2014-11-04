@@ -116,6 +116,20 @@
 	[self autoEncodeWithCoder:coder];
 }
 
+- (BOOL)isEqual:(id)object {
+    if(object && [object isKindOfClass:PhishinShow.class]) {
+        PhishinShow *s = (PhishinShow *)object;
+        
+        return    s.id == self.id
+               && [s.date isEqual:self.date]
+               && s.duration == self.duration
+               && s.sbd == self.sbd
+               && s.remastered == self.remastered;
+    }
+
+    return [super isEqual:object];
+}
+
 + (NSString *)cacheKeyForShowDate:(NSString *)date {
 	return [@"phishin.show." stringByAppendingString:date];
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PhishinYear.h"
 
-@interface PhishinEra : NSObject
+@interface PhishinEra : NSObject<NSCoding>
 
 - (instancetype)initWithName:(NSString*)name andYears:(NSArray*)years;
 
