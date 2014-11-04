@@ -244,7 +244,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 																			 applicationActivities:nil];
     
 	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
-    activityVC.completionHandler = ^(NSString *activityType, BOOL completed) {
+    activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
         [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0).stringValue,
                                          @"activity_type": activityType ? activityType : @"",
                                          @"completed": @(completed).stringValue

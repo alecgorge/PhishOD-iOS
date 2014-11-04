@@ -279,7 +279,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 	}
 	
 	if(!downloadConfig || !manager) {
-		downloadConfig = [NSURLSessionConfiguration backgroundSessionConfiguration:@"phishod"];
+		downloadConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"phishod"];
         downloadConfig.HTTPAdditionalHeaders = @{
                                                  @"User-Agent": @"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
                                                  };

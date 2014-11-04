@@ -120,7 +120,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 - (void)setupRightBarButtonItem {
     UIImage *customImage = [UIImage heartIconWhite];
     UIBarButtonItem *customBarButtonItem = [[UIBarButtonItem alloc] initWithImage:customImage
-                                                                            style:UIBarButtonItemStyleBordered
+                                                                            style:UIBarButtonItemStylePlain
                                                                            target:self
                                                                            action:@selector(favoriteTapped:)];
     
