@@ -265,8 +265,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.currentIndex)
                              forKey:@"current.index"];
     
-    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.elapsed)
-                             forKey:@"current.elapsed"];
+    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.progress)
+                             forKey:@"current.progress"];
     
     [EGOCache.globalCache setObject:self.currentlyPlayingShow
                              forKey:@"current.show"];
@@ -275,7 +275,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 - (void)hydrateFromSavedState {
     NSArray *queue = (NSArray *)[EGOCache.globalCache objectForKey:@"current.queue"];
     NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
-    NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.elapsed"]).floatValue;
+    NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;
     PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
     
     if(!(queue && queue.count > 0 && show)) {
@@ -289,7 +289,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [player pause];
     
     if(elapsed != 0.0f) {
-        player.elapsed = elapsed;
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			player.progress = elapsed;
+		});
     }
     
     self.currentlyPlayingShow = show;
