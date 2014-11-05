@@ -333,7 +333,6 @@ static PhishTracksStats *sharedPts;
 		 if (success) {
 			 NSError *error = nil;
 			 NSDictionary *dict = [self parseResponseObject:responseObject error:error];
-//			 NSLog(@"%@", dict);
 			 PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:dict];
 			 success(result);
 		 }

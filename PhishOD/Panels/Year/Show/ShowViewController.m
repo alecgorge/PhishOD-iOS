@@ -183,7 +183,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 }
 
 - (void)refreshHeatmap {
-	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"show" timeframe:@"all_time" filter:self.show.date];
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"show" filter:self.show.date];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
         success:^(PTSHeatmapResults *results) {

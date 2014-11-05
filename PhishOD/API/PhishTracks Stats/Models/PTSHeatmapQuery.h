@@ -18,7 +18,8 @@
 
 #pragma mark - Initizliationses
 
-- (id)initWithEntity:(NSString *)entity timeframe:(NSString *)timeframe filter:(NSString *)filterVal;
+//- (id)initWithEntity:(NSString *)entity timeframe:(NSString *)timeframe filter:(NSString *)filterVal;
+- (id)initWithAutoTimeframeAndEntity:(NSString *)entity filter:(NSString *)filterVal;
 
 #pragma mark - Serialization
 

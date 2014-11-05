@@ -42,11 +42,10 @@
 }
 
 - (void)refreshHeatmap {
-	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"tours" timeframe:@"all_time" filter:nil];
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"tours" filter:nil];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
 													success:^(PTSHeatmapResults *results) {
-														NSLog(@"%@", results.heatmap);
 														_toursHeatmap = results;
 														[self.tableView reloadData];
 													}

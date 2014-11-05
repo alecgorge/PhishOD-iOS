@@ -23,6 +23,11 @@
 	return self;
 }
 
+- (id)initWithAutoTimeframeAndEntity:(NSString *)entity filter:(NSString *)filterVal
+{
+	return [self initWithEntity:entity timeframe:@"auto" filter:filterVal];
+}
+
 - (NSDictionary *)asParams
 {
 	NSMutableDictionary *query = [NSMutableDictionary dictionaryWithCapacity:5];

@@ -61,7 +61,7 @@
 }
 
 - (void)refreshHeatmap {
-	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"tour" timeframe:@"all_time" filter:self.tour.name];
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"tour" filter:self.tour.name];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
         success:^(PTSHeatmapResults *results) {
