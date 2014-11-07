@@ -66,7 +66,7 @@
 }
 
 - (void)refreshHeatmap {
-	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithEntity:@"year" timeframe:@"all_time" filter:self.year.year];
+	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"year" filter:self.year.year];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
         success:^(PTSHeatmapResults *results) {
