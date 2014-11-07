@@ -18,15 +18,11 @@
 
 #pragma mark - Initizliationses
 
-//- (id)initWithEntity:(NSString *)entity timeframe:(NSString *)timeframe filter:(NSString *)filterVal;
 - (id)initWithAutoTimeframeAndEntity:(NSString *)entity filter:(NSString *)filterVal;
 
 #pragma mark - Serialization
 
 - (NSDictionary *)asParams;
-
-//#pragma mark - Prebuilt quieries
-
-//+ (PTSHea)
+- (NSString *)cacheKey;
 
 @end

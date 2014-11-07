@@ -11,6 +11,7 @@
 #import "PhishTracksStatsFavorite.h"
 #import "PTSHeatmapResults.h"
 #import <FXKeychain/FXKeychain.h>
+#import <EGOCache/EGOCache.h>
 
 typedef enum {
     kStatsErrorUnparsableBody = 100
@@ -324,15 +325,28 @@ static PhishTracksStats *sharedPts;
 					   success:(void (^)(PTSHeatmapResults *))success
 					   failure:(void (^)(PhishTracksStatsError *))failure
 {
-	NSDictionary *params = [query asParams];
+	NSString *queryCacheKey = [query cacheKey];
+    NSDictionary *cachedHeatmap = (NSDictionary *)[EGOCache.globalCache objectForKey:queryCacheKey];
+
+	if (cachedHeatmap) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+			if (success) {
+				PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:cachedHeatmap];
+				success(result);
+			}
+		});
+	}
+
+	// call success twice on a cache hit: first time with the cached value, second time with the API value
 	
 	[self POST:@"plays/heatmaps.json"
-	parameters:params
+	parameters:[query asParams]
 	   success:^(AFHTTPRequestOperation *operation, id responseObject)
 	 {
 		 if (success) {
 			 NSError *error = nil;
 			 NSDictionary *dict = [self parseResponseObject:responseObject error:error];
+			 [EGOCache.globalCache setObject:dict forKey:queryCacheKey withTimeoutInterval:3 * 60 * 60];
 			 PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:dict];
 			 success(result);
 		 }

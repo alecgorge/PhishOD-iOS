@@ -41,4 +41,9 @@
 	return @{ @"heatmap_query": query };
 }
 
+- (NSString *)cacheKey
+{
+	return [NSString stringWithFormat:@"%@:%@:%@:%@:%@", self.class, self.entity, self.timeframe, self.timezone, self.filter];
+}
+
 @end
