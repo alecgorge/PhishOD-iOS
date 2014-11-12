@@ -10,6 +10,7 @@
 
 #import <NAKPlaybackIndicatorView/NAKPlaybackIndicatorView.h>
 #import <LLACircularProgressView/LLACircularProgressView.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 #import "IGDurationHelper.h"
 #import "AGMediaPlayerViewController.h"

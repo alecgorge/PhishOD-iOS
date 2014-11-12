@@ -111,6 +111,7 @@
 												 name:@"RemoteControlEventReceived"
 											   object:nil];
     
+    [self setupAppearance];
     [self startUpdates];
 }
 
@@ -144,9 +145,10 @@
 }
 
 - (void)maskPlaybackQueue {
-    for (UISlider *slider in self.uiVolumeView.subviews) {
+    for (UIView *slider in self.uiVolumeView.subviews) {
         if ([slider isKindOfClass:[UISlider class]]) {
             slider.tintColor = COLOR_PHISH_WHITE;
+            ((UISlider*)slider).minimumTrackTintColor = COLOR_PHISH_WHITE;
         }
     }
 }
@@ -452,7 +454,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (void)setProgress:(float)progress {
-    [self.audioPlayer seekToTime: progress * self.audioPlayer.duration];
+    [self.audioPlayer seekToTime: progress * self.duration];
     self.uiProgressSlider.value = progress;
 }
 
@@ -661,7 +663,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     [MPNowPlayingInfoCenter.defaultCenter setNowPlayingInfo:dict];
     
-    if ((NSInteger)self.elapsed % 5 == 0) {
+    if ((NSInteger)self.elapsed % 5 == 0 && self.elapsed > 0.0f) {
         [AppDelegate.sharedDelegate saveCurrentState];
     }
     
@@ -764,7 +766,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
-    dbug(@"[audioPlayer] stateChanged: %@ previousState: %@", [self stringForStatus:state], [self stringForStatus:previousState]);
+    dbug(@"[audioPlayer] stateChanged: %@ previousState: %@. (duration: %f)", [self stringForStatus:state], [self stringForStatus:previousState], self.audioPlayer.duration);
     [self updateStatusBar];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"

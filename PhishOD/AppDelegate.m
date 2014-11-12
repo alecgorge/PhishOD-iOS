@@ -281,6 +281,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.heatmap
                              forKey:@"current.show-heatmap"];
+    
+    dbug(@"saved current playback state");
 }
 
 - (void)hydrateFromSavedState {
@@ -299,12 +301,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [player replaceQueueWithItems:queue
                        startIndex:pos];
     
+    [player play];
     [player pause];
     
     if(elapsed != 0.0f) {
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			player.progress = elapsed;
-		});
+        player.progress = elapsed;
+//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//		});
     }
     
     self.currentlyPlayingShow = show;
