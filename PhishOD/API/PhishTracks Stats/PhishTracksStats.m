@@ -9,7 +9,7 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsPlayEvent.h"
 #import "PhishTracksStatsFavorite.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 #import <FXKeychain/FXKeychain.h>
 #import <EGOCache/EGOCache.h>
 
@@ -322,7 +322,7 @@ static PhishTracksStats *sharedPts;
 #pragma mark - Heatmaps
 
 - (void)globalHeatmapWithQuery:(PTSHeatmapQuery *)query
-					   success:(void (^)(PTSHeatmapResults *))success
+					   success:(void (^)(PTSHeatmap *))success
 					   failure:(void (^)(PhishTracksStatsError *))failure
 {
 	NSString *queryCacheKey = [query cacheKey];
@@ -331,7 +331,7 @@ static PhishTracksStats *sharedPts;
 	if (cachedHeatmap) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
 			if (success) {
-				PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:cachedHeatmap];
+				PTSHeatmap *result = [[PTSHeatmap alloc] initWithDictionary:cachedHeatmap];
 				success(result);
 			}
 		});
@@ -347,7 +347,7 @@ static PhishTracksStats *sharedPts;
 			 NSError *error = nil;
 			 NSDictionary *dict = [self parseResponseObject:responseObject error:error];
 			 [EGOCache.globalCache setObject:dict forKey:queryCacheKey withTimeoutInterval:3 * 60 * 60];
-			 PTSHeatmapResults *result = [[PTSHeatmapResults alloc] initWithDictionary:dict];
+			 PTSHeatmap *result = [[PTSHeatmap alloc] initWithDictionary:dict];
 			 success(result);
 		 }
 	 }

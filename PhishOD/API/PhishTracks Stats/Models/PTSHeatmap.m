@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Alec Gorge. All rights reserved.
 //
 
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 
-@implementation PTSHeatmapResults
+@implementation PTSHeatmap
 
 - (id)initWithDictionary:(NSDictionary *)responseDict {
 	if (self = [super init]) {

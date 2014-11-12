@@ -25,7 +25,7 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsFavoritePopover.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 #import "ShowHeaderView.h"
 #import "ShowDetailsViewController.h"
 
@@ -39,7 +39,7 @@
 @end
 
 @implementation ShowViewController {
-	PTSHeatmapResults *_showHeatmap;
+	PTSHeatmap *_showHeatmap;
 }
 
 - (id)initWithShow:(PhishinShow*)s {
@@ -186,7 +186,7 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"show" filter:self.show.date];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
-        success:^(PTSHeatmapResults *results) {
+        success:^(PTSHeatmap *results) {
 			_showHeatmap = results;
 			[self.tableView reloadData];
     	}
