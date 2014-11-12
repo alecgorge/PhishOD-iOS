@@ -26,7 +26,7 @@ PODS:
   - Appirater (2.0.4)
   - AXRatingView (1.0.3)
   - CrashlyticsFramework (2.2.5.1)
-  - CrittercismSDK (5.0.5)
+  - CrittercismSDK (5.0.7)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
   - DZNEmptyDataSet (1.4.1)
@@ -50,7 +50,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
-  - StreamingKit (0.1.25)
+  - StreamingKit (HEAD based on 0.1.25)
   - SVProgressHUD (HEAD based on 1.0)
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 2.6)
@@ -76,11 +76,11 @@ DEPENDENCIES:
   - LLACircularProgressView
   - MarqueeLabel
   - NAKPlaybackIndicatorView
-  - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`)
+  - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`, branch `master`)
   - ObjectiveSugar
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
   - SDWebImage
-  - StreamingKit (~> 0.1.23)
+  - StreamingKit (HEAD)
   - SVProgressHUD (HEAD)
   - SVWebViewController
   - TDBadgedCell (HEAD)
@@ -88,6 +88,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NSObject-NSCoding:
+    :branch: master
     :git: https://github.com/alecgorge/NSObject-NSCoding.git
   PSUpdateApp:
     :git: https://github.com/alecgorge/PSUpdateApp.git
@@ -98,7 +99,7 @@ SPEC CHECKSUMS:
   Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
   AXRatingView: 4f6d6c96f6d0efc1deaa6cf493dbb1ffcfa79e55
   CrashlyticsFramework: 195dfef587ade7a3954ce8effd483a3879d35877
-  CrittercismSDK: 0f3bfca5d5e7b11ba8042a119c7aeb32c034c3aa
+  CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
   DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
