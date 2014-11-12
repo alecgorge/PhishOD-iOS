@@ -45,6 +45,41 @@
 	return self;
 }
 
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)decoder {
+	self = [super init];
+	if (!self) {
+		return nil;
+	}
+
+	self.entity    = [decoder decodeObjectForKey:@"entity"];
+	self.timeframe = [decoder decodeObjectForKey:@"timeframe"];
+	self.timezone  = [decoder decodeObjectForKey:@"timezone"];
+	self.timezoneOffset         = [decoder decodeIntegerForKey:@"timezoneOffset"];
+	self.absoluteTimeframeStart	= [decoder decodeObjectForKey:@"absoluteTimeframeStart"];
+	self.absoluteTimeframeEnd	= [decoder decodeObjectForKey:@"absoluteTimeframeEnd"];
+	self.userId   = [decoder decodeIntegerForKey:@"userId"];
+	self.username = [decoder decodeObjectForKey:@"username"];
+	self.heatmap  = [decoder decodeObjectForKey:@"heatmap"];
+
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+	[encoder encodeObject:self.entity forKey:@"entity"];
+	[encoder encodeObject:self.timeframe forKey:@"timeframe"];
+	[encoder encodeObject:self.timezone forKey:@"timezone"];
+	[encoder encodeInteger:self.timezoneOffset forKey:@"timezoneOffset"];
+	[encoder encodeObject:self.absoluteTimeframeStart forKey:@"absoluteTimeframeStart"];
+	[encoder encodeObject:self.absoluteTimeframeEnd forKey:@"absoluteTimeframeEnd"];
+	[encoder encodeInteger:self.userId forKey:@"userId"];
+	[encoder encodeObject:self.username forKey:@"username"];
+	[encoder encodeObject:self.heatmap forKey:@"heatmap"];
+}
+
+
 - (NSString *)description {
 	return [NSString stringWithFormat: @"PTSHeatmapResult:\n"
 			                            "  entity = %@\n"

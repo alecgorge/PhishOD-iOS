@@ -391,7 +391,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    }
     
     [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
-
+	AGMediaPlayerViewController.sharedInstance.heatmap = _showHeatmap;
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
                                                            startIndex:startIndex];
     

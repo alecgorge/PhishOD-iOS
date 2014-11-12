@@ -270,6 +270,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [EGOCache.globalCache setObject:self.currentlyPlayingShow
                              forKey:@"current.show"];
+
+    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.heatmap
+                             forKey:@"current.show-heatmap"];
 }
 
 - (void)hydrateFromSavedState {
@@ -277,12 +280,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
     NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;
     PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
-    
+    PTSHeatmap *heatmap = (PTSHeatmap *)[EGOCache.globalCache objectForKey:@"current.show-heatmap"];
+
     if(!(queue && queue.count > 0 && show)) {
         return;
     }
-    
+
     AGMediaPlayerViewController *player = AGMediaPlayerViewController.sharedInstance;
+	player.heatmap = heatmap;
     [player replaceQueueWithItems:queue
                        startIndex:pos];
     

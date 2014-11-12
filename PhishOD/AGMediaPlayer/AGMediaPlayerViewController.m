@@ -520,6 +520,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
                                                             forIndexPath:indexPath];
     
     PHODTrackCell *c = (PHODTrackCell *)cell;
+	[c showHeatmap:(!!self.heatmap)];
     [c updateCellWithTrack:self.playbackQueue[indexPath.row]
                inTableView:tableView];
     
@@ -543,6 +544,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PHODTrackCell *c = (PHODTrackCell *)cell;
     return [c heightForCellWithTrack:self.playbackQueue[indexPath.row]
                          inTableView:tableView];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (self.heatmap) {
+		PHODTrackCell *pcell = (PHODTrackCell *)cell;
+		PhishinMediaItem *mi = (PhishinMediaItem *) [pcell getTrack];
+		PhishinTrack *track = (PhishinTrack *)mi.phishinTrack;
+		float heatmapValue = [self.heatmap floatValueForKey:track.slug];
+		[pcell updateHeatmapLabelWithValue:heatmapValue];
+	}
 }
 
 #pragma mark - UI Stuff

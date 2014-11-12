@@ -213,4 +213,12 @@
 //	self.heatmapValue.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:1.0 alpha:1.0];
 }
 
+- (void)showHeatmap:(BOOL)show {
+	self.heatmapView.hidden = !show;
+}
+
+- (NSObject<PHODGenericTrack> *)getTrack {
+	return _track;
+}
+
 @end

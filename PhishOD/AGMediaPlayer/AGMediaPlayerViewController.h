@@ -11,6 +11,7 @@
 #import <StreamingKit/STKAudioPlayer.h>
 
 #import "AGMediaItem.h"
+#import "PTSHeatmap.h"
 
 @interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, STKAudioPlayerDelegate, UIActionSheetDelegate>
 
@@ -47,5 +48,7 @@
 - (void)togglePlayPause;
 
 - (void)redrawUICompletely;
+
+@property (nonatomic) PTSHeatmap *heatmap;
 
 @end
