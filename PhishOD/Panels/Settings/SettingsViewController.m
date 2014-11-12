@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
 	PhishODSettingsSectionPhishNet,
 	PhishODSettingsSectionStats,
 	PhishODSettingsSectionDownloads,
+	PhishODSettingsSectionHeatmap,
 	PhishODSettingsSectionCredits,
 	PhishODSettingsSectionFeedback,
 	PhishODSettingsSectionCount,
@@ -91,6 +92,9 @@ typedef NS_ENUM(NSInteger, PhishODSettingsSections) {
     else if(section == PhishODSettingsSectionDownloads) {
         return 2;
     }
+    else if(section == PhishODSettingsSectionHeatmap) {
+        return 1;
+    }
 	
 	return 0;
 }
@@ -114,6 +118,9 @@ titleForHeaderInSection:(NSInteger)section {
 	}
     else if(section == PhishODSettingsSectionDownloads) {
         return @"Downloads";
+    }
+    else if(section == PhishODSettingsSectionHeatmap) {
+        return @"Heatmaps";
     }
 	
 	return nil;
@@ -194,9 +201,16 @@ titleForFooterInSection:(NSInteger)section {
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	else if(indexPath.section == PhishODSettingsSectionStats && indexPath.row == 1) {
-		cell.textLabel.text = @"Register";
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;		
+	else if(indexPath.section == PhishODSettingsSectionHeatmap) {
+		cell.textLabel.text = @"Show heatmaps";
+		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+		UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+		BOOL on = [[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
+		cell.accessoryView = switchView;
+		[switchView setOn:on animated:NO];
+		[switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
 	}
 	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 0) {
 		cell.textLabel.text = @"Streaming by phish.in";
@@ -386,6 +400,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData]; // to reload selected cell
+}
+
+- (void) switchChanged:(id)sender {
+	UISwitch* switchControl = sender;
+	[[NSUserDefaults standardUserDefaults] setBool:switchControl.on forKey:@"heatmaps.enabled"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

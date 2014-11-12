@@ -325,6 +325,10 @@ static PhishTracksStats *sharedPts;
 					   success:(void (^)(PTSHeatmap *))success
 					   failure:(void (^)(PhishTracksStatsError *))failure
 {
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"]) {
+		return;
+	}
+
 	NSString *queryCacheKey = [query cacheKey];
     NSDictionary *cachedHeatmap = (NSDictionary *)[EGOCache.globalCache objectForKey:queryCacheKey];
 

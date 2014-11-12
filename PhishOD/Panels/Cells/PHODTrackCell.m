@@ -106,6 +106,8 @@
 			self.selectionStyle = UITableViewCellSelectionStyleDefault;
 		}
 	}
+
+	self.heatmapView.hidden = ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
 }
 
 - (void)pollForProgressUpdates {
@@ -214,7 +216,9 @@
 }
 
 - (void)showHeatmap:(BOOL)show {
-	self.heatmapView.hidden = !show;
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"]) {
+		self.heatmapView.hidden = !show;
+	}
 }
 
 - (NSObject<PHODGenericTrack> *)getTrack {

@@ -70,6 +70,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupLastFM];
 	[self setupCaching];
 	[self setupAppearance];
+	[self setupHeatmapSettings];
 	
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
 	
@@ -156,6 +157,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         LastFm.sharedInstance.session = [NSUserDefaults.standardUserDefaults stringForKey:@"lastfm_session_key"];
         LastFm.sharedInstance.username = [NSUserDefaults.standardUserDefaults stringForKey:@"lastfm_username_key"];
     }
+}
+
+- (void)setupHeatmapSettings {
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"heatmaps.enabled"] == nil) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"heatmaps.enabled"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 }
 
 
