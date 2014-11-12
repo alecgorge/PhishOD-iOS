@@ -13,7 +13,7 @@
 #import "PhishTracksStatsQuery.h"
 #import "PhishTracksStatsQueryResults.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 
 typedef enum {
 	kStatsApiClientPermissionFalse = 1,
@@ -89,7 +89,7 @@ typedef enum {
  * POST /plays/heatmaps.json
  */
 - (void)globalHeatmapWithQuery:(PTSHeatmapQuery *)query
-					   success:(void (^)(PTSHeatmapResults *))success
+					   success:(void (^)(PTSHeatmap *))success
 					   failure:(void (^)(PhishTracksStatsError *))failure;
 
 #pragma mark -

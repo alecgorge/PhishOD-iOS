@@ -10,11 +10,11 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsFavoritePopover.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 #import "ShowCell.h"
 
 @implementation TourViewController {
-	PTSHeatmapResults *_tourHeatmap;
+	PTSHeatmap *_tourHeatmap;
 }
 
 - (id)initWithTour:(PhishinTour *)tour {
@@ -64,7 +64,7 @@
 	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"tour" filter:self.tour.name];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
-        success:^(PTSHeatmapResults *results) {
+        success:^(PTSHeatmap *results) {
 			_tourHeatmap = results;
 			[self.tableView reloadData];
     	}

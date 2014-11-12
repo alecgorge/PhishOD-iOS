@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhishinTrack.h"
 
 @interface PHODTrackCell : UITableViewCell
+
 
 - (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
                 inTableView:(UITableView *)tableView;
@@ -17,4 +19,8 @@
                       inTableView:(UITableView *)tableView;
 
 - (void)updateHeatmapLabelWithValue:(float)val;
+- (void)showHeatmap:(BOOL)show;
+
+- (NSObject<PHODGenericTrack> *)getTrack;
+
 @end

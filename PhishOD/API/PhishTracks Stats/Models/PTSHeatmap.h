@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PTSHeatmapResults : NSObject
+@interface PTSHeatmap : NSObject <NSCoding>
 
 @property NSString *entity;
 @property NSString *timeframe;

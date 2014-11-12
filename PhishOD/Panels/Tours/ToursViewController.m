@@ -12,12 +12,12 @@
 #import "BadgeAndHeatmapCell.h"
 #import "PhishTracksStats.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 
 //#import <TDBadgedCell/TDBadgedCell.h>
 
 @implementation ToursViewController {
-	PTSHeatmapResults *_toursHeatmap;
+	PTSHeatmap *_toursHeatmap;
 }
 
 - (id)init {
@@ -45,7 +45,7 @@
 	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"tours" filter:nil];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
-													success:^(PTSHeatmapResults *results) {
+													success:^(PTSHeatmap *results) {
 														_toursHeatmap = results;
 														[self.tableView reloadData];
 													}

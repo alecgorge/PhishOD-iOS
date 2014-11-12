@@ -12,7 +12,7 @@
 #import "BadgeAndHeatmapCell.h"
 #import "PhishTracksStats.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 
 @interface YearsViewController ()
 
@@ -23,7 +23,7 @@
 @end
 
 @implementation YearsViewController {
-	PTSHeatmapResults *_yearsHeatmap;
+	PTSHeatmap *_yearsHeatmap;
 }
 
 - (id)init {
@@ -83,7 +83,7 @@
 	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"years" filter:nil];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
-													success:^(PTSHeatmapResults *results) {
+													success:^(PTSHeatmap *results) {
 														_yearsHeatmap = results;
 														[self.tableView reloadData];
 													}

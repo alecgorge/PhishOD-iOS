@@ -12,14 +12,14 @@
 #import "ShowCell.h"
 #import "PhishTracksStats.h"
 #import "PTSHeatmapQuery.h"
-#import "PTSHeatmapResults.h"
+#import "PTSHeatmap.h"
 
 @interface YearViewController ()
 
 @end
 
 @implementation YearViewController {
-	PTSHeatmapResults *_yearHeatmap;
+	PTSHeatmap *_yearHeatmap;
 }
 
 - (id)initWithYear:(PhishinYear*)y {
@@ -69,7 +69,7 @@
 	PTSHeatmapQuery *query = [[PTSHeatmapQuery alloc] initWithAutoTimeframeAndEntity:@"year" filter:self.year.year];
 	
 	[PhishTracksStats.sharedInstance globalHeatmapWithQuery:query
-        success:^(PTSHeatmapResults *results) {
+        success:^(PTSHeatmap *results) {
 			_yearHeatmap = results;
 			[self.tableView reloadData];
     	}

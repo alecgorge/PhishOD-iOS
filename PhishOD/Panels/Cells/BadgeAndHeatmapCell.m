@@ -60,13 +60,7 @@
 	
 	CGFloat h = self.frame.size.height;
 	CGFloat w = self.frame.size.width;
-//	CGFloat badge_x = self.badge.frame.origin.x;
-//	CGFloat badge_y = self.badge.frame.origin.x;
-//	CGFloat badge_w = self.badge.frame.size.width;
-//	CGFloat badge_h = self.badge.frame.size.height;
-//	CGFloat badge_c = badge_y + badge_h/2.0;
 	CGFloat hm_h    = _heatmapView.frame.size.height;
-//	CGFloat hm_x    = badge_x + badge_w + 8.0;
 	CGFloat hm_x    = w - 38.0;
 	CGFloat hm_y    = h - hm_h - (h - hm_h)/2.0;
 	
@@ -74,6 +68,7 @@
 }
 
 - (void)updateHeatmapLabelWithValue:(float)val {
+	_heatmapView.hidden = ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
 	CGFloat max_height = _heatmapView.frame.size.height;
 	CGRect hm = _heatmapValue.frame;
 	hm.origin.y = max_height * (1 - val);

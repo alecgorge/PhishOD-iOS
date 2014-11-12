@@ -106,6 +106,8 @@
 			self.selectionStyle = UITableViewCellSelectionStyleDefault;
 		}
 	}
+
+	self.heatmapView.hidden = ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
 }
 
 - (void)pollForProgressUpdates {
@@ -211,6 +213,16 @@
 //	float max_hue = 0;
 //	float hue = (min_hue - max_hue) * (1.0 - val);
 //	self.heatmapValue.backgroundColor = [UIColor colorWithHue:hue saturation:1.0 brightness:1.0 alpha:1.0];
+}
+
+- (void)showHeatmap:(BOOL)show {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"]) {
+		self.heatmapView.hidden = !show;
+	}
+}
+
+- (NSObject<PHODGenericTrack> *)getTrack {
+	return _track;
 }
 
 @end
