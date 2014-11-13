@@ -90,6 +90,9 @@
 		7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */; };
 		7C7ED3A81801B219004F55DF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A71801B219004F55DF /* MapKit.framework */; };
 		7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7ED3A91801B22E004F55DF /* CoreLocation.framework */; };
+		7C847EE71A13F71400EB4F3D /* PHODNewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */; };
+		7C847EE81A13F71400EB4F3D /* PHODNewHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */; };
+		7C847EEA1A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */; };
 		7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */; };
 		7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */; };
 		7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367D1988894A00AFEA56 /* PhishNetShow.m */; };
@@ -100,6 +103,8 @@
 		7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */; };
 		7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */; };
 		7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */; };
+		7CA8B5191A1529D100B69A04 /* PHODSlideshowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */; };
+		7CA8B51C1A1543E600B69A04 /* PHODSlideshowTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -311,6 +316,10 @@
 		7C7ED3A01801B0FF004F55DF /* PDLocationsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDLocationsMapViewController.xib; sourceTree = "<group>"; };
 		7C7ED3A71801B219004F55DF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7C7ED3A91801B22E004F55DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7C847EE41A13F71400EB4F3D /* PHODNewHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODNewHomeViewController.h; sourceTree = "<group>"; };
+		7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODNewHomeViewController.m; sourceTree = "<group>"; };
+		7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHODNewHomeViewController.xib; sourceTree = "<group>"; };
+		7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15115437744_51db659feb_b.jpg; sourceTree = "<group>"; };
 		7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetNewsItem.h; sourceTree = "<group>"; };
 		7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetNewsItem.m; sourceTree = "<group>"; };
 		7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetBlogItem.h; sourceTree = "<group>"; };
@@ -330,6 +339,10 @@
 		7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAuth.m; sourceTree = "<group>"; };
 		7C9436921989FA7600AFEA56 /* PhishNetSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSignInViewController.h; sourceTree = "<group>"; };
 		7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSignInViewController.m; sourceTree = "<group>"; };
+		7CA8B5171A1529D100B69A04 /* PHODSlideshowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODSlideshowManager.h; sourceTree = "<group>"; };
+		7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODSlideshowManager.m; sourceTree = "<group>"; };
+		7CA8B51A1A1543E600B69A04 /* PHODSlideshowTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODSlideshowTitleView.h; sourceTree = "<group>"; };
+		7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODSlideshowTitleView.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -649,6 +662,8 @@
 				7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */,
 				7C63C7CE199437730022F37F /* IGEvents.h */,
 				7C63C7CF199437730022F37F /* IGEvents.m */,
+				7CA8B51A1A1543E600B69A04 /* PHODSlideshowTitleView.h */,
+				7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -882,6 +897,10 @@
 		7C7ED3851800D259004F55DF /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */,
+				7C847EE41A13F71400EB4F3D /* PHODNewHomeViewController.h */,
+				7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */,
+				7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */,
 				7C1C3C3419820EFC00555ACB /* Cells */,
 				7C0623EF198BFAA3002D31E5 /* Downloaded */,
 				7C94367F19888A9300AFEA56 /* Phish.net */,
@@ -898,6 +917,8 @@
 				7C518C21175D0C4E005EB2E7 /* Year */,
 				7C603028182068DA0088F651 /* HomeViewController.h */,
 				7C603029182068DA0088F651 /* HomeViewController.m */,
+				7CA8B5171A1529D100B69A04 /* PHODSlideshowManager.h */,
+				7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */,
 			);
 			path = Panels;
 			sourceTree = "<group>";
@@ -1272,6 +1293,7 @@
 				F1B48B561973867E00DDF5C3 /* Images.xcassets in Resources */,
 				7C1C3C68198219FD00555ACB /* glyphicons_174_pause@2x.png in Resources */,
 				7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */,
+				7C847EE81A13F71400EB4F3D /* PHODNewHomeViewController.xib in Resources */,
 				7C1C3C5F198219FD00555ACB /* glyphicons_076_headphones.png in Resources */,
 				7CC91A6617A07D0F0047DFF3 /* jquery2.min.js in Resources */,
 				7C1C3C63198219FD00555ACB /* glyphicons_172_rewind.png in Resources */,
@@ -1299,6 +1321,7 @@
 				7C249271198E8FD100C9275A /* music_128@2x.png in Resources */,
 				7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */,
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
+				7C847EEA1A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg in Resources */,
 				7C249270198E8FD000C9275A /* music_128.png in Resources */,
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
 				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
@@ -1452,6 +1475,7 @@
 				7C518C56175DCEDD005EB2E7 /* SettingsViewController.m in Sources */,
 				7C518C69175E59D6005EB2E7 /* PhishNetAPI.m in Sources */,
 				7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */,
+				7C847EE71A13F71400EB4F3D /* PHODNewHomeViewController.m in Sources */,
 				7C518C6D175E5CD8005EB2E7 /* PhishNetSetlist.m in Sources */,
 				F1B48B3B1973836800DDF5C3 /* SetStatsViewController.m in Sources */,
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
@@ -1483,6 +1507,8 @@
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
+				7CA8B51C1A1543E600B69A04 /* PHODSlideshowTitleView.m in Sources */,
+				7CA8B5191A1529D100B69A04 /* PHODSlideshowManager.m in Sources */,
 				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
@@ -1583,6 +1609,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1613,6 +1640,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1671,6 +1699,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

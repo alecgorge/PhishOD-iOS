@@ -11,6 +11,8 @@
 
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
+@class PHODSlideshowManager;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
 + (instancetype)sharedDelegate;
@@ -18,6 +20,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic) UINavigationController *nowPlayingNav;
+@property (nonatomic) PHODSlideshowManager *slideshowManager;
 
 @property UINavigationController *yearsNav;
 @property UITabBarController *tabBar;

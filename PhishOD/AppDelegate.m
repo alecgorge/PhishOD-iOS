@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RotatableTabBarController.h"
+#import "PHODSlideshowManager.h"
 
 #import "YearsViewController.h"
 #import "SongsViewController.h"
@@ -19,6 +20,7 @@
 #import "IGThirdPartyKeys.h"
 #import "ShowViewController.h"
 #import "IGEvents.h"
+#import "PHODNewHomeViewController.h"
 
 #import <LastFm.h>
 #import <Crashlytics/Crashlytics.h>
@@ -78,7 +80,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
     self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	
-	HomeViewController *years = [[HomeViewController alloc] init];
+//	HomeViewController *years = [[HomeViewController alloc] init];
+    PHODNewHomeViewController *years = PHODNewHomeViewController.alloc.init;
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
     self.yearsNav.delegate = self.navDelegate;
 	self.yearsNav.navigationBar.translucent = NO;
@@ -96,6 +99,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self becomeFirstResponder];
     
     [self hydrateFromSavedState];
+    
+    self.slideshowManager = [PHODSlideshowManager.alloc initWithWindow:self.window];
 	
     return YES;
 }

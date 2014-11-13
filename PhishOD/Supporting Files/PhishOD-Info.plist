@@ -47,6 +47,8 @@
 	<string>${CONFIGURATION}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>StatsServer</key>
+	<string>https://www.phishtrackstats.com/api/v2/</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -72,7 +74,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>StatsServer</key>
-	<string>https://www.phishtrackstats.com/api/v2/</string>
 </dict>
 </plist>

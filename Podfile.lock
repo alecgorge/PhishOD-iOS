@@ -25,6 +25,9 @@ PODS:
     - AFNetworking/NSURLSession
   - Appirater (2.0.4)
   - AXRatingView (1.0.3)
+  - CPKenburnsSlideshowView (HEAD based on 1.1.4):
+    - CPKenburnsView
+  - CPKenburnsView (1.0.1)
   - CrashlyticsFramework (2.2.5.1)
   - CrittercismSDK (5.0.7)
   - CSNNotificationObserver (0.9.2)
@@ -43,6 +46,7 @@ PODS:
   - LLACircularProgressView (0.1.1)
   - MarqueeLabel (2.0.8)
   - NAKPlaybackIndicatorView (0.0.3)
+  - NSMutableArray-Shuffle (0.4)
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
   - PSUpdateApp (2.0.5):
@@ -50,10 +54,10 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
-  - StreamingKit (0.1.25)
-  - SVProgressHUD (1.0)
+  - StreamingKit (HEAD based on 0.1.25)
+  - SVProgressHUD (HEAD based on 1.0)
   - SVWebViewController (1.0)
-  - TDBadgedCell (2.6)
+  - TDBadgedCell (HEAD based on 2.6)
   - TTTAttributedLabel (1.10.1)
 
 DEPENDENCIES:
@@ -61,6 +65,7 @@ DEPENDENCIES:
   - AFNetworking
   - Appirater
   - AXRatingView
+  - CPKenburnsSlideshowView (HEAD)
   - CrashlyticsFramework
   - CrittercismSDK
   - CSNNotificationObserver
@@ -76,6 +81,7 @@ DEPENDENCIES:
   - LLACircularProgressView
   - MarqueeLabel
   - NAKPlaybackIndicatorView
+  - NSMutableArray-Shuffle (~> 0.4)
   - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`, branch `master`)
   - ObjectiveSugar
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
@@ -98,6 +104,8 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
   AXRatingView: 4f6d6c96f6d0efc1deaa6cf493dbb1ffcfa79e55
+  CPKenburnsSlideshowView: 7f82d09ab044674bbe7fd0cc3c68be5cebbd5d04
+  CPKenburnsView: 451143c38649df6f27f72ad579bf178e690564ba
   CrashlyticsFramework: 195dfef587ade7a3954ce8effd483a3879d35877
   CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
@@ -114,6 +122,7 @@ SPEC CHECKSUMS:
   LLACircularProgressView: 97fb4c9f115367b50c67a1fbafc5c881e7d745ec
   MarqueeLabel: 80ff5069b2b8ccd8678b56af0d8ff08ce417d34c
   NAKPlaybackIndicatorView: 3211fff8fbc229661d4de69e86cef1b9b2e49e41
+  NSMutableArray-Shuffle: fc5dc21933a5b868331eecc866409177477a37ce
   NSObject-NSCoding: 073409e0e79ac1a72813cd72ca1acb370ad50287
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   PSUpdateApp: ee6d181405d4ac41a6e569109133e541d254cb9e
@@ -124,4 +133,4 @@ SPEC CHECKSUMS:
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
 
-COCOAPODS: 0.35.0.rc1
+COCOAPODS: 0.35.0.rc2

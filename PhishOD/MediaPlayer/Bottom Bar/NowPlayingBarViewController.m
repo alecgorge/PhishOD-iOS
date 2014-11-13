@@ -54,7 +54,6 @@
                                               context:NULL];
     
     self.view.backgroundColor = COLOR_PHISH_GREEN;
-    self.buttonPause.backgroundColor = COLOR_PHISH_GREEN;
     self.labelTitle.textColor = COLOR_PHISH_WHITE;
     self.labelSubTitle.textColor = COLOR_PHISH_WHITE;
     self.labelTimeElapsed.textColor = COLOR_PHISH_WHITE;
