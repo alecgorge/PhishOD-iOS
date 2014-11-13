@@ -34,3 +34,6 @@ pod 'GroundControl', '~> 2.1.0'
 pod 'CrittercismSDK'
 pod 'CPKenburnsSlideshowView', :head
 pod 'NSMutableArray-Shuffle', '~> 0.4'
+pod 'OHActionSheet'
+
+

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="uiButtonContainer" destination="Yuc-Ld-86Q" id="hYx-Ww-DdZ"/>
                 <outlet property="uiButtonDiscover" destination="jzY-v2-92s" id="6pX-b3-JAZ"/>
+                <outlet property="uiButtonDownloads" destination="cxt-to-d15" id="1nV-7A-Mom"/>
                 <outlet property="uiButtonEverything" destination="QDX-F7-hV8" id="H1c-WU-my0"/>
                 <outlet property="uiButtonNowPlaying" destination="Ies-4Z-lsM" id="PcQ-SK-wQd"/>
                 <outlet property="uiButtonPhishNet" destination="JAr-19-PUn" id="fXb-9u-T9n"/>
@@ -64,6 +65,9 @@
                             <state key="normal" image="settings-navigation-icon">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="settingsTapped:" destination="-1" eventType="touchUpInside" id="0Es-l2-rEx"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxt-to-d15" userLabel="Downloads">
                             <rect key="frame" x="232" y="8" width="36" height="36"/>
@@ -75,6 +79,9 @@
                             <state key="normal" image="download">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="downloadedShows:" destination="-1" eventType="touchUpInside" id="1Yv-u3-pQJ"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SEARCH" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cdg-sL-pw8">
                             <rect key="frame" x="59" y="8" width="165" height="36"/>
@@ -83,7 +90,10 @@
                                 <constraint firstAttribute="height" constant="36" id="wwA-Yl-YxJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="704-W3-Hws"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -138,6 +148,9 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="tappedNowPlaying:" destination="-1" eventType="touchUpInside" id="QSW-x8-EX9"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-v2-92s">
                             <rect key="frame" x="0.0" y="77" width="119" height="52"/>

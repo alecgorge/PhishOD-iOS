@@ -8,7 +8,33 @@
 
 #import "PHODNewHomeViewController.h"
 
-@interface PHODNewHomeViewController ()
+#import "AppDelegate.h"
+#import "ShowViewController.h"
+#import "YearsViewController.h"
+#import "SongsViewController.h"
+#import "ToursViewController.h"
+#import "TopRatedViewController.h"
+#import "PhishTracksStatsViewController.h"
+#import "SettingsViewController.h"
+#import "VenuesViewController.h"
+#import "SearchViewController.h"
+#import "RandomShowViewController.h"
+#import "SearchDelegate.h"
+#import "FavoritesViewController.h"
+#import "GlobalActivityViewController.h"
+#import "CuratedPlaylistsViewController.h"
+#import "PhishNetAuth.h"
+
+#import "PhishNetBlogViewController.h"
+#import "PhishNetNewsViewController.h"
+#import "PhishNetShowsViewController.h"
+
+#import "PhishinDownloadedShowsViewController.h"
+#import "DownloadQueueViewController.h"
+
+#import <OHActionSheet/OHActionSheet.h>
+
+@interface PHODNewHomeViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *uiButtonContainer;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonEverything;
@@ -16,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonPhishNet;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonStats;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonNowPlaying;
+@property (weak, nonatomic) IBOutlet UIButton *uiButtonDownloads;
 
 @property (nonatomic) NSArray *buttons;
 @property (nonatomic) NSArray *menus;
@@ -44,7 +71,29 @@
     
     [self buildSubmenus];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    PhishinShow *show = [AppDelegate sharedDelegate].currentlyPlayingShow;
+    
+    if (!show) {
+        self.uiButtonNowPlaying.hidden = YES;
+    }
+    else {
+        self.uiButtonNowPlaying.hidden = NO;
+        [self.uiButtonNowPlaying setTitle:[NSString stringWithFormat:@"%@ ›", show.date]
+                                 forState:UIControlStateNormal];
+    }
+
     UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleDefault;
+    [self.navigationController setNavigationBarHidden:YES
+                                             animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleLightContent;
+    [self.navigationController setNavigationBarHidden:NO
+                                             animated:animated];
 }
 
 - (void)buildSubmenus {
@@ -74,11 +123,17 @@
             b.backgroundColor = COLOR_PHISH_GREEN;
             b.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
             
+            b.tag = (i << 16) | (j & 0xFFFF);
+            
             [b setTitle:submenu[j]
                forState:UIControlStateNormal];
             
             [b setTitleColor:COLOR_PHISH_WHITE
                     forState:UIControlStateNormal];
+            
+            [b addTarget:self
+                  action:@selector(submenuItemTapped:)
+        forControlEvents:UIControlEventTouchUpInside];
             
             [container addSubview:b];
         }
@@ -94,6 +149,76 @@
     }
     
     self.submenus = subs;
+}
+
+- (IBAction)downloadedShows:(id)sender {
+    [OHActionSheet showFromView:self.uiButtonDownloads
+                          title:@"Downloads"
+              cancelButtonTitle:@"Cancel"
+         destructiveButtonTitle:nil
+              otherButtonTitles:@[@"Download Queue", @"Downloaded Shows"]
+                     completion:^(OHActionSheet *sheet, NSInteger buttonIndex) {
+                         if(buttonIndex == 0) {
+                             [self pushViewController:DownloadQueueViewController.alloc.init];
+                         }
+                         else if(buttonIndex == 1) {
+                             [self pushViewController:PhishinDownloadedShowsViewController.alloc.init];
+                         }
+                     }];
+}
+
+- (IBAction)settingsTapped:(id)sender {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[SettingsViewController new]];
+    
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)submenuItemTapped:(UIButton *)btn {
+    NSInteger section = btn.tag >> 16;
+    NSInteger row = btn.tag & 0xFFFF;
+    
+    if(section == 0 && row == 0) {
+        [self pushViewController:[[YearsViewController alloc] init]];
+    }
+    else if(section == 0 && row == 1) {
+        [self pushViewController:[[SongsViewController alloc] init]];
+    }
+    else if(section == 0 && row == 2) {
+        [self pushViewController:[[VenuesViewController alloc] init]];
+    }
+    else if(section == 0 && row == 3) {
+        [self pushViewController:[[ToursViewController alloc] init]];
+    }
+    else if(section == 1 && row == 0) {
+        [self pushViewController:[[TopRatedViewController alloc] init]];
+    }
+    else if(section == 1 && row == 1) {
+        [self pushViewController:[[RandomShowViewController alloc] init]];
+    }
+    else if(section == 1 && row == 2) {
+        [self pushViewController:CuratedPlaylistsViewController.alloc.init];
+    }
+    else if(section == 3 && row == 0) {
+        [self pushViewController:[[PhishTracksStatsViewController alloc] init]];
+    }
+    else if(section == 3 && row == 1) {
+        [self pushViewController:[[FavoritesViewController alloc] init]];
+    }
+    else if(section == 3 && row == 2) {
+        [self pushViewController:[[GlobalActivityViewController alloc] init]];
+    }
+    else if(section == 2 && row == 1) {
+        [self pushViewController:PhishNetBlogViewController.alloc.init];
+    }
+    else if(section == 3 && row == 2) {
+        [self pushViewController:PhishNetNewsViewController.alloc.init];
+    }
+    else if(section == 3 && row == 0) {
+        [PhishNetAuth.sharedInstance ensureSignedInFrom:self
+                                                success:^{
+                                                    [self pushViewController:PhishNetShowsViewController.alloc.init];
+                                                }];
+    }
 }
 
 - (void)menuItemTapped:(UIButton *)btn {
@@ -130,24 +255,18 @@
                      }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES
-                                             animated:animated];
+- (IBAction)tappedNowPlaying:(id)sender {
+    [self pushViewController:[ShowViewController.alloc initWithShow:AppDelegate.sharedDelegate.currentlyPlayingShow]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)pushViewController:(UIViewController*)vc {
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
-*/
 
 @end

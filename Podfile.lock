@@ -49,6 +49,7 @@ PODS:
   - NSMutableArray-Shuffle (0.4)
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
+  - OHActionSheet (2.0.1)
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - NSMutableArray-Shuffle (~> 0.4)
   - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`, branch `master`)
   - ObjectiveSugar
+  - OHActionSheet
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
   - SDWebImage
   - StreamingKit (HEAD)
@@ -125,6 +127,7 @@ SPEC CHECKSUMS:
   NSMutableArray-Shuffle: fc5dc21933a5b868331eecc866409177477a37ce
   NSObject-NSCoding: 073409e0e79ac1a72813cd72ca1acb370ad50287
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  OHActionSheet: f7b5008029f0aaea45be5332d2a28441b4308523
   PSUpdateApp: ee6d181405d4ac41a6e569109133e541d254cb9e
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   StreamingKit: 5b36623e7246cccddb8db3aee79c43bb180a51be
