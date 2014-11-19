@@ -210,10 +210,10 @@
     else if(section == 2 && row == 1) {
         [self pushViewController:PhishNetBlogViewController.alloc.init];
     }
-    else if(section == 3 && row == 2) {
+    else if(section == 2 && row == 2) {
         [self pushViewController:PhishNetNewsViewController.alloc.init];
     }
-    else if(section == 3 && row == 0) {
+    else if(section == 2 && row == 0) {
         [PhishNetAuth.sharedInstance ensureSignedInFrom:self
                                                 success:^{
                                                     [self pushViewController:PhishNetShowsViewController.alloc.init];

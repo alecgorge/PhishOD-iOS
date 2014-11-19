@@ -120,8 +120,8 @@ static NSString *kPhishNetAuthKeyKeychainKey = @"pnet_authkey";
                             self.signInBlock();
                         }
                         else {
-                            UIAlertView *a = [UIAlertView.alloc initWithTitle:@"Phish.net Email or Password Incorrect"
-                                                                      message:@"It would seem that your email or password is incorrect. You need to use the email and password you use on Phish.net."
+                            UIAlertView *a = [UIAlertView.alloc initWithTitle:@"Phish.net Username or Password Incorrect"
+                                                                      message:@"It would seem that your username or password is incorrect. You need to use the username and password you use on Phish.net."
                                                                      delegate:nil
                                                             cancelButtonTitle:@"OK"
                                                             otherButtonTitles:nil];

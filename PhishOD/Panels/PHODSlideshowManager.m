@@ -16,6 +16,8 @@
 
 @interface PHODSlideshowManager () <CPKenburnsSlideshowViewDeleagte>
 
+@property (atomic) NSInteger restartCount;
+
 @end
 
 @implementation PHODSlideshowManager
@@ -31,6 +33,8 @@
 
 - (void)setup {
     NSArray *a = [NSUserDefaults.standardUserDefaults objectForKey:@"images"];
+	
+	self.restartCount = 3;
     
     self.images = [a map:^id(NSDictionary *object) {
         CPKenburnsImage *i = CPKenburnsImage.alloc.init;
@@ -47,12 +51,12 @@
     self.slideshow = [CPKenburnsSlideshowView.alloc initWithFrame:self.window.bounds];
     self.slideshow.delegate = self;
     
-    self.slideshow.coverImage = [UIImage imageNamed:@"15115437744_51db659feb_b"];
+    self.slideshow.coverImage = [UIImage imageNamed:@"15115437744_51db659feb_b.jpg"];
     
     self.slideshow.slideshowDuration = 20.0f;
     self.slideshow.automaticFadeDuration = 4.0f;
-    
-    self.slideshow.images = self.images;
+	
+	[self preloadImages];
     self.slideshow.titleViewClass = PHODSlideshowTitleView.class;
     
     [self.slideshow restartAnimation];
@@ -66,6 +70,33 @@
 
     [self.window sendSubviewToBack:overlay];
     [self.window sendSubviewToBack:self.slideshow];
+}
+
+- (void)preloadImages {
+	SDWebImageManager *manager = SDWebImageManager.sharedManager;
+
+	for(NSInteger i = 0; i < (self.images.count < 3 ? self.images.count : 3); i++) {
+		CPKenburnsImage *im = self.images[i];
+		[manager downloadImageWithURL:im.imageUrl
+							  options:0
+							 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+								 // progression tracking code
+							 }
+							completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+								if(image) {
+									self.restartCount--;
+									
+									if(self.restartCount == 0) {
+										[self.slideshow showCoverImage:NO];
+										[self.slideshow restartAllKenburnsMotion];
+										self.slideshow.images = self.images;
+									}
+								}
+								else {
+									dbug(@"flickr err: %@ %@ %d %@", image, error, finished, imageURL);
+								}
+							}];
+	}
 }
 
 - (void)slideshowView:(CPKenburnsSlideshowView *)slideshowView
@@ -89,7 +120,6 @@
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                             if(image) {
                                 completionBlock(image);
-                                [self.slideshow showCoverImage:NO];
                             }
                             else {
                                 dbug(@"flickr err: %@ %@ %d %@", image, error, finished, imageUrl);

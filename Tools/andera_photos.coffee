@@ -40,4 +40,4 @@ wingsuit no wm.JPG
 wombat suit.JPG
 """
 
-console.log JSON.stringify ls.trim().split("\n").map (v) -> title: "Buy a print from AZNpics on Etsy.", owner: "AZNpics/@andreanusinov", url: "http://phishin_api.alecgorge.com/phishod_images/" + v
+console.log JSON.stringify ls.trim().split("\n").map (v) -> title: "Buy a print from AZNpics on Etsy.", owner: "AZNpics/@andreanusinov", url: encodeURI("http://phishin_api.alecgorge.com/phishod_images/" + v)

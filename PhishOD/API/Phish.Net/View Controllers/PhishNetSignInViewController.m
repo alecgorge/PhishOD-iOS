@@ -92,7 +92,7 @@
             
             self.uiUsername = [UITextField.alloc initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width / 1.75, 30.f)];
             
-            self.uiUsername.placeholder = @"trey@phish.com";
+            self.uiUsername.placeholder = @"trey_a";
             self.uiUsername.keyboardType = UIKeyboardTypeDefault;
             self.uiUsername.autocorrectionType = UITextAutocorrectionTypeNo;
             self.uiUsername.autocapitalizationType = UITextAutocapitalizationTypeNone;

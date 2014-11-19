@@ -20,12 +20,21 @@
 
 - (void)configureView {
     [super configureView];
-    //    self.titleLabel.backgroundColor = [UIColor grayColor];
+	self.backgroundColor = UIColor.clearColor;
+	self.opaque = NO;
+	
+	self.titleLabel.font = [UIFont systemFontOfSize:13.0];
+	self.subTitleLabel.font = [UIFont systemFontOfSize:13.0];
+	
+	self.titleLabel.frame = CGRectMake(15, CGRectGetHeight(self.bounds) - 130, 250, 20);
+	self.subTitleLabel.frame = CGRectMake(15, CGRectGetHeight(self.bounds) - 115, 250, 20);
+	
+	self.titleLabel.textColor = UIColor.whiteColor;
+	self.subTitleLabel.textColor = UIColor.whiteColor;
 }
 
 - (void)setImageObject:(CPKenburnsImage *)imageObject {
     [super setImageObject:imageObject];
-    self.titleLabel.text = imageObject.title;
 }
 
 @end
