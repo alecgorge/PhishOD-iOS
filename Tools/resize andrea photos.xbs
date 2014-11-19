@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><XnView_script version="1.0" name="resize andrea photos">
+    <Resize mode="0" width="1536" height="1536" unit="0" ratio="true" orientation="false" enlarge="0" resample="7" gamma_correct="false"/>
+    <Output folder="/Users/alecgorge/Downloads/Pics for Alec/resized" filename="{Filename}" case="0" format="JPEG">
+        <Options overwrite="0" orgDate="false" keepMeta="false" keepICC="false" keepFolder="false" delOrg="false" multipage="false" allPages="false" openExplorer="false" openBrowser="false" clearItems="false"/>
+        <JPEG quality="80" progressive="true" optimizeHuffman="true" rebuildThumb="true" orgQuality="false" DCTMethod="2" subSampling="0" smoothFactor="0"/>
+    </Output>
+</XnView_script>
