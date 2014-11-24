@@ -50,7 +50,8 @@
     
     self.slideshow = [CPKenburnsSlideshowView.alloc initWithFrame:self.window.bounds];
     self.slideshow.delegate = self;
-    
+	self.slideshow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
     self.slideshow.coverImage = [UIImage imageNamed:@"15115437744_51db659feb_b.jpg"];
     
     self.slideshow.slideshowDuration = 20.0f;
@@ -64,7 +65,8 @@
     
     UIView *overlay = [UIView.alloc initWithFrame:self.window.bounds];
     overlay.backgroundColor = [UIColor.whiteColor colorWithAlphaComponent:0.6];
-    
+	overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
     [self.window addSubview:self.slideshow];
     [self.window addSubview:overlay];
 

@@ -57,6 +57,7 @@
 	[[PhishinAPI sharedAPI] fullYear:self.year
 							 success:^(PhishinYear *yy) {
 								 self.year = yy;
+								 self.title = self.year.year;
 								 [self.tableView reloadData];
 								 
 								 [super refresh:sender];

@@ -151,6 +151,12 @@
 - (void)fullYear:(PhishinYear *)year
 		 success:(void (^)(PhishinYear *))success
 		 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	if (year && [year.year hasPrefix:@"Shows on "]) {
+		[self onThisDay:success
+				failure:failure];
+		return;
+	}
+	
     __block PhishinYear *cachedYear = nil;
     if(year.year) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
@@ -178,6 +184,29 @@
           if(![newYear isEqualToPhishinYear:cachedYear]) {
               success(newYear);
           }
+	  }
+	  failure:failure];
+}
+
+- (void)onThisDay:(void (^)(PhishinYear *))success
+		  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+	NSDateComponents *c = [NSCalendar.currentCalendar components:NSCalendarUnitMonth | NSCalendarUnitDay
+														fromDate:NSDate.date];
+	
+	[self GET:[NSString stringWithFormat:@"shows-on-day-of-year/%02d-%02d", (int)c.month, (int)c.day]
+   parameters:@{@"per_page": @99999, @"sort_attr": @"date"}
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		  responseObject = [self parseJSON:responseObject];
+		  
+		  PhishinYear *newYear = [[PhishinYear alloc] init];
+		  newYear.year = [NSString stringWithFormat:@"Shows on %d/%d", (int)c.month, (int)c.day];
+		  newYear.shows = [[responseObject[@"data"] map:^id(id object) {
+			  return [[PhishinShow alloc] initWithDictionary:object];
+		  }] sortedArrayUsingComparator:^NSComparisonResult(PhishinShow *obj1, PhishinShow *obj2) {
+			  return [obj2.date compare:obj1.date];
+		  }];
+		  
+		  success(newYear);
 	  }
 	  failure:failure];
 }

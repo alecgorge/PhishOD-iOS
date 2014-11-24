@@ -268,7 +268,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+	[self.slideshowManager.slideshow stopAnimation];
     [self saveCurrentState];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+	[self.slideshowManager.slideshow restartAnimation];
 }
 
 - (void)saveCurrentState {

@@ -31,6 +31,10 @@
                         <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-9e-jZE">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="vx9-TF-NKx" appends="YES" id="gKH-Pt-V1r"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +114,9 @@
                         <constraint firstItem="cdg-sL-pw8" firstAttribute="centerY" secondItem="TfA-jL-W3Z" secondAttribute="centerY" id="lmU-AX-nqp"/>
                         <constraint firstAttribute="trailing" secondItem="uOC-H2-yb6" secondAttribute="trailing" constant="8" id="tIh-HW-j4o"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="vx9-TF-NKx" appends="YES" id="i1j-Mc-lbn"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yuc-Ld-86Q">
                     <rect key="frame" x="0.0" y="95" width="320" height="340"/>
@@ -168,6 +175,9 @@
                         <constraint firstAttribute="height" constant="340" id="jkL-CH-lLb"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="z4u-5E-XTL"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="vx9-TF-NKx" appends="YES" id="cFs-cT-Q60"/>
+                    </connections>
                 </view>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gIz-4A-qB4">
                     <rect key="frame" x="0.0" y="90" width="320" height="390"/>
@@ -194,8 +204,16 @@
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="vx9-TF-NKx" appends="YES" id="Ryv-WS-hTA"/>
+            </connections>
             <point key="canvasLocation" x="640" y="498"/>
         </view>
+        <tapGestureRecognizer id="vx9-TF-NKx">
+            <connections>
+                <action selector="uiBackgroundTapped:" destination="-1" id="OuI-Mo-33a"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="15115437744_51db659feb_b.jpg" width="768" height="1024"/>

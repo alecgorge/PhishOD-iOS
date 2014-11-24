@@ -74,4 +74,7 @@
 	  success:(void ( ^ ) ( PhishinSearchResults * ))success
 	  failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
+-(void)onThisDay:(void (^)(PhishinYear *))success
+		 failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
 @end

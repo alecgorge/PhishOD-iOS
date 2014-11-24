@@ -24,6 +24,7 @@
 #import "GlobalActivityViewController.h"
 #import "CuratedPlaylistsViewController.h"
 #import "PhishNetAuth.h"
+#import "YearViewController.h"
 
 #import "PhishNetBlogViewController.h"
 #import "PhishNetNewsViewController.h"
@@ -68,7 +69,7 @@
                      ];
     
     self.menus = @[@[@"years", @"songs", @"venues", @"tours"],
-                   @[@"top", @"random", @"playlists"],
+                   @[@"top", @"random", @"playlists", @"on this day"],
                    @[@"my shows", @"blog", @"news"],
                    @[@"stats", @"favorites", @"recent"]
                    ];
@@ -207,9 +208,14 @@
     else if(section == 1 && row == 1) {
         [self pushViewController:[[RandomShowViewController alloc] init]];
     }
-    else if(section == 1 && row == 2) {
-        [self pushViewController:CuratedPlaylistsViewController.alloc.init];
-    }
+	else if(section == 1 && row == 2) {
+		[self pushViewController:CuratedPlaylistsViewController.alloc.init];
+	}
+	else if(section == 1 && row == 3) {
+		PhishinYear *year = PhishinYear.alloc.init;
+		year.year = @"Shows on this day";
+		[self pushViewController:[YearViewController.alloc initWithYear:year]];
+	}
     else if(section == 3 && row == 0) {
         [self pushViewController:[[PhishTracksStatsViewController alloc] init]];
     }
@@ -233,6 +239,22 @@
     }
 }
 
+- (NSUInteger)supportedInterfaceOrientations {
+	if(IS_IPAD()) {
+		return UIInterfaceOrientationMaskAll;
+	}
+	
+	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (BOOL)shouldAutorotate {
+	return NO;
+}
+
+- (IBAction)uiBackgroundTapped:(id)sender {
+	[self menuItemTapped:nil];
+}
+
 - (void)menuItemTapped:(UIButton *)btn {
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -242,7 +264,7 @@
                      animations:^{
                          for (UIView *container in self.submenus) {
                              CGRect f = container.frame;
-                             if(container.tag == btn.tag) {
+                             if(btn && container.tag == btn.tag) {
                                  f.origin.x = -self.screenWidth;
                              }
                              else {
