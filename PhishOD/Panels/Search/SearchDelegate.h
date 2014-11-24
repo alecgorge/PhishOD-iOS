@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchDelegate : NSObject<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+#import "UIScrollView+EmptyDataSet.h"
+
+@interface SearchDelegate : NSObject<UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UINavigationController *navigationController;

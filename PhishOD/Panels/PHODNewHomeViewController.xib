@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -13,6 +13,7 @@
                 <outlet property="uiButtonNowPlaying" destination="Ies-4Z-lsM" id="PcQ-SK-wQd"/>
                 <outlet property="uiButtonPhishNet" destination="JAr-19-PUn" id="fXb-9u-T9n"/>
                 <outlet property="uiButtonStats" destination="neO-7S-wW4" id="6hl-as-2WX"/>
+                <outlet property="uiSearchTable" destination="gIz-4A-qB4" id="U2z-w8-gNa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -83,14 +84,14 @@
                                 <action selector="downloadedShows:" destination="-1" eventType="touchUpInside" id="1Yv-u3-pQJ"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SEARCH" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cdg-sL-pw8">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SEARCH" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cdg-sL-pw8">
                             <rect key="frame" x="59" y="8" width="165" height="36"/>
                             <accessibility key="accessibilityConfiguration" label="PhishOD Search"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="wwA-Yl-YxJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="704-W3-Hws"/>
                             </connections>
@@ -168,6 +169,11 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="z4u-5E-XTL"/>
                     </constraints>
                 </view>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gIz-4A-qB4">
+                    <rect key="frame" x="0.0" y="90" width="320" height="390"/>
+                    <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -176,10 +182,14 @@
                 <constraint firstItem="6DH-gX-hda" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="GlA-iB-6OE"/>
                 <constraint firstAttribute="trailing" secondItem="Yuc-Ld-86Q" secondAttribute="trailing" id="JFw-xO-1b2"/>
                 <constraint firstAttribute="bottom" secondItem="XMC-qe-tI7" secondAttribute="bottom" id="KXl-ml-PQo"/>
+                <constraint firstItem="gIz-4A-qB4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NtU-yB-4Ks"/>
                 <constraint firstItem="6DH-gX-hda" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Osf-Op-kEU"/>
+                <constraint firstAttribute="trailing" secondItem="gIz-4A-qB4" secondAttribute="trailing" id="TYr-0J-3lH"/>
+                <constraint firstAttribute="bottom" secondItem="gIz-4A-qB4" secondAttribute="bottom" id="VjN-X3-nki"/>
                 <constraint firstItem="XMC-qe-tI7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WSw-Xg-LvR"/>
                 <constraint firstAttribute="trailing" secondItem="6DH-gX-hda" secondAttribute="trailing" id="iiA-yC-TED"/>
                 <constraint firstItem="XMC-qe-tI7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mel-My-39C"/>
+                <constraint firstItem="gIz-4A-qB4" firstAttribute="top" secondItem="6DH-gX-hda" secondAttribute="bottom" constant="3" id="nqA-9m-l1l"/>
                 <constraint firstAttribute="trailing" secondItem="XMC-qe-tI7" secondAttribute="trailing" id="seN-Yq-VEP"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

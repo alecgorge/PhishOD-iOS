@@ -72,8 +72,8 @@
 		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
 			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:show.date];
 			
-			NSRange matchedRange = [show.date rangeOfString:self.searchString
-													options:NSCaseInsensitiveSearch];
+			NSRange matchedRange = [show.date.lowercaseString rangeOfString:self.searchString.lowercaseString
+																	options:NSCaseInsensitiveSearch];
 			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
 						 range:matchedRange];
 			
@@ -81,14 +81,14 @@
 			
 			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:show.fullLocation];
 			
-			NSRange matchedRange2 = [show.fullLocation rangeOfString:self.searchString
-													options:NSCaseInsensitiveSearch];
+			NSRange matchedRange2 = [show.fullLocation.lowercaseString rangeOfString:self.searchString.lowercaseString
+																			 options:NSCaseInsensitiveSearch];
 			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
-						 range:matchedRange2];
+						  range:matchedRange2];
 			
-
+			
 			cell.detailTextLabel.attributedText = str2;
- 		}
+		}
 		else {
 			cell.textLabel.text = show.date;
 			cell.detailTextLabel.text = show.fullLocation;
@@ -99,15 +99,15 @@
 		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
 			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:song.title];
 			
-			NSRange matchedRange = [song.title rangeOfString:self.searchString
-													 options:NSCaseInsensitiveSearch];
+			NSRange matchedRange = [song.title.lowercaseString rangeOfString:self.searchString.lowercaseString
+																	 options:NSCaseInsensitiveSearch];
 			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
 						 range:matchedRange];
 			
 			cell.textLabel.attributedText = str;
 			
 			cell.detailTextLabel.text = @"";
- 		}
+		}
 		else {
 			cell.textLabel.text = song.title;
 			cell.detailTextLabel.text = @"";
@@ -118,8 +118,8 @@
 		if ([cell.textLabel respondsToSelector:@selector(setAttributedText:)]) {
 			NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:venue.name];
 			
-			NSRange matchedRange = [venue.name rangeOfString:self.searchString
-													 options:NSCaseInsensitiveSearch];
+			NSRange matchedRange = [venue.name.lowercaseString rangeOfString:self.searchString.lowercaseString
+																	 options:NSCaseInsensitiveSearch];
 			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
 						 range:matchedRange];
 			
@@ -127,14 +127,14 @@
 			
 			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:venue.location];
 			
-			NSRange matchedRange2 = [venue.location rangeOfString:self.searchString
-														  options:NSCaseInsensitiveSearch];
+			NSRange matchedRange2 = [venue.location.lowercaseString rangeOfString:self.searchString.lowercaseString
+																		  options:NSCaseInsensitiveSearch];
 			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
-						 range:matchedRange2];
+						  range:matchedRange2];
 			
 			
 			cell.detailTextLabel.attributedText = str2;
- 		}
+		}
 		else {
 			cell.textLabel.text = venue.name;
 			cell.detailTextLabel.text = venue.location;
@@ -154,8 +154,8 @@
 			
 			NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:tour.prettyDuration];
 			
-			NSRange matchedRange2 = [tour.prettyDuration rangeOfString:self.searchString
-															   options:NSCaseInsensitiveSearch];
+			NSRange matchedRange2 = [tour.prettyDuration.lowercaseString rangeOfString:self.searchString.lowercaseString
+																			   options:0];
 			[str2 setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
 						 range:matchedRange2];
 			
@@ -276,6 +276,32 @@ titleForHeaderInSection:(NSInteger)section {
 	return nil;
 }
 
+#pragma mark - Empty Data Set
 
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+	NSString *text = @"No Results :(";
+	
+	NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:22.0],
+								 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+	
+	return [NSAttributedString.alloc initWithString:text
+										 attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+	return nil;
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+	return nil;
+}
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+	return self.results && self.results.allowedKeys.count == 0;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
+	return NO;
+}
 
 @end

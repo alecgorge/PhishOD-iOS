@@ -31,6 +31,7 @@
 
 #import "PhishinDownloadedShowsViewController.h"
 #import "DownloadQueueViewController.h"
+#import "SearchDelegate.h"
 
 #import <OHActionSheet/OHActionSheet.h>
 
@@ -43,6 +44,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonStats;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonNowPlaying;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonDownloads;
+@property (weak, nonatomic) IBOutlet UITableView *uiSearchTable;
+
+@property (nonatomic) SearchDelegate *searchDelegate;
 
 @property (nonatomic) NSArray *buttons;
 @property (nonatomic) NSArray *menus;
@@ -68,7 +72,15 @@
                    @[@"my shows", @"blog", @"news"],
                    @[@"stats", @"favorites", @"recent"]
                    ];
-    
+	
+	self.searchDelegate = [SearchDelegate.alloc initWithTableView:self.uiSearchTable
+										  andNavigationController:self.navigationController];
+	
+	self.uiSearchTable.delegate = self.searchDelegate;
+	self.uiSearchTable.dataSource = self.searchDelegate;
+	self.uiSearchTable.emptyDataSetSource = self.searchDelegate;
+	self.uiSearchTable.emptyDataSetDelegate = self.searchDelegate;
+
     [self buildSubmenus];
     
 }
@@ -267,6 +279,41 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+	self.uiSearchTable.alpha = 0;
+	[UIView animateWithDuration:0.3
+					 animations:^{
+						 self.uiSearchTable.hidden = NO;
+						 self.uiSearchTable.alpha = 1.0;
+					 }];
+	
+	return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+	[UIView animateWithDuration:0.3
+					 animations:^{
+						 self.uiSearchTable.alpha = 0.0;
+					 }
+					 completion:^(BOOL finished) {
+						 self.uiSearchTable.hidden = YES;
+					 }];
+
+	return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+	NSString *searchString = [textField.text stringByReplacingCharactersInRange:range
+																	 withString:string];
+	
+	[self.searchDelegate searchDisplayController:nil
+				shouldReloadTableForSearchString:searchString];
+	
+	return YES;
 }
 
 @end
