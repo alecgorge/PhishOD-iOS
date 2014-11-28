@@ -26,6 +26,10 @@
     self = [super init];
     if (self) {
         self.tableView = tableView;
+		
+		self.tableView.delegate = self;
+		self.tableView.dataSource = self;
+		
 		self.navigationController = nav;
     }
     return self;
@@ -104,6 +108,8 @@
 			[str setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor]}
 						 range:matchedRange];
 			
+			NSLog(@"%@ %@", str, NSStringFromRange(matchedRange));
+			
 			cell.textLabel.attributedText = str;
 			
 			cell.detailTextLabel.text = @"";
@@ -171,8 +177,11 @@
 	return cell;
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	

@@ -209,7 +209,7 @@
             </connections>
             <point key="canvasLocation" x="640" y="498"/>
         </view>
-        <tapGestureRecognizer id="vx9-TF-NKx">
+        <tapGestureRecognizer cancelsTouchesInView="NO" id="vx9-TF-NKx">
             <connections>
                 <action selector="uiBackgroundTapped:" destination="-1" id="OuI-Mo-33a"/>
             </connections>
