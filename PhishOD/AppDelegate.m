@@ -34,6 +34,8 @@
 
 static AppDelegate *sharedDelegate;
 
+static BOOL __haveSetup = NO;
+
 @implementation AppDelegate
 
 @synthesize tabBar;
@@ -47,7 +49,9 @@ static AppDelegate *sharedDelegate;
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	sharedDelegate = self;
-
+	
+	__haveSetup = YES;
+	
     if(IGThirdPartyKeys.sharedInstance.isCrashlyticsEnabled) {
         [Crashlytics startWithAPIKey:IGThirdPartyKeys.sharedInstance.crashlyticsApiKey];
     }
@@ -148,7 +152,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-	return UIInterfaceOrientationMaskAll;
+	if(IS_IPAD()) {
+		return UIInterfaceOrientationMaskAll;
+	}
+	
+	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 - (void)setupCaching {
@@ -173,6 +181,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+	if(!__haveSetup) {
+		[self application:UIApplication.sharedApplication
+didFinishLaunchingWithOptions:nil];
+	}
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived"
 														object:event];
     [self saveCurrentState];
@@ -310,10 +323,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	player.heatmap = heatmap;
     [player replaceQueueWithItems:queue
                        startIndex:pos];
-    
-    [player play];
+	
+//    [player play];
     [player pause];
-    
+	
     if(elapsed != 0.0f) {
         player.progress = elapsed;
 //		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -248,7 +248,7 @@
 }
 
 - (BOOL)shouldAutorotate {
-	return NO;
+	return YES;
 }
 
 - (IBAction)uiBackgroundTapped:(id)sender {
