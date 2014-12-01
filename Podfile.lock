@@ -3,12 +3,12 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.0)
     - AFNetworking/NSURLSession (~> 2.0)
   - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
   - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -28,7 +28,7 @@ PODS:
   - CPKenburnsSlideshowView (HEAD based on 1.1.4):
     - CPKenburnsView
   - CPKenburnsView (1.0.1)
-  - CrashlyticsFramework (2.2.5.1)
+  - CrashlyticsFramework (2.2.5.2)
   - CrittercismSDK (5.0.7)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
@@ -53,7 +53,7 @@ PODS:
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
-    - SDWebImage/Core
+    - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - StreamingKit (HEAD based on 0.1.25)
   - SVProgressHUD (HEAD based on 1.0)
@@ -108,7 +108,7 @@ SPEC CHECKSUMS:
   AXRatingView: 4f6d6c96f6d0efc1deaa6cf493dbb1ffcfa79e55
   CPKenburnsSlideshowView: 7f82d09ab044674bbe7fd0cc3c68be5cebbd5d04
   CPKenburnsView: 451143c38649df6f27f72ad579bf178e690564ba
-  CrashlyticsFramework: 195dfef587ade7a3954ce8effd483a3879d35877
+  CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
   CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
   CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
   DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
@@ -136,4 +136,4 @@ SPEC CHECKSUMS:
   TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
   TTTAttributedLabel: e63baa4d3b8798ea259f5d9f55720002b4bbbd66
 
-COCOAPODS: 0.34.2
+COCOAPODS: 0.35.0.rc2

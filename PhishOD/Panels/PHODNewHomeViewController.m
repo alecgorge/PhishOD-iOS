@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonNowPlaying;
 @property (weak, nonatomic) IBOutlet UIButton *uiButtonDownloads;
 @property (weak, nonatomic) IBOutlet UITableView *uiSearchTable;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *uiTapGesture;
 
 @property (nonatomic) SearchDelegate *searchDelegate;
 
@@ -303,25 +304,43 @@
     return NO;
 }
 
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    textField.text = @"";
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)showSearchResults {
+    self.uiSearchTable.alpha = 0;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.uiSearchTable.hidden = NO;
+                         self.uiSearchTable.alpha = 1.0;
+                     }];
+    
+    self.uiTapGesture.cancelsTouchesInView = NO;
+}
+
+- (void)hideSearchResults {
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.uiSearchTable.alpha = 0.0;
+                     }
+                     completion:^(BOOL finished) {
+                         self.uiSearchTable.hidden = YES;
+                     }];
+
+    self.uiTapGesture.cancelsTouchesInView = YES;
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-	self.uiSearchTable.alpha = 0;
-	[UIView animateWithDuration:0.3
-					 animations:^{
-						 self.uiSearchTable.hidden = NO;
-						 self.uiSearchTable.alpha = 1.0;
-					 }];
-	
+    [self showSearchResults];
+    
 	return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-	[UIView animateWithDuration:0.3
-					 animations:^{
-						 self.uiSearchTable.alpha = 0.0;
-					 }
-					 completion:^(BOOL finished) {
-						 self.uiSearchTable.hidden = YES;
-					 }];
+    [self hideSearchResults];
 
 	return YES;
 }

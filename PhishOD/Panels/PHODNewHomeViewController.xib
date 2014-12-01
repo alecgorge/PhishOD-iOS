@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="uiButtonPhishNet" destination="JAr-19-PUn" id="fXb-9u-T9n"/>
                 <outlet property="uiButtonStats" destination="neO-7S-wW4" id="6hl-as-2WX"/>
                 <outlet property="uiSearchTable" destination="gIz-4A-qB4" id="U2z-w8-gNa"/>
+                <outlet property="uiTapGesture" destination="vx9-TF-NKx" id="vdM-Ds-Ezn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -209,7 +210,7 @@
             </connections>
             <point key="canvasLocation" x="640" y="498"/>
         </view>
-        <tapGestureRecognizer cancelsTouchesInView="NO" id="vx9-TF-NKx">
+        <tapGestureRecognizer id="vx9-TF-NKx">
             <connections>
                 <action selector="uiBackgroundTapped:" destination="-1" id="OuI-Mo-33a"/>
             </connections>
