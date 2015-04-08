@@ -23,7 +23,14 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AGAudioPlayer (0.8.0):
+    - ASValueTrackingSlider
+    - LLACircularProgressView
+    - MarqueeLabel
+    - NAKPlaybackIndicatorView
+    - OrigamiEngine
   - Appirater (2.0.4)
+  - ASValueTrackingSlider (0.9.4)
   - AXRatingView (1.0.3)
   - CPKenburnsSlideshowView (HEAD based on 1.1.4):
     - CPKenburnsView
@@ -50,20 +57,24 @@ PODS:
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
   - OHActionSheet (2.0.1)
+  - OrigamiEngine (1.0.14):
+    - OrigamiEngine/Core (= 1.0.14)
+  - OrigamiEngine/Core (1.0.14)
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - StreamingKit (HEAD based on 0.1.25)
-  - SVProgressHUD (HEAD based on 1.0)
+  - SVProgressHUD (HEAD based on 1.1.3)
   - SVWebViewController (1.0)
-  - TDBadgedCell (HEAD based on 2.6)
+  - TDBadgedCell (HEAD based on 3.0)
   - TTTAttributedLabel (1.11.0)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger
   - AFNetworking
+  - AGAudioPlayer (from `../AGAudioPlayer`)
   - Appirater
   - AXRatingView
   - CPKenburnsSlideshowView (HEAD)
@@ -83,7 +94,8 @@ DEPENDENCIES:
   - MarqueeLabel
   - NAKPlaybackIndicatorView
   - NSMutableArray-Shuffle (~> 0.4)
-  - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`, branch `master`)
+  - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`,
+    branch `master`)
   - ObjectiveSugar
   - OHActionSheet
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
@@ -95,6 +107,8 @@ DEPENDENCIES:
   - TTTAttributedLabel
 
 EXTERNAL SOURCES:
+  AGAudioPlayer:
+    :path: ../AGAudioPlayer
   NSObject-NSCoding:
     :branch: master
     :git: https://github.com/alecgorge/NSObject-NSCoding.git
@@ -102,38 +116,41 @@ EXTERNAL SOURCES:
     :git: https://github.com/alecgorge/PSUpdateApp.git
 
 SPEC CHECKSUMS:
-  AFNetworkActivityLogger: d6a2d2755fada3a1fbf1f490ec0dd92224e092a4
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
-  AXRatingView: 4f6d6c96f6d0efc1deaa6cf493dbb1ffcfa79e55
-  CPKenburnsSlideshowView: 7f82d09ab044674bbe7fd0cc3c68be5cebbd5d04
-  CPKenburnsView: 451143c38649df6f27f72ad579bf178e690564ba
-  CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
-  CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
-  CSNNotificationObserver: b39e735f742fab579c120efa8b9b0010019c9200
-  DBGHTMLEntities: da13ded42b3f2c60d89b05657807be1b9c65e0f3
-  DZNEmptyDataSet: 381e880cb3bb2d33885cb0325218443df265bc98
-  EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
-  FCFileManager: 30f8a44f324e479fae09bb30ba0c639eacd9f229
-  FXKeychain: c97c352f1923809032339514ec4d6b0ed151bc3b
-  GroundControl: 2f9024230e41ff5e5a8e3ca060ed1b74883bdd1a
-  JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
-  KissXML: e537c38b18ede903ee6de45953a9bd86c131ebe9
-  KVOController: b1139ef1fc373b6757e4b69493fedd7b56eb1272
-  LastFm: 26cffa0ee5b39a4ad8c9451e882d75ce27036d3e
-  LLACircularProgressView: 97fb4c9f115367b50c67a1fbafc5c881e7d745ec
-  MarqueeLabel: 80ff5069b2b8ccd8678b56af0d8ff08ce417d34c
-  NAKPlaybackIndicatorView: 3211fff8fbc229661d4de69e86cef1b9b2e49e41
-  NSMutableArray-Shuffle: fc5dc21933a5b868331eecc866409177477a37ce
-  NSObject-NSCoding: 073409e0e79ac1a72813cd72ca1acb370ad50287
-  ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
-  OHActionSheet: f7b5008029f0aaea45be5332d2a28441b4308523
-  PSUpdateApp: ee6d181405d4ac41a6e569109133e541d254cb9e
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  StreamingKit: 5b36623e7246cccddb8db3aee79c43bb180a51be
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
-  TDBadgedCell: e683b5557d12ea4e28a8d6ac20b6e394abc2c1fe
-  TTTAttributedLabel: e63baa4d3b8798ea259f5d9f55720002b4bbbd66
+  AFNetworkActivityLogger: e82c9ba285b37042d86729bff5b14036c4312cd7
+  AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
+  AGAudioPlayer: f7f9842c74e427e94424a69ee7231223253ca762
+  Appirater: 8783318c36414e8de3ea023443028df94c1b784b
+  ASValueTrackingSlider: 4efbaaf57749868938584439ffd588dfdcdb7899
+  AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
+  CPKenburnsSlideshowView: 887150c4538425094c4d459a88fc6c958f01a490
+  CPKenburnsView: b464e1e5d6dc92cc51bd2af0587eba687ce393f7
+  CrashlyticsFramework: c4476108c87948b72835a5a26db90e8d6249da62
+  CrittercismSDK: f1364ebf70823dea25a5f5edbed31f445b36120a
+  CSNNotificationObserver: bf3a8781aba027abb16c2f5a63f1a7b1de044d49
+  DBGHTMLEntities: df8979bda566bf0ac4a66e6e7c14c005f4552ee9
+  DZNEmptyDataSet: b6d8ef0e69a4347b70c642148453174dbf8817f1
+  EGOCache: d20ba0673fd747c15a3b73a9218d844350b156ba
+  FCFileManager: de16a6b9bf41b0d18067aea8534fbac7b04334fb
+  FXKeychain: 1a711bddc04a2bd69850dcfe297b8a43027a9980
+  GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
+  JSONModel: de5799179dd476f68e0de1be3a4a40c962cc535f
+  KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
+  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
+  LastFm: 28c752f8e8646531524a123ce7f6722bbfc9d3c5
+  LLACircularProgressView: e179b0728217e9013cd07c2fadc7caa0c35b9199
+  MarqueeLabel: 8788c47cb822035a4710e3fd34439bf2b35107ba
+  NAKPlaybackIndicatorView: 794dd97576fe074bb1844c19ebcbf7509384a47f
+  NSMutableArray-Shuffle: 7bdef1418775ba41a66319b9173bda756f6099be
+  NSObject-NSCoding: d05f937cc1ea1560294be261ee41d5438ddc7b1b
+  ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
+  OHActionSheet: 32ebd70a6a275a36bbd0a079b1d0d2814fef963d
+  OrigamiEngine: 74b097326260597f1498790795cc2cdd604c199a
+  PSUpdateApp: 295919cdc1876f4d91911297c7e9f238aa732220
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
+  TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
+  TTTAttributedLabel: 22fc7e31d7d75dd9d6723e543ae0891fb1e2fb8d
 
-COCOAPODS: 0.35.0.rc2
+COCOAPODS: 0.36.3

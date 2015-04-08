@@ -5,13 +5,15 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2893EBF5-651B-4D81-89EC-E2B8D9973DB6</string>
+	<string>8827B316-A6BC-47F7-B2D8-FF5F0E91391B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>PhishOD</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
-		<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
+		<string>github.com:alecgorge/PhishOD-iOS.git</string>
+		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
+		<string>https://github.com/alecgorge/AGAudioPlayer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PhishOD.xcworkspace</string>
@@ -19,15 +21,25 @@
 	<dict>
 		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
 		<string>..</string>
+		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
+		<string>../../AGAudioPlayer</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
+	<string>github.com:alecgorge/PhishOD-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
 	<string>18FC7AED59755625022E926996A6226FE280EBBC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>256B465BA82CB900AC32B2F2BC3A5432B17C8342</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AGAudioPlayer</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2000000</string>
+	<string>2000001</string>
 	<key>Configuration</key>
 	<string>${CONFIGURATION}</string>
 	<key>LSRequiresIPhoneOS</key>
