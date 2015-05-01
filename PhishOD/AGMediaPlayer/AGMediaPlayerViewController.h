@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-#import <StreamingKit/STKAudioPlayer.h>
+#import <FreeStreamer/FSAudioController.h>
 
 #import "AGMediaItem.h"
 #import "PTSHeatmap.h"
 
-@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, STKAudioPlayerDelegate, UIActionSheetDelegate>
+@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, FSAudioControllerDelegate>
 
 + (instancetype)sharedInstance;
 
-@property (nonatomic, readonly) STKAudioPlayerState state;
+@property (nonatomic) FSAudioStreamState state;
 
 // playing, buffering etc
 @property (nonatomic, readonly) BOOL playing;
 @property (nonatomic, readonly) BOOL buffering;
-@property (strong, nonatomic) STKAudioPlayer *audioPlayer;
+@property (strong, nonatomic) FSAudioController *audioController;
 
 // an array of AGMediaItems
 @property (nonatomic) NSMutableArray *playbackQueue;
@@ -43,6 +43,7 @@
 
 - (void)forward;
 - (void)play;
+- (void)stop;
 - (void)pause;
 - (void)backward;
 - (void)togglePlayPause;

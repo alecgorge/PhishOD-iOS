@@ -11,9 +11,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
-#import <StreamingKit/STKAutoRecoveringHTTPDataSource.h>
-#import <StreamingKit/STKLocalFileDataSource.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
+
+#import <FreeStreamer/FSPlaylistItem.h>
 
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
@@ -28,6 +28,12 @@
 #import "AppDelegate.h"
 #import "IGEvents.h"
 #import "IGThirdPartyKeys.h"
+
+@interface FSAudioController ()
+
+@property (nonatomic,assign) NSUInteger currentPlaylistItemIndex;
+
+@end
 
 @interface AGMediaPlayerViewController ()
 
@@ -84,12 +90,38 @@
                                bundle:nibBundleOrNil]) {
         self.playbackQueue = [NSMutableArray array];
         
-        self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){
-            .bufferSizeInSeconds = 20.0f,
-            .secondsRequiredToStartPlaying = 5.0f,
-            .secondsRequiredToStartPlayingAfterBufferUnderun = 20.0f
-        }];
-        self.audioPlayer.delegate = self;
+        self.audioController = FSAudioController.new;
+        self.audioController.delegate = self;
+        
+        self.audioController.enableDebugOutput = YES;
+        
+        __weak AGMediaPlayerViewController *s = self;
+        self.audioController.onFailure = ^(FSAudioStreamError error , NSString *errorDescription) {
+            NSLog(@"[audioPlayer] error: %d, %@", error, errorDescription);
+            
+            [s updateStatusBar];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
+                                                                object:s];
+            
+            [s.uiPlaybackQueueTable reloadData];
+            
+            [s setupBar];
+        };
+        
+        self.audioController.onStateChange = ^(FSAudioStreamState state) {
+            NSLog(@"[audioPlayer] changed to state: %@", [self stringForStatus:state]);
+            s.state = state;
+            [s updateStatusBar];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
+                                                                object:s];
+            
+            [s.uiPlaybackQueueTable reloadData];
+            
+            [s setupBar];
+            [self registerAudioSession];
+        };
     }
     
     return self;
@@ -197,7 +229,7 @@
 }
 
 - (void)share {
-    self.shareTime = self.audioPlayer.progress;
+    self.shareTime = self.progress;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [IGDurationHelper formattedTimeWithInterval:self.shareTime]]
                                                              delegate:self
@@ -215,11 +247,11 @@
 }
 
 - (float)duration {
-    if(self.currentItem.duration != 0) {
-        return self.currentItem.duration;
+    if(self.audioController.activeStream.duration.playbackTimeInSeconds != 0) {
+        return self.audioController.activeStream.duration.playbackTimeInSeconds;
     }
     
-    return self.audioPlayer.duration;
+    return self.currentItem.duration;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet
@@ -317,16 +349,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 #pragma mark - Public Interface
 
-- (STKAudioPlayerState)state {
-    return self.audioPlayer.state;
-}
-
 - (BOOL)playing {
-    return self.state == STKAudioPlayerStatePlaying;
+    return self.state == kFsAudioStreamPlaying || self.state == kFsAudioStreamSeeking;
 }
 
 - (BOOL)buffering {
-    return self.state == STKAudioPlayerStateBuffering;
+    return self.state == kFsAudioStreamBuffering || self.state == kFsAudioStreamRetryingStarted;
 }
 
 - (AGMediaItem *)currentItem {
@@ -366,74 +394,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     return self.playbackQueue[self.nextIndex];
 }
 
-- (void)queueNextItem {
-    if (self.nextItem) {
-		[self.audioPlayer queueDataSource:[self dataSourceForItem:self.nextItem]
-						  withQueueItemId:self.nextItem];
-    }
-}
-
-- (STKDataSource *)dataSourceForItem:(AGMediaItem *) item {
-	NSURL *file = item.cachedFile;
-	if(file) {
-		STKLocalFileDataSource *dataSource = [STKLocalFileDataSource.alloc initWithFilePath:file.path];
-        item.dataSource = dataSource;
-        
-        return dataSource;
-	}
-	
-	STKHTTPDataSource *http = [STKHTTPDataSource.alloc initWithAsyncURLProvider:^(STKHTTPDataSource *dataSource, BOOL forSeek, STKURLBlock callback) {
-		[item streamURL:callback];
-	}];
-    
-    item.dataSource = http;
-	
-	return [STKAutoRecoveringHTTPDataSource.alloc initWithHTTPDataSource:http];
-}
-
 - (void)setCurrentIndex:(NSInteger)currentIndex {
     NowPlayingBarViewController.sharedInstance.shouldShowBar = YES;
     
-    _currentIndex = currentIndex;
-	
-	if (!self.registeredAudioSession) {
-		[AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
-											 error:nil];
-		
-        [AVAudioSession.sharedInstance setActive:YES
-										   error:nil];
-        
-        self.headphoneObserver = [CSNNotificationObserver.alloc initWithName:AVAudioSessionRouteChangeNotification
-                                                                      object:nil
-                                                                       queue:NSOperationQueue.mainQueue
-                                                                  usingBlock:^(NSNotification *notification) {
-                                                                      NSNumber *reason = notification.userInfo[AVAudioSessionRouteChangeReasonKey];
-                                                                      
-                                                                      if(reason.integerValue == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
-                                                                          [self pause];
-                                                                      }
-                                                                  }];
-		
-		self.registeredAudioSession = YES;
-	}
-	
-	[self.audioPlayer playDataSource:[self dataSourceForItem:self.currentItem]
-					 withQueueItemID:self.currentItem];
-	
-    if (self.nextIndex > -1) {
-        for(NSInteger i = self.nextIndex; i < self.playbackQueue.count; i++) {
-            AGMediaItem *m = self.playbackQueue[i];
-            [self.audioPlayer queueDataSource:[self dataSourceForItem:m]
-                              withQueueItemId:m];
-        }
-    }
+    [self.audioController playItemAtIndex:currentIndex];
     
     self.currentTrackHasBeenScrobbled = NO;
     
     [LastFm.sharedInstance sendNowPlayingTrack:self.currentItem.title
 									  byArtist:self.currentItem.artist
 									   onAlbum:self.currentItem.album
-								  withDuration:self.audioPlayer.duration
+								  withDuration:self.duration
 								successHandler:nil
 								failureHandler:nil];
     
@@ -441,30 +412,38 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self redrawUI];
 }
 
+- (NSInteger)currentIndex {
+    return self.audioController.currentPlaylistItemIndex;
+}
+
 - (float)progress {
-    if(self.audioPlayer.duration == 0.0) {
+    if(self.duration == 0.0) {
         return 0;
     }
     
-    return self.audioPlayer.progress / self.audioPlayer.duration;
+    return self.elapsed / self.duration;
 }
 
 - (NSTimeInterval)elapsed {
-    return self.audioPlayer.progress;
+    return self.audioController.activeStream.currentTimePlayed.playbackTimeInSeconds;
 }
 
 - (void)setProgress:(float)progress {
-    [self.audioPlayer seekToTime: progress * self.duration];
+    FSStreamPosition pos;
+    
+    pos.position = progress;
+    
+    [self.audioController.activeStream seekToPosition:pos];
     self.uiProgressSlider.value = progress;
 }
 
 - (void)forward {
-    self.currentIndex = self.nextIndex;
+    [self.audioController playNextItem];
 }
 
 - (void)backward {
-    if(self.audioPlayer.progress < 10) {
-        self.currentIndex--;
+    if(self.elapsed < 10) {
+        [self.audioController playPreviousItem];
     }
     else {
         self.progress = 0.0;
@@ -472,12 +451,22 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (void)play {
-    [self.audioPlayer resume];
+    if(self.state == kFsAudioStreamPaused) {
+        [self.audioController pause];
+    }
+    else {
+        [self.audioController play];
+    }
     [self redrawUI];
 }
 
 - (void)pause {
-    [self.audioPlayer pause];
+    [self.audioController pause];
+    [self redrawUI];
+}
+
+- (void)stop {
+    [self.audioController stop];
     [self redrawUI];
 }
 
@@ -496,6 +485,16 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 - (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSInteger)index {
     self.playbackQueue = [queue mutableCopy];
+    
+    [self.audioController playFromPlaylist:[self.playbackQueue map:^id(AGMediaItem *object) {
+        FSPlaylistItem *i = FSPlaylistItem.new;
+        
+        i.url = object.playbackURL;
+        i.title = object.displayText;
+        
+        return i;
+    }]];
+    
     self.currentIndex = index;
     
 	[self.uiPlaybackQueueTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index
@@ -560,60 +559,51 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - UI Stuff
 
-- (NSString *)stringForStatus:(STKAudioPlayerState)status {
+- (NSString *)stringForStatus:(FSAudioStreamState)status {
     switch (status) {
-        case STKAudioPlayerStateReady:
-            return @"Ready";
-        case STKAudioPlayerStateRunning:
-            return @"Running";
-        case STKAudioPlayerStatePlaying:
-            return @"Playing";
-        case STKAudioPlayerStateBuffering:
-            return @"Buffering";
-        case STKAudioPlayerStatePaused:
-            return @"Paused";
-        case STKAudioPlayerStateStopped:
+        case kFsAudioStreamRetrievingURL:
+            return @"Retrieving URL";
+        case kFsAudioStreamStopped:
             return @"Stopped";
-        case STKAudioPlayerStateError:
-            return @"Error";
-        case STKAudioPlayerStateDisposed:
-            return @"Disposed";
+        case kFsAudioStreamBuffering:
+            return @"Buffering";
+        case kFsAudioStreamPlaying:
+            return @"Playing";
+        case kFsAudioStreamPaused:
+            return @"Paused";
+        case kFsAudioStreamSeeking:
+            return @"Seeking";
+        case kFSAudioStreamEndOfFile:
+            return @"Got Stream EOF";
+        case kFsAudioStreamFailed:
+            return @"Stream Failed";
+        case kFsAudioStreamRetryingStarted:
+            return @"Stream Retrying: Started";
+        case kFsAudioStreamRetryingSucceeded:
+            return @"Stream Retrying: Success";
+        case kFsAudioStreamRetryingFailed:
+            return @"Stream Retrying: Failed";
+        case kFsAudioStreamPlaybackCompleted:
+            return @"Playback Complete";
+        case kFsAudioStreamUnknownState:
+            return @"Unknown!?";
     }
 }
 
-- (NSString *)stringForStopReason:(STKAudioPlayerStopReason)status {
+- (NSString *)stringForErrorCode:(FSAudioStreamError)status {
     switch (status) {
-        case STKAudioPlayerStopReasonNone:
-            return @"None";
-        case STKAudioPlayerStopReasonEof:
-            return @"EOF";
-        case STKAudioPlayerStopReasonUserAction:
-            return @"User Action";
-        case STKAudioPlayerStopReasonPendingNext:
-            return @"Pending Next";
-        case STKAudioPlayerStopReasonDisposed:
-            return @"Disposed";
-        case STKAudioPlayerStopReasonError:
-            return @"Error";
-    }
-}
-
-- (NSString *)stringForErrorCode:(STKAudioPlayerErrorCode)status {
-    switch (status) {
-        case STKAudioPlayerErrorNone:
-            return @"None";
-        case STKAudioPlayerErrorDataSource:
-            return @"Data Source";
-        case STKAudioPlayerErrorStreamParseBytesFailed:
-            return @"Stream Parse Bytes Failed";
-        case STKAudioPlayerErrorAudioSystemError:
-            return @"Audio System Error";
-        case STKAudioPlayerErrorCodecError:
-            return @"Codec Error";
-        case STKAudioPlayerErrorDataNotFound:
-            return @"Data Not Found";
-        case STKAudioPlayerErrorOther:
-            return @"Other";
+        case kFsAudioStreamErrorNone:
+            return @"No Error";
+        case kFsAudioStreamErrorOpen:
+            return @"Error: open";
+        case kFsAudioStreamErrorStreamParse:
+            return @"Error: stream parse";
+        case kFsAudioStreamErrorNetwork:
+            return @"Error: network";
+        case kFsAudioStreamErrorUnsupportedFormat:
+            return @"Error: unsupported format";
+        case kFsAudioStreamErrorStreamBouncing:
+            return @"Error: stream bouncing";
     }
 }
 
@@ -672,7 +662,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             [[LastFm sharedInstance] sendScrobbledTrack:self.currentItem.title
                                                byArtist:self.currentItem.artist
                                                 onAlbum:self.currentItem.album
-                                           withDuration:self.audioPlayer.duration
+                                           withDuration:self.duration
                                             atTimestamp:(int)[[NSDate date] timeIntervalSince1970]
                                          successHandler:nil
                                          failureHandler:nil];
@@ -741,67 +731,74 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self seekingEndedOutside:sender];
 }
 
-#pragma mark - ORGMEngineDelegate
+#pragma mark - Free Streamer Delegate
 
-/// Raised when an item has started playing
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId {
-    dbug(@"[audioPlayer] didStartPlayingQueueItemId: %@", queueItemId);
-    
-    NSInteger index = [self.playbackQueue indexOfObject:queueItemId];
-    _currentIndex = index;
-    
-    self.currentTrackHasBeenScrobbled = NO;
-    
-    [self.uiPlaybackQueueTable reloadData];
-    [self setupBar];
+- (void)audioController:(FSAudioController *)audioController preloadStartedForStream:(FSAudioStream *)stream {
+    dbug(@"[audioPlayer] audioController:preloadStartedForStream: %@", stream);
 }
 
-/// Raised when an item has finished buffering (may or may not be the currently playing item)
-/// This event may be raised multiple times for the same item if seek is invoked on the player
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId {
-    dbug(@"[audioPlayer] didFinishBufferingSourceWithQueueItemId: %@", queueItemId);
+- (BOOL)audioController:(FSAudioController *)audioController
+allowPreloadingForStream:(FSAudioStream *)stream {
+    return YES;
+}
+
+#pragma mark - Interruption Handling
+
+- (void)registerAudioSession {
+    if (!self.registeredAudioSession) {
+        [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
+                                             error:nil];
+        
+        [AVAudioSession.sharedInstance setActive:YES
+                                           error:nil];
+        
+        self.headphoneObserver = [CSNNotificationObserver.alloc initWithName:AVAudioSessionRouteChangeNotification
+                                                                      object:nil
+                                                                       queue:NSOperationQueue.mainQueue
+                                                                  usingBlock:^(NSNotification *notification) {
+                                                                      NSNumber *reason = notification.userInfo[AVAudioSessionRouteChangeReasonKey];
+                                                                      
+                                                                      if(reason.integerValue == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
+                                                                          [self pause];
+                                                                      }
+                                                                  }];
+        
+        self.registeredAudioSession = YES;
+        
+        [NSNotificationCenter.defaultCenter addObserver:self
+                                               selector:@selector(audioInteruptionOccured:)
+                                                   name:AVAudioSessionInterruptionNotification
+                                                 object:nil];
+    }
+}
+
+- (void)audioInteruptionOccured:(NSNotification *)notification {
+    NSDictionary *interruptionDictionary = notification.userInfo;
+    AVAudioSessionInterruptionType interruptionType = [interruptionDictionary[AVAudioSessionInterruptionTypeKey] integerValue];
     
-    [self.uiPlaybackQueueTable reloadData];
-}
-
-/// Raised when the state of the player has changed
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
-    dbug(@"[audioPlayer] stateChanged: %@ previousState: %@. (duration: %f)", [self stringForStatus:state], [self stringForStatus:previousState], self.audioPlayer.duration);
-    [self updateStatusBar];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
-                                                        object:self];
-    
-    [self.uiPlaybackQueueTable reloadData];
-    
-    [self setupBar];
-}
-
-/// Raised when an item has finished playing
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer
-didFinishPlayingQueueItemId:(NSObject*)queueItemId
-         withReason:(STKAudioPlayerStopReason)stopReason
-        andProgress:(double)progress
-        andDuration:(double)duration {
-    dbug(@"[audioPlayer] didFinishPlayingQueueItemId: %@ withReason: %@ andProgress: %f andDuration: %f", queueItemId, [self stringForStopReason:stopReason], progress, duration);
-}
-
-/// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer
-    unexpectedError:(STKAudioPlayerErrorCode)errorCode {
-    dbug(@"[audioPlayer] unexpectedError: %@", [self stringForErrorCode:errorCode]);
-}
-
-/// Optionally implemented to get logging information from the STKAudioPlayer (used internally for debugging)
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer
-            logInfo:(NSString*)line {
-    dbug(@"[audioPlayer] logInfo: %@", line);
-}
-
-/// Raised when items queued items are cleared (usually because of a call to play, setDataSource or stop)
--(void) audioPlayer:(STKAudioPlayer*)audioPlayer
-didCancelQueuedItems:(NSArray*)queuedItems {
-    dbug(@"[audioPlayer] didCancelQueuedItems: %@", queuedItems);
+    switch (interruptionType) {
+        case AVAudioSessionInterruptionTypeBegan: {
+            dbug(@"[audioPlayer] interruption began");
+            [self pause];
+        }
+            
+            break;
+        case AVAudioSessionInterruptionTypeEnded: {
+            AVAudioSessionInterruptionOptions options = [interruptionDictionary[AVAudioSessionInterruptionOptionKey] integerValue];
+            
+            BOOL resume = options == AVAudioSessionInterruptionOptionShouldResume;
+            
+            dbug(@"[audioPlayer] interruption ended, should resume: %@", resume ? @"YES" : @"NO");
+            
+            if(resume) {
+                [self play];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

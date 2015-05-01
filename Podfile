@@ -35,4 +35,5 @@ pod 'CrittercismSDK'
 pod 'CPKenburnsSlideshowView', :head
 pod 'NSMutableArray-Shuffle', '~> 0.4'
 pod 'OHActionSheet'
-pod 'AGAudioPlayer', :path => '../AGAudioPlayer'
+pod 'FreeStreamer'
+

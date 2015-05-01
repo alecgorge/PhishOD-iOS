@@ -87,7 +87,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //	HomeViewController *years = [[HomeViewController alloc] init];
     PHODNewHomeViewController *years = PHODNewHomeViewController.alloc.init;
 	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
-    self.yearsNav.delegate = self.navDelegate;
+//    self.yearsNav.delegate = self.navDelegate;
 	self.yearsNav.navigationBar.translucent = NO;
 
 	self.window.rootViewController = self.yearsNav;
@@ -325,13 +325,12 @@ didFinishLaunchingWithOptions:nil];
                        startIndex:pos];
 	
 //    [player play];
-    [player pause];
 	
     if(elapsed != 0.0f) {
         player.progress = elapsed;
-//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//		});
     }
+
+    [player pause];
     
     self.currentlyPlayingShow = show;
     

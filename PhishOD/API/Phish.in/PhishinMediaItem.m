@@ -40,13 +40,17 @@
 }
 
 - (void)streamURL:(void (^)(NSURL *))callback {
-	NSURL *file = self.cachedFile;
-	if(file) {
-		callback(file);
-	}
-	else {
-		callback(self.phishinTrack.mp3);
-	}
+    callback(self.playbackURL);
+}
+
+- (NSURL *)playbackURL {
+    NSURL *file = self.cachedFile;
+    if(file) {
+        return file;
+    }
+    else {
+        return self.phishinTrack.mp3;
+    }
 }
 
 - (BOOL)isCacheable {
