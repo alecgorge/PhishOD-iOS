@@ -24,10 +24,10 @@
 		[inst.requestSerializer setValue:@"application/json"
 					  forHTTPHeaderField:@"Accept"];
         
-		[inst.requestSerializer setValue:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
+		[inst.requestSerializer setValue:@"LivePhishApp"
 					  forHTTPHeaderField:@"User-Agent"];
 		
-		[STKHTTPDataSource setDefaultUserAgent:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"];
+		[STKHTTPDataSource setDefaultUserAgent:@"LivePhishApp"];
 	});
     return inst;
 }
@@ -96,8 +96,8 @@
                 success:(void ( ^ ) ( AFHTTPRequestOperation *operation , id responseObject )) success
                   error:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error )) error {
     NSMutableDictionary *params = @{@"method": apiMethod,
-                                    @"developerKey": @"dhsuwncuej432ldkf943kf3",
-                                    @"clientID": @"Trfgyskdjfnm234jfj3342",
+                                    @"developerKey": @"sjeurd87ehhdjxy6syaj625",
+                                    @"clientID": @"Yuejd764ydxcnh4676scsr345",
                                     @"user": LivePhishAuth.sharedInstance.hasCredentials ? LivePhishAuth.sharedInstance.username : @""
                                     }.mutableCopy;
     
@@ -301,6 +301,88 @@
                               success([NSURL URLWithString:dict[@"Response"][@"url"]]);
                           }
                             error:failure];
+}
+
+- (void)years:(void (^)(NSArray *))success
+      failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    [self apiMethod:@"catalog.showYearCatalog"
+             params:nil
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSDictionary *dict = [self parseJSON:responseObject];
+                
+                success(dict[@"response"]);
+            }
+              error:failure];
+}
+
+- (void)albums:(void (^)(NSArray *))success
+       failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
+    [self apiMethod:@"catalog.containersAll"
+             params:@{@"cnType": @"albums",
+                      @"limit": @"20000",
+                      @"sortType": @"asc",
+                      @"startOffset":@"0"}
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success([[self parseJSON:responseObject][@"Response"][@"containers"] map:^id(NSDictionary *object) {
+                    NSError *err;
+                    
+                    id obj = [LivePhishContainer.alloc initWithDictionary:object
+                                                                    error:&err];
+                    
+                    if(err) {
+                        dbug(@"JSON Validation Error on %@: %@", object, err);
+                    }
+                    
+                    return obj;
+                }]);
+            }
+              error:failure];
+}
+
+- (void)tours:(void (^)(NSArray *))success
+      failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    [self apiMethod:@"catalog.containerCategories"
+             params:nil
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success([[self parseJSON:responseObject][@"Response"][@"containerCategories"] map:^id(NSDictionary *object) {
+                    NSError *err;
+                    
+                    id obj = [LivePhishCategory.alloc initWithDictionary:object
+                                                                   error:&err];
+                    
+                    if(err) {
+                        dbug(@"JSON Validation Error on %@: %@", object, err);
+                    }
+                    
+                    return obj;
+                }]);
+            }
+              error:failure];
+}
+
+- (void)containersForYear:(NSString *)year
+                  success:(void (^)(NSArray *))success
+                  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    [self apiMethod:@"catalog.containersAll"
+             params:@{@"limit": @"20000",
+                      @"showYears": year,
+                      @"sortType": @"asc",
+                      @"startOffset":@"0"}
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                success([[self parseJSON:responseObject][@"Response"][@"containers"] map:^id(NSDictionary *object) {
+                    NSError *err;
+                    
+                    id obj = [LivePhishContainer.alloc initWithDictionary:object
+                                                                    error:&err];
+                    
+                    if(err) {
+                        dbug(@"JSON Validation Error on %@: %@", object, err);
+                    }
+                    
+                    return obj;
+                }]);
+            }
+              error:failure];
 }
 
 @end

@@ -20,6 +20,19 @@
 - (void)categories:(void ( ^ ) ( NSArray *categories ))success
            failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 
+- (void)years:(void ( ^ ) ( NSArray *categories ))success
+      failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+- (void)containersForYear:(NSString *)year
+                  success:(void ( ^ ) ( NSArray *containers ))success
+                  failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+- (void)albums:(void ( ^ ) ( NSArray *categories ))success
+      failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
+- (void)tours:(void ( ^ ) ( NSArray *categories ))success
+      failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
+
 - (void)featuredContainers:(void ( ^ ) ( NSArray *categories ))success
 				   failure:(void ( ^ ) ( AFHTTPRequestOperation *operation , NSError *error ))failure;
 

@@ -15,10 +15,15 @@
     self = [super init];
     if (self) {
         _name = lName;
-        _description = lDescription;
+        _locationDescription = lDescription;
         _location = lCoordinate;
     }
     
     return self;
 }
+
+- (NSString *)description {
+    return _locationDescription;
+}
+
 @end

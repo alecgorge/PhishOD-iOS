@@ -10,6 +10,8 @@
 	<string>PhishOD</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
+		<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
 		<key>AD7E52CE-6BCD-4E0D-904C-BFD64A84F584</key>
 		<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
 	</dict>
@@ -17,15 +19,17 @@
 	<string>PhishOD.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AD7E52CE-6BCD-4E0D-904C-BFD64A84F584</key>
+		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
 		<string>..</string>
+		<key>AD7E52CE-6BCD-4E0D-904C-BFD64A84F584</key>
+		<string>../../PhishOD-iOS</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AD7E52CE-6BCD-4E0D-904C-BFD64A84F584</string>
+	<string>18FC7AED59755625022E926996A6226FE280EBBC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>AD7E52CE-6BCD-4E0D-904C-BFD64A84F584</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PhishOD-iOS</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18FC7AED59755625022E926996A6226FE280EBBC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PhishOD-iOS-LivePhish</string>
 		</dict>
 	</array>
 </dict>

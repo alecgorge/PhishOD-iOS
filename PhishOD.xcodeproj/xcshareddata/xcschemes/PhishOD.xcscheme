@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
-            BuildableName = "PhishOD.app"
-            BlueprintName = "PhishOD"
+            BuildableName = "PhishODLP.app"
+            BlueprintName = "PhishODLP"
             ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -48,12 +48,13 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
-            BuildableName = "PhishOD.app"
-            BlueprintName = "PhishOD"
+            BuildableName = "PhishODLP.app"
+            BlueprintName = "PhishODLP"
             ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,12 +72,13 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C518C00175D0C32005EB2E7"
-            BuildableName = "PhishOD.app"
-            BlueprintName = "PhishOD"
+            BuildableName = "PhishODLP.app"
+            BlueprintName = "PhishODLP"
             ReferencedContainer = "container:PhishOD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
