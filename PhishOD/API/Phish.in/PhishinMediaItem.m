@@ -29,18 +29,32 @@
 
         self.artist = @"Phish";
         self.id = track.id;
-        self.track = track.track;
+        self.trackNumber = track.track;
         
         self.duration = track.duration;
         
         self.displayText = track.title;
-        self.displaySubText = self.album;
+        self.displaySubtext = self.album;
 	}
 	return self;
 }
 
-- (void)streamURL:(void (^)(NSURL *))callback {
-    callback(self.playbackURL);
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.phishinTrack = [aDecoder decodeObjectForKey:@"phishinTrack"];
+        self.phishinShow = [aDecoder decodeObjectForKey:@"phishinShow"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeObject:self.phishinTrack
+                  forKey:@"phishinTrack"];
+    
+    [aCoder encodeObject:self.phishinShow
+                  forKey:@"phishinShow"];
 }
 
 - (NSURL *)playbackURL {
@@ -51,6 +65,10 @@
     else {
         return self.phishinTrack.mp3;
     }
+}
+
+- (NSInteger)track {
+    return self.trackNumber;
 }
 
 - (BOOL)isCacheable {
@@ -77,16 +95,21 @@
 	return self.phishinTrack.isDownloadingOrQueued;
 }
 
-- (NSURL *)shareURL {
-    return [NSURL URLWithString:[self.phishinTrack shareURLWithPlayedTime:0]];
+- (void)loadMetadata:(void (^)(id<AGAudioItem>))metadataCallback {
+    metadataCallback(self);
 }
 
-- (NSURL *)shareURLWithTime:(NSTimeInterval)seconds {
-    return [NSURL URLWithString:[self.phishinTrack shareURLWithPlayedTime:seconds]];
+- (void)shareText:(void (^)(NSString *))stringBuilt {
+    stringBuilt([NSString stringWithFormat:@"#nowplaying %@ — %@ — %@ via @phishod", self.title, self.album, self.artist]);
 }
 
-- (NSString *)shareText {
-    return [NSString stringWithFormat:@"#nowplaying %@ — %@ — %@ via @phishod", self.title, self.album, self.artist];
+- (void)shareURL:(void (^)(NSURL *))urlFound {
+    urlFound([NSURL URLWithString:[self.phishinTrack shareURLWithPlayedTime:0]]);
+}
+
+- (void)shareURLWithTime:(NSTimeInterval)shareTime
+                callback:(void (^)(NSURL *))urlFound {
+    urlFound([NSURL URLWithString:[self.phishinTrack shareURLWithPlayedTime:shareTime]]);
 }
 
 @end

@@ -290,7 +290,7 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)saveCurrentState {
-    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.playbackQueue
+    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.queue
                              forKey:@"current.queue"];
     
     [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.currentIndex)
@@ -309,7 +309,7 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)hydrateFromSavedState {
-    NSArray *queue = (NSArray *)[EGOCache.globalCache objectForKey:@"current.queue"];
+    AGAudioPlayerUpNextQueue *queue = (AGAudioPlayerUpNextQueue *)[EGOCache.globalCache objectForKey:@"current.queue"];
     NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
     NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;
     PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
@@ -321,7 +321,7 @@ didFinishLaunchingWithOptions:nil];
 
     AGMediaPlayerViewController *player = AGMediaPlayerViewController.sharedInstance;
 	player.heatmap = heatmap;
-    [player replaceQueueWithItems:queue
+    [player replaceQueueWithItems:queue.queue
                        startIndex:pos];
 	
 //    [player play];

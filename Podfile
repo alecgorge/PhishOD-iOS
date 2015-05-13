@@ -16,7 +16,6 @@ pod 'CrashlyticsFramework'
 pod 'JSONModel'
 pod 'SDWebImage'
 pod 'NAKPlaybackIndicatorView'
-pod 'StreamingKit', :head
 pod 'CSNNotificationObserver'
 pod 'MarqueeLabel'
 pod "DBGHTMLEntities"
@@ -35,5 +34,4 @@ pod 'CrittercismSDK'
 pod 'CPKenburnsSlideshowView', :head
 pod 'NSMutableArray-Shuffle', '~> 0.4'
 pod 'OHActionSheet'
-pod 'FreeStreamer'
-
+pod 'AGAudioPlayer', :path => "../AGAudioPlayer"

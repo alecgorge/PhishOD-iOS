@@ -77,15 +77,13 @@
 }
 
 - (IBAction)favoriteTapped:(id)sender {
-    AGMediaItem *item = AGMediaPlayerViewController.sharedInstance.currentItem;
+    id<AGAudioItem> item = AGMediaPlayerViewController.sharedInstance.currentItem;
     
-    if([item isKindOfClass:PhishinMediaItem.class]) {
-        PhishinMediaItem *pi = (PhishinMediaItem *)item;
-        
-        [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
-                                                                       inView:self.view.superview
-                                                            withPhishinObject:pi.phishinTrack];
-    }
+    PhishinMediaItem *pi = (PhishinMediaItem *)item;
+    
+    [PhishTracksStatsFavoritePopover.sharedInstance showFromBarButtonItem:sender
+                                                                   inView:self.view.superview
+                                                        withPhishinObject:pi.phishinTrack];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath

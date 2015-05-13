@@ -10,7 +10,9 @@
 
 #import "PhishinTrack.h"
 
-@interface PhishinMediaItem : AGMediaItem
+#import <AGAudioPlayer/AGAudioItem.h>
+
+@interface PhishinMediaItem : AGAudioItemBase<PHODGenericTrack>
 
 - (instancetype)initWithTrack:(PhishinTrack*) track
 					   inShow:(PhishinShow *) show;

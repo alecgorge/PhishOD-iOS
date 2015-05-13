@@ -8,26 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-#import <FreeStreamer/FSAudioController.h>
-
 #import "AGMediaItem.h"
 #import "PTSHeatmap.h"
 
-@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, FSAudioControllerDelegate>
+#import <AGAudioPlayer/AGAudioPlayer.h>
+
+@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 + (instancetype)sharedInstance;
-
-@property (nonatomic) FSAudioStreamState state;
 
 // playing, buffering etc
 @property (nonatomic, readonly) BOOL playing;
 @property (nonatomic, readonly) BOOL buffering;
-@property (strong, nonatomic) FSAudioController *audioController;
+@property (strong, nonatomic) AGAudioPlayer *audioPlayer;
+@property (strong, nonatomic) AGAudioPlayerUpNextQueue *queue;
 
 // an array of AGMediaItems
-@property (nonatomic) NSMutableArray *playbackQueue;
-@property (nonatomic, readonly) AGMediaItem *currentItem;
-@property (nonatomic, readonly) AGMediaItem *nextItem;
+@property (nonatomic, readonly) id<AGAudioItem> currentItem;
+@property (nonatomic, readonly) id<AGAudioItem> nextItem;
 @property (nonatomic, readonly) NSInteger nextIndex;
 
 @property (nonatomic) NSInteger currentIndex;

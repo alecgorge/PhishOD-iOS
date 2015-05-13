@@ -29,13 +29,7 @@
 #import "IGEvents.h"
 #import "IGThirdPartyKeys.h"
 
-@interface FSAudioController ()
-
-@property (nonatomic,assign) NSUInteger currentPlaylistItemIndex;
-
-@end
-
-@interface AGMediaPlayerViewController ()
+@interface AGMediaPlayerViewController () <AGAudioPlayerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *uiPlayButton;
 @property (weak, nonatomic) IBOutlet UIButton *uiPauseButton;
@@ -88,40 +82,9 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil
                                bundle:nibBundleOrNil]) {
-        self.playbackQueue = [NSMutableArray array];
-        
-        self.audioController = FSAudioController.new;
-        self.audioController.delegate = self;
-        
-        self.audioController.enableDebugOutput = YES;
-        
-        __weak AGMediaPlayerViewController *s = self;
-        self.audioController.onFailure = ^(FSAudioStreamError error , NSString *errorDescription) {
-            NSLog(@"[audioPlayer] error: %d, %@", error, errorDescription);
-            
-            [s updateStatusBar];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
-                                                                object:s];
-            
-            [s.uiPlaybackQueueTable reloadData];
-            
-            [s setupBar];
-        };
-        
-        self.audioController.onStateChange = ^(FSAudioStreamState state) {
-            NSLog(@"[audioPlayer] changed to state: %@", [self stringForStatus:state]);
-            s.state = state;
-            [s updateStatusBar];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
-                                                                object:s];
-            
-            [s.uiPlaybackQueueTable reloadData];
-            
-            [s setupBar];
-            [self registerAudioSession];
-        };
+        self.queue = [AGAudioPlayerUpNextQueue.alloc init];
+        self.audioPlayer = [AGAudioPlayer.alloc initWithQueue:self.queue];
+        self.audioPlayer.delegate = self;
     }
     
     return self;
@@ -144,15 +107,23 @@
 											   object:nil];
     
     [self setupAppearance];
-    [self startUpdates];
 }
 
-- (void)startUpdates {
+- (void)audioPlayer:(AGAudioPlayer *)audioPlayer
+uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
+          extraInfo:(NSDictionary *)dict {
     [self redrawUI];
+
+    if(reason == AGAudioPlayerTrackProgressUpdated) {
+        return;
+    }
     
-    [self performSelector:@selector(startUpdates)
-               withObject:nil
-               afterDelay:0.5];
+    [self setupBar];
+    [self.uiPlaybackQueueTable reloadData];
+    [self updateStatusBar];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AGMediaItemStateChanged"
+                                                        object:self];
 }
 
 - (void)setupAppearance {
@@ -212,7 +183,7 @@
         
         [label restartLabel];
     }
-    label.text = [NSString stringWithFormat:@"%@ — %@", self.currentItem.displayText, self.currentItem.displaySubText];
+    label.text = [NSString stringWithFormat:@"%@ — %@", self.currentItem.displayText, self.currentItem.displaySubtext];
     
     self.navigationController.navigationBar.barTintColor = COLOR_PHISH_GREEN;
 	
@@ -247,11 +218,7 @@
 }
 
 - (float)duration {
-    if(self.audioController.activeStream.duration.playbackTimeInSeconds != 0) {
-        return self.audioController.activeStream.duration.playbackTimeInSeconds;
-    }
-    
-    return self.currentItem.duration;
+    return self.audioPlayer.duration;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet
@@ -262,35 +229,41 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		self.shareTime = 0;
 	}
     
-	NSString *textToShare = self.currentItem.shareText;
-	NSURL *urlToShare = [self.currentItem shareURLWithTime:self.shareTime];
-    
-	NSArray *itemsToShare;
-    if(urlToShare) {
-        itemsToShare = @[textToShare, urlToShare];
-    }
-    else {
-        itemsToShare = @[textToShare];
-    }
-    
-    IGEvent *e = [IGEvents startTimedEvent:@"share"];
-    
-	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
-																			 applicationActivities:nil];
-    
-	activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
-    activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
-        [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0).stringValue,
-                                         @"activity_type": activityType ? activityType : @"",
-                                         @"completed": @(completed).stringValue
-                                         }
-                            andMetrics:@{@"completed": [NSNumber numberWithBool:completed],
-                                         @"with_time": [NSNumber numberWithBool:self.shareTime != 0]}];
+    __block NSString *textToShare;
+    void (^shareCb)(NSURL *) = ^(NSURL *urlToShare) {
+        NSArray *itemsToShare;
+        if(urlToShare) {
+            itemsToShare = @[textToShare, urlToShare];
+        }
+        else {
+            itemsToShare = @[textToShare];
+        }
+        
+        IGEvent *e = [IGEvents startTimedEvent:@"share"];
+        
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
+                                                                                 applicationActivities:nil];
+        
+        activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePostToWeibo, nil];
+        activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+            [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0).stringValue,
+                                             @"activity_type": activityType ? activityType : @"",
+                                             @"completed": @(completed).stringValue
+                                             }
+                                andMetrics:@{@"completed": [NSNumber numberWithBool:completed],
+                                             @"with_time": [NSNumber numberWithBool:self.shareTime != 0]}];
+        };
+        
+        [self.navigationController presentViewController:activityVC
+                                                animated:YES
+                                              completion:nil];
     };
     
-	[self.navigationController presentViewController:activityVC
-											animated:YES
-										  completion:nil];
+    [self.currentItem shareText:^(NSString *t) {
+        textToShare = t;
+        [self.currentItem shareURLWithTime:self.shareTime
+                                  callback:shareCb];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -350,54 +323,29 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 #pragma mark - Public Interface
 
 - (BOOL)playing {
-    return self.state == kFsAudioStreamPlaying || self.state == kFsAudioStreamSeeking;
+    return self.audioPlayer.isPlaying;
 }
 
 - (BOOL)buffering {
-    return self.state == kFsAudioStreamBuffering || self.state == kFsAudioStreamRetryingStarted;
+    return self.audioPlayer.isBuffering;
 }
 
-- (AGMediaItem *)currentItem {
-    if (self.currentIndex >= self.playbackQueue.count) {
-        return nil;
-    }
-    
-    return self.playbackQueue[self.currentIndex];
+- (id<AGAudioItem>)currentItem {
+    return self.audioPlayer.currentItem;
 }
 
 - (NSInteger) nextIndex {
-    if(self.loop) {
-        return self.currentIndex;
-    }
-    else if(self.shuffle) {
-        NSInteger randomIndex = -1;
-        while(randomIndex == -1 || randomIndex == self.currentIndex)
-            randomIndex = arc4random_uniform((u_int32_t)self.playbackQueue.count);
-        return randomIndex;
-    }
-    else if(self.playbackQueue.count == 1) {
-        return -1;
-    }
-    
-    if(self.currentIndex + 1 >= self.playbackQueue.count) {
-        return 0;
-    }
-    
-    return self.currentIndex + 1;
+    return self.audioPlayer.nextIndex;
 }
 
-- (AGMediaItem *)nextItem {
-    if(self.nextIndex >= self.playbackQueue.count) {
-        return nil;
-    }
-    
-    return self.playbackQueue[self.nextIndex];
+- (id<AGAudioItem>)nextItem {
+    return self.audioPlayer.nextItem;
 }
 
 - (void)setCurrentIndex:(NSInteger)currentIndex {
     NowPlayingBarViewController.sharedInstance.shouldShowBar = YES;
     
-    [self.audioController playItemAtIndex:currentIndex];
+    [self.audioPlayer playItemAtIndex:currentIndex];
     
     self.currentTrackHasBeenScrobbled = NO;
     
@@ -413,7 +361,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (NSInteger)currentIndex {
-    return self.audioController.currentPlaylistItemIndex;
+    return self.audioPlayer.currentIndex;
 }
 
 - (float)progress {
@@ -425,48 +373,32 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (NSTimeInterval)elapsed {
-    return self.audioController.activeStream.currentTimePlayed.playbackTimeInSeconds;
+    return self.audioPlayer.elapsed;
 }
 
 - (void)setProgress:(float)progress {
-    FSStreamPosition pos;
-    
-    pos.position = progress;
-    
-    [self.audioController.activeStream seekToPosition:pos];
+    [self.audioPlayer seekToPercent:progress];
     self.uiProgressSlider.value = progress;
 }
 
 - (void)forward {
-    [self.audioController playNextItem];
+    [self.audioPlayer forward];
 }
 
 - (void)backward {
-    if(self.elapsed < 10) {
-        [self.audioController playPreviousItem];
-    }
-    else {
-        self.progress = 0.0;
-    }
+    [self.audioPlayer backward];
 }
 
 - (void)play {
-    if(self.state == kFsAudioStreamPaused) {
-        [self.audioController pause];
-    }
-    else {
-        [self.audioController play];
-    }
-    [self redrawUI];
+    [self.audioPlayer resume];
 }
 
 - (void)pause {
-    [self.audioController pause];
-    [self redrawUI];
+    [self.audioPlayer pause];
 }
 
 - (void)stop {
-    [self.audioController stop];
+    [self.audioPlayer stop];
     [self redrawUI];
 }
 
@@ -480,20 +412,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (void)addItemsToQueue:(NSArray *)queue {
-    [self.playbackQueue addObjectsFromArray:queue];
+    [self.queue appendItems:queue];
 }
 
 - (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSInteger)index {
-    self.playbackQueue = [queue mutableCopy];
-    
-    [self.audioController playFromPlaylist:[self.playbackQueue map:^id(AGMediaItem *object) {
-        FSPlaylistItem *i = FSPlaylistItem.new;
-        
-        i.url = object.playbackURL;
-        i.title = object.displayText;
-        
-        return i;
-    }]];
+    [self.queue clearAndReplaceWithItems:queue];
     
     self.currentIndex = index;
     
@@ -511,7 +434,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.playbackQueue.count;
+    return self.queue.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -522,7 +445,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     PHODTrackCell *c = (PHODTrackCell *)cell;
 	[c showHeatmap:(!!self.heatmap)];
-    [c updateCellWithTrack:self.playbackQueue[indexPath.row]
+    [c updateCellWithTrack:[self.queue properQueueForShuffleEnabled:self.shuffle][indexPath.row]
                inTableView:tableView];
     
     return cell;
@@ -543,7 +466,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"];
     
     PHODTrackCell *c = (PHODTrackCell *)cell;
-    return [c heightForCellWithTrack:self.playbackQueue[indexPath.row]
+    return [c heightForCellWithTrack:[self.queue properQueueForShuffleEnabled:self.shuffle][indexPath.row]
                          inTableView:tableView];
 }
 
@@ -558,54 +481,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - UI Stuff
-
-- (NSString *)stringForStatus:(FSAudioStreamState)status {
-    switch (status) {
-        case kFsAudioStreamRetrievingURL:
-            return @"Retrieving URL";
-        case kFsAudioStreamStopped:
-            return @"Stopped";
-        case kFsAudioStreamBuffering:
-            return @"Buffering";
-        case kFsAudioStreamPlaying:
-            return @"Playing";
-        case kFsAudioStreamPaused:
-            return @"Paused";
-        case kFsAudioStreamSeeking:
-            return @"Seeking";
-        case kFSAudioStreamEndOfFile:
-            return @"Got Stream EOF";
-        case kFsAudioStreamFailed:
-            return @"Stream Failed";
-        case kFsAudioStreamRetryingStarted:
-            return @"Stream Retrying: Started";
-        case kFsAudioStreamRetryingSucceeded:
-            return @"Stream Retrying: Success";
-        case kFsAudioStreamRetryingFailed:
-            return @"Stream Retrying: Failed";
-        case kFsAudioStreamPlaybackCompleted:
-            return @"Playback Complete";
-        case kFsAudioStreamUnknownState:
-            return @"Unknown!?";
-    }
-}
-
-- (NSString *)stringForErrorCode:(FSAudioStreamError)status {
-    switch (status) {
-        case kFsAudioStreamErrorNone:
-            return @"No Error";
-        case kFsAudioStreamErrorOpen:
-            return @"Error: open";
-        case kFsAudioStreamErrorStreamParse:
-            return @"Error: stream parse";
-        case kFsAudioStreamErrorNetwork:
-            return @"Error: network";
-        case kFsAudioStreamErrorUnsupportedFormat:
-            return @"Error: unsupported format";
-        case kFsAudioStreamErrorStreamBouncing:
-            return @"Error: stream bouncing";
-    }
-}
 
 - (void)updateStatusBar {
     if (self.buffering) {
@@ -625,7 +500,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.uiPlayButton.hidden = self.playing || self.buffering;
     
     self.uiBackwardButton.enabled = self.currentIndex != 0;
-    self.uiForwardButton.enabled = self.currentIndex < self.playbackQueue.count;
+    self.uiForwardButton.enabled = self.currentIndex < self.queue.count;
     
     self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.elapsed];
     self.uiTimeLeftLabel.text = [IGDurationHelper formattedTimeWithInterval:self.duration];
@@ -635,17 +510,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSMutableDictionary *dict = @{
 								  MPMediaItemPropertyAlbumTitle					: STR_IF_NIL(self.currentItem.album),
 								  MPMediaItemPropertyTitle						: STR_IF_NIL(self.currentItem.title),
-								  MPMediaItemPropertyAlbumTrackCount			: @(self.playbackQueue.count),
+								  MPMediaItemPropertyAlbumTrackCount			: @(self.queue.count),
 								  MPMediaItemPropertyArtist						: STR_IF_NIL(self.currentItem.artist),
-								  MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.playbackQueue.count),
+								  MPNowPlayingInfoPropertyPlaybackQueueCount	: @(self.queue.count),
 								  MPNowPlayingInfoPropertyPlaybackQueueIndex	: @(self.currentIndex),
 								  MPNowPlayingInfoPropertyPlaybackRate			: @(self.playing ? 1.0 : 0),
 								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.elapsed)
 								  }.mutableCopy;
 	
-	if(self.currentItem.artwork) {
-		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
-	}
+//	if(self.currentItem.artwork) {
+//		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
+//	}
     
     if(self.duration >= 0) {
         dict[MPMediaItemPropertyPlaybackDuration] = @(self.duration);
@@ -668,8 +543,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                          failureHandler:nil];
         }
         
+        NSObject<AGAudioItem> *obj = (NSObject<AGAudioItem> *)self.currentItem;
+        
         [IGEvents trackEvent:@"played_track"
-              withAttributes:@{@"provider": NSStringFromClass(self.currentItem.class),
+              withAttributes:@{@"provider": NSStringFromClass(obj.class),
                                @"title": self.currentItem.title,
                                @"album": self.currentItem.album,
                                @"is_cached_attr": @(self.currentItem.isCached).stringValue,
@@ -680,7 +557,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		self.currentTrackHasBeenScrobbled = YES;
 		
 		if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
-			if([self.currentItem isKindOfClass:PhishinMediaItem.class]) {
+			if([obj.class isKindOfClass:PhishinMediaItem.class]) {
 				PhishinTrack *track = ((PhishinMediaItem*)self.currentItem).phishinTrack;
 				[PhishTracksStats.sharedInstance createPlayedTrack:track
 														   success:nil
@@ -729,76 +606,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)seekingEndedInside:(id)sender {
     [self seekingEndedOutside:sender];
-}
-
-#pragma mark - Free Streamer Delegate
-
-- (void)audioController:(FSAudioController *)audioController preloadStartedForStream:(FSAudioStream *)stream {
-    dbug(@"[audioPlayer] audioController:preloadStartedForStream: %@", stream);
-}
-
-- (BOOL)audioController:(FSAudioController *)audioController
-allowPreloadingForStream:(FSAudioStream *)stream {
-    return YES;
-}
-
-#pragma mark - Interruption Handling
-
-- (void)registerAudioSession {
-    if (!self.registeredAudioSession) {
-        [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
-                                             error:nil];
-        
-        [AVAudioSession.sharedInstance setActive:YES
-                                           error:nil];
-        
-        self.headphoneObserver = [CSNNotificationObserver.alloc initWithName:AVAudioSessionRouteChangeNotification
-                                                                      object:nil
-                                                                       queue:NSOperationQueue.mainQueue
-                                                                  usingBlock:^(NSNotification *notification) {
-                                                                      NSNumber *reason = notification.userInfo[AVAudioSessionRouteChangeReasonKey];
-                                                                      
-                                                                      if(reason.integerValue == AVAudioSessionRouteChangeReasonOldDeviceUnavailable) {
-                                                                          [self pause];
-                                                                      }
-                                                                  }];
-        
-        self.registeredAudioSession = YES;
-        
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(audioInteruptionOccured:)
-                                                   name:AVAudioSessionInterruptionNotification
-                                                 object:nil];
-    }
-}
-
-- (void)audioInteruptionOccured:(NSNotification *)notification {
-    NSDictionary *interruptionDictionary = notification.userInfo;
-    AVAudioSessionInterruptionType interruptionType = [interruptionDictionary[AVAudioSessionInterruptionTypeKey] integerValue];
-    
-    switch (interruptionType) {
-        case AVAudioSessionInterruptionTypeBegan: {
-            dbug(@"[audioPlayer] interruption began");
-            [self pause];
-        }
-            
-            break;
-        case AVAudioSessionInterruptionTypeEnded: {
-            AVAudioSessionInterruptionOptions options = [interruptionDictionary[AVAudioSessionInterruptionOptionKey] integerValue];
-            
-            BOOL resume = options == AVAudioSessionInterruptionOptionShouldResume;
-            
-            dbug(@"[audioPlayer] interruption ended, should resume: %@", resume ? @"YES" : @"NO");
-            
-            if(resume) {
-                [self play];
-            }
-        }
-            break;
-            
-        default:
-            break;
-    }
 }
 
 @end

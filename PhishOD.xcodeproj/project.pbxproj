@@ -1258,7 +1258,7 @@
 				ORGANIZATIONNAME = "Alec Gorge";
 				TargetAttributes = {
 					7C518C00175D0C32005EB2E7 = {
-						DevelopmentTeam = UH6Q9M9L78;
+						DevelopmentTeam = HT7ELV3Q35;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -1607,8 +1607,8 @@
 				BUILD_CONFIGURATION = Debug;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1621,7 +1621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb81cb8f-88a5-4845-8dad-e26225346a28";
+				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1638,7 +1638,7 @@
 				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
