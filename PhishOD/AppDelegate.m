@@ -68,9 +68,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 	NSString *ptsServer = infoDictionary[@"StatsServer"];
 	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
-    
-    [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
-    
+	
+	[NSUserDefaults.standardUserDefaults setObject:@"phish.in" forKey:@"mp3_domain"];
+//    [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
+	
     [Crittercism enableWithAppID:@"5457fcb70729df5bd6000007"];
 
 	[self setupLastFM];
@@ -309,6 +310,7 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)hydrateFromSavedState {
+	return;
     AGAudioPlayerUpNextQueue *queue = (AGAudioPlayerUpNextQueue *)[EGOCache.globalCache objectForKey:@"current.queue"];
     NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
     NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;

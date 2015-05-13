@@ -113,7 +113,7 @@
       completionBlock:(DownloadCompletionBlock)completionBlock {
     SDWebImageManager *manager = SDWebImageManager.sharedManager;
     
-    dbug(@"requested url: %@", imageUrl);
+//    dbug(@"requested url: %@", imageUrl);
     [manager downloadImageWithURL:imageUrl
                           options:0
                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {

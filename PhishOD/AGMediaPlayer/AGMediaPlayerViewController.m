@@ -13,8 +13,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 
-#import <FreeStreamer/FSPlaylistItem.h>
-
 #import <LastFm/LastFm.h>
 #import <MarqueeLabel/MarqueeLabel.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
