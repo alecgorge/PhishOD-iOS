@@ -11,6 +11,8 @@
 
 @interface TopRatedViewController : RefreshableTableViewController
 
+- (instancetype)initWithTopShows:(NSArray *)shows;
+
 @property NSArray *topShows;
 
 @end

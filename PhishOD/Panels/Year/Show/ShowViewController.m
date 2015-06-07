@@ -318,6 +318,9 @@ viewForHeaderInSection:(NSInteger)section {
     [cell updateCellWithTrack:track
                   inTableView:tableView];
 	
+	float heatmapValue = [_showHeatmap floatValueForKey:track.slug];
+	[cell updateHeatmapLabelWithValue:heatmapValue];
+	
     return cell;
 }
 
@@ -334,13 +337,6 @@ viewForHeaderInSection:(NSInteger)section {
 canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
     return track.isCached;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	PHODTrackCell *pcell = (PHODTrackCell *)cell;
-	PhishinTrack *track = [self tracksForSections:indexPath.section][indexPath.row];
-	float heatmapValue = [_showHeatmap floatValueForKey:track.slug];
-	[pcell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 #pragma mark - Table view delegate
@@ -389,7 +385,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if(!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
 //        [AppDelegate.sharedDelegate presentMusicPlayer];
 //    }
-    
+
     [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
 	AGMediaPlayerViewController.sharedInstance.heatmap = _showHeatmap;
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist

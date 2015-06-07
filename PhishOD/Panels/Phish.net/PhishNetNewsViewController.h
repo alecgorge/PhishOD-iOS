@@ -10,4 +10,6 @@
 
 @interface PhishNetNewsViewController : RefreshableTableViewController
 
+- (instancetype)initWithNews:(NSArray *)array;
+
 @end

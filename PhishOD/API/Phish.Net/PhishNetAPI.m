@@ -196,7 +196,7 @@
 	[self makeAPIRequest:@"pnet.news.get"
 		   withArguments:nil
 				 success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-					 success([responseObject map:^id(NSDictionary *object) {
+					 success([responseObject.reverse map:^id(NSDictionary *object) {
 						 NSError *err;
 						 
 						 PhishNetNewsItem *o = [PhishNetNewsItem.alloc initWithDictionary:object

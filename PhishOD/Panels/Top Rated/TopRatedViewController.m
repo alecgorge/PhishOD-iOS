@@ -12,6 +12,8 @@
 
 @interface TopRatedViewController ()
 
+@property (nonatomic) BOOL skipFirstLoad;
+
 @end
 
 @implementation TopRatedViewController
@@ -24,7 +26,24 @@
     return self;
 }
 
+- (instancetype)initWithTopShows:(NSArray *)shows {
+	if (self = [self init]) {
+		self.topShows = shows;
+		
+		if(self.topShows != nil) {
+			self.skipFirstLoad = YES;			
+		}
+	}
+	return self;
+}
+
 - (void)refresh:(id)sender {
+	if(self.skipFirstLoad) {
+		[super refresh:sender];
+		self.skipFirstLoad = NO;
+		return;
+	}
+	
 	[[PhishNetAPI sharedAPI] topRatedShowsWithSuccess:^(NSArray *t) {
 		self.topShows = t;
 		[self.tableView reloadData];

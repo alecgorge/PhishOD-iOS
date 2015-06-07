@@ -9,7 +9,9 @@
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
 #import "NowPlayingBarViewController.h"
+#import "AppDelegate.h"
 #import "AGMediaPlayerViewController.h"
+#import "PHODTabbedHomeViewController.h"
 
 @implementation NavigationControllerAutoShrinkerForNowPlaying
 
@@ -18,10 +20,7 @@
        didShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
 	self.lastViewController = viewController;
-    NowPlayingBarViewController.sharedInstance.navigationContainer = navigationController;
 	[self fixForViewController:viewController];
-    
-	[self addBarToView:navigationController.view];
 }
 
 - (void)addBarToView:(UIView *)view {
@@ -31,7 +30,7 @@
         
         CGRect r = v.bounds;
         
-        r.origin.y = view.bounds.size.height;
+        r.origin.y = view.bounds.size.height - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height;
         r.size.width = view.bounds.size.width;
         
 //        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
@@ -50,7 +49,7 @@
                      animations:^{
                          if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
                              CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
-                             r.origin.y = view.bounds.size.height - r.size.height;
+                             r.origin.y = view.bounds.size.height - r.size.height - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height;
                              NowPlayingBarViewController.sharedInstance.view.frame = r;
                          }
                          else {
@@ -62,7 +61,7 @@
 }
 
 - (void)addBarToViewController:(UIViewController *)vc {
-	[self addBarToView:vc.navigationController.view];
+	[self addBarToView:AppDelegate.sharedDelegate.tabs.view];
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {
@@ -80,14 +79,14 @@
         
 		UIEdgeInsets edges = t.contentInset;
         
-		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+		if((edges.bottom - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
 			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
         
 		t.contentInset = edges;
         
 		edges = t.scrollIndicatorInsets;
         
-		if(edges.bottom < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+		if((edges.bottom - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
 			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
         
 		t.scrollIndicatorInsets = edges;

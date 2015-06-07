@@ -21,6 +21,8 @@
 #import "ShowViewController.h"
 #import "IGEvents.h"
 #import "PHODNewHomeViewController.h"
+#import "PHODHistory.h"
+#import "PHODTabbedHomeViewController.h"
 
 #import <LastFm.h>
 #import <Crashlytics/Crashlytics.h>
@@ -29,6 +31,7 @@
 #import <EGOCache/EGOCache.h>
 #import <GroundControl/NSUserDefaults+GroundControl.h>
 #import <CrittercismSDK/Crittercism.h>
+#import <Instabug/Instabug.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
@@ -69,8 +72,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	NSString *ptsServer = infoDictionary[@"StatsServer"];
 	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
 	
-	[NSUserDefaults.standardUserDefaults setObject:@"phish.in" forKey:@"mp3_domain"];
-//    [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
+    [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
 	
     [Crittercism enableWithAppID:@"5457fcb70729df5bd6000007"];
 
@@ -78,6 +80,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupCaching];
 	[self setupAppearance];
 	[self setupHeatmapSettings];
+	[self setupBugshotKit];
 	
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
 	
@@ -86,12 +89,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	
 //	HomeViewController *years = [[HomeViewController alloc] init];
-    PHODNewHomeViewController *years = PHODNewHomeViewController.alloc.init;
-	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
+//    PHODNewHomeViewController *years = PHODNewHomeViewController.alloc.init;
+//	self.yearsNav = [[UINavigationController alloc] initWithRootViewController:years];
 //    self.yearsNav.delegate = self.navDelegate;
-	self.yearsNav.navigationBar.translucent = NO;
+//	self.yearsNav.navigationBar.translucent = NO;
 
-	self.window.rootViewController = self.yearsNav;
+	self.tabs = PHODTabbedHomeViewController.new;
+	self.window.rootViewController = self.tabs;
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -105,9 +109,22 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self hydrateFromSavedState];
     
-    self.slideshowManager = [PHODSlideshowManager.alloc initWithWindow:self.window];
+//    self.slideshowManager = [PHODSlideshowManager.alloc initWithWindow:self.window];
 	
     return YES;
+}
+
+- (void)setupBugshotKit {
+	[Instabug startWithToken:@"63c7015b6dfc0c9994d0bf7ae9af7a96"
+			   captureSource:IBGCaptureSourceUIKit
+			 invocationEvent:IBGInvocationEventShake];
+	
+	[Instabug setButtonsFontColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:1.0]];
+	[Instabug setButtonsColor:[UIColor colorWithRed:(17/255.0) green:(138/255.0) blue:(114/255.0) alpha:1.0]];
+	[Instabug setHeaderFontColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:1.0]];
+	[Instabug setHeaderColor:[UIColor colorWithRed:(26/255.0) green:(188/255.0) blue:(156/255.0) alpha:1.0]];
+	[Instabug setTextFontColor:[UIColor colorWithRed:(82/255.0) green:(83/255.0) blue:(83/255.0) alpha:1.0]];
+	[Instabug setTextBackgroundColor:[UIColor colorWithRed:(249/255.0) green:(249/255.0) blue:(249/255.0) alpha:1.0]];
 }
 
 - (void)checkForUpdates {
@@ -138,10 +155,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 		
 		[UIToolbar appearance].barTintColor = phishGreen;
 		[UIToolbar appearance].tintColor = white;
-        
+		
+		[UIButton appearance].tintColor = phishGreen;
+		
         [UIBarButtonItem appearance].tintColor = white;
 		
 		[UISegmentedControl appearance].tintColor = phishGreen;
+		
+		[UITabBar appearance].tintColor = phishGreen;
 	}
 	else {
 		[UINavigationBar appearance].tintColor = phishGreen;
@@ -200,7 +221,7 @@ didFinishLaunchingWithOptions:nil];
 
 - (void)presentMusicPlayer {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AGMediaPlayerViewController sharedInstance]];
-    [self.yearsNav presentViewController:nav
+    [self.tabs presentViewController:nav
                                 animated:YES
                               completion:NULL];
 }
@@ -291,22 +312,12 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)saveCurrentState {
-    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.queue
-                             forKey:@"current.queue"];
-    
-    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.currentIndex)
-                             forKey:@"current.index"];
-    
-    [EGOCache.globalCache setObject:@(AGMediaPlayerViewController.sharedInstance.progress)
-                             forKey:@"current.progress"];
-    
-    [EGOCache.globalCache setObject:self.currentlyPlayingShow
-                             forKey:@"current.show"];
-
-    [EGOCache.globalCache setObject:AGMediaPlayerViewController.sharedInstance.heatmap
-                             forKey:@"current.show-heatmap"];
-    
-    dbug(@"saved current playback state");
+	if([PHODHistory.sharedInstance addShow:self.currentlyPlayingShow]) {
+		[EGOCache.globalCache setObject:PHODHistory.sharedInstance
+								forKey:@"current.history"];
+		
+		dbug(@"history changed! caching.");
+	}
 }
 
 - (void)hydrateFromSavedState {

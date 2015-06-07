@@ -16,10 +16,19 @@
 @interface PhishNetBlogViewController ()
 
 @property (nonatomic) NSArray *blog;
+@property (nonatomic) BOOL skipLoading;
 
 @end
 
 @implementation PhishNetBlogViewController
+
+- (instancetype)initWithBlog:(NSArray *)array {
+	if (self = [super init]) {
+		self.blog = array;
+		self.skipLoading = YES;
+	}
+	return self;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -29,9 +38,19 @@
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(Value1SubtitleCell.class)
 											   bundle:NSBundle.mainBundle]
 		 forCellReuseIdentifier:@"cell"];
+	
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
+	self.tableView.estimatedRowHeight = 44.0f;
 }
 
 - (void)refresh:(id)sender {
+	if (self.skipLoading) {
+		[self.tableView reloadData];
+		self.skipLoading = NO;
+		[super refresh:sender];
+		return;
+	}
+	
 	[PhishNetAPI.sharedAPI blog:^(NSArray *blog) {
 		self.blog = blog;
 		
@@ -66,11 +85,6 @@
 	cell.value1Label.text = [f stringFromDate:item.date];
 	
 	return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return Value1SubtitleCell.height;
 }
 
 - (void)tableView:(UITableView *)tableView

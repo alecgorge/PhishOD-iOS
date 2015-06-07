@@ -131,6 +131,18 @@
 		7CC91A6717A07D0F0047DFF3 /* jQueryAPI.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */; };
 		7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 7CC91A5F179F875A0047DFF3 /* NativeBridge.js */; };
 		7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */ = {isa = PBXBuildFile; fileRef = 7C1B438917984D8D00CB1255 /* scrape_jams.js */; };
+		7CD8A4981B04FA8700A46635 /* PHODHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A4971B04FA8700A46635 /* PHODHistory.m */; };
+		7CD8A49B1B05375600A46635 /* PHODBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */; };
+		7CD8A49E1B08015000A46635 /* PHODPhishNetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */; };
+		7CDDA39E1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */; };
+		7CDDA3A11B0457A000C88DE2 /* PHODMusicTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A01B0457A000C88DE2 /* PHODMusicTabTableViewController.m */; };
+		7CDDA3A51B04DF3100C88DE2 /* PHODLoadingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A31B04DF3100C88DE2 /* PHODLoadingTableViewCell.m */; };
+		7CDDA3A61B04DF3100C88DE2 /* PHODLoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A41B04DF3100C88DE2 /* PHODLoadingTableViewCell.xib */; };
+		7CDDA3AA1B04E46100C88DE2 /* PHODCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A81B04E46100C88DE2 /* PHODCollectionTableViewCell.m */; };
+		7CDDA3AB1B04E46100C88DE2 /* PHODCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A91B04E46100C88DE2 /* PHODCollectionTableViewCell.xib */; };
+		7CDDA3AF1B04E68C00C88DE2 /* PHODCollectionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3AE1B04E68C00C88DE2 /* PHODCollectionProvider.m */; };
+		7CDDA3B31B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3B11B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m */; };
+		7CDDA3B41B04E90500C88DE2 /* PHODCollectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDDA3B21B04E90500C88DE2 /* PHODCollectionCollectionViewCell.xib */; };
 		7CDF2B80198AB66900D17353 /* ShowHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */; };
 		7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */; };
 		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
@@ -390,6 +402,28 @@
 		7CC91A5D179F875A0047DFF3 /* jquery2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery2.min.js; sourceTree = "<group>"; };
 		7CC91A5E179F875A0047DFF3 /* jQueryAPI.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jQueryAPI.js; sourceTree = "<group>"; };
 		7CC91A5F179F875A0047DFF3 /* NativeBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NativeBridge.js; sourceTree = "<group>"; };
+		7CD8A4961B04FA8700A46635 /* PHODHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODHistory.h; sourceTree = "<group>"; };
+		7CD8A4971B04FA8700A46635 /* PHODHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODHistory.m; sourceTree = "<group>"; };
+		7CD8A4991B05375600A46635 /* PHODBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODBrowseTableViewController.h; path = "4.0 Tabs/PHODBrowseTableViewController.h"; sourceTree = "<group>"; };
+		7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODBrowseTableViewController.m; path = "4.0 Tabs/PHODBrowseTableViewController.m"; sourceTree = "<group>"; };
+		7CD8A49C1B08014F00A46635 /* PHODPhishNetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODPhishNetTableViewController.h; path = "4.0 Tabs/PHODPhishNetTableViewController.h"; sourceTree = "<group>"; };
+		7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODPhishNetTableViewController.m; path = "4.0 Tabs/PHODPhishNetTableViewController.m"; sourceTree = "<group>"; };
+		7CDDA39C1B0456BC00C88DE2 /* PHODTabbedHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODTabbedHomeViewController.h; path = "4.0 Tabs/PHODTabbedHomeViewController.h"; sourceTree = "<group>"; };
+		7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODTabbedHomeViewController.m; path = "4.0 Tabs/PHODTabbedHomeViewController.m"; sourceTree = "<group>"; };
+		7CDDA39F1B0457A000C88DE2 /* PHODMusicTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODMusicTabTableViewController.h; path = "4.0 Tabs/PHODMusicTabTableViewController.h"; sourceTree = "<group>"; };
+		7CDDA3A01B0457A000C88DE2 /* PHODMusicTabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODMusicTabTableViewController.m; path = "4.0 Tabs/PHODMusicTabTableViewController.m"; sourceTree = "<group>"; };
+		7CDDA3A21B04DF3100C88DE2 /* PHODLoadingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODLoadingTableViewCell.h; sourceTree = "<group>"; };
+		7CDDA3A31B04DF3100C88DE2 /* PHODLoadingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODLoadingTableViewCell.m; sourceTree = "<group>"; };
+		7CDDA3A41B04DF3100C88DE2 /* PHODLoadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHODLoadingTableViewCell.xib; sourceTree = "<group>"; };
+		7CDDA3A71B04E46100C88DE2 /* PHODCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODCollectionTableViewCell.h; sourceTree = "<group>"; };
+		7CDDA3A81B04E46100C88DE2 /* PHODCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODCollectionTableViewCell.m; sourceTree = "<group>"; };
+		7CDDA3A91B04E46100C88DE2 /* PHODCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHODCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		7CDDA3AD1B04E68C00C88DE2 /* PHODCollectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODCollectionProvider.h; path = "4.0 Tabs/Music Tab Data Providers/PHODCollectionProvider.h"; sourceTree = "<group>"; };
+		7CDDA3AE1B04E68C00C88DE2 /* PHODCollectionProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODCollectionProvider.m; path = "4.0 Tabs/Music Tab Data Providers/PHODCollectionProvider.m"; sourceTree = "<group>"; };
+		7CDDA3B01B04E90500C88DE2 /* PHODCollectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODCollectionCollectionViewCell.h; path = "4.0 Tabs/Music Tab Data Providers/PHODCollectionCollectionViewCell.h"; sourceTree = "<group>"; };
+		7CDDA3B11B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODCollectionCollectionViewCell.m; path = "4.0 Tabs/Music Tab Data Providers/PHODCollectionCollectionViewCell.m"; sourceTree = "<group>"; };
+		7CDDA3B21B04E90500C88DE2 /* PHODCollectionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHODCollectionCollectionViewCell.xib; path = "4.0 Tabs/Music Tab Data Providers/PHODCollectionCollectionViewCell.xib"; sourceTree = "<group>"; };
+		7CDDA3B51B04EA7700C88DE2 /* PHODCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PHODCollection.h; sourceTree = "<group>"; };
 		7CDF2B7E198AB66900D17353 /* ShowHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowHeaderView.h; sourceTree = "<group>"; };
 		7CDF2B7F198AB66900D17353 /* ShowHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowHeaderView.m; sourceTree = "<group>"; };
 		7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowHeaderView.xib; sourceTree = "<group>"; };
@@ -588,6 +622,12 @@
 				7C27BA701992D57400E5AEAE /* SubtitleTableViewCell.m */,
 				C56C2B5719F3687B004F5637 /* BadgeAndHeatmapCell.h */,
 				C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */,
+				7CDDA3A21B04DF3100C88DE2 /* PHODLoadingTableViewCell.h */,
+				7CDDA3A31B04DF3100C88DE2 /* PHODLoadingTableViewCell.m */,
+				7CDDA3A41B04DF3100C88DE2 /* PHODLoadingTableViewCell.xib */,
+				7CDDA3A71B04E46100C88DE2 /* PHODCollectionTableViewCell.h */,
+				7CDDA3A81B04E46100C88DE2 /* PHODCollectionTableViewCell.m */,
+				7CDDA3A91B04E46100C88DE2 /* PHODCollectionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -664,6 +704,8 @@
 				7C63C7CF199437730022F37F /* IGEvents.m */,
 				7CA8B51A1A1543E600B69A04 /* PHODSlideshowTitleView.h */,
 				7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */,
+				7CD8A4961B04FA8700A46635 /* PHODHistory.h */,
+				7CD8A4971B04FA8700A46635 /* PHODHistory.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -782,6 +824,7 @@
 				7CC165E7180F5EB700F72F0D /* Phish.in */,
 				7CC91A57179F75E40047DFF3 /* PhishTracks Stats */,
 				7C518C66175E59C1005EB2E7 /* Phish.Net */,
+				7CDDA3B51B04EA7700C88DE2 /* PHODCollection.h */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -897,6 +940,7 @@
 		7C7ED3851800D259004F55DF /* Panels */ = {
 			isa = PBXGroup;
 			children = (
+				7CDDA39B1B04565900C88DE2 /* 4.0 Tabs */,
 				7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */,
 				7C847EE41A13F71400EB4F3D /* PHODNewHomeViewController.h */,
 				7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */,
@@ -1077,6 +1121,34 @@
 				7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */,
 			);
 			path = "PhishTracks Stats";
+			sourceTree = "<group>";
+		};
+		7CDDA39B1B04565900C88DE2 /* 4.0 Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				7CDDA3AC1B04E66200C88DE2 /* Music Tab Data Providers */,
+				7CDDA39C1B0456BC00C88DE2 /* PHODTabbedHomeViewController.h */,
+				7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */,
+				7CDDA39F1B0457A000C88DE2 /* PHODMusicTabTableViewController.h */,
+				7CDDA3A01B0457A000C88DE2 /* PHODMusicTabTableViewController.m */,
+				7CD8A4991B05375600A46635 /* PHODBrowseTableViewController.h */,
+				7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */,
+				7CD8A49C1B08014F00A46635 /* PHODPhishNetTableViewController.h */,
+				7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */,
+			);
+			name = "4.0 Tabs";
+			sourceTree = "<group>";
+		};
+		7CDDA3AC1B04E66200C88DE2 /* Music Tab Data Providers */ = {
+			isa = PBXGroup;
+			children = (
+				7CDDA3AD1B04E68C00C88DE2 /* PHODCollectionProvider.h */,
+				7CDDA3AE1B04E68C00C88DE2 /* PHODCollectionProvider.m */,
+				7CDDA3B01B04E90500C88DE2 /* PHODCollectionCollectionViewCell.h */,
+				7CDDA3B11B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m */,
+				7CDDA3B21B04E90500C88DE2 /* PHODCollectionCollectionViewCell.xib */,
+			);
+			name = "Music Tab Data Providers";
 			sourceTree = "<group>";
 		};
 		C56C2B4B19F04933004F5637 /* Heatmaps */ = {
@@ -1291,6 +1363,7 @@
 			files = (
 				7C518C0F175D0C32005EB2E7 /* InfoPlist.strings in Resources */,
 				F1B48B561973867E00DDF5C3 /* Images.xcassets in Resources */,
+				7CDDA3AB1B04E46100C88DE2 /* PHODCollectionTableViewCell.xib in Resources */,
 				7C1C3C68198219FD00555ACB /* glyphicons_174_pause@2x.png in Resources */,
 				7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */,
 				7C847EE81A13F71400EB4F3D /* PHODNewHomeViewController.xib in Resources */,
@@ -1323,12 +1396,14 @@
 				7CC91A6917A07D130047DFF3 /* scrape_jams.js in Resources */,
 				7C847EEA1A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg in Resources */,
 				7C249270198E8FD000C9275A /* music_128.png in Resources */,
+				7CDDA3A61B04DF3100C88DE2 /* PHODLoadingTableViewCell.xib in Resources */,
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
 				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
 				7C1C3C61198219FD00555ACB /* glyphicons_083_random.png in Resources */,
 				7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */,
 				7C1C3C69198219FD00555ACB /* glyphicons_175_stop.png in Resources */,
 				7C1C3C67198219FD00555ACB /* glyphicons_174_pause.png in Resources */,
+				7CDDA3B41B04E90500C88DE2 /* PHODCollectionCollectionViewCell.xib in Resources */,
 				7C1C3C62198219FD00555ACB /* glyphicons_083_random@2x.png in Resources */,
 				7C1C3C6C198219FD00555ACB /* glyphicons_176_forward@2x.png in Resources */,
 			);
@@ -1424,6 +1499,7 @@
 				F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */,
 				7CADCE4318943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
+				7CDDA3AA1B04E46100C88DE2 /* PHODCollectionTableViewCell.m in Sources */,
 				F1B48B411973836800DDF5C3 /* YearStatsViewController.m in Sources */,
 				7CC16606180F5EB700F72F0D /* PhishinTrack.m in Sources */,
 				7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */,
@@ -1436,6 +1512,7 @@
 				C56C2B5619F05979004F5637 /* PTSHeatmap.m in Sources */,
 				7C518C15175D0C32005EB2E7 /* AppDelegate.m in Sources */,
 				F1B48B51197383E000DDF5C3 /* FavoritesViewController.m in Sources */,
+				7CDDA39E1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m in Sources */,
 				7CC16605180F5EB700F72F0D /* PhishinTour.m in Sources */,
 				7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */,
 				7CC16602180F5EB700F72F0D /* PhishinShow.m in Sources */,
@@ -1465,6 +1542,7 @@
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
 				7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
+				7CD8A4981B04FA8700A46635 /* PHODHistory.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
 				7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */,
 				7C1C3C451982105000555ACB /* IGDurationHelper.m in Sources */,
@@ -1483,7 +1561,9 @@
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
 				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
+				7CDDA3B31B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m in Sources */,
 				F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */,
+				7CDDA3AF1B04E68C00C88DE2 /* PHODCollectionProvider.m in Sources */,
 				F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */,
 				F1B48B401973836800DDF5C3 /* VenueStatsViewController.m in Sources */,
 				F1B48B0D1973831A00DDF5C3 /* VenueRankingTableViewCell.m in Sources */,
@@ -1491,6 +1571,7 @@
 				7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */,
 				7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */,
 				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
+				7CDDA3A11B0457A000C88DE2 /* PHODMusicTabTableViewController.m in Sources */,
 				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
 				C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */,
@@ -1504,17 +1585,20 @@
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
 				7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */,
 				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
+				7CDDA3A51B04DF3100C88DE2 /* PHODLoadingTableViewCell.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
 				7CA8B51C1A1543E600B69A04 /* PHODSlideshowTitleView.m in Sources */,
 				7CA8B5191A1529D100B69A04 /* PHODSlideshowManager.m in Sources */,
 				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
+				7CD8A49B1B05375600A46635 /* PHODBrowseTableViewController.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
 				7C79EB7E198559F20064C177 /* ShowCell.m in Sources */,
 				F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */,
 				7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */,
+				7CD8A49E1B08015000A46635 /* PHODPhishNetTableViewController.m in Sources */,
 				7C0623F2198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m in Sources */,
 				7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,

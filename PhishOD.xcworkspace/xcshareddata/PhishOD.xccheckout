@@ -12,6 +12,8 @@
 	<dict>
 		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
 		<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
+		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
+		<string>https://github.com/alecgorge/AGAudioPlayer.git</string>
 		<key>43489CB85F3649CAF306BAEEA8969B19A7A7DEC9</key>
 		<string>https://github.com/alecgorge/OrigamiEngine.git</string>
 	</dict>
@@ -21,6 +23,8 @@
 	<dict>
 		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
 		<string>..</string>
+		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
+		<string>../../AGAudioPlayer</string>
 		<key>43489CB85F3649CAF306BAEEA8969B19A7A7DEC9</key>
 		<string>../../OrigamiEngine</string>
 	</dict>
@@ -32,6 +36,14 @@
 	<string>18FC7AED59755625022E926996A6226FE280EBBC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>256B465BA82CB900AC32B2F2BC3A5432B17C8342</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AGAudioPlayer</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

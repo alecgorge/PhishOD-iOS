@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PHODCollectionCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="112" height="148"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="112" height="148"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nft-ZC-sLE">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="112" id="9qY-9l-ScO"/>
+                            <constraint firstAttribute="width" constant="112" id="fQ9-4m-rUN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-y0-GfJ" userLabel="Title">
+                        <rect key="frame" x="5" y="112" width="107" height="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uq-Y5-7N7" userLabel="Subtitle">
+                        <rect key="frame" x="5" y="134" width="107" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5Ls-y0-GfJ" secondAttribute="trailing" id="6R2-XN-9CA"/>
+                <constraint firstItem="Nft-ZC-sLE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Eoz-yH-dlT"/>
+                <constraint firstAttribute="bottom" secondItem="5Uq-Y5-7N7" secondAttribute="bottom" id="M8b-br-6xY"/>
+                <constraint firstAttribute="trailing" secondItem="Nft-ZC-sLE" secondAttribute="trailing" id="OgB-7H-rFL"/>
+                <constraint firstItem="5Uq-Y5-7N7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="aOt-0n-s2g"/>
+                <constraint firstAttribute="trailing" secondItem="5Uq-Y5-7N7" secondAttribute="trailing" id="fHc-Y8-Co7"/>
+                <constraint firstItem="Nft-ZC-sLE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iEp-G1-ioS"/>
+                <constraint firstItem="5Uq-Y5-7N7" firstAttribute="top" secondItem="5Ls-y0-GfJ" secondAttribute="bottom" id="nOs-2T-xbp"/>
+                <constraint firstItem="5Ls-y0-GfJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="nmz-GI-pcc"/>
+                <constraint firstItem="5Ls-y0-GfJ" firstAttribute="top" secondItem="Nft-ZC-sLE" secondAttribute="bottom" id="xne-JT-1mv"/>
+            </constraints>
+            <size key="customSize" width="96" height="148"/>
+            <connections>
+                <outlet property="uiImageView" destination="Nft-ZC-sLE" id="xMa-P9-gee"/>
+                <outlet property="uiSubtitleLabel" destination="5Uq-Y5-7N7" id="PHb-qA-i5o"/>
+                <outlet property="uiTitleLabel" destination="5Ls-y0-GfJ" id="7TU-SK-KKo"/>
+            </connections>
+            <point key="canvasLocation" x="193" y="336"/>
+        </collectionViewCell>
+    </objects>
+</document>

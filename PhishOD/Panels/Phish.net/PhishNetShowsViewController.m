@@ -15,10 +15,20 @@
 @interface PhishNetShowsViewController ()
 
 @property (nonatomic) NSArray *shows;
+@property (nonatomic) BOOL skipLoadingShows;
 
 @end
 
 @implementation PhishNetShowsViewController
+
+- (instancetype)initWithShows:(NSArray *)shows {
+	if (self = [super init]) {
+		self.shows = shows;
+		self.skipLoadingShows = YES;
+	}
+	
+	return self;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -27,6 +37,13 @@
 }
 
 - (void)refresh:(id)sender {
+	if (self.skipLoadingShows) {
+		[self.tableView reloadData];
+		self.skipLoadingShows = NO;
+		[super refresh:sender];
+		return;
+	}
+	
 	[PhishNetAPI.sharedAPI showsForCurrentUser:^(NSArray *shows) {
 		self.shows = shows;
 		

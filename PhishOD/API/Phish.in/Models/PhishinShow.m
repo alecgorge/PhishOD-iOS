@@ -90,6 +90,20 @@
 	return [self.location stringByAppendingFormat:@" - %@", self.venue_name];
 }
 
+- (NSURL *)albumArt {
+	NSString *mediaDomain = [NSUserDefaults.standardUserDefaults objectForKey:@"media_domain"];
+	
+	return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/album_art/ph%@.jpg", mediaDomain, self.date]];
+}
+
+- (NSString *)displayText {
+	return self.date;
+}
+
+- (NSString *)displaySubtext {
+	return self.location;
+}
+
 - (NSString *)cacheKey {
 	return [PhishinShow cacheKeyForShowDate:self.date];
 }
@@ -114,6 +128,10 @@
 
 -(void)encodeWithCoder:(NSCoder *)coder {
 	[self autoEncodeWithCoder:coder];
+}
+
+- (NSUInteger)hash {
+	return self.id ^ [self.date hash];
 }
 
 - (BOOL)isEqual:(id)object {

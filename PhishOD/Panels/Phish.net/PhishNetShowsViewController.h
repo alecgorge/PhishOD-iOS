@@ -10,4 +10,6 @@
 
 @interface PhishNetShowsViewController : RefreshableTableViewController
 
+- (instancetype)initWithShows:(NSArray *)shows;
+
 @end

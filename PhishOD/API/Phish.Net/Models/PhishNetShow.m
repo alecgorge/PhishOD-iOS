@@ -25,4 +25,18 @@
 	return [NSString stringWithFormat:@"%@ in %@, %@", self.venueName, self.city, self.state];
 }
 
+- (NSURL *)albumArt {
+	NSString *mediaDomain = [NSUserDefaults.standardUserDefaults objectForKey:@"media_domain"];
+	
+	return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/album_art/ph%@.jpg", mediaDomain, self.dateString]];
+}
+
+- (NSString *)displayText {
+	return self.dateString;
+}
+
+- (NSString *)displaySubtext {
+	return [NSString stringWithFormat:@"%@, %@", self.city, self.state];
+}
+
 @end

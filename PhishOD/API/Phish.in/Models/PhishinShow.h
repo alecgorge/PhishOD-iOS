@@ -10,10 +10,11 @@
 #import "PhishinVenue.h"
 #import "PhishinTrack.h"
 #import "PhishinSet.h"
+#import "PHODCollection.h"
 
 #import "PhishNetSetlist.h"
 
-@interface PhishinShow : NSObject<NSCoding>
+@interface PhishinShow : NSObject<NSCoding, PHODCollection>
 
 - (instancetype)initWithDictionary:(NSDictionary*)dict;
 

@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishNetTopShow : NSObject
+#import "PHODCollection.h"
+
+@interface PhishNetTopShow : NSObject<PHODCollection>
 
 @property NSString *showDate;
 @property NSString *rating;

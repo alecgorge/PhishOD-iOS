@@ -8,6 +8,8 @@
 
 #import "JSONModel.h"
 
+#import "PHODCollection.h"
+
 @interface PhishNetShow : JSONModel
 
 @property (nonatomic) NSString *id;

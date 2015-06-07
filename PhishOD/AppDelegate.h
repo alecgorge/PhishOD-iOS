@@ -11,13 +11,15 @@
 
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
-@class PHODSlideshowManager;
+@class PHODSlideshowManager, PHODTabbedHomeViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
 + (instancetype)sharedDelegate;
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic) PHODTabbedHomeViewController *tabs;
 
 @property (nonatomic) UINavigationController *nowPlayingNav;
 @property (nonatomic) PHODSlideshowManager *slideshowManager;

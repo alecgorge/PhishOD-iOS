@@ -41,6 +41,7 @@ PODS:
   - GroundControl (2.1.0):
     - AFNetworking (~> 2.2)
   - HysteriaPlayer (2.1.0)
+  - Instabug (4.1.4)
   - JSONModel (1.1.0)
   - KissXML (5.0)
   - KVOController (1.0.3)
@@ -62,6 +63,8 @@ PODS:
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 3.0)
   - TTTAttributedLabel (1.13.3)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger
@@ -79,6 +82,7 @@ DEPENDENCIES:
   - FCFileManager (~> 1.0.3)
   - FXKeychain
   - GroundControl (~> 2.1.0)
+  - Instabug (~> 4.1)
   - JSONModel
   - KVOController
   - LastFm
@@ -96,6 +100,7 @@ DEPENDENCIES:
   - SVWebViewController
   - TDBadgedCell (HEAD)
   - TTTAttributedLabel
+  - UIActivityIndicator-for-SDWebImage
 
 EXTERNAL SOURCES:
   AGAudioPlayer:
@@ -132,6 +137,7 @@ SPEC CHECKSUMS:
   FXKeychain: 1a711bddc04a2bd69850dcfe297b8a43027a9980
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
   HysteriaPlayer: 23cae4e2f1ebe303a8eeff4e85b12c9b6e662476
+  Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
@@ -149,5 +155,6 @@ SPEC CHECKSUMS:
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
 COCOAPODS: 0.37.1

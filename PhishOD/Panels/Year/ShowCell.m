@@ -75,7 +75,7 @@
 }
 
 - (void)updateHeatmapLabelWithValue:(float)val {
-	self.heatmapView.hidden = ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
+	self.heatmapView.hidden = val < 0.6 || ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
 	CGFloat max_width = self.heatmapView.frame.size.width;
 	self.heatmapValueWidth.constant = max_width * val;
 }

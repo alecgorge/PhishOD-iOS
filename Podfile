@@ -15,6 +15,7 @@ pod 'ObjectiveSugar'
 pod 'CrashlyticsFramework'
 pod 'JSONModel'
 pod 'SDWebImage'
+pod 'UIActivityIndicator-for-SDWebImage'
 pod 'NAKPlaybackIndicatorView'
 pod 'CSNNotificationObserver'
 pod 'MarqueeLabel'
@@ -35,3 +36,4 @@ pod 'CPKenburnsSlideshowView', :head
 pod 'NSMutableArray-Shuffle', '~> 0.4'
 pod 'OHActionSheet'
 pod 'AGAudioPlayer', :path => "../AGAudioPlayer"
+pod 'Instabug', '~> 4.1'

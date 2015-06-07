@@ -10,4 +10,6 @@
 
 @interface PhishNetBlogViewController : RefreshableTableViewController
 
+- (instancetype)initWithBlog:(NSArray *)array;
+
 @end

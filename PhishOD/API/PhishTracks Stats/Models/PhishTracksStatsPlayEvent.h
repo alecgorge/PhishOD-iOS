@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhishTracksStatsPlayEvent : NSObject
+#import "PHODCollection.h"
+
+@interface PhishTracksStatsPlayEvent : NSObject<PHODCollection>
 
 - (id)initWithDictionary:(NSDictionary *)playDict;
 

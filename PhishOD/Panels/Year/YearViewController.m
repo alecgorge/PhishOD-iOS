@@ -158,15 +158,11 @@ heightForHeaderInSection:(NSInteger)section {
 
 	[cell updateCellWithShow:show
 				 inTableView:tableView];
+	
+	float heatmapValue = [_yearHeatmap floatValueForKey:show.date];
+	[cell updateHeatmapLabelWithValue:heatmapValue];
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	ShowCell *scell = (ShowCell *)cell;
-	PhishinShow *show = (PhishinShow*)[self filteredShows][indexPath.row];
-	float heatmapValue = [_yearHeatmap floatValueForKey:show.date];
-	[scell updateHeatmapLabelWithValue:heatmapValue];
 }
 
 #pragma mark - Table view delegate
