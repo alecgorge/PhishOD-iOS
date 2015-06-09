@@ -130,7 +130,7 @@ NS_ENUM(NSInteger, kPHODPhishNetTabSections) {
 	
 	if (indexPath.section == kPHODPhishNetTabMyShowsSection) {
 		if (PhishNetAuth.sharedInstance.hasCredentials) {
-			if(self.myShowsProvider.isDoneLoadingData) {
+			if(!self.myShowsProvider.isDoneLoadingData) {
 				cell = [tableView dequeueReusableCellWithIdentifier:@"loadingCell"
 													   forIndexPath:indexPath];
 				
@@ -268,6 +268,10 @@ viewForHeaderInSection:(NSInteger)section {
 	return v;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 35.0f;
+}
+
 - (void)viewMoreForSectionButton:(UIButton *)sender {
 	if(sender.tag == kPHODPhishNetTabMyShowsSection) {
 		[self.navigationController pushViewController:[PhishNetShowsViewController.alloc initWithShows:self.myShowsProvider.myShows]
@@ -288,7 +292,7 @@ viewForHeaderInSection:(NSInteger)section {
 		return [PHODCollectionCollectionViewCell rowHeight];
 	}
 	
-	return 88.0f;// UITableViewAutomaticDimension;
+	return UITableViewAutomaticDimension;
 }
 
 - (void)tableView:(UITableView *)tableView
