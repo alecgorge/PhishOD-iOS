@@ -17,6 +17,7 @@
 #import "PHODLoadingTableViewCell.h"
 #import "PHODCollectionTableViewCell.h"
 #import "PHODCollectionCollectionViewCell.h"
+#import "PHODTableHeaderView.h"
 
 #import "PHODCollectionProvider.h"
 
@@ -63,7 +64,7 @@ NS_ENUM(NSInteger, kPHODMusicTabSections) {
 																					   inSection:kPHODMusicTabPopularSection];
 	self.todayProvider = [PHODTodayCollectionProvider.alloc initWithContainingViewController:self
 																				   inSection:kPHODMusicTabOnThisDaySection];
-	
+
 	// set up table view
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.estimatedRowHeight = 150.0f;
@@ -79,10 +80,8 @@ NS_ENUM(NSInteger, kPHODMusicTabSections) {
 	// set up view controller things
 	self.title = @"PhishOD";
 	
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-																						 target:self
-																						 action:@selector(startSearch)];
-    
+	self.tableView.separatorColor = UIColor.clearColor;
+	
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -147,50 +146,21 @@ titleForHeaderInSection:(NSInteger)section {
 viewForHeaderInSection:(NSInteger)section {
 	CGFloat barHeight = 35.0f;
 	CGFloat buttonWidth = 50.0f;
-	CGFloat padding = 15.0f;
 	
 	NSString *title = [tableView.dataSource tableView:tableView
 							  titleForHeaderInSection:section];
 	
-	UILabel *titleView = [UILabel.alloc initWithFrame:CGRectMake(padding,
-																 0,
-																 tableView.bounds.size.width - padding * 2 - buttonWidth,
-																 barHeight)];
-	titleView.text = title;
-	titleView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-	
-	UIView *v = [UIView.alloc initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, barHeight)];
-	v.backgroundColor = UIColor.whiteColor;
-	
-	UIView *line = [UIView.alloc initWithFrame:CGRectMake(0, barHeight - 1, tableView.bounds.size.width, 1)];
-	line.backgroundColor = [UIColor colorWithWhite:0.917 alpha:1.000];
-	
-	v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
-//	[v addSubview:line];
-	[v addSubview:titleView];
+	PHODTableHeaderView *v = [PHODTableHeaderView.alloc initWithFrame:CGRectMake(0,
+																				 0,
+																				 self.tableView.bounds.size.width,
+																				 barHeight)
+															 andTitle:[title uppercaseString]];
+	v.buttonWidth = buttonWidth;
 	
 	if(section == kPHODMusicTabTopRatedSection) {
-		UIButton *more = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		
-		[more setTitle:@"more"
-			  forState:UIControlStateNormal];
-		
-		more.tag = section;
-		
-		[more addTarget:self
-				 action:@selector(viewMoreForSectionButton:)
-	   forControlEvents:UIControlEventTouchUpInside];
-		
-		more.frame = CGRectMake(tableView.bounds.size.width - padding - buttonWidth,
-								0,
-								buttonWidth,
-								barHeight);
-		
-		more.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-		
-		[v addSubview:more];
+		[v addTarget:self
+			  action:@selector(viewMoreForSectionButton:)];
+		v.moreButton.tag = section;
 	}
 	
 	return v;
@@ -247,6 +217,9 @@ heightForHeaderInSection:(NSInteger)section {
 		PHODLoadingTableViewCell *c = (PHODLoadingTableViewCell *)cell;
 		[c.uiActivityIndicator startAnimating];
 	}
+	
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
     return cell;
 }
 

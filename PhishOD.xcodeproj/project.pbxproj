@@ -115,6 +115,8 @@
 		7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCE451894407000841A92 /* NowPlayingBarViewController.m */; };
 		7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CADCE461894407000841A92 /* NowPlayingBarViewController.xib */; };
 		7CADCE6018946A8400841A92 /* PhishTracksStatsFavoritePopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */; };
+		7CB3C0A11B27627300FDF5F1 /* PHODTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3C0A01B27627300FDF5F1 /* PHODTableHeaderView.m */; };
+		7CB3C0A41B27877900FDF5F1 /* PHODDownloadTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3C0A31B27877900FDF5F1 /* PHODDownloadTabTableViewController.m */; };
 		7CC165FF180F5EB700F72F0D /* PhishinEra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EA180F5EB700F72F0D /* PhishinEra.m */; };
 		7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EC180F5EB700F72F0D /* PhishinSearchResults.m */; };
 		7CC16601180F5EB700F72F0D /* PhishinSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC165EE180F5EB700F72F0D /* PhishinSet.m */; };
@@ -375,6 +377,10 @@
 		7CADCE461894407000841A92 /* NowPlayingBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NowPlayingBarViewController.xib; sourceTree = "<group>"; };
 		7CADCE5E18946A8400841A92 /* PhishTracksStatsFavoritePopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsFavoritePopover.h; sourceTree = "<group>"; };
 		7CADCE5F18946A8400841A92 /* PhishTracksStatsFavoritePopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishTracksStatsFavoritePopover.m; sourceTree = "<group>"; };
+		7CB3C09F1B27627300FDF5F1 /* PHODTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODTableHeaderView.h; path = "4.0 Tabs/Header Views/PHODTableHeaderView.h"; sourceTree = "<group>"; };
+		7CB3C0A01B27627300FDF5F1 /* PHODTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODTableHeaderView.m; path = "4.0 Tabs/Header Views/PHODTableHeaderView.m"; sourceTree = "<group>"; };
+		7CB3C0A21B27877900FDF5F1 /* PHODDownloadTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODDownloadTabTableViewController.h; path = "4.0 Tabs/PHODDownloadTabTableViewController.h"; sourceTree = "<group>"; };
+		7CB3C0A31B27877900FDF5F1 /* PHODDownloadTabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODDownloadTabTableViewController.m; path = "4.0 Tabs/PHODDownloadTabTableViewController.m"; sourceTree = "<group>"; };
 		7CC165E9180F5EB700F72F0D /* PhishinEra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinEra.h; sourceTree = "<group>"; };
 		7CC165EA180F5EB700F72F0D /* PhishinEra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinEra.m; sourceTree = "<group>"; };
 		7CC165EB180F5EB700F72F0D /* PhishinSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinSearchResults.h; sourceTree = "<group>"; };
@@ -1066,6 +1072,15 @@
 			path = "Bottom Bar";
 			sourceTree = "<group>";
 		};
+		7CB3C09E1B27620A00FDF5F1 /* Header Views */ = {
+			isa = PBXGroup;
+			children = (
+				7CB3C09F1B27627300FDF5F1 /* PHODTableHeaderView.h */,
+				7CB3C0A01B27627300FDF5F1 /* PHODTableHeaderView.m */,
+			);
+			name = "Header Views";
+			sourceTree = "<group>";
+		};
 		7CC165E7180F5EB700F72F0D /* Phish.in */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,6 +1141,7 @@
 		7CDDA39B1B04565900C88DE2 /* 4.0 Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				7CB3C09E1B27620A00FDF5F1 /* Header Views */,
 				7CDDA3AC1B04E66200C88DE2 /* Music Tab Data Providers */,
 				7CDDA39C1B0456BC00C88DE2 /* PHODTabbedHomeViewController.h */,
 				7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */,
@@ -1135,6 +1151,8 @@
 				7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */,
 				7CD8A49C1B08014F00A46635 /* PHODPhishNetTableViewController.h */,
 				7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */,
+				7CB3C0A21B27877900FDF5F1 /* PHODDownloadTabTableViewController.h */,
+				7CB3C0A31B27877900FDF5F1 /* PHODDownloadTabTableViewController.m */,
 			);
 			name = "4.0 Tabs";
 			sourceTree = "<group>";
@@ -1585,6 +1603,7 @@
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
 				7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */,
 				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
+				7CB3C0A41B27877900FDF5F1 /* PHODDownloadTabTableViewController.m in Sources */,
 				7CDDA3A51B04DF3100C88DE2 /* PHODLoadingTableViewCell.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
@@ -1596,6 +1615,7 @@
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
 				7C1C3C411982100300555ACB /* AGMediaPlayerViewController.m in Sources */,
 				7C79EB7E198559F20064C177 /* ShowCell.m in Sources */,
+				7CB3C0A11B27627300FDF5F1 /* PHODTableHeaderView.m in Sources */,
 				F1B48B4F197383E000DDF5C3 /* BaseFavoritableEntityViewController.m in Sources */,
 				7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */,
 				7CD8A49E1B08015000A46635 /* PHODPhishNetTableViewController.m in Sources */,

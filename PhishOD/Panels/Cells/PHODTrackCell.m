@@ -108,7 +108,7 @@
 		}
 	}
 
-	self.heatmapView.hidden = ![[NSUserDefaults standardUserDefaults] boolForKey:@"heatmaps.enabled"];
+	self.heatmapView.hidden = YES;
 }
 
 - (void)pollForProgressUpdates {

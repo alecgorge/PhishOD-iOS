@@ -13,6 +13,8 @@
 #import "PHODMusicTabTableViewController.h"
 #import "PHODBrowseTableViewController.h"
 #import "PHODPhishNetTableViewController.h"
+#import "PHODDownloadTabTableViewController.h"
+#import "PhishTracksStatsViewController.h"
 
 @interface PHODTabbedHomeViewController ()
 
@@ -36,14 +38,23 @@
 	PHODPhishNetTableViewController *ph = PHODPhishNetTableViewController.new;
 	UINavigationController *phNav = [UINavigationController.alloc initWithRootViewController:ph];
 	
+	PHODDownloadTabTableViewController *dl = PHODDownloadTabTableViewController.new;
+	UINavigationController *dlNav = [UINavigationController.alloc initWithRootViewController:dl];
+	
+	PhishTracksStatsViewController *stats = PhishTracksStatsViewController.new;
+	UINavigationController *statsNav = [UINavigationController.alloc initWithRootViewController:stats];
+	
 	musicNav.delegate = self.navDelegate;
 	browseNav.delegate = self.navDelegate;
 	phNav.delegate = self.navDelegate;
+	dlNav.delegate = self.navDelegate;
 
 	self.viewControllers = @[
 							 musicNav,
 							 browseNav,
-							 phNav
+							 phNav,
+							 dlNav,
+							 statsNav
 							 ];
 	
 	

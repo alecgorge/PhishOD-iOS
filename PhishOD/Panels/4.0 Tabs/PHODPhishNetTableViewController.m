@@ -22,6 +22,8 @@
 #import "PhishNetNewsViewController.h"
 #import <SVWebViewController/SVWebViewController.h>
 
+#import "PHODTableHeaderView.h"
+
 NS_ENUM(NSInteger, kPHODPhishNetTabSections) {
 	kPHODPhishNetTabMyShowsSection,
 	kPHODPhishNetTabBlogSection,
@@ -221,49 +223,21 @@ titleForHeaderInSection:(NSInteger)section {
 viewForHeaderInSection:(NSInteger)section {
 	CGFloat barHeight = 35.0f;
 	CGFloat buttonWidth = 50.0f;
-	CGFloat padding = 15.0f;
 	
 	NSString *title = [tableView.dataSource tableView:tableView
 							  titleForHeaderInSection:section];
 	
-	UILabel *titleView = [UILabel.alloc initWithFrame:CGRectMake(padding,
-																 0,
-																 tableView.bounds.size.width - padding * 2 - buttonWidth,
-																 barHeight)];
-	titleView.text = title;
-	titleView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+	PHODTableHeaderView *v = [PHODTableHeaderView.alloc initWithFrame:CGRectMake(0,
+																				 0,
+																				 self.tableView.bounds.size.width,
+																				 barHeight)
+															 andTitle:[title uppercaseString]];
+	v.buttonWidth = buttonWidth;
 	
-	UIView *v = [UIView.alloc initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, barHeight)];
-	v.backgroundColor = UIColor.whiteColor;
+	[v addTarget:self
+		  action:@selector(viewMoreForSectionButton:)];
 	
-	UIView *line = [UIView.alloc initWithFrame:CGRectMake(0, barHeight - 1, tableView.bounds.size.width, 1)];
-	line.backgroundColor = [UIColor colorWithWhite:0.917 alpha:1.000];
-	
-	v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
-	//	[v addSubview:line];
-	[v addSubview:titleView];
-	
-	UIButton *more = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	
-	[more setTitle:@"more"
-		  forState:UIControlStateNormal];
-	
-	more.tag = section;
-	
-	[more addTarget:self
-			 action:@selector(viewMoreForSectionButton:)
-   forControlEvents:UIControlEventTouchUpInside];
-	
-	more.frame = CGRectMake(tableView.bounds.size.width - padding - buttonWidth,
-							0,
-							buttonWidth,
-							barHeight);
-	
-	more.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-	
-	[v addSubview:more];
+	v.moreButton.tag = section;
 	
 	return v;
 }
@@ -300,13 +274,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
 	
-	if(indexPath.section == kPHODPhishNetTabBlogSection || indexPath.section == kPHODPhishNetTabNewsSection) {
+	if(indexPath.section == kPHODPhishNetTabBlogSection) {
+		PhishNetBlogItem *item = self.blog[indexPath.row];
+		
+		SVWebViewController *vc = [SVWebViewController.alloc initWithURL:item.URL];
+		[self.navigationController pushViewController:vc
+											 animated:YES];
+	}
+	else if(indexPath.section == kPHODPhishNetTabNewsSection) {
 		PhishNetNewsItem *item = self.news[indexPath.row];
 		
 		SVWebViewController *vc = [SVWebViewController.alloc initWithURL:item.URL];
 		[self.navigationController pushViewController:vc
 											 animated:YES];
-		
 	}	
 }
 

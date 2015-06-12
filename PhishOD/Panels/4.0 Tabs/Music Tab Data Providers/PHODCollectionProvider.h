@@ -55,3 +55,10 @@
 @property (nonatomic) NSArray *myShows;
 
 @end
+
+@interface PHODDownloadedCollectionProvider : PHODCollectionProvider
+
+@property (nonatomic) NSArray *downloaded;
+
+@end
+

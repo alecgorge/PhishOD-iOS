@@ -33,6 +33,10 @@ static id sharedInstance;
 }
 
 - (BOOL)addShow:(PhishinShow *)show {
+	if(show == nil) {
+		return NO;
+	}
+	
 	NSInteger size = self.history.count;
 	[self.history insertObject:show
 					   atIndex:0];

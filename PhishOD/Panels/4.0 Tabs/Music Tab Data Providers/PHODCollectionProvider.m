@@ -261,3 +261,36 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 @end
+
+@implementation PHODDownloadedCollectionProvider
+
+- (void)loadData {
+	[PhishinDownloadItem showsWithCachedTracks:^(NSArray *shows) {
+		self.downloaded = [shows sortedArrayUsingComparator:^NSComparisonResult(PhishinShow *s1, PhishinShow *s2) {
+			return [s2.date compare:s1.date];
+		}];
+		
+		[self finishedLoadingData];
+	}];
+}
+
+- (BOOL)isDoneLoadingData {
+	return self.downloaded != nil;
+}
+
+- (NSInteger)collectionCount {
+	return self.downloaded.count;
+}
+
+- (id<PHODCollection>)collectionForIndex:(NSInteger)idx {
+	return self.downloaded[idx];
+}
+
+-(void)selectedCollectionAtIndex:(NSInteger)idx {
+	PhishinShow *show = self.downloaded[idx];
+	
+	[self.viewController.navigationController pushViewController:[ShowViewController.alloc initWithShow:show]
+														animated:YES];
+}
+
+@end

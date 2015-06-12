@@ -26,6 +26,13 @@
 - (id)init
 {
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+		// set up tab bar
+		self.tabBarItem = [UITabBarItem.alloc initWithTitle:@"Stats"
+													  image:[UIImage imageNamed:@"glyphicons-41-stats"]
+														tag:0];
+		
+		self.navigationController.tabBarItem = self.tabBarItem;
+
 		statsQuery = [StatsQueries predefinedStatQuery:kUserAllTimeScalarStats];
 		isAuthenticated = [PhishTracksStats sharedInstance].isAuthenticated;
 		self.title = @"Stats";

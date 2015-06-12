@@ -12,15 +12,67 @@
 #import "AppDelegate.h"
 #import "AGMediaPlayerViewController.h"
 #import "PHODTabbedHomeViewController.h"
+#import "SearchViewController.h"
+#import "SettingsViewController.h"
+
+@interface NavigationControllerAutoShrinkerForNowPlaying ()
+
+@property (nonatomic) UISearchController *searchController;
+
+@end
 
 @implementation NavigationControllerAutoShrinkerForNowPlaying
-
 
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
 	self.lastViewController = viewController;
 	[self fixForViewController:viewController];
+	
+	UIViewController *rootViewController = navigationController.viewControllers[0];
+	
+	if(rootViewController) {
+		if(rootViewController.navigationItem.leftBarButtonItem == nil) {
+			[self addSettingsButtonToViewController:rootViewController];
+		}
+	}
+	
+	if (viewController.navigationItem.rightBarButtonItem == nil) {
+//		[self addSearchButtonToViewController:viewController];
+	}
+}
+
+- (void)addSettingsButtonToViewController:(UIViewController *)viewController {
+	viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithImage:[UIImage settingsNavigationIcon]
+																					 style:UIBarButtonItemStylePlain
+																					target:self
+																					action:@selector(showSettings)];
+}
+
+- (void)showSettings {
+	UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:SettingsViewController.new];
+	
+	[AppDelegate.sharedDelegate.tabs presentViewController:navController
+												  animated:YES
+												completion:nil];
+}
+
+- (void)addSearchButtonToViewController:(UIViewController *)viewController {
+	viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+																						 target:self
+																								   action:@selector(startSearch:)];
+}
+
+- (void)startSearch {
+	// Create the search controller and make it perform the results updating.
+	
+	SearchViewController *s = SearchViewController.new;
+	self.searchController = [[UISearchController alloc] initWithSearchResultsController:s];
+	self.searchController.searchResultsUpdater = s;
+	self.searchController.hidesNavigationBarDuringPresentation = NO;
+	
+	// Present the view controller.
+//	[self presentViewController:self.searchController animated:YES completion:nil];
 }
 
 - (void)addBarToView:(UIView *)view {

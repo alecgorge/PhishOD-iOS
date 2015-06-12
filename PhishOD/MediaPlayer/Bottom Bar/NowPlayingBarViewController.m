@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonPlay;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPause;
+@property (weak, nonatomic) IBOutlet UIButton *buttonMore;
 @property (weak, nonatomic) IBOutlet MarqueeLabel *labelTitle;
 @property (weak, nonatomic) IBOutlet MarqueeLabel *labelSubTitle;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressIndicator;
@@ -37,7 +38,8 @@
     static dispatch_once_t once;
     static NowPlayingBarViewController *sharedFoo;
     dispatch_once(&once, ^ {
-		sharedFoo = [[self alloc] init];
+		sharedFoo = [[self alloc] initWithNibName:NSStringFromClass(self)
+										   bundle:NSBundle.mainBundle];
 	});
     return sharedFoo;
 }
@@ -49,9 +51,9 @@
                                               options:0
                                               context:NULL];
     
-    self.view.backgroundColor = COLOR_PHISH_GREEN;
-    self.labelTitle.textColor = COLOR_PHISH_WHITE;
-    self.labelSubTitle.textColor = COLOR_PHISH_WHITE;
+	self.view.backgroundColor = UIColor.clearColor;//COLOR_PHISH_GREEN;
+    self.labelTitle.textColor = COLOR_PHISH_GREEN;
+    self.labelSubTitle.textColor = COLOR_PHISH_GREEN;
     
     self.labelTitle.fadeLength =
     self.labelSubTitle.fadeLength = 10.0f;
@@ -65,9 +67,9 @@
     self.labelTitle.rate =
     self.labelSubTitle.rate = 20.0f;
     
-    self.progressIndicator.backgroundColor = COLOR_PHISH_GREEN;
+    self.progressIndicator.backgroundColor = COLOR_PHISH_WHITE;
     self.progressIndicator.tintColor = COLOR_PHISH_LIGHT_GREEN;
-    self.progressIndicator.progressTintColor = COLOR_PHISH_WHITE;
+    self.progressIndicator.progressTintColor = COLOR_PHISH_GREEN;
 }
 
 - (IBAction)favoriteTapped:(id)sender {
@@ -132,7 +134,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     [color setFill];
     CGContextTranslateCTM(context, 0, image.size.height);
-    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextScaleCTM(context, [UIScreen mainScreen].scale, -1.0 * [UIScreen mainScreen].scale);
     CGContextClipToMask(context, CGRectMake(0, 0, image.size.width, image.size.height), [image CGImage]);
     CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
 	

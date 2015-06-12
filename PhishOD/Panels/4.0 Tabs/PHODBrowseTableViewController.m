@@ -49,9 +49,6 @@ NS_ENUM(NSInteger, kPHODBrowseRows) {
 	
     self.title = @"Browse Phish";
 	
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-																						 target:self
-																						 action:@selector(startSearch)];
 	[self.tableView registerClass:UITableViewCell.class
 		   forCellReuseIdentifier:@"cell"];
 }
