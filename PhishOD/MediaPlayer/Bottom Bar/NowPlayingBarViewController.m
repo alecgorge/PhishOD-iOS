@@ -16,6 +16,8 @@
 #import "PhishTracksStatsFavoritePopover.h"
 #import "IGDurationHelper.h"
 #import "PhishinMediaItem.h"
+#import "PHODTabbedHomeViewController.h"
+#import "ShowViewController.h"
 
 @interface NowPlayingBarViewController ()
 
@@ -51,9 +53,9 @@
                                               options:0
                                               context:NULL];
     
-	self.view.backgroundColor = UIColor.clearColor;//COLOR_PHISH_GREEN;
-    self.labelTitle.textColor = COLOR_PHISH_GREEN;
-    self.labelSubTitle.textColor = COLOR_PHISH_GREEN;
+	self.view.backgroundColor = COLOR_PHISH_GREEN;
+    self.labelTitle.textColor = COLOR_PHISH_WHITE;
+    self.labelSubTitle.textColor = COLOR_PHISH_WHITE;
     
     self.labelTitle.fadeLength =
     self.labelSubTitle.fadeLength = 10.0f;
@@ -67,9 +69,53 @@
     self.labelTitle.rate =
     self.labelSubTitle.rate = 20.0f;
     
-    self.progressIndicator.backgroundColor = COLOR_PHISH_WHITE;
+    self.progressIndicator.backgroundColor = COLOR_PHISH_GREEN;
     self.progressIndicator.tintColor = COLOR_PHISH_LIGHT_GREEN;
-    self.progressIndicator.progressTintColor = COLOR_PHISH_GREEN;
+    self.progressIndicator.progressTintColor = COLOR_PHISH_WHITE;
+}
+
+- (IBAction)doAction:(id)sender {
+    UIAlertController *a = [UIAlertController alertControllerWithTitle:self.labelTitle.text
+                                                               message:self.labelSubTitle.text
+                                                        preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Favorite this"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            [vc dismissViewControllerAnimated:YES
+                                                                   completion:nil];
+                                            
+                                            [self favoriteTapped:self.buttonMore];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"View this show"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            [vc dismissViewControllerAnimated:YES
+                                                                   completion:nil];
+                                            
+                                            PhishinShow *show = AppDelegate.sharedDelegate.currentlyPlayingShow;
+                                            ShowViewController *svc = [[ShowViewController alloc] initWithCompleteShow:show];
+                                            
+                                            vc.selectedIndex = 1;
+                                            
+                                            [vc.viewControllers[1] pushViewController:svc
+                                                                             animated:YES];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                          style:UIAlertActionStyleCancel
+                                        handler:^(UIAlertAction *action) {
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            [vc dismissViewControllerAnimated:YES
+                                                                   completion:nil];
+                                        }]];
+    
+    [AppDelegate.sharedDelegate.tabs presentViewController:a
+                                                  animated:YES
+                                                completion:nil];
 }
 
 - (IBAction)favoriteTapped:(id)sender {

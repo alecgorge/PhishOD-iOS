@@ -1742,7 +1742,7 @@
 				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1802,7 +1802,7 @@
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1815,7 +1815,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "PhishOD β";
-				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
+				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
