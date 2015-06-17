@@ -24,7 +24,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AGAudioPlayer (0.8.0):
-    - FreeStreamer
+    - HysteriaPlayer
   - Appirater (2.0.5)
   - AXRatingView (1.0.3)
   - CPKenburnsSlideshowView (HEAD based on 1.1.4):
@@ -37,11 +37,10 @@ PODS:
   - DZNEmptyDataSet (1.5.2)
   - EGOCache (2.1.3)
   - FCFileManager (1.0.8)
-  - FreeStreamer (2.12.11):
-    - Reachability (~> 3.0)
   - FXKeychain (1.5.3)
   - GroundControl (2.1.0):
     - AFNetworking (~> 2.2)
+  - HysteriaPlayer (2.1.1)
   - Instabug (4.1.4)
   - JSONModel (1.1.0)
   - KissXML (5.0)
@@ -57,14 +56,13 @@ PODS:
   - OHActionSheet (2.0.1)
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
-  - Reachability (3.2)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
   - SVProgressHUD (HEAD based on 1.1.3)
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 3.0)
-  - TTTAttributedLabel (1.13.3)
+  - TTTAttributedLabel (1.13.4)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
 
@@ -124,21 +122,21 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  AGAudioPlayer: e499eaad06139f7255dffae517f5714fdb977009
+  AGAudioPlayer: 0518c566ffbdbed6eb54b3719f9500688202701a
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
   CPKenburnsSlideshowView: 887150c4538425094c4d459a88fc6c958f01a490
   CPKenburnsView: b464e1e5d6dc92cc51bd2af0587eba687ce393f7
   CrashlyticsFramework: 2f7c515a2d74c8636bf47e761621f2f68193747e
-  CrittercismSDK: a8f09d8f1d9fea3bc0714a954a079062c5c9d914
+  CrittercismSDK: b22f9541803c2babb1c8996862b097dc47ec7105
   CSNNotificationObserver: bf3a8781aba027abb16c2f5a63f1a7b1de044d49
   DBGHTMLEntities: df8979bda566bf0ac4a66e6e7c14c005f4552ee9
   DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
   FCFileManager: 83afe49677b8a5f353f52b5476baa2e21043db4a
-  FreeStreamer: 37e0c8fe1e9fa6ced7349a9b01aaac81b013a814
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
+  HysteriaPlayer: 3a918997e6600d2144eac2d40c96980409b12033
   Instabug: de19c1b0f89c4e5deda6dd7f1dc3515e54238b08
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
@@ -152,12 +150,11 @@ SPEC CHECKSUMS:
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   OHActionSheet: 32ebd70a6a275a36bbd0a079b1d0d2814fef963d
   PSUpdateApp: 295919cdc1876f4d91911297c7e9f238aa732220
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
-  TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
 COCOAPODS: 0.37.1
