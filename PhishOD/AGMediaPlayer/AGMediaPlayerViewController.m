@@ -198,7 +198,7 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
 }
 
 - (void)share {
-    self.shareTime = self.progress;
+    self.shareTime = self.progress * self.duration;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [IGDurationHelper formattedTimeWithInterval:self.shareTime]]
                                                              delegate:self
@@ -500,10 +500,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.uiBackwardButton.enabled = self.currentIndex != 0;
     self.uiForwardButton.enabled = self.currentIndex < self.queue.count;
     
-    self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.elapsed];
-    self.uiTimeLeftLabel.text = [IGDurationHelper formattedTimeWithInterval:self.duration];
+    if(!self.seeking) {
+        self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.elapsed];
+        self.uiProgressSlider.value = self.progress;
+    }
     
-    self.uiProgressSlider.value = self.progress;
+    self.uiTimeLeftLabel.text = [IGDurationHelper formattedTimeWithInterval:self.duration];
     
 	NSMutableDictionary *dict = @{
 								  MPMediaItemPropertyAlbumTitle					: STR_IF_NIL(self.currentItem.album),
@@ -604,6 +606,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)seekingEndedInside:(id)sender {
     [self seekingEndedOutside:sender];
+}
+
+- (IBAction)seekingValueChanged:(id)sender {
+    if(self.seeking) {
+        self.uiTimeElapsedLabel.text = [IGDurationHelper formattedTimeWithInterval:self.uiProgressSlider.value * self.duration];
+    }
 }
 
 @end

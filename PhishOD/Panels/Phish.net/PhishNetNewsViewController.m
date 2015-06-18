@@ -83,6 +83,7 @@
 	cell.titleLabel.text = item.title;
 	cell.subtitleLabel.text = item.author;
 	cell.value1Label.text = [f stringFromDate:item.date];
+    [cell relayout];
 	
 	return cell;
 }

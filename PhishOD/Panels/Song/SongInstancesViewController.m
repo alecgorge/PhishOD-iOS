@@ -29,7 +29,7 @@
 		
 		NSArray *itemArray = @[@"All", @"Key", @"Notable", @"Charted"];
         control = [[UISegmentedControl alloc] initWithItems:itemArray];
-        control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 20, 30.0);
+        control.frame = CGRectMake(0, 10.0, self.tableView.bounds.size.width - 40, 30.0);
 		control.selectedSegmentIndex = 0;
 		[control addTarget:self
 					action:@selector(doFilterSongs)
@@ -177,6 +177,11 @@ heightForHeaderInSection:(NSInteger)section {
 	if(section == 0) {
 		return 44.0f;
 	}
+    else if([tableView.dataSource tableView:tableView
+                 numberOfRowsInSection:section] == 0) {
+        return 0.0f;
+    }
+    
 	return 22.0f;
 }
 

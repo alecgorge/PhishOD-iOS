@@ -10,9 +10,13 @@
 
 @implementation Value1SubtitleCell
 
-- (void)awakeFromNib
-{
-    // Initialization code
+- (void)awakeFromNib {
+    [self relayout];
+}
+
+- (void)relayout {
+    [self.titleLabel setPreferredMaxLayoutWidth:self.bounds.size.width - self.value1Label.bounds.size.width - 10];
+    [self setNeedsLayout];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

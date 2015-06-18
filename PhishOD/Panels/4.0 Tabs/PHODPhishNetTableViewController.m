@@ -184,6 +184,7 @@ NS_ENUM(NSInteger, kPHODPhishNetTabSections) {
 				c.titleLabel.text = item.title;
 				c.subtitleLabel.text = item.author;
 				c.value1Label.text = [f stringFromDate:item.date];
+                [c relayout];
 			}
 			else if(indexPath.section == kPHODPhishNetTabNewsSection) {
 				Value1SubtitleCell *c = (Value1SubtitleCell*)cell;
@@ -197,6 +198,7 @@ NS_ENUM(NSInteger, kPHODPhishNetTabSections) {
 				c.titleLabel.text = item.title;
 				c.subtitleLabel.text = item.author;
 				c.value1Label.text = [f stringFromDate:item.date];
+                [c relayout];
 			}
 		}
 	}

@@ -25,7 +25,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 }
 
 + (NSString *)cacheDir {
-	return [FCFileManager pathForCachesDirectoryWithPath:@"com.alecgorge.phish.cache/"];
+	return [FCFileManager pathForDocumentsDirectoryWithPath:@"com.alecgorge.phish.cache/"];
 }
 
 + (long long)completeCachedSize {

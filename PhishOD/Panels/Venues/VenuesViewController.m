@@ -10,6 +10,8 @@
 #import "VenueViewController.h"
 #import <TDBadgedCell/TDBadgedCell.h>
 
+#import "Value1SubtitleCell.h"
+
 @interface VenuesViewController ()
 
 @property (nonatomic) UISearchDisplayController *con;
@@ -38,6 +40,23 @@
 		[super refresh:sender];
 	}
 						  failure:REQUEST_FAILED(self.tableView)];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([Value1SubtitleCell class])
+                                               bundle:NSBundle.mainBundle]
+         forCellReuseIdentifier:@"value1"];
+    
+    [self.con.searchResultsTableView registerNib:[UINib nibWithNibName:NSStringFromClass([Value1SubtitleCell class])
+                                                                bundle:NSBundle.mainBundle]
+                          forCellReuseIdentifier:@"value1"];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0f;
+    self.con.searchResultsTableView.rowHeight = UITableViewAutomaticDimension;
+    self.con.searchResultsTableView.estimatedRowHeight = 44.0f;
 }
 
 - (void)makeIndicies {
@@ -165,13 +184,8 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    TDBadgedCell *cell = (TDBadgedCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-	if(cell == nil) {
-		cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-								   reuseIdentifier:CellIdentifier];
-	}
+    Value1SubtitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"value1"
+                                                               forIndexPath:indexPath];
     
 	PhishinVenue *venue;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -181,10 +195,10 @@ titleForHeaderInSection:(NSInteger)section {
 		venue = [self filterForSection:indexPath.section][indexPath.row];
 	}
 
-    cell.textLabel.text = venue.name;
-	cell.detailTextLabel.text = venue.location;
-	
-	cell.badgeString = [NSString stringWithFormat:@"%d", venue.shows_count];
+    cell.titleLabel.text = venue.name;
+	cell.subtitleLabel.text = venue.location;
+    cell.value1Label.text = [NSString stringWithFormat:@"%d concerts", venue.shows_count];
+    [cell relayout];
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
