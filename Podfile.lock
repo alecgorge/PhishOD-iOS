@@ -27,11 +27,7 @@ PODS:
     - HysteriaPlayer
   - Appirater (2.0.5)
   - AXRatingView (1.0.3)
-  - CPKenburnsSlideshowView (HEAD based on 1.1.4):
-    - CPKenburnsView
-  - CPKenburnsView (1.0.1)
   - CrashlyticsFramework (2.2.10)
-  - CrittercismSDK (5.2.0)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
   - DZNEmptyDataSet (1.5.2)
@@ -50,10 +46,8 @@ PODS:
   - LLACircularProgressView (0.1.1)
   - MarqueeLabel (2.2.4)
   - NAKPlaybackIndicatorView (0.0.3)
-  - NSMutableArray-Shuffle (0.4)
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
-  - OHActionSheet (2.0.1)
   - PSUpdateApp (2.0.5):
     - AFNetworking (~> 2.2)
   - SDWebImage (3.7.2):
@@ -72,9 +66,7 @@ DEPENDENCIES:
   - AGAudioPlayer (from `../AGAudioPlayer`)
   - Appirater
   - AXRatingView
-  - CPKenburnsSlideshowView (HEAD)
   - CrashlyticsFramework
-  - CrittercismSDK
   - CSNNotificationObserver
   - DBGHTMLEntities
   - DZNEmptyDataSet
@@ -89,11 +81,9 @@ DEPENDENCIES:
   - LLACircularProgressView
   - MarqueeLabel
   - NAKPlaybackIndicatorView
-  - NSMutableArray-Shuffle (~> 0.4)
   - NSObject-NSCoding (from `https://github.com/alecgorge/NSObject-NSCoding.git`,
     branch `master`)
   - ObjectiveSugar
-  - OHActionSheet
   - PSUpdateApp (from `https://github.com/alecgorge/PSUpdateApp.git`)
   - SDWebImage
   - SVProgressHUD (HEAD)
@@ -125,10 +115,7 @@ SPEC CHECKSUMS:
   AGAudioPlayer: 0518c566ffbdbed6eb54b3719f9500688202701a
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
-  CPKenburnsSlideshowView: 887150c4538425094c4d459a88fc6c958f01a490
-  CPKenburnsView: b464e1e5d6dc92cc51bd2af0587eba687ce393f7
   CrashlyticsFramework: 2f7c515a2d74c8636bf47e761621f2f68193747e
-  CrittercismSDK: b22f9541803c2babb1c8996862b097dc47ec7105
   CSNNotificationObserver: bf3a8781aba027abb16c2f5a63f1a7b1de044d49
   DBGHTMLEntities: df8979bda566bf0ac4a66e6e7c14c005f4552ee9
   DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
@@ -145,10 +132,8 @@ SPEC CHECKSUMS:
   LLACircularProgressView: e179b0728217e9013cd07c2fadc7caa0c35b9199
   MarqueeLabel: 615576825a3087f1d1c15449fef52e00ff59dfd9
   NAKPlaybackIndicatorView: 794dd97576fe074bb1844c19ebcbf7509384a47f
-  NSMutableArray-Shuffle: 7bdef1418775ba41a66319b9173bda756f6099be
   NSObject-NSCoding: d05f937cc1ea1560294be261ee41d5438ddc7b1b
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
-  OHActionSheet: 32ebd70a6a275a36bbd0a079b1d0d2814fef963d
   PSUpdateApp: 295919cdc1876f4d91911297c7e9f238aa732220
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1

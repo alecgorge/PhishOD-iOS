@@ -5,9 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 pod 'AFNetworking'
+pod 'TDBadgedCell', :head
+pod 'TTTAttributedLabel'
 pod 'SVWebViewController'
 pod 'Appirater'
-pod 'TDBadgedCell', :head
 pod 'LastFm'
 pod 'SVProgressHUD', :head
 pod 'FXKeychain'
@@ -29,11 +30,6 @@ pod 'LLACircularProgressView'
 pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git', :branch => 'master'
 pod 'DZNEmptyDataSet'
-pod 'TTTAttributedLabel'
 pod 'GroundControl', '~> 2.1.0'
-pod 'CrittercismSDK'
-pod 'CPKenburnsSlideshowView', :head
-pod 'NSMutableArray-Shuffle', '~> 0.4'
-pod 'OHActionSheet'
 pod 'AGAudioPlayer', :path => "../AGAudioPlayer"
 pod 'Instabug', '~> 4.1'

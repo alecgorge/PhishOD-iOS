@@ -34,8 +34,6 @@
 #import "DownloadQueueViewController.h"
 #import "SearchDelegate.h"
 
-#import <OHActionSheet/OHActionSheet.h>
-
 @interface PHODNewHomeViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *uiButtonContainer;
@@ -166,19 +164,32 @@
 }
 
 - (IBAction)downloadedShows:(id)sender {
-    [OHActionSheet showFromView:self.uiButtonDownloads
-                          title:@"Downloads"
-              cancelButtonTitle:@"Cancel"
-         destructiveButtonTitle:nil
-              otherButtonTitles:@[@"Download Queue", @"Downloaded Shows"]
-                     completion:^(OHActionSheet *sheet, NSInteger buttonIndex) {
-                         if(buttonIndex == 0) {
-                             [self pushViewController:DownloadQueueViewController.alloc.init];
-                         }
-                         else if(buttonIndex == 1) {
-                             [self pushViewController:PhishinDownloadedShowsViewController.alloc.init];
-                         }
-                     }];
+    UIAlertController *a = [UIAlertController alertControllerWithTitle:@"Downloads"
+                                                               message:@"Downloaded Shows"
+                                                        preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                          style:UIAlertActionStyleCancel
+                                        handler:^(UIAlertAction *action) {
+                                            [self dismissViewControllerAnimated:YES
+                                                                     completion:nil];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Download Queue"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            [self pushViewController:DownloadQueueViewController.alloc.init];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Downloaded Shows"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            [self pushViewController:PhishinDownloadedShowsViewController.alloc.init];
+                                        }]];
+    
+    [self presentViewController:a
+                       animated:YES
+                     completion:nil];
 }
 
 - (IBAction)settingsTapped:(id)sender {

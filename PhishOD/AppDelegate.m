@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RotatableTabBarController.h"
-#import "PHODSlideshowManager.h"
 
 #import "YearsViewController.h"
 #import "SongsViewController.h"
@@ -30,7 +29,6 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <EGOCache/EGOCache.h>
 #import <GroundControl/NSUserDefaults+GroundControl.h>
-#import <CrittercismSDK/Crittercism.h>
 #import <Instabug/Instabug.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
@@ -74,8 +72,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
     [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
 	
-    [Crittercism enableWithAppID:@"5457fcb70729df5bd6000007"];
-
 	[self setupLastFM];
 	[self setupCaching];
 	[self setupAppearance];
@@ -303,12 +299,10 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	[self.slideshowManager.slideshow stopAnimation];
     [self saveCurrentState];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-	[self.slideshowManager.slideshow restartAnimation];
 }
 
 - (void)saveCurrentState {

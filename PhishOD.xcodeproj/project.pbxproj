@@ -103,8 +103,6 @@
 		7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */; };
 		7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */; };
 		7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */; };
-		7CA8B5191A1529D100B69A04 /* PHODSlideshowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */; };
-		7CA8B51C1A1543E600B69A04 /* PHODSlideshowTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -353,10 +351,6 @@
 		7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAuth.m; sourceTree = "<group>"; };
 		7C9436921989FA7600AFEA56 /* PhishNetSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSignInViewController.h; sourceTree = "<group>"; };
 		7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSignInViewController.m; sourceTree = "<group>"; };
-		7CA8B5171A1529D100B69A04 /* PHODSlideshowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODSlideshowManager.h; sourceTree = "<group>"; };
-		7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODSlideshowManager.m; sourceTree = "<group>"; };
-		7CA8B51A1A1543E600B69A04 /* PHODSlideshowTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODSlideshowTitleView.h; sourceTree = "<group>"; };
-		7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODSlideshowTitleView.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -708,8 +702,6 @@
 				7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */,
 				7C63C7CE199437730022F37F /* IGEvents.h */,
 				7C63C7CF199437730022F37F /* IGEvents.m */,
-				7CA8B51A1A1543E600B69A04 /* PHODSlideshowTitleView.h */,
-				7CA8B51B1A1543E600B69A04 /* PHODSlideshowTitleView.m */,
 				7CD8A4961B04FA8700A46635 /* PHODHistory.h */,
 				7CD8A4971B04FA8700A46635 /* PHODHistory.m */,
 			);
@@ -967,8 +959,6 @@
 				7C518C21175D0C4E005EB2E7 /* Year */,
 				7C603028182068DA0088F651 /* HomeViewController.h */,
 				7C603029182068DA0088F651 /* HomeViewController.m */,
-				7CA8B5171A1529D100B69A04 /* PHODSlideshowManager.h */,
-				7CA8B5181A1529D100B69A04 /* PHODSlideshowManager.m */,
 			);
 			path = Panels;
 			sourceTree = "<group>";
@@ -1608,8 +1598,6 @@
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
-				7CA8B51C1A1543E600B69A04 /* PHODSlideshowTitleView.m in Sources */,
-				7CA8B5191A1529D100B69A04 /* PHODSlideshowManager.m in Sources */,
 				F1B48AF5197382AD00DDF5C3 /* ToursViewController.m in Sources */,
 				7CD8A49B1B05375600A46635 /* PHODBrowseTableViewController.m in Sources */,
 				C5BCEAD0183FB510001024E7 /* PhishTracksStatsError.m in Sources */,
