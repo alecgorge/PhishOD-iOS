@@ -13,7 +13,8 @@ pod 'LastFm'
 pod 'SVProgressHUD', :head
 pod 'FXKeychain'
 pod 'ObjectiveSugar'
-pod 'CrashlyticsFramework'
+pod 'Fabric', '~> 1.3.0' # required
+pod 'Fabric/Crashlytics', '~> 1.3.0'
 pod 'JSONModel'
 pod 'SDWebImage'
 pod 'UIActivityIndicator-for-SDWebImage'

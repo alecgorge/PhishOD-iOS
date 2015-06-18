@@ -147,7 +147,6 @@
 		7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */; };
 		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
 		7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */; };
-		7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */; };
 		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
 		C56C2B5619F05979004F5637 /* PTSHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmap.m */; };
 		C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */; };
@@ -545,7 +544,6 @@
 				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
 				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
 				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
-				7CF41C38188EDFAE00EE11D3 /* Crashlytics.framework in Frameworks */,
 				7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */,
 				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
 				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
@@ -1445,7 +1443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4\n";
+			shellScript = "./Pods/Fabric/Fabric.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
 		};
 		C5167BCE19F03C9600E11AB7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1706,6 +1704,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Fabric",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
@@ -1737,6 +1736,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Fabric",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";
@@ -1796,6 +1796,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Fabric",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhishOD/Supporting Files/PhishOD-Prefix.pch";

@@ -24,6 +24,7 @@
 #import "PHODTabbedHomeViewController.h"
 
 #import <LastFm.h>
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
@@ -54,7 +55,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	__haveSetup = YES;
 	
     if(IGThirdPartyKeys.sharedInstance.isCrashlyticsEnabled) {
-        [Crashlytics startWithAPIKey:IGThirdPartyKeys.sharedInstance.crashlyticsApiKey];
+        [Fabric with:@[CrashlyticsKit]];
+//        [Crashlytics startWithAPIKey:IGThirdPartyKeys.sharedInstance.crashlyticsApiKey];
     }
 	
     [IGEvents setup];
