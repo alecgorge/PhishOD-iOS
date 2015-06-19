@@ -2,6 +2,9 @@ platform :ios, '8.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+link_with "PhishOD"
+link_with "Relisten"
+
 inhibit_all_warnings!
 
 pod 'AFNetworking'

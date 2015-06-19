@@ -50,11 +50,6 @@
 // Phish Tracks path
 #define PHISH_TRACKS_PATH @"http://www.phishtracks.com"
 
-// My colors
-#define COLOR_PHISH_GREEN [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:95.0/255.0 alpha:1.0]
-#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0.0/255.0 green:183.0/255.0 blue:132.0/255.0 alpha:0.2]
-#define COLOR_PHISH_WHITE [UIColor whiteColor]
-
 // Is the device an iPad?
 #define IS_IPAD() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
@@ -64,3 +59,24 @@
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#ifdef IS_PHISH
+#define IS_PHISH_APP() YES
+#else
+#define IS_PHISH_APP() NO
+#endif
+
+#ifdef IS_PHISH
+
+// My colors
+#define COLOR_PHISH_GREEN [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:95.0/255.0 alpha:1.0]
+#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0.0/255.0 green:183.0/255.0 blue:132.0/255.0 alpha:0.2]
+#define COLOR_PHISH_WHITE [UIColor whiteColor]
+
+#else
+
+#define COLOR_PHISH_GREEN [UIColor colorWithRed:0 green:0.541 blue:0.69 alpha:1] /*#008ab0*/
+#define COLOR_PHISH_LIGHT_GREEN [UIColor colorWithRed:0 green:0.784 blue:1 alpha:1] /*#00c8ff*/
+#define COLOR_PHISH_WHITE [UIColor whiteColor]
+
+#endif
