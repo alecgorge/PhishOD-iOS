@@ -20,11 +20,11 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic) PHODTabbedHomeViewController *tabs;
+@property (nonatomic, readonly) UITabBar *tabBar;
 
 @property (nonatomic) UINavigationController *nowPlayingNav;
 
 @property UINavigationController *yearsNav;
-@property UITabBarController *tabBar;
 
 @property PhishinShow *currentlyPlayingShow;
 

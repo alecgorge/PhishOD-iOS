@@ -52,7 +52,7 @@
 - (void)showSettings {
 	UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:SettingsViewController.new];
 	
-	[AppDelegate.sharedDelegate.tabs presentViewController:navController
+	[AppDelegate.sharedDelegate.window.rootViewController presentViewController:navController
 												  animated:YES
 												completion:nil];
 }
@@ -82,7 +82,7 @@
         
         CGRect r = v.bounds;
         
-        r.origin.y = view.bounds.size.height - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height;
+        r.origin.y = view.bounds.size.height - AppDelegate.sharedDelegate.tabBar.bounds.size.height;
         r.size.width = view.bounds.size.width;
         
 //        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
@@ -101,7 +101,7 @@
                      animations:^{
                          if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
                              CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
-                             r.origin.y = view.bounds.size.height - r.size.height - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height;
+                             r.origin.y = view.bounds.size.height - r.size.height - AppDelegate.sharedDelegate.tabBar.bounds.size.height;
                              NowPlayingBarViewController.sharedInstance.view.frame = r;
                          }
                          else {
@@ -113,7 +113,7 @@
 }
 
 - (void)addBarToViewController:(UIViewController *)vc {
-	[self addBarToView:AppDelegate.sharedDelegate.tabs.view];
+	[self addBarToView:AppDelegate.sharedDelegate.window.rootViewController.view];
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {
@@ -131,14 +131,14 @@
         
 		UIEdgeInsets edges = t.contentInset;
         
-		if((edges.bottom - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+		if((edges.bottom - AppDelegate.sharedDelegate.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
 			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
         
 		t.contentInset = edges;
         
 		edges = t.scrollIndicatorInsets;
         
-		if((edges.bottom - AppDelegate.sharedDelegate.tabs.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+		if((edges.bottom - AppDelegate.sharedDelegate.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
 			edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
         
 		t.scrollIndicatorInsets = edges;

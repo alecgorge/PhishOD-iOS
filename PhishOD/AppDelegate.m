@@ -22,6 +22,7 @@
 #import "PHODNewHomeViewController.h"
 #import "PHODHistory.h"
 #import "PHODTabbedHomeViewController.h"
+#import "RLArtistsTableViewController.h"
 
 #import <LastFm.h>
 #import <Fabric/Fabric.h>
@@ -92,8 +93,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    self.yearsNav.delegate = self.navDelegate;
 //	self.yearsNav.navigationBar.translucent = NO;
 
+#ifdef IS_PHISH
 	self.tabs = PHODTabbedHomeViewController.new;
 	self.window.rootViewController = self.tabs;
+#else
+	RLArtistsTableViewController *vc = RLArtistsTableViewController.new;
+	UINavigationController *nav = [UINavigationController.alloc initWithRootViewController:vc];
+	self.window.rootViewController = nav;
+#endif
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -169,6 +176,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: white};
 	
 //	[UITableViewHeaderFooterView appearance].tintColor = lightPhishGreen;
+}
+
+- (UITabBar *)tabBar {
+#ifdef IS_PHISH
+	return self.tabs.tabBar;
+#else
+	return nil;
+#endif
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {

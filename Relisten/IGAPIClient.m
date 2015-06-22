@@ -13,7 +13,7 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 
-#define IGUANA_API_URL_BASE @"http://relisten.net/api"
+#define IGUANA_API_URL_BASE @"http://iguana.app.alecgorge.com/api"
 
 @interface IGAPIClient ()
 

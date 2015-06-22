@@ -82,7 +82,7 @@
     [a addAction:[UIAlertAction actionWithTitle:@"Favorite this"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
                                             [vc dismissViewControllerAnimated:YES
                                                                    completion:nil];
                                             
@@ -92,7 +92,7 @@
     [a addAction:[UIAlertAction actionWithTitle:@"View this show"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
                                             [vc dismissViewControllerAnimated:YES
                                                                    completion:nil];
                                             
@@ -108,12 +108,12 @@
     [a addAction:[UIAlertAction actionWithTitle:@"Cancel"
                                           style:UIAlertActionStyleCancel
                                         handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
                                             [vc dismissViewControllerAnimated:YES
                                                                    completion:nil];
                                         }]];
     
-    [AppDelegate.sharedDelegate.tabs presentViewController:a
+    [AppDelegate.sharedDelegate.window.rootViewController presentViewController:a
                                                   animated:YES
                                                 completion:nil];
 }

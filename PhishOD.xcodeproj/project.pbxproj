@@ -253,6 +253,9 @@
 		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
 		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
 		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
+		7C36A7351B347B2E0004E766 /* RLArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */; };
+		7C36A7391B3486BF0004E766 /* RLArtistTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */; };
+		7C36A7401B348A9A0004E766 /* RLBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */; };
 		7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
@@ -306,6 +309,10 @@
 		7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368C1989F04B00AFEA56 /* PhishNetShowsViewController.m */; };
 		7C9436901989F7FC00AFEA56 /* PhishNetAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */; };
 		7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */; };
+		7C9529DD1B348F1100291D12 /* IGShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9529DB1B348F1100291D12 /* IGShowCell.m */; };
+		7C9529DE1B348F1100291D12 /* IGShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9529DC1B348F1100291D12 /* IGShowCell.xib */; };
+		7C9529E21B34910100291D12 /* IGYearCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9529E01B34910100291D12 /* IGYearCell.m */; };
+		7C9529E31B34910100291D12 /* IGYearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9529E11B34910100291D12 /* IGYearCell.xib */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -488,6 +495,12 @@
 		7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGThirdPartyKeys.h; sourceTree = "<group>"; };
 		7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGThirdPartyKeys.m; sourceTree = "<group>"; };
 		7C27BA7B19942FC000E5AEAE /* API keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API keys.plist"; sourceTree = "<group>"; };
+		7C36A7331B347B2E0004E766 /* RLArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLArtistsTableViewController.h; path = Controllers/RLArtistsTableViewController.h; sourceTree = "<group>"; };
+		7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLArtistsTableViewController.m; path = Controllers/RLArtistsTableViewController.m; sourceTree = "<group>"; };
+		7C36A7371B3486BF0004E766 /* RLArtistTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLArtistTabViewController.h; path = Controllers/RLArtistTabViewController.h; sourceTree = "<group>"; };
+		7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLArtistTabViewController.m; path = Controllers/RLArtistTabViewController.m; sourceTree = "<group>"; };
+		7C36A73E1B348A9A0004E766 /* RLBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLBrowseTableViewController.h; path = Controllers/Panels/Browse/RLBrowseTableViewController.h; sourceTree = "<group>"; };
+		7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLBrowseTableViewController.m; path = Controllers/Panels/Browse/RLBrowseTableViewController.m; sourceTree = "<group>"; };
 		7C518C01175D0C32005EB2E7 /* PhishOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhishOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C518C04175D0C32005EB2E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C518C06175D0C32005EB2E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -578,6 +591,12 @@
 		7C94368F1989F7FC00AFEA56 /* PhishNetAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetAuth.m; sourceTree = "<group>"; };
 		7C9436921989FA7600AFEA56 /* PhishNetSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetSignInViewController.h; sourceTree = "<group>"; };
 		7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetSignInViewController.m; sourceTree = "<group>"; };
+		7C9529DA1B348F1100291D12 /* IGShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGShowCell.h; sourceTree = "<group>"; };
+		7C9529DB1B348F1100291D12 /* IGShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGShowCell.m; sourceTree = "<group>"; };
+		7C9529DC1B348F1100291D12 /* IGShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IGShowCell.xib; sourceTree = "<group>"; };
+		7C9529DF1B34910100291D12 /* IGYearCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGYearCell.h; sourceTree = "<group>"; };
+		7C9529E01B34910100291D12 /* IGYearCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGYearCell.m; sourceTree = "<group>"; };
+		7C9529E11B34910100291D12 /* IGYearCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IGYearCell.xib; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -847,6 +866,7 @@
 		7C10A7951B33A01300692DD3 /* Relisten */ = {
 			isa = PBXGroup;
 			children = (
+				7C36A7321B347AE30004E766 /* Controllers */,
 				7C10A8901B33BD0300692DD3 /* API */,
 				7C10A7A31B33A01300692DD3 /* Images.xcassets */,
 				7C10A7A51B33A01300692DD3 /* LaunchScreen.xib */,
@@ -1008,6 +1028,73 @@
 				7CD8A4971B04FA8700A46635 /* PHODHistory.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7C36A7321B347AE30004E766 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C36A7411B348E270004E766 /* Cells */,
+				7C36A7361B3486870004E766 /* Panels */,
+				7C36A7331B347B2E0004E766 /* RLArtistsTableViewController.h */,
+				7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */,
+				7C36A7371B3486BF0004E766 /* RLArtistTabViewController.h */,
+				7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7C36A7361B3486870004E766 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				7C36A73A1B3489900004E766 /* Browse */,
+				7C36A73B1B3489950004E766 /* Top Shows */,
+				7C36A73C1B34899B0004E766 /* Favorites */,
+				7C36A73D1B3489A10004E766 /* Downloads */,
+			);
+			name = Panels;
+			sourceTree = "<group>";
+		};
+		7C36A73A1B3489900004E766 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				7C36A73E1B348A9A0004E766 /* RLBrowseTableViewController.h */,
+				7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */,
+			);
+			name = Browse;
+			sourceTree = "<group>";
+		};
+		7C36A73B1B3489950004E766 /* Top Shows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Top Shows";
+			sourceTree = "<group>";
+		};
+		7C36A73C1B34899B0004E766 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		7C36A73D1B3489A10004E766 /* Downloads */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Downloads;
+			sourceTree = "<group>";
+		};
+		7C36A7411B348E270004E766 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C9529DF1B34910100291D12 /* IGYearCell.h */,
+				7C9529E01B34910100291D12 /* IGYearCell.m */,
+				7C9529E11B34910100291D12 /* IGYearCell.xib */,
+				7C9529DA1B348F1100291D12 /* IGShowCell.h */,
+				7C9529DB1B348F1100291D12 /* IGShowCell.m */,
+				7C9529DC1B348F1100291D12 /* IGShowCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		7C518BF8175D0C32005EB2E7 = {
@@ -1701,6 +1788,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C9529E31B34910100291D12 /* IGYearCell.xib in Resources */,
 				7C10A8521B33B51700692DD3 /* InfoPlist.strings in Resources */,
 				7C10A8531B33B51700692DD3 /* Images.xcassets in Resources */,
 				7C10A8541B33B51700692DD3 /* PHODCollectionTableViewCell.xib in Resources */,
@@ -1731,6 +1819,7 @@
 				7C10A86C1B33B51700692DD3 /* stock_header_chris_tank.jpg in Resources */,
 				7C10A86D1B33B51700692DD3 /* glyphicons_184_volume_up.png in Resources */,
 				7C10A86E1B33B51700692DD3 /* glyphicons_halflings_113_chevron-down@2x.png in Resources */,
+				7C9529DE1B348F1100291D12 /* IGShowCell.xib in Resources */,
 				7C10A86F1B33B51700692DD3 /* glyphicons_173_play.png in Resources */,
 				7C10A8701B33B51700692DD3 /* music_128@2x.png in Resources */,
 				7C10A88E1B33B76000692DD3 /* Info.plist in Resources */,
@@ -1943,6 +2032,7 @@
 				7C10A7CE1B33B51700692DD3 /* PhishTracksStatsQueryResults.m in Sources */,
 				7C10A7CF1B33B51700692DD3 /* FavoriteToursViewController.m in Sources */,
 				7C10A7D01B33B51700692DD3 /* PhishTracksStatsQuery.m in Sources */,
+				7C36A7391B3486BF0004E766 /* RLArtistTabViewController.m in Sources */,
 				7C10A7D11B33B51700692DD3 /* PlayHistoryTableViewCell.m in Sources */,
 				7C10A7D21B33B51700692DD3 /* SearchDelegate.m in Sources */,
 				7C10A7D31B33B51700692DD3 /* PhishTracksStatsFavorite.m in Sources */,
@@ -1964,6 +2054,7 @@
 				7C10A7E51B33B51700692DD3 /* FavoritesViewController.m in Sources */,
 				7C10A8AC1B33BD1B00692DD3 /* IGVenue.m in Sources */,
 				7C10A7E61B33B51700692DD3 /* PHODTabbedHomeViewController.m in Sources */,
+				7C9529DD1B348F1100291D12 /* IGShowCell.m in Sources */,
 				7C10A7E71B33B51700692DD3 /* PhishinTour.m in Sources */,
 				7C10A7E81B33B51700692DD3 /* IGThirdPartyKeys.m in Sources */,
 				7C10A7E91B33B51700692DD3 /* PhishinShow.m in Sources */,
@@ -1980,7 +2071,9 @@
 				7C10A7F41B33B51700692DD3 /* TrackStatsViewController.m in Sources */,
 				7C10A7F51B33B51700692DD3 /* PhishinSong.m in Sources */,
 				7C10A7F61B33B51700692DD3 /* UIImage+Icons.m in Sources */,
+				7C36A7401B348A9A0004E766 /* RLBrowseTableViewController.m in Sources */,
 				7C10A8A61B33BD1B00692DD3 /* IGArtist.m in Sources */,
+				7C36A7351B347B2E0004E766 /* RLArtistsTableViewController.m in Sources */,
 				7C10A7F71B33B51700692DD3 /* TourStatsViewController.m in Sources */,
 				7C10A7F81B33B51700692DD3 /* PhishNetShowsViewController.m in Sources */,
 				7C10A7F91B33B51700692DD3 /* BadgeAndHeatmapCell.m in Sources */,
@@ -2026,6 +2119,7 @@
 				7C10A81E1B33B51700692DD3 /* ReviewsViewController.m in Sources */,
 				7C10A81F1B33B51700692DD3 /* PlaylistViewController.m in Sources */,
 				7C10A8201B33B51700692DD3 /* PhishNetBlogItem.m in Sources */,
+				7C9529E21B34910100291D12 /* IGYearCell.m in Sources */,
 				7C10A8211B33B51700692DD3 /* PHODMusicTabTableViewController.m in Sources */,
 				7C10A8221B33B51700692DD3 /* PhishNetSignInViewController.m in Sources */,
 				7C10A8231B33B51700692DD3 /* LongStringTableViewCell.m in Sources */,
