@@ -8,12 +8,14 @@
 
 #import "JSONModel.h"
 
+#import "PhishinTrack.h"
+
 @class IGShow;
 
 @protocol IGTrack
 @end
 
-@interface IGTrack : JSONModel
+@interface IGTrack : JSONModel<PHODGenericTrack>
 
 @property (nonatomic, assign) NSInteger id;
 

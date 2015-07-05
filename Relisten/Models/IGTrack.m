@@ -38,4 +38,33 @@
 	return [NSURL URLWithString:url];
 }
 
+- (NSTimeInterval)duration {
+    return self.length;
+}
+
+- (BOOL)isCacheable {
+    return YES;
+}
+
+- (BOOL)isCached {
+    return self.downloadItem.isCached;
+}
+
+- (BOOL)isDownloadingOrQueued {
+    return [self.downloader isTrackDownloadedOrQueued:self.downloadItem];
+}
+
+- (NSURL *)cachedFile {
+    return self.downloadItem.cachedFile;
+}
+
+- (IGDownloader *)downloader {
+    return IGDownloader.sharedInstance;
+}
+
+- (IGDownloadItem *)downloadItem {
+    return [IGDownloadItem.alloc initWithTrack:self
+                                       andShow:self.show];
+}
+
 @end

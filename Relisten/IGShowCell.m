@@ -39,8 +39,7 @@
     self.ratingView.userInteractionEnabled = NO;
 
     self.venueLabel.text = [NSString stringWithFormat:@"%@\n%@", show.venueName, show.venueCity];
-    self.durationLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration];
-    self.recordingCountLabel.text = [NSString stringWithFormat:@"%ld recordings", (long)show.recordingCount];    
+    self.durationLabel.text = [NSString stringWithFormat:@"%@\n%@", [IGDurationHelper formattedTimeWithInterval:show.duration], [NSString stringWithFormat:@"%ld recordings", (long)show.recordingCount]]; 
 }
 
 + (CGFloat)height {

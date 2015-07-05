@@ -47,4 +47,9 @@
 
 @property (nonatomic, strong) NSArray<Optional, IGTrack> *tracks;
 
+- (IGShow *)cache;
+
++ (NSString *)cacheKeyForShowId:(NSInteger)id;
++ (IGShow *)loadShowFromCacheForShowId:(NSInteger)date;
+
 @end

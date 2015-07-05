@@ -10,6 +10,7 @@
 
 #import "IGAPIClient.h"
 #import "IGYearCell.h"
+#import "RLYearViewController.h"
 
 typedef NS_ENUM(NSInteger, RLBrowseSections) {
 	RLBrowseRandomShowSection,
@@ -32,6 +33,8 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
 														tag:0];
 		
 		self.navigationController.tabBarItem = self.tabBarItem;
+        self.navigationItem.title = self.title = IGAPIClient.sharedInstance.artist.name;
+        
 	}
 	return self;
 }
@@ -39,14 +42,15 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-	self.title = IGAPIClient.sharedInstance.artist.name;
-	
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(IGYearCell.class)
 											   bundle:NSBundle.mainBundle]
 		 forCellReuseIdentifier:@"year"];
 	
 	[self.tableView registerClass:UITableViewCell.class
 		   forCellReuseIdentifier:@"cell"];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 55.0f;
 }
 
 - (void)refresh:(id)sender {
@@ -118,6 +122,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	}
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
+    
+    RLYearViewController *y = [RLYearViewController.alloc initWithYear:self.years[indexPath.row]];
+    
+    [self.navigationController pushViewController:y
+                                         animated:YES];
 }
 
 @end

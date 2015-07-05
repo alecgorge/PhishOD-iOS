@@ -15,6 +15,72 @@
 
 #define IGUANA_API_URL_BASE @"http://iguana.app.alecgorge.com/api"
 
+@implementation IGDownloadItem
+
++ (NSString *)provider {
+    return @"relisten.net";
+}
+
++ (id)showForPath:(NSString *)path {
+    return [PhishinShow loadShowFromCacheForShowDate:path.lastPathComponent];
+}
+
+- (instancetype)initWithTrack:(IGTrack *)track
+                      andShow:(IGShow *)show {
+    if (self = [super init]) {
+        _track = track;
+        _show = show;
+    }
+    return self;
+}
+
+- (NSString *)cachePath {
+    return [NSString stringWithFormat:@"%ld/%@.mp3", self.show.id, @(self.track.id).stringValue];
+}
+
+- (NSString *)provider {
+    return [IGDownloadItem provider];
+}
+
+- (NSInteger)id {
+    return self.track.id;
+}
+
+- (void)downloadURL:(void (^)(NSURL *))dl {
+    dl(self.track.mp3);
+}
+
+- (void)cache {
+    [self.show cache];
+}
+
+@end
+
+@implementation IGDownloader
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t once;
+    static IGDownloader *sharedFoo;
+    dispatch_once(&once, ^ {
+        sharedFoo = [self.alloc init];
+    });
+    return sharedFoo;
+}
+
+-(PHODDownloadOperation *)downloadTrack:(IGTrack *)track
+                                 inShow:(IGShow *)show
+                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
+                                success:(void (^)(NSURL *fileURL)) success
+                                failure:(void ( ^ ) ( NSError *error ))failure {
+    return [self downloadItem:[IGDownloadItem.alloc initWithTrack:track
+                                                          andShow:show]
+                     progress:progress
+                      success:success
+                      failure:failure];
+}
+
+@end
+
 @interface IGAPIClient ()
 
 @property (nonatomic, strong) IGYear *year;
@@ -133,7 +199,7 @@
       }];
 }
 
-- (void)venuesForArtist:(void (^)(NSArray *))success {
+- (void)venues:(void (^)(NSArray *))success {
     [self GET:[NSString stringWithFormat:@"artists/%@/venues/", self.artist.slug]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -204,7 +270,7 @@
       }];
 }
 
-- (void)topShowsForArtist:(void (^)(NSArray *))success {
+- (void)topShows:(void (^)(NSArray *))success {
     [self GET:[NSString stringWithFormat:@"artists/%@/top_shows/", self.artist.slug]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -267,7 +333,7 @@
       }];
 }
 
-- (void)randomShowForArtist:(void (^)(NSArray *))success {
+- (void)randomShow:(void (^)(NSArray *))success {
     [self GET:[NSString stringWithFormat:@"artists/%@/random_show/", self.artist.slug]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {

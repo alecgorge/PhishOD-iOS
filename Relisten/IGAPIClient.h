@@ -33,13 +33,35 @@
 // an array of IGShow's
 - (void)showsOn:(NSString *)displayDate success:(void (^)(NSArray *))success;
 
-- (void)randomShowForArtist:(void (^)(NSArray *))success;
+- (void)randomShow:(void (^)(NSArray *))success;
 
 // venues
-- (void)venuesForArtist:(void (^)(NSArray *))success;
+- (void)venues:(void (^)(NSArray *))success;
 
 - (void)venue:(IGVenue *)venue success:(void (^)(IGVenue *))success;
 
-- (void)topShowsForArtist:(void (^)(NSArray *))success;
+- (void)topShows:(void (^)(NSArray *))success;
+
+@end
+
+@interface IGDownloader : PHODDownloader
+
++(instancetype)sharedInstance;
+
+-(PHODDownloadOperation *)downloadTrack:(IGTrack *)track
+                                 inShow:(IGShow *)show
+                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
+                                success:(void (^)(NSURL *fileURL)) success
+                                failure:(void ( ^ ) ( NSError *error ))failure;
+
+@end
+
+@interface IGDownloadItem : PHODDownloadItem
+
+@property (nonatomic, readonly) IGTrack *track;
+@property (nonatomic, readonly) IGShow *show;
+
+- (instancetype)initWithTrack:(IGTrack *)track
+                      andShow:(IGShow *)show;
 
 @end
