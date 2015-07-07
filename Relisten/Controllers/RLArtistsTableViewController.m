@@ -12,6 +12,7 @@
 
 #import "RLArtistTabViewController.h"
 #import "IGAPIClient.h"
+#import "AppDelegate.h"
 
 typedef NS_ENUM(NSInteger, RLArtistsSections) {
 	RLArtistsFeaturedSection,
@@ -142,6 +143,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	IGAPIClient.sharedInstance.artist = [self artistForIndexPath:indexPath];
 
 	RLArtistTabViewController *vc = RLArtistTabViewController.new;
+    AppDelegate.sharedDelegate.tabs = vc;
 	[self.navigationController presentViewController:vc
                                             animated:YES
                                           completion:nil];

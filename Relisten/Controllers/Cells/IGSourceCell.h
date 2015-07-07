@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiLabelSource;
 @property (weak, nonatomic) IBOutlet UILabel *uiLabelLineage;
 
-- (void)updateCellWithSource:(IGShow *)source;
+- (void)updateCellWithSource:(IGShow *)source
+                 inTableView:(UITableView *)tableView;
 
 @end

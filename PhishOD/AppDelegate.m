@@ -23,6 +23,7 @@
 #import "PHODHistory.h"
 #import "PHODTabbedHomeViewController.h"
 #import "RLArtistsTableViewController.h"
+#import "RLArtistTabViewController.h"
 
 #import <LastFm.h>
 #import <Fabric/Fabric.h>

@@ -22,7 +22,11 @@
     // Configure the view for the selected state
 }
 
-- (void)updateCellWithSource:(IGShow *)source {
+- (void)updateCellWithSource:(IGShow *)source
+                 inTableView:(UITableView *)tableView {
+    self.uiLabelSource.preferredMaxLayoutWidth =
+    self.uiLabelLineage.preferredMaxLayoutWidth = tableView.bounds.size.width - 8 * 3 - 50 - 20;
+    
     self.uiLabelDuration.text = [IGDurationHelper formattedTimeWithInterval:source.duration];
     self.uiLabelReviewCount.text = @(source.reviewsCount).stringValue;
     self.uiLabelTaper.text = source.taper && ![source.taper isEqualToString:@""] ? source.taper : @"Unknown";

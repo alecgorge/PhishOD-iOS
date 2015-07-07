@@ -11,7 +11,7 @@
 
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
-@class PHODTabbedHomeViewController;
+@class PHODTabbedHomeViewController, RLArtistTabViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
@@ -19,7 +19,11 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+#ifdef IS_PHISH
 @property (nonatomic) PHODTabbedHomeViewController *tabs;
+#else
+@property (nonatomic) RLArtistTabViewController *tabs;
+#endif
 @property (nonatomic, readonly) UITabBar *tabBar;
 
 @property (nonatomic) UINavigationController *nowPlayingNav;

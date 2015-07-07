@@ -10,6 +10,7 @@
 
 #import "IGDurationHelper.h"
 #import "IGSourceCell.h"
+#import "RLShowViewController.h"
 
 #import <AXRatingView/AXRatingView.h>
 
@@ -50,6 +51,9 @@ NS_ENUM(NSInteger, IGSourcesRows) {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(IGSourceCell.class)
                                                bundle:NSBundle.mainBundle]
          forCellReuseIdentifier:@"source"];
+    
+    [self.tableView registerClass:UITableViewCell.class
+           forCellReuseIdentifier:@"cell"];
     
     [self applyTitle];
 }
@@ -99,74 +103,41 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"source";
-    
-    if(indexPath.row == IGSourcesAverageRatingRow
-       || indexPath.row == IGSourcesDurationRow) {
-        CellIdentifier = @"kv";
-    }
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil) {
-        if([CellIdentifier isEqualToString:@"source"]) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                          reuseIdentifier:CellIdentifier];
-        }
-        else {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                          reuseIdentifier:CellIdentifier];
-        }
-    }
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.imageView.image = nil;
-    cell.accessoryView = nil;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.detailTextLabel.numberOfLines = 0;
-    
-    NSInteger row = indexPath.row;
+    UITableViewCell *cell = nil;
     IGShow *show = self.fullShows[indexPath.section];
     
-    if(row == IGSourcesTaperRow) {
-        cell.textLabel.text = @"Taper";
-        cell.detailTextLabel.text = show.taper;
-    }
-    else if(row == IGSourcesSourceRow) {
-        cell.textLabel.text = @"Source";
-        cell.detailTextLabel.text = show.source;
-        cell.detailTextLabel.preferredMaxLayoutWidth = self.tableView.bounds.size.width;
-    }
-    else if(row == IGSourcesLineageRow) {
-        cell.textLabel.text = @"Lineage";
-        cell.detailTextLabel.text = show.lineage;
-        cell.detailTextLabel.preferredMaxLayoutWidth = self.tableView.bounds.size.width;
-    }
-    else if(row == IGSourcesAverageRatingRow) {
-        cell.textLabel.text = @"Average Rating";
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu  ", (unsigned long)show.reviewsCount];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    if(indexPath.row == IGSourcesSourceRow) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"source"
+                                               forIndexPath:indexPath];
+        IGSourceCell *c = (IGSourceCell *)cell;
         
-        AXRatingView *rating = [[AXRatingView alloc] initWithFrame:CGRectMake(0, 0, 51, 20)];
-        rating.userInteractionEnabled = NO;
-        [rating sizeToFit];
-        rating.value = show.averageRating;
+        [c updateCellWithSource:show
+                    inTableView:tableView];
+    }
+    else if(indexPath.row == IGSourcesSelectRow) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"
+                                               forIndexPath:indexPath];
         
-        cell.accessoryView = rating;
-    }
-    else if(row == IGSourcesDurationRow) {
-        cell.textLabel.text = @"Duration";
-        cell.detailTextLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration];
-    }
-    else if(row == IGSourcesSelectRow) {
+        cell.imageView.image = [UIImage imageNamed:@"glyphicons_076_headphones"];
+        cell.backgroundColor = COLOR_PHISH_GREEN;
+        cell.textLabel.textColor = COLOR_PHISH_WHITE;
         cell.textLabel.text = @"Listen to this source";
-        cell.detailTextLabel.text = @"";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.image = [UIImage imageNamed:@"glyphicons-76-headphones"];
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
+    
+    if (indexPath.row == IGSourcesSelectRow) {
+        RLShowViewController *vc = [RLShowViewController.alloc initWithShow:self.fullShows[indexPath.section]];
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
 }
 
 @end
