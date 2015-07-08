@@ -16,7 +16,9 @@
 #import "IGAPIClient.h"
 #import "IGDurationHelper.h"
 #import "IguanaMediaItem.h"
+#import "RLShowReviewsViewController.h"
 #import "IGSourceCell.h"
+#import "RLShowCollectionViewController.h"
 
 #import "PHODTrackCell.h"
 
@@ -27,11 +29,9 @@ NS_ENUM(NSInteger, IGShowSections) {
 };
 
 NS_ENUM(NSInteger, IGShowRows) {
-    IGShowRowVenue,
     IGShowRowSource,
-    IGShowRowDuration,
     IGShowRowReviews,
-    IGShowRowDescription,
+    IGShowRowVenue,
     IGShowRowCount
 };
 
@@ -89,7 +89,7 @@ NS_ENUM(NSInteger, IGShowRows) {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     if(section == IGShowSectionInfo) {
-        return 2;
+        return IGShowRowCount;
     }
     
     return self.show.tracks.count;
@@ -111,7 +111,7 @@ NS_ENUM(NSInteger, IGShowRows) {
     NSInteger section = indexPath.section;
     
     if(section == IGShowSectionInfo) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == IGShowRowSource) {
             IGSourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"source"
                                                                  forIndexPath:indexPath];
             
@@ -120,7 +120,22 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
-        else {
+        else if(indexPath.row == IGShowRowReviews) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
+            
+            if (!cell) {
+                cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleValue1
+                                            reuseIdentifier:@"plain"];
+            }
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"Read %lu reviews", self.show.reviews.count];
+            cell.detailTextLabel.text = nil;
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
+        else if(indexPath.row == IGShowRowVenue) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
             
             if (!cell) {
@@ -167,26 +182,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = indexPath.row;
     
     if(indexPath.section == IGShowSectionInfo) {
-//        if(row == IGShowRowReviews) {
-//            IGReviewsTableViewController *vc = [[IGReviewsTableViewController alloc] initWithShow:self.show];
-//            push_vc(self, vc, YES);
-//        }
-//        else if(row == IGShowRowDescription) {
-//            IGLongTextTableViewController *vc = [[IGLongTextTableViewController alloc] initWithText:self.show.showDescription];
-//            vc.title = @"Description";
-//            push_vc(self, vc, YES);
-//        }
-//        else if(row == IGShowRowSource) {
-//            IGLongTextTableViewController *vc = [[IGLongTextTableViewController alloc] initWithText:self.show.source];
-//            vc.title = @"Source";
-//            
-//            push_vc(self, vc, YES);
-//        }
-//        else if(row == IGShowRowVenue) {
-//            IGShowsViewController *vc = [[IGShowsViewController alloc] initWithArtist:self.artist andVenue:self.show.venue];
-//            
-//            push_vc(self, vc, NO);
-//        }
+        if(row == IGShowRowReviews) {
+            RLShowReviewsViewController *vc = [RLShowReviewsViewController.alloc initWithShow:self.show];
+            [self.navigationController pushViewController:vc
+                                                 animated:YES];
+        }
+        else if(row == IGShowRowVenue) {
+            RLShowCollectionViewController *vc = [RLShowCollectionViewController.alloc initWithVenue:self.show.venue];
+            
+            [self.navigationController pushViewController:vc
+                                                 animated:YES];
+        }
         
         return;
     }

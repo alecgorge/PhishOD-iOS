@@ -13,6 +13,7 @@
 #import "AGMediaPlayerViewController.h"
 #import "PHODTabbedHomeViewController.h"
 #import "SearchViewController.h"
+#import "RLArtistTabViewController.h"
 #import "SettingsViewController.h"
 
 @interface NavigationControllerAutoShrinkerForNowPlaying ()
@@ -52,9 +53,9 @@
 - (void)showSettings {
 	UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:SettingsViewController.new];
 	
-	[AppDelegate.sharedDelegate.window.rootViewController presentViewController:navController
-												  animated:YES
-												completion:nil];
+	[AppDelegate.sharedDelegate.tabs presentViewController:navController
+                                                  animated:YES
+                                                completion:nil];
 }
 
 - (void)addSearchButtonToViewController:(UIViewController *)viewController {
@@ -82,7 +83,7 @@
         
         CGRect r = v.bounds;
         
-        r.origin.y = view.bounds.size.height - AppDelegate.sharedDelegate.tabBar.bounds.size.height;
+        r.origin.y = view.bounds.size.height;
         r.size.width = view.bounds.size.width;
         
 //        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
@@ -113,7 +114,7 @@
 }
 
 - (void)addBarToViewController:(UIViewController *)vc {
-	[self addBarToView:AppDelegate.sharedDelegate.window.rootViewController.view];
+	[self addBarToView:AppDelegate.sharedDelegate.tabs.view];
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {

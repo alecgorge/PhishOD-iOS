@@ -107,6 +107,8 @@
 			self.selectionStyle = UITableViewCellSelectionStyleDefault;
 		}
 	}
+    
+    self.uiCircularProgress.tintColor = COLOR_PHISH_GREEN;
 
 	self.heatmapView.hidden = YES;
 }

@@ -212,7 +212,7 @@
 		7C10A8AC1B33BD1B00692DD3 /* IGVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10A89F1B33BD1B00692DD3 /* IGVenue.m */; };
 		7C10A8AD1B33BD1B00692DD3 /* IGYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10A8A11B33BD1B00692DD3 /* IGYear.m */; };
 		7C10A8AE1B33BD1B00692DD3 /* IGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10A8A31B33BD1B00692DD3 /* IGAPIClient.m */; };
-		7C10A8B21B42457B00692DD3 /* RLYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10A8B11B42457B00692DD3 /* RLYearViewController.m */; };
+		7C10A8B21B42457B00692DD3 /* RLShowCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10A8B11B42457B00692DD3 /* RLShowCollectionViewController.m */; };
 		7C1C3C331982097600555ACB /* stock_header_chris_tank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */; };
 		7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3619820F2100555ACB /* PHODTrackCell.m */; };
 		7C1C3C3919820F2100555ACB /* PHODTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C3719820F2100555ACB /* PHODTrackCell.xib */; };
@@ -286,6 +286,10 @@
 		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
 		7C6AE5171788B97200AAED06 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AE5161788B97200AAED06 /* Entitlements.plist */; };
+		7C74CD811B4CCFAA00B20437 /* RLShowReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C74CD801B4CCFAA00B20437 /* RLShowReviewsViewController.m */; };
+		7C74CD851B4CD10300B20437 /* IGReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C74CD831B4CD10300B20437 /* IGReviewCell.m */; };
+		7C74CD861B4CD10300B20437 /* IGReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C74CD841B4CD10300B20437 /* IGReviewCell.xib */; };
+		7C74CD8A1B4CE99A00B20437 /* RLVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C74CD891B4CE99A00B20437 /* RLVenuesViewController.m */; };
 		7C750A22198D6F4200EA52DD /* PhishinPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */; };
 		7C79EB7E198559F20064C177 /* ShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C79EB7C198559F20064C177 /* ShowCell.m */; };
 		7C79EB7F198559F20064C177 /* ShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C79EB7D198559F20064C177 /* ShowCell.xib */; };
@@ -447,8 +451,8 @@
 		7C10A8A11B33BD1B00692DD3 /* IGYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGYear.m; sourceTree = "<group>"; };
 		7C10A8A21B33BD1B00692DD3 /* IGAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAPIClient.h; sourceTree = "<group>"; };
 		7C10A8A31B33BD1B00692DD3 /* IGAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAPIClient.m; sourceTree = "<group>"; };
-		7C10A8B01B42457B00692DD3 /* RLYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLYearViewController.h; path = Controllers/Panels/Browse/RLYearViewController.h; sourceTree = "<group>"; };
-		7C10A8B11B42457B00692DD3 /* RLYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLYearViewController.m; path = Controllers/Panels/Browse/RLYearViewController.m; sourceTree = "<group>"; };
+		7C10A8B01B42457B00692DD3 /* RLShowCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLShowCollectionViewController.h; path = Controllers/Panels/Browse/RLShowCollectionViewController.h; sourceTree = "<group>"; };
+		7C10A8B11B42457B00692DD3 /* RLShowCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLShowCollectionViewController.m; path = Controllers/Panels/Browse/RLShowCollectionViewController.m; sourceTree = "<group>"; };
 		7C1B438917984D8D00CB1255 /* scrape_jams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scrape_jams.js; sourceTree = "<group>"; };
 		7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stock_header_chris_tank.jpg; sourceTree = "<group>"; };
 		7C1C3C3519820F2100555ACB /* PHODTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHODTrackCell.h; sourceTree = "<group>"; };
@@ -558,6 +562,13 @@
 		7C6AE5131788AFDD00AAED06 /* EventInterceptWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInterceptWindow.h; sourceTree = "<group>"; };
 		7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInterceptWindow.m; sourceTree = "<group>"; };
 		7C6AE5161788B97200AAED06 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		7C74CD7F1B4CCFAA00B20437 /* RLShowReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLShowReviewsViewController.h; path = Controllers/Panels/Browse/Shows/RLShowReviewsViewController.h; sourceTree = "<group>"; };
+		7C74CD801B4CCFAA00B20437 /* RLShowReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLShowReviewsViewController.m; path = Controllers/Panels/Browse/Shows/RLShowReviewsViewController.m; sourceTree = "<group>"; };
+		7C74CD821B4CD10300B20437 /* IGReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGReviewCell.h; path = Controllers/Cells/IGReviewCell.h; sourceTree = "<group>"; };
+		7C74CD831B4CD10300B20437 /* IGReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGReviewCell.m; path = Controllers/Cells/IGReviewCell.m; sourceTree = "<group>"; };
+		7C74CD841B4CD10300B20437 /* IGReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IGReviewCell.xib; path = Controllers/Cells/IGReviewCell.xib; sourceTree = "<group>"; };
+		7C74CD881B4CE99A00B20437 /* RLVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLVenuesViewController.h; path = Controllers/Panels/Venues/RLVenuesViewController.h; sourceTree = "<group>"; };
+		7C74CD891B4CE99A00B20437 /* RLVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLVenuesViewController.m; path = Controllers/Panels/Venues/RLVenuesViewController.m; sourceTree = "<group>"; };
 		7C750A20198D6F4200EA52DD /* PhishinPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinPlaylist.h; sourceTree = "<group>"; };
 		7C750A21198D6F4200EA52DD /* PhishinPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinPlaylist.m; sourceTree = "<group>"; };
 		7C79EB7B198559F20064C177 /* ShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCell.h; sourceTree = "<group>"; };
@@ -1058,6 +1069,8 @@
 				7CBF883B1B49CB8D0072F20A /* RLShowViewController.m */,
 				7CBF883D1B49CEB30072F20A /* IguanaMediaItem.h */,
 				7CBF883E1B49CEB30072F20A /* IguanaMediaItem.m */,
+				7C74CD7F1B4CCFAA00B20437 /* RLShowReviewsViewController.h */,
+				7C74CD801B4CCFAA00B20437 /* RLShowReviewsViewController.m */,
 			);
 			name = Shows;
 			sourceTree = "<group>";
@@ -1090,10 +1103,11 @@
 			isa = PBXGroup;
 			children = (
 				7C3380121B4368C400AD1375 /* Shows */,
+				7C74CD871B4CE97F00B20437 /* Venues */,
 				7C36A73E1B348A9A0004E766 /* RLBrowseTableViewController.h */,
 				7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */,
-				7C10A8B01B42457B00692DD3 /* RLYearViewController.h */,
-				7C10A8B11B42457B00692DD3 /* RLYearViewController.m */,
+				7C10A8B01B42457B00692DD3 /* RLShowCollectionViewController.h */,
+				7C10A8B11B42457B00692DD3 /* RLShowCollectionViewController.m */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -1131,6 +1145,9 @@
 				7C97CE1A1B4394650010B82B /* IGSourceCell.h */,
 				7C97CE1B1B4394650010B82B /* IGSourceCell.m */,
 				7C97CE1C1B4394650010B82B /* IGSourceCell.xib */,
+				7C74CD821B4CD10300B20437 /* IGReviewCell.h */,
+				7C74CD831B4CD10300B20437 /* IGReviewCell.m */,
+				7C74CD841B4CD10300B20437 /* IGReviewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1364,6 +1381,15 @@
 				7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */,
 			);
 			path = EventInterceptingWindow;
+			sourceTree = "<group>";
+		};
+		7C74CD871B4CE97F00B20437 /* Venues */ = {
+			isa = PBXGroup;
+			children = (
+				7C74CD881B4CE99A00B20437 /* RLVenuesViewController.h */,
+				7C74CD891B4CE99A00B20437 /* RLVenuesViewController.m */,
+			);
+			name = Venues;
 			sourceTree = "<group>";
 		};
 		7C7ED3851800D259004F55DF /* Panels */ = {
@@ -1865,6 +1891,7 @@
 				7C10A8721B33B51700692DD3 /* scrape_jams.js in Resources */,
 				7C10A8731B33B51700692DD3 /* 15115437744_51db659feb_b.jpg in Resources */,
 				7C10A8741B33B51700692DD3 /* music_128.png in Resources */,
+				7C74CD861B4CD10300B20437 /* IGReviewCell.xib in Resources */,
 				7C10A8751B33B51700692DD3 /* PHODLoadingTableViewCell.xib in Resources */,
 				7C10A8761B33B51700692DD3 /* NowPlayingBarViewController.xib in Resources */,
 				7C10A8771B33B51700692DD3 /* Value1SubtitleCell.xib in Resources */,
@@ -2150,7 +2177,7 @@
 				7C10A8151B33B51700692DD3 /* StatsQueries.m in Sources */,
 				7C10A8161B33B51700692DD3 /* PhishNetBlogViewController.m in Sources */,
 				7C10A8171B33B51700692DD3 /* PHODCollectionCollectionViewCell.m in Sources */,
-				7C10A8B21B42457B00692DD3 /* RLYearViewController.m in Sources */,
+				7C10A8B21B42457B00692DD3 /* RLShowCollectionViewController.m in Sources */,
 				7C10A8181B33B51700692DD3 /* BaseStatsViewController.m in Sources */,
 				7C10A8191B33B51700692DD3 /* PHODCollectionProvider.m in Sources */,
 				7C10A81A1B33B51700692DD3 /* TrackRankingTableViewCell.m in Sources */,
@@ -2158,6 +2185,7 @@
 				7C10A81B1B33B51700692DD3 /* VenueStatsViewController.m in Sources */,
 				7C10A81C1B33B51700692DD3 /* VenueRankingTableViewCell.m in Sources */,
 				7C10A81D1B33B51700692DD3 /* LongStringViewController.m in Sources */,
+				7C74CD851B4CD10300B20437 /* IGReviewCell.m in Sources */,
 				7C10A8AD1B33BD1B00692DD3 /* IGYear.m in Sources */,
 				7C10A8AE1B33BD1B00692DD3 /* IGAPIClient.m in Sources */,
 				7C10A81E1B33B51700692DD3 /* ReviewsViewController.m in Sources */,
@@ -2187,9 +2215,11 @@
 				7C10A8331B33B51700692DD3 /* SongsViewController.m in Sources */,
 				7C10A8341B33B51700692DD3 /* ToursViewController.m in Sources */,
 				7C10A8351B33B51700692DD3 /* PHODBrowseTableViewController.m in Sources */,
+				7C74CD811B4CCFAA00B20437 /* RLShowReviewsViewController.m in Sources */,
 				7C10A8361B33B51700692DD3 /* PhishTracksStatsError.m in Sources */,
 				7C10A8AB1B33BD1B00692DD3 /* IGUser.m in Sources */,
 				7C10A8371B33B51700692DD3 /* AGMediaPlayerViewController.m in Sources */,
+				7C74CD8A1B4CE99A00B20437 /* RLVenuesViewController.m in Sources */,
 				7C10A8381B33B51700692DD3 /* ShowCell.m in Sources */,
 				7C10A8391B33B51700692DD3 /* PHODTableHeaderView.m in Sources */,
 				7C10A83A1B33B51700692DD3 /* BaseFavoritableEntityViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
 #import "RLBrowseTableViewController.h"
+#import "RLVenuesViewController.h"
 
 @interface RLArtistTabViewController ()
 
@@ -25,14 +26,26 @@
 	
 	self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.new;
 	
-	RLBrowseTableViewController *browse = RLBrowseTableViewController.new;
-	UINavigationController *browseNav = [UINavigationController.alloc initWithRootViewController:browse];
-	
+    RLBrowseTableViewController *browse = RLBrowseTableViewController.new;
+    UINavigationController *browseNav = [UINavigationController.alloc initWithRootViewController:browse];
+    
+    RLVenuesViewController *venues = RLVenuesViewController.new;
+    UINavigationController *venuesNav = [UINavigationController.alloc initWithRootViewController:venues];
+    
 	browseNav.delegate = self.navDelegate;
-	
+    venuesNav.delegate = self.navDelegate;
+    
 	self.viewControllers = @[
-							 browseNav
+							 browseNav,
+                             venuesNav
 							 ];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.navDelegate addBarToViewController:self.viewControllers[0]];
+    [self.navDelegate fixForViewController:self.viewControllers[0]];
 }
 
 @end

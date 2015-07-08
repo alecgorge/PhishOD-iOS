@@ -10,10 +10,12 @@
 
 #import "IGAPIClient.h"
 
-@interface RLYearViewController : RefreshableTableViewController
+@interface RLShowCollectionViewController : RefreshableTableViewController
 
 - (instancetype)initWithYear:(IGYear *)year;
+- (instancetype)initWithVenue:(IGVenue *)venue;
 
 @property (nonatomic) IGYear *year;
+@property (nonatomic) IGVenue *venue;
 
 @end

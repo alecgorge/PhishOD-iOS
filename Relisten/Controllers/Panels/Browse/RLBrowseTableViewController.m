@@ -10,7 +10,10 @@
 
 #import "IGAPIClient.h"
 #import "IGYearCell.h"
-#import "RLYearViewController.h"
+#import "RLShowCollectionViewController.h"
+#import "RLShowSourcesViewController.h"
+#import "RLArtistTabViewController.h"
+#import "AppDelegate.h"
 
 typedef NS_ENUM(NSInteger, RLBrowseSections) {
 	RLBrowseRandomShowSection,
@@ -51,6 +54,18 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 55.0f;
+    
+    UIBarButtonItem *closeBtn = [UIBarButtonItem.alloc initWithTitle:@"All Artists"
+                                                               style:UIBarButtonItemStyleDone
+                                                              target:self
+                                                              action:@selector(close)];
+    
+    self.navigationItem.rightBarButtonItem = closeBtn;
+}
+
+- (void)close {
+    [AppDelegate.sharedDelegate.tabs dismissViewControllerAnimated:YES
+                                                        completion:nil];
 }
 
 - (void)refresh:(id)sender {
@@ -128,7 +143,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    RLYearViewController *y = [RLYearViewController.alloc initWithYear:self.years[indexPath.row]];
+    if(indexPath.section == 0) {
+        RLShowSourcesViewController *y = [RLShowSourcesViewController.alloc initWithRandomDate];
+        [self.navigationController pushViewController:y
+                                             animated:YES];
+        
+        return;
+    }
+    
+    RLShowCollectionViewController *y = [RLShowCollectionViewController.alloc initWithYear:self.years[indexPath.row]];
     
     [self.navigationController pushViewController:y
                                          animated:YES];

@@ -18,6 +18,8 @@
 #import "PhishinMediaItem.h"
 #import "PHODTabbedHomeViewController.h"
 #import "ShowViewController.h"
+#import "RLArtistTabViewController.h"
+#import "RLShowViewController.h"
 
 @interface NowPlayingBarViewController ()
 
@@ -79,27 +81,28 @@
                                                                message:self.labelSubTitle.text
                                                         preferredStyle:UIAlertControllerStyleActionSheet];
     
+#ifdef IS_PHISH
     [a addAction:[UIAlertAction actionWithTitle:@"Favorite this"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
-                                            [vc dismissViewControllerAnimated:YES
-                                                                   completion:nil];
-                                            
                                             [self favoriteTapped:self.buttonMore];
                                         }]];
+#endif
     
     [a addAction:[UIAlertAction actionWithTitle:@"View this show"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
-                                            [vc dismissViewControllerAnimated:YES
-                                                                   completion:nil];
+                                            UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
                                             
-                                            PhishinShow *show = AppDelegate.sharedDelegate.currentlyPlayingShow;
+                                            id show = AppDelegate.sharedDelegate.currentlyPlayingShow;
+                                            
+#ifdef IS_PHISH
                                             ShowViewController *svc = [[ShowViewController alloc] initWithCompleteShow:show];
+#else
+                                            RLShowViewController *svc = [RLShowViewController.alloc initWithShow:show];
+#endif
                                             
-                                            vc.selectedIndex = 1;
+                                            vc.selectedIndex = 0;
                                             
                                             [vc.viewControllers[1] pushViewController:svc
                                                                              animated:YES];
@@ -107,13 +110,9 @@
     
     [a addAction:[UIAlertAction actionWithTitle:@"Cancel"
                                           style:UIAlertActionStyleCancel
-                                        handler:^(UIAlertAction *action) {
-                                            UITabBarController *vc = AppDelegate.sharedDelegate.window.rootViewController;
-                                            [vc dismissViewControllerAnimated:YES
-                                                                   completion:nil];
-                                        }]];
+                                        handler:nil]];
     
-    [AppDelegate.sharedDelegate.window.rootViewController presentViewController:a
+    [AppDelegate.sharedDelegate.tabs presentViewController:a
                                                   animated:YES
                                                 completion:nil];
 }

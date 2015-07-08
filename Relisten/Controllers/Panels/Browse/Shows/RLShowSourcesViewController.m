@@ -37,7 +37,7 @@ NS_ENUM(NSInteger, IGSourcesRows) {
 
 - (instancetype)initWithRandomDate {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-        
+        self.displayDate = nil;
     }
     return self;
 }
@@ -63,7 +63,7 @@ NS_ENUM(NSInteger, IGSourcesRows) {
         self.title = [NSString stringWithFormat:@"%@ Sources", self.displayDate];
     }
     else {
-        self.title = @"Random Shows";
+        self.title = @"Random Show";
     }
 }
 
@@ -71,6 +71,12 @@ NS_ENUM(NSInteger, IGSourcesRows) {
     if(self.displayDate == nil) {
         [IGAPIClient.sharedInstance randomShow:^(NSArray *shows) {
             self.fullShows = shows;
+            IGShow *firstShow = shows[0];
+            self.displayDate = firstShow.displayDate;
+            
+            [self.tableView reloadData];
+            [super refresh:sender];
+            [self applyTitle];
         }];
     }
     else {

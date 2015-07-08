@@ -180,11 +180,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (UITabBar *)tabBar {
-#ifdef IS_PHISH
 	return self.tabs.tabBar;
-#else
-	return nil;
-#endif
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {

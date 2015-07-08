@@ -143,7 +143,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	IGAPIClient.sharedInstance.artist = [self artistForIndexPath:indexPath];
 
 	RLArtistTabViewController *vc = RLArtistTabViewController.new;
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
     AppDelegate.sharedDelegate.tabs = vc;
+    
 	[self.navigationController presentViewController:vc
                                             animated:YES
                                           completion:nil];
