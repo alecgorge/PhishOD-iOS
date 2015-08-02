@@ -48,6 +48,9 @@
 
 - (void)redrawUICompletely;
 
+- (void)share;
+- (void)shareFromView:(UIView *)view;
+
 @property (nonatomic) PTSHeatmap *heatmap;
 
 @end

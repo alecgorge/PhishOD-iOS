@@ -14,6 +14,7 @@
 #import "PHODTabbedHomeViewController.h"
 #import "SearchViewController.h"
 #import "RLArtistTabViewController.h"
+#import "RLSettingsViewController.h"
 #import "SettingsViewController.h"
 
 @interface NavigationControllerAutoShrinkerForNowPlaying ()
@@ -51,7 +52,11 @@
 }
 
 - (void)showSettings {
+#ifdef IS_PHISH
 	UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:SettingsViewController.new];
+#else
+    UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:RLSettingsViewController.new];
+#endif
 	
 	[AppDelegate.sharedDelegate.tabs presentViewController:navController
                                                   animated:YES
@@ -92,11 +97,9 @@
         
         v.frame = r;
         
-        [view addSubview:v];
-        [view bringSubviewToFront:v];
+        [view insertSubview:v
+               belowSubview:AppDelegate.sharedDelegate.tabBar];
     }
-    
-	[view bringSubviewToFront:NowPlayingBarViewController.sharedInstance.view];
     
     [UIView animateWithDuration:0.3
                      animations:^{

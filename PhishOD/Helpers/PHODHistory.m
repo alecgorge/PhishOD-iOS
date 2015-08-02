@@ -8,7 +8,11 @@
 
 #import "PHODHistory.h"
 
-#import <EGOCache/EGOCache.h>
+#import <ObjectiveSugar/ObjectiveSugar.h>
+
+#import "PHODPersistence.h"
+
+#import "IGAPIClient.h"
 
 @implementation PHODHistory
 
@@ -17,7 +21,7 @@ static id sharedInstance;
 + (instancetype)sharedInstance {
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
-		sharedInstance = [EGOCache.globalCache objectForKey:@"current.history"];
+		sharedInstance = [PHODPersistence.sharedInstance objectForKey:@"current.history"];
 		if(sharedInstance == nil) {
 			sharedInstance = [[self alloc] init];
 		}
@@ -32,7 +36,11 @@ static id sharedInstance;
 	return self;
 }
 
+#ifdef IS_PHISH
 - (BOOL)addShow:(PhishinShow *)show {
+#else
+- (BOOL)addShow:(IGShow *)show {
+#endif
 	if(show == nil) {
 		return NO;
 	}
@@ -40,9 +48,18 @@ static id sharedInstance;
 	NSInteger size = self.history.count;
 	[self.history insertObject:show
 					   atIndex:0];
+    
+#ifdef IS_PHISH
+    if(self.history.count > 20) {
+        [self.history removeObjectAtIndex:self.history.count - 1];
+#else
+    NSArray *currentArtist = [self.history.array select:^BOOL(IGShow *object) {
+        return IGAPIClient.sharedInstance.artist.id == object.ArtistId;
+    }];
 	
-	if(self.history.count > 20) {
-		[self.history removeObjectAtIndex:self.history.count - 1];
+	if(currentArtist.count > 20) {
+        [self.history removeObject:currentArtist[0]];
+#endif
 		return YES;
 	}
 	
@@ -50,15 +67,14 @@ static id sharedInstance;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-	[aCoder encodeObject:self.history
+	[aCoder encodeObject:self.history.array
 				  forKey:@"history"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	if (self = [super init]) {
-		self.history = [aDecoder decodeObjectForKey:@"history"];
+		self.history = [NSMutableOrderedSet.alloc initWithArray:[aDecoder decodeObjectForKey:@"history"]];
 	}
-	sharedInstance = self;
 	return self;
 }
 

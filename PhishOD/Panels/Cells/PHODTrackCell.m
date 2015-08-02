@@ -15,6 +15,29 @@
 #import "IGDurationHelper.h"
 #import "AGMediaPlayerViewController.h"
 
+@implementation UIImage (IPImageUtils)
+
++ (UIImage *)ipMaskedImageNamed:(NSString *)name color:(UIColor *)color {
+    static UIImage *result = nil;
+    
+    if (result != nil) {
+        return result;
+    }
+    
+    UIImage *image = [UIImage imageNamed:name];
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
+    CGContextRef c = UIGraphicsGetCurrentContext();
+    [image drawInRect:rect];
+    CGContextSetFillColorWithColor(c, [color CGColor]);
+    CGContextSetBlendMode(c, kCGBlendModeSourceAtop);
+    CGContextFillRect(c, rect);
+    result = UIGraphicsGetImageFromCurrentImageContext();
+    return result;
+}
+
+@end
+
 @interface PHODTrackCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackTitle;
@@ -70,6 +93,9 @@
     self.uiTrackRunningTime.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
     self.uiTrackNumber.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     
+    [self.uiDownloadButton setImage:[UIImage ipMaskedImageNamed:@"ios-cloud-download-outline"
+                                                          color:COLOR_PHISH_GREEN]
+                           forState:UIControlStateNormal];
     
 	self.track = track;
     self.uiTrackNumber.text = @(track.track).stringValue;

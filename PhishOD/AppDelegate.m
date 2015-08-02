@@ -30,9 +30,11 @@
 #import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 #import <GroundControl/NSUserDefaults+GroundControl.h>
 #import <Instabug/Instabug.h>
+#import <SDCloudUserDefaults/SDCloudUserDefaults.h>
+#import <FlurrySDK/Flurry.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
@@ -56,10 +58,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	__haveSetup = YES;
 	
-    if(IGThirdPartyKeys.sharedInstance.isCrashlyticsEnabled) {
-        [Fabric with:@[CrashlyticsKit]];
-//        [Crashlytics startWithAPIKey:IGThirdPartyKeys.sharedInstance.crashlyticsApiKey];
-    }
+    [Fabric with:@[CrashlyticsKit]];
+#ifdef IS_PHISH
+    [Flurry startSession:@"JJNX7YHMWM34SFD2GG8K"];
+#else
+    [Flurry startSession:@"4RGRH573MCY85Z5RJC2X"];
+#endif
 	
     [IGEvents setup];
     
@@ -74,6 +78,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	NSString *ptsServer = infoDictionary[@"StatsServer"];
 	[PhishTracksStats setupWithAPIKey:IGThirdPartyKeys.sharedInstance.phishtracksStatsApiKey andBaseUrl:ptsServer];
 	
+    [SDCloudUserDefaults registerForNotifications];
     [NSUserDefaults.standardUserDefaults registerDefaultsWithURL:[NSURL URLWithString:@"http://phishod-config.app.alecgorge.com/app-config.plist"]];
 	
 	[self setupLastFM];
@@ -192,7 +197,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)setupCaching {
-	EGOCache.globalCache.defaultTimeoutInterval = 60 * 60 * 24 * 365 * 10;
+	
 }
 
 - (void)setupLastFM {
@@ -230,10 +235,14 @@ didFinishLaunchingWithOptions:nil];
 }
 
 - (void)presentMusicPlayer {
+    [self presentMusicPlayerWithComplete:nil];
+}
+
+- (void)presentMusicPlayerWithComplete:(void (^)(void))complete {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AGMediaPlayerViewController sharedInstance]];
     [self.tabs presentViewController:nav
-                                animated:YES
-                              completion:NULL];
+                            animated:YES
+                          completion:complete];
 }
 
 - (void)toggleNowPlaying {
@@ -316,49 +325,45 @@ didFinishLaunchingWithOptions:nil];
     [self saveCurrentState];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-}
-
 - (void)saveCurrentState {
 	if([PHODHistory.sharedInstance addShow:self.currentlyPlayingShow]) {
-		[EGOCache.globalCache setObject:PHODHistory.sharedInstance
-								forKey:@"current.history"];
+		[PHODPersistence.sharedInstance setObject:PHODHistory.sharedInstance
+                                           forKey:@"current.history"];
 		
 		dbug(@"history changed! caching.");
 	}
 }
 
 - (void)hydrateFromSavedState {
-	return;
-    AGAudioPlayerUpNextQueue *queue = (AGAudioPlayerUpNextQueue *)[EGOCache.globalCache objectForKey:@"current.queue"];
-    NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
-    NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;
-    PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
-    PTSHeatmap *heatmap = (PTSHeatmap *)[EGOCache.globalCache objectForKey:@"current.show-heatmap"];
-
-    if(!(queue && queue.count > 0 && show)) {
-        return;
-    }
-
-    AGMediaPlayerViewController *player = AGMediaPlayerViewController.sharedInstance;
-	player.heatmap = heatmap;
-    [player replaceQueueWithItems:queue.queue
-                       startIndex:pos];
-	
-//    [player play];
-	
-    if(elapsed != 0.0f) {
-        player.progress = elapsed;
-    }
-
-    [player pause];
-    
-    self.currentlyPlayingShow = show;
-    
-    [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
-    
-    [self.navDelegate addBarToViewController:self.yearsNav.viewControllers.lastObject];
-    [self.navDelegate fixForViewController:self.yearsNav.viewControllers.lastObject];
+//    AGAudioPlayerUpNextQueue *queue = (AGAudioPlayerUpNextQueue *)[EGOCache.globalCache objectForKey:@"current.queue"];
+//    NSInteger pos = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.index"]).integerValue;
+//    NSTimeInterval elapsed = ((NSNumber*)[EGOCache.globalCache objectForKey:@"current.progress"]).floatValue;
+//    PhishinShow *show = (PhishinShow *)[EGOCache.globalCache objectForKey:@"current.show"];
+//    PTSHeatmap *heatmap = (PTSHeatmap *)[EGOCache.globalCache objectForKey:@"current.show-heatmap"];
+//
+//    if(!(queue && queue.count > 0 && show)) {
+//        return;
+//    }
+//
+//    AGMediaPlayerViewController *player = AGMediaPlayerViewController.sharedInstance;
+//	player.heatmap = heatmap;
+//    [player replaceQueueWithItems:queue.queue
+//                       startIndex:pos];
+//	
+////    [player play];
+//	
+//    if(elapsed != 0.0f) {
+//        player.progress = elapsed;
+//    }
+//
+//    [player pause];
+//    
+//    self.currentlyPlayingShow = show;
+//    
+//    [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
+//    
+//    [self.navDelegate addBarToViewController:self.yearsNav.viewControllers.lastObject];
+//    [self.navDelegate fixForViewController:self.yearsNav.viewControllers.lastObject];
 }
 
 @end

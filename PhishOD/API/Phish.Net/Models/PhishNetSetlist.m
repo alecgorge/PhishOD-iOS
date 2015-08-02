@@ -10,7 +10,6 @@
 #import "NSString+stripHTML.h"
 
 #import <NSObject-NSCoding/NSObject+NSCoding.h>
-#import <EGOCache/EGOCache.h>
 
 @implementation PhishNetSetlist
 

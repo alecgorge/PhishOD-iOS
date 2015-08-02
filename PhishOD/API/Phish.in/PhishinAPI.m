@@ -8,7 +8,7 @@
 
 #import "PhishinAPI.h"
 
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 
 @implementation PhishinAPI
 
@@ -57,7 +57,7 @@
 	 failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
     __block NSArray *cachedYears = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
-        cachedYears = (NSArray *)[EGOCache.globalCache objectForKey:@"eras"];
+        cachedYears = (NSArray *)[PHODPersistence.sharedInstance objectForKey:@"eras"];
         
         if(cachedYears) {
             success(cachedYears);
@@ -82,8 +82,8 @@
 			  [arr addObject: era];
 		  }
 		  
-          [EGOCache.globalCache setObject:arr
-                                   forKey:@"phishin.eras"];
+          [PHODPersistence.sharedInstance setObject:arr
+                                             forKey:@"phishin.eras"];
           
           if(!cachedYears || (arr.count != cachedYears.count)) {
               success(arr);
@@ -119,7 +119,7 @@
 	  failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
     __block NSArray *cachedYears = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
-        cachedYears = (NSArray *)[EGOCache.globalCache objectForKey:@"phishin.years"];
+        cachedYears = (NSArray *)[PHODPersistence.sharedInstance objectForKey:@"phishin.years"];
         
         if(cachedYears) {
             success(cachedYears);
@@ -138,8 +138,8 @@
               return year;
           }];
           
-          [EGOCache.globalCache setObject:arr
-                                   forKey:@"phishin.years"];
+          [PHODPersistence.sharedInstance setObject:arr
+                                             forKey:@"phishin.years"];
           
           if(!cachedYears || (arr.count != cachedYears.count)) {
               success(arr);

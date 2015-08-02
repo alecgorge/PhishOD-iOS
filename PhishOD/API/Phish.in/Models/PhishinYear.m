@@ -9,7 +9,7 @@
 #import "PhishinYear.h"
 
 #import <NSObject-NSCoding/NSObject+NSCoding.h>
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 
 @implementation PhishinYear
 
@@ -26,8 +26,8 @@
         return nil;
     }
     
-    [EGOCache.globalCache setObject:self
-                             forKey:self.cacheKey];
+    [PHODPersistence.sharedInstance setObject:self
+                                       forKey:self.cacheKey];
     
     return self;
 }
@@ -48,7 +48,7 @@
 }
 
 + (PhishinYear *)loadYearFromCacheForYear:(NSString *)year {
-    return (PhishinYear *)[EGOCache.globalCache objectForKey:[self cacheKeyForYear:year]];
+    return (PhishinYear *)[PHODPersistence.sharedInstance objectForKey:[self cacheKeyForYear:year]];
 }
 
 @end

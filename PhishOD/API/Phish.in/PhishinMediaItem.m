@@ -8,7 +8,17 @@
 
 #import "PhishinMediaItem.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+#import <SDWebImage/SDWebImageManager.h>
+
 #import "PhishinDownloader.h"
+
+@interface PhishinMediaItem () {
+    MPMediaItemArtwork *_artwork;
+    BOOL _hasStartedFetching;
+}
+
+@end
 
 @implementation PhishinMediaItem
 
@@ -65,6 +75,38 @@
     else {
         return self.phishinTrack.mp3;
     }
+}
+
+- (NSURL *)albumArt {
+    return self.phishinShow.albumArt;
+}
+
+- (void)fetchArtwork {
+    if (_hasStartedFetching || self.albumArt == nil) {
+        return;
+    }
+    
+    _hasStartedFetching = YES;
+    
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:self.albumArt
+                          options:0
+                         progress:nil
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                            if (image) {
+                                _artwork = [MPMediaItemArtwork.alloc initWithImage:image];
+                            }
+                        }];
+}
+
+- (MPMediaItemArtwork *)artwork {
+    if (_artwork) {
+        return _artwork;
+    }
+    
+    [self fetchArtwork];
+    
+    return nil;
 }
 
 - (NSInteger)track {

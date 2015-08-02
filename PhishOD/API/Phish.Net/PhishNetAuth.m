@@ -13,6 +13,7 @@
 
 #import "PhishNetAPI.h"
 #import "PhishNetSignInViewController.h"
+#import "IGEvents.h"
 
 static NSString *kPhishNetUsernameKeychainKey = @"pnet_u";
 static NSString *kPhishNetPasswordKeychainKey = @"pnet_p";
@@ -113,6 +114,11 @@ static NSString *kPhishNetAuthKeyKeychainKey = @"pnet_authkey";
                     result:^(BOOL valid) {
                         [SVProgressHUD dismiss];
                         
+                        [IGEvents trackEvent:@"signin"
+                              withAttributes:@{@"success": @(valid),
+                                               @"method": @"phish.net"}
+                                  andMetrics:nil];
+
                         if(valid) {
                             [vc.presentingViewController dismissViewControllerAnimated:YES
                                                                             completion:NULL];

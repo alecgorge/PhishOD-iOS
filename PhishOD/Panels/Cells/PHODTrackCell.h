@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "PhishinTrack.h"
 
+@interface UIImage (IPImageUtils)
+
++ (UIImage *)ipMaskedImageNamed:(NSString *)name color:(UIColor *)color;
+
+@end
+
 @interface PHODTrackCell : UITableViewCell
 
 

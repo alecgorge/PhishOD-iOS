@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class IGShow;
+
 @interface PHODHistory : NSObject<NSCoding>
 
 + (instancetype)sharedInstance;
 
+#ifdef IS_PHISH
 - (BOOL)addShow:(PhishinShow *)show;
+#else
+- (BOOL)addShow:(IGShow *)show;
+#endif
 
 @property (nonatomic) NSMutableOrderedSet *history;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="1994/04/05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgX-f1-ztw">
-                        <rect key="frame" x="10" y="10" width="90" height="21"/>
+                        <rect key="frame" x="10" y="10" width="91" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="e4C-G7-tYN"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SBD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-2C-MBJ">
-                        <rect key="frame" x="113" y="10" width="33" height="21"/>
+                        <rect key="frame" x="114" y="10" width="33" height="21"/>
                         <color key="backgroundColor" red="0.44705882670000002" green="0.69411766529999996" blue="0.27843138579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="3Hk-On-BCH"/>
@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REMAST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siV-jS-XmS">
-                        <rect key="frame" x="151" y="10" width="56" height="21"/>
+                        <rect key="frame" x="152" y="10" width="56" height="21"/>
                         <color key="backgroundColor" red="0.31372549020000001" green="0.73725490199999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="9Eo-KK-HSH"/>
@@ -60,7 +60,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-f4-Orb" userLabel="Heatmap View">
-                        <rect key="frame" x="212" y="21" width="41" height="4"/>
+                        <rect key="frame" x="213" y="21" width="40" height="4"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Cn-DI-Gmy" userLabel="Heatmap Value">
                                 <rect key="frame" x="0.0" y="0.0" width="20" height="4"/>
@@ -72,7 +72,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.71764705880000002" blue="0.51764705879999995" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="9kQ-Q0-gQ0"/>
+                            <constraint firstAttribute="width" constant="40" id="9kQ-Q0-gQ0"/>
                             <constraint firstAttribute="height" constant="4" id="Cct-oa-KoJ"/>
                             <constraint firstItem="8Cn-DI-Gmy" firstAttribute="leading" secondItem="fbC-f4-Orb" secondAttribute="leading" id="KR3-5C-wp7"/>
                             <constraint firstItem="8Cn-DI-Gmy" firstAttribute="top" secondItem="fbC-f4-Orb" secondAttribute="top" id="jpG-F5-0Xh"/>

@@ -18,6 +18,10 @@
 #import "PHODLoadingTableViewCell.h"
 #import "PHODTableHeaderView.h"
 
+#import "IGAPIClient.h"
+#import "IGShowCell.h"
+#import "RLShowViewController.h"
+
 NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	kPHODDownloadTabDownloadedSection,
 	kPHODDownloadTabDownloadingSection,
@@ -26,7 +30,11 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 
 @interface PHODDownloadTabTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
+#ifdef IS_PHISH
 @property (nonatomic) PHODDownloadedCollectionProvider *downloadedProvider;
+#else
+@property (nonatomic) NSArray *downloadedShows;
+#endif
 
 @property (nonatomic) NSOperationQueue *downloading;
 @property (nonatomic) FBKVOController *kvo;
@@ -52,21 +60,38 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	
 	self.title = @"Downloads";
 	
-	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODCollectionTableViewCell.class)
-											   bundle:nil]
-		 forCellReuseIdentifier:@"collectionCell"];
-	
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
 											   bundle:nil]
 		 forCellReuseIdentifier:@"trackCell"];
-	
-	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODLoadingTableViewCell.class)
-											   bundle:nil]
-		 forCellReuseIdentifier:@"loadingCell"];
-
-	self.downloadedProvider = [PHODDownloadedCollectionProvider.alloc initWithContainingViewController:self
-																							 inSection:kPHODDownloadTabDownloadedSection];
-	self.downloading = PhishinAPI.sharedAPI.downloader.queue;
+    
+#ifdef IS_PHISH
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODLoadingTableViewCell.class)
+                                               bundle:nil]
+         forCellReuseIdentifier:@"loadingCell"];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODCollectionTableViewCell.class)
+                                               bundle:nil]
+         forCellReuseIdentifier:@"collectionCell"];
+    
+    self.downloadedProvider = [PHODDownloadedCollectionProvider.alloc initWithContainingViewController:self
+                                                                                             inSection:kPHODDownloadTabDownloadedSection];
+#else
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(IGShowCell.class)
+                                               bundle:nil]
+         forCellReuseIdentifier:@"show"];
+#endif
+    
+#ifdef IS_PHISH
+    self.downloading = PhishinAPI.sharedAPI.downloader.queue;
+#else
+    self.downloading = IGDownloader.sharedInstance.queue;
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+#endif
+    
 	self.kvo = [FBKVOController.alloc initWithObserver:self];
 	
 	[self.kvo observe:self.downloading
@@ -81,11 +106,28 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+#ifndef IS_PHISH
+- (void)refresh:(id)sender {
+    [IGDownloadItem showsWithCachedTracks:^(NSArray *shows) {
+        self.downloadedShows = [shows sortedArrayUsingComparator:^NSComparisonResult(IGShow *s1, IGShow *s2) {
+            return [s2.date compare:s1.date];
+        }];
+        
+        [self.tableView reloadData];
+        [super refresh:sender];
+    }];
+}
+#endif
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	[self.downloadedProvider loadData];
-	[self.tableView reloadData];
+#ifdef IS_PHISH
+    [self.downloadedProvider loadData];
+    [self.tableView reloadData];
+#else
+    [self refresh:nil];
+#endif
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -125,7 +167,13 @@ viewForHeaderInSection:(NSInteger)section {
 }
 
 - (void)deleteCache {
-	NSString *space = [NSByteCountFormatter stringFromByteCount:[PHODDownloadItem completeCachedSize]
+#ifdef IS_PHISH
+    long long size = [PHODDownloadItem completeCachedSize];
+#else
+    long long size = [IGDownloadItem completeCachedSize];
+#endif
+    
+	NSString *space = [NSByteCountFormatter stringFromByteCount:size
 													 countStyle:NSByteCountFormatterCountStyleFile];
 	UIAlertController *a = [UIAlertController alertControllerWithTitle:@"Delete Downloaded Songs?"
 															   message:[NSString stringWithFormat:@"Do you want to delete all your downloaded songs? Doing this will free up %@ of space.", space]
@@ -134,21 +182,18 @@ viewForHeaderInSection:(NSInteger)section {
 	[a addAction:[UIAlertAction actionWithTitle:@"Delete"
 										  style:UIAlertActionStyleDestructive
 										handler:^(UIAlertAction *action) {
-											[PHODDownloadItem deleteEntireCache];
+#ifdef IS_PHISH
+                                            [PHODDownloadItem deleteEntireCache];
+#else
+                                            [IGDownloadItem deleteEntireCache];
+#endif
 
-											[self.downloadedProvider loadData];
 											[self.tableView reloadData];
-											
-											[self dismissViewControllerAnimated:YES
-																	 completion:nil];
 										}]];
 	
 	[a addAction:[UIAlertAction actionWithTitle:@"Keep jamming"
 										  style:UIAlertActionStyleCancel
-										handler:^(UIAlertAction *action) {
-											[self dismissViewControllerAnimated:YES
-																	 completion:nil];
-										}]];
+										handler:nil]];
 	
 	[self presentViewController:a
 					   animated:YES
@@ -169,7 +214,11 @@ heightForHeaderInSection:(NSInteger)section {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(section == kPHODDownloadTabDownloadedSection) {
-		return 1;
+#ifdef IS_PHISH
+        return 1;
+#else
+        return self.downloadedShows.count;
+#endif
 	}
 	else if(section == kPHODDownloadTabDownloadingSection) {
 		return self.downloading.operations.count;
@@ -183,27 +232,35 @@ heightForHeaderInSection:(NSInteger)section {
 	UITableViewCell *cell = nil;
 	
 	if(indexPath.section == kPHODDownloadTabDownloadedSection) {
-		if (self.downloadedProvider.isDoneLoadingData) {
-			cell = [tableView dequeueReusableCellWithIdentifier:@"collectionCell"
-												   forIndexPath:indexPath];
-			
-			PHODCollectionTableViewCell *c = (PHODCollectionTableViewCell *)cell;
-			
-			c.uiCollectionView.delegate = self.downloadedProvider;
-			c.uiCollectionView.dataSource = self.downloadedProvider;
-			c.uiCollectionView.emptyDataSetSource = self;
-			c.uiCollectionView.emptyDataSetDelegate = self;
-			
-			[c.uiCollectionView reloadData];
-		}
-		else {
-			cell = [tableView dequeueReusableCellWithIdentifier:@"loadingCell"
-												   forIndexPath:indexPath];
-			
-			PHODLoadingTableViewCell *c = (PHODLoadingTableViewCell *)cell;
-			[c.uiActivityIndicator startAnimating];
-		}
-
+#ifdef IS_PHISH
+        if (self.downloadedProvider.isDoneLoadingData) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"collectionCell"
+                                                   forIndexPath:indexPath];
+            
+            PHODCollectionTableViewCell *c = (PHODCollectionTableViewCell *)cell;
+            
+            c.uiCollectionView.delegate = self.downloadedProvider;
+            c.uiCollectionView.dataSource = self.downloadedProvider;
+            c.uiCollectionView.emptyDataSetSource = self;
+            c.uiCollectionView.emptyDataSetDelegate = self;
+            
+            [c.uiCollectionView reloadData];
+        }
+        else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"loadingCell"
+                                                   forIndexPath:indexPath];
+            
+            PHODLoadingTableViewCell *c = (PHODLoadingTableViewCell *)cell;
+            [c.uiActivityIndicator startAnimating];
+        }
+#else
+        IGShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"
+                                                           forIndexPath:indexPath];
+        
+        [cell updateCellWithShow:self.downloadedShows[indexPath.row]];
+        
+        return cell;
+#endif
 	}
 	else if(indexPath.section == kPHODDownloadTabDownloadingSection) {
 		cell =  [tableView dequeueReusableCellWithIdentifier:@"trackCell"
@@ -228,14 +285,32 @@ heightForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
+#ifndef IS_PHISH
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
+    
+    if (indexPath.section == kPHODDownloadTabDownloadedSection) {
+        IGShow *show = self.downloadedShows[indexPath.row];
+        RLShowViewController *vc = [RLShowViewController.alloc initWithShow:show];
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
+}
+#endif
+
+#ifdef IS_PHISH
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == kPHODDownloadTabDownloadedSection) {
-		return [PHODCollectionCollectionViewCell rowHeight];
-	}
-	
-	return UITableViewAutomaticDimension;
+    if(indexPath.section == kPHODDownloadTabDownloadedSection) {
+        return [PHODCollectionCollectionViewCell rowHeight];
+    }
+    
+    return UITableViewAutomaticDimension;
 }
+#endif
 
 #pragma mark - Empty Data Set
 

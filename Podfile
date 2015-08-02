@@ -7,6 +7,7 @@ link_with "Relisten"
 
 inhibit_all_warnings!
 
+pod 'SDCloudUserDefaults'
 pod 'AFNetworking'
 pod 'TDBadgedCell', :head
 pod 'TTTAttributedLabel'
@@ -16,8 +17,9 @@ pod 'LastFm'
 pod 'SVProgressHUD', :head
 pod 'FXKeychain'
 pod 'ObjectiveSugar'
-pod 'Fabric', '~> 1.3.0' # required
-pod 'Fabric/Crashlytics', '~> 1.3.0'
+pod 'Fabric'
+pod 'Crashlytics'
+pod 'VTAcknowledgementsViewController', '~> 0.14'
 pod 'JSONModel'
 pod 'SDWebImage'
 pod 'UIActivityIndicator-for-SDWebImage'
@@ -33,7 +35,8 @@ pod 'KVOController'
 pod 'LLACircularProgressView'
 pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git', :branch => 'master'
-pod 'DZNEmptyDataSet'
+pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git', :branch => 'auto-layout-simplified'
 pod 'GroundControl', '~> 2.1.0'
 pod 'AGAudioPlayer', :path => "../AGAudioPlayer"
 pod 'Instabug', '~> 4.1'
+pod 'FlurrySDK'

@@ -10,7 +10,6 @@
 
 #import <SVWebViewController/SVWebViewController.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
-#import <EGOCache/EGOCache.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 
@@ -297,6 +296,19 @@ viewForHeaderInSection:(NSInteger)section {
 			[self.navigationController pushViewController:self.detailsVc
 												 animated:YES];
 		};
+        
+        h.downloadAllTapped = ^{
+            if(!self.show && !self.setlist) {
+                // we need one thing loaded first
+                return;
+            }
+
+            for (NSObject<PHODGenericTrack> *track in self.show.tracks) {
+                [track.downloader downloadItem:track.downloadItem];
+            }
+            
+            [self.tableView reloadData];
+        };
 		
 		[h updateCellForShow:self.show
 				 withSetlist:self.setlist

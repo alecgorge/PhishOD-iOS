@@ -11,7 +11,7 @@
 
 #import "NavigationControllerAutoShrinkerForNowPlaying.h"
 
-@class PHODTabbedHomeViewController, RLArtistTabViewController;
+@class PHODTabbedHomeViewController, RLArtistTabViewController, IGShow;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
@@ -30,7 +30,11 @@
 
 @property UINavigationController *yearsNav;
 
+#ifdef IS_PHISH
 @property PhishinShow *currentlyPlayingShow;
+#else
+@property IGShow *currentlyPlayingShow;
+#endif
 
 @property (nonatomic) BOOL shouldShowNowPlaying;
 @property (nonatomic) BOOL isNowPlayingVisible;
@@ -41,6 +45,7 @@
 - (void)showNowPlaying;
 
 - (void)presentMusicPlayer;
+- (void)presentMusicPlayerWithComplete:(void(^)(void))complete;
 
 - (void)saveCurrentState;
 

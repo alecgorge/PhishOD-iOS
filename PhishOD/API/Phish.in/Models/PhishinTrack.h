@@ -13,8 +13,11 @@
 @class PhishinDownloader;
 @class PHODDownloader;
 @class PHODDownloadItem;
+@class MPMediaItemArtwork;
 
 @protocol PHODGenericTrack <NSObject>
+
+- (MPMediaItemArtwork *)artwork;
 
 - (NSString *)title;
 - (NSTimeInterval)duration;

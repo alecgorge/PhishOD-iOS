@@ -9,7 +9,6 @@
 #import "ShowDetailsViewController.h"
 
 #import <SVWebViewController/SVWebViewController.h>
-#import <DBGHTMLEntities/DBGHTMLEntityDecoder.h>
 
 #import "VenueViewController.h"
 #import "ShowViewController.h"

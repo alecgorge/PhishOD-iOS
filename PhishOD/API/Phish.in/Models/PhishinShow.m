@@ -9,7 +9,7 @@
 #import "PhishinShow.h"
 
 #import <NSObject-NSCoding/NSObject+NSCoding.h>
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 
 @implementation PhishinShow
 
@@ -46,7 +46,16 @@
 				return [[PhishinTrack alloc] initWithDictionary:object andShow:self];
 			}];
 			
-			self.sets = [[dict[@"tracks"] valueForKeyPath:@"@distinctUnionOfObjects.set"] sortedArrayUsingSelector:@selector(compare:)];
+			self.sets = [[dict[@"tracks"] valueForKeyPath:@"@distinctUnionOfObjects.set"] sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+                if ([obj1 isEqualToString:@"S"] || [obj2 isEqualToString:@"E"]) {
+                    return NSOrderedAscending;
+                }
+                else if ([obj1 isEqualToString:@"E"] || [obj2 isEqualToString:@"S"]) {
+                    return NSOrderedDescending;
+                }
+                
+                return [obj1 compare:obj2];
+            }];
 			self.sets = [self.sets map:^id(id object) {
 				NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF.set == %@", object];
 
@@ -54,6 +63,9 @@
 				if([object caseInsensitiveCompare:@"E"] == NSOrderedSame) {
 					name = @"Encore";
 				}
+                else if([object caseInsensitiveCompare:@"S"] == NSOrderedSame) {
+                    name = @"Soundcheck";
+                }
 				else {
 					name = [@"Set " stringByAppendingString:object];
 				}
@@ -113,8 +125,8 @@
         return nil;
     }
     
-	[EGOCache.globalCache setObject:self
-							 forKey:self.cacheKey];
+	[PHODPersistence.sharedInstance setObject:self
+                                       forKey:self.cacheKey];
 	
 	return self;
 }
@@ -153,7 +165,7 @@
 }
 
 + (PhishinShow *)loadShowFromCacheForShowDate:(NSString *)date {
-	return (PhishinShow *)[EGOCache.globalCache objectForKey:[self cacheKeyForShowDate:date]];
+	return (PhishinShow *)[PHODPersistence.sharedInstance objectForKey:[self cacheKeyForShowDate:date]];
 }
 
 @end

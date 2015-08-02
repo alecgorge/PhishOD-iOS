@@ -15,6 +15,7 @@
 #import <SVWebViewController.h>
 #import "PhishTracksStats.h"
 #import "PhishNetAuth.h"
+#import "IGEvents.h"
 
 #define kAlertLastFm 0
 //#define kAlertPhishTracksStats 1
@@ -213,7 +214,7 @@ titleForFooterInSection:(NSInteger)section {
 		[switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
 	}
 	else if(indexPath.section == PhishODSettingsSectionCredits && indexPath.row == 0) {
-		cell.textLabel.text = @"Streaming by phish.in";
+        cell.textLabel.text = @"Streaming by phish.in";
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
@@ -367,6 +368,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 											[[NSUserDefaults standardUserDefaults] setObject:result[@"key"] forKey:@"lastfm_session_key"];
 											[[NSUserDefaults standardUserDefaults] setObject:result[@"name"] forKey:@"lastfm_username_key"];
 											[[NSUserDefaults standardUserDefaults] synchronize];
+                                            
+                                            [IGEvents trackEvent:@"signin"
+                                                  withAttributes:@{@"success": @(YES),
+                                                                   @"method": @"lastfm"}
+                                                      andMetrics:nil];
 											
 											// Also set the session of the LastFm object
 											[LastFm sharedInstance].session = result[@"key"];
@@ -378,7 +384,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 										}
 										failureHandler:^(NSError *error) {
                                             [SVProgressHUD dismiss];
-											UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
+                                            [IGEvents trackEvent:@"signin"
+                                                  withAttributes:@{@"success": @(NO),
+                                                                   @"method": @"lastfm"}
+                                                      andMetrics:nil];
+
+                                            UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Error"
 																						message:[error localizedDescription]
 																					   delegate:nil
 																			  cancelButtonTitle:@"OK"

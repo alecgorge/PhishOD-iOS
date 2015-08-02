@@ -6,8 +6,13 @@
 //  Copyright (c) 2015 Alec Gorge. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RefreshableTableViewController.h"
 
-@interface PHODDownloadTabTableViewController : UITableViewController
+@interface PHODDownloadTabTableViewController :
+#ifdef IS_PHISH
+    UITableViewController
+#else
+    RefreshableTableViewController
+#endif
 
 @end

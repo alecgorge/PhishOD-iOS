@@ -10,7 +10,7 @@
 
 #import <FCFileManager/FCFileManager.h>
 #import <KVOController/FBKVOController.h>
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 
 static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 

@@ -89,23 +89,39 @@
                                         }]];
 #endif
     
+    [a addAction:[UIAlertAction actionWithTitle:@"Share"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            [AGMediaPlayerViewController.sharedInstance shareFromView:self.view];
+                                        }]];
+    
     [a addAction:[UIAlertAction actionWithTitle:@"View this show"
                                           style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action) {
                                             UITabBarController *vc = AppDelegate.sharedDelegate.tabs;
                                             
                                             id show = AppDelegate.sharedDelegate.currentlyPlayingShow;
+                                            NSUInteger tab = 0;
                                             
 #ifdef IS_PHISH
-                                            ShowViewController *svc = [[ShowViewController alloc] initWithCompleteShow:show];
+                                            PhishinShow *pshow = (PhishinShow *)show;
+                                            ShowViewController *svc = nil;
+                                            
+                                            if (pshow.venue != nil) {
+                                                svc = [[ShowViewController alloc] initWithCompleteShow:pshow];
+                                            }
+                                            else {
+                                                svc = [[ShowViewController alloc] initWithShowDate:pshow.date];
+                                            }
+                                            
+                                            tab = 1;
 #else
                                             RLShowViewController *svc = [RLShowViewController.alloc initWithShow:show];
+                                            tab = 0;
 #endif
-                                            
-                                            vc.selectedIndex = 0;
-                                            
-                                            [vc.viewControllers[1] pushViewController:svc
-                                                                             animated:YES];
+                                            vc.selectedIndex = tab;
+                                            [vc.viewControllers[tab] pushViewController:svc
+                                                                               animated:YES];
                                         }]];
     
     [a addAction:[UIAlertAction actionWithTitle:@"Cancel"

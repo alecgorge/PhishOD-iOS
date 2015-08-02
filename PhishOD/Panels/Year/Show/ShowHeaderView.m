@@ -9,6 +9,7 @@
 #import "ShowHeaderView.h"
 
 #import "IGDurationHelper.h"
+#import "PHODTrackCell.h"
 #import "PhishinShow.h"
 
 @interface ShowHeaderView ()
@@ -64,6 +65,10 @@
 		}
 		
 		self.uiSoundboardLabel.frame = f;
+        
+        [self.uiDownloadAllButton setImage:[UIImage ipMaskedImageNamed:@"ios-cloud-download-outline"
+                                                                 color:COLOR_PHISH_GREEN]
+                                  forState:UIControlStateNormal];
 	}
 	else {
 		self.uiVenueLabel.text = @"Loading show...";
@@ -93,6 +98,12 @@
 + (CGFloat)cellHeightForShow:(PhishinShow *)show
 				 inTableView:(UITableView *)tableView {
 	return 120.0f;
+}
+
+- (IBAction)uiDownloadAllTapped:(id)sender {
+    if(self.downloadAllTapped) {
+        self.downloadAllTapped();
+    }
 }
 
 - (IBAction)cellTapped:(id)sender {

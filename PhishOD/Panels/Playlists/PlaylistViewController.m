@@ -140,15 +140,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[AppDelegate sharedDelegate].currentlyPlayingShow = track.show;
 	
-    if(!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
-        [AppDelegate.sharedDelegate presentMusicPlayer];
-    }
+//    if(!NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+//        [AppDelegate.sharedDelegate presentMusicPlayer];
+//    }
     
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
                                                            startIndex:startIndex];
     
     [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    
+    [AppDelegate.sharedDelegate saveCurrentState];
 }
 
 @end

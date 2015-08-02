@@ -198,6 +198,15 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
 }
 
 - (void)share {
+    if (IS_IPAD()) {
+        [self shareFromView:(UIView*)self.navigationItem.leftBarButtonItem];
+    }
+    else {
+        [self shareFromView:self.view];
+    }
+}
+
+- (void)shareFromView:(UIView *)view {
     self.shareTime = self.progress * self.duration;
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [IGDurationHelper formattedTimeWithInterval:self.shareTime]]
@@ -207,11 +216,11 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
                                                     otherButtonTitles:@"Share with time", @"Share without time", nil];
     
     if(IS_IPAD()) {
-        [actionSheet showFromBarButtonItem:self.navigationItem.leftBarButtonItem
+        [actionSheet showFromBarButtonItem:(UIBarButtonItem *)view
                                   animated:YES];
     }
     else {
-        [actionSheet showInView:self.view];
+        [actionSheet showInView:view];
     }
 }
 
@@ -246,7 +255,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
             [e endTimedEventWithAttributes:@{@"with_time": @(self.shareTime != 0).stringValue,
                                              @"activity_type": activityType ? activityType : @"",
-                                             @"completed": @(completed).stringValue
+                                             @"completed": @(completed).stringValue,
+                                             @"content": [NSString stringWithFormat:@"%@__%@__%@__%ld", self.currentItem.artist, self.currentItem.album, self.currentItem.title, (long)self.currentItem.id],
+                                             @"content_id": @(self.currentItem.id)
                                              }
                                 andMetrics:@{@"completed": [NSNumber numberWithBool:completed],
                                              @"with_time": [NSNumber numberWithBool:self.shareTime != 0]}];
@@ -518,9 +529,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 								  MPNowPlayingInfoPropertyElapsedPlaybackTime	: @(self.elapsed)
 								  }.mutableCopy;
 	
-//	if(self.currentItem.artwork) {
-//		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
-//	}
+	if(self.currentItem.artwork) {
+		dict[MPMediaItemPropertyArtwork] = self.currentItem.artwork;
+	}
     
     if(self.duration >= 0) {
         dict[MPMediaItemPropertyPlaybackDuration] = @(self.duration);
@@ -550,7 +561,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                @"title": self.currentItem.title,
                                @"album": self.currentItem.album,
                                @"is_cached_attr": @(self.currentItem.isCached).stringValue,
-                               @"artist": self.currentItem.artist}
+                               @"artist": self.currentItem.artist,
+                               @"id": @(self.currentItem.id),
+                               @"duration": [NSNumber numberWithFloat:self.duration],
+                               }
                   andMetrics:@{@"duration": [NSNumber numberWithFloat:self.duration],
                                @"is_cached": [NSNumber numberWithBool:self.currentItem.isCached]}];
         

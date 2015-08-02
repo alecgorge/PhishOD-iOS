@@ -15,6 +15,7 @@
 #import "CuratedPlaylistsViewController.h"
 #import "ToursViewController.h"
 #import "RandomShowViewController.h"
+#import "PHODFavortiesViewController.h"
 
 NS_ENUM(NSInteger, kPHODBrowseRows) {
 	kPHODBrowseRandomShowRow,
@@ -23,6 +24,7 @@ NS_ENUM(NSInteger, kPHODBrowseRows) {
 	kPHODBrowseVenuesRow,
 	kPHODBrowseSongsRow,
 	kPHODBrowseToursRow,
+    kPHODBrowseFavoritesRow,
 	kPHODBrowseRowCount,
 };
 
@@ -87,6 +89,9 @@ NS_ENUM(NSInteger, kPHODBrowseRows) {
 	else if(indexPath.row == kPHODBrowseToursRow) {
 		cell.textLabel.text = @"Tours";
 	}
+    else if(indexPath.row == kPHODBrowseFavoritesRow) {
+        cell.textLabel.text = @"Favorites";
+    }
 	
     return cell;
 }
@@ -111,9 +116,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	else if(indexPath.row == kPHODBrowseSongsRow) {
 		[self pushViewController:[[SongsViewController alloc] init]];
 	}
-	else if(indexPath.row == kPHODBrowseToursRow) {
-		[self pushViewController:[[ToursViewController alloc] init]];
-	}
+    else if(indexPath.row == kPHODBrowseToursRow) {
+        [self pushViewController:[[ToursViewController alloc] init]];
+    }
+    else if(indexPath.row == kPHODBrowseFavoritesRow) {
+        [self pushViewController:[[PHODFavortiesViewController alloc] init]];
+    }
 }
 
 - (void)pushViewController:(UIViewController*)vc {

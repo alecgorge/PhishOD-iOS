@@ -18,6 +18,8 @@
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsPlayEvent.h"
 
+#import "IGAPIClient.h"
+
 @implementation PHODCollectionProvider
 
 - (instancetype)initWithContainingViewController:(UITableViewController *)vc
@@ -287,7 +289,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)selectedCollectionAtIndex:(NSInteger)idx {
-	PhishinShow *show = self.downloaded[idx];
+    PhishinShow *show = self.downloaded[idx];
 	
 	[self.viewController.navigationController pushViewController:[ShowViewController.alloc initWithShow:show]
 														animated:YES];

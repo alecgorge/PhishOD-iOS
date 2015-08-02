@@ -10,15 +10,14 @@
 
 #import "IGThirdPartyKeys.h"
 
-#import <AmazonInsightsSDK/AmazonInsightsSDK.h>
+#import <FlurrySDK/Flurry.h>
+#import <Crashlytics/Crashlytics.h>
 
 #if defined(DEBUG)
 #define RETURN_IN_DEBUG() return;
 #else
 #define RETURN_IN_DEBUG()
 #endif
-
-static id<AIEventClient> eventClient;
 
 @implementation IGEvent
 
@@ -45,24 +44,29 @@ static id<AIEventClient> eventClient;
     
 	RETURN_IN_DEBUG();
     
-    id<AIEvent> e = [eventClient createEventWithEventType:self.eventName];
-    
-    if(attributes) {
-        for (NSString *key in attributes.keyEnumerator) {
-            [e addAttribute:attributes[key]
-                     forKey:key];
-        }
+    if ([self.eventName isEqualToString:@"share"]) {
+        [Answers logShareWithMethod:attributes[@"activity_type"]
+                        contentName:attributes[@"content"]
+                        contentType:@"track"
+                          contentId:attributes[@"content_id"]
+                   customAttributes:d];
+        
+        return;
+    }
+    else if([self.eventName isEqualToString:@"signin"]) {
+        [Answers logLoginWithMethod:attributes[@"method"]
+                            success:attributes[@"success"]
+                   customAttributes:d];
+    }
+    else if([self.eventName isEqualToString:@"played_track"]) {
+        [Answers logContentViewWithName:[NSString stringWithFormat:@"%@ - %@ - %@", attributes[@"artist"], attributes[@"album"], attributes[@"title"]]
+                            contentType:@"track"
+                              contentId:attributes[@"id"]
+                       customAttributes:attributes];
     }
     
-    if(metrics) {
-        for (NSString *key in attributes.keyEnumerator) {
-            [e addMetric:metrics[key]
-                  forKey:key];
-        }
-    }
-    
-    [eventClient recordEvent:e];
-
+    [Flurry endTimedEvent:self.eventName
+           withParameters:attributes];
 }
 
 - (void)endTimedEvent {
@@ -76,17 +80,6 @@ static id<AIEventClient> eventClient;
 
 + (void)setup {
     RETURN_IN_DEBUG();
-    
-    id<AIInsightsOptions> options = [AIAmazonInsights optionsWithAllowEventCollection:YES
-                                                                 withAllowWANDelivery:YES];
-    
-    id<AIInsightsCredentials> credentials = [AIAmazonInsights credentialsWithApplicationKey:IGThirdPartyKeys.sharedInstance.amazonInsightsPublicKey
-                                                                             withPrivateKey:IGThirdPartyKeys.sharedInstance.amazonInsightsPrivateKey];
-    
-    AIAmazonInsights* insights = [AIAmazonInsights insightsWithCredentials:credentials
-                                                               withOptions:options];
-    
-    eventClient = insights.eventClient;
 }
 
 + (void)trackEvent:(NSString *)eventName
@@ -96,23 +89,32 @@ static id<AIEventClient> eventClient;
 	
     RETURN_IN_DEBUG();
     
-    id<AIEvent> e = [eventClient createEventWithEventType:eventName];
-    
-    if(attributes) {
-        for (NSString *key in attributes.keyEnumerator) {
-            [e addAttribute:attributes[key]
-                     forKey:key];
-        }
+    if ([eventName isEqualToString:@"share"]) {
+        [Answers logShareWithMethod:attributes[@"activity_type"]
+                        contentName:attributes[@"content"]
+                        contentType:@"track"
+                          contentId:attributes[@"content_id"]
+                   customAttributes:metrics];
+        
+        return;
+    }
+    else if([eventName isEqualToString:@"signin"]) {
+        [Answers logLoginWithMethod:attributes[@"method"]
+                            success:attributes[@"success"]
+                   customAttributes:attributes];
+    }
+    else if([eventName isEqualToString:@"played_track"]) {
+        [Answers logContentViewWithName:[NSString stringWithFormat:@"%@ - %@ - %@", attributes[@"artist"], attributes[@"album"], attributes[@"title"]]
+                            contentType:@"track"
+                              contentId:attributes[@"id"]
+                       customAttributes:attributes];
     }
     
-    if(metrics) {
-        for (NSString *key in attributes.keyEnumerator) {
-            [e addMetric:metrics[key]
-                  forKey:key];
-        }
-    }
+    [Answers logCustomEventWithName:eventName
+                   customAttributes:attributes];
     
-    [eventClient recordEvent:e];
+    [Flurry logEvent:eventName
+      withParameters:attributes];
 }
 
 + (void)trackEvent:(NSString *)eventName {
@@ -124,6 +126,9 @@ static id<AIEventClient> eventClient;
 + (IGEvent *)startTimedEvent:(NSString *)eventName {
 	dbug(@"[EVENTS] Starting a timed event '%@'", eventName);
 
+    [Flurry logEvent:eventName
+               timed:YES];
+    
 	return [IGEvent.alloc initWithEventName:eventName];
 }
 
