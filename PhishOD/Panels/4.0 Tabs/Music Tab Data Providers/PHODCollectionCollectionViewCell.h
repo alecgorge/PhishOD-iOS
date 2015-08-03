@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 @property (weak, nonatomic) IBOutlet UILabel *uiTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiSubtitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *uiFauxAlbumArt;
+@property (weak, nonatomic) IBOutlet UILabel *uiFauxAlbumArtDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *uiFauxAlbumArtSubtext;
 
 - (void)updateWithCollection:(id<PHODCollection>)col;
 

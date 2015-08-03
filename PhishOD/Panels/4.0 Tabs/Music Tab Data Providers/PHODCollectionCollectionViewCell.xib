@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -19,6 +19,34 @@
                             <constraint firstAttribute="width" constant="112" id="fQ9-4m-rUN"/>
                         </constraints>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-TB-sQp">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album art" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bq-1j-xTg">
+                                <rect key="frame" x="8" y="18" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="an asteroid crashed the album art burned" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEj-8Q-eRT">
+                                <rect key="frame" x="8" y="42" width="96" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.091345988214015961" green="0.5597032904624939" blue="0.44140550494194031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IEj-8Q-eRT" firstAttribute="leading" secondItem="LfT-TB-sQp" secondAttribute="leading" constant="8" id="YyW-Yq-Rx3"/>
+                            <constraint firstAttribute="width" constant="112" id="aS2-Pm-bu3"/>
+                            <constraint firstItem="IEj-8Q-eRT" firstAttribute="top" secondItem="0bq-1j-xTg" secondAttribute="bottom" constant="3" id="dQb-QU-Ndg"/>
+                            <constraint firstAttribute="trailing" secondItem="0bq-1j-xTg" secondAttribute="trailing" constant="8" id="hCM-94-kg2"/>
+                            <constraint firstItem="0bq-1j-xTg" firstAttribute="leading" secondItem="LfT-TB-sQp" secondAttribute="leading" constant="8" id="lZu-QC-qST"/>
+                            <constraint firstAttribute="height" constant="112" id="nbi-TQ-zqF"/>
+                            <constraint firstAttribute="trailing" secondItem="IEj-8Q-eRT" secondAttribute="trailing" constant="8" id="zDK-3f-dHV"/>
+                            <constraint firstItem="0bq-1j-xTg" firstAttribute="top" secondItem="LfT-TB-sQp" secondAttribute="top" constant="18" id="zLn-E1-C85"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-y0-GfJ" userLabel="Title">
                         <rect key="frame" x="5" y="112" width="107" height="22"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
@@ -37,8 +65,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5Ls-y0-GfJ" secondAttribute="trailing" id="6R2-XN-9CA"/>
+                <constraint firstItem="LfT-TB-sQp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AyW-Sm-Tc3"/>
+                <constraint firstItem="LfT-TB-sQp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="E7U-Gh-VDl"/>
                 <constraint firstItem="Nft-ZC-sLE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Eoz-yH-dlT"/>
+                <constraint firstItem="5Ls-y0-GfJ" firstAttribute="top" secondItem="LfT-TB-sQp" secondAttribute="bottom" id="FkF-FV-LNu"/>
                 <constraint firstAttribute="bottom" secondItem="5Uq-Y5-7N7" secondAttribute="bottom" id="M8b-br-6xY"/>
+                <constraint firstAttribute="trailing" secondItem="LfT-TB-sQp" secondAttribute="trailing" id="MSn-AX-czY"/>
                 <constraint firstAttribute="trailing" secondItem="Nft-ZC-sLE" secondAttribute="trailing" id="OgB-7H-rFL"/>
                 <constraint firstItem="5Uq-Y5-7N7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="aOt-0n-s2g"/>
                 <constraint firstAttribute="trailing" secondItem="5Uq-Y5-7N7" secondAttribute="trailing" id="fHc-Y8-Co7"/>
@@ -49,6 +81,9 @@
             </constraints>
             <size key="customSize" width="96" height="148"/>
             <connections>
+                <outlet property="uiFauxAlbumArt" destination="LfT-TB-sQp" id="1SS-U3-bcY"/>
+                <outlet property="uiFauxAlbumArtDateLabel" destination="0bq-1j-xTg" id="YRA-Rm-PHw"/>
+                <outlet property="uiFauxAlbumArtSubtext" destination="IEj-8Q-eRT" id="0oS-GH-qdu"/>
                 <outlet property="uiImageView" destination="Nft-ZC-sLE" id="xMa-P9-gee"/>
                 <outlet property="uiSubtitleLabel" destination="5Uq-Y5-7N7" id="PHb-qA-i5o"/>
                 <outlet property="uiTitleLabel" destination="5Ls-y0-GfJ" id="7TU-SK-KKo"/>
