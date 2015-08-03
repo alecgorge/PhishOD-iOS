@@ -14,6 +14,7 @@
 
 - (instancetype)initWithYear:(IGYear *)year;
 - (instancetype)initWithVenue:(IGVenue *)venue;
+- (instancetype)initWithTopShows;
 
 @property (nonatomic) IGYear *year;
 @property (nonatomic) IGVenue *venue;

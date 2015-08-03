@@ -12,9 +12,16 @@
 
 #import "IGShowCell.h"
 
+typedef NS_ENUM(NSInteger, RLShowCollectionType) {
+    RLShowCollectionYear,
+    RLShowCollectionVenue,
+    RLShowCollectionTopShows
+};
+
 @interface RLShowCollectionViewController ()
 
 @property (nonatomic) NSArray *shows;
+@property (nonatomic) RLShowCollectionType collectionType;
 
 @end
 
@@ -24,6 +31,7 @@
     if (self = [super init]) {
         self.year = year;
         self.venue = nil;
+        self.collectionType = RLShowCollectionYear;
     }
     return self;
 }
@@ -32,6 +40,22 @@
     if (self = [super init]) {
         self.year = nil;
         self.venue = venue;
+        self.collectionType = RLShowCollectionVenue;
+    }
+    return self;
+}
+
+- (instancetype)initWithTopShows {
+    if (self = [super init]) {
+        self.year = nil;
+        self.venue = nil;
+        self.collectionType = RLShowCollectionTopShows;
+        
+        self.tabBarItem = [UITabBarItem.alloc initWithTitle:@"Top Shows"
+                                                      image:[UIImage imageNamed:@"glyphicons-80-signal"]
+                                                        tag:0];
+        
+        self.navigationController.tabBarItem = self.tabBarItem;
     }
     return self;
 }
@@ -50,16 +74,19 @@
 }
 
 - (void)updateTitle {
-    if (self.year) {
+    if(self.collectionType == RLShowCollectionYear) {
         self.title = [NSString stringWithFormat:@"%ld", self.year.year];
     }
-    else if(self.venue) {
+    else if(self.collectionType == RLShowCollectionVenue) {
         self.title = self.venue.name;
+    }
+    else if(self.collectionType == RLShowCollectionTopShows) {
+        self.title = @"Top Shows";
     }
 }
 
 - (void)refresh:(id)sender {
-    if(self.year) {
+    if(self.collectionType == RLShowCollectionYear) {
         [IGAPIClient.sharedInstance year:self.year.year
                                  success:^(IGYear *y) {
                                      self.year = y;
@@ -71,7 +98,7 @@
                                      [super refresh:sender];
                                  }];
     }
-    else if(self.venue) {
+    else if(self.collectionType == RLShowCollectionVenue) {
         [IGAPIClient.sharedInstance venue:self.venue
                                   success:^(IGVenue *ven) {
                                       self.venue = ven;
@@ -83,6 +110,16 @@
                                       [self.tableView reloadData];
                                       [super refresh:sender];
                                   }];
+    }
+    else if(self.collectionType == RLShowCollectionTopShows) {
+        [IGAPIClient.sharedInstance topShows:^(NSArray *shows) {
+            self.shows = shows;
+            
+            [self updateTitle];
+            
+            [self.tableView reloadData];
+            [super refresh:sender];
+        }];
     }
 }
 

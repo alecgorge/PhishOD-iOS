@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -62,11 +62,22 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-Lw-RZR">
+                        <rect key="frame" x="172" y="10" width="27" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="27" id="Rhq-wy-Qw4"/>
+                            <constraint firstAttribute="height" constant="21" id="oQq-dE-9JN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="z3C-O2-kNp" firstAttribute="bottom" secondItem="COE-tE-53f" secondAttribute="bottomMargin" id="2bp-RT-9aa"/>
                     <constraint firstItem="YdB-3u-WXv" firstAttribute="top" secondItem="3XR-uc-wT1" secondAttribute="bottom" constant="7" id="7pJ-PW-qqv"/>
                     <constraint firstItem="z3C-O2-kNp" firstAttribute="trailing" secondItem="COE-tE-53f" secondAttribute="trailingMargin" id="9Yo-3Z-ubX"/>
+                    <constraint firstItem="jok-RX-4oj" firstAttribute="leading" secondItem="gVS-Lw-RZR" secondAttribute="trailing" constant="3" id="FgG-zP-SWa"/>
                     <constraint firstItem="FCQ-Vh-sZf" firstAttribute="top" secondItem="COE-tE-53f" secondAttribute="topMargin" constant="2" id="PIA-jn-LYN"/>
                     <constraint firstItem="YdB-3u-WXv" firstAttribute="leading" secondItem="COE-tE-53f" secondAttribute="leadingMargin" id="Ukb-Wb-kaa"/>
                     <constraint firstItem="jok-RX-4oj" firstAttribute="trailing" secondItem="COE-tE-53f" secondAttribute="trailingMargin" id="WaA-ni-7IG"/>
@@ -75,6 +86,7 @@
                     <constraint firstItem="3XR-uc-wT1" firstAttribute="leading" secondItem="COE-tE-53f" secondAttribute="leadingMargin" id="dxK-B1-6T4"/>
                     <constraint firstItem="jok-RX-4oj" firstAttribute="top" secondItem="COE-tE-53f" secondAttribute="topMargin" constant="-3" id="hlR-FE-XoE"/>
                     <constraint firstItem="3XR-uc-wT1" firstAttribute="top" secondItem="COE-tE-53f" secondAttribute="topMargin" id="r3i-Ju-XG1"/>
+                    <constraint firstItem="gVS-Lw-RZR" firstAttribute="top" secondItem="COE-tE-53f" secondAttribute="topMargin" constant="2" id="vvN-Sv-397"/>
                     <constraint firstItem="z3C-O2-kNp" firstAttribute="top" secondItem="jok-RX-4oj" secondAttribute="bottom" constant="3" id="w8z-On-GME"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,10 +94,11 @@
                 <outlet property="dateLabel" destination="3XR-uc-wT1" id="e3w-Qf-zZs"/>
                 <outlet property="durationLabel" destination="z3C-O2-kNp" id="teq-hV-pLi"/>
                 <outlet property="ratingView" destination="jok-RX-4oj" id="tTm-dE-L4w"/>
+                <outlet property="reviewCount" destination="gVS-Lw-RZR" id="e2r-0E-5HH"/>
                 <outlet property="sbdLabel" destination="FCQ-Vh-sZf" id="MVs-by-oxJ"/>
                 <outlet property="venueLabel" destination="YdB-3u-WXv" id="BPt-vR-miW"/>
             </connections>
-            <point key="canvasLocation" x="288" y="552"/>
+            <point key="canvasLocation" x="288" y="551.5"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

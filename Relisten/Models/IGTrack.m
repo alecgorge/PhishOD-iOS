@@ -11,7 +11,23 @@
 #import "IGAPIClient.h"
 #import "IGShow.h"
 
+#import <NSObject-NSCoding/NSObject+NSCoding.h>
+
 @implementation IGTrack
+
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//    if (self = [super init]) {
+//        [self autoDecode:aDecoder];
+//    }
+//    return self;
+//}
+//
+//- (void)encodeWithCoder:(NSCoder *)aCoder {
+//    [self autoEncodeWithCoder:aCoder
+//                 andTestBlock:^BOOL(NSString *propName) {
+//                    return ![propName isEqualToString:@"show"];
+//                }];
+//}
 
 - (NSURL<Ignore> *)mp3 {
     return [NSURL URLWithString:self.file];

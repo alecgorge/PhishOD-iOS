@@ -69,6 +69,10 @@
     }
 }
 
+- (MPMediaItemArtwork *)artwork {
+    return nil;
+}
+
 - (NSInteger)track {
     return self.trackNumber;
 }

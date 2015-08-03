@@ -10,6 +10,7 @@
 
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 #import "AppDelegate.h"
 #import "AGMediaPlayerViewController.h"
@@ -19,6 +20,7 @@
 #import "RLShowReviewsViewController.h"
 #import "IGSourceCell.h"
 #import "RLShowCollectionViewController.h"
+#import "PHODFavoritesManager.h"
 
 #import "PHODTrackCell.h"
 
@@ -32,6 +34,8 @@ NS_ENUM(NSInteger, IGShowRows) {
     IGShowRowSource,
     IGShowRowReviews,
     IGShowRowVenue,
+    IGShowRowFavorite,
+    IGShowRowDownloadAll,
     IGShowRowCount
 };
 
@@ -72,6 +76,10 @@ NS_ENUM(NSInteger, IGShowRows) {
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0f;
+    
+    [AFNetworkReachabilityManager.sharedManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)dealloc {
@@ -150,6 +158,41 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
+        else if(indexPath.row == IGShowRowFavorite) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
+            
+            if (!cell) {
+                cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleValue1
+                                            reuseIdentifier:@"plain"];
+            }
+            
+            if([PHODFavoritesManager.sharedInstance showDateIsAFavorite:self.show.displayDate]) {
+                cell.textLabel.text = @"Unfavorite this show";
+            }
+            else {
+                cell.textLabel.text = @"Favorite this show";
+            }
+            cell.detailTextLabel.text = @"";
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
+        else if(indexPath.row == IGShowRowDownloadAll) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
+            
+            if (!cell) {
+                cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleValue1
+                                            reuseIdentifier:@"plain"];
+            }
+            
+            cell.textLabel.text = @"Download the whole show";
+            cell.detailTextLabel.text = @"";
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
     }
     else {
         PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
@@ -192,6 +235,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             
             [self.navigationController pushViewController:vc
                                                  animated:YES];
+        }
+        else if(row == IGShowRowFavorite) {
+            if([PHODFavoritesManager.sharedInstance showDateIsAFavorite:self.show.displayDate]) {
+                [PHODFavoritesManager.sharedInstance removeFavoriteShowDate:self.show.displayDate];
+            }
+            else {
+                [PHODFavoritesManager.sharedInstance addFavoriteShowDate:self.show.displayDate];
+            }
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:IGShowSectionInfo]
+                          withRowAnimation:UITableViewRowAnimationNone];
+        }
+        else if(row == IGShowRowDownloadAll) {
+            for (NSObject<PHODGenericTrack> *track in self.show.tracks) {
+                [track.downloader downloadItem:track.downloadItem];
+            }
+            
+            [self.tableView reloadData];
         }
         
         return;

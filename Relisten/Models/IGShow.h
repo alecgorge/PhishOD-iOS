@@ -17,7 +17,7 @@
 @protocol IGShow
 @end
 
-@interface IGShow : JSONModel
+@interface IGShow : JSONModel<NSCoding>
 
 @property (nonatomic, assign) NSInteger recordingCount;
 
@@ -28,6 +28,7 @@
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, strong) NSString *archiveIdentifier;
 @property (nonatomic, assign) NSInteger id;
+@property (nonatomic, assign) NSInteger ArtistId;
 @property (nonatomic, assign) BOOL isSoundboard;
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, assign) NSInteger reviewsCount;

@@ -20,6 +20,8 @@
 #import "ShowViewController.h"
 #import "RLArtistTabViewController.h"
 #import "RLShowViewController.h"
+#import "IGShow.h"
+#import "PHODFavoritesManager.h"
 
 @interface NowPlayingBarViewController ()
 
@@ -87,6 +89,25 @@
                                         handler:^(UIAlertAction *action) {
                                             [self favoriteTapped:self.buttonMore];
                                         }]];
+#else
+    PHODFavoritesManager *fav = PHODFavoritesManager.sharedInstance;
+    IGShow *currShow = AppDelegate.sharedDelegate.currentlyPlayingShow;
+    if(currShow) {
+        BOOL isFav = [fav showDateIsAFavorite:currShow.displayDate];
+        NSString *title = isFav ? @"Unfavorite show" : @"Favorite show";
+        
+        
+        [a addAction:[UIAlertAction actionWithTitle:title
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+                                                if (isFav) {
+                                                    [fav removeFavoriteShowDate:currShow.displayDate];
+                                                }
+                                                else {
+                                                    [fav addFavoriteShowDate:currShow.displayDate];
+                                                }
+                                            }]];
+    }
 #endif
     
     [a addAction:[UIAlertAction actionWithTitle:@"Share"

@@ -8,10 +8,11 @@
 
 #import "IGShow.h"
 
-#import <NSObject-NSCoding/NSObject+NSCoding.h>
-#import <EGOCache/EGOCache.h>
+#import "PHODPersistence.h"
 
 @implementation IGShow
+
+#pragma mark - JSONModel
 
 + (JSONKeyMapper*)keyMapper {
 	JSONKeyMapper *j = [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
@@ -27,12 +28,15 @@
 }
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
-    if([propertyName isEqualToString:@"recordingCount"]) {
+    if([propertyName isEqualToString:@"recordingCount"]
+    || [propertyName isEqualToString:@"ArtistId"]) {
         return YES;
     }
     
     return NO;
 }
+
+#pragma makr - Caching
 
 - (NSString *)cacheKey {
     return [IGShow cacheKeyForShowId:self.id];
@@ -43,21 +47,10 @@
         return nil;
     }
     
-    [EGOCache.globalCache setObject:self
-                             forKey:self.cacheKey];
+    [PHODPersistence.sharedInstance setObject:self
+                                       forKey:self.cacheKey];
     
     return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super init]) {
-        [self autoDecode:aDecoder];
-    }
-    return self;
-}
-
--(void)encodeWithCoder:(NSCoder *)coder {
-    [self autoEncodeWithCoder:coder];
 }
 
 - (NSUInteger)hash {
@@ -74,12 +67,21 @@
     return [super isEqual:object];
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        for (IGTrack *t in self.tracks) {
+            t.show = self;
+        }
+    }
+    return self;
+}
+
 + (NSString *)cacheKeyForShowId:(NSInteger)id {
     return [@"relisten.show." stringByAppendingString:@(id).stringValue];
 }
 
 + (IGShow *)loadShowFromCacheForShowId:(NSInteger)id {
-    return (IGShow *)[EGOCache.globalCache objectForKey:[self cacheKeyForShowId:id]];
+    return (IGShow *)[PHODPersistence.sharedInstance objectForKey:[self cacheKeyForShowId:id]];
 }
 
 @end

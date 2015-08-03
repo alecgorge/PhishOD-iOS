@@ -12,6 +12,7 @@
 #import "IGYearCell.h"
 #import "RLShowCollectionViewController.h"
 #import "RLShowSourcesViewController.h"
+#import "RLHistoryViewController.h"
 #import "RLArtistTabViewController.h"
 #import "AppDelegate.h"
 
@@ -86,7 +87,7 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
 	if(section == RLBrowseRandomShowSection) {
-		return 1;
+		return 2;
 	}
 	else if(section == RLBrowseYearSection) {
 		return self.years ? self.years.count : 0;
@@ -107,7 +108,9 @@ titleForHeaderInSection:(NSInteger)section {
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == RLBrowseRandomShowSection) {
-		return 88.0f;
+        if(indexPath.row == 0) {
+            return 88.0f;
+        }
 	}
 	else if(indexPath.section == RLBrowseYearSection) {
 		return IGYearCell.height;
@@ -124,7 +127,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 		cell = [tableView dequeueReusableCellWithIdentifier:@"cell"
 											   forIndexPath:indexPath];
 		
-		cell.textLabel.text = @"Random Show";
+        if(indexPath.row == 0) {
+            cell.textLabel.text = @"Random Show";
+        }
+        else if(indexPath.row == 1) {
+            cell.textLabel.text = @"Recently Played Shows";
+        }
+        
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	else if(indexPath.section == RLBrowseYearSection) {
@@ -143,15 +152,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    if(indexPath.section == 0) {
-        RLShowSourcesViewController *y = [RLShowSourcesViewController.alloc initWithRandomDate];
-        [self.navigationController pushViewController:y
-                                             animated:YES];
-        
-        return;
-    }
+    UIViewController *y = nil;
     
-    RLShowCollectionViewController *y = [RLShowCollectionViewController.alloc initWithYear:self.years[indexPath.row]];
+    if(indexPath.section == 0) {
+        if (indexPath.row == 1) {
+            y = RLHistoryViewController.new;
+        }
+        else {
+            y = [RLShowSourcesViewController.alloc initWithRandomDate];
+        }
+    }
+    else {
+        y = [RLShowCollectionViewController.alloc initWithYear:self.years[indexPath.row]];
+    }
     
     [self.navigationController pushViewController:y
                                          animated:YES];

@@ -12,6 +12,9 @@
 
 #import "RLBrowseTableViewController.h"
 #import "RLVenuesViewController.h"
+#import "RLShowCollectionViewController.h"
+#import "PHODDownloadTabTableViewController.h"
+#import "PHODFavortiesViewController.h"
 
 @interface RLArtistTabViewController ()
 
@@ -31,14 +34,37 @@
     
     RLVenuesViewController *venues = RLVenuesViewController.new;
     UINavigationController *venuesNav = [UINavigationController.alloc initWithRootViewController:venues];
+
+    RLShowCollectionViewController *top = RLShowCollectionViewController.alloc.initWithTopShows;
+    UINavigationController *topNav = [UINavigationController.alloc initWithRootViewController:top];
     
+    PHODDownloadTabTableViewController *dl = PHODDownloadTabTableViewController.new;
+    UINavigationController *dlNav = [UINavigationController.alloc initWithRootViewController:dl];
+    
+    PHODFavortiesViewController *fav = PHODFavortiesViewController.new;
+    UINavigationController *favNav = [UINavigationController.alloc initWithRootViewController:fav];
+
 	browseNav.delegate = self.navDelegate;
     venuesNav.delegate = self.navDelegate;
+    topNav.delegate = self.navDelegate;
+    dlNav.delegate = self.navDelegate;
+    favNav.delegate = self.navDelegate;
     
 	self.viewControllers = @[
 							 browseNav,
-                             venuesNav
+                             venuesNav,
+                             topNav,
+                             favNav,
+                             dlNav
 							 ];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+        self.selectedIndex = 4;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {

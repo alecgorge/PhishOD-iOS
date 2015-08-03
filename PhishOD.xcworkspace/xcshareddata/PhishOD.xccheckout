@@ -5,17 +5,15 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2893EBF5-651B-4D81-89EC-E2B8D9973DB6</string>
+	<string>D0E5CD8F-29E6-48CE-A53B-6830BF85F68E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>PhishOD</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>18FC7AED59755625022E926996A6226FE280EBBC</key>
-		<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
+		<string>github.com:alecgorge/PhishOD-iOS.git</string>
 		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
-		<string>https://github.com/alecgorge/AGAudioPlayer.git</string>
-		<key>43489CB85F3649CAF306BAEEA8969B19A7A7DEC9</key>
-		<string>https://github.com/alecgorge/OrigamiEngine.git</string>
+		<string>github.com:alecgorge/AGAudioPlayer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PhishOD.xcworkspace</string>
@@ -25,11 +23,9 @@
 		<string>..</string>
 		<key>256B465BA82CB900AC32B2F2BC3A5432B17C8342</key>
 		<string>../../AGAudioPlayer</string>
-		<key>43489CB85F3649CAF306BAEEA8969B19A7A7DEC9</key>
-		<string>../../OrigamiEngine</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/alecgorge/PhishOD-iOS.git</string>
+	<string>github.com:alecgorge/PhishOD-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -43,14 +39,6 @@
 			<string>256B465BA82CB900AC32B2F2BC3A5432B17C8342</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AGAudioPlayer</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>43489CB85F3649CAF306BAEEA8969B19A7A7DEC9</string>
-			<key>IDESourceControlWCCName</key>
-			<string>OrigamiEngine</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

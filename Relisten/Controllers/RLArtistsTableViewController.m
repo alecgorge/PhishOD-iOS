@@ -13,6 +13,8 @@
 #import "RLArtistTabViewController.h"
 #import "IGAPIClient.h"
 #import "AppDelegate.h"
+#import "RLSettingsViewController.h"
+#import "PHODPersistence.h"
 
 typedef NS_ENUM(NSInteger, RLArtistsSections) {
 	RLArtistsFeaturedSection,
@@ -26,6 +28,8 @@ static NSArray *featuredArtists;
 
 @property (nonatomic) NSArray *featuredArtists;
 @property (nonatomic) NSArray *artists;
+
+@property (nonatomic) BOOL shouldAutoshow;
 
 @end
 
@@ -45,9 +49,47 @@ static NSArray *featuredArtists;
     [super viewDidLoad];
 	
 	self.title = @"Relisten";
+    self.shouldAutoshow = YES;
+
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithImage:[UIImage settingsNavigationIcon]
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(showSettings)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.shouldAutoshow) {
+        IGAPIClient.sharedInstance.artist = [PHODPersistence.sharedInstance objectForKey:@"current_artist"];
+        
+        if(IGAPIClient.sharedInstance.artist != nil) {
+            [self performSelector:@selector(presentArtistTabs:)
+                       withObject:@(NO)
+                       afterDelay:0.0];
+        }
+        
+        self.shouldAutoshow = NO;
+    }
+}
+
+- (void)showSettings {
+    UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:RLSettingsViewController.new];
+    
+    [AppDelegate.sharedDelegate.tabs presentViewController:navController
+                                                  animated:YES
+                                                completion:nil];
 }
 
 - (void)refresh:(id)sender {
+    self.artists = [PHODPersistence.sharedInstance objectForKey:@"artists_alpha"];
+    self.featuredArtists = [PHODPersistence.sharedInstance objectForKey:@"artists_featured"];
+    
+    if(self.artists != nil && self.featuredArtists != nil) {
+        [self.tableView reloadData];
+        [super refresh:sender];
+    }
+    
 	[IGAPIClient.sharedInstance artists:^(NSArray *a) {
 		self.artists = [a sortedArrayUsingComparator:^NSComparisonResult(IGArtist *obj1,
 																		 IGArtist *obj2) {
@@ -61,6 +103,12 @@ static NSArray *featuredArtists;
 				return [artist.name isEqualToString:object];
 			}];
 		}];
+        
+        [PHODPersistence.sharedInstance setObject:self.artists
+                                           forKey:@"artists_alpha"];
+        
+        [PHODPersistence.sharedInstance setObject:self.featuredArtists
+                                           forKey:@"artists_featured"];
 		
 		[self.tableView reloadData];
 		[super refresh:sender];
@@ -141,14 +189,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 							 animated:YES];
 	
 	IGAPIClient.sharedInstance.artist = [self artistForIndexPath:indexPath];
+    
+    [PHODPersistence.sharedInstance setObject:IGAPIClient.sharedInstance.artist
+                                       forKey:@"current_artist"];
 
-	RLArtistTabViewController *vc = RLArtistTabViewController.new;
+    [self presentArtistTabs: @(YES)];
+}
+
+- (void)presentArtistTabs:(NSNumber *)animated {
+    RLArtistTabViewController *vc = RLArtistTabViewController.new;
     vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     AppDelegate.sharedDelegate.tabs = vc;
     
-	[self.navigationController presentViewController:vc
-                                            animated:YES
+    [self.navigationController presentViewController:vc
+                                            animated:animated.boolValue
                                           completion:nil];
 }
 

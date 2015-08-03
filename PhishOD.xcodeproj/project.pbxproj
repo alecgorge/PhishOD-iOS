@@ -144,14 +144,12 @@
 		7C10A8461B33B51700692DD3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C51175DC937005EB2E7 /* MediaPlayer.framework */; };
 		7C10A8471B33B51700692DD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4F175DC5B2005EB2E7 /* QuartzCore.framework */; };
 		7C10A8481B33B51700692DD3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C4D175DC5AC005EB2E7 /* CFNetwork.framework */; };
-		7C10A8491B33B51700692DD3 /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */; };
 		7C10A84A1B33B51700692DD3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C3A175D2AE5005EB2E7 /* AVFoundation.framework */; };
 		7C10A84B1B33B51700692DD3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C35175D1679005EB2E7 /* SystemConfiguration.framework */; };
 		7C10A84C1B33B51700692DD3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C33175D1675005EB2E7 /* MobileCoreServices.framework */; };
 		7C10A84D1B33B51700692DD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C04175D0C32005EB2E7 /* UIKit.framework */; };
 		7C10A84E1B33B51700692DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C06175D0C32005EB2E7 /* Foundation.framework */; };
 		7C10A84F1B33B51700692DD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */; };
-		7C10A8501B33B51700692DD3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 		7C10A8521B33B51700692DD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C518C0D175D0C32005EB2E7 /* InfoPlist.strings */; };
 		7C10A8531B33B51700692DD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B48B551973867E00DDF5C3 /* Images.xcassets */; };
 		7C10A8541B33B51700692DD3 /* PHODCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A91B04E46100C88DE2 /* PHODCollectionTableViewCell.xib */; };
@@ -254,6 +252,14 @@
 		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
 		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
 		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
+		7C35781F1B58B32F00329368 /* RLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C35781E1B58B32F00329368 /* RLSettingsViewController.m */; };
+		7C3578221B58B6EB00329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
+		7C3578231B58B87800329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
+		7C3578261B58BA7B00329368 /* PHODFavortiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578251B58BA7B00329368 /* PHODFavortiesViewController.m */; };
+		7C3578271B58BA7B00329368 /* PHODFavortiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578251B58BA7B00329368 /* PHODFavortiesViewController.m */; };
+		7C35782A1B5AC60900329368 /* RLHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578291B5AC60900329368 /* RLHistoryViewController.m */; };
+		7C3578311B5C055800329368 /* PHODPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578301B5C055800329368 /* PHODPersistence.m */; };
+		7C3578321B5C055800329368 /* PHODPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578301B5C055800329368 /* PHODPersistence.m */; };
 		7C36A7351B347B2E0004E766 /* RLArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */; };
 		7C36A7391B3486BF0004E766 /* RLArtistTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */; };
 		7C36A7401B348A9A0004E766 /* RLBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */; };
@@ -281,7 +287,6 @@
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
 		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
-		7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */; };
 		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
 		7C6AE4FE1787BA2300AAED06 /* RefreshableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */; };
 		7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AE5141788AFDD00AAED06 /* EventInterceptWindow.m */; };
@@ -321,6 +326,7 @@
 		7C97CE191B438B3B0010B82B /* RLShowSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE181B438B3B0010B82B /* RLShowSourcesViewController.m */; };
 		7C97CE1D1B4394650010B82B /* IGSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE1B1B4394650010B82B /* IGSourceCell.m */; };
 		7C97CE1E1B4394650010B82B /* IGSourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C97CE1C1B4394650010B82B /* IGSourceCell.xib */; };
+		7C9BFB751B640DBC00F5CF29 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9BFB741B640DBC00F5CF29 /* libPods.a */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -367,6 +373,10 @@
 		7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2B81198AB67400D17353 /* ShowHeaderView.xib */; };
 		7CDF2B85198AC59100D17353 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */; };
 		7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */; };
+		7CE27F9D1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */; };
+		7CE27F9E1B5C4B7200507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */; };
+		7CE27FA01B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
+		7CE27FA11B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
 		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
 		C56C2B5619F05979004F5637 /* PTSHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmap.m */; };
 		C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */; };
@@ -380,7 +390,7 @@
 		C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */; };
 		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
 		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
-		EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
+		F0A30A44C27E6EEC0470F01D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 		F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE31973813100DDF5C3 /* VenuesViewController.m */; };
 		F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE51973813100DDF5C3 /* VenueViewController.m */; };
 		F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */; };
@@ -420,8 +430,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3875788D3908365C67487089 /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
-		50E0BDA5FC9C3902A351CB71 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
 		7C0623F0198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloadedShowsViewController.h; sourceTree = "<group>"; };
 		7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloadedShowsViewController.m; sourceTree = "<group>"; };
 		7C0623F3198C2AEC002D31E5 /* DownloadQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadQueueViewController.h; sourceTree = "<group>"; };
@@ -507,6 +516,18 @@
 		7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGThirdPartyKeys.h; sourceTree = "<group>"; };
 		7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGThirdPartyKeys.m; sourceTree = "<group>"; };
 		7C27BA7B19942FC000E5AEAE /* API keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API keys.plist"; sourceTree = "<group>"; };
+		7C35781D1B58B32F00329368 /* RLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLSettingsViewController.h; path = Controllers/RLSettingsViewController.h; sourceTree = "<group>"; };
+		7C35781E1B58B32F00329368 /* RLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLSettingsViewController.m; path = Controllers/RLSettingsViewController.m; sourceTree = "<group>"; };
+		7C3578201B58B6EB00329368 /* PHODFavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODFavoritesManager.h; path = API/PHODFavoritesManager.h; sourceTree = "<group>"; };
+		7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODFavoritesManager.m; path = API/PHODFavoritesManager.m; sourceTree = "<group>"; };
+		7C3578241B58BA7B00329368 /* PHODFavortiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODFavortiesViewController.h; path = Controllers/Panels/Favorites/PHODFavortiesViewController.h; sourceTree = "<group>"; };
+		7C3578251B58BA7B00329368 /* PHODFavortiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODFavortiesViewController.m; path = Controllers/Panels/Favorites/PHODFavortiesViewController.m; sourceTree = "<group>"; };
+		7C3578281B5AC60900329368 /* RLHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLHistoryViewController.h; path = Controllers/Panels/Browse/RLHistoryViewController.h; sourceTree = "<group>"; };
+		7C3578291B5AC60900329368 /* RLHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLHistoryViewController.m; path = Controllers/Panels/Browse/RLHistoryViewController.m; sourceTree = "<group>"; };
+		7C35782B1B5AC88D00329368 /* PhishOD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PhishOD.entitlements; sourceTree = "<group>"; };
+		7C35782C1B5AC89900329368 /* Relisten.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Relisten.entitlements; sourceTree = "<group>"; };
+		7C35782F1B5C055800329368 /* PHODPersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODPersistence.h; path = Shared/ObjectivePersistence/PHODPersistence.h; sourceTree = "<group>"; };
+		7C3578301B5C055800329368 /* PHODPersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODPersistence.m; path = Shared/ObjectivePersistence/PHODPersistence.m; sourceTree = "<group>"; };
 		7C36A7331B347B2E0004E766 /* RLArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLArtistsTableViewController.h; path = Controllers/RLArtistsTableViewController.h; sourceTree = "<group>"; };
 		7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLArtistsTableViewController.m; path = Controllers/RLArtistsTableViewController.m; sourceTree = "<group>"; };
 		7C36A7371B3486BF0004E766 /* RLArtistTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLArtistTabViewController.h; path = Controllers/RLArtistTabViewController.h; sourceTree = "<group>"; };
@@ -554,7 +575,6 @@
 		7C603029182068DA0088F651 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7C63C7CE199437730022F37F /* IGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEvents.h; sourceTree = "<group>"; };
 		7C63C7CF199437730022F37F /* IGEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEvents.m; sourceTree = "<group>"; };
-		7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmazonInsightsSDK.framework; sourceTree = "<group>"; };
 		7C63C7D3199445AD0022F37F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7C6AE4FC1787BA2300AAED06 /* RefreshableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshableTableViewController.h; sourceTree = "<group>"; };
 		7C6AE4FD1787BA2300AAED06 /* RefreshableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshableTableViewController.m; sourceTree = "<group>"; };
@@ -622,6 +642,7 @@
 		7C97CE1A1B4394650010B82B /* IGSourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGSourceCell.h; path = Controllers/Cells/IGSourceCell.h; sourceTree = "<group>"; };
 		7C97CE1B1B4394650010B82B /* IGSourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGSourceCell.m; path = Controllers/Cells/IGSourceCell.m; sourceTree = "<group>"; };
 		7C97CE1C1B4394650010B82B /* IGSourceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IGSourceCell.xib; path = Controllers/Cells/IGSourceCell.xib; sourceTree = "<group>"; };
+		7C9BFB741B640DBC00F5CF29 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -706,7 +727,12 @@
 		7CDF2B84198AC59100D17353 /* ShowDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailsViewController.m; sourceTree = "<group>"; };
 		7CDF2B89198AEAE600D17353 /* PhishinDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloader.h; sourceTree = "<group>"; };
 		7CDF2B8A198AEAE600D17353 /* PhishinDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloader.m; sourceTree = "<group>"; };
+		7CE27F9B1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "JSONValueTransformer+NSDateFromNSStringMilliseconds.h"; path = "API/JSONValueTransformer+NSDateFromNSStringMilliseconds.h"; sourceTree = "<group>"; };
+		7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JSONValueTransformer+NSDateFromNSStringMilliseconds.m"; path = "API/JSONValueTransformer+NSDateFromNSStringMilliseconds.m"; sourceTree = "<group>"; };
+		7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		930296C832BD58F575B019AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapQuery.h; sourceTree = "<group>"; };
 		C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapQuery.m; sourceTree = "<group>"; };
@@ -804,7 +830,6 @@
 		F1B48B58197388C200DDF5C3 /* UIImage+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Icons.m"; sourceTree = "<group>"; };
 		F1B48B5B1973B02600DDF5C3 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
 		F1B48B5C1973B02600DDF5C3 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
-		F4589C29B163E5D36E0B550B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -820,14 +845,13 @@
 				7C10A8461B33B51700692DD3 /* MediaPlayer.framework in Frameworks */,
 				7C10A8471B33B51700692DD3 /* QuartzCore.framework in Frameworks */,
 				7C10A8481B33B51700692DD3 /* CFNetwork.framework in Frameworks */,
-				7C10A8491B33B51700692DD3 /* AmazonInsightsSDK.framework in Frameworks */,
 				7C10A84A1B33B51700692DD3 /* AVFoundation.framework in Frameworks */,
 				7C10A84B1B33B51700692DD3 /* SystemConfiguration.framework in Frameworks */,
 				7C10A84C1B33B51700692DD3 /* MobileCoreServices.framework in Frameworks */,
 				7C10A84D1B33B51700692DD3 /* UIKit.framework in Frameworks */,
 				7C10A84E1B33B51700692DD3 /* Foundation.framework in Frameworks */,
 				7C10A84F1B33B51700692DD3 /* CoreGraphics.framework in Frameworks */,
-				7C10A8501B33B51700692DD3 /* libPods.a in Frameworks */,
+				F0A30A44C27E6EEC0470F01D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +859,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C9BFB751B640DBC00F5CF29 /* libPods.a in Frameworks */,
 				7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */,
 				7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */,
 				7C7ED3AA1801B22F004F55DF /* CoreLocation.framework in Frameworks */,
@@ -843,14 +868,12 @@
 				7C518C52175DC937005EB2E7 /* MediaPlayer.framework in Frameworks */,
 				7C518C50175DC5B2005EB2E7 /* QuartzCore.framework in Frameworks */,
 				7C518C4E175DC5AC005EB2E7 /* CFNetwork.framework in Frameworks */,
-				7C63C7D2199445510022F37F /* AmazonInsightsSDK.framework in Frameworks */,
 				7C518C3B175D2AE5005EB2E7 /* AVFoundation.framework in Frameworks */,
 				7C518C36175D1679005EB2E7 /* SystemConfiguration.framework in Frameworks */,
 				7C518C34175D1675005EB2E7 /* MobileCoreServices.framework in Frameworks */,
 				7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */,
 				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
 				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
-				EBE1977BC8824EE298E82496 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +918,7 @@
 		7C10A7951B33A01300692DD3 /* Relisten */ = {
 			isa = PBXGroup;
 			children = (
+				7C35782C1B5AC89900329368 /* Relisten.entitlements */,
 				7C36A7321B347AE30004E766 /* Controllers */,
 				7C10A8901B33BD0300692DD3 /* API */,
 				7C10A7A31B33A01300692DD3 /* Images.xcassets */,
@@ -920,6 +944,10 @@
 				7C10A8911B33BD1B00692DD3 /* Models */,
 				7C10A8A21B33BD1B00692DD3 /* IGAPIClient.h */,
 				7C10A8A31B33BD1B00692DD3 /* IGAPIClient.m */,
+				7C3578201B58B6EB00329368 /* PHODFavoritesManager.h */,
+				7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */,
+				7CE27F9B1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.h */,
+				7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1075,6 +1103,23 @@
 			name = Shows;
 			sourceTree = "<group>";
 		};
+		7C35782D1B5C052000329368 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7C35782E1B5C052B00329368 /* ObjectivePersistence */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		7C35782E1B5C052B00329368 /* ObjectivePersistence */ = {
+			isa = PBXGroup;
+			children = (
+				7C35782F1B5C055800329368 /* PHODPersistence.h */,
+				7C3578301B5C055800329368 /* PHODPersistence.m */,
+			);
+			name = ObjectivePersistence;
+			sourceTree = "<group>";
+		};
 		7C36A7321B347AE30004E766 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,6 +1129,8 @@
 				7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */,
 				7C36A7371B3486BF0004E766 /* RLArtistTabViewController.h */,
 				7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */,
+				7C35781D1B58B32F00329368 /* RLSettingsViewController.h */,
+				7C35781E1B58B32F00329368 /* RLSettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1108,6 +1155,8 @@
 				7C36A73F1B348A9A0004E766 /* RLBrowseTableViewController.m */,
 				7C10A8B01B42457B00692DD3 /* RLShowCollectionViewController.h */,
 				7C10A8B11B42457B00692DD3 /* RLShowCollectionViewController.m */,
+				7C3578281B5AC60900329368 /* RLHistoryViewController.h */,
+				7C3578291B5AC60900329368 /* RLHistoryViewController.m */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -1122,6 +1171,8 @@
 		7C36A73C1B34899B0004E766 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				7C3578241B58BA7B00329368 /* PHODFavortiesViewController.h */,
+				7C3578251B58BA7B00329368 /* PHODFavortiesViewController.m */,
 			);
 			name = Favorites;
 			sourceTree = "<group>";
@@ -1155,6 +1206,7 @@
 		7C518BF8175D0C32005EB2E7 = {
 			isa = PBXGroup;
 			children = (
+				7C35782D1B5C052000329368 /* Shared */,
 				7C518C0A175D0C32005EB2E7 /* PhishOD */,
 				7C10A7951B33A01300692DD3 /* Relisten */,
 				7C518C03175D0C32005EB2E7 /* Frameworks */,
@@ -1176,8 +1228,8 @@
 		7C518C03175D0C32005EB2E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C9BFB741B640DBC00F5CF29 /* libPods.a */,
 				7C63C7D3199445AD0022F37F /* libz.dylib */,
-				7C63C7D1199445510022F37F /* AmazonInsightsSDK.framework */,
 				7C1C3C741982223600555ACB /* Accelerate.framework */,
 				F1B48B5E1973B0CF00DDF5C3 /* Third Party Static */,
 				7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */,
@@ -1201,6 +1253,7 @@
 		7C518C0A175D0C32005EB2E7 /* PhishOD */ = {
 			isa = PBXGroup;
 			children = (
+				7C35782B1B5AC88D00329368 /* PhishOD.entitlements */,
 				7C27BA7719942D6000E5AEAE /* Helpers */,
 				7C1C3C3A19820FF600555ACB /* AGMediaPlayer */,
 				7C6AE5001788725800AAED06 /* MediaPlayer */,
@@ -1687,9 +1740,10 @@
 		E6F5E887D0D4EC4571B0D1D1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F4589C29B163E5D36E0B550B /* Pods.debug.xcconfig */,
-				50E0BDA5FC9C3902A351CB71 /* Pods.release.xcconfig */,
-				3875788D3908365C67487089 /* Pods.adhoc.xcconfig */,
+				7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */,
+				A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */,
+				930296C832BD58F575B019AD /* Pods.release.xcconfig */,
+				4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1817,11 +1871,19 @@
 				TargetAttributes = {
 					7C10A7BC1B33B51700692DD3 = {
 						DevelopmentTeam = HT7ELV3Q35;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					7C518C00175D0C32005EB2E7 = {
 						DevelopmentTeam = HT7ELV3Q35;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -1863,6 +1925,7 @@
 				7C10A8591B33B51700692DD3 /* jquery2.min.js in Resources */,
 				7C10A85A1B33B51700692DD3 /* glyphicons_172_rewind.png in Resources */,
 				7C10A85B1B33B51700692DD3 /* jQueryAPI.js in Resources */,
+				7CE27FA11B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */,
 				7C10A85C1B33B51700692DD3 /* AGMediaPlayerViewController.xib in Resources */,
 				7C10A85D1B33B51700692DD3 /* 03-loopback.png in Resources */,
 				7C10A85E1B33B51700692DD3 /* PHODTrackCell.xib in Resources */,
@@ -1931,6 +1994,7 @@
 				7C1C3C60198219FD00555ACB /* glyphicons_076_headphones@2x.png in Resources */,
 				7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */,
 				7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */,
+				7CE27FA01B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */,
 				7C1C3C64198219FD00555ACB /* glyphicons_172_rewind@2x.png in Resources */,
 				7CC91A6817A07D0F0047DFF3 /* NativeBridge.js in Resources */,
 				7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */,
@@ -1975,7 +2039,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"./Pods/../Podfile.lock\" \"./Pods/Manifest.lock\"\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 		};
 		7C10A7BD1B33B51700692DD3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2116,6 +2180,7 @@
 				7C10A7DE1B33B51700692DD3 /* GlobalActivityViewController.m in Sources */,
 				7C10A7E01B33B51700692DD3 /* SearchViewController.m in Sources */,
 				7C10A7E11B33B51700692DD3 /* RotatableTabBarController.m in Sources */,
+				7CE27F9D1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */,
 				7C10A7E21B33B51700692DD3 /* ShowDetailsViewController.m in Sources */,
 				7C10A7E31B33B51700692DD3 /* PTSHeatmap.m in Sources */,
 				7C10A7E51B33B51700692DD3 /* FavoritesViewController.m in Sources */,
@@ -2165,10 +2230,13 @@
 				7C10A80A1B33B51700692DD3 /* PhishinAPI.m in Sources */,
 				7C10A80B1B33B51700692DD3 /* SubtitleTableViewCell.m in Sources */,
 				7CBF883C1B49CB8D0072F20A /* RLShowViewController.m in Sources */,
+				7C3578221B58B6EB00329368 /* PHODFavoritesManager.m in Sources */,
 				7C10A80C1B33B51700692DD3 /* SettingsViewController.m in Sources */,
+				7C3578271B58BA7B00329368 /* PHODFavortiesViewController.m in Sources */,
 				7C10A80D1B33B51700692DD3 /* PhishNetAPI.m in Sources */,
 				7C10A80E1B33B51700692DD3 /* PhishinSet.m in Sources */,
 				7C10A80F1B33B51700692DD3 /* PHODNewHomeViewController.m in Sources */,
+				7C35781F1B58B32F00329368 /* RLSettingsViewController.m in Sources */,
 				7C10A8101B33B51700692DD3 /* PhishNetSetlist.m in Sources */,
 				7C10A8111B33B51700692DD3 /* SetStatsViewController.m in Sources */,
 				7C10A8121B33B51700692DD3 /* PhishNetReview.m in Sources */,
@@ -2176,8 +2244,10 @@
 				7C10A8141B33B51700692DD3 /* PhishinSearchResults.m in Sources */,
 				7C10A8151B33B51700692DD3 /* StatsQueries.m in Sources */,
 				7C10A8161B33B51700692DD3 /* PhishNetBlogViewController.m in Sources */,
+				7C35782A1B5AC60900329368 /* RLHistoryViewController.m in Sources */,
 				7C10A8171B33B51700692DD3 /* PHODCollectionCollectionViewCell.m in Sources */,
 				7C10A8B21B42457B00692DD3 /* RLShowCollectionViewController.m in Sources */,
+				7C3578321B5C055800329368 /* PHODPersistence.m in Sources */,
 				7C10A8181B33B51700692DD3 /* BaseStatsViewController.m in Sources */,
 				7C10A8191B33B51700692DD3 /* PHODCollectionProvider.m in Sources */,
 				7C10A81A1B33B51700692DD3 /* TrackRankingTableViewCell.m in Sources */,
@@ -2322,11 +2392,13 @@
 				7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */,
 				7C63C7D0199437730022F37F /* IGEvents.m in Sources */,
 				7CC16600180F5EB700F72F0D /* PhishinSearchResults.m in Sources */,
+				7C3578231B58B87800329368 /* PHODFavoritesManager.m in Sources */,
 				C5D128B3183EB78200E00ED8 /* StatsQueries.m in Sources */,
 				7C94368219888ACE00AFEA56 /* PhishNetBlogViewController.m in Sources */,
 				7CDDA3B31B04E90500C88DE2 /* PHODCollectionCollectionViewCell.m in Sources */,
 				F1B48B311973836800DDF5C3 /* BaseStatsViewController.m in Sources */,
 				7CDDA3AF1B04E68C00C88DE2 /* PHODCollectionProvider.m in Sources */,
+				7C3578311B5C055800329368 /* PHODPersistence.m in Sources */,
 				F1B48B0C1973831A00DDF5C3 /* TrackRankingTableViewCell.m in Sources */,
 				F1B48B401973836800DDF5C3 /* VenueStatsViewController.m in Sources */,
 				F1B48B0D1973831A00DDF5C3 /* VenueRankingTableViewCell.m in Sources */,
@@ -2335,6 +2407,7 @@
 				7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */,
 				7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */,
 				7CDDA3A11B0457A000C88DE2 /* PHODMusicTabTableViewController.m in Sources */,
+				7CE27F9E1B5C4B7200507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */,
 				7C9436941989FA7600AFEA56 /* PhishNetSignInViewController.m in Sources */,
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
 				C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */,
@@ -2365,6 +2438,7 @@
 				7C0623F2198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m in Sources */,
 				7C1C3C3819820F2100555ACB /* PHODTrackCell.m in Sources */,
 				7CADB326176044DF00B80D54 /* SongInstancesViewController.m in Sources */,
+				7C3578261B58BA7B00329368 /* PHODFavortiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2392,13 +2466,13 @@
 /* Begin XCBuildConfiguration section */
 		7C10A8831B33B51700692DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4589C29B163E5D36E0B550B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Debug;
 				BUNDLE_ID = "com.alecgorge.ios.Listen-to-the-Dead";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -2424,15 +2498,15 @@
 		};
 		7C10A8841B33B51700692DD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50E0BDA5FC9C3902A351CB71 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 930296C832BD58F575B019AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.ios.Listen-to-the-Dead";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2455,13 +2529,13 @@
 		};
 		7C10A8851B33B51700692DD3 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3875788D3908365C67487089 /* Pods.adhoc.xcconfig */;
+			baseConfigurationReference = 4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Adhoc;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -2490,6 +2564,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2510,7 +2585,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0AD79C8B-0B49-4BE9-9346-4A9D75127F8F";
 				SDKROOT = iphoneos;
@@ -2524,6 +2599,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2538,7 +2614,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "99A77BF7-92DF-4444-831C-C3CF3091070B";
 				SDKROOT = iphoneos;
@@ -2549,13 +2625,14 @@
 		};
 		7C518C1F175D0C32005EB2E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4589C29B163E5D36E0B550B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Debug;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -2575,6 +2652,10 @@
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2586,15 +2667,16 @@
 		};
 		7C518C20175D0C32005EB2E7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50E0BDA5FC9C3902A351CB71 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 930296C832BD58F575B019AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC (HT7ELV3Q35)";
+				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2612,8 +2694,12 @@
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "619F6193-1539-4F0F-AC91-C1711AFAE94D";
+				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhishOD/API/PhishTracks Stats/Models/PhishOD-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
@@ -2626,6 +2712,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2640,7 +2727,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "031C5471-2CCA-4BD3-B446-77B0CD1DF8DA";
 				SDKROOT = iphoneos;
@@ -2651,13 +2738,14 @@
 		};
 		7C8BF73E192D2517006ABDE8 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3875788D3908365C67487089 /* Pods.adhoc.xcconfig */;
+			baseConfigurationReference = 4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Adhoc;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -2677,6 +2765,10 @@
 				INFOPLIST_FILE = "PhishOD/Supporting Files/PhishOD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "PhishOD β";
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";

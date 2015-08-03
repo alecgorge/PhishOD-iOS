@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recordingCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *reviewCount;
 
 @end
 
@@ -38,8 +39,15 @@
     self.ratingView.value = show.averageRating;
     self.ratingView.userInteractionEnabled = NO;
 
-    self.venueLabel.text = [NSString stringWithFormat:@"%@\n%@", show.venueName, show.venueCity];
-    self.durationLabel.text = [NSString stringWithFormat:@"%@\n%@", [IGDurationHelper formattedTimeWithInterval:show.duration], [NSString stringWithFormat:@"%ld recordings", (long)show.recordingCount]]; 
+    NSString *venueName = show.venueName ? show.venueName : show.venue.name;
+    NSString *venueCity = show.venueCity ? show.venueCity : show.venue.city;
+    
+    NSString *recordingCount = show.recordingCount > 0 ? [NSString stringWithFormat:@"%ld recordings", (long)show.recordingCount] : @"";
+    
+    self.venueLabel.text = [NSString stringWithFormat:@"%@\n%@", venueName, venueCity];
+    self.durationLabel.text = [NSString stringWithFormat:@"%@\n%@", [IGDurationHelper formattedTimeWithInterval:show.duration], recordingCount];
+    
+    self.reviewCount.text = @(show.reviewsCount).stringValue;
 }
 
 + (CGFloat)height {

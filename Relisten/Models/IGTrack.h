@@ -15,7 +15,7 @@
 @protocol IGTrack
 @end
 
-@interface IGTrack : JSONModel<PHODGenericTrack>
+@interface IGTrack : JSONModel<PHODGenericTrack, NSCoding>
 
 @property (nonatomic, assign) NSInteger id;
 
@@ -29,7 +29,7 @@
 
 @property (nonatomic, readonly) NSURL<Ignore> *mp3;
 
-@property (nonatomic, strong) IGShow<Optional> *show;
+@property (nonatomic, strong) IGShow<Optional, Ignore> *show;
 
 - (NSURL *)shareURLWithPlayedTime:(NSTimeInterval)elapsed;
 

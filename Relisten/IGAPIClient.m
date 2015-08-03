@@ -12,6 +12,7 @@
 
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
+#import <FCFileManager/FCFileManager.h>
 
 #define IGUANA_API_URL_BASE @"http://iguana.app.alecgorge.com/api"
 
@@ -22,7 +23,7 @@
 }
 
 + (id)showForPath:(NSString *)path {
-    return [PhishinShow loadShowFromCacheForShowDate:path.lastPathComponent];
+    return [IGShow loadShowFromCacheForShowId:path.lastPathComponent.integerValue];
 }
 
 - (instancetype)initWithTrack:(IGTrack *)track
@@ -35,7 +36,7 @@
 }
 
 - (NSString *)cachePath {
-    return [NSString stringWithFormat:@"%ld/%@.mp3", self.show.id, @(self.track.id).stringValue];
+    return [NSString stringWithFormat:@"%@/%ld/%@.mp3", IGAPIClient.sharedInstance.artist.slug, self.show.id, @(self.track.id).stringValue];
 }
 
 - (NSString *)provider {
@@ -52,6 +53,25 @@
 
 - (void)cache {
     [self.show cache];
+}
+
++ (void)showsWithCachedTracks:(void (^)(NSArray *))success {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
+        NSString *path = [[self cacheDir] stringByAppendingPathComponent:[self provider]];
+        
+        dbug(@"searching %@", [path stringByAppendingPathComponent:IGAPIClient.sharedInstance.artist.slug]);
+        
+        NSArray *arr = [FCFileManager listItemsInDirectoryAtPath:[path stringByAppendingPathComponent:IGAPIClient.sharedInstance.artist.slug]
+                                                            deep:NO];
+        
+        arr = [arr map:^id(NSString *path) {
+            return [self showForPath:path];
+        }];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            success(arr);
+        });
+    });
 }
 
 @end

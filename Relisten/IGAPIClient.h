@@ -8,6 +8,8 @@
 
 #import <AFHTTPSessionManager.h>
 
+#import "JSONValueTransformer+NSDateFromNSStringMilliseconds.h"
+
 #import "IGYear.h"
 #import "IGShow.h"
 #import "IGVenue.h"
