@@ -14,7 +14,7 @@
 #import <Crashlytics/Crashlytics.h>
 
 #if defined(DEBUG)
-#define RETURN_IN_DEBUG() return;
+#define RETURN_IN_DEBUG() //return;
 #else
 #define RETURN_IN_DEBUG()
 #endif
