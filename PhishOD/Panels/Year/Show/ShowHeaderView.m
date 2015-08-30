@@ -11,6 +11,7 @@
 #import "IGDurationHelper.h"
 #import "PHODTrackCell.h"
 #import "PhishinShow.h"
+#import "HFPodDataManager.h"
 
 @interface ShowHeaderView ()
 
@@ -69,6 +70,15 @@
         [self.uiDownloadAllButton setImage:[UIImage ipMaskedImageNamed:@"ios-cloud-download-outline"
                                                                  color:COLOR_PHISH_GREEN]
                                   forState:UIControlStateNormal];
+        
+        HFPodcast *pod = [[HFPodDataManager sharedInstance] podcastForShow:show];
+        
+        if(pod) {
+            self.uiDetailsLabel.text = [NSString stringWithFormat: @"HF Podcast #%@ ›", pod.episode];
+        }
+        else {
+            self.uiDetailsLabel.text = @"See details ›";
+        }
 	}
 	else {
 		self.uiVenueLabel.text = @"Loading show...";

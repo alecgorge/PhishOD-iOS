@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet AXRatingView *uiRatingView;
 @property (weak, nonatomic) IBOutlet UILabel *uiRatingReviewCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *uiDownloadAllButton;
+@property (weak, nonatomic) IBOutlet UILabel *uiDetailsLabel;
 
 @property (copy, nonatomic) void (^headerTapped)(void);
 @property (copy, nonatomic) void (^downloadAllTapped)(void);

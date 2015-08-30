@@ -12,6 +12,7 @@
 
 #import "VenueViewController.h"
 #import "ShowViewController.h"
+#import "HFPodDataManager.h"
 
 @interface ShowDetailsViewController ()
 
@@ -19,6 +20,7 @@
 
 @property (nonatomic, readonly) PhishinShow *show;
 @property (nonatomic, readonly) PhishNetSetlist *setlist;
+@property (nonatomic) HFPodcast *podcast;
 
 @end
 
@@ -28,6 +30,8 @@
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.showVc = showVc;
         self.title = @"Details";
+        
+        self.podcast = [HFPodDataManager.sharedInstance podcastForShow:self.showVc.show];
 	}
 	
 	return self;
@@ -44,11 +48,15 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 1 + (self.podcast != nil);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
+    if (section == 1) {
+        return 1;
+    }
+    
     return 6 + (self.show.taperNotes != nil);
 }
 
@@ -188,6 +196,22 @@
 			return cell;
 		}
 	}
+    else if(indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            
+            if(cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                              reuseIdentifier:@"InfoCell"];
+            }
+            
+            cell.textLabel.text = self.podcast.blurb;
+            cell.detailTextLabel.text = nil;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            return cell;
+        }
+    }
 	
     return nil;
 }
@@ -228,6 +252,13 @@
 		
 		return;
 	}
+    else if(indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            SVWebViewController *rev = [SVWebViewController.alloc initWithURL:self.podcast.link];
+            [self.navigationController pushViewController:rev
+                                                 animated:YES];
+        }
+    }
 }
 
 @end

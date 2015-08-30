@@ -240,6 +240,7 @@
 		7C1C3C70198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1C3C5C198219FD00555ACB /* glyphicons_halflings_113_chevron-down@2x.png */; };
 		7C1C3C751982223600555ACB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1C3C741982223600555ACB /* Accelerate.framework */; };
 		7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */; };
+		7C2170761B8B5D03007E7831 /* HFPodDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2170751B8B5D03007E7831 /* HFPodDataManager.m */; };
 		7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C23463019820630002A46D5 /* MEExpandableHeaderView.m */; };
 		7C249270198E8FD000C9275A /* music_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926E198E8FD000C9275A /* music_128.png */; };
 		7C249271198E8FD100C9275A /* music_128@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C24926F198E8FD000C9275A /* music_128@2x.png */; };
@@ -497,6 +498,8 @@
 		7C1C3C741982223600555ACB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7C1C3C7D1982C60B00555ACB /* PhishinMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinMediaItem.h; sourceTree = "<group>"; };
 		7C1C3C7E1982C60B00555ACB /* PhishinMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinMediaItem.m; sourceTree = "<group>"; };
+		7C2170741B8B5D03007E7831 /* HFPodDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HFPodDataManager.h; path = "HF Podcast/HFPodDataManager.h"; sourceTree = "<group>"; };
+		7C2170751B8B5D03007E7831 /* HFPodDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HFPodDataManager.m; path = "HF Podcast/HFPodDataManager.m"; sourceTree = "<group>"; };
 		7C23462F19820630002A46D5 /* MEExpandableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEExpandableHeaderView.h; sourceTree = "<group>"; };
 		7C23463019820630002A46D5 /* MEExpandableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEExpandableHeaderView.m; sourceTree = "<group>"; };
 		7C24926E198E8FD000C9275A /* music_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_128.png; sourceTree = "<group>"; };
@@ -1054,6 +1057,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		7C2170731B8B5CD8007E7831 /* HF Podcast */ = {
+			isa = PBXGroup;
+			children = (
+				7C2170741B8B5D03007E7831 /* HFPodDataManager.h */,
+				7C2170751B8B5D03007E7831 /* HFPodDataManager.m */,
+			);
+			name = "HF Podcast";
+			sourceTree = "<group>";
+		};
 		7C23462E19820630002A46D5 /* MEExpandableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1320,6 +1332,7 @@
 		7C518C23175D115A005EB2E7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				7C2170731B8B5CD8007E7831 /* HF Podcast */,
 				7CC165E7180F5EB700F72F0D /* Phish.in */,
 				7CC91A57179F75E40047DFF3 /* PhishTracks Stats */,
 				7C518C66175E59C1005EB2E7 /* Phish.Net */,
@@ -2329,6 +2342,7 @@
 				C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */,
 				7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */,
 				F1B48AF6197382AD00DDF5C3 /* TourViewController.m in Sources */,
+				7C2170761B8B5D03007E7831 /* HFPodDataManager.m in Sources */,
 				F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */,
 				7CADCE4318943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,

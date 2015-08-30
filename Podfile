@@ -35,7 +35,7 @@ pod 'KVOController'
 pod 'LLACircularProgressView'
 pod 'EGOCache'
 pod 'NSObject-NSCoding', :git => 'https://github.com/alecgorge/NSObject-NSCoding.git', :branch => 'master'
-pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git', :branch => 'auto-layout-simplified'
+pod 'DZNEmptyDataSet'
 pod 'GroundControl', '~> 2.1.0'
 pod 'AGAudioPlayer', :path => "../AGAudioPlayer"
 pod 'Instabug', '~> 4.1'

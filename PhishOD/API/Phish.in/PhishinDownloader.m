@@ -169,7 +169,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 - (id)init {
 	if (self = [super init]) {
 		self.queue = NSOperationQueue.alloc.init;
-		self.queue.maxConcurrentOperationCount = 3;		
+		self.queue.maxConcurrentOperationCount = 2;
 	}
 	return self;
 }

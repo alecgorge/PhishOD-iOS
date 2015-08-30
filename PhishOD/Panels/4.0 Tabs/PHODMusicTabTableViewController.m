@@ -127,7 +127,7 @@ NS_ENUM(NSInteger, kPHODMusicTabSections) {
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
 	if(section == kPHODMusicTabRecentSection) {
-		return @"Recently Played";
+		return @"Your Recently Played";
 	}
 	else if(section == kPHODMusicTabTopRatedSection) {
 		return @"Top Rated on Phish.net";

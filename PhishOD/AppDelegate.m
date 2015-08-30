@@ -24,6 +24,7 @@
 #import "PHODTabbedHomeViewController.h"
 #import "RLArtistsTableViewController.h"
 #import "RLArtistTabViewController.h"
+#import "HFPodDataManager.h"
 
 #import <LastFm.h>
 #import <Fabric/Fabric.h>
@@ -197,7 +198,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)setupCaching {
-	
+   [HFPodDataManager sharedInstance];
 }
 
 - (void)setupLastFM {

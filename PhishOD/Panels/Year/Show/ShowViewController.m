@@ -304,7 +304,9 @@ viewForHeaderInSection:(NSInteger)section {
             }
 
             for (NSObject<PHODGenericTrack> *track in self.show.tracks) {
-                [track.downloader downloadItem:track.downloadItem];
+                if(!track.isCached && track.isCacheable) {
+                    [track.downloader downloadItem:track.downloadItem];
+                }
             }
             
             [self.tableView reloadData];

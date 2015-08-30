@@ -35,7 +35,7 @@
                     <rect key="frame" x="208" y="35" width="97" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="6qG-gK-E4q" customClass="AXRatingView">
@@ -62,7 +62,7 @@
                     <color key="backgroundColor" red="0.0" green="0.76094865798950195" blue="0.58541697263717651" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See details ›" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QNN-83-EEt">
-                    <rect key="frame" x="15" y="89" width="85" height="21"/>
+                    <rect key="frame" x="15" y="89" width="110" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                         <action selector="cellTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="V4q-Io-ubv"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L8Q-3P-FHc">
+                <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L8Q-3P-FHc">
                     <rect key="frame" x="132" y="85" width="31" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="ios-cloud-download-outline">
@@ -92,6 +92,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="uiDetailsLabel" destination="QNN-83-EEt" id="KEg-ZU-ulI"/>
                 <outlet property="uiDownloadAllButton" destination="L8Q-3P-FHc" id="Qpe-17-nhx"/>
                 <outlet property="uiDurationLabel" destination="eCw-XG-fRs" id="L0N-hr-8Fu"/>
                 <outlet property="uiRatingReviewCountLabel" destination="kAJ-B7-zsN" id="6pK-YR-Quy"/>

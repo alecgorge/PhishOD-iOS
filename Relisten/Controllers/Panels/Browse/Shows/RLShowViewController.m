@@ -35,7 +35,7 @@ NS_ENUM(NSInteger, IGShowRows) {
     IGShowRowReviews,
     IGShowRowVenue,
     IGShowRowFavorite,
-    IGShowRowDownloadAll,
+//    IGShowRowDownloadAll,
     IGShowRowCount
 };
 
@@ -178,6 +178,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
+        /*
         else if(indexPath.row == IGShowRowDownloadAll) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
             
@@ -193,6 +194,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
+         */
     }
     else {
         PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
@@ -246,13 +248,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:IGShowSectionInfo]
                           withRowAnimation:UITableViewRowAnimationNone];
         }
+        /*
         else if(row == IGShowRowDownloadAll) {
             for (NSObject<PHODGenericTrack> *track in self.show.tracks) {
-                [track.downloader downloadItem:track.downloadItem];
+                if(!track.isCached && track.isCacheable) {
+                    [track.downloader downloadItem:track.downloadItem];
+                }
             }
             
             [self.tableView reloadData];
         }
+         */
         
         return;
     }
