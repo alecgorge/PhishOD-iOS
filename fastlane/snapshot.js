@@ -17,6 +17,6 @@ target.frontMostApp().mainWindow().tableViews()[0].cells()["1977-05-08"].tap();
 target.delay(3);
 captureLocalizedScreenshot("3-GratefulDeadBartonHall");
 
-target.frontMostApp().mainWindow().tableViews()[0].tapWithOptions({tapOffset:{x:0.30, y:0.41}});
+target.frontMostApp().mainWindow().tableViews()[0].cells().firstWithPredicate("name contains 'Listen to this source'").tap();
 target.delay(3);
 captureLocalizedScreenshot("4-GratefulDeadFourth");

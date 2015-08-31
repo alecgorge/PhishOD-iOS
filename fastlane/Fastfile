@@ -71,7 +71,7 @@ platform :ios do
 
   desc "Just take screenshots"
   lane :screenshots do |options|
-    snapshot
+    snapshot(noclean: true)
   end
 
   # You can define as many lanes as you want
