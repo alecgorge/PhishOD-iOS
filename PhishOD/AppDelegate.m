@@ -127,6 +127,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)setupBugshotKit {
+#ifndef SNAPSHOT
 	[Instabug startWithToken:@"63c7015b6dfc0c9994d0bf7ae9af7a96"
 			   captureSource:IBGCaptureSourceUIKit
 			 invocationEvent:IBGInvocationEventShake];
@@ -137,6 +138,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[Instabug setHeaderColor:[UIColor colorWithRed:(26/255.0) green:(188/255.0) blue:(156/255.0) alpha:1.0]];
 	[Instabug setTextFontColor:[UIColor colorWithRed:(82/255.0) green:(83/255.0) blue:(83/255.0) alpha:1.0]];
 	[Instabug setTextBackgroundColor:[UIColor colorWithRed:(249/255.0) green:(249/255.0) blue:(249/255.0) alpha:1.0]];
+#endif
 }
 
 - (void)checkForUpdates {

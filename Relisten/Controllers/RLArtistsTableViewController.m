@@ -61,7 +61,9 @@ static NSArray *featuredArtists;
     [super viewWillAppear:animated];
     
     if (self.shouldAutoshow) {
+#ifndef SNAPSHOT
         IGAPIClient.sharedInstance.artist = [PHODPersistence.sharedInstance objectForKey:@"current_artist"];
+#endif
         
         if(IGAPIClient.sharedInstance.artist != nil) {
             [self performSelector:@selector(presentArtistTabs:)

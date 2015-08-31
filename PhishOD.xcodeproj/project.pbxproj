@@ -324,6 +324,7 @@
 		7C9529DE1B348F1100291D12 /* IGShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9529DC1B348F1100291D12 /* IGShowCell.xib */; };
 		7C9529E21B34910100291D12 /* IGYearCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9529E01B34910100291D12 /* IGYearCell.m */; };
 		7C9529E31B34910100291D12 /* IGYearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9529E11B34910100291D12 /* IGYearCell.xib */; };
+		7C979FCA1B93F0E800D3BE26 /* HFPodDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2170751B8B5D03007E7831 /* HFPodDataManager.m */; };
 		7C97CE191B438B3B0010B82B /* RLShowSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE181B438B3B0010B82B /* RLShowSourcesViewController.m */; };
 		7C97CE1D1B4394650010B82B /* IGSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE1B1B4394650010B82B /* IGSourceCell.m */; };
 		7C97CE1E1B4394650010B82B /* IGSourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C97CE1C1B4394650010B82B /* IGSourceCell.xib */; };
@@ -2186,6 +2187,7 @@
 				7C10A7D71B33B51700692DD3 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */,
 				7C10A7D81B33B51700692DD3 /* PhishTracksStats.m in Sources */,
 				7C10A7D91B33B51700692DD3 /* PHODCollectionTableViewCell.m in Sources */,
+				7C979FCA1B93F0E800D3BE26 /* HFPodDataManager.m in Sources */,
 				7C10A7DA1B33B51700692DD3 /* YearStatsViewController.m in Sources */,
 				7C10A7DB1B33B51700692DD3 /* PhishinTrack.m in Sources */,
 				7C10A7DC1B33B51700692DD3 /* PhishinPlaylist.m in Sources */,
@@ -2490,7 +2492,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2523,7 +2525,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2555,7 +2557,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2653,7 +2655,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2693,10 +2695,10 @@
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2768,7 +2770,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 403;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
