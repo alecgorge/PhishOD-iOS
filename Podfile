@@ -8,6 +8,7 @@ link_with "Relisten"
 #use_frameworks!
 inhibit_all_warnings!
 
+pod 'FastImageCache'
 pod 'ChameleonFramework'
 pod 'SDCloudUserDefaults'
 pod 'AFNetworking'
@@ -41,5 +42,5 @@ pod 'DZNEmptyDataSet'
 pod 'GroundControl', '~> 2.1.0'
 pod 'AGAudioPlayer', :path => "../AGAudioPlayer"
 pod 'Instabug', '~> 4.1'
-pod 'FlurrySDK'
+pod 'Flurry-iOS-SDK'
 pod 'EDColor'

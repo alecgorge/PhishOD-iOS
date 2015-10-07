@@ -253,6 +253,7 @@
 		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
 		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
 		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
+		7C2D19861BC4D5E8005FFE65 /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; settings = {ASSET_TAGS = (); }; };
 		7C35781F1B58B32F00329368 /* RLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C35781E1B58B32F00329368 /* RLSettingsViewController.m */; };
 		7C3578221B58B6EB00329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
 		7C3578231B58B87800329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
@@ -525,6 +526,8 @@
 		7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGThirdPartyKeys.h; sourceTree = "<group>"; };
 		7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGThirdPartyKeys.m; sourceTree = "<group>"; };
 		7C27BA7B19942FC000E5AEAE /* API keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API keys.plist"; sourceTree = "<group>"; };
+		7C2D19841BC4D5E8005FFE65 /* PhishAlbumArtCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishAlbumArtCache.h; path = "Album Art/PhishAlbumArtCache.h"; sourceTree = "<group>"; };
+		7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishAlbumArtCache.m; path = "Album Art/PhishAlbumArtCache.m"; sourceTree = "<group>"; };
 		7C35781D1B58B32F00329368 /* RLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLSettingsViewController.h; path = Controllers/RLSettingsViewController.h; sourceTree = "<group>"; };
 		7C35781E1B58B32F00329368 /* RLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLSettingsViewController.m; path = Controllers/RLSettingsViewController.m; sourceTree = "<group>"; };
 		7C3578201B58B6EB00329368 /* PHODFavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODFavoritesManager.h; path = API/PHODFavoritesManager.h; sourceTree = "<group>"; };
@@ -1545,6 +1548,8 @@
 				7C857EE11BB604E700613017 /* StyleKitName.m */,
 				7C857EE31BB6051200613017 /* PHODShardAlbumArt.h */,
 				7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */,
+				7C2D19841BC4D5E8005FFE65 /* PhishAlbumArtCache.h */,
+				7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */,
 			);
 			name = "Album Art";
 			sourceTree = "<group>";
@@ -2410,6 +2415,7 @@
 				7CC16603180F5EB700F72F0D /* PhishinSong.m in Sources */,
 				F1B48B59197388C200DDF5C3 /* UIImage+Icons.m in Sources */,
 				F1B48B3D1973836800DDF5C3 /* TourStatsViewController.m in Sources */,
+				7C2D19861BC4D5E8005FFE65 /* PhishAlbumArtCache.m in Sources */,
 				7C94368D1989F04B00AFEA56 /* PhishNetShowsViewController.m in Sources */,
 				C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */,
 				7C60302A182068DA0088F651 /* HomeViewController.m in Sources */,
