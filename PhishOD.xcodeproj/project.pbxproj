@@ -310,6 +310,10 @@
 		7C847EE71A13F71400EB4F3D /* PHODNewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */; };
 		7C847EE81A13F71400EB4F3D /* PHODNewHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */; };
 		7C847EEA1A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */; };
+		7C857EE21BB604E700613017 /* StyleKitName.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE11BB604E700613017 /* StyleKitName.m */; settings = {ASSET_TAGS = (); }; };
+		7C857EE51BB6051200613017 /* PHODShardAlbumArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */; settings = {ASSET_TAGS = (); }; };
+		7C857EE81BB6094700613017 /* PhishShardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE71BB6094700613017 /* PhishShardStyle.m */; settings = {ASSET_TAGS = (); }; };
+		7C857EEB1BB83BE300613017 /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; settings = {ASSET_TAGS = (); }; };
 		7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */; };
 		7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */; };
 		7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367D1988894A00AFEA56 /* PhishNetShow.m */; };
@@ -379,6 +383,7 @@
 		7CE27F9E1B5C4B7200507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */; };
 		7CE27FA01B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
 		7CE27FA11B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
+		A4D0486965815B233789EAF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F37BC86616A360BD11A202 /* libPods.a */; };
 		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
 		C56C2B5619F05979004F5637 /* PTSHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmap.m */; };
 		C56C2B5919F3687B004F5637 /* BadgeAndHeatmapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5819F3687B004F5637 /* BadgeAndHeatmapCell.m */; };
@@ -392,7 +397,6 @@
 		C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */; };
 		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
 		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
-		F0A30A44C27E6EEC0470F01D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC2DD37E37437D9490C12C /* libPods.a */; };
 		F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE31973813100DDF5C3 /* VenuesViewController.m */; };
 		F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE51973813100DDF5C3 /* VenueViewController.m */; };
 		F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */; };
@@ -433,6 +437,7 @@
 
 /* Begin PBXFileReference section */
 		4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
+		76F37BC86616A360BD11A202 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0623F0198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloadedShowsViewController.h; sourceTree = "<group>"; };
 		7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloadedShowsViewController.m; sourceTree = "<group>"; };
 		7C0623F3198C2AEC002D31E5 /* DownloadQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadQueueViewController.h; sourceTree = "<group>"; };
@@ -615,6 +620,14 @@
 		7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHODNewHomeViewController.m; sourceTree = "<group>"; };
 		7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHODNewHomeViewController.xib; sourceTree = "<group>"; };
 		7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15115437744_51db659feb_b.jpg; sourceTree = "<group>"; };
+		7C857EE01BB604E700613017 /* StyleKitName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleKitName.h; sourceTree = "<group>"; };
+		7C857EE11BB604E700613017 /* StyleKitName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKitName.m; sourceTree = "<group>"; };
+		7C857EE31BB6051200613017 /* PHODShardAlbumArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODShardAlbumArt.h; path = "Album Art/PHODShardAlbumArt.h"; sourceTree = "<group>"; };
+		7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODShardAlbumArt.m; path = "Album Art/PHODShardAlbumArt.m"; sourceTree = "<group>"; };
+		7C857EE61BB6094700613017 /* PhishShardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishShardStyle.h; path = "Album Art/PhishShardStyle.h"; sourceTree = "<group>"; };
+		7C857EE71BB6094700613017 /* PhishShardStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishShardStyle.m; path = "Album Art/PhishShardStyle.m"; sourceTree = "<group>"; };
+		7C857EE91BB83BE300613017 /* PhishAlbumArts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhishAlbumArts.h; path = "Album Art/PhishAlbumArts.h"; sourceTree = "<group>"; };
+		7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhishAlbumArts.m; path = "Album Art/PhishAlbumArts.m"; sourceTree = "<group>"; };
 		7C9436761988585E00AFEA56 /* PhishNetNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetNewsItem.h; sourceTree = "<group>"; };
 		7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishNetNewsItem.m; sourceTree = "<group>"; };
 		7C94367919885A2100AFEA56 /* PhishNetBlogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishNetBlogItem.h; sourceTree = "<group>"; };
@@ -737,7 +750,6 @@
 		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		930296C832BD58F575B019AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		A7BC2DD37E37437D9490C12C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapQuery.h; sourceTree = "<group>"; };
 		C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapQuery.m; sourceTree = "<group>"; };
 		C56C2B5419F05979004F5637 /* PTSHeatmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmap.h; sourceTree = "<group>"; };
@@ -855,7 +867,7 @@
 				7C10A84D1B33B51700692DD3 /* UIKit.framework in Frameworks */,
 				7C10A84E1B33B51700692DD3 /* Foundation.framework in Frameworks */,
 				7C10A84F1B33B51700692DD3 /* CoreGraphics.framework in Frameworks */,
-				F0A30A44C27E6EEC0470F01D /* libPods.a in Frameworks */,
+				A4D0486965815B233789EAF6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1102,7 @@
 		7C27BA7719942D6000E5AEAE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7C857EDF1BB604D800613017 /* Album Art */,
 				7C27BA7B19942FC000E5AEAE /* API keys.plist */,
 				7C27BA7819942FB700E5AEAE /* IGThirdPartyKeys.h */,
 				7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */,
@@ -1258,7 +1271,7 @@
 				7C518C04175D0C32005EB2E7 /* UIKit.framework */,
 				7C518C06175D0C32005EB2E7 /* Foundation.framework */,
 				7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */,
-				A7BC2DD37E37437D9490C12C /* libPods.a */,
+				76F37BC86616A360BD11A202 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1519,6 +1532,21 @@
 				F1B48AE51973813100DDF5C3 /* VenueViewController.m */,
 			);
 			path = Venues;
+			sourceTree = "<group>";
+		};
+		7C857EDF1BB604D800613017 /* Album Art */ = {
+			isa = PBXGroup;
+			children = (
+				7C857EE91BB83BE300613017 /* PhishAlbumArts.h */,
+				7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */,
+				7C857EE61BB6094700613017 /* PhishShardStyle.h */,
+				7C857EE71BB6094700613017 /* PhishShardStyle.m */,
+				7C857EE01BB604E700613017 /* StyleKitName.h */,
+				7C857EE11BB604E700613017 /* StyleKitName.m */,
+				7C857EE31BB6051200613017 /* PHODShardAlbumArt.h */,
+				7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */,
+			);
+			name = "Album Art";
 			sourceTree = "<group>";
 		};
 		7C94367F19888A9300AFEA56 /* Phish.net */ = {
@@ -1843,6 +1871,7 @@
 				7C10A87F1B33B51700692DD3 /* Copy Pods Resources */,
 				7C10A8801B33B51700692DD3 /* ShellScript */,
 				7C10A8811B33B51700692DD3 /* ShellScript */,
+				B8C3E13B95E65D65D61A2CA3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1880,7 +1909,7 @@
 		7C518BF9175D0C32005EB2E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alec Gorge";
 				TargetAttributes = {
 					7C10A7BC1B33B51700692DD3 = {
@@ -2122,6 +2151,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Pods/Fabric/Fabric.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
 		};
+		B8C3E13B95E65D65D61A2CA3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C5167BCE19F03C9600E11AB7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2346,6 +2390,7 @@
 				F1B48AF6197382AD00DDF5C3 /* TourViewController.m in Sources */,
 				7C2170761B8B5D03007E7831 /* HFPodDataManager.m in Sources */,
 				F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */,
+				7C857EE81BB6094700613017 /* PhishShardStyle.m in Sources */,
 				7CADCE4318943FAA00841A92 /* NavigationControllerAutoShrinkerForNowPlaying.m in Sources */,
 				7CC91A5A179F75FB0047DFF3 /* PhishTracksStats.m in Sources */,
 				7CDDA3AA1B04E46100C88DE2 /* PHODCollectionTableViewCell.m in Sources */,
@@ -2388,6 +2433,7 @@
 				F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */,
 				7CADCE471894407000841A92 /* NowPlayingBarViewController.m in Sources */,
 				F1B48B0E1973831A00DDF5C3 /* YearRankingTableViewCell.m in Sources */,
+				7C857EEB1BB83BE300613017 /* PhishAlbumArts.m in Sources */,
 				7C518C39175D2A90005EB2E7 /* YearsViewController.m in Sources */,
 				7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
@@ -2428,6 +2474,7 @@
 				7C249278198E972E00C9275A /* LongStringTableViewCell.m in Sources */,
 				C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */,
 				7CC16607180F5EB700F72F0D /* PhishinVenue.m in Sources */,
+				7C857EE51BB6051200613017 /* PHODShardAlbumArt.m in Sources */,
 				7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */,
 				7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */,
 				F1B48B331973836800DDF5C3 /* MoreStatsViewController.m in Sources */,
@@ -2439,6 +2486,7 @@
 				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
 				7CB3C0A41B27877900FDF5F1 /* PHODDownloadTabTableViewController.m in Sources */,
 				7CDDA3A51B04DF3100C88DE2 /* PHODLoadingTableViewCell.m in Sources */,
+				7C857EE21BB604E700613017 /* StyleKitName.m in Sources */,
 				7C6AE5151788AFDD00AAED06 /* EventInterceptWindow.m in Sources */,
 				C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */,
 				7CADB323176043F700B80D54 /* SongsViewController.m in Sources */,
@@ -2504,6 +2552,7 @@
 				INFOPLIST_FILE = "PhishOD copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID)";
 				PRODUCT_NAME = Relisten;
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2537,6 +2586,7 @@
 				INFOPLIST_FILE = "PhishOD copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID)";
 				PRODUCT_NAME = Relisten;
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2569,6 +2619,7 @@
 				INFOPLIST_FILE = "PhishOD copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID)";
 				PRODUCT_NAME = Relisten;
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2593,6 +2644,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2676,6 +2728,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2719,6 +2772,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";
@@ -2791,6 +2845,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
 				PRODUCT_NAME = "PhishOD β";
 				PROVISIONING_PROFILE = "";
 				STATS_SERVER = "https://www.phishtrackstats.com/api/v2/";

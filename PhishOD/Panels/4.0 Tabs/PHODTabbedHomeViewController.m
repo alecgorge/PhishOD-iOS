@@ -16,6 +16,8 @@
 #import "PHODDownloadTabTableViewController.h"
 #import "PhishTracksStatsViewController.h"
 
+#import "PHODShardAlbumArt.h"
+
 @interface PHODTabbedHomeViewController ()
 
 @property (nonatomic) NavigationControllerAutoShrinkerForNowPlaying *navDelegate;
@@ -26,7 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    
+    PHODShardAlbumArt *a = [PHODShardAlbumArt.alloc initWithFrame:CGRectMake(0, 0, 256, 256)];
+    [self.view addSubview:a];
+    
 	self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	
 	PHODMusicTabTableViewController *music = PHODMusicTabTableViewController.new;
