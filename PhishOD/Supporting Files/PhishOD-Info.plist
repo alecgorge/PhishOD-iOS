@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>404</string>
+	<string>405</string>
 	<key>Configuration</key>
 	<string>${CONFIGURATION}</string>
 	<key>Fabric</key>

@@ -442,7 +442,7 @@
 		7C10A7A31B33A01300692DD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7C10A7A61B33A01300692DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7C10A8861B33B51700692DD3 /* Relisten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relisten.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C10A8871B33B51700692DD3 /* PhishOD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PhishOD copy-Info.plist"; path = "/Users/alecgorge/Documents/code/github/PhishOD-iOS/PhishOD copy-Info.plist"; sourceTree = "<absolute>"; };
+		7C10A8871B33B51700692DD3 /* PhishOD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PhishOD copy-Info.plist"; path = "/Users/alecgorge/Documents/code/github/ios/PhishOD-iOS/PhishOD copy-Info.plist"; sourceTree = "<absolute>"; };
 		7C10A88A1B33B5BC00692DD3 /* PhishAppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhishAppIcon.xcassets; sourceTree = "<group>"; };
 		7C10A8921B33BD1B00692DD3 /* IGArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGArtist.h; sourceTree = "<group>"; };
 		7C10A8931B33BD1B00692DD3 /* IGArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGArtist.m; sourceTree = "<group>"; };
@@ -1842,7 +1842,6 @@
 				7C10A8511B33B51700692DD3 /* Resources */,
 				7C10A87F1B33B51700692DD3 /* Copy Pods Resources */,
 				7C10A8801B33B51700692DD3 /* ShellScript */,
-				7C10A8811B33B51700692DD3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2095,19 +2094,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Pods/Fabric/Fabric.framework/run bbdd6a4df81e6b1498130a0f1fbf72d14e334fb4 6f395bff041601bfd84d45d401450dfb7addb425c9c245ae6a0b3df6e0022cc4";
-		};
-		7C10A8811B33B51700692DD3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# ---------------------------- IMPORTANT ----------------------------\n# You must set RESTServer to something like 'Set by build script' in the file\n# file '<Project Name>-Info.plist' in the 'Supporting Files' group\n# -------------------------------------------------------------------\n#\n# determin server based on user name\n#\n\nSERVER=${STATS_SERVER}\n\n# Only use developer servers for debug never for release\nif [ \"$CONFIGURATION\" != \"Debug\" ] ; then\n    exit\nfi\n\nif [ \"$USER\" == \"bird\" ] ; then\n    SERVER=\"http://localhost:5000/api/v2/\"\nfi\n\necho $SERVER\n\n#\n# Set the server info in plist file in the build product not the source tree\n#\n/usr/libexec/PlistBuddy -c \"Set :StatsServer $SERVER\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
 		};
 		7CADB327176057AB00B80D54 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2492,7 +2478,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2525,7 +2511,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2557,7 +2543,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2593,6 +2579,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2628,6 +2615,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2655,7 +2643,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2698,7 +2686,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -2743,6 +2731,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Blue Paint, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Paint, LLC";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "ADHOC=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2770,7 +2759,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				CURRENT_PROJECT_VERSION = 404;
+				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
