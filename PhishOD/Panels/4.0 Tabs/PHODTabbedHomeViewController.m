@@ -29,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PHODShardAlbumArt *a = [PHODShardAlbumArt.alloc initWithFrame:CGRectMake(0, 0, 256, 256)];
-    [self.view addSubview:a];
+//    PHODShardAlbumArt *a = [PHODShardAlbumArt.alloc initWithFrame:CGRectMake(0, 0, 256, 256)];
+//    [self.view addSubview:a];
     
 	self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.alloc.init;
 	

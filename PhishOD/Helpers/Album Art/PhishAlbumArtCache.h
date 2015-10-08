@@ -10,12 +10,15 @@
 
 #import <FastImageCache/FICImageCache.h>
 
-NSString *PHODImageFormatSmall;
-NSString *PHODImageFormatMedium;
-NSString *PHODImageFormatFull;
+static NSString *PHODImageFormatSmall = @"com.alecgorge.ios.phishod.albumart.small";
+static NSString *PHODImageFormatMedium = @"com.alecgorge.ios.phishod.albumart.medium";
+static NSString *PHODImageFormatFull = @"com.alecgorge.ios.phishod.albumart.full";
+static NSString *PHODImageFamily = @"com.alecgorge.ios.phishod.albumart";
 
-@interface PhishAlbumArtCache : NSObject
+@interface PhishAlbumArtCache : NSObject <FICImageCacheDelegate>
 
 +(instancetype)sharedInstance;
+
+@property (nonatomic, readonly) FICImageCache *sharedCache;
 
 @end

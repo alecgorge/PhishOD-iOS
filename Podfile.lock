@@ -26,6 +26,7 @@ PODS:
   - AGAudioPlayer (0.8.0):
     - HysteriaPlayer
   - Appirater (2.0.5)
+  - ASImageResize (1.0.3)
   - AXRatingView (1.0.3)
   - ChameleonFramework (2.0.3):
     - ChameleonFramework/Default (= 2.0.3)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - AFNetworking
   - AGAudioPlayer (from `../AGAudioPlayer`)
   - Appirater
+  - ASImageResize (~> 1.0)
   - AXRatingView
   - ChameleonFramework
   - Crashlytics
@@ -134,6 +136,7 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   AGAudioPlayer: 0518c566ffbdbed6eb54b3719f9500688202701a
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
+  ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
   ChameleonFramework: 31cf675235772b0fb6f43bf76547eafc2d6442ae
   Crashlytics: 41c082440d2e14da444186fff65e79c0b4b35d4c

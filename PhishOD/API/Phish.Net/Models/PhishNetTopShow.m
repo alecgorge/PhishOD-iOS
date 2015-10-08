@@ -27,4 +27,43 @@
 	return [NSString stringWithFormat:@"%@ (%@ votes)", self.rating, self.ratingCount];
 }
 
+- (NSString *)UUID {
+    return self.showDate;
+}
+
+- (NSString *)sourceImageUUID {
+    return self.showDate;
+}
+
+- (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"phod://shatter"];
+    
+    NSDictionary *queryDictionary = @{@"date": self.displayText,
+                                      @"venue": self.displaySubtext,
+                                      @"location": @"" };
+    NSMutableArray *queryItems = [NSMutableArray array];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    }
+    
+    components.queryItems = queryItems;
+    
+    return components.URL;
+}
+
+- (FICEntityImageDrawingBlock)drawingBlockForImage:(UIImage *)image
+                                    withFormatName:(NSString *)formatName {
+    FICEntityImageDrawingBlock drawingBlock = ^(CGContextRef context, CGSize contextSize) {
+        CGRect contextBounds = CGRectZero;
+        contextBounds.size = contextSize;
+        CGContextClearRect(context, contextBounds);
+        
+        UIGraphicsPushContext(context);
+        [image drawInRect:contextBounds];
+        UIGraphicsPopContext();
+    };
+    
+    return drawingBlock;
+}
+
 @end

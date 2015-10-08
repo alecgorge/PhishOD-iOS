@@ -8,6 +8,7 @@ link_with "Relisten"
 #use_frameworks!
 inhibit_all_warnings!
 
+pod 'ASImageResize', '~> 1.0'
 pod 'FastImageCache'
 pod 'ChameleonFramework'
 pod 'SDCloudUserDefaults'

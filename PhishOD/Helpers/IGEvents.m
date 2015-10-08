@@ -10,7 +10,7 @@
 
 #import "IGThirdPartyKeys.h"
 
-#import <FlurrySDK/Flurry.h>
+#import <Flurry-iOS-SDK/Flurry.h>
 #import <Crashlytics/Crashlytics.h>
 
 #if defined(DEBUG)
