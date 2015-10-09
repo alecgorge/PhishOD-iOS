@@ -137,13 +137,9 @@
                        completion:nil];
 }
 
-- (NSString *)routeForSearch: (NSString *)queryString {
-    return [NSString stringWithFormat:@"artists/%@/search?q=%@", self.artist.slug, queryString];
-}
-
 - (void)search:(NSString *)queryString success:(void (^)(NSArray *))success {
-    [self GET:[self routeForSearch: queryString]
-   parameters:nil
+    [self GET:[NSString stringWithFormat:@"artists/%@/search", self.artist.slug]
+   parameters:@{@"q": queryString}
       success:^(NSURLSessionDataTask *task, id responseObject) {
           NSArray *s = [responseObject[@"data"][@"shows"] map:^id(id item) {
               NSError *err;

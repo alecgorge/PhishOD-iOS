@@ -287,6 +287,8 @@
 		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
 		7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* LongStringViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
+		7C5259541BC85897007BCCEC /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; settings = {ASSET_TAGS = (); }; };
+		7C5259551BC858A4007BCCEC /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; settings = {ASSET_TAGS = (); }; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
 		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
 		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
@@ -2209,6 +2211,7 @@
 				7C10A8A71B33BD1B00692DD3 /* IGPlaylist.m in Sources */,
 				7C10A7CC1B33B51700692DD3 /* Value1SubtitleCell.m in Sources */,
 				7C10A7CD1B33B51700692DD3 /* PhishNetAuth.m in Sources */,
+				7C5259551BC858A4007BCCEC /* PhishAlbumArts.m in Sources */,
 				7C10A7CE1B33B51700692DD3 /* PhishTracksStatsQueryResults.m in Sources */,
 				7C10A7CF1B33B51700692DD3 /* FavoriteToursViewController.m in Sources */,
 				7C10A7D01B33B51700692DD3 /* PhishTracksStatsQuery.m in Sources */,
@@ -2318,6 +2321,7 @@
 				7C10A8241B33B51700692DD3 /* PTSHeatmapQuery.m in Sources */,
 				7C10A8251B33B51700692DD3 /* PhishinVenue.m in Sources */,
 				7C10A8261B33B51700692DD3 /* PhishNetTopShow.m in Sources */,
+				7C5259541BC85897007BCCEC /* PhishAlbumArtCache.m in Sources */,
 				7C10A8271B33B51700692DD3 /* TopRatedViewController.m in Sources */,
 				7C10A8281B33B51700692DD3 /* MoreStatsViewController.m in Sources */,
 				7C10A8291B33B51700692DD3 /* PhishTracksStatsViewController.m in Sources */,
