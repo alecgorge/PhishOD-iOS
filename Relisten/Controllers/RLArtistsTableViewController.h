@@ -10,6 +10,6 @@
 
 #import "RefreshableTableViewController.h"
 
-@interface RLArtistsTableViewController : RefreshableTableViewController
+@interface RLArtistsTableViewController : RefreshableTableViewController <UISearchResultsUpdating>
 
 @end

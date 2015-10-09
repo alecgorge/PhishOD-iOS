@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) IGArtist *artist;
 
+- (void)search:(NSString *)queryString success:(void (^)(NSArray *))success;
+
 // an array of IGYear's
 - (void)years:(void (^)(NSArray *))success;
 

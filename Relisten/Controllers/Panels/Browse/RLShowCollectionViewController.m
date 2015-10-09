@@ -23,6 +23,9 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
 @property (nonatomic) NSArray *shows;
 @property (nonatomic) RLShowCollectionType collectionType;
 
+@property (nonatomic) NSMutableArray *searchShows;
+@property (strong, nonatomic) UISearchController *searchController;
+
 @end
 
 @implementation RLShowCollectionViewController
@@ -71,6 +74,12 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     self.tableView.estimatedRowHeight = 70.0f;
     
     [self updateTitle];
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
 }
 
 - (void)updateTitle {
@@ -91,6 +100,7 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
                                  success:^(IGYear *y) {
                                      self.year = y;
                                      self.shows = self.year.shows;
+                                     self.searchShows = [[NSMutableArray alloc] initWithArray:self.shows];
                                      
                                      [self updateTitle];
                                      
@@ -104,6 +114,7 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
                                       self.venue = ven;
                                       
                                       self.shows = self.venue.shows;
+                                      self.searchShows = [[NSMutableArray alloc] initWithArray:self.shows];
                                       
                                       [self updateTitle];
                                       
@@ -114,6 +125,7 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     else if(self.collectionType == RLShowCollectionTopShows) {
         [IGAPIClient.sharedInstance topShows:^(NSArray *shows) {
             self.shows = shows;
+            self.searchShows = [[NSMutableArray alloc] initWithArray:self.shows];
             
             [self updateTitle];
             
@@ -126,12 +138,12 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.shows ? 1 : 0;
+    return self.searchShows ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.shows.count;
+    return self.searchShows.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -139,7 +151,7 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     IGShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"show"
                                                        forIndexPath:indexPath];
     
-    [cell updateCellWithShow:self.shows[indexPath.row]];
+    [cell updateCellWithShow:self.searchShows[indexPath.row]];
     
     return cell;
 }
@@ -149,11 +161,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    IGShow *show = self.shows[indexPath.row];
+    IGShow *show = self.searchShows[indexPath.row];
     RLShowSourcesViewController *vc = [RLShowSourcesViewController.alloc initWithDisplayDate:show.displayDate];
     
     [self.navigationController pushViewController:vc
                                          animated:YES];
+}
+
+#pragma mark - Search results updater
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.text;
+    self.searchShows = (NSMutableArray *)self.shows.mutableCopy;
+    if (searchText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.displayDate CONTAINS[c] %@", searchText];
+        [self.searchShows filterUsingPredicate:predicate];
+    }
+    [self.tableView reloadData];
 }
 
 @end

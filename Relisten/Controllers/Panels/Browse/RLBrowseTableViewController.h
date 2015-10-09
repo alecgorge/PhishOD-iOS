@@ -10,6 +10,6 @@
 
 #import "RefreshableTableViewController.h"
 
-@interface RLBrowseTableViewController : RefreshableTableViewController
+@interface RLBrowseTableViewController : RefreshableTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 @end

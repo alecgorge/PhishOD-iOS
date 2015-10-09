@@ -134,7 +134,7 @@ SPEC CHECKSUMS:
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
   Fabric: a9eabe53915e9f1db55a84dd2838737928675878
   FCFileManager: a07587fe37a19a289cde64949a6ec0246b4ea783
-  FlurrySDK: 671e8d5769ef42a9940854c735b1eee32763eea5
+  FlurrySDK: ea03fd78ffb32886e26c9b7634ff0d8cb18dcd55
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
   HysteriaPlayer: 638e16d27386da1dede8c069d09289497c870b30
@@ -158,4 +158,4 @@ SPEC CHECKSUMS:
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   VTAcknowledgementsViewController: 11a869dd69598a852f12699aeaf36e2589d3fc1b
 
-COCOAPODS: 0.39.0.beta.3
+COCOAPODS: 0.38.2

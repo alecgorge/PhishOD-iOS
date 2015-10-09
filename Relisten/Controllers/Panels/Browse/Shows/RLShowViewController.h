@@ -10,7 +10,7 @@
 
 @class IGShow;
 
-@interface RLShowViewController : RefreshableTableViewController
+@interface RLShowViewController : RefreshableTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 - (instancetype)initWithShow:(IGShow *)show;
 

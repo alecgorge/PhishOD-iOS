@@ -8,6 +8,6 @@
 
 #import "RefreshableTableViewController.h"
 
-@interface RLVenuesViewController : RefreshableTableViewController
+@interface RLVenuesViewController : RefreshableTableViewController <UISearchResultsUpdating>
 
 @end

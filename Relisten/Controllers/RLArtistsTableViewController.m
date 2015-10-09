@@ -29,7 +29,12 @@ static NSArray *featuredArtists;
 @property (nonatomic) NSArray *featuredArtists;
 @property (nonatomic) NSArray *artists;
 
+@property (nonatomic) NSMutableArray *searchFeaturedArtists;
+@property (nonatomic) NSMutableArray *searchArtists;
+
 @property (nonatomic) BOOL shouldAutoshow;
+
+@property (strong, nonatomic) UISearchController *searchController;
 
 @end
 
@@ -55,6 +60,12 @@ static NSArray *featuredArtists;
                                                                            style:UIBarButtonItemStylePlain
                                                                           target:self
                                                                           action:@selector(showSettings)];
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -106,6 +117,9 @@ static NSArray *featuredArtists;
 			}];
 		}];
         
+        self.searchArtists = (NSMutableArray *)self.artists.mutableCopy;
+        self.searchFeaturedArtists = (NSMutableArray *)self.featuredArtists.mutableCopy;
+        
         [PHODPersistence.sharedInstance setObject:self.artists
                                            forKey:@"artists_alpha"];
         
@@ -127,10 +141,10 @@ static NSArray *featuredArtists;
  numberOfRowsInSection:(NSInteger)section {
 	if (self.artists) {
 		if (section == RLArtistsFeaturedSection) {
-			return self.featuredArtists.count;
+			return self.searchFeaturedArtists.count;
 		}
 		else if(section == RLArtistsAllSection) {
-			return self.artists.count;
+			return self.searchArtists.count;
 		}
 	}
 	
@@ -144,7 +158,7 @@ titleForHeaderInSection:(NSInteger)section {
 			return @"Feature";
 		}
 		else if(section == RLArtistsAllSection) {
-			return [NSString stringWithFormat:@"All %ld artists", self.artists.count];
+			return [NSString stringWithFormat:@"All %ld artists", self.searchArtists.count];
 		}
 	}
 	
@@ -155,10 +169,10 @@ titleForHeaderInSection:(NSInteger)section {
 	IGArtist *artist = nil;
 	
 	if(indexPath.section == RLArtistsFeaturedSection) {
-		artist = self.featuredArtists[indexPath.row];
+		artist = self.searchFeaturedArtists[indexPath.row];
 	}
 	else {
-		artist = self.artists[indexPath.row];
+		artist = self.searchArtists[indexPath.row];
 	}
 	
 	return artist;
@@ -207,6 +221,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController presentViewController:vc
                                             animated:animated.boolValue
                                           completion:nil];
+}
+
+#pragma mark - Search results updater
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.text;
+    self.searchArtists = (NSMutableArray *)self.artists.mutableCopy;
+    self.searchFeaturedArtists = (NSMutableArray *)self.featuredArtists.mutableCopy;
+    if (searchText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
+        [self.searchArtists filterUsingPredicate:predicate];
+        [self.searchFeaturedArtists filterUsingPredicate:predicate];
+    }
+    [self.tableView reloadData];
 }
 
 @end

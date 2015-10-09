@@ -137,6 +137,61 @@
                        completion:nil];
 }
 
+- (NSString *)routeForSearch: (NSString *)queryString {
+    return [NSString stringWithFormat:@"artists/%@/search?q=%@", self.artist.slug, queryString];
+}
+
+- (void)search:(NSString *)queryString success:(void (^)(NSArray *))success {
+    [self GET:[self routeForSearch: queryString]
+   parameters:nil
+      success:^(NSURLSessionDataTask *task, id responseObject) {
+          NSArray *s = [responseObject[@"data"][@"shows"] map:^id(id item) {
+              NSError *err;
+              IGShow *s = [[IGShow alloc] initWithDictionary:item error:&err];
+              
+              if(err) {
+                  [self failure: err];
+                  dbug(@"json err: %@", err);
+              }
+              
+              return s;
+          }];
+          
+//          NSArray *t = [responseObject[@"data"][@"tracks"] map:^id(id item) {
+//              NSLog(@"%@", item);
+//              NSError *err;
+//              IGTrack *t = [[IGTrack alloc] initWithDictionary:item error:&err];
+//              
+//              if(err) {
+//                  [self failure: err];
+//                  dbug(@"json err: %@", err);
+//              }
+//              
+//              return t;
+//          }];
+          
+          NSArray *v = [responseObject[@"data"][@"venues"] map:^id(id item) {
+              NSError *err;
+              IGVenue *v = [[IGVenue alloc] initWithDictionary:item error:&err];
+              
+              if(err) {
+                  [self failure: err];
+                  dbug(@"json err: %@", err);
+              }
+              
+              return v;
+          }];
+          
+//          success([NSArray arrayWithObjects: s, t, v, nil]);
+          success([NSArray arrayWithObjects: s, v, nil]);
+      }
+      failure:^(NSURLSessionDataTask *task, NSError *error) {
+          [self failure:error];
+          
+          success(nil);
+      }];
+}
+
 - (void)artists:(void (^)(NSArray *))success {
     [self GET:@"artists"
    parameters:nil

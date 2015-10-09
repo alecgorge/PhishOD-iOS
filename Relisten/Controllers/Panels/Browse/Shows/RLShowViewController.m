@@ -44,6 +44,10 @@ NS_ENUM(NSInteger, IGShowRows) {
 @property (nonatomic, strong) IGShow *show;
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
 
+@property (nonatomic) BOOL inSearchMode;
+@property (nonatomic, strong) NSMutableArray *searchTracks;
+@property (strong, nonatomic) UISearchController *searchController;
+
 @end
 
 @implementation RLShowViewController
@@ -51,6 +55,7 @@ NS_ENUM(NSInteger, IGShowRows) {
 - (instancetype)initWithShow:(IGShow *)show {
     if(self = [super initWithStyle:UITableViewStylePlain]) {
         self.show = show;
+        self.searchTracks = self.show.tracks.mutableCopy;
     }
     
     return self;
@@ -80,6 +85,27 @@ NS_ENUM(NSInteger, IGShowRows) {
     [AFNetworkReachabilityManager.sharedManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [self.tableView reloadData];
     }];
+    
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController:)];
+    self.navigationItem.rightBarButtonItem = searchItem;
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
+}
+
+- (IBAction)showSearchController:(id)sender {
+    self.inSearchMode = YES;
+    self.searchController.searchBar.alpha = 0;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.searchController.searchBar.alpha = 1;
+    } completion:^(BOOL finished){
+        self.tableView.tableHeaderView = self.searchController.searchBar;
+        [self.searchController.searchBar becomeFirstResponder];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)dealloc {
@@ -97,10 +123,10 @@ NS_ENUM(NSInteger, IGShowRows) {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     if(section == IGShowSectionInfo) {
-        return IGShowRowCount;
+        return self.inSearchMode ? 0 : IGShowRowCount;
     }
     
-    return self.show.tracks.count;
+    return self.searchTracks.count;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -200,7 +226,7 @@ NS_ENUM(NSInteger, IGShowRows) {
         PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"track"
                                                               forIndexPath:indexPath];
         
-        IGTrack *track = self.show.tracks[indexPath.row];
+        IGTrack *track = self.searchTracks[indexPath.row];
         
         [cell updateCellWithTrack:track
                       inTableView:tableView];
@@ -281,6 +307,32 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     
     [AppDelegate.sharedDelegate saveCurrentState];
+}
+
+#pragma mark - Search results updater
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.text;
+    self.searchTracks = self.show.tracks.mutableCopy;
+    if (searchText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title CONTAINS[c] %@", searchText];
+        [self.searchTracks filterUsingPredicate:predicate];
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - Search bar delegate
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.inSearchMode = NO;
+    [searchBar resignFirstResponder];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.searchController.searchBar.alpha = 0;
+    } completion:^(BOOL finished){
+        self.tableView.tableHeaderView = nil;
+        self.searchController.searchBar.alpha = 1;
+        [self.tableView reloadData];
+    }];
 }
 
 @end

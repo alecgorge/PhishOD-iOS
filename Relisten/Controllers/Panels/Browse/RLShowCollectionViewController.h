@@ -10,7 +10,7 @@
 
 #import "IGAPIClient.h"
 
-@interface RLShowCollectionViewController : RefreshableTableViewController
+@interface RLShowCollectionViewController : RefreshableTableViewController <UISearchResultsUpdating>
 
 - (instancetype)initWithYear:(IGYear *)year;
 - (instancetype)initWithVenue:(IGVenue *)venue;

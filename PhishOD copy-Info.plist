@@ -61,6 +61,11 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>StatsServer</key>
 	<string>https://www.phishtrackstats.com/api/v2/</string>
 	<key>UIBackgroundModes</key>

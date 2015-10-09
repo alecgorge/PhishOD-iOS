@@ -16,6 +16,9 @@
 @interface RLVenuesViewController ()
 
 @property (nonatomic) NSArray *venues;
+@property (nonatomic) NSMutableArray *searchVenues;
+
+@property (strong, nonatomic) UISearchController *searchController;
 
 @end
 
@@ -37,6 +40,12 @@
     [super viewDidLoad];
     
     self.title = @"Venues";
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
 }
 
 - (void)refresh:(id)sender {
@@ -44,6 +53,7 @@
        self.venues = [venues sortedArrayUsingComparator:^NSComparisonResult(IGVenue *obj1, IGVenue *obj2) {
            return [obj1.name compare:obj2.name];
        }];
+       self.searchVenues = self.venues.mutableCopy;
        
        [self.tableView reloadData];
        [super refresh:sender];
@@ -56,7 +66,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.venues.count;
+    return self.searchVenues.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -68,7 +78,7 @@
                                     reuseIdentifier:@"cell"];
     }
     
-    IGVenue *ven = self.venues[indexPath.row];
+    IGVenue *ven = self.searchVenues[indexPath.row];
     
     cell.textLabel.text = ven.name;
     cell.detailTextLabel.text = ven.city;
@@ -82,7 +92,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    RLShowCollectionViewController *vc = [RLShowCollectionViewController.alloc initWithVenue:self.venues[indexPath.row]];
+    RLShowCollectionViewController *vc = [RLShowCollectionViewController.alloc initWithVenue:self.searchVenues[indexPath.row]];
     
     [self.navigationController pushViewController:vc
                                          animated:YES];
@@ -91,6 +101,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0f * 1.2f;
+}
+
+#pragma mark - Search results updater
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.text;
+    self.searchVenues = (NSMutableArray *)self.venues.mutableCopy;
+    if (searchText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
+        [self.searchVenues filterUsingPredicate:predicate];
+    }
+    [self.tableView reloadData];
 }
 
 @end
