@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18FC7AED59755625022E926996A6226FE280EBBC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "256B465BA82CB900AC32B2F2BC3A5432B17C8342" : 0,
+    "18FC7AED59755625022E926996A6226FE280EBBC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D0E5CD8F-29E6-48CE-A53B-6830BF85F68E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "256B465BA82CB900AC32B2F2BC3A5432B17C8342" : "AGAudioPlayer",
+    "18FC7AED59755625022E926996A6226FE280EBBC" : "PhishOD-iOS"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PhishOD",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PhishOD.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:alecgorge\/PhishOD-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18FC7AED59755625022E926996A6226FE280EBBC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:alecgorge\/AGAudioPlayer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "256B465BA82CB900AC32B2F2BC3A5432B17C8342"
+    }
+  ]
+}

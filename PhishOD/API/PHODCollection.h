@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 Alec Gorge. All rights reserved.
 //
 
-@protocol PHODCollection <NSObject>
+#import "PhishAlbumArtCache.h"
 
-- (NSURL *)albumArt;
+@class MPMediaItemArtwork;
+
+@protocol PHODCollection <FICEntity>
+
+- (MPMediaItemArtwork *)albumArt;
 - (NSString *)displayText;
 - (NSString *)displaySubtext;
 

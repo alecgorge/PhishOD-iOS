@@ -8,8 +8,7 @@
 
 #import "PHODCollectionCollectionViewCell.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "PhishAlbumArtCache.h"
 
 NSMutableArray *phish_album_jokes = nil;
 NSUInteger jokeNextIndex = 0;
@@ -84,29 +83,25 @@ NSUInteger jokeNextIndex = 0;
 }
 
 - (void)prepareForReuse {
-	[self.uiImageView sd_cancelCurrentImageLoad];
+//	[self.uiImageView sd_cancelCurrentImageLoad];
 }
 
 - (void)updateWithCollection:(id<PHODCollection>)col {
     self.uiFauxAlbumArtSubtext.text = [self.class nextAlbumArtJoke];
     self.uiFauxAlbumArt.hidden = NO;
 
-    [self.uiImageView setImageWithURL:[col albumArt]
-                     placeholderImage:nil
-                              options:0
-                             progress:nil
-                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                if (!image) {
-                                    self.uiFauxAlbumArtSubtext.text = [self.class nextAlbumArtJoke];
-                                    self.uiFauxAlbumArt.hidden = NO;
-                                }
-                                else {
-                                    self.uiImageView.image = image;
-                                    self.uiFauxAlbumArt.hidden = YES;
-                                }
-                            }
-          usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	
+    PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
+    
+    [c.sharedCache retrieveImageForEntity:col
+                           withFormatName:PHODImageFormatFull
+                          completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
+                              self.uiImageView.image = image;
+                              self.uiFauxAlbumArt.hidden = YES;
+                              
+                              [self.uiImageView.layer addAnimation:[CATransition animation]
+                                                            forKey:kCATransition];
+                          }];
+
 	self.uiTitleLabel.text = col.displayText;
 	self.uiSubtitleLabel.text = col.displaySubtext;
 }

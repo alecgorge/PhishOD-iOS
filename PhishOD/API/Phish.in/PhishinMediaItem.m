@@ -77,7 +77,7 @@
     }
 }
 
-- (NSURL *)albumArt {
+- (MPMediaItemArtwork *)albumArt {
     return self.phishinShow.albumArt;
 }
 

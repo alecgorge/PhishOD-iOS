@@ -8,8 +8,16 @@
 
 #import "PhishinShow.h"
 
+#import <MediaPlayer/MediaPlayer.h>
 #import <NSObject-NSCoding/NSObject+NSCoding.h>
 #import "PHODPersistence.h"
+
+@interface PhishinShow () {
+    MPMediaItemArtwork *_artwork;
+    BOOL _artworkRequested;
+}
+
+@end
 
 @implementation PhishinShow
 
@@ -102,10 +110,18 @@
 	return [self.location stringByAppendingFormat:@" - %@", self.venue_name];
 }
 
-- (NSURL *)albumArt {
-	NSString *mediaDomain = [NSUserDefaults.standardUserDefaults objectForKey:@"media_domain"];
-	
-	return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/album_art/ph%@.jpg", mediaDomain, self.date]];
+- (MPMediaItemArtwork *)albumArt {
+    if(_artwork == nil && _artworkRequested == NO) {
+        PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
+        
+        [c.sharedCache retrieveImageForEntity:self
+                               withFormatName:PHODImageFormatFull
+                              completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
+                                  _artwork = [MPMediaItemArtwork.alloc initWithImage:image];
+                              }];
+    }
+    
+    return _artwork;
 }
 
 - (NSString *)displayText {
@@ -166,6 +182,47 @@
 
 + (PhishinShow *)loadShowFromCacheForShowDate:(NSString *)date {
 	return (PhishinShow *)[PHODPersistence.sharedInstance objectForKey:[self cacheKeyForShowDate:date]];
+}
+
+#pragma mark - FICEntity Methods
+
+- (NSString *)UUID {
+    return self.date;
+}
+
+- (NSString *)sourceImageUUID {
+    return self.date;
+}
+
+- (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"phod://shatter"];
+    
+    NSDictionary *queryDictionary = @{@"date": self.date,
+                                      @"venue": self.venue_name ?: self.venue.name,
+                                      @"location": self.location ?: self.venue.location };
+    NSMutableArray *queryItems = [NSMutableArray array];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    }
+    
+    components.queryItems = queryItems;
+    
+    return components.URL;
+}
+
+- (FICEntityImageDrawingBlock)drawingBlockForImage:(UIImage *)image
+                                    withFormatName:(NSString *)formatName {
+    FICEntityImageDrawingBlock drawingBlock = ^(CGContextRef context, CGSize contextSize) {
+        CGRect contextBounds = CGRectZero;
+        contextBounds.size = contextSize;
+        CGContextClearRect(context, contextBounds);
+        
+        UIGraphicsPushContext(context);
+        [image drawInRect:contextBounds];
+        UIGraphicsPopContext();
+    };
+    
+    return drawingBlock;
 }
 
 @end

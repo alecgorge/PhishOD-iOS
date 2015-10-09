@@ -11,6 +11,11 @@
 #import "PhishinShow.h"
 
 #import "PhishinAPI.h"
+#import "PhishAlbumArtCache.h"
+
+@interface PhishinTrack ()
+
+@end
 
 @implementation PhishinTrack
 
@@ -73,6 +78,10 @@
 - (PHODDownloadItem *)downloadItem {
     return [PhishinDownloadItem.alloc initWithTrack:self
                                             andShow:self.show];
+}
+
+- (MPMediaItemArtwork *)artwork {
+    return self.show.albumArt;
 }
 
 - (NSDate *)date {

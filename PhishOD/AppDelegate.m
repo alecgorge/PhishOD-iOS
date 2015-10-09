@@ -35,7 +35,7 @@
 #import <GroundControl/NSUserDefaults+GroundControl.h>
 #import <Instabug/Instabug.h>
 #import <SDCloudUserDefaults/SDCloudUserDefaults.h>
-#import <FlurrySDK/Flurry.h>
+#import <Flurry-iOS-SDK/Flurry.h>
 
 #import <PSUpdateApp/PSUpdateApp.h>
 
