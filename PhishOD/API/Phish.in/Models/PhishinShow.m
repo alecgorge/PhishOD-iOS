@@ -12,9 +12,14 @@
 #import <NSObject-NSCoding/NSObject+NSCoding.h>
 #import "PHODPersistence.h"
 
+#import <FastImageCache/FICUtilities.h>
+
 @interface PhishinShow () {
     MPMediaItemArtwork *_artwork;
     BOOL _artworkRequested;
+    
+    NSString *_uuid;
+    NSString *_sourceuuid;
 }
 
 @end
@@ -187,11 +192,21 @@
 #pragma mark - FICEntity Methods
 
 - (NSString *)UUID {
-    return self.date;
+    if(!_uuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString(self.date);
+        _uuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _uuid;
 }
 
 - (NSString *)sourceImageUUID {
-    return self.date;
+    if(!_sourceuuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"source-" stringByAppendingString:self.date]);
+        _sourceuuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _sourceuuid;
 }
 
 - (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {
@@ -216,6 +231,7 @@
         CGRect contextBounds = CGRectZero;
         contextBounds.size = contextSize;
         CGContextClearRect(context, contextBounds);
+        CGContextSetInterpolationQuality(context, kCGInterpolationMedium);
         
         UIGraphicsPushContext(context);
         [image drawInRect:contextBounds];

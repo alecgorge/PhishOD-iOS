@@ -32,7 +32,7 @@
 }
 
 - (NSString *)sourceImageUUID {
-    return self.showDate;
+    return [@"source-" stringByAppendingString:self.showDate];
 }
 
 - (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {

@@ -92,15 +92,15 @@ NSUInteger jokeNextIndex = 0;
 
     PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
     
-    [c.sharedCache retrieveImageForEntity:col
-                           withFormatName:PHODImageFormatFull
-                          completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
-                              self.uiImageView.image = image;
-                              self.uiFauxAlbumArt.hidden = YES;
-                              
-                              [self.uiImageView.layer addAnimation:[CATransition animation]
-                                                            forKey:kCATransition];
-                          }];
+    [c.sharedCache asynchronouslyRetrieveImageForEntity:col
+                                         withFormatName:PHODImageFormatFull
+                                        completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
+                                            self.uiImageView.image = image;
+                                            self.uiFauxAlbumArt.hidden = YES;
+                                            
+                                            [self.uiImageView.layer addAnimation:[CATransition animation]
+                                                                          forKey:kCATransition];
+                                        }];
 
 	self.uiTitleLabel.text = col.displayText;
 	self.uiSubtitleLabel.text = col.displaySubtext;

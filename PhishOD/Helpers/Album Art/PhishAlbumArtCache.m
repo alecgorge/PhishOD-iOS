@@ -50,7 +50,7 @@
     medium.protectionMode = FICImageFormatProtectionModeNone;
     
     FICImageFormat *full = [[FICImageFormat alloc] init];
-    full.name = PHODImageFormatMedium;
+    full.name = PHODImageFormatFull;
     full.family = PHODImageFamily;
     full.style = FICImageFormatStyle32BitBGR;
     full.imageSize = CGSizeMake(768, 768);
@@ -87,7 +87,7 @@ wantsSourceImageForEntity:(id<FICEntity>)entity
         NSString *location = [self valueForKey:@"location"
                                 fromQueryItems:urlComponents.queryItems];
         
-        UIColor *baseColor = [[UIColor flatRedColorDark] darkenByPercentage:.1];
+        UIColor *baseColor = [[UIColor randomFlatColor] darkenByPercentage:.1];
         
         UIGraphicsBeginImageContext(CGSizeMake(768, 768));
         
