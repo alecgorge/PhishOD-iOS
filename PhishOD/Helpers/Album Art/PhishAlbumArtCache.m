@@ -145,7 +145,7 @@ wantsSourceImageForEntity:(id<FICEntity>)entity
         
         UIGraphicsBeginImageContext(CGSizeMake(768, 768));
         
-        BOOL allSame = YES;
+        BOOL allSame = NO;
         
         if(!allSame && day % 4 == 1) {
             [PhishAlbumArts drawShatterExplosionWithBaseColor:baseColor
