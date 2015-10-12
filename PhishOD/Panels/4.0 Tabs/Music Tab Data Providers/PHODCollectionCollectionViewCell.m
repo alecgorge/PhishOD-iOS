@@ -87,16 +87,19 @@ NSUInteger jokeNextIndex = 0;
 }
 
 - (void)updateWithCollection:(id<PHODCollection>)col {
+    self.uiImageView.image = nil;
     self.uiFauxAlbumArtSubtext.text = [self.class nextAlbumArtJoke];
-    self.uiFauxAlbumArt.hidden = NO;
+    self.uiFauxAlbumArt.hidden = YES;
+    self.uiActivityIndicator.hidden = NO;
 
     PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
     
     [c.sharedCache asynchronouslyRetrieveImageForEntity:col
-                                         withFormatName:PHODImageFormatFull
+                                         withFormatName:PHODImageFormatSmall
                                         completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
                                             self.uiImageView.image = image;
-                                            self.uiFauxAlbumArt.hidden = YES;
+                                            self.uiActivityIndicator.hidden = YES;
+//                                            self.uiFauxAlbumArt.hidden = YES;
                                             
                                             [self.uiImageView.layer addAnimation:[CATransition animation]
                                                                           forKey:kCATransition];

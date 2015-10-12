@@ -8,6 +8,15 @@
 
 #import "PhishNetTopShow.h"
 
+#import <FastImageCache/FICUtilities.h>
+
+@interface PhishNetTopShow () {
+    NSString *_uuid;
+    NSString *_sourceuuid;
+}
+
+@end
+
 @implementation PhishNetTopShow
 
 @synthesize rating;
@@ -28,11 +37,21 @@
 }
 
 - (NSString *)UUID {
-    return self.showDate;
+    if(!_uuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"ptop-" stringByAppendingString:self.showDate]);
+        _uuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _uuid;
 }
 
 - (NSString *)sourceImageUUID {
-    return [@"source-" stringByAppendingString:self.showDate];
+    if(!_sourceuuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"ptop-source-" stringByAppendingString:self.showDate]);
+        _sourceuuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _sourceuuid;
 }
 
 - (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {
@@ -57,6 +76,7 @@
         CGRect contextBounds = CGRectZero;
         contextBounds.size = contextSize;
         CGContextClearRect(context, contextBounds);
+        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
         
         UIGraphicsPushContext(context);
         [image drawInRect:contextBounds];

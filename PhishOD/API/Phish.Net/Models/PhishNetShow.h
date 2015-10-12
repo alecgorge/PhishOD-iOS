@@ -10,7 +10,7 @@
 
 #import "PHODCollection.h"
 
-@interface PhishNetShow : JSONModel
+@interface PhishNetShow : JSONModel<PHODCollection>
 
 @property (nonatomic) NSString *id;
 @property (nonatomic) NSString *dateString;

@@ -9,8 +9,11 @@
 #import "PhishAlbumArtCache.h"
 
 #import <ChameleonFramework/Chameleon.h>
+#import <EDColor/EDColor.h>
 
 #import "PhishAlbumArts.h"
+
+NSArray *PHODYearColors = nil;
 
 @implementation PhishAlbumArtCache
 
@@ -26,6 +29,39 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self setupImageCache];
+        
+        PHODYearColors = @[
+            [UIColor colorWithHue:0.21666666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.25 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.2833333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.31666666666666665 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.35 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.38333333333333336 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.4166666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.45 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.48333333333333334 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.5166666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.55 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.5833333333333334 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.6166666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.65 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.6833333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.7166666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.75 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.7833333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.8166666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.85 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.8833333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.9166666666666666 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.95 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.9833333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.016666666666666666 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.05 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.08333333333333333 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.11666666666666667 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.15 saturation:0.65 lightness:.6 alpha:1.0],
+            [UIColor colorWithHue:0.18333333333333332 saturation:0.65 lightness:.6 alpha:1.0],
+        ];
     }
     return self;
 }
@@ -61,6 +97,12 @@
     NSArray *imageFormats = @[small, medium, full];
     
     [self.sharedCache reset];
+    NSString *p = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    
+    NSError *err;
+    [[NSFileManager defaultManager] removeItemAtPath:[p stringByAppendingPathComponent:@"ImageTables"]
+                                               error:&err];
+    
     self.sharedCache.delegate = self;
     self.sharedCache.formats = imageFormats;
 }
@@ -87,21 +129,47 @@ wantsSourceImageForEntity:(id<FICEntity>)entity
         NSString *location = [self valueForKey:@"location"
                                 fromQueryItems:urlComponents.queryItems];
         
-        UIColor *baseColor = [[UIColor randomFlatColor] darkenByPercentage:.1];
+        NSInteger year = [[date substringToIndex:4] integerValue];
+        NSInteger index = MAX(0, year - 1987);
+        
+        UIColor *baseColor = [PHODYearColors[index] darken:0.05];
+        
+        NSInteger month = [[date substringWithRange:NSMakeRange(5, 2)] integerValue];
+        
+        baseColor = [baseColor offsetWithHue:0.0f
+                                  saturation:((month - 1) *  2) / 100.0f
+                                   lightness:((month - 1) * -2) / 100.0f
+                                       alpha:1.0f];
+        
+        NSInteger day = [[date substringWithRange:NSMakeRange(8, 2)] integerValue];
         
         UIGraphicsBeginImageContext(CGSizeMake(768, 768));
         
-        if(arc4random_uniform(2)) {
+        BOOL allSame = YES;
+        
+        if(!allSame && day % 4 == 1) {
             [PhishAlbumArts drawShatterExplosionWithBaseColor:baseColor
                                                          date:date
                                                         venue:venue
                                                   andLocation:location];
         }
-        else {
+        else if(!allSame && day % 4 == 2) {
             [PhishAlbumArts drawRandomFlowersWithBaseColor:baseColor
-                                                      date:date
-                                                     venue:venue
-                                               andLocation:location];
+                                                         date:date
+                                                        venue:venue
+                                                  andLocation:location];
+        }
+        else if(!allSame && day % 4 == 3) {
+            [PhishAlbumArts drawSplashWithBaseColor:baseColor
+                                                         date:date
+                                                        venue:venue
+                                                  andLocation:location];
+        }
+        else if(allSame || day % 4 == 0) {
+            [PhishAlbumArts drawCityGlittersWithBaseColor:baseColor
+                                                         date:date
+                                                        venue:venue
+                                                  andLocation:location];
         }
 
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

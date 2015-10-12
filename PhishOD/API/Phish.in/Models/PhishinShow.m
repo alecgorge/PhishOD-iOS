@@ -193,7 +193,7 @@
 
 - (NSString *)UUID {
     if(!_uuid) {
-        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString(self.date);
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"phin-" stringByAppendingString:self.date]);
         _uuid = FICStringWithUUIDBytes(UUIDBytes);
     }
     
@@ -202,7 +202,7 @@
 
 - (NSString *)sourceImageUUID {
     if(!_sourceuuid) {
-        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"source-" stringByAppendingString:self.date]);
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"phin-source-" stringByAppendingString:self.date]);
         _sourceuuid = FICStringWithUUIDBytes(UUIDBytes);
     }
     
@@ -231,7 +231,7 @@
         CGRect contextBounds = CGRectZero;
         contextBounds.size = contextSize;
         CGContextClearRect(context, contextBounds);
-        CGContextSetInterpolationQuality(context, kCGInterpolationMedium);
+        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
         
         UIGraphicsPushContext(context);
         [image drawInRect:contextBounds];

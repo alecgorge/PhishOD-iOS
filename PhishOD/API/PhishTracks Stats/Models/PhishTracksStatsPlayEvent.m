@@ -9,10 +9,14 @@
 #import "PhishTracksStatsPlayEvent.h"
 
 #import <MediaPlayer/MediaPlayer.h>
+#import <FastImageCache/FICUtilities.h>
 
 @interface PhishTracksStatsPlayEvent () {
     MPMediaItemArtwork *_artwork;
     BOOL _artworkRequested;
+    
+    NSString *_uuid;
+    NSString *_sourceuuid;
 }
 
 @end
@@ -111,11 +115,21 @@
 #pragma mark - PHODCollection, FICEntity
 
 - (NSString *)UUID {
-    return self.showDate;
+    if(!_uuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"pts-" stringByAppendingString:self.showDate]);
+        _uuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _uuid;
 }
 
 - (NSString *)sourceImageUUID {
-    return [@"source-" stringByAppendingString:self.showDate];
+    if(!_sourceuuid) {
+        CFUUIDBytes UUIDBytes = FICUUIDBytesFromMD5HashOfString([@"pts-source-" stringByAppendingString:self.showDate]);
+        _sourceuuid = FICStringWithUUIDBytes(UUIDBytes);
+    }
+    
+    return _sourceuuid;
 }
 
 - (NSURL *)sourceImageURLWithFormatName:(NSString *)formatName {
@@ -140,6 +154,7 @@
         CGRect contextBounds = CGRectZero;
         contextBounds.size = contextSize;
         CGContextClearRect(context, contextBounds);
+        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
         
         UIGraphicsPushContext(context);
         [image drawInRect:contextBounds];

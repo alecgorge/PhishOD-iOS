@@ -253,7 +253,7 @@
 		7C27BA741992DAAE00E5AEAE /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA731992DAAE00E5AEAE /* PlaylistViewController.m */; };
 		7C27BA7A19942FB700E5AEAE /* IGThirdPartyKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C27BA7919942FB700E5AEAE /* IGThirdPartyKeys.m */; };
 		7C27BA7C19942FC000E5AEAE /* API keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C27BA7B19942FC000E5AEAE /* API keys.plist */; };
-		7C2D19861BC4D5E8005FFE65 /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; settings = {ASSET_TAGS = (); }; };
+		7C2D19861BC4D5E8005FFE65 /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; };
 		7C35781F1B58B32F00329368 /* RLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C35781E1B58B32F00329368 /* RLSettingsViewController.m */; };
 		7C3578221B58B6EB00329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
 		7C3578231B58B87800329368 /* PHODFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3578211B58B6EB00329368 /* PHODFavoritesManager.m */; };
@@ -287,8 +287,8 @@
 		7C518C70175E5EE5005EB2E7 /* PhishNetReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C6F175E5EE5005EB2E7 /* PhishNetReview.m */; };
 		7C518C73175E6465005EB2E7 /* LongStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C72175E6465005EB2E7 /* LongStringViewController.m */; };
 		7C518C76175FD224005EB2E7 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C518C75175FD224005EB2E7 /* ReviewsViewController.m */; };
-		7C5259541BC85897007BCCEC /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; settings = {ASSET_TAGS = (); }; };
-		7C5259551BC858A4007BCCEC /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; settings = {ASSET_TAGS = (); }; };
+		7C5259541BC85897007BCCEC /* PhishAlbumArtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D19851BC4D5E8005FFE65 /* PhishAlbumArtCache.m */; };
+		7C5259551BC858A4007BCCEC /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; };
 		7C60302A182068DA0088F651 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C603029182068DA0088F651 /* HomeViewController.m */; };
 		7C63C7D0199437730022F37F /* IGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C63C7CF199437730022F37F /* IGEvents.m */; };
 		7C63C7D4199445AD0022F37F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C63C7D3199445AD0022F37F /* libz.dylib */; };
@@ -313,10 +313,10 @@
 		7C847EE71A13F71400EB4F3D /* PHODNewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C847EE51A13F71400EB4F3D /* PHODNewHomeViewController.m */; };
 		7C847EE81A13F71400EB4F3D /* PHODNewHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE61A13F71400EB4F3D /* PHODNewHomeViewController.xib */; };
 		7C847EEA1A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C847EE91A13F75A00EB4F3D /* 15115437744_51db659feb_b.jpg */; };
-		7C857EE21BB604E700613017 /* StyleKitName.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE11BB604E700613017 /* StyleKitName.m */; settings = {ASSET_TAGS = (); }; };
-		7C857EE51BB6051200613017 /* PHODShardAlbumArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */; settings = {ASSET_TAGS = (); }; };
-		7C857EE81BB6094700613017 /* PhishShardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE71BB6094700613017 /* PhishShardStyle.m */; settings = {ASSET_TAGS = (); }; };
-		7C857EEB1BB83BE300613017 /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; settings = {ASSET_TAGS = (); }; };
+		7C857EE21BB604E700613017 /* StyleKitName.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE11BB604E700613017 /* StyleKitName.m */; };
+		7C857EE51BB6051200613017 /* PHODShardAlbumArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE41BB6051200613017 /* PHODShardAlbumArt.m */; };
+		7C857EE81BB6094700613017 /* PhishShardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EE71BB6094700613017 /* PhishShardStyle.m */; };
+		7C857EEB1BB83BE300613017 /* PhishAlbumArts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C857EEA1BB83BE300613017 /* PhishAlbumArts.m */; };
 		7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9436771988585E00AFEA56 /* PhishNetNewsItem.m */; };
 		7C94367B19885A2100AFEA56 /* PhishNetBlogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367A19885A2100AFEA56 /* PhishNetBlogItem.m */; };
 		7C94367E1988894A00AFEA56 /* PhishNetShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C94367D1988894A00AFEA56 /* PhishNetShow.m */; };
@@ -2746,8 +2746,8 @@
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (

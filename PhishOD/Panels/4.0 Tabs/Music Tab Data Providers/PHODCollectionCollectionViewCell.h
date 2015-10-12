@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *uiFauxAlbumArt;
 @property (weak, nonatomic) IBOutlet UILabel *uiFauxAlbumArtDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiFauxAlbumArtSubtext;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *uiActivityIndicator;
 
 - (void)updateWithCollection:(id<PHODCollection>)col;
 

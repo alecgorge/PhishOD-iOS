@@ -20,12 +20,20 @@
                                      date:(NSString *)dateStr
                                     venue:(NSString *)venueStr
                               andLocation:(NSString *)locationStr;
+
 + (void)drawRandomFlowersWithBaseColor:(UIColor *)color
                                   date:(NSString *)dateStr
                                  venue:(NSString *)venueStr
                            andLocation:(NSString *)locationStr;
-+ (void)drawSplash;
-+ (void)drawCityGlitters;
-+ (void)drawCanvas1;
+
++ (void)drawSplashWithBaseColor:(UIColor *)color
+                           date:(NSString *)dateStr
+                          venue:(NSString *)venueStr
+                    andLocation:(NSString *)locationStr;
+
++ (void)drawCityGlittersWithBaseColor:(UIColor *)color
+                                 date:(NSString *)dateStr
+                                venue:(NSString *)venueStr
+                          andLocation:(NSString *)locationStr;
 
 @end
