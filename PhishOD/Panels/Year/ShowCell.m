@@ -10,6 +10,9 @@
 
 #import "IGDurationHelper.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+#import "PhishAlbumArtCache.h"
+
 @interface ShowCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *uiDateLabel;
@@ -20,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *heatmapView;
 @property (weak, nonatomic) IBOutlet UIView *heatmapValue;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heatmapValueWidth;
+@property (weak, nonatomic) IBOutlet UIImageView *uiArtworkImage;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *uiLoadingIndicator;
 
 @end
 
@@ -53,10 +58,25 @@
     
 	self.uiDateLabel.text = show.date;
 	self.uiDurationLabel.text = [IGDurationHelper formattedTimeWithInterval:show.duration / 1000.0f];
-	self.uiSoundboardLabel.hidden = !show.sbd;
-	self.uiRemasteredLabel.hidden = !show.remastered;
+    self.uiSoundboardLabel.alpha = show.sbd ? 1.0 : 0.2;
+    self.uiRemasteredLabel.alpha = show.remastered ? 1.0 : 0.2;
 		
 	self.uiDescriptionLabel.attributedText = [self attributedStringForShow:show];
+    
+    [self.uiLoadingIndicator startAnimating];
+    PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
+    
+    self.uiArtworkImage.image = nil;
+    self.uiLoadingIndicator.hidden = NO;
+    [c.sharedCache asynchronouslyRetrieveImageForEntity:show
+                                         withFormatName:PHODImageFormatSmall
+                                        completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
+                                            self.uiArtworkImage.image = image;
+                                            self.uiLoadingIndicator.hidden = YES;
+
+                                            [self.uiArtworkImage.layer addAnimation:[CATransition animation]
+                                                                          forKey:kCATransition];
+                                        }];
 }
 
 - (CGFloat)heightForCellWithShow:(PhishinShow *)show

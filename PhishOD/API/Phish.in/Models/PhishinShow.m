@@ -116,6 +116,10 @@
 }
 
 - (MPMediaItemArtwork *)albumArt {
+    return [self loadArtwork:nil];
+}
+
+- (MPMediaItemArtwork *)loadArtwork:(void (^)(MPMediaItemArtwork *))success {
     if(_artwork == nil && _artworkRequested == NO) {
         PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
         
@@ -123,6 +127,9 @@
                                withFormatName:PHODImageFormatFull
                               completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
                                   _artwork = [MPMediaItemArtwork.alloc initWithImage:image];
+                                  if(success) {
+                                      success(_artwork);
+                                  }
                               }];
     }
     

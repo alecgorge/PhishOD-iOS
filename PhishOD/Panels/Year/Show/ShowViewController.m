@@ -12,6 +12,7 @@
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
+#import <ChameleonFramework/Chameleon.h>
 
 #import "AppDelegate.h"
 #import "NowPlayingBarViewController.h"
@@ -20,6 +21,7 @@
 #import "VenueViewController.h"
 #import "PhishinMediaItem.h"
 #import "PHODTrackCell.h"
+#import "PhishAlbumArtCache.h"
 
 #import "PhishTracksStats.h"
 #import "PhishTracksStatsFavoritePopover.h"
@@ -28,7 +30,13 @@
 #import "ShowHeaderView.h"
 #import "ShowDetailsViewController.h"
 
-@interface ShowViewController ()
+#import "DTParallaxHeaderView.h"
+#import "DTParallaxTableView.h"
+
+@interface ShowViewController () {
+    UIImage *prevBgImage;
+    UIImage *prevShadowImage;
+}
 
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
 @property (nonatomic) ShowDetailsViewController *detailsVc;
@@ -44,7 +52,7 @@
 - (id)initWithShow:(PhishinShow*)s {
     self = [super initWithStyle: UITableViewStylePlain];
     if (self) {
-		self.show = s;
+        self.show = s;
 		self.title = self.show.date;
 		
 		self.autoplay = NO;
@@ -69,7 +77,9 @@
 }
 
 - (void)viewDidLoad {
-	// super viewDidLoad triggers the refresh
+    self.tableView = [DTParallaxTableView.alloc initWithFrame:CGRectZero];
+
+    // super viewDidLoad triggers the refresh
 	if(self.loadedFromCompleteShow) {
         self.preventRefresh = YES;
 	}
@@ -107,13 +117,96 @@ forHeaderFooterViewReuseIdentifier:@"showHeader"];
 	CGRect frame = self.tableView.bounds;
 	
 	frame.origin.y = -frame.size.height;
-	UIView* grayView = [UIView.alloc initWithFrame:frame];
+	UIImageView* grayView = [UIImageView.alloc initWithFrame:frame];
 	grayView.backgroundColor = [UIColor colorWithWhite:0.975 alpha:1.000];
 	
 	self.tableView.backgroundView = grayView;
 	
 	self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    /*
+    PhishAlbumArtCache *c = PhishAlbumArtCache.sharedInstance;
+    
+    [c.sharedCache asynchronouslyRetrieveImageForEntity:self.show
+                                         withFormatName:PHODImageFormatFull
+                                        completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
+                                            CGRect frame = self.tableView.bounds;
+                                            frame.size.height = 200;
+                                            DTParallaxHeaderView *headerView = [[DTParallaxHeaderView alloc] initWithFrame:frame
+                                                                                                                 withImage:image
+                                                                                                                withTabBar:nil];
+                                            DTParallaxTableView *dt = (DTParallaxTableView *)self.tableView;
+                                            [dt setDTHeaderView:headerView];
+                                            
+                                            CATransition *transition = [CATransition animation];
+                                            transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+                                            transition.type = kCATransitionFade;
+                                            transition.duration = 0.5;
+                                            
+                                            [self.navigationController.navigationBar.layer addAnimation:transition forKey:nil];
+                                            [self seeThroughBar];
+                                        }];
+     */
+}
+
+- (void)seeThroughBar {
+    NSArray *colors = @[[UIColor.blackColor colorWithAlphaComponent:0.8],
+                        [UIColor.blackColor colorWithAlphaComponent:0.6],
+                        [UIColor.blackColor colorWithAlphaComponent:0.4],
+                        [UIColor.blackColor colorWithAlphaComponent:0]
+                        ];
+    
+    //Create our background gradient layer
+    CAGradientLayer *backgroundGradientLayer = [CAGradientLayer layer];
+    
+    //Set the frame to our object's bounds
+    CGRect f = self.navigationController.navigationBar.bounds;
+    f.size.height += [UIApplication sharedApplication].statusBarFrame.size.height;
+    backgroundGradientLayer.frame = f;
+    backgroundGradientLayer.backgroundColor = UIColor.clearColor.CGColor;
+    
+    //To simplfy formatting, we'll iterate through our colors array and create a mutable array with their CG counterparts
+    NSMutableArray *cgColors = [[NSMutableArray alloc] init];
+    for (UIColor *color in colors) {
+        [cgColors addObject:(id)[color CGColor]];
+    }
+    
+    //Set out gradient's colors
+    backgroundGradientLayer.colors = cgColors;
+    
+    //Convert our CALayer to a UIImage object
+    UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size,NO, [UIScreen mainScreen].scale);
+    [backgroundGradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    prevBgImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:backgroundColorImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+
+    prevShadowImage = self.navigationController.navigationBar.shadowImage;
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    /*
+    if(animated) {
+        CATransition *transition = [CATransition animation];
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        transition.type = kCATransitionFade;
+        transition.duration = 0.5;
+        [self.navigationController.navigationBar.layer addAnimation:transition forKey:nil];
+    }
+    
+    [self.navigationController.navigationBar setBackgroundImage:prevBgImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = prevShadowImage;
+    self.navigationController.navigationBar.translucent = NO;
+     */
 }
 
 - (void)setupRightBarButtonItem {

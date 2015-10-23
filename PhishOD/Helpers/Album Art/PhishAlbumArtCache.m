@@ -96,12 +96,14 @@ NSArray *PHODYearColors = nil;
     
     NSArray *imageFormats = @[small, medium, full];
     
+    /*
     [self.sharedCache reset];
     NSString *p = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     
     NSError *err;
     [[NSFileManager defaultManager] removeItemAtPath:[p stringByAppendingPathComponent:@"ImageTables"]
                                                error:&err];
+     */
     
     self.sharedCache.delegate = self;
     self.sharedCache.formats = imageFormats;

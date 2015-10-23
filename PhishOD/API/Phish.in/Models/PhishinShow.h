@@ -48,4 +48,6 @@
 + (NSString *)cacheKeyForShowDate:(NSString *)date;
 + (PhishinShow *)loadShowFromCacheForShowDate:(NSString *)date;
 
+- (MPMediaItemArtwork *)loadArtwork:(void(^)(MPMediaItemArtwork *))success;
+
 @end

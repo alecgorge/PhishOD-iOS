@@ -369,6 +369,7 @@
 		7CD8A4981B04FA8700A46635 /* PHODHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A4971B04FA8700A46635 /* PHODHistory.m */; };
 		7CD8A49B1B05375600A46635 /* PHODBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */; };
 		7CD8A49E1B08015000A46635 /* PHODPhishNetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */; };
+		7CDBDC9A1BCB5C4000BDE334 /* PHODLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBDC991BCB5C4000BDE334 /* PHODLaunch Screen.storyboard */; };
 		7CDDA39E1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */; };
 		7CDDA3A11B0457A000C88DE2 /* PHODMusicTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A01B0457A000C88DE2 /* PHODMusicTabTableViewController.m */; };
 		7CDDA3A51B04DF3100C88DE2 /* PHODLoadingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDDA3A31B04DF3100C88DE2 /* PHODLoadingTableViewCell.m */; };
@@ -386,6 +387,10 @@
 		7CE27F9E1B5C4B7200507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */; };
 		7CE27FA01B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
 		7CE27FA11B5C5B2D00507C77 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */; };
+		7CEE68081BD9EB0400AAFCE6 /* DTParallaxTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CFFE1BB1BCBFF6B00FBB3AB /* DTParallaxTableView.m */; };
+		7CEE68091BD9EB0700AAFCE6 /* DTParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CFFE1B91BCBFF6B00FBB3AB /* DTParallaxHeaderView.m */; };
+		7CFFE1BD1BCBFF6B00FBB3AB /* DTParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CFFE1B91BCBFF6B00FBB3AB /* DTParallaxHeaderView.m */; };
+		7CFFE1BE1BCBFF6B00FBB3AB /* DTParallaxTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CFFE1BB1BCBFF6B00FBB3AB /* DTParallaxTableView.m */; };
 		A4D0486965815B233789EAF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F37BC86616A360BD11A202 /* libPods.a */; };
 		C56C2B5319F04A11004F5637 /* PTSHeatmapQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */; };
 		C56C2B5619F05979004F5637 /* PTSHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = C56C2B5519F05979004F5637 /* PTSHeatmap.m */; };
@@ -726,6 +731,7 @@
 		7CD8A49A1B05375600A46635 /* PHODBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODBrowseTableViewController.m; path = "4.0 Tabs/PHODBrowseTableViewController.m"; sourceTree = "<group>"; };
 		7CD8A49C1B08014F00A46635 /* PHODPhishNetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODPhishNetTableViewController.h; path = "4.0 Tabs/PHODPhishNetTableViewController.h"; sourceTree = "<group>"; };
 		7CD8A49D1B08014F00A46635 /* PHODPhishNetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODPhishNetTableViewController.m; path = "4.0 Tabs/PHODPhishNetTableViewController.m"; sourceTree = "<group>"; };
+		7CDBDC991BCB5C4000BDE334 /* PHODLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "PHODLaunch Screen.storyboard"; sourceTree = "<group>"; };
 		7CDDA39C1B0456BC00C88DE2 /* PHODTabbedHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODTabbedHomeViewController.h; path = "4.0 Tabs/PHODTabbedHomeViewController.h"; sourceTree = "<group>"; };
 		7CDDA39D1B0456BC00C88DE2 /* PHODTabbedHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODTabbedHomeViewController.m; path = "4.0 Tabs/PHODTabbedHomeViewController.m"; sourceTree = "<group>"; };
 		7CDDA39F1B0457A000C88DE2 /* PHODMusicTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODMusicTabTableViewController.h; path = "4.0 Tabs/PHODMusicTabTableViewController.h"; sourceTree = "<group>"; };
@@ -753,6 +759,11 @@
 		7CE27F9C1B5C4B6100507C77 /* JSONValueTransformer+NSDateFromNSStringMilliseconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JSONValueTransformer+NSDateFromNSStringMilliseconds.m"; path = "API/JSONValueTransformer+NSDateFromNSStringMilliseconds.m"; sourceTree = "<group>"; };
 		7CE27F9F1B5C5B2D00507C77 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		7CF41C37188EDFAE00EE11D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7CFFE1B81BCBFF6B00FBB3AB /* DTParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTParallaxHeaderView.h; sourceTree = "<group>"; };
+		7CFFE1B91BCBFF6B00FBB3AB /* DTParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTParallaxHeaderView.m; sourceTree = "<group>"; };
+		7CFFE1BA1BCBFF6B00FBB3AB /* DTParallaxTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTParallaxTableView.h; sourceTree = "<group>"; };
+		7CFFE1BB1BCBFF6B00FBB3AB /* DTParallaxTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTParallaxTableView.m; sourceTree = "<group>"; };
+		7CFFE1BC1BCBFF6B00FBB3AB /* DTTableViewConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTableViewConstants.h; sourceTree = "<group>"; };
 		930296C832BD58F575B019AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapQuery.h; sourceTree = "<group>"; };
@@ -1300,6 +1311,7 @@
 		7C518C0B175D0C32005EB2E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7CFFE1B71BCBFF6200FBB3AB /* DTParallaxTableView */,
 				7C1C3C321982097600555ACB /* stock_header_chris_tank.jpg */,
 				7C23462E19820630002A46D5 /* MEExpandableHeaderView */,
 				F1B48B5F1973B0FA00DDF5C3 /* Rotatable TabBarController */,
@@ -1317,6 +1329,7 @@
 				7CADB31F176040B200B80D54 /* NSString+stripHTML.m */,
 				7C6AE5161788B97200AAED06 /* Entitlements.plist */,
 				7C10A88A1B33B5BC00692DD3 /* PhishAppIcon.xcassets */,
+				7CDBDC991BCB5C4000BDE334 /* PHODLaunch Screen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1718,6 +1731,18 @@
 			name = "Music Tab Data Providers";
 			sourceTree = "<group>";
 		};
+		7CFFE1B71BCBFF6200FBB3AB /* DTParallaxTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7CFFE1B81BCBFF6B00FBB3AB /* DTParallaxHeaderView.h */,
+				7CFFE1B91BCBFF6B00FBB3AB /* DTParallaxHeaderView.m */,
+				7CFFE1BA1BCBFF6B00FBB3AB /* DTParallaxTableView.h */,
+				7CFFE1BB1BCBFF6B00FBB3AB /* DTParallaxTableView.m */,
+				7CFFE1BC1BCBFF6B00FBB3AB /* DTTableViewConstants.h */,
+			);
+			name = DTParallaxTableView;
+			sourceTree = "<group>";
+		};
 		C56C2B4B19F04933004F5637 /* Heatmaps */ = {
 			isa = PBXGroup;
 			children = (
@@ -2064,6 +2089,7 @@
 				7CADCE481894407000841A92 /* NowPlayingBarViewController.xib in Resources */,
 				7C94368719888C5400AFEA56 /* Value1SubtitleCell.xib in Resources */,
 				7C1C3C61198219FD00555ACB /* glyphicons_083_random.png in Resources */,
+				7CDBDC9A1BCB5C4000BDE334 /* PHODLaunch Screen.storyboard in Resources */,
 				7C7ED3A61801B0FF004F55DF /* PDLocationsMapViewController.xib in Resources */,
 				7C1C3C69198219FD00555ACB /* glyphicons_175_stop.png in Resources */,
 				7C1C3C67198219FD00555ACB /* glyphicons_174_pause.png in Resources */,
@@ -2297,9 +2323,11 @@
 				7C10A8141B33B51700692DD3 /* PhishinSearchResults.m in Sources */,
 				7C10A8151B33B51700692DD3 /* StatsQueries.m in Sources */,
 				7C10A8161B33B51700692DD3 /* PhishNetBlogViewController.m in Sources */,
+				7CEE68081BD9EB0400AAFCE6 /* DTParallaxTableView.m in Sources */,
 				7C35782A1B5AC60900329368 /* RLHistoryViewController.m in Sources */,
 				7C10A8171B33B51700692DD3 /* PHODCollectionCollectionViewCell.m in Sources */,
 				7C10A8B21B42457B00692DD3 /* RLShowCollectionViewController.m in Sources */,
+				7CEE68091BD9EB0700AAFCE6 /* DTParallaxHeaderView.m in Sources */,
 				7C3578321B5C055800329368 /* PHODPersistence.m in Sources */,
 				7C10A8181B33B51700692DD3 /* BaseStatsViewController.m in Sources */,
 				7C10A8191B33B51700692DD3 /* PHODCollectionProvider.m in Sources */,
@@ -2365,6 +2393,7 @@
 				F1B48B0B1973831A00DDF5C3 /* TourRankingTableViewCell.m in Sources */,
 				C5E62D2D183DA14F00A84114 /* PhishTracksStatsStat.m in Sources */,
 				C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */,
+				7CFFE1BE1BCBFF6B00FBB3AB /* DTParallaxTableView.m in Sources */,
 				7C7ED3A41801B0FF004F55DF /* PDLocation.m in Sources */,
 				F1B48B0A1973831A00DDF5C3 /* ShowRankingTableViewCell.m in Sources */,
 				7C79EB82198572480064C177 /* PhishNetJamChartEntry.m in Sources */,
@@ -2478,6 +2507,7 @@
 				7CADCE6018946A8400841A92 /* PhishTracksStatsFavoritePopover.m in Sources */,
 				7CADB320176040B200B80D54 /* NSString+stripHTML.m in Sources */,
 				7C7ED3A51801B0FF004F55DF /* PDLocationsMapViewController.m in Sources */,
+				7CFFE1BD1BCBFF6B00FBB3AB /* DTParallaxHeaderView.m in Sources */,
 				7C23463419820630002A46D5 /* MEExpandableHeaderView.m in Sources */,
 				F1B48B091973831A00DDF5C3 /* SetRankingTableViewCell.m in Sources */,
 				7CB3C0A41B27877900FDF5F1 /* PHODDownloadTabTableViewController.m in Sources */,
@@ -2697,14 +2727,13 @@
 			baseConfigurationReference = A525C98EF4F94BBB291A9522 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Debug;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2741,14 +2770,13 @@
 			baseConfigurationReference = 930296C832BD58F575B019AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Release;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2815,14 +2843,13 @@
 			baseConfigurationReference = 4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUILD_CONFIGURATION = Adhoc;
 				BUNDLE_ID = "com.alecgorge.Phish-Tracks-Beta";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PhishOD/PhishOD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
