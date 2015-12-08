@@ -251,7 +251,7 @@ didFinishLaunchingWithOptions:nil];
 #else
     NowPlayingBarViewController.sharedInstance.shouldShowBar = false;
     [self.navDelegate addBarToViewController: nil];
-    NowPlayingBarViewController.sharedInstance.shouldShowBar = truea;
+    NowPlayingBarViewController.sharedInstance.shouldShowBar = true;
     [[self topViewController] presentViewController:nav
                                            animated:YES
                                          completion:complete];
