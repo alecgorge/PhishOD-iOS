@@ -169,5 +169,26 @@
 		t.scrollIndicatorInsets = edges;
 	}
 }
+- (void)fixForViewController:(UIViewController*)vc force:(BOOL)force {
+    if (force && [vc isKindOfClass:[UITableViewController class]]) {
+        UITableView *t = [(UITableViewController*)vc tableView];
+        
+        UIEdgeInsets edges = t.contentInset;
+        
+        if((edges.bottom - AppDelegate.sharedDelegate.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+            edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
+        t.contentInset = edges;
+        
+        edges = t.scrollIndicatorInsets;
+        
+        if((edges.bottom - AppDelegate.sharedDelegate.tabBar.bounds.size.height) < NowPlayingBarViewController.sharedInstance.view.bounds.size.height)
+            edges.bottom += NowPlayingBarViewController.sharedInstance.view.bounds.size.height;
+        
+        t.scrollIndicatorInsets = edges;
+    } else {
+        [self fixForViewController:vc];
+    }
+}
 
 @end

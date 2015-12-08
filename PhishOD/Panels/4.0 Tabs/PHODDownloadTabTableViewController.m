@@ -21,6 +21,7 @@
 #import "IGAPIClient.h"
 #import "IGShowCell.h"
 #import "RLShowViewController.h"
+#import "AppDelegate.h"
 
 NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	kPHODDownloadTabDownloadedSection,
@@ -105,6 +106,14 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	self.tableView.estimatedRowHeight = 44.0f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
+
+#ifndef IS_PHISH
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+}
+#endif
 
 #ifndef IS_PHISH
 - (void)refresh:(id)sender {
