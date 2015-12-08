@@ -14,9 +14,6 @@
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
 
-CGFloat const maximumDynamicFontTitleSize = 28;
-CGFloat const maximumDynamicFontSubtitleSize = 26;
-
 @interface RLVenuesViewController ()
 
 @property (nonatomic) NSArray *venues;
@@ -101,8 +98,8 @@ CGFloat const maximumDynamicFontSubtitleSize = 26;
     cell.detailTextLabel.text = ven.city;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:MIN(cell.textLabel.font.pointSize, maximumDynamicFontTitleSize)];
-    cell.detailTextLabel.font = [UIFont fontWithName:cell.detailTextLabel.font.fontName size:MIN(cell.detailTextLabel.font.pointSize, maximumDynamicFontSubtitleSize)];
+    cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:MIN(cell.textLabel.font.pointSize, 28)];
+    cell.detailTextLabel.font = [UIFont fontWithName:cell.detailTextLabel.font.fontName size:MIN(cell.detailTextLabel.font.pointSize, 26)];
     cell.textLabel.adjustsFontSizeToFitWidth = true;
     
     return cell;
