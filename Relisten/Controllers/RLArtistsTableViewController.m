@@ -86,6 +86,13 @@ static NSArray *featuredArtists;
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+}
+
 - (void)showSettings {
     UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:RLSettingsViewController.new];
     
