@@ -48,6 +48,19 @@
                              fav,
                              dl
 							 ];
+
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithImage:[UIImage settingsNavigationIcon]
+                                                                                     style:UIBarButtonItemStylePlain
+                                                                                    target:self
+                                                                                    action:@selector(showSettings)];
+}
+
+- (void)showSettings {
+    UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:RLSettingsViewController.new];
+    
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
