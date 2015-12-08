@@ -59,8 +59,6 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.tabBarController.title = @"Downloads";
-	
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
 											   bundle:nil]
 		 forCellReuseIdentifier:@"trackCell"];
@@ -136,6 +134,7 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
     [self.tableView reloadData];
 #else
     [self refresh:nil];
+    self.tabBarController.title = self.navigationItem.title = self.title = @"Downloads";
 #endif
 }
 

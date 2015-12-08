@@ -37,8 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBarController.title = @"Favorites";
-    
     [self.tableView registerClass:UITableViewCell.class
            forCellReuseIdentifier:@"cell"];
     
@@ -53,6 +51,11 @@
                                                      usingBlock:^(NSNotification *notification) {
                                                          [self.tableView reloadData];
                                                      }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.title = self.navigationItem.title = self.title = @"Favorites";
 }
 
 - (void)viewDidAppear:(BOOL)animated {

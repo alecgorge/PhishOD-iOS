@@ -86,6 +86,8 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     if(self.collectionType != RLShowCollectionTopShows) {
         [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
         [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    } else {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
     }
 }
 

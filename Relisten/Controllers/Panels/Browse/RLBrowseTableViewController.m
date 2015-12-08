@@ -80,7 +80,10 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
     self.searchController.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.tabBarController.title = IGAPIClient.sharedInstance.artist.name;
 }
 

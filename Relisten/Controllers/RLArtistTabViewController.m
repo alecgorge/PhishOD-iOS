@@ -76,8 +76,6 @@
     
     [self.navDelegate addBarToViewController];
     [self.navDelegate fixForViewController:self.viewControllers[0] force:true];
-    [self.navDelegate fixForViewController:self.viewControllers[1] force:true];
-    [self.navDelegate fixForViewController:self.viewControllers[2] force:true];
 }
 
 @end
