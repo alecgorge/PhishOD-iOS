@@ -49,4 +49,6 @@
 
 - (void)saveCurrentState;
 
++ (UIViewController*)topViewController;
+
 @end

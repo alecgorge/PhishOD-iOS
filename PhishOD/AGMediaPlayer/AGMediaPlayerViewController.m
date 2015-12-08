@@ -43,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UIView *uiBottomBar;
 @property (weak, nonatomic) IBOutlet UIView *uiTopBar;
 @property (weak, nonatomic) IBOutlet MPVolumeView *uiVolumeView;
+@property (weak, nonatomic) IBOutlet UIButton *uiReorderButton;
 
 @property BOOL registeredAudioSession;
 
@@ -136,6 +137,8 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
     self.uiStatusLabel.backgroundColor = COLOR_PHISH_GREEN;
     
     self.uiProgressSlider.tintColor = COLOR_PHISH_WHITE;
+    
+    self.uiReorderButton.tintColor = COLOR_PHISH_WHITE;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -420,8 +423,20 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     }
 }
 
+- (IBAction)arrange:(id)sender {
+    if ([self.uiReorderButton.titleLabel.text isEqualToString:@"Arrange"]) {
+        [self.uiPlaybackQueueTable setEditing:true animated:true];
+        [self.uiReorderButton setTitle:@"Done" forState:UIControlStateNormal];
+    } else {
+        [self.uiPlaybackQueueTable setEditing:false animated:true];
+        [self.uiReorderButton setTitle:@"Arrange" forState:UIControlStateNormal];
+    }
+}
+
 - (void)addItemsToQueue:(NSArray *)queue {
     [self.queue appendItems:queue];
+    
+    [self.uiPlaybackQueueTable reloadData];
 }
 
 - (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSInteger)index {
@@ -446,6 +461,55 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     return self.queue.count;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.editing)
+    {
+        return UITableViewCellEditingStyleDelete;
+    }
+    
+    return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.audioPlayer.queue moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+    NSInteger diff = destinationIndexPath.row - sourceIndexPath.row;
+    if (self.audioPlayer.currentIndex == sourceIndexPath.row) {
+        [self.audioPlayer setIndex:self.audioPlayer.currentIndex + diff];
+    } else {
+        if (sourceIndexPath.row > self.audioPlayer.currentIndex && self.audioPlayer.currentIndex > destinationIndexPath.row) {
+            [self.audioPlayer setIndex:self.audioPlayer.currentIndex - 1];
+        } else if (sourceIndexPath.row < self.audioPlayer.currentIndex && self.audioPlayer.currentIndex < destinationIndexPath.row) {
+            [self.audioPlayer setIndex:self.audioPlayer.currentIndex + 1];
+        }
+    }
+    [tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSInteger currentIndex = self.audioPlayer.currentIndex;
+        [self.queue removeItemAtIndex:indexPath.row];
+        if (self.queue.count == 0) {
+            [self.audioPlayer stop];
+        } else if (indexPath.row == currentIndex) {
+            if (self.queue.count <= currentIndex) {
+                [self.audioPlayer playItemAtIndex:currentIndex - 1];
+            } else {
+                [self.audioPlayer playItemAtIndex:currentIndex];
+            }
+        }
+        [tableView reloadData];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"track";
@@ -455,6 +519,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     PHODTrackCell *c = (PHODTrackCell *)cell;
 	[c showHeatmap:(!!self.heatmap)];
     [c updateCellWithTrack:[self.queue properQueueForShuffleEnabled:self.shuffle][indexPath.row]
+            AndTrackNumber:indexPath.row + 1
                inTableView:tableView];
     
     return cell;

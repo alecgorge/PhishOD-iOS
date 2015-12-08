@@ -48,6 +48,13 @@
          forCellReuseIdentifier:@"review"];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

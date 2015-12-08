@@ -498,7 +498,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
                                                            startIndex:startIndex];
     
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     
     [AppDelegate.sharedDelegate saveCurrentState];

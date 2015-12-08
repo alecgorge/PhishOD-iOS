@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RLSettingsViewController.h"
 
 @interface RLArtistTabViewController : UITabBarController
 

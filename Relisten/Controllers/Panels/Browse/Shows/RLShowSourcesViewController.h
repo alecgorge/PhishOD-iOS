@@ -9,6 +9,7 @@
 #import "RefreshableTableViewController.h"
 
 #import "IGAPIClient.h"
+#import "AppDelegate.h"
 
 @interface RLShowSourcesViewController : RefreshableTableViewController
 

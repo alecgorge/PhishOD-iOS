@@ -48,7 +48,7 @@ PODS:
   - FXKeychain (1.5.3)
   - GroundControl (2.1.0):
     - AFNetworking (~> 2.2)
-  - HysteriaPlayer (2.1.3)
+  - HysteriaPlayer (HEAD based on 2.1.4)
   - Instabug (4.1.7)
   - JSONModel (1.1.2)
   - KissXML (5.0)
@@ -66,7 +66,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
-  - SVProgressHUD (HEAD based on 1.1.3)
+  - SVProgressHUD (HEAD based on 2.0-beta)
   - SVWebViewController (1.0)
   - TDBadgedCell (HEAD based on 3.0)
   - TTTAttributedLabel (1.13.4)
@@ -94,6 +94,7 @@ DEPENDENCIES:
   - Flurry-iOS-SDK
   - FXKeychain
   - GroundControl (~> 2.1.0)
+  - HysteriaPlayer (HEAD)
   - Instabug (~> 4.1)
   - JSONModel
   - KVOController
@@ -134,7 +135,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  AGAudioPlayer: 0518c566ffbdbed6eb54b3719f9500688202701a
+  AGAudioPlayer: 356be857859b28e293f3cb4ecf493f42aa2cfba5
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
@@ -151,7 +152,7 @@ SPEC CHECKSUMS:
   Flurry-iOS-SDK: 014d366cad101f05d4e8c191c0e0c0871d5704f7
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
-  HysteriaPlayer: 75c14d9b6a6fe48b69e14e124bdd73a584be10a0
+  HysteriaPlayer: 81433239fa79ca7c446ccb994d91d34eaa533ab3
   Instabug: 58f773fcefe0dec9b1bd3fcf09c6e46560353f5d
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
@@ -165,7 +166,7 @@ SPEC CHECKSUMS:
   PSUpdateApp: 295919cdc1876f4d91911297c7e9f238aa732220
   SDCloudUserDefaults: cacf733d192160d94364efab8548ae3302615a65
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f

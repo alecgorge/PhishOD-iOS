@@ -7,6 +7,7 @@
 //
 
 #import "RefreshableTableViewController.h"
+#import "AppDelegate.h"
 
 @interface RLVenuesViewController : RefreshableTableViewController <UISearchResultsUpdating>
 

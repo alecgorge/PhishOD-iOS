@@ -58,6 +58,13 @@ NS_ENUM(NSInteger, IGSourcesRows) {
     [self applyTitle];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+}
+
 - (void)applyTitle {
     if(self.displayDate) {
         self.title = [NSString stringWithFormat:@"%@ Sources", self.displayDate];

@@ -14,6 +14,9 @@
 
 #import "IGDurationHelper.h"
 #import "AGMediaPlayerViewController.h"
+#import "RLShowViewController.h"
+#import "IguanaMediaItem.h"
+#import "AppDelegate.h"
 
 @implementation UIImage (IPImageUtils)
 
@@ -139,6 +142,13 @@
 	self.heatmapView.hidden = YES;
 }
 
+- (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
+             AndTrackNumber:(NSInteger)number
+                inTableView:(UITableView *)tableView {
+    [self updateCellWithTrack:track inTableView:tableView];
+    self.uiTrackNumber.text = @(number).stringValue;
+}
+
 - (void)pollForProgressUpdates {
 	if(self.progressTimer != nil) {
 		return;
@@ -193,6 +203,30 @@
 
 - (void)dealloc {
 	[self stopProgressUpdates];
+}
+
+- (IBAction)showMoreOptions:(id)sender {
+    UITableViewController *vc = (UITableViewController *)[AppDelegate topViewController];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"More" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [controller addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if ([vc isKindOfClass:[RLShowViewController class]]) {
+            RLShowViewController *rlsvc = (RLShowViewController *)vc;
+            NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
+            
+            if ([AGMediaPlayerViewController.sharedInstance queue].count == 0) {
+                [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
+                [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
+                [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
+                [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
+                [AppDelegate.sharedDelegate saveCurrentState];
+            } else {
+                [AGMediaPlayerViewController.sharedInstance addItemsToQueue:playlist];
+            }
+        }
+    }]];
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [[AppDelegate topViewController] presentViewController:controller animated:true completion:nil];
 }
 
 - (IBAction)download:(id)sender {

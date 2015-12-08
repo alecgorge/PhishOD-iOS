@@ -73,8 +73,6 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 70.0f;
     
-    [self updateTitle];
-    
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
@@ -82,15 +80,29 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     self.definesPresentationContext = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if(self.collectionType != RLShowCollectionTopShows) {
+        [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateTitle];
+}
+
 - (void)updateTitle {
     if(self.collectionType == RLShowCollectionYear) {
-        self.title = [NSString stringWithFormat:@"%ld", self.year.year];
+        self.tabBarController.title = self.title = [NSString stringWithFormat:@"%ld", self.year.year];
     }
     else if(self.collectionType == RLShowCollectionVenue) {
-        self.title = self.venue.name;
+        self.tabBarController.title = self.title = self.venue.name;
     }
     else if(self.collectionType == RLShowCollectionTopShows) {
-        self.title = @"Top Shows";
+        self.tabBarController.title = self.title = @"Top Shows";
     }
 }
 

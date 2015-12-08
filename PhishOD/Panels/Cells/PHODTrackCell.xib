@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,13 +16,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1966" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7J-kL-9Yf">
-                        <rect key="frame" x="50" y="9" width="179" height="27"/>
+                        <rect key="frame" x="50" y="9" width="150" height="27"/>
+                        <animations/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1:48:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-dg-B4L">
                         <rect key="frame" x="262" y="12" width="42" height="21"/>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="uYy-p1-VHO"/>
                         </constraints>
@@ -31,6 +34,7 @@
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3F-M5d">
                         <rect key="frame" x="15" y="14" width="30" height="17"/>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="oax-ab-GCO"/>
                         </constraints>
@@ -40,6 +44,7 @@
                     </label>
                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-ld-nrJ" customClass="NAKPlaybackIndicatorView">
                         <rect key="frame" x="15" y="17" width="13" height="12"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="13" id="DoT-dZ-DMp"/>
@@ -48,6 +53,7 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-7D-P09" customClass="LLACircularProgressView">
                         <rect key="frame" x="237" y="12" width="22" height="22"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.50895065069198608" blue="0.36556175351142883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -60,6 +66,7 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwM-CR-byt">
                         <rect key="frame" x="209" y="1" width="78" height="43"/>
+                        <animations/>
                         <state key="normal" image="cloud_download_22.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -72,12 +79,14 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-Nf-q4m" userLabel="Heatmap Value">
                                 <rect key="frame" x="0.0" y="27" width="4" height="5"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="B96-4t-r7I" userLabel="Heatmap Value Height"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.71764705880000002" blue="0.51764705879999995" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="H7n-Nf-q4m" secondAttribute="bottom" id="IN4-QY-VRb"/>
@@ -87,20 +96,34 @@
                             <constraint firstAttribute="trailing" secondItem="H7n-Nf-q4m" secondAttribute="trailing" id="h6p-ii-NOK"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RC7-b5-9JQ">
+                        <rect key="frame" x="205" y="11" width="22" height="22"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="7W2-mq-j0m"/>
+                        </constraints>
+                        <state key="normal" image="more"/>
+                        <connections>
+                            <action selector="showMoreOptions:" destination="EQz-9i-ftB" eventType="touchUpInside" id="qDs-CX-FIr"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <animations/>
                 <constraints>
                     <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" constant="1" id="16q-n0-dtO"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="trailing" constant="5" id="5T6-wy-WPx"/>
+                    <constraint firstItem="RC7-b5-9JQ" firstAttribute="leading" secondItem="w7J-kL-9Yf" secondAttribute="trailing" constant="5" id="6Bd-X6-4kG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RC7-b5-9JQ" secondAttribute="trailing" constant="85" id="8ea-f7-vGV"/>
                     <constraint firstAttribute="bottomMargin" secondItem="w7J-kL-9Yf" secondAttribute="bottom" constant="-1" id="DhP-O2-hyd"/>
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="leading" secondItem="m2c-7D-P09" secondAttribute="leading" constant="25" id="E9c-5t-Flz"/>
                     <constraint firstItem="m2c-7D-P09" firstAttribute="centerX" secondItem="WwM-CR-byt" secondAttribute="centerX" id="Efp-uR-uHI"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="FPt-Yx-hLf"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="bottom" secondItem="rUU-dg-B4L" secondAttribute="bottom" constant="3" id="G5J-aJ-80h"/>
-                    <constraint firstItem="m2c-7D-P09" firstAttribute="leading" secondItem="w7J-kL-9Yf" secondAttribute="trailing" constant="8" symbolic="YES" id="IRF-HY-1Vb"/>
                     <constraint firstItem="WwM-CR-byt" firstAttribute="centerY" secondItem="m2c-7D-P09" secondAttribute="centerY" id="LKb-zW-CyN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="rUU-dg-B4L" secondAttribute="trailing" constant="8" id="QMm-cX-ho3"/>
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="top" secondItem="w7J-kL-9Yf" secondAttribute="top" constant="3" id="SD7-Id-YAa"/>
                     <constraint firstAttribute="trailingMargin" secondItem="WwM-CR-byt" secondAttribute="trailing" constant="25" id="WbJ-qL-8kX"/>
+                    <constraint firstItem="RC7-b5-9JQ" firstAttribute="centerY" secondItem="2LD-6t-Saw" secondAttribute="centerY" id="YOi-Eh-qkB"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="topMargin" constant="1" id="YXZ-WW-mKs"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="leading" id="efN-v6-kYz"/>
                     <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" constant="1" id="jI1-Rl-MWt"/>
@@ -111,6 +134,7 @@
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="centerY" secondItem="tlf-N8-X59" secondAttribute="centerY" id="x9e-MG-k1I"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <connections>
                 <outlet property="heatmapValue" destination="H7n-Nf-q4m" id="zax-Kv-nmb"/>
                 <outlet property="heatmapValueHeight" destination="B96-4t-r7I" id="Dev-9x-V05"/>
@@ -127,10 +151,6 @@
     </objects>
     <resources>
         <image name="cloud_download_22.png" width="22" height="22"/>
+        <image name="more" width="22" height="6"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

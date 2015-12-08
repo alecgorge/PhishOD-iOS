@@ -21,6 +21,10 @@
 - (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
                 inTableView:(UITableView *)tableView;
 
+- (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
+             AndTrackNumber:(NSInteger)number
+                inTableView:(UITableView *)tableView;
+
 - (CGFloat)heightForCellWithTrack:(NSObject<PHODGenericTrack> *)track
                       inTableView:(UITableView *)tableView;
 

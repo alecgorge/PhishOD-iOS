@@ -98,16 +98,8 @@ NS_ENUM(NSInteger, IGAboutAcknowledgementsRows) {
 }
 
 - (void)done {
-    [AppDelegate.sharedDelegate.tabs dismissViewControllerAnimated:YES
-                                                        completion:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleLightContent;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    UIApplication.sharedApplication.statusBarStyle = UIStatusBarStyleDefault;
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 #pragma mark - Table view data source

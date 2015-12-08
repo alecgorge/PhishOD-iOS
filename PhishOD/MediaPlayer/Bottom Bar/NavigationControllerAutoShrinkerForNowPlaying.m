@@ -81,7 +81,7 @@
 //	[self presentViewController:self.searchController animated:YES completion:nil];
 }
 
-- (void)addBarToView:(UIView *)view {
+- (void)addBarToView:(UIView *)view andHasTab:(BOOL)hasTab {
     if([view viewWithTag:NowPlayingBarViewController.sharedInstance.view.tag] == nil) {
         UIView *v = NowPlayingBarViewController.sharedInstance.view;
         [v removeFromSuperview];
@@ -105,7 +105,7 @@
                      animations:^{
                          if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
                              CGRect r = NowPlayingBarViewController.sharedInstance.view.frame;
-                             r.origin.y = view.bounds.size.height - r.size.height - AppDelegate.sharedDelegate.tabBar.bounds.size.height;
+                             r.origin.y = hasTab ? view.bounds.size.height - r.size.height - AppDelegate.sharedDelegate.tabBar.bounds.size.height : view.bounds.size.height - r.size.height;
                              NowPlayingBarViewController.sharedInstance.view.frame = r;
                          }
                          else {
@@ -116,8 +116,12 @@
                      }];
 }
 
+- (void)addBarToViewController {
+    [self addBarToView:AppDelegate.sharedDelegate.tabs.view andHasTab:true];
+}
+
 - (void)addBarToViewController:(UIViewController *)vc {
-	[self addBarToView:AppDelegate.sharedDelegate.tabs.view];
+    [self addBarToView:AppDelegate.sharedDelegate.window andHasTab:false];
 }
 
 - (void)fixForViewController:(UIViewController *)viewController {

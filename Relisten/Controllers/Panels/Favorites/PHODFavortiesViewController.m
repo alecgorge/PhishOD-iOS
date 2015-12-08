@@ -30,8 +30,6 @@
                                                         tag:0];
         
         self.navigationController.tabBarItem = self.tabBarItem;
-        self.navigationItem.title = self.title = @"Favorites";
-        
     }
     return self;
 }
@@ -39,10 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBarController.title = @"Favorites";
+    
     [self.tableView registerClass:UITableViewCell.class
            forCellReuseIdentifier:@"cell"];
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.emptyDataSetSource = self;

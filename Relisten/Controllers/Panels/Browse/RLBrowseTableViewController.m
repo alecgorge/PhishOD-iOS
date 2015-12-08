@@ -45,7 +45,6 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
 														tag:0];
 		
 		self.navigationController.tabBarItem = self.tabBarItem;
-        self.navigationItem.title = self.title = IGAPIClient.sharedInstance.artist.name;
         
 	}
 	return self;
@@ -81,6 +80,8 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
     self.searchController.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
+    
+    self.tabBarController.title = IGAPIClient.sharedInstance.artist.name;
 }
 
 - (void)close {

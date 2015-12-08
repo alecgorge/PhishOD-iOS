@@ -12,6 +12,8 @@
 
 @interface RLShowViewController : RefreshableTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
+@property (nonatomic, strong) IGShow *show;
+
 - (instancetype)initWithShow:(IGShow *)show;
 
 @end

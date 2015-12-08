@@ -41,7 +41,6 @@ NS_ENUM(NSInteger, IGShowRows) {
 
 @interface RLShowViewController ()
 
-@property (nonatomic, strong) IGShow *show;
 @property (nonatomic, strong) CSNNotificationObserver *trackChangedEvent;
 
 @property (nonatomic) BOOL inSearchMode;
@@ -94,6 +93,13 @@ NS_ENUM(NSInteger, IGShowRows) {
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
     self.definesPresentationContext = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 - (IBAction)showSearchController:(id)sender {
@@ -292,18 +298,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    NSArray *playlist = [self.show.tracks map:^id(id object) {
-        return [IguanaMediaItem.alloc initWithTrack:object
-                                             inShow:self.show];
-    }];
+    NSMutableArray *playlist = [NSMutableArray new];
+    for (NSInteger i = indexPath.row; i < self.show.tracks.count; i++) {
+        [playlist addObject:[IguanaMediaItem.alloc initWithTrack:self.show.tracks[i]
+                                                          inShow:self.show]];
+    }
     
     [AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
     
     [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
-                                                           startIndex:indexPath.row];
+                                                           startIndex:0];
     
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     
     [AppDelegate.sharedDelegate saveCurrentState];

@@ -89,9 +89,9 @@ static NSArray *featuredArtists;
 - (void)showSettings {
     UINavigationController *navController = [UINavigationController.alloc initWithRootViewController:RLSettingsViewController.new];
     
-    [AppDelegate.sharedDelegate.tabs presentViewController:navController
-                                                  animated:YES
-                                                completion:nil];
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)refresh:(id)sender {
@@ -214,13 +214,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)presentArtistTabs:(NSNumber *)animated {
     RLArtistTabViewController *vc = RLArtistTabViewController.new;
-    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     AppDelegate.sharedDelegate.tabs = vc;
     
-    [self.navigationController presentViewController:vc
-                                            animated:animated.boolValue
-                                          completion:nil];
+    [self.navigationController pushViewController:vc animated:animated.boolValue];
 }
 
 #pragma mark - Search results updater

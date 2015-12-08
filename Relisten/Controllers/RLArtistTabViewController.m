@@ -30,32 +30,23 @@
 	self.navDelegate = NavigationControllerAutoShrinkerForNowPlaying.new;
 	
     RLBrowseTableViewController *browse = RLBrowseTableViewController.new;
-    UINavigationController *browseNav = [UINavigationController.alloc initWithRootViewController:browse];
     
     RLVenuesViewController *venues = RLVenuesViewController.new;
-    UINavigationController *venuesNav = [UINavigationController.alloc initWithRootViewController:venues];
 
     RLShowCollectionViewController *top = RLShowCollectionViewController.alloc.initWithTopShows;
-    UINavigationController *topNav = [UINavigationController.alloc initWithRootViewController:top];
     
     PHODDownloadTabTableViewController *dl = PHODDownloadTabTableViewController.new;
-    UINavigationController *dlNav = [UINavigationController.alloc initWithRootViewController:dl];
     
     PHODFavortiesViewController *fav = PHODFavortiesViewController.new;
-    UINavigationController *favNav = [UINavigationController.alloc initWithRootViewController:fav];
-
-	browseNav.delegate = self.navDelegate;
-    venuesNav.delegate = self.navDelegate;
-    topNav.delegate = self.navDelegate;
-    dlNav.delegate = self.navDelegate;
-    favNav.delegate = self.navDelegate;
+    
+    self.navigationController.delegate = self.navDelegate;
     
 	self.viewControllers = @[
-							 browseNav,
-                             venuesNav,
-                             topNav,
-                             favNav,
-                             dlNav
+							 browse,
+                             venues,
+                             top,
+                             fav,
+                             dl
 							 ];
 }
 
@@ -70,7 +61,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.navDelegate addBarToViewController:self.viewControllers[0]];
+    [self.navDelegate addBarToViewController];
     [self.navDelegate fixForViewController:self.viewControllers[0]];
 }
 

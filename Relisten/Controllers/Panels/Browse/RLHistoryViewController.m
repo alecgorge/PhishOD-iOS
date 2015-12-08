@@ -39,6 +39,13 @@
     self.tableView.tableFooterView = UIView.new;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];

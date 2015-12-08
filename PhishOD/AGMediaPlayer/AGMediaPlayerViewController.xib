@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AGMediaPlayerViewController">
@@ -14,6 +15,7 @@
                 <outlet property="uiPlayButton" destination="4eM-Qf-N8w" id="5iI-M6-nKo"/>
                 <outlet property="uiPlaybackQueueTable" destination="Phb-wb-qWd" id="Mti-T2-KV7"/>
                 <outlet property="uiProgressSlider" destination="92J-sv-LiS" id="8qf-r6-bPo"/>
+                <outlet property="uiReorderButton" destination="Mis-tG-ume" id="VDQ-rs-RxF"/>
                 <outlet property="uiShuffleButton" destination="zdC-Ae-0Aa" id="S9X-aY-U1C"/>
                 <outlet property="uiStatusLabel" destination="amY-lr-Y9E" id="QOR-SK-oTY"/>
                 <outlet property="uiTimeElapsedLabel" destination="uFU-ge-lD2" id="oix-u7-w8J"/>
@@ -31,6 +33,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Phb-wb-qWd" userLabel="Playback Queue">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="contentInset" minX="0.0" minY="66" maxX="0.0" maxY="116"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="0.0" maxY="50"/>
@@ -46,6 +49,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4eM-Qf-N8w" userLabel="Play">
                             <rect key="frame" x="128" y="0.0" width="65" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <state key="normal" image="glyphicons_173_play.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -56,6 +60,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NX8-U2-wor" userLabel="Pause">
                             <rect key="frame" x="128" y="0.0" width="65" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="glyphicons_174_pause.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,6 +72,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Esa-c3-beN" userLabel="Forward">
                             <rect key="frame" x="201" y="0.0" width="65" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="glyphicons_176_forward.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,6 +84,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2yP-QY-Ygg" userLabel="Backward">
                             <rect key="frame" x="55" y="0.0" width="65" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="glyphicons_172_rewind.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,6 +96,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jhK-At-z4G" userLabel="Volume">
                             <rect key="frame" x="20" y="60" width="16" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="glyphicons_184_volume_up.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,8 +105,23 @@
                         <view contentMode="scaleToFill" id="I2d-NS-1hU" customClass="MPVolumeView">
                             <rect key="frame" x="55" y="58" width="237" height="33"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <animations/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mis-tG-ume" userLabel="Reorder">
+                            <rect key="frame" x="251" y="60" width="50" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Arrange">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="arrange:" destination="-1" eventType="touchUpInside" id="oCW-t2-fnL"/>
+                            </connections>
+                        </button>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" red="0.14132557740000001" green="0.14132557740000001" blue="0.14132557740000001" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="YSH-iF-ahz" userLabel="Top Bar">
@@ -108,6 +131,7 @@
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="92J-sv-LiS" userLabel="Progress">
                             <rect key="frame" x="18" y="13" width="284" height="34"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <connections>
                                 <action selector="seekingEndedInside:" destination="-1" eventType="touchUpInside" id="C9v-lR-Cej"/>
                                 <action selector="seekingEndedOutside:" destination="-1" eventType="touchUpOutside" id="mWi-rX-7wi"/>
@@ -118,6 +142,7 @@
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-37:48" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ULs-jx-4CJ" userLabel="Time left">
                             <rect key="frame" x="260" y="41" width="40" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -125,6 +150,7 @@
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37:48" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uFU-ge-lD2" userLabel="Time Elapsed">
                             <rect key="frame" x="20" y="41" width="40" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -132,6 +158,7 @@
                         <button hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xvj-MI-BVn" userLabel="Loop">
                             <rect key="frame" x="278" y="73" width="22" height="15"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="03-loopback.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,6 +170,7 @@
                         <button hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zdC-Ae-0Aa" userLabel="Shuffle">
                             <rect key="frame" x="20" y="73" width="20" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                            <animations/>
                             <state key="normal" image="glyphicons_083_random.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -151,17 +179,20 @@
                             </connections>
                         </button>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" red="0.14132557740000001" green="0.14132557740000001" blue="0.14132557740000001" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="amY-lr-Y9E">
                     <rect key="frame" x="0.0" y="452" width="320" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <color key="backgroundColor" red="0.14132557740000001" green="0.14132557740000001" blue="0.14132557740000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
@@ -174,9 +205,4 @@
         <image name="glyphicons_176_forward.png" width="23" height="18"/>
         <image name="glyphicons_184_volume_up.png" width="24" height="26"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
