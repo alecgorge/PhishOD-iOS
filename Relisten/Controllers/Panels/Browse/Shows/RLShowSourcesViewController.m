@@ -137,6 +137,8 @@ titleForHeaderInSection:(NSInteger)section {
         cell.textLabel.text = @"Listen to this source";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.accessibilityLabel = [NSString stringWithFormat:@"Listen to source %ld of %lu", (long)indexPath.section + 1, (unsigned long)self.fullShows.count];
+        
+        cell.textLabel.adjustsFontSizeToFitWidth = true;
     }
     
     return cell;

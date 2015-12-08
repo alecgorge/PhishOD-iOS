@@ -23,6 +23,8 @@ typedef NS_ENUM(NSInteger, RLArtistsSections) {
 };
 
 static NSArray *featuredArtists;
+CGFloat const maximumDynamicFontTitleSize = 30;
+CGFloat const maximumDynamicFontSubtitleSize = 28;
 
 @interface RLArtistsTableViewController ()
 
@@ -197,9 +199,12 @@ titleForHeaderInSection:(NSInteger)section {
 	IGArtist *artist = [self artistForIndexPath:indexPath];
 	
 	cell.textLabel.text = artist.name;
-	cell.textLabel.adjustsFontSizeToFitWidth = YES;
 	
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", artist.recordingCount];
+    
+    cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:MIN(cell.textLabel.font.pointSize, maximumDynamicFontTitleSize)];
+    
+    cell.detailTextLabel.font = [UIFont fontWithName:cell.detailTextLabel.font.fontName size:MIN(cell.detailTextLabel.font.pointSize, maximumDynamicFontSubtitleSize)];
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		

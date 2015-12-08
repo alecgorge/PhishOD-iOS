@@ -11,6 +11,7 @@
 #import "PHODFavoritesManager.h"
 #import "ShowViewController.h"
 #import "RLShowSourcesViewController.h"
+#import "NowPlayingBarViewController.h"
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
@@ -61,7 +62,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    } else {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    }
 }
 
 #pragma mark - Table view data source

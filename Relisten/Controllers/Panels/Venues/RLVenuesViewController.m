@@ -10,8 +10,12 @@
 
 #import "IGAPIClient.h"
 #import "RLShowCollectionViewController.h"
+#import "NowPlayingBarViewController.h"
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
+
+CGFloat const maximumDynamicFontTitleSize = 28;
+CGFloat const maximumDynamicFontSubtitleSize = 26;
 
 @interface RLVenuesViewController ()
 
@@ -39,7 +43,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    } else {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    }
 }
 
 - (void)viewDidLoad {
@@ -92,6 +100,10 @@
     cell.textLabel.text = ven.name;
     cell.detailTextLabel.text = ven.city;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:MIN(cell.textLabel.font.pointSize, maximumDynamicFontTitleSize)];
+    cell.detailTextLabel.font = [UIFont fontWithName:cell.detailTextLabel.font.fontName size:MIN(cell.detailTextLabel.font.pointSize, maximumDynamicFontSubtitleSize)];
+    cell.textLabel.adjustsFontSizeToFitWidth = true;
     
     return cell;
 }

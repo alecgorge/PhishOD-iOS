@@ -9,6 +9,7 @@
 #import "RLShowCollectionViewController.h"
 
 #import "RLShowSourcesViewController.h"
+#import "NowPlayingBarViewController.h"
 
 #import "IGShowCell.h"
 
@@ -87,7 +88,11 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
         [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
         [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     } else {
-        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+            [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+        } else {
+            [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+        }
     }
 }
 

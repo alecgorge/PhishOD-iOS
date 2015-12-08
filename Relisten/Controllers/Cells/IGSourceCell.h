@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiLabelTaper;
 @property (weak, nonatomic) IBOutlet UILabel *uiLabelSource;
 @property (weak, nonatomic) IBOutlet UILabel *uiLabelLineage;
+@property (weak, nonatomic) IBOutlet UILabel *uiTitleLabelTaper;
+@property (weak, nonatomic) IBOutlet UILabel *uiTitleLabelSource;
+@property (weak, nonatomic) IBOutlet UILabel *uiTitleLabelLineage;
 
 - (void)updateCellWithSource:(IGShow *)source
                  inTableView:(UITableView *)tableView;

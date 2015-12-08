@@ -33,6 +33,10 @@
     self.uiLabelSource.text = source.source && ![source.source isEqualToString:@""] ? source.source : @"Unknown";
     self.uiLabelLineage.text = source.lineage && ![source.lineage isEqualToString:@""] ? source.lineage : @"Unknown";
     
+    self.uiTitleLabelTaper.adjustsFontSizeToFitWidth = YES;
+    self.uiTitleLabelSource.adjustsFontSizeToFitWidth = YES;
+    self.uiTitleLabelLineage.adjustsFontSizeToFitWidth = YES;
+    
     [self.uiRatingView sizeToFit];
     self.uiRatingView.value = source.averageRating;
     self.uiRatingView.userInteractionEnabled = NO;

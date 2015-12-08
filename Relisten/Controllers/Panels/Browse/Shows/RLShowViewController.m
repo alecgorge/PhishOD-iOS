@@ -169,6 +169,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             }
             
             cell.textLabel.text = [NSString stringWithFormat:@"Read %lu reviews", self.show.reviews.count];
+            cell.textLabel.adjustsFontSizeToFitWidth = true;
             cell.detailTextLabel.text = nil;
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -184,7 +185,9 @@ NS_ENUM(NSInteger, IGShowRows) {
             }
             
             cell.textLabel.text = @"Venue";
+            cell.textLabel.adjustsFontSizeToFitWidth = true;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", self.show.venue.name, self.show.venue.city];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = true;
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
@@ -204,6 +207,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             else {
                 cell.textLabel.text = @"Favorite this show";
             }
+            cell.textLabel.adjustsFontSizeToFitWidth = true;
             cell.detailTextLabel.text = @"";
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

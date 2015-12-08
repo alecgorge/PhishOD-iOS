@@ -205,6 +205,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             else if(indexPath.row == 1) {
                 cell.textLabel.text = @"Recently Played Shows";
             }
+            cell.textLabel.adjustsFontSizeToFitWidth = true;
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }

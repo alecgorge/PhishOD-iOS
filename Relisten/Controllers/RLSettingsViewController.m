@@ -59,6 +59,8 @@ NS_ENUM(NSInteger, IGAboutAcknowledgementsRows) {
     IGAboutAcknowledgementsRowCount
 };
 
+CGFloat const maximumDynamicFontTitleSize = 30;
+
 @interface RLSettingsViewController ()
 
 @end
@@ -202,7 +204,8 @@ NS_ENUM(NSInteger, IGAboutAcknowledgementsRows) {
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         }
     }
-
+    
+    cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:MIN(cell.textLabel.font.pointSize, maximumDynamicFontTitleSize)];
     
     return cell;
 }

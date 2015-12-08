@@ -22,6 +22,7 @@
 #import "IGShowCell.h"
 #import "RLShowViewController.h"
 #import "AppDelegate.h"
+#import "NowPlayingBarViewController.h"
 
 NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	kPHODDownloadTabDownloadedSection,
@@ -109,7 +110,11 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    } else {
+        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
+    }
 }
 #endif
 
