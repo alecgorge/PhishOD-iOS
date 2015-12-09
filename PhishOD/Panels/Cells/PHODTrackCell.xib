@@ -51,29 +51,6 @@
                             <constraint firstAttribute="height" constant="12" id="bC6-C9-rRO"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-7D-P09" customClass="LLACircularProgressView">
-                        <rect key="frame" x="237" y="12" width="22" height="22"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.0" green="0.50895065069198608" blue="0.36556175351142883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="22" id="6WT-2t-Xcx"/>
-                            <constraint firstAttribute="width" constant="22" id="SUk-VH-5WB"/>
-                        </constraints>
-                        <connections>
-                            <action selector="cancelDownload:" destination="EQz-9i-ftB" eventType="touchUpInside" id="eSs-VO-6U5"/>
-                        </connections>
-                    </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwM-CR-byt">
-                        <rect key="frame" x="209" y="1" width="78" height="43"/>
-                        <animations/>
-                        <state key="normal" image="cloud_download_22.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="download:" destination="EQz-9i-ftB" eventType="touchUpInside" id="U1q-qw-kL0"/>
-                        </connections>
-                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlf-N8-X59" userLabel="Heatmap View">
                         <rect key="frame" x="5" y="6" width="4" height="32"/>
                         <subviews>
@@ -110,25 +87,18 @@
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" constant="1" id="16q-n0-dtO"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="trailing" constant="5" id="5T6-wy-WPx"/>
                     <constraint firstItem="RC7-b5-9JQ" firstAttribute="leading" secondItem="w7J-kL-9Yf" secondAttribute="trailing" constant="5" id="6Bd-X6-4kG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RC7-b5-9JQ" secondAttribute="trailing" constant="85" id="8ea-f7-vGV"/>
                     <constraint firstAttribute="bottomMargin" secondItem="w7J-kL-9Yf" secondAttribute="bottom" constant="-1" id="DhP-O2-hyd"/>
-                    <constraint firstItem="rUU-dg-B4L" firstAttribute="leading" secondItem="m2c-7D-P09" secondAttribute="leading" constant="25" id="E9c-5t-Flz"/>
-                    <constraint firstItem="m2c-7D-P09" firstAttribute="centerX" secondItem="WwM-CR-byt" secondAttribute="centerX" id="Efp-uR-uHI"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="FPt-Yx-hLf"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="bottom" secondItem="rUU-dg-B4L" secondAttribute="bottom" constant="3" id="G5J-aJ-80h"/>
-                    <constraint firstItem="WwM-CR-byt" firstAttribute="centerY" secondItem="m2c-7D-P09" secondAttribute="centerY" id="LKb-zW-CyN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="rUU-dg-B4L" secondAttribute="trailing" constant="8" id="QMm-cX-ho3"/>
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="top" secondItem="w7J-kL-9Yf" secondAttribute="top" constant="3" id="SD7-Id-YAa"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="WwM-CR-byt" secondAttribute="trailing" constant="25" id="WbJ-qL-8kX"/>
                     <constraint firstItem="RC7-b5-9JQ" firstAttribute="centerY" secondItem="2LD-6t-Saw" secondAttribute="centerY" id="YOi-Eh-qkB"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="topMargin" constant="1" id="YXZ-WW-mKs"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="leading" id="efN-v6-kYz"/>
-                    <constraint firstItem="WwM-CR-byt" firstAttribute="top" secondItem="2LD-6t-Saw" secondAttribute="top" constant="1" id="jI1-Rl-MWt"/>
                     <constraint firstItem="tlf-N8-X59" firstAttribute="leading" secondItem="2LD-6t-Saw" secondAttribute="leadingMargin" constant="-3" id="rT4-2s-V13"/>
-                    <constraint firstAttribute="bottom" secondItem="WwM-CR-byt" secondAttribute="bottom" constant="-1" id="tiC-FZ-vcD"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="wLN-UU-X2b"/>
                     <constraint firstItem="euE-3F-M5d" firstAttribute="leading" secondItem="2LD-6t-Saw" secondAttribute="leadingMargin" constant="7" id="x5G-Le-RJL"/>
                     <constraint firstItem="rUU-dg-B4L" firstAttribute="centerY" secondItem="tlf-N8-X59" secondAttribute="centerY" id="x9e-MG-k1I"/>
@@ -139,8 +109,6 @@
                 <outlet property="heatmapValue" destination="H7n-Nf-q4m" id="zax-Kv-nmb"/>
                 <outlet property="heatmapValueHeight" destination="B96-4t-r7I" id="Dev-9x-V05"/>
                 <outlet property="heatmapView" destination="tlf-N8-X59" id="h8m-kH-jQZ"/>
-                <outlet property="uiCircularProgress" destination="m2c-7D-P09" id="6D0-s7-DKt"/>
-                <outlet property="uiDownloadButton" destination="WwM-CR-byt" id="VRd-6B-yJW"/>
                 <outlet property="uiPlaybackIndicator" destination="qXW-ld-nrJ" id="D0l-SI-Ifj"/>
                 <outlet property="uiTrackNumber" destination="euE-3F-M5d" id="w7y-Cl-zjV"/>
                 <outlet property="uiTrackRunningTime" destination="rUU-dg-B4L" id="TOn-PR-xn7"/>
@@ -150,7 +118,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cloud_download_22.png" width="22" height="22"/>
         <image name="more" width="22" height="6"/>
     </resources>
 </document>

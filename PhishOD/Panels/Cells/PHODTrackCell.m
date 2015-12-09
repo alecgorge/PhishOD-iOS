@@ -47,8 +47,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackRunningTime;
 @property (weak, nonatomic) IBOutlet UILabel *uiTrackNumber;
 @property (weak, nonatomic) IBOutlet NAKPlaybackIndicatorView *uiPlaybackIndicator;
-@property (weak, nonatomic) IBOutlet LLACircularProgressView *uiCircularProgress;
-@property (weak, nonatomic) IBOutlet UIButton *uiDownloadButton;
 @property (weak, nonatomic) IBOutlet UIView *heatmapView;
 @property (weak, nonatomic) IBOutlet UIView *heatmapValue;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heatmapValueHeight;
@@ -96,16 +94,10 @@
     self.uiTrackRunningTime.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
     self.uiTrackNumber.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     
-    [self.uiDownloadButton setImage:[UIImage ipMaskedImageNamed:@"ios-cloud-download-outline"
-                                                          color:COLOR_PHISH_GREEN]
-                           forState:UIControlStateNormal];
-    
 	self.track = track;
     self.uiTrackNumber.text = @(track.track).stringValue;
     self.uiTrackTitle.attributedText = [self attributedStringForTrack:track];
     self.uiTrackRunningTime.text = [IGDurationHelper formattedTimeWithInterval:track.duration];
-	
-	[self updateDownloadButtons];
 	
     self.uiPlaybackIndicator.tintColor = COLOR_PHISH_GREEN;
     if(track.id == AGMediaPlayerViewController.sharedInstance.currentItem.id) {
@@ -136,8 +128,6 @@
 			self.selectionStyle = UITableViewCellSelectionStyleDefault;
 		}
 	}
-    
-    self.uiCircularProgress.tintColor = COLOR_PHISH_GREEN;
 
 	self.heatmapView.hidden = YES;
 }
@@ -159,37 +149,6 @@
 														selector:@selector(updateDownloadButtons)
 														userInfo:nil
 														 repeats:YES];
-}
-
-- (void)updateDownloadButtons {
-	if(!self.track.isCacheable) {
-		self.uiCircularProgress.hidden =
-		self.uiDownloadButton.hidden = YES;
-	}
-	else {
-		if(self.track.isCached
-		|| AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
-			self.uiCircularProgress.hidden =
-			self.uiDownloadButton.hidden = YES;
-			
-			[self stopProgressUpdates];
-		}
-		else if(self.track.isDownloadingOrQueued) {
-			self.uiCircularProgress.hidden = NO;
-			self.uiDownloadButton.hidden = YES;
-            
-            [self.uiCircularProgress setProgress:[self.track.downloader progressForTrack:self.track.downloadItem]
-                                        animated:YES];
-			
-			[self pollForProgressUpdates];
-		}
-		else {
-			self.uiCircularProgress.hidden = YES;
-			self.uiDownloadButton.hidden = NO;
-			
-			[self stopProgressUpdates];
-		}
-	}
 }
 
 - (void)stopProgressUpdates {
@@ -249,27 +208,6 @@
     }
     [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [[AppDelegate topViewController] presentViewController:controller animated:true completion:nil];
-}
-
-- (IBAction)download:(id)sender {
-	if (self.track.downloader == nil) {
-		return;
-	}
-	
-	[self.track.downloader downloadItem:self.track.downloadItem];
-	
-	[self updateDownloadButtons];
-}
-
-- (IBAction)cancelDownload:(id)sender {
-	if (self.track.downloader == nil) {
-		return;
-	}
-	
-	PHODDownloadOperation *op = [self.track.downloader findOperationForTrackInQueue:self.track.downloadItem];
-	[op cancelDownload];
-	
-	[self updateDownloadButtons];
 }
 
 - (CGFloat)heightForCellWithTrack:(NSObject<PHODGenericTrack> *)track
