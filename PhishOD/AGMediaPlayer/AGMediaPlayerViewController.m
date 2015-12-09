@@ -43,7 +43,6 @@
 @property (weak, nonatomic) IBOutlet UIView *uiBottomBar;
 @property (weak, nonatomic) IBOutlet UIView *uiTopBar;
 @property (weak, nonatomic) IBOutlet MPVolumeView *uiVolumeView;
-@property (weak, nonatomic) IBOutlet UIButton *uiReorderButton;
 
 @property BOOL registeredAudioSession;
 
@@ -99,6 +98,7 @@
     [self.uiPlaybackQueueTable registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
                                                           bundle:nil]
                     forCellReuseIdentifier:@"track"];
+    [self.uiPlaybackQueueTable setEditing:true animated:true];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(remoteControlReceivedWithEvent:)
@@ -137,8 +137,6 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
     self.uiStatusLabel.backgroundColor = COLOR_PHISH_GREEN;
     
     self.uiProgressSlider.tintColor = COLOR_PHISH_WHITE;
-    
-    self.uiReorderButton.tintColor = COLOR_PHISH_WHITE;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -420,16 +418,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     }
     else {
         [self pause];
-    }
-}
-
-- (IBAction)arrange:(id)sender {
-    if ([self.uiReorderButton.titleLabel.text isEqualToString:@"Arrange"]) {
-        [self.uiPlaybackQueueTable setEditing:true animated:true];
-        [self.uiReorderButton setTitle:@"Done" forState:UIControlStateNormal];
-    } else {
-        [self.uiPlaybackQueueTable setEditing:false animated:true];
-        [self.uiReorderButton setTitle:@"Arrange" forState:UIControlStateNormal];
     }
 }
 
