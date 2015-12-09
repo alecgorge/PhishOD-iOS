@@ -168,6 +168,21 @@
     UITableViewController *vc = (UITableViewController *)[AppDelegate topViewController];
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"More" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     if ([vc isKindOfClass:[RLShowViewController class]]) {
+        RLShowViewController *rlsvc = (RLShowViewController *)vc;
+        [controller addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
+            
+            if ([AGMediaPlayerViewController.sharedInstance queue].count == 0) {
+                [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
+                [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
+                [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
+                [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
+                [AppDelegate.sharedDelegate saveCurrentState];
+            } else {
+                [AGMediaPlayerViewController.sharedInstance insertItem:playlist[0] atIndex:AGMediaPlayerViewController.sharedInstance.currentIndex + 1];
+            }
+        }]];
         [controller addAction:[UIAlertAction actionWithTitle:@"Add to end of queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             RLShowViewController *rlsvc = (RLShowViewController *)vc;
             NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
@@ -176,7 +191,7 @@
                 [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
                 [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
                 [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
-                [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
                 [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
                 [AppDelegate.sharedDelegate saveCurrentState];
             } else {

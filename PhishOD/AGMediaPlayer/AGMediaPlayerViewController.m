@@ -427,6 +427,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.uiPlaybackQueueTable reloadData];
 }
 
+- (void)insertItem:(id<AGAudioItem>)item atIndex:(NSUInteger)index {
+    [self.queue insertItem:item atIndex:index];
+    
+    [self.uiPlaybackQueueTable reloadData];
+}
+
 - (void)replaceQueueWithItems:(NSArray *)queue startIndex:(NSInteger)index {
     [self.queue clearAndReplaceWithItems:queue];
     

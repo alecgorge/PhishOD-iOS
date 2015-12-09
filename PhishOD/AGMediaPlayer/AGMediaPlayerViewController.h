@@ -39,6 +39,8 @@
 @property (nonatomic) NSTimeInterval elapsed;
 @property (nonatomic, readonly) float duration;
 
+- (void)insertItem:(id<AGAudioItem>)item atIndex:(NSUInteger)index;
+
 - (void)forward;
 - (void)play;
 - (void)stop;
