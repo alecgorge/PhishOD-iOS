@@ -208,8 +208,8 @@
 - (IBAction)showMoreOptions:(id)sender {
     UITableViewController *vc = (UITableViewController *)[AppDelegate topViewController];
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"More" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [controller addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        if ([vc isKindOfClass:[RLShowViewController class]]) {
+    if ([vc isKindOfClass:[RLShowViewController class]]) {
+        [controller addAction:[UIAlertAction actionWithTitle:@"Add to end of queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             RLShowViewController *rlsvc = (RLShowViewController *)vc;
             NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
             
@@ -223,8 +223,8 @@
             } else {
                 [AGMediaPlayerViewController.sharedInstance addItemsToQueue:playlist];
             }
-        }
-    }]];
+        }]];
+    }
     [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [[AppDelegate topViewController] presentViewController:controller animated:true completion:nil];
 }
