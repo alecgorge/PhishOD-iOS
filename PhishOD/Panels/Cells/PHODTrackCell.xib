@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1966" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7J-kL-9Yf">
-                        <rect key="frame" x="50" y="9" width="150" height="27"/>
+                        <rect key="frame" x="50" y="9" width="185" height="27"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,7 +74,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RC7-b5-9JQ">
-                        <rect key="frame" x="205" y="11" width="22" height="22"/>
+                        <rect key="frame" x="240" y="11" width="22" height="22"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="7W2-mq-j0m"/>
@@ -89,7 +89,7 @@
                 <constraints>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="leading" secondItem="euE-3F-M5d" secondAttribute="trailing" constant="5" id="5T6-wy-WPx"/>
                     <constraint firstItem="RC7-b5-9JQ" firstAttribute="leading" secondItem="w7J-kL-9Yf" secondAttribute="trailing" constant="5" id="6Bd-X6-4kG"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="RC7-b5-9JQ" secondAttribute="trailing" constant="85" id="8ea-f7-vGV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RC7-b5-9JQ" secondAttribute="trailing" constant="50" id="8ea-f7-vGV"/>
                     <constraint firstAttribute="bottomMargin" secondItem="w7J-kL-9Yf" secondAttribute="bottom" constant="-1" id="DhP-O2-hyd"/>
                     <constraint firstItem="qXW-ld-nrJ" firstAttribute="centerY" secondItem="euE-3F-M5d" secondAttribute="centerY" id="FPt-Yx-hLf"/>
                     <constraint firstItem="w7J-kL-9Yf" firstAttribute="bottom" secondItem="rUU-dg-B4L" secondAttribute="bottom" constant="3" id="G5J-aJ-80h"/>
