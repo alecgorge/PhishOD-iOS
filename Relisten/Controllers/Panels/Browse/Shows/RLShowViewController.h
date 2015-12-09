@@ -15,5 +15,6 @@
 @property (nonatomic, strong) IGShow *show;
 
 - (instancetype)initWithShow:(IGShow *)show;
+- (NSArray *)getAllTracks;
 
 @end

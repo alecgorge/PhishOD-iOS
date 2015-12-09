@@ -320,6 +320,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [AppDelegate.sharedDelegate saveCurrentState];
 }
 
+- (NSArray *)getAllTracks {
+    NSMutableArray *playlist = [NSMutableArray new];
+    for (NSInteger i = 0; i < self.show.tracks.count; i++) {
+        [playlist addObject:[IguanaMediaItem.alloc initWithTrack:self.show.tracks[i]
+                                                          inShow:self.show]];
+    }
+    return playlist;
+}
+
 #pragma mark - Search results updater
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {

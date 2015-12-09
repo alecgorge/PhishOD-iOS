@@ -198,6 +198,27 @@
                 [AGMediaPlayerViewController.sharedInstance addItemsToQueue:playlist];
             }
         }]];
+        [controller addAction:[UIAlertAction actionWithTitle:@"Add rest of tracks to queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            RLShowViewController *rlsvc = (RLShowViewController *)vc;
+            NSMutableArray *playlist = [NSMutableArray new];
+            NSArray *temp = [rlsvc getAllTracks].mutableCopy;
+            for (IguanaMediaItem *item in temp) {
+                if (![item.iguanaTrack isEqual:self.track]) {
+                    [playlist addObject:item];
+                }
+            }
+            
+            if ([AGMediaPlayerViewController.sharedInstance queue].count == 0) {
+                [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
+                [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
+                [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
+                [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
+                [AppDelegate.sharedDelegate saveCurrentState];
+            } else {
+                [AGMediaPlayerViewController.sharedInstance addItemsToQueue:playlist];
+            }
+        }]];
     }
     if(self.track.isCached) {
         [controller addAction:[UIAlertAction actionWithTitle:@"Delete saved file" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
