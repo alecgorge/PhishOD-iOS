@@ -42,13 +42,38 @@
 	if (viewController.navigationItem.rightBarButtonItem == nil) {
 //		[self addSearchButtonToViewController:viewController];
 	}
+    
+#ifndef IS_PHISH
+    if (rootViewController == viewController) {
+        [((RLArtistTabViewController *)navigationController.tabBarController) enableEdgeGesture];
+    } else {
+        [((RLArtistTabViewController *)navigationController.tabBarController) disableEdgeGesture];
+    }
+#endif
 }
 
 - (void)addSettingsButtonToViewController:(UIViewController *)viewController {
+#ifdef IS_PHISH
 	viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithImage:[UIImage settingsNavigationIcon]
 																					 style:UIBarButtonItemStylePlain
 																					target:self
-																					action:@selector(showSettings)];
+                                                                                    action:@selector(showSettings)];
+#else
+    viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithTitle:@"❰ All Artists"
+                                                                                     style:UIBarButtonItemStylePlain
+                                                                                    target:self
+                                                                                    action:@selector(close)];
+    viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithImage:[UIImage settingsNavigationIcon]
+                                                                                      style:UIBarButtonItemStylePlain
+                                                                                     target:self
+                                                                                     action:@selector(showSettings)];
+    
+#endif
+}
+
+- (void)close {
+    [AppDelegate.sharedDelegate.tabs dismissViewControllerAnimated:YES
+                                                        completion:nil];
 }
 
 - (void)showSettings {

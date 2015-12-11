@@ -32,5 +32,6 @@
 @property (nonatomic, strong) IGShow<Optional, Ignore> *show;
 
 - (NSURL *)shareURLWithPlayedTime:(NSTimeInterval)elapsed;
+- (void)deleteCache;
 
 @end

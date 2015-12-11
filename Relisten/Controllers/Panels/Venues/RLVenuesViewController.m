@@ -59,7 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.title = @"Venues";
+    self.navigationItem.title = self.title = @"Venues";
 }
 
 - (void)refresh:(id)sender {

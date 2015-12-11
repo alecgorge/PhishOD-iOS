@@ -176,7 +176,7 @@
                 [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
                 [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
                 [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
-                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
                 [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
                 [AppDelegate.sharedDelegate saveCurrentState];
             } else {
@@ -191,7 +191,7 @@
                 [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
                 [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
                 [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
-                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
                 [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
                 [AppDelegate.sharedDelegate saveCurrentState];
             } else {
@@ -212,7 +212,7 @@
                 [AppDelegate sharedDelegate].currentlyPlayingShow = rlsvc.show;
                 [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
                 [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist startIndex:0];
-                [AppDelegate.sharedDelegate.navDelegate addBarToViewController: rlsvc];
+                [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
                 [AppDelegate.sharedDelegate.navDelegate fixForViewController:rlsvc];
                 [AppDelegate.sharedDelegate saveCurrentState];
             } else {
@@ -222,7 +222,7 @@
     }
     if(self.track.isCached) {
         [controller addAction:[UIAlertAction actionWithTitle:@"Delete saved file" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
+            [(IGTrack *)self.track deleteCache];
         }]];
     } else if(self.track.isDownloadingOrQueued) {
         [controller addAction:[UIAlertAction actionWithTitle:@"Cancel download" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

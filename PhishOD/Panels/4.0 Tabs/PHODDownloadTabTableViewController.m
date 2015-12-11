@@ -139,7 +139,7 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
     [self.tableView reloadData];
 #else
     [self refresh:nil];
-    self.tabBarController.title = self.navigationItem.title = self.title = @"Downloads";
+    self.navigationItem.title = self.title = @"Downloads";
 #endif
 }
 

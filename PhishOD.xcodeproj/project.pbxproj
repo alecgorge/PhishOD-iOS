@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5EA5C9921BEAB63000DFD833 /* reorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5C9911BEAB63000DFD833 /* reorder@2x.png */; };
 		5EA5C9961BEAB6D400DFD833 /* reorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5C9951BEAB6D400DFD833 /* reorder.png */; };
+		5EBE3B8D1C1ACD1100986EFD /* RLPushPopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE3B8C1C1ACD1100986EFD /* RLPushPopAnimator.m */; };
 		7C0623F2198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */; };
 		7C0623F5198C2AEC002D31E5 /* DownloadQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0623F4198C2AEC002D31E5 /* DownloadQueueViewController.m */; };
 		7C10A7BF1B33B51700692DD3 /* FavoriteTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48B4C197383E000DDF5C3 /* FavoriteTracksViewController.m */; };
@@ -449,6 +450,8 @@
 		4B4FC763CD741A27DFD7E813 /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
 		5EA5C9911BEAB63000DFD833 /* reorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reorder@2x.png"; sourceTree = "<group>"; };
 		5EA5C9951BEAB6D400DFD833 /* reorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reorder.png; sourceTree = "<group>"; };
+		5EBE3B8B1C1ACD1100986EFD /* RLPushPopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLPushPopAnimator.h; sourceTree = "<group>"; };
+		5EBE3B8C1C1ACD1100986EFD /* RLPushPopAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLPushPopAnimator.m; sourceTree = "<group>"; };
 		76F37BC86616A360BD11A202 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0623F0198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishinDownloadedShowsViewController.h; sourceTree = "<group>"; };
 		7C0623F1198BFAEF002D31E5 /* PhishinDownloadedShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhishinDownloadedShowsViewController.m; sourceTree = "<group>"; };
@@ -1175,6 +1178,8 @@
 				7C36A7361B3486870004E766 /* Panels */,
 				7C36A7331B347B2E0004E766 /* RLArtistsTableViewController.h */,
 				7C36A7341B347B2E0004E766 /* RLArtistsTableViewController.m */,
+				5EBE3B8B1C1ACD1100986EFD /* RLPushPopAnimator.h */,
+				5EBE3B8C1C1ACD1100986EFD /* RLPushPopAnimator.m */,
 				7C36A7371B3486BF0004E766 /* RLArtistTabViewController.h */,
 				7C36A7381B3486BF0004E766 /* RLArtistTabViewController.m */,
 				7C35781D1B58B32F00329368 /* RLSettingsViewController.h */,
@@ -2343,6 +2348,7 @@
 				7C10A8A91B33BD1B00692DD3 /* IGShowReview.m in Sources */,
 				7C10A81B1B33B51700692DD3 /* VenueStatsViewController.m in Sources */,
 				7C10A81C1B33B51700692DD3 /* VenueRankingTableViewCell.m in Sources */,
+				5EBE3B8D1C1ACD1100986EFD /* RLPushPopAnimator.m in Sources */,
 				7C10A81D1B33B51700692DD3 /* LongStringViewController.m in Sources */,
 				7C74CD851B4CD10300B20437 /* IGReviewCell.m in Sources */,
 				7C10A8AD1B33BD1B00692DD3 /* IGYear.m in Sources */,

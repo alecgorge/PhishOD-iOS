@@ -67,13 +67,6 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 55.0f;
     
-    UIBarButtonItem *closeBtn = [UIBarButtonItem.alloc initWithTitle:@"All Artists"
-                                                               style:UIBarButtonItemStyleDone
-                                                              target:self
-                                                              action:@selector(close)];
-    
-    self.navigationItem.rightBarButtonItem = closeBtn;
-    
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
@@ -84,7 +77,8 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.title = IGAPIClient.sharedInstance.artist.name;
+    
+    self.navigationItem.title = self.title = IGAPIClient.sharedInstance.artist.name;
 }
 
 - (void)close {

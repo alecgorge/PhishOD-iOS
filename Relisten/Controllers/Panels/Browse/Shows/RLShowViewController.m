@@ -63,7 +63,7 @@ NS_ENUM(NSInteger, IGShowRows) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = self.show.displayDate;
+    self.navigationItem.title = self.title = self.show.displayDate;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
                                                bundle:nil]
@@ -93,13 +93,6 @@ NS_ENUM(NSInteger, IGShowRows) {
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
     self.definesPresentationContext = YES;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 - (IBAction)showSearchController:(id)sender {
@@ -314,7 +307,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
                                                            startIndex:0];
     
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     
     [AppDelegate.sharedDelegate saveCurrentState];

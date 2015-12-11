@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Recent";
+    self.navigationItem.title = self.title = @"Recent";
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(IGShowCell.class)
                                                bundle:NSBundle.mainBundle]
@@ -37,13 +37,6 @@
     self.tableView.emptyDataSetSource = self;
     
     self.tableView.tableFooterView = UIView.new;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

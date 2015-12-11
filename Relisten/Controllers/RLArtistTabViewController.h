@@ -11,4 +11,9 @@
 
 @interface RLArtistTabViewController : UITabBarController
 
+@property (nonatomic) UIView *edgeView;
+
+- (void)enableEdgeGesture;
+- (void)disableEdgeGesture;
+
 @end

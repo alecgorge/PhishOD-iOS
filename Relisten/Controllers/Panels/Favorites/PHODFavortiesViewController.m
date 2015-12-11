@@ -56,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.title = self.navigationItem.title = self.title = @"Favorites";
+    self.navigationItem.title = self.title = @"Favorites";
 }
 
 - (void)viewDidAppear:(BOOL)animated {

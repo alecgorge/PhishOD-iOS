@@ -70,6 +70,10 @@
     return [self.downloader isTrackDownloadedOrQueued:self.downloadItem];
 }
 
+- (void)deleteCache {
+    [self.downloadItem delete];
+}
+
 - (NSURL *)cachedFile {
     return self.downloadItem.cachedFile;
 }

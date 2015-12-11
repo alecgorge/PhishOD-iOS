@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%lu Reviews", (unsigned long)self.show.reviews.count];
+    self.navigationItem.title = self.title = [NSString stringWithFormat:@"%lu Reviews", (unsigned long)self.show.reviews.count];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 256.0f;
@@ -46,13 +46,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(IGReviewCell.class)
                                                bundle:NSBundle.mainBundle]
          forCellReuseIdentifier:@"review"];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [AppDelegate.sharedDelegate.navDelegate addBarToViewController:self];
-    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
 }
 
 #pragma mark - Table view data source

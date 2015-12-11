@@ -106,6 +106,8 @@
 											   object:nil];
     
     [self setupAppearance];
+    
+    self.uiPlaybackQueueTable.allowsSelectionDuringEditing = YES;
 }
 
 - (void)audioPlayer:(AGAudioPlayer *)audioPlayer

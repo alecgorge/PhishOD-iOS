@@ -15,6 +15,8 @@
 #import "AppDelegate.h"
 #import "RLSettingsViewController.h"
 #import "PHODPersistence.h"
+#import "RLPushPopAnimator.h"
+#import "NowPlayingBarViewController.h"
 
 typedef NS_ENUM(NSInteger, RLArtistsSections) {
 	RLArtistsFeaturedSection,
@@ -35,6 +37,8 @@ static NSArray *featuredArtists;
 @property (nonatomic) BOOL shouldAutoshow;
 
 @property (strong, nonatomic) UISearchController *searchController;
+
+@property (nonatomic) RLPushPopAnimator *animator;
 
 @end
 
@@ -66,6 +70,8 @@ static NSArray *featuredArtists;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
+    
+    self.animator = [[RLPushPopAnimator alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,6 +97,14 @@ static NSArray *featuredArtists;
     
     [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    BOOL state = NowPlayingBarViewController.sharedInstance.shouldShowBar;
+    NowPlayingBarViewController.sharedInstance.shouldShowBar = false;
+    [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
+    [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
+    NowPlayingBarViewController.sharedInstance.shouldShowBar = state;
 }
 
 - (void)showSettings {
@@ -224,24 +238,50 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)presentArtistTabs:(NSNumber *)animated {
     RLArtistTabViewController *vc = RLArtistTabViewController.new;
+    vc.transitioningDelegate = self;
     
     AppDelegate.sharedDelegate.tabs = vc;
     
-    [self.navigationController pushViewController:vc animated:animated.boolValue];
+    [self presentViewController:vc animated:YES completion:^{
+        UIScreenEdgePanGestureRecognizer *recognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        recognizer.edges = UIRectEdgeLeft;
+        [vc.edgeView addGestureRecognizer:recognizer];
+    }];
 }
 
-#pragma mark - Search results updater
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSString *searchText = searchController.searchBar.text;
-    self.searchArtists = (NSMutableArray *)self.artists.mutableCopy;
-    self.searchFeaturedArtists = (NSMutableArray *)self.featuredArtists.mutableCopy;
-    if (searchText.length > 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchText];
-        [self.searchArtists filterUsingPredicate:predicate];
-        [self.searchFeaturedArtists filterUsingPredicate:predicate];
+- (void)handleGesture:(UIScreenEdgePanGestureRecognizer *)recognizer {
+    self.animator.percentageDriven = YES;
+    CGFloat progress = [recognizer translationInView:self.view].x / self.view.bounds.size.width / 2;
+    progress = MIN(1.0, MAX(0.0, progress));
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.animator updateInteractiveTransition:progress];
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+            ([recognizer velocityInView:self.view].x < 0) ? [self.animator cancelInteractiveTransition] : [self.animator finishInteractiveTransition];
+            self.animator.percentageDriven = NO;
+            break;
+        default:
+            break;
     }
-    [self.tableView reloadData];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    self.animator.dismissing = NO;
+    return self.animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.animator.dismissing = YES;
+    return self.animator;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+    return self.animator.percentageDriven ? self.animator : nil;
 }
 
 @end

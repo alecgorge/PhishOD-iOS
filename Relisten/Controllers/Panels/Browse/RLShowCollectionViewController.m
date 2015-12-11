@@ -81,21 +81,6 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
     self.definesPresentationContext = YES;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if(self.collectionType != RLShowCollectionTopShows) {
-        [AppDelegate.sharedDelegate.navDelegate addBarToViewController: self];
-        [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
-    } else {
-        if (NowPlayingBarViewController.sharedInstance.shouldShowBar) {
-            [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
-        } else {
-            [AppDelegate.sharedDelegate.navDelegate fixForViewController:self force:true];
-        }
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateTitle];
@@ -103,13 +88,13 @@ typedef NS_ENUM(NSInteger, RLShowCollectionType) {
 
 - (void)updateTitle {
     if(self.collectionType == RLShowCollectionYear) {
-        self.tabBarController.title = self.title = [NSString stringWithFormat:@"%ld", self.year.year];
+        self.navigationItem.title = self.title = [NSString stringWithFormat:@"%ld", self.year.year];
     }
     else if(self.collectionType == RLShowCollectionVenue) {
-        self.tabBarController.title = self.title = self.venue.name;
+        self.navigationItem.title = self.title = self.venue.name;
     }
     else if(self.collectionType == RLShowCollectionTopShows) {
-        self.tabBarController.title = self.title = @"Top Shows";
+        self.navigationItem.title = self.title = @"Top Shows";
     }
 }
 
