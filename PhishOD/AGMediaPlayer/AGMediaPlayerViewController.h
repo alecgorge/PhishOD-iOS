@@ -13,7 +13,7 @@
 
 #import <AGAudioPlayer/AGAudioPlayer.h>
 
-@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface AGMediaPlayerViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 + (instancetype)sharedInstance;
 

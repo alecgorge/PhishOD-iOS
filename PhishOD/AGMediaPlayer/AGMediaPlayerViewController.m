@@ -17,6 +17,7 @@
 #import <MarqueeLabel/MarqueeLabel.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
 
+#import "PHODTabbedHomeViewController.h"
 #import "IGDurationHelper.h"
 #import "NowPlayingBarViewController.h"
 #import "PhishTracksStats.h"
@@ -212,30 +213,42 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
 - (void)shareFromView:(UIView *)view {
     self.shareTime = self.progress * self.duration;
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [IGDurationHelper formattedTimeWithInterval:self.shareTime]]
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Share with time", @"Share without time", nil];
+    UIAlertController *a = [UIAlertController alertControllerWithTitle:@"Share with time?"
+                                                               message:[NSString stringWithFormat:@"Do you want to include your current position in the song (%@) when you share this song?", [IGDurationHelper formattedTimeWithInterval:self.shareTime]]
+                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     
-    if(IS_IPAD()) {
-        [actionSheet showFromBarButtonItem:(UIBarButtonItem *)view
-                                  animated:YES];
-    }
-    else {
-        [actionSheet showInView:view];
-    }
+    [a addAction:[UIAlertAction actionWithTitle:@"Share with time"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * _Nonnull action) {
+                                            [self showShareSheetWithTime:YES];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Share without time"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * _Nonnull action) {
+                                            [self showShareSheetWithTime:NO];
+                                        }]];
+    
+    [a addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                          style:UIAlertActionStyleCancel
+                                        handler:^(UIAlertAction * _Nonnull action) {
+                                            
+                                        }]];
+    
+    [AppDelegate.sharedDelegate.tabs presentViewController:a
+                                                  animated:YES
+                                                completion:nil];
+    [self.navigationController presentViewController:a
+                                            animated:YES
+                                          completion:nil];
 }
 
 - (float)duration {
     return self.audioPlayer.duration;
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet
-clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 2) return;
-    
-	if(buttonIndex == 1) {
+- (void)showShareSheetWithTime:(BOOL)time {
+	if(!time) {
 		self.shareTime = 0;
 	}
     
@@ -266,6 +279,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
                                              @"with_time": [NSNumber numberWithBool:self.shareTime != 0]}];
         };
         
+        [AppDelegate.sharedDelegate.tabs presentViewController:activityVC
+                                                      animated:YES
+                                                    completion:nil];
         [self.navigationController presentViewController:activityVC
                                                 animated:YES
                                               completion:nil];

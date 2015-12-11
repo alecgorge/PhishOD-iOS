@@ -4,6 +4,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 link_with "PhishOD"
 link_with "Relisten"
+link_with "RelistenSnapshot"
 
 #use_frameworks!
 inhibit_all_warnings!

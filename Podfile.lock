@@ -2,25 +2,25 @@ PODS:
   - AFNetworkActivityLogger (2.0.4):
     - AFNetworking/NSURLConnection (~> 2.0)
     - AFNetworking/NSURLSession (~> 2.0)
-  - AFNetworking (2.6.1):
-    - AFNetworking/NSURLConnection (= 2.6.1)
-    - AFNetworking/NSURLSession (= 2.6.1)
-    - AFNetworking/Reachability (= 2.6.1)
-    - AFNetworking/Security (= 2.6.1)
-    - AFNetworking/Serialization (= 2.6.1)
-    - AFNetworking/UIKit (= 2.6.1)
-  - AFNetworking/NSURLConnection (2.6.1):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.1):
+  - AFNetworking/NSURLSession (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.1)
-  - AFNetworking/Security (2.6.1)
-  - AFNetworking/Serialization (2.6.1)
-  - AFNetworking/UIKit (2.6.1):
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AGAudioPlayer (0.8.0):
@@ -28,35 +28,34 @@ PODS:
   - Appirater (2.0.5)
   - ASImageResize (1.0.3)
   - AXRatingView (1.0.3)
-  - ChameleonFramework (2.0.4):
-    - ChameleonFramework/Default (= 2.0.4)
-  - ChameleonFramework/Default (2.0.4)
-  - Crashlytics (3.3.4)
+  - ChameleonFramework (2.0.6):
+    - ChameleonFramework/Default (= 2.0.6)
+  - ChameleonFramework/Default (2.0.6)
+  - Crashlytics (3.4.1):
+    - Fabric (~> 1.6.0)
   - CSNNotificationObserver (0.9.2)
   - DBGHTMLEntities (0.2.0)
   - DZNEmptyDataSet (1.7.2)
   - EDColor (1.0.0)
   - EGOCache (2.1.3)
-  - Fabric (1.5.5):
-    - Fabric/Base (= 1.5.5)
-  - Fabric/Base (1.5.5)
+  - Fabric (1.6.1)
   - FastImageCache (1.3)
-  - FCFileManager (1.0.16)
-  - Flurry-iOS-SDK (7.2.1):
-    - Flurry-iOS-SDK/FlurrySDK (= 7.2.1)
-  - Flurry-iOS-SDK/FlurrySDK (7.2.1)
+  - FCFileManager (1.0.17)
+  - Flurry-iOS-SDK (7.3.0):
+    - Flurry-iOS-SDK/FlurrySDK (= 7.3.0)
+  - Flurry-iOS-SDK/FlurrySDK (7.3.0)
   - FXKeychain (1.5.3)
   - GroundControl (2.1.0):
     - AFNetworking (~> 2.2)
   - HysteriaPlayer (HEAD based on 2.1.4)
-  - Instabug (4.1.7)
+  - Instabug (4.1.9)
   - JSONModel (1.1.2)
   - KissXML (5.0)
   - KVOController (1.0.3)
   - LastFm (1.15.0):
     - KissXML (~> 5.0)
   - LLACircularProgressView (0.1.1)
-  - MarqueeLabel (2.3.3)
+  - MarqueeLabel (2.3.5)
   - NAKPlaybackIndicatorView (0.0.3)
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
@@ -72,7 +71,7 @@ PODS:
   - TTTAttributedLabel (1.13.4)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
-  - VTAcknowledgementsViewController (0.15)
+  - VTAcknowledgementsViewController (0.16)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger
@@ -134,32 +133,32 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
-  AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AGAudioPlayer: 356be857859b28e293f3cb4ecf493f42aa2cfba5
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
-  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
-  Crashlytics: 41c082440d2e14da444186fff65e79c0b4b35d4c
+  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
+  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   CSNNotificationObserver: bf3a8781aba027abb16c2f5a63f1a7b1de044d49
   DBGHTMLEntities: df8979bda566bf0ac4a66e6e7c14c005f4552ee9
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
-  Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
+  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
-  FCFileManager: 0eadfdb4d5556e23a55332f4509c9c17a2592007
-  Flurry-iOS-SDK: 014d366cad101f05d4e8c191c0e0c0871d5704f7
+  FCFileManager: 8bfc931ce2a6223676147e9baf0e8a65c691eca6
+  Flurry-iOS-SDK: 054befae0fa0244fb000985bfe757d70f87a9f60
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
   HysteriaPlayer: 81433239fa79ca7c446ccb994d91d34eaa533ab3
-  Instabug: 58f773fcefe0dec9b1bd3fcf09c6e46560353f5d
+  Instabug: cc191f6ca22fd57af3e47434ca6af095343e76e1
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   LastFm: 28c752f8e8646531524a123ce7f6722bbfc9d3c5
   LLACircularProgressView: e179b0728217e9013cd07c2fadc7caa0c35b9199
-  MarqueeLabel: a8171ed961be61ed8f21d94a5f0d569a9c45df3b
+  MarqueeLabel: fd29be3b4cf5f37b01676749409679aac23eb6fa
   NAKPlaybackIndicatorView: 794dd97576fe074bb1844c19ebcbf7509384a47f
   NSObject-NSCoding: d05f937cc1ea1560294be261ee41d5438ddc7b1b
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
@@ -171,6 +170,6 @@ SPEC CHECKSUMS:
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
-  VTAcknowledgementsViewController: 575f5841fb47b7d9c852ccb406104ea68de07b21
+  VTAcknowledgementsViewController: 0202015ebc678f75d83092b204267a0aec48163d
 
 COCOAPODS: 0.39.0
