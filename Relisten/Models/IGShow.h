@@ -12,6 +12,7 @@
 #import "IGVenue.h"
 #import "IGTrack.h"
 
+@class IGArtist;
 @class IGVenue;
 
 @protocol IGShow
@@ -47,6 +48,8 @@
 @property (nonatomic, strong) NSNumber<Optional> *trackCount;
 
 @property (nonatomic, strong) NSArray<Optional, IGTrack> *tracks;
+
+@property (nonatomic) IGArtist<Ignore> *artist;
 
 - (IGShow *)cache;
 

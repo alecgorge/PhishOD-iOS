@@ -141,9 +141,11 @@
     [self GET:[NSString stringWithFormat:@"artists/%@/search", self.artist.slug]
    parameters:@{@"q": queryString}
       success:^(NSURLSessionDataTask *task, id responseObject) {
+          IGArtist *currentArtist = [self.artist copy];
           NSArray *s = [responseObject[@"data"][@"shows"] map:^id(id item) {
               NSError *err;
               IGShow *s = [[IGShow alloc] initWithDictionary:item error:&err];
+              s.artist = currentArtist;
               
               if(err) {
                   [self failure: err];
@@ -345,10 +347,12 @@
     [self GET:[NSString stringWithFormat:@"artists/%@/top_shows/", self.artist.slug]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {
+          IGArtist *currentArtist = [self.artist copy];
           NSArray *r = [responseObject[@"data"] map:^id(id item) {
               NSError *err;
               IGShow *y = [[IGShow alloc] initWithDictionary:item
                                                        error:&err];
+              y.artist = currentArtist;
               
               if(err) {
                   [self failure: err];
@@ -377,10 +381,13 @@
                stringByAppendingFormat:@"%@/shows/%@", [displayDate substringToIndex:4], displayDate]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {
+          IGArtist *currentArtist = [self.artist copy];
           NSArray *r = [responseObject[@"data"] map:^id(id item) {
               NSError *err;
               IGShow *y = [[IGShow alloc] initWithDictionary:item
                                                        error:&err];
+              
+              y.artist = currentArtist;
               
               if(err) {
                   [self failure: err];
@@ -408,10 +415,12 @@
     [self GET:[NSString stringWithFormat:@"artists/%@/random_show/", self.artist.slug]
    parameters:nil
       success:^(NSURLSessionDataTask *task, id responseObject) {
+          IGArtist *currentArtist = [self.artist copy];
           NSArray *r = [responseObject[@"data"] map:^id(id item) {
               NSError *err;
               IGShow *y = [[IGShow alloc] initWithDictionary:item
                                                        error:&err];
+              y.artist = currentArtist;
               
               if(err) {
                   [self failure: err];
@@ -433,6 +442,31 @@
           
           success(nil);
       }];
+}
+
+- (void)playTrack:(IGTrack *)track
+           inShow:(IGShow *)show {    
+    AFHTTPSessionManager *ssss = [[AFHTTPSessionManager alloc] initWithBaseURL:self.baseURL];
+    ssss.requestSerializer = [AFJSONRequestSerializer serializer];
+    ssss.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [ssss POST:@"play"
+    parameters:@{@"song":@{@"title": track.title,
+                           @"slug": track.slug,
+                           @"band": show.artist.slug,
+                           @"year": [NSString stringWithFormat:@"%ld", (long)show.year],
+                           @"month": [show.displayDate substringWithRange:NSMakeRange(5, 2)],
+                           @"day": [show.displayDate substringWithRange:NSMakeRange(8, 2)],
+                           @"showVersion": @"0",
+                           @"id": [NSString stringWithFormat:@"%ld", (long)track.id],
+                           @"bandName": show.artist.name
+                           }}
+       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+           
+       }
+       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           
+       }];
 }
 
 @end

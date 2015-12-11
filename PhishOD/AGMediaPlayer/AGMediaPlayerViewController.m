@@ -17,6 +17,7 @@
 #import <MarqueeLabel/MarqueeLabel.h>
 #import <CSNNotificationObserver/CSNNotificationObserver.h>
 
+#import "RLArtistTabViewController.h"
 #import "PHODTabbedHomeViewController.h"
 #import "IGDurationHelper.h"
 #import "NowPlayingBarViewController.h"
@@ -27,6 +28,8 @@
 #import "AppDelegate.h"
 #import "IGEvents.h"
 #import "IGThirdPartyKeys.h"
+#import "IGAPIClient.h"
+#import "IguanaMediaItem.h"
 
 @interface AGMediaPlayerViewController () <AGAudioPlayerDelegate>
 
@@ -383,6 +386,13 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
 								  withDuration:self.duration
 								successHandler:nil
 								failureHandler:nil];
+    
+#ifndef IS_PHISH
+    IguanaMediaItem *item = (IguanaMediaItem *)self.currentItem;
+    
+    [IGAPIClient.sharedInstance playTrack:item.iguanaTrack
+                                   inShow:item.iguanaShow];
+#endif
     
     [self.uiPlaybackQueueTable reloadData];
     [self redrawUI];
