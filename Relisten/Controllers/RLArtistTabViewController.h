@@ -13,6 +13,8 @@
 
 @property (nonatomic) UIView *edgeView;
 
+@property (nonatomic) NSString *autopresentDisplayDate;
+
 - (void)enableEdgeGesture;
 - (void)disableEdgeGesture;
 

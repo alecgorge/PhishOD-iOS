@@ -9,6 +9,7 @@
 #import "IGShow.h"
 
 #import "PHODPersistence.h"
+#import "IGArtist.h"
 
 @implementation IGShow
 
@@ -37,6 +38,11 @@
 }
 
 #pragma makr - Caching
+
+- (void)setArtist:(IGArtist<Ignore> *)artist {
+    _artist = artist;
+    self.ArtistId = artist.id;
+}
 
 - (NSString *)cacheKey {
     return [IGShow cacheKeyForShowId:self.id];

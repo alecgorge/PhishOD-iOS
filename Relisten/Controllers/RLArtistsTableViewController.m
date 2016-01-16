@@ -15,10 +15,12 @@
 #import "AppDelegate.h"
 #import "RLSettingsViewController.h"
 #import "PHODPersistence.h"
+#import "RLArtistTodayViewController.h"
 #import "RLPushPopAnimator.h"
 #import "NowPlayingBarViewController.h"
 
 typedef NS_ENUM(NSInteger, RLArtistsSections) {
+    RLArtistsTodaySection,
 	RLArtistsFeaturedSection,
 	RLArtistsAllSection,
 	RLArtistsSectionsCount
@@ -46,6 +48,7 @@ static NSArray *featuredArtists;
 
 + (void)initialize {
 	featuredArtists = @[@"Grateful Dead",
+                        @"Dead & Company",
 						@"Marco Benevento",
 						@"Phish",
 						@"Phil Lesh and Friends",
@@ -167,6 +170,9 @@ static NSArray *featuredArtists;
 		else if(section == RLArtistsAllSection) {
 			return self.searchArtists.count;
 		}
+        else if(section == RLArtistsTodaySection) {
+            return 1;
+        }
 	}
 	
     return 0;
@@ -176,11 +182,14 @@ static NSArray *featuredArtists;
 titleForHeaderInSection:(NSInteger)section {
 	if (self.artists) {
 		if (section == RLArtistsFeaturedSection) {
-			return @"Feature";
+			return @"Featured";
 		}
 		else if(section == RLArtistsAllSection) {
 			return [NSString stringWithFormat:@"All %ld artists", self.searchArtists.count];
 		}
+        else if(section == RLArtistsTodaySection) {
+            return nil;
+        }
 	}
 	
 	return nil;
@@ -207,6 +216,14 @@ titleForHeaderInSection:(NSInteger)section {
 		cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleValue1
 									reuseIdentifier:@"cell"];
 	}
+    
+    if(indexPath.section == RLArtistsTodaySection) {
+        cell.textLabel.text = @"Shows on this day in history";
+        cell.detailTextLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        return cell;
+    }
 	
 	IGArtist *artist = [self artistForIndexPath:indexPath];
 	
@@ -227,6 +244,27 @@ titleForHeaderInSection:(NSInteger)section {
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath
 							 animated:YES];
+    
+    if(indexPath.section == RLArtistsTodaySection) {
+        RLArtistTodayViewController *vc = RLArtistTodayViewController.new;
+        vc.showSelectionCallback = ^(IGTodayShow *show) {
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            IGAPIClient.sharedInstance.artist = [self.artists find:^BOOL(IGArtist *object) {
+                return object.id == show.ArtistId;
+            }];
+            
+            [PHODPersistence.sharedInstance setObject:IGAPIClient.sharedInstance.artist
+                                               forKey:@"current_artist"];
+            
+            [self presentArtistTabs: @(YES) withShowDate:show.display_date];
+        };
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+        
+        return;
+    }
 	
 	IGAPIClient.sharedInstance.artist = [self artistForIndexPath:indexPath];
     
@@ -236,8 +274,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self presentArtistTabs: @(YES)];
 }
 
-- (void)presentArtistTabs:(NSNumber *)animated {
+- (void)presentArtistTabs:(NSNumber *)animated withShowDate:(NSString *)displaDate {
     RLArtistTabViewController *vc = RLArtistTabViewController.new;
+    vc.autopresentDisplayDate = displaDate;
+    
     vc.transitioningDelegate = self;
     
     AppDelegate.sharedDelegate.tabs = vc;
@@ -247,6 +287,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         recognizer.edges = UIRectEdgeLeft;
         [vc.edgeView addGestureRecognizer:recognizer];
     }];
+}
+
+- (void)presentArtistTabs:(NSNumber *)animated {
+    [self presentArtistTabs:animated
+               withShowDate:nil];
 }
 
 - (void)handleGesture:(UIScreenEdgePanGestureRecognizer *)recognizer {

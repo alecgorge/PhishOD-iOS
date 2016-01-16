@@ -14,14 +14,22 @@
 #import "RLShowSourcesViewController.h"
 #import "RLHistoryViewController.h"
 #import "RLArtistTabViewController.h"
+#import "RLArtistTodayViewController.h"
 #import "AppDelegate.h"
 
 #import "IGShowCell.h"
 
 typedef NS_ENUM(NSInteger, RLBrowseSections) {
-	RLBrowseRandomShowSection,
-	RLBrowseYearSection,
-	RLBrowseSectionsCount
+    RLBrowseBrowseShowsSection,
+    RLBrowseYearSection,
+    RLBrowseSectionsCount
+};
+
+typedef NS_ENUM(NSInteger, RLBrowseShowsRows) {
+    RLBrowseShowsRandomShowRow,
+    RLBrowseShowsTodayRow,
+    RLBrowseShowsYourRecentRow,
+    RLBrowseShowsRowsCount
 };
 
 @interface RLBrowseTableViewController ()
@@ -115,8 +123,8 @@ typedef NS_ENUM(NSInteger, RLBrowseSections) {
         }
     }
     
-	if(section == RLBrowseRandomShowSection) {
-		return 2;
+	if(section == RLBrowseBrowseShowsSection) {
+		return RLBrowseShowsRowsCount;
 	}
 	else if(section == RLBrowseYearSection) {
 		return self.years ? self.years.count : 0;
@@ -149,12 +157,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         return UITableViewAutomaticDimension;
     }
     
-	if(indexPath.section == RLBrowseRandomShowSection) {
-        if(indexPath.row == 0) {
-            return 88.0f;
-        }
-	}
-	else if(indexPath.section == RLBrowseYearSection) {
+    if(indexPath.section == RLBrowseYearSection) {
 		return IGYearCell.height;
 	}
 	
@@ -189,15 +192,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     } else {
         UITableViewCell *cell = nil;
-        if(indexPath.section == RLBrowseRandomShowSection) {
+        if(indexPath.section == RLBrowseBrowseShowsSection) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"
                                                    forIndexPath:indexPath];
             
-            if(indexPath.row == 0) {
+            if(indexPath.row == RLBrowseShowsRandomShowRow) {
                 cell.textLabel.text = @"Random Show";
             }
-            else if(indexPath.row == 1) {
-                cell.textLabel.text = @"Recently Played Shows";
+            else if(indexPath.row == RLBrowseShowsTodayRow) {
+                cell.textLabel.text = @"On This Day in History";
+            }
+            else if(indexPath.row == RLBrowseShowsYourRecentRow) {
+                cell.textLabel.text = @"Your Recently Played Shows";
             }
             cell.textLabel.adjustsFontSizeToFitWidth = true;
             
@@ -229,12 +235,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             y = [RLShowCollectionViewController.alloc initWithVenue:self.venues[indexPath.row]];
         }
     } else {
-        if(indexPath.section == 0) {
-            if (indexPath.row == 1) {
+        if(indexPath.section == RLBrowseBrowseShowsSection) {
+            if (indexPath.row == RLBrowseShowsYourRecentRow) {
                 y = RLHistoryViewController.new;
             }
-            else {
+            else if(indexPath.row == RLBrowseShowsRandomShowRow) {
                 y = [RLShowSourcesViewController.alloc initWithRandomDate];
+            }
+            else if(indexPath.row == RLBrowseShowsTodayRow) {
+                y = [RLArtistTodayViewController.alloc initWithArtistName:IGAPIClient.sharedInstance.artist.name];
             }
         }
         else {

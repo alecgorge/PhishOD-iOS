@@ -16,6 +16,7 @@
 #import "IGArtist.h"
 #import "IGUser.h"
 #import "IGPlaylist.h"
+#import "IGTodayArtist.h"
 
 @interface IGAPIClient : AFHTTPSessionManager
 
@@ -48,6 +49,8 @@
 
 - (void)playTrack:(IGTrack *)track
            inShow:(IGShow *)show;
+
+- (void)today:(void (^)(NSArray<IGTodayArtist *> *))success;
 
 @end
 

@@ -166,10 +166,17 @@
 
 - (IBAction)showMoreOptions:(id)sender {
     UITableViewController *vc = (UITableViewController *)[AppDelegate topViewController];
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"More" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    NSString *title = [NSString stringWithFormat:@"%@ (%@)", self.track.title, [IGDurationHelper formattedTimeWithInterval:self.track.duration]];
+    
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:title
+                                                                        message:nil
+                                                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    
     if ([vc isKindOfClass:[RLShowViewController class]]) {
         RLShowViewController *rlsvc = (RLShowViewController *)vc;
-        [controller addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [controller addAction:[UIAlertAction actionWithTitle:@"Play Next"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
             
             if ([AGMediaPlayerViewController.sharedInstance queue].count == 0) {
@@ -183,7 +190,10 @@
                 [AGMediaPlayerViewController.sharedInstance insertItem:playlist[0] atIndex:AGMediaPlayerViewController.sharedInstance.currentIndex + 1];
             }
         }]];
-        [controller addAction:[UIAlertAction actionWithTitle:@"Add to end of queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [controller addAction:[UIAlertAction actionWithTitle:@"Add to end of queue"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             RLShowViewController *rlsvc = (RLShowViewController *)vc;
             NSArray *playlist = [NSArray arrayWithObject:[IguanaMediaItem.alloc initWithTrack:(IGTrack *)self.track inShow:rlsvc.show]];
             
@@ -198,7 +208,10 @@
                 [AGMediaPlayerViewController.sharedInstance addItemsToQueue:playlist];
             }
         }]];
-        [controller addAction:[UIAlertAction actionWithTitle:@"Add rest of tracks to queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [controller addAction:[UIAlertAction actionWithTitle:@"Add rest of tracks to queue"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             RLShowViewController *rlsvc = (RLShowViewController *)vc;
             NSMutableArray *playlist = [NSMutableArray new];
             NSArray *temp = [rlsvc getAllTracks].mutableCopy;
@@ -220,12 +233,18 @@
             }
         }]];
     }
+    
     if(self.track.isCached) {
-        [controller addAction:[UIAlertAction actionWithTitle:@"Delete saved file" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [controller addAction:[UIAlertAction actionWithTitle:@"Delete saved file"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             [(IGTrack *)self.track deleteCache];
         }]];
-    } else if(self.track.isDownloadingOrQueued) {
-        [controller addAction:[UIAlertAction actionWithTitle:@"Cancel download" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }
+    else if(self.track.isDownloadingOrQueued) {
+        [controller addAction:[UIAlertAction actionWithTitle:@"Cancel download"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             if (self.track.downloader == nil) {
                 return;
             }
@@ -233,8 +252,11 @@
             PHODDownloadOperation *op = [self.track.downloader findOperationForTrackInQueue:self.track.downloadItem];
             [op cancelDownload];
         }]];
-    } else if (!self.track.isCached && AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
-        [controller addAction:[UIAlertAction actionWithTitle:@"Download" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }
+    else if (!self.track.isCached && AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
+        [controller addAction:[UIAlertAction actionWithTitle:@"Download"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
             if (self.track.downloader == nil) {
                 return;
             }
@@ -242,8 +264,14 @@
             [self.track.downloader downloadItem:self.track.downloadItem];
         }]];
     }
-    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [[AppDelegate topViewController] presentViewController:controller animated:true completion:nil];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                                   style:UIAlertActionStyleCancel
+                                                 handler:nil]];
+    
+    [[AppDelegate topViewController] presentViewController:controller
+                                                  animated:true
+                                                completion:nil];
 }
 
 - (CGFloat)heightForCellWithTrack:(NSObject<PHODGenericTrack> *)track

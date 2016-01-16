@@ -295,17 +295,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    NSMutableArray *playlist = [NSMutableArray new];
-    for (NSInteger i = indexPath.row; i < self.show.tracks.count; i++) {
-        [playlist addObject:[IguanaMediaItem.alloc initWithTrack:self.show.tracks[i]
-                                                          inShow:self.show]];
-    }
+    NSArray *playlist = [self.show.tracks map:^id(IGTrack *track) {
+        return [IguanaMediaItem.alloc initWithTrack:track
+                                             inShow:self.show];
+    }];
     
     [AppDelegate sharedDelegate].currentlyPlayingShow = self.show;
     
     [AGMediaPlayerViewController.sharedInstance viewWillAppear:NO];
     [AGMediaPlayerViewController.sharedInstance replaceQueueWithItems:playlist
-                                                           startIndex:0];
+                                                           startIndex:indexPath.row];
     
     [AppDelegate.sharedDelegate.navDelegate addBarToViewController];
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];

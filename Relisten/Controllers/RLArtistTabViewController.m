@@ -14,6 +14,7 @@
 #import "RLVenuesViewController.h"
 #import "RLShowCollectionViewController.h"
 #import "PHODDownloadTabTableViewController.h"
+#import "RLShowSourcesViewController.h"
 #import "PHODFavortiesViewController.h"
 
 @interface RLArtistTabViewController ()
@@ -91,6 +92,16 @@
     
     if (AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         self.selectedIndex = 4;
+    }
+    else {
+        if(self.autopresentDisplayDate) {
+            RLShowSourcesViewController *vc = [RLShowSourcesViewController.alloc initWithDisplayDate:self.autopresentDisplayDate];
+            
+            [self.viewControllers[0] pushViewController:vc
+                                               animated:YES];
+            
+            self.autopresentDisplayDate = nil;
+        }
     }
 }
 

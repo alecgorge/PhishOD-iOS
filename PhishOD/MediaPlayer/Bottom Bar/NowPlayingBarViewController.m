@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet MarqueeLabel *labelTitle;
 @property (weak, nonatomic) IBOutlet MarqueeLabel *labelSubTitle;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *bufferingIndicator;
 
 @property (nonatomic) NSDictionary *nowPlayingInfo;
 
@@ -197,6 +198,9 @@
     
     [self.progressIndicator setProgress:AGMediaPlayerViewController.sharedInstance.progress
                                animated:YES];
+    
+    [self.bufferingIndicator startAnimating];
+    self.bufferingIndicator.hidden = !AGMediaPlayerViewController.sharedInstance.audioPlayer.isBuffering;
 }
 
 - (IBAction)pausePressed:(id)sender {

@@ -11,11 +11,14 @@
 #import "PHODHistory.h"
 
 #import "IGShowCell.h"
+#import "IGAPIClient.h"
 #import "RLShowSourcesViewController.h"
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 @interface RLHistoryViewController () <DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
+
+@property (nonatomic) NSMutableOrderedSet<IGShow *> *history;
 
 @end
 
@@ -37,6 +40,14 @@
     self.tableView.emptyDataSetSource = self;
     
     self.tableView.tableFooterView = UIView.new;
+    
+    self.history = NSMutableOrderedSet.orderedSet;
+    
+    for (IGShow *show in PHODHistory.sharedInstance.history) {
+        if(show.ArtistId == IGAPIClient.sharedInstance.artist.id) {
+            [self.history addObject:show];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return PHODHistory.sharedInstance.history.count;
+    return self.history.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -60,7 +71,7 @@
     IGShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"showCell"
                                                        forIndexPath:indexPath];
     
-    [cell updateCellWithShow:PHODHistory.sharedInstance.history[indexPath.row]];
+    [cell updateCellWithShow:self.history[indexPath.row]];
     
     return cell;
 }
@@ -70,7 +81,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     
-    IGShow *show = PHODHistory.sharedInstance.history[indexPath.row];
+    IGShow *show = self.history[indexPath.row];
     RLShowSourcesViewController *vc = [RLShowSourcesViewController.alloc initWithDisplayDate:show.displayDate];
     
     [self.navigationController pushViewController:vc

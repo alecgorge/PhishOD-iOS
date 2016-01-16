@@ -142,7 +142,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     
-    NSString *text = @"You can favorite any show by tapping the heart outline or by pressing the three dots by the currently playing track. Bonus: your favorites list will automatically sync between all of your devices.";
+    NSString *text = @"You can favorite any show by tapping the three dots by the currently playing track. Bonus: your favorites list will automatically sync between all of your devices.";
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -158,6 +158,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
     return NO;
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return -50;
 }
 
 @end

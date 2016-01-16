@@ -305,6 +305,13 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
         
         self.doneAppearance = YES;
     }
+    
+    if (self.audioPlayer.currentIndex < self.audioPlayer.queue.count) {
+        [self.uiPlaybackQueueTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.audioPlayer.currentIndex
+                                                                             inSection:0]
+                                         atScrollPosition:UITableViewScrollPositionMiddle
+                                                 animated:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -466,10 +473,10 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
     
     self.currentIndex = index;
     
-	[self.uiPlaybackQueueTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index
-																		 inSection:0]
-									 atScrollPosition:UITableViewScrollPositionMiddle
-											 animated:NO];
+//	[self.uiPlaybackQueueTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index
+//																		 inSection:0]
+//									 atScrollPosition:UITableViewScrollPositionMiddle
+//											 animated:NO];
 }
 
 #pragma mark - Tableview Stuff
@@ -501,34 +508,21 @@ uiNeedsRedrawForReason:(AGAudioPlayerRedrawReason)reason
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [self.audioPlayer.queue moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
-    NSInteger diff = destinationIndexPath.row - sourceIndexPath.row;
-    if (self.audioPlayer.currentIndex == sourceIndexPath.row) {
-        [self.audioPlayer setIndex:self.audioPlayer.currentIndex + diff];
-    } else {
-        if (sourceIndexPath.row > self.audioPlayer.currentIndex && self.audioPlayer.currentIndex > destinationIndexPath.row) {
-            [self.audioPlayer setIndex:self.audioPlayer.currentIndex - 1];
-        } else if (sourceIndexPath.row < self.audioPlayer.currentIndex && self.audioPlayer.currentIndex < destinationIndexPath.row) {
-            [self.audioPlayer setIndex:self.audioPlayer.currentIndex + 1];
-        }
-    }
+    [self.queue moveItemAtIndex:sourceIndexPath.row
+                        toIndex:destinationIndexPath.row];
     [tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSInteger currentIndex = self.audioPlayer.currentIndex;
+        [tableView beginUpdates];
+        
         [self.queue removeItemAtIndex:indexPath.row];
-        if (self.queue.count == 0) {
-            [self.audioPlayer stop];
-        } else if (indexPath.row == currentIndex) {
-            if (self.queue.count <= currentIndex) {
-                [self.audioPlayer playItemAtIndex:currentIndex - 1];
-            } else {
-                [self.audioPlayer playItemAtIndex:currentIndex];
-            }
-        }
-        [tableView reloadData];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [tableView endUpdates];
     }
 }
 

@@ -469,4 +469,29 @@
        }];
 }
 
+- (void)today:(void (^)(NSArray<IGTodayArtist *> *))success {
+    [self GET:@"today"
+   parameters:nil
+      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+          NSArray *r = [responseObject[@"tih"] map:^id(id object) {
+              NSError *err;
+              IGTodayArtist *y = [[IGTodayArtist alloc] initWithDictionary:object
+                                                                     error:&err];
+              
+              if(err) {
+                  [self failure: err];
+                  dbug(@"json err: %@", err);
+              }
+              
+              return y;
+          }];
+          
+          success(r);
+      }
+      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          [self failure:error];
+          success(nil);
+      }];
+}
+
 @end

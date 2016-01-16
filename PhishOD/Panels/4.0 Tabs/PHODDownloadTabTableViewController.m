@@ -201,7 +201,9 @@ viewForHeaderInSection:(NSInteger)section {
                                             [IGDownloadItem deleteEntireCache];
 #endif
 
-											[self.tableView reloadData];
+                                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                [self.tableView reloadData];
+                                            });
 										}]];
 	
 	[a addAction:[UIAlertAction actionWithTitle:@"Keep jamming"

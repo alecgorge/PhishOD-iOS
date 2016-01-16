@@ -34,20 +34,20 @@
         _path = path;
         [FCFileManager createDirectoriesForPath:self.path];
         
-        self.memoryLock = dispatch_semaphore_create(1L);
+//        self.memoryLock = dispatch_semaphore_create(1L);
         self.memoryCache = @{}.mutableCopy;
     }
     return self;
 }
 
 - (void)cullMemory {
-    dispatch_semaphore_wait(self.memoryLock, DISPATCH_TIME_FOREVER);
+//    dispatch_semaphore_wait(self.memoryLock, DISPATCH_TIME_FOREVER);
     
     while(self.memoryCache.count > 25) {
         [self.memoryCache removeObjectForKey:self.memoryCache.allKeys[0]];
     }
     
-    dispatch_semaphore_signal(self.memoryLock);
+//    dispatch_semaphore_signal(self.memoryLock);
 }
 
 - (void)flushKeyToDisk:(NSString *)key {
