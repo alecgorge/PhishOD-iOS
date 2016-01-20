@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 target "PhishOD" do
-	pod 'FreeStreamer', :git => "https://github.com/alecgorge/FreeStreamer.git"
+	pod 'FreeStreamer'
 	pod 'ASImageResize', '~> 1.0'
 	pod 'FastImageCache'
 	pod 'ChameleonFramework'

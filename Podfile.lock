@@ -44,7 +44,7 @@ PODS:
   - Flurry-iOS-SDK (7.3.0):
     - Flurry-iOS-SDK/FlurrySDK (= 7.3.0)
   - Flurry-iOS-SDK/FlurrySDK (7.3.0)
-  - FreeStreamer (3.2.1):
+  - FreeStreamer (3.3.0):
     - Reachability (~> 3.0)
   - FXKeychain (1.5.3)
   - GroundControl (2.1.0):
@@ -57,7 +57,7 @@ PODS:
   - LastFm (1.15.0):
     - KissXML (~> 5.0)
   - LLACircularProgressView (0.1.1)
-  - MarqueeLabel (2.4.2)
+  - MarqueeLabel (2.5.0)
   - NAKPlaybackIndicatorView (0.0.3)
   - NSObject-NSCoding (1.0)
   - ObjectiveSugar (1.1.0)
@@ -68,7 +68,7 @@ PODS:
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
-  - SVProgressHUD (2.0-beta)
+  - SVProgressHUD (2.0-beta3)
   - SVWebViewController (1.0)
   - TDBadgedCell (3.0)
   - TTTAttributedLabel (1.13.4)
@@ -94,7 +94,7 @@ DEPENDENCIES:
   - FastImageCache
   - FCFileManager (~> 1.0.3)
   - Flurry-iOS-SDK
-  - FreeStreamer (from `https://github.com/alecgorge/FreeStreamer.git`)
+  - FreeStreamer
   - FXKeychain
   - GroundControl (~> 2.1.0)
   - Instabug (~> 4.1)
@@ -119,8 +119,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   AGAudioPlayer:
     :path: ../AGAudioPlayer
-  FreeStreamer:
-    :git: https://github.com/alecgorge/FreeStreamer.git
   NSObject-NSCoding:
     :branch: master
     :git: https://github.com/alecgorge/NSObject-NSCoding.git
@@ -132,9 +130,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/tmdvs/TDBadgedCell.git
 
 CHECKOUT OPTIONS:
-  FreeStreamer:
-    :commit: e1d3b7a8354fe42d2d37bf8c3491d2c588867338
-    :git: https://github.com/alecgorge/FreeStreamer.git
   NSObject-NSCoding:
     :commit: 7965e5766f076c535c0c9a26dc56034cd292487b
     :git: https://github.com/alecgorge/NSObject-NSCoding.git
@@ -142,7 +137,7 @@ CHECKOUT OPTIONS:
     :commit: 5c72c0a33ef641d181a9016a3208a01679bf6dc4
     :git: https://github.com/alecgorge/PSUpdateApp.git
   SVProgressHUD:
-    :commit: 0f75c37e3831eb63a1d5896eb041b6b138918bb3
+    :commit: 4e1dd1b2a1e012d7560896c3a6245a49afafd08d
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   TDBadgedCell:
     :commit: dc9258e52233182cc32d2897f6b82636d17c22a7
@@ -166,7 +161,7 @@ SPEC CHECKSUMS:
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
   FCFileManager: 8bfc931ce2a6223676147e9baf0e8a65c691eca6
   Flurry-iOS-SDK: 054befae0fa0244fb000985bfe757d70f87a9f60
-  FreeStreamer: 196f535d0fc365b9705bf79bfce70f1ab0f7828a
+  FreeStreamer: d0870b7cca7db2d457feb03a33fa220694bdbb32
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
   HysteriaPlayer: 6bf8e8b554bab9973c405f3556ab8dc67c3d7d11
@@ -176,7 +171,7 @@ SPEC CHECKSUMS:
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   LastFm: 28c752f8e8646531524a123ce7f6722bbfc9d3c5
   LLACircularProgressView: e179b0728217e9013cd07c2fadc7caa0c35b9199
-  MarqueeLabel: 641f82cd199dae0ab194bd157984b3cbfbb31b09
+  MarqueeLabel: 6b8ff6915c0536c5099ac30992b7d72f9807df20
   NAKPlaybackIndicatorView: 794dd97576fe074bb1844c19ebcbf7509384a47f
   NSObject-NSCoding: d05f937cc1ea1560294be261ee41d5438ddc7b1b
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
@@ -184,13 +179,13 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDCloudUserDefaults: cacf733d192160d94364efab8548ae3302615a65
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  SVProgressHUD: cd212fc36289d4054b420e42e591d94bbfa42a47
+  SVProgressHUD: 7c27dc7cd60b62124155e7aca085c165a2c75e54
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
 
-PODFILE CHECKSUM: 9c9b86fdad374670225565e731d26e129d5254a9
+PODFILE CHECKSUM: 69b5f3fbd2d1107ef488671b819bd98348b4afef
 
 COCOAPODS: 1.0.0.beta.2
