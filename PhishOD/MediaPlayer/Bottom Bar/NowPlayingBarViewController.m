@@ -175,7 +175,9 @@
         NSDictionary *nowPlayingInfo = [change objectForKey:NSKeyValueChangeNewKey];
         self.nowPlayingInfo = nowPlayingInfo;
         
-        [self updateUI];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateUI];
+        });
     }
 }
 

@@ -344,6 +344,7 @@
 		7C97CE191B438B3B0010B82B /* RLShowSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE181B438B3B0010B82B /* RLShowSourcesViewController.m */; };
 		7C97CE1D1B4394650010B82B /* IGSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE1B1B4394650010B82B /* IGSourceCell.m */; };
 		7C97CE1E1B4394650010B82B /* IGSourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C97CE1C1B4394650010B82B /* IGSourceCell.xib */; };
+		7CA833761C5ACDFC00B5DFA9 /* RLSourceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA833751C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.m */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -704,6 +705,8 @@
 		7C97CE1B1B4394650010B82B /* IGSourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGSourceCell.m; path = Controllers/Cells/IGSourceCell.m; sourceTree = "<group>"; };
 		7C97CE1C1B4394650010B82B /* IGSourceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IGSourceCell.xib; path = Controllers/Cells/IGSourceCell.xib; sourceTree = "<group>"; };
 		7C9BFB741B640DBC00F5CF29 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		7CA833741C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLSourceDetailsViewController.h; path = Controllers/Panels/Browse/Shows/RLSourceDetailsViewController.h; sourceTree = "<group>"; };
+		7CA833751C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLSourceDetailsViewController.m; path = Controllers/Panels/Browse/Shows/RLSourceDetailsViewController.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -1192,6 +1195,8 @@
 				7CBF883E1B49CEB30072F20A /* IguanaMediaItem.m */,
 				7C74CD7F1B4CCFAA00B20437 /* RLShowReviewsViewController.h */,
 				7C74CD801B4CCFAA00B20437 /* RLShowReviewsViewController.m */,
+				7CA833741C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.h */,
+				7CA833751C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.m */,
 			);
 			name = Shows;
 			sourceTree = "<group>";
@@ -2441,6 +2446,7 @@
 				7C35782A1B5AC60900329368 /* RLHistoryViewController.m in Sources */,
 				7C10A8171B33B51700692DD3 /* PHODCollectionCollectionViewCell.m in Sources */,
 				7C10A8B21B42457B00692DD3 /* RLShowCollectionViewController.m in Sources */,
+				7CA833761C5ACDFC00B5DFA9 /* RLSourceDetailsViewController.m in Sources */,
 				7CEE68091BD9EB0700AAFCE6 /* DTParallaxHeaderView.m in Sources */,
 				7C3578321B5C055800329368 /* PHODPersistence.m in Sources */,
 				7C10A8181B33B51700692DD3 /* BaseStatsViewController.m in Sources */,

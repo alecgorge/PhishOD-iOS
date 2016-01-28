@@ -21,6 +21,7 @@
 #import "IGSourceCell.h"
 #import "RLShowCollectionViewController.h"
 #import "PHODFavoritesManager.h"
+#import "RLSourceDetailsViewController.h"
 
 #import "PHODTrackCell.h"
 
@@ -32,8 +33,8 @@ NS_ENUM(NSInteger, IGShowSections) {
 
 NS_ENUM(NSInteger, IGShowRows) {
     IGShowRowSource,
-    IGShowRowReviews,
-    IGShowRowVenue,
+//    IGShowRowReviews,
+//    IGShowRowVenue,
     IGShowRowFavorite,
 //    IGShowRowDownloadAll,
     IGShowRowCount
@@ -153,6 +154,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
+        /*
         else if(indexPath.row == IGShowRowReviews) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
             
@@ -186,6 +188,7 @@ NS_ENUM(NSInteger, IGShowRows) {
             
             return cell;
         }
+         */
         else if(indexPath.row == IGShowRowFavorite) {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plain"];
             
@@ -256,6 +259,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = indexPath.row;
     
     if(indexPath.section == IGShowSectionInfo) {
+        if(row == IGShowRowSource) {
+            RLSourceDetailsViewController *vc = [RLSourceDetailsViewController.alloc initWithShowViewController:self];
+            [self.navigationController pushViewController:vc
+                                                 animated:YES];
+        }
+        /*
         if(row == IGShowRowReviews) {
             RLShowReviewsViewController *vc = [RLShowReviewsViewController.alloc initWithShow:self.show];
             [self.navigationController pushViewController:vc
@@ -266,7 +275,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             
             [self.navigationController pushViewController:vc
                                                  animated:YES];
-        }
+        }*/
         else if(row == IGShowRowFavorite) {
             if([PHODFavoritesManager.sharedInstance showDateIsAFavorite:self.show.displayDate]) {
                 [PHODFavoritesManager.sharedInstance removeFavoriteShowDate:self.show.displayDate];

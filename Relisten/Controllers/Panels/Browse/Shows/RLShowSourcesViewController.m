@@ -117,6 +117,8 @@ titleForHeaderInSection:(NSInteger)section {
                                                forIndexPath:indexPath];
         IGSourceCell *c = (IGSourceCell *)cell;
         
+        c.uiDetailsLabel.hidden = YES;
+        
         [c updateCellWithSource:show
                     inTableView:tableView];
     }

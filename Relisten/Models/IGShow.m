@@ -18,12 +18,21 @@
 + (JSONKeyMapper*)keyMapper {
 	JSONKeyMapper *j = [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
 	return [JSONKeyMapper.alloc initWithJSONToModelBlock:^NSString *(NSString *keyName) {
-		if ([keyName isEqualToString:@"description"]) {
-			return @"showDescription";
+		if ([keyName isEqualToString:@"showDescription"]) {
+			return @"description";
 		}
+        else if([keyName isEqualToString:@"description"]) {
+            return @"showDescription";
+        }
 		return j.JSONToModelKeyBlock(keyName);
 	}
 										modelToJSONBlock:^NSString *(NSString *keyName) {
+                                            if ([keyName isEqualToString:@"showDescription"]) {
+                                                return @"description";
+                                            }
+                                            else if([keyName isEqualToString:@"description"]) {
+                                                return @"showDescription";
+                                            }
 											return j.modelToJSONKeyBlock(keyName);
 										}];
 }
