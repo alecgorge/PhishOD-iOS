@@ -28,9 +28,9 @@ PODS:
   - Appirater (2.0.5)
   - ASImageResize (1.0.3)
   - AXRatingView (1.0.3)
-  - ChameleonFramework (2.0.6):
-    - ChameleonFramework/Default (= 2.0.6)
-  - ChameleonFramework/Default (2.0.6)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - Crashlytics (3.6.0):
     - Fabric (~> 1.6.3)
   - CSNNotificationObserver (0.9.2)
@@ -38,21 +38,25 @@ PODS:
   - DZNEmptyDataSet (1.7.3)
   - EDColor (1.0.0)
   - EGOCache (2.1.3)
-  - Fabric (1.6.3)
+  - Fabric (1.6.4)
   - FastImageCache (1.3)
   - FCFileManager (1.0.17)
   - Flurry-iOS-SDK (7.3.0):
     - Flurry-iOS-SDK/FlurrySDK (= 7.3.0)
   - Flurry-iOS-SDK/FlurrySDK (7.3.0)
-  - FreeStreamer (3.3.0):
+  - FreeStreamer (3.4.2):
     - Reachability (~> 3.0)
   - FXKeychain (1.5.3)
   - GroundControl (2.1.0):
     - AFNetworking (~> 2.2)
-  - HysteriaPlayer (2.1.5)
+  - HysteriaPlayer (2.1.6)
   - Instabug (4.1.10)
   - JSONModel (1.2.0)
-  - KissXML (5.0)
+  - KissXML (5.0.2):
+    - KissXML/Standard (= 5.0.2)
+  - KissXML/Core (5.0.2)
+  - KissXML/Standard (5.0.2):
+    - KissXML/Core
   - KVOController (1.0.3)
   - LastFm (1.15.0):
     - KissXML (~> 5.0)
@@ -65,10 +69,10 @@ PODS:
     - AFNetworking (~> 2.2)
   - Reachability (3.2)
   - SDCloudUserDefaults (1.0.2)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
-  - SVProgressHUD (2.0-beta3)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SVProgressHUD (2.0-beta8)
   - SVWebViewController (1.0)
   - TDBadgedCell (3.0)
   - TTTAttributedLabel (1.13.4)
@@ -137,7 +141,7 @@ CHECKOUT OPTIONS:
     :commit: 5c72c0a33ef641d181a9016a3208a01679bf6dc4
     :git: https://github.com/alecgorge/PSUpdateApp.git
   SVProgressHUD:
-    :commit: 4e1dd1b2a1e012d7560896c3a6245a49afafd08d
+    :commit: d98bf9efb0295d8adb6f62f78372a54707676634
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
   TDBadgedCell:
     :commit: dc9258e52233182cc32d2897f6b82636d17c22a7
@@ -150,24 +154,24 @@ SPEC CHECKSUMS:
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   AXRatingView: ccaadc1bbda99a4b7e1d556059482d2b933a9f4e
-  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
   CSNNotificationObserver: bf3a8781aba027abb16c2f5a63f1a7b1de044d49
   DBGHTMLEntities: df8979bda566bf0ac4a66e6e7c14c005f4552ee9
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
-  Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
+  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
   FCFileManager: 8bfc931ce2a6223676147e9baf0e8a65c691eca6
   Flurry-iOS-SDK: 054befae0fa0244fb000985bfe757d70f87a9f60
-  FreeStreamer: d0870b7cca7db2d457feb03a33fa220694bdbb32
+  FreeStreamer: 19071533508c214f2201840458265a3d1b7ac146
   FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
   GroundControl: fbc762e0097feece7fb6d8cdc8f2747a504a6833
-  HysteriaPlayer: 6bf8e8b554bab9973c405f3556ab8dc67c3d7d11
+  HysteriaPlayer: 8c72e5e608c4d39c9438bbfbafb2ba09bec669e5
   Instabug: 67d01dc94d780a3eb787563fc7a1c32ef5dd8a1f
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
-  KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
+  KissXML: 99a1b688b6920895f527f5e3ad5f31b6bef6a213
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   LastFm: 28c752f8e8646531524a123ce7f6722bbfc9d3c5
   LLACircularProgressView: e179b0728217e9013cd07c2fadc7caa0c35b9199
@@ -178,8 +182,8 @@ SPEC CHECKSUMS:
   PSUpdateApp: 295919cdc1876f4d91911297c7e9f238aa732220
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDCloudUserDefaults: cacf733d192160d94364efab8548ae3302615a65
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  SVProgressHUD: 7c27dc7cd60b62124155e7aca085c165a2c75e54
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f

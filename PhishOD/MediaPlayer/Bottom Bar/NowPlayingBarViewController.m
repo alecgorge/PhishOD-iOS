@@ -77,6 +77,8 @@
     self.progressIndicator.backgroundColor = COLOR_PHISH_GREEN;
     self.progressIndicator.tintColor = COLOR_PHISH_LIGHT_GREEN;
     self.progressIndicator.progressTintColor = COLOR_PHISH_WHITE;
+
+    self.bufferingIndicator.hidden = !AGMediaPlayerViewController.sharedInstance.audioPlayer.isBuffering;
 }
 
 - (IBAction)doAction:(id)sender {
@@ -201,8 +203,8 @@
     [self.progressIndicator setProgress:AGMediaPlayerViewController.sharedInstance.progress
                                animated:YES];
     
-    [self.bufferingIndicator startAnimating];
     self.bufferingIndicator.hidden = !AGMediaPlayerViewController.sharedInstance.audioPlayer.isBuffering;
+    [self.bufferingIndicator startAnimating];
 }
 
 - (IBAction)pausePressed:(id)sender {
