@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18BF70C16ACD3FF94DDBF5CB /* libPods-PhishOD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40AB53A119453F6281235EAA /* libPods-PhishOD.a */; };
 		5EA5C9921BEAB63000DFD833 /* reorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5C9911BEAB63000DFD833 /* reorder@2x.png */; };
 		5EA5C9961BEAB6D400DFD833 /* reorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5C9951BEAB6D400DFD833 /* reorder.png */; };
 		5EBE3B8D1C1ACD1100986EFD /* RLPushPopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE3B8C1C1ACD1100986EFD /* RLPushPopAnimator.m */; };
@@ -345,6 +344,10 @@
 		7C97CE1D1B4394650010B82B /* IGSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C97CE1B1B4394650010B82B /* IGSourceCell.m */; };
 		7C97CE1E1B4394650010B82B /* IGSourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C97CE1C1B4394650010B82B /* IGSourceCell.xib */; };
 		7CA833761C5ACDFC00B5DFA9 /* RLSourceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA833751C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.m */; };
+		7CA833831C5BCC0300B5DFA9 /* TCBlobDownloadSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CA8337D1C5BCBD600B5DFA9 /* TCBlobDownloadSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7CA833871C5BCC1100B5DFA9 /* TCBlobDownloadSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CA8337D1C5BCBD600B5DFA9 /* TCBlobDownloadSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7CA8338E1C5BE81C00B5DFA9 /* AGQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */; };
+		7CA8338F1C5BE81C00B5DFA9 /* AGQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -413,7 +416,8 @@
 		C5E62D32183E46F400A84114 /* PhishTracksStatsPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E62D31183E46F400A84114 /* PhishTracksStatsPlayEvent.m */; };
 		C5FB5F6A18387F4B004AAB91 /* StatsNewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */; };
 		C5FB5F6D1838804F004AAB91 /* StatsRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */; };
-		EE93A2F372D9058C65282D32 /* libPods-PhishOD-Relisten.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2897477E67DB0C574326E7B /* libPods-PhishOD-Relisten.a */; };
+		D8210C07F31E1744470DACC2 /* libPods-PhishOD-Relisten.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38B904573C9E16165DF7EBF /* libPods-PhishOD-Relisten.a */; };
+		D95CFC42B4DEC1EB45F88C37 /* libPods-PhishOD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7BD254D9A76CC783A72CE0 /* libPods-PhishOD.a */; };
 		F1B48AE61973813100DDF5C3 /* VenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE31973813100DDF5C3 /* VenuesViewController.m */; };
 		F1B48AE71973813100DDF5C3 /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE51973813100DDF5C3 /* VenueViewController.m */; };
 		F1B48AEA1973828F00DDF5C3 /* RandomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B48AE91973828F00DDF5C3 /* RandomShowViewController.m */; };
@@ -460,11 +464,61 @@
 			remoteGlobalIDString = 7C10A7BC1B33B51700692DD3;
 			remoteInfo = Relisten;
 		};
+		7CA8337C1C5BCBD600B5DFA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C3B08D121A53398A00341164;
+			remoteInfo = TCBlobDownloadSwift;
+		};
+		7CA8337E1C5BCBD600B5DFA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C3B08D1D1A53398A00341164;
+			remoteInfo = TCBlobDownloadSwiftTests;
+		};
+		7CA833801C5BCBE700B5DFA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C3B08D111A53398A00341164;
+			remoteInfo = TCBlobDownloadSwift;
+		};
+		7CA833841C5BCC0700B5DFA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C3B08D111A53398A00341164;
+			remoteInfo = TCBlobDownloadSwift;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7CA833821C5BCBFA00B5DFA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CA833831C5BCC0300B5DFA9 /* TCBlobDownloadSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CA833861C5BCC0B00B5DFA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CA833871C5BCC1100B5DFA9 /* TCBlobDownloadSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3986C858F8CA9433759765E1 /* Pods-PhishOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD/Pods-PhishOD.debug.xcconfig"; sourceTree = "<group>"; };
-		40AB53A119453F6281235EAA /* libPods-PhishOD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhishOD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA5C9911BEAB63000DFD833 /* reorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reorder@2x.png"; sourceTree = "<group>"; };
 		5EA5C9951BEAB6D400DFD833 /* reorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reorder.png; sourceTree = "<group>"; };
 		5EBE3B8B1C1ACD1100986EFD /* RLPushPopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLPushPopAnimator.h; sourceTree = "<group>"; };
@@ -707,6 +761,9 @@
 		7C9BFB741B640DBC00F5CF29 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		7CA833741C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLSourceDetailsViewController.h; path = Controllers/Panels/Browse/Shows/RLSourceDetailsViewController.h; sourceTree = "<group>"; };
 		7CA833751C5ACDFB00B5DFA9 /* RLSourceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLSourceDetailsViewController.m; path = Controllers/Panels/Browse/Shows/RLSourceDetailsViewController.m; sourceTree = "<group>"; };
+		7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TCBlobDownloadSwift.xcodeproj; path = Vendor/TCBlobDownloadSwift/TCBlobDownloadSwift.xcodeproj; sourceTree = "<group>"; };
+		7CA8338C1C5BE81C00B5DFA9 /* AGQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGQueue.h; path = Shared/AGQueue.h; sourceTree = "<group>"; };
+		7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGQueue.m; path = Shared/AGQueue.m; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -801,10 +858,10 @@
 		7CFFE1BA1BCBFF6B00FBB3AB /* DTParallaxTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTParallaxTableView.h; sourceTree = "<group>"; };
 		7CFFE1BB1BCBFF6B00FBB3AB /* DTParallaxTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTParallaxTableView.m; sourceTree = "<group>"; };
 		7CFFE1BC1BCBFF6B00FBB3AB /* DTTableViewConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTableViewConstants.h; sourceTree = "<group>"; };
+		A38B904573C9E16165DF7EBF /* libPods-PhishOD-Relisten.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhishOD-Relisten.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A176D7DCC1DF143059FC6F /* Pods-PhishOD-Relisten.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD-Relisten.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD-Relisten/Pods-PhishOD-Relisten.release.xcconfig"; sourceTree = "<group>"; };
 		B2A2F590BE832F137FA5936F /* Pods-PhishOD.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD/Pods-PhishOD.adhoc.xcconfig"; sourceTree = "<group>"; };
 		BD9FC1B6DFD394148285E734 /* Pods-PhishOD-Relisten.snapshot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD-Relisten.snapshot.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD-Relisten/Pods-PhishOD-Relisten.snapshot.xcconfig"; sourceTree = "<group>"; };
-		C2897477E67DB0C574326E7B /* libPods-PhishOD-Relisten.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhishOD-Relisten.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56C2B5119F04A11004F5637 /* PTSHeatmapQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmapQuery.h; sourceTree = "<group>"; };
 		C56C2B5219F04A11004F5637 /* PTSHeatmapQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSHeatmapQuery.m; sourceTree = "<group>"; };
 		C56C2B5419F05979004F5637 /* PTSHeatmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSHeatmap.h; sourceTree = "<group>"; };
@@ -830,6 +887,7 @@
 		C5FB5F6918387F4B004AAB91 /* StatsNewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsNewSessionViewController.m; sourceTree = "<group>"; };
 		C5FB5F6B1838804F004AAB91 /* StatsRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsRegistrationViewController.h; sourceTree = "<group>"; };
 		C5FB5F6C1838804F004AAB91 /* StatsRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsRegistrationViewController.m; sourceTree = "<group>"; };
+		CD7BD254D9A76CC783A72CE0 /* libPods-PhishOD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhishOD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA118F167F62C506CC9C0C9A /* Pods-PhishOD-Relisten.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD-Relisten.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD-Relisten/Pods-PhishOD-Relisten.adhoc.xcconfig"; sourceTree = "<group>"; };
 		F0F102D8C26B4896BE34C7E9 /* Pods-PhishOD-Relisten.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhishOD-Relisten.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhishOD-Relisten/Pods-PhishOD-Relisten.debug.xcconfig"; sourceTree = "<group>"; };
 		F1B48AE21973813100DDF5C3 /* VenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenuesViewController.h; sourceTree = "<group>"; };
@@ -924,7 +982,7 @@
 				7C10A84D1B33B51700692DD3 /* UIKit.framework in Frameworks */,
 				7C10A84E1B33B51700692DD3 /* Foundation.framework in Frameworks */,
 				7C10A84F1B33B51700692DD3 /* CoreGraphics.framework in Frameworks */,
-				EE93A2F372D9058C65282D32 /* libPods-PhishOD-Relisten.a in Frameworks */,
+				D8210C07F31E1744470DACC2 /* libPods-PhishOD-Relisten.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,7 +1011,7 @@
 				7C518C05175D0C32005EB2E7 /* UIKit.framework in Frameworks */,
 				7C518C07175D0C32005EB2E7 /* Foundation.framework in Frameworks */,
 				7C518C09175D0C32005EB2E7 /* CoreGraphics.framework in Frameworks */,
-				18BF70C16ACD3FF94DDBF5CB /* libPods-PhishOD.a in Frameworks */,
+				D95CFC42B4DEC1EB45F88C37 /* libPods-PhishOD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,7 +1262,10 @@
 		7C35782D1B5C052000329368 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */,
 				7C35782E1B5C052B00329368 /* ObjectivePersistence */,
+				7CA8338C1C5BE81C00B5DFA9 /* AGQueue.h */,
+				7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1359,8 +1420,8 @@
 				7C518C04175D0C32005EB2E7 /* UIKit.framework */,
 				7C518C06175D0C32005EB2E7 /* Foundation.framework */,
 				7C518C08175D0C32005EB2E7 /* CoreGraphics.framework */,
-				40AB53A119453F6281235EAA /* libPods-PhishOD.a */,
-				C2897477E67DB0C574326E7B /* libPods-PhishOD-Relisten.a */,
+				CD7BD254D9A76CC783A72CE0 /* libPods-PhishOD.a */,
+				A38B904573C9E16165DF7EBF /* libPods-PhishOD-Relisten.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1662,6 +1723,15 @@
 				7C9436931989FA7600AFEA56 /* PhishNetSignInViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7CA833781C5BCBD600B5DFA9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CA8337D1C5BCBD600B5DFA9 /* TCBlobDownloadSwift.framework */,
+				7CA8337F1C5BCBD600B5DFA9 /* TCBlobDownloadSwiftTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7CACD4F117A4584900E84B28 /* Models */ = {
@@ -1981,10 +2051,12 @@
 				7C10A8801B33B51700692DD3 /* ShellScript */,
 				8704A2D99022D3C3445C768A /* Embed Pods Frameworks */,
 				81C930B20E324BD1B18E10F5 /* Copy Pods Resources */,
+				7CA833861C5BCC0B00B5DFA9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7CA833851C5BCC0700B5DFA9 /* PBXTargetDependency */,
 			);
 			name = Relisten;
 			productName = PhishOD;
@@ -2020,10 +2092,12 @@
 				C5167BCE19F03C9600E11AB7 /* ShellScript */,
 				FD3DDCF96CB7E7EE190F58CE /* Embed Pods Frameworks */,
 				DB53BE6021682D35055E16FB /* Copy Pods Resources */,
+				7CA833821C5BCBFA00B5DFA9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7CA833811C5BCBE700B5DFA9 /* PBXTargetDependency */,
 			);
 			name = PhishOD;
 			productName = PhishOD;
@@ -2077,6 +2151,12 @@
 			mainGroup = 7C518BF8175D0C32005EB2E7;
 			productRefGroup = 7C518C02175D0C32005EB2E7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7CA833781C5BCBD600B5DFA9 /* Products */;
+					ProjectRef = 7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7C518C00175D0C32005EB2E7 /* PhishOD */,
@@ -2085,6 +2165,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7CA8337D1C5BCBD600B5DFA9 /* TCBlobDownloadSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TCBlobDownloadSwift.framework;
+			remoteRef = 7CA8337C1C5BCBD600B5DFA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7CA8337F1C5BCBD600B5DFA9 /* TCBlobDownloadSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TCBlobDownloadSwiftTests.xctest;
+			remoteRef = 7CA8337E1C5BCBD600B5DFA9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7C10A8511B33B51700692DD3 /* Resources */ = {
@@ -2362,6 +2459,7 @@
 				7C36A7391B3486BF0004E766 /* RLArtistTabViewController.m in Sources */,
 				7C10A7D11B33B51700692DD3 /* PlayHistoryTableViewCell.m in Sources */,
 				7C10A7D21B33B51700692DD3 /* SearchDelegate.m in Sources */,
+				7CA8338F1C5BE81C00B5DFA9 /* AGQueue.m in Sources */,
 				7C10A7D31B33B51700692DD3 /* PhishTracksStatsFavorite.m in Sources */,
 				7C10A7D41B33B51700692DD3 /* PhishinDownloader.m in Sources */,
 				7C10A7D51B33B51700692DD3 /* TourViewController.m in Sources */,
@@ -2595,6 +2693,7 @@
 				7C1C3C7F1982C60B00555ACB /* PhishinMediaItem.m in Sources */,
 				7C518C3E175D2C1C005EB2E7 /* FailureHandler.m in Sources */,
 				7CD8A4981B04FA8700A46635 /* PHODHistory.m in Sources */,
+				7CA8338E1C5BE81C00B5DFA9 /* AGQueue.m in Sources */,
 				7C518C41175D2E20005EB2E7 /* YearViewController.m in Sources */,
 				7C9436781988585E00AFEA56 /* PhishNetNewsItem.m in Sources */,
 				7C1C3C451982105000555ACB /* IGDurationHelper.m in Sources */,
@@ -2671,6 +2770,16 @@
 			isa = PBXTargetDependency;
 			target = 7C10A7BC1B33B51700692DD3 /* Relisten */;
 			targetProxy = 7C48C4051BDA7A5C00F982B6 /* PBXContainerItemProxy */;
+		};
+		7CA833811C5BCBE700B5DFA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TCBlobDownloadSwift;
+			targetProxy = 7CA833801C5BCBE700B5DFA9 /* PBXContainerItemProxy */;
+		};
+		7CA833851C5BCC0700B5DFA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TCBlobDownloadSwift;
+			targetProxy = 7CA833841C5BCC0700B5DFA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

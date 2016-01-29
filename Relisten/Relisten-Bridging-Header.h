@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Alec Gorge. All rights reserved.
 //
 
-#ifndef PhishOD_Relisten_Bridging_Header_h
-#define PhishOD_Relisten_Bridging_Header_h
-
 #import <UIKit/UIKit.h>
 #import "RefreshableTableViewController.h"
-
-#endif
+#import "IGAPIClient.h"
+#import "PhishinAPI.h"
+#import "IGShow.h"
+#import "IGTrack.h"
+#import "IGArtist.h"

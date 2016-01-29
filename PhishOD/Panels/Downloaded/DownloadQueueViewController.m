@@ -14,7 +14,7 @@
 
 @interface DownloadQueueViewController ()
 
-@property (nonatomic) NSOperationQueue *queue;
+@property (nonatomic) NSArray<PhishinDownloadItem *> *queue;
 @property (nonatomic) FBKVOController *kvo;
 
 @end
@@ -30,7 +30,7 @@
 											   bundle:NSBundle.mainBundle]
 		 forCellReuseIdentifier:@"trackCell"];
 	
-	self.queue = PhishinAPI.sharedAPI.downloader.queue;
+	self.queue = (NSArray<PhishinDownloadItem *> *)PhishinAPI.sharedAPI.downloader.downloadQueue;
     
     self.kvo = [FBKVOController.alloc initWithObserver:self];
     
@@ -50,12 +50,12 @@
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-	return [NSString stringWithFormat:@"%lu queued downloads", (unsigned long)self.queue.operations.count];
+	return [NSString stringWithFormat:@"%lu queued downloads", (unsigned long)self.queue.count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.queue.operations.count;
+    return self.queue.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -63,9 +63,8 @@ titleForHeaderInSection:(NSInteger)section {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell"
 														  forIndexPath:indexPath];
     
-    if(indexPath.row < self.queue.operations.count) {
-        PHODDownloadOperation *op = self.queue.operations[indexPath.row];
-        PhishinDownloadItem *track = (PhishinDownloadItem *)op.item;
+    if(indexPath.row < self.queue.count) {
+        PhishinDownloadItem *track = self.queue[indexPath.row];
         
         [cell updateCellWithTrack:track.track
                       inTableView:tableView];
@@ -80,8 +79,7 @@ titleForHeaderInSection:(NSInteger)section {
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     PHODTrackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell"];
 
-	PHODDownloadOperation *op = self.queue.operations[indexPath.row];
-	PhishinDownloadItem *track = (PhishinDownloadItem *)op.item;
+    PhishinDownloadItem *track = self.queue[indexPath.row];
 	
     return [cell heightForCellWithTrack:track.track
 							inTableView:tableView];

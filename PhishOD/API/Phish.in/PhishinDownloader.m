@@ -11,6 +11,7 @@
 #import <FCFileManager/FCFileManager.h>
 #import <KVOController/FBKVOController.h>
 #import "PHODPersistence.h"
+#import "AGQueue.h"
 
 static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
@@ -111,7 +112,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
     }
 }
 
-- (void)downloadURL:(void (^)(NSURL *))dl {
+- (NSURL *)downloadURL {
     NSAssert(NO, @"this needs to be overriden");
 }
 
@@ -148,8 +149,8 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
     return self.track.id;
 }
 
-- (void)downloadURL:(void (^)(NSURL *))dl {
-    dl(self.track.mp3);
+- (NSURL *)downloadURL {
+    return self.track.mp3;
 }
 
 - (void)cache {
@@ -158,9 +159,21 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
 @end
 
+@interface PHODDownloaderCallbackContainer : NSObject
+
+@property (nonatomic) NSObject *observer;
+@property (nonatomic, copy) void (^progress)(int64_t, int64_t);
+@property (nonatomic, copy) void (^success)(NSURL *);
+@property (nonatomic, copy) void (^failure)(NSError *);
+
+@end
+
 @interface PHODDownloader ()
 
 @property (nonatomic, readonly) NSString *cacheDir;
+@property (nonatomic, readonly) TCBlobDownloadManager *manager;
+@property (atomic) NSMutableDictionary<NSNumber *, NSMutableArray<PHODDownloaderCallbackContainer *> *> *callbacks;
+@property (nonatomic) AGQueue<PHODDownloadItem *> *queue;
 
 @end
 
@@ -168,51 +181,201 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
 - (id)init {
 	if (self = [super init]) {
-		self.queue = NSOperationQueue.alloc.init;
-		self.queue.maxConcurrentOperationCount = 2;
+        _maxConcurrentDownloads = 2;
+        
+        _manager = [TCBlobDownloadManager.alloc initWithConfig:[NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"phod"]];
+        _manager.startImmediatly = NO;
+        
+        _callbacks = NSMutableDictionary.dictionary;
+        
+        _downloading = NSMutableArray.array;
+        _queue = AGQueue.new;
 	}
 	return self;
 }
 
-- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item
-                               progress:(void (^)(int64_t, int64_t))progress
-                                success:(void (^)(NSURL *))success
-                                failure:(void (^)(NSError *))failure {
-	PHODDownloadOperation *op = [PHODDownloadOperation.alloc initWithDownloadItem:item
-                                                                         progress:progress
-                                                                          success:success
-                                                                          failure:failure];
-	
-	[self.queue addOperation:op];
-	
-	return op;
+- (NSMutableArray<PHODDownloadItem *> *)downloadQueue {
+    return self.queue.queue;
 }
 
-- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item {
-    return [self downloadItem:item
-                     progress:nil
-                      success:nil
-                      failure:nil];
+- (void)addDownloadObserver:(NSObject *)observer
+            forDownloadItem:(PHODDownloadItem *)item
+                   progress:(void (^)(int64_t, int64_t))progress
+                    success:(void (^)(NSURL *))success
+                    failure:(void (^)(NSError *))failure {
+    [self addDownloadObserver:observer
+                        forId:item.id
+                     progress:progress
+                      success:success
+                      failure:failure];
 }
 
-- (PHODDownloadOperation *)findOperationForTrackInQueue:(PHODDownloadItem *)track {
-	return [self.queue.operations detect:^BOOL(PHODDownloadOperation *op) {
-		return op.item.id == track.id;
+- (void)addDownloadObserver:(NSObject *)observer
+                      forId:(NSInteger)eyed
+                   progress:(void (^)(int64_t, int64_t))progress
+                    success:(void (^)(NSURL *))success
+                    failure:(void (^)(NSError *))failure {
+    PHODDownloaderCallbackContainer *cbc = PHODDownloaderCallbackContainer.new;
+    cbc.progress = progress;
+    cbc.success = success;
+    cbc.failure = failure;
+    cbc.observer = observer;
+
+    NSNumber *num = @(eyed);
+    
+    if(!self.callbacks[num]) {
+        self.callbacks[num] = NSMutableArray.new;
+    }
+    
+    [self.callbacks[num] addObject:cbc];
+}
+
+- (void)removeDownloadObserver:(NSObject *)observer
+                         forId:(NSInteger)eyed {
+    NSNumber *num = @(eyed);
+    
+    NSMutableArray<PHODDownloaderCallbackContainer *> *toRemove = NSMutableArray.array;
+    for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+        if(cbc.observer == observer) {
+            [toRemove addObject:cbc];
+        }
+    }
+    
+    for(PHODDownloaderCallbackContainer *cbc in toRemove) {
+        [self.callbacks[num] removeObject:cbc];
+    }
+}
+
+- (void)removeDownloadObserver:(NSObject *)observer forDownloadItem:(PHODDownloadItem *)item {
+    [self removeDownloadObserver:observer
+                           forId:item.id];
+}
+
+- (void)triggerProgress:(int64_t)done
+                ofTotal:(int64_t)total
+                forItem:(PHODDownloadItem *)item {
+    NSNumber *num = @(item.id);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+            cbc.progress(done, total);
+        }
+    });
+}
+
+- (void)triggerSuccess:(NSURL *)url
+               forItem:(PHODDownloadItem *)item {
+    NSNumber *num = @(item.id);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+            cbc.success(url);
+        }
+        
+        [self.delegate downloader:self
+                     itemSucceded:item];
+
+        [self removeDownloadingItem:item.id];
+    });
+}
+
+- (void)triggerError:(NSError *)err
+             forItem:(PHODDownloadItem *)item {
+    NSNumber *num = @(item.id);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+            cbc.failure(err);
+        }
+        
+        [self.delegate downloader:self
+                       itemFailed:item];
+
+        [self removeDownloadingItem:item.id];
+    });
+}
+
+- (void)removeDownloadingItem:(NSInteger)eyed {
+    NSNumber *num = @(eyed);
+    
+    self.callbacks[num] = NSMutableArray.array;
+    
+    for (PHODDownloadItem *i in self.downloading.copy) {
+        if(i.id == eyed) {
+            [self.downloading removeObject:i];
+        }
+    }
+    
+    [self startIfPossible];
+}
+
+- (void)startIfPossible {
+    while(self.downloading.count < self.maxConcurrentDownloads) {
+        PHODDownloadItem *i = [self.queue dequeue];
+        
+        [self.downloading addObject:i];
+        
+        [i.blob resume];
+
+        [self.delegate downloader:self
+                      itemStarted:i];
+    }
+}
+
+- (TCBlobDownload *)downloadItem:(PHODDownloadItem *)item {
+    NSString *path = [[item.class cacheDir] stringByAppendingPathComponent:item.cachePath];
+    TCBlobDownload *blob = [self.manager downloadFileAtURL:item.downloadURL
+                                               toDirectory:[NSURL fileURLWithPath:path.stringByDeletingLastPathComponent
+                                                                      isDirectory:YES]
+                                                  withName:path.lastPathComponent
+                                               progression:^(float per, int64_t done, int64_t total) {
+                                                   [self triggerProgress:done
+                                                                 ofTotal:total
+                                                                 forItem:item];
+                                               }
+                                                completion:^(NSError * _Nullable err, NSURL * _Nullable url) {
+                                                    if(err) {
+                                                        [self triggerError:err
+                                                                   forItem:item];
+                                                        return;
+                                                    }
+                                                    
+                                                    [self triggerSuccess:url
+                                                                 forItem:item];
+                                                }];
+    
+    item.blob = blob;
+    
+    [self.queue enqueue:item];
+    [self startIfPossible];
+    
+    return blob;
+}
+
+- (PHODDownloadItem *)findItemForItemIdInQueue:(NSInteger)track {
+    id i = [self.downloading detect:^BOOL(PHODDownloadItem *object) {
+        return object.id == track;
+    }];
+    
+    if(i) return i;
+    
+	return [self.downloadQueue detect:^BOOL(PHODDownloadItem *op) {
+		return op.id == track;
 	}];
 }
 
-- (BOOL)isTrackDownloadedOrQueued:(PHODDownloadItem *)track {
-	return [self findOperationForTrackInQueue:track] != nil;
+- (BOOL)isTrackDownloadedOrQueued:(NSInteger)track {
+	return [self findItemForItemIdInQueue:track] != nil;
 }
 
-- (CGFloat)progressForTrack:(PHODDownloadItem *)track {
-	PHODDownloadOperation *o = [self findOperationForTrackInQueue:track];
+- (CGFloat)progressForTrack:(NSInteger)track {
+    TCBlobDownload *blob = [self findItemForItemIdInQueue:track].blob;
 	
-	if(!o) {
+	if(!blob) {
 		return 0.0f;
 	}
 	
-	return o.downloadProgress;
+	return blob.progress;
 }
 
 @end
@@ -228,205 +391,15 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
     return sharedFoo;
 }
 
-- (PHODDownloadOperation *)downloadTrack:(PhishinTrack *)track
-                                  inShow:(PhishinShow *)show
-                                progress:(void (^)(int64_t, int64_t))progress
-                                 success:(void (^)(NSURL *))success
-                                 failure:(void (^)(NSError *))failure {
-    return [self downloadItem:[PhishinDownloadItem.alloc initWithTrack:track
-                                                               andShow:show]
-                     progress:progress
-                      success:success
-                      failure:failure];
-}
+- (PhishinDownloadItem *)downloadTrack:(PhishinTrack *)track
+                                  inShow:(PhishinShow *)show {
+    PhishinDownloadItem *i = [PhishinDownloadItem.alloc initWithTrack:track
+                                                              andShow:show];
 
-@end
-
-@interface PHODDownloadOperation ()
-
-@property (nonatomic) NSURLSessionDownloadTask *dl;
-@property (nonatomic) NSProgress *rootProgress;
-
-@end
-
-@implementation PHODDownloadOperation
-
-- (instancetype)initWithDownloadItem:(PHODDownloadItem *)item
-                            progress:(void (^)(int64_t, int64_t))progress
-                             success:(void (^)(NSURL *))success
-                             failure:(void (^)(NSError *))failure{
-	if (self = [super init]) {
-		self.item = item;
-		
-		self.progress = progress;
-		self.success = success;
-		self.failure = failure;
-	}
-	return self;
-}
-
-- (CGFloat)downloadProgress {
-	return self.totalBytes == 0 ? 0 : (1.0f * self.completedBytes / self.totalBytes);
-}
-
-- (void)download {
-	static NSURLSessionConfiguration *downloadConfig = nil;
-	static AFURLSessionManager *manager = nil;
-	static FBKVOController *kvo = nil;
-	
-	if(kvo == nil) {
-		kvo = [FBKVOController controllerWithObserver:self];
-	}
-	
-	if(!downloadConfig || !manager) {
-		downloadConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"phishod"];
-        downloadConfig.HTTPAdditionalHeaders = @{
-                                                 @"User-Agent": @"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
-                                                 };
-        
-		manager = [AFURLSessionManager.alloc initWithSessionConfiguration:downloadConfig];
-	}
-	
-	NSString *incompleteCachePath = [self.item incompleteCachePath];
-	NSString *completeCachePath = [self.item completeCachePath];
-	
-	if ([FCFileManager existsItemAtPath:completeCachePath]) {
-		if(self.success) {
-			self.success([NSURL fileURLWithPath:completeCachePath]);
-		}
-		
-		return;
-	}
-	
-	// ensure directory structure exists
-	[FCFileManager createDirectoriesForFileAtPath:incompleteCachePath
-											error:nil];
-	[FCFileManager createDirectoriesForFileAtPath:completeCachePath
-											error:nil];
+    [self downloadItem:i];
     
-    dbug(@"incompleteCachePath: %@", incompleteCachePath);
-    dbug(@"completeCachePath: %@", completeCachePath);
-	
-	// setup blocks for new & resume download
-    __block NSProgress * rootProgress;
-	NSURL* (^destination)(NSURL *, NSURLResponse *) = ^(NSURL *targetPath, NSURLResponse *response) {
-		return [NSURL fileURLWithPath:incompleteCachePath];
-	};
-	
-	void (^completion)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-		if(error) {
-			dbug(@"download error: %@", error);
-			
-			self.state = PHODDownloadStateFailed;
-			
-			if (self.failure) {
-				self.failure(error);
-			}
-			
-			return;
-		}
-		else {
-			dbug(@"download completed: %@. moving to %@", filePath.path, completeCachePath);
-			
-			self.state = PHODDownloadStateDone;
-			
-			[FCFileManager moveItemAtPath:filePath.path
-								   toPath:completeCachePath];
-		
-            [self.item cache];
-			
-			if(self.success) {
-				self.success([NSURL URLWithString:completeCachePath]);
-			}
-		}
-	};
-    
-    void (^observeBlock)(id, NSProgress *, NSDictionary *) = ^(id observer, NSProgress *p, NSDictionary *change) {
-        self.totalBytes = p.totalUnitCount;
-        self.completedBytes = p.completedUnitCount;
-        
-        if(self.progress) {
-            self.progress(p.totalUnitCount, p.completedUnitCount);
-        }
-    };
-	// end blocks
-	
-	if([FCFileManager existsItemAtPath:incompleteCachePath]) {
-		self.dl = [manager downloadTaskWithResumeData:[FCFileManager readFileAtPathAsData:incompleteCachePath]
-											 progress:&rootProgress
-										  destination:destination
-									completionHandler:completion];
-        
-        [kvo observe:rootProgress
-             keyPath:@"fractionCompleted"
-             options:NSKeyValueObservingOptionNew
-               block:observeBlock];
-
-		[self.dl resume];
-    }
-	else {
-        [self.item downloadURL:^(NSURL *downloadURL) {
-            // work around for __autoreleasing ns progress
-            NSProgress *ppp;
-            
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:downloadURL];
-            [request setValue:@"LivePhishApp/1.2 CFNetwork/672.1.15 Darwin/14.0.0"
-           forHTTPHeaderField:@"User-Agent"];
-            
-            self.dl = [manager downloadTaskWithRequest:request
-                                              progress:&ppp
-                                           destination:destination
-                                     completionHandler:completion];
-            
-            rootProgress = ppp;
-            
-            [kvo observe:ppp
-                 keyPath:@"fractionCompleted"
-                 options:NSKeyValueObservingOptionNew
-                   block:observeBlock];
-            
-        	[self.dl resume];
-        }];
-	}
-}
-
-- (void)start {
-	self.state = PHODDownloadStateDownloading;
-	
-	[self download];
-}
-
-- (void)cancelDownload {
-	self.state = PHODDownloadStateCancelled;
-
-	[self.dl cancel];
-
-	[self cancel];
-}
-
-- (BOOL)isExecuting {
-	return self.state == PHODDownloadStateDownloading;
-}
-
-- (BOOL)isFinished {
-	return self.state == PHODDownloadStateDone ||
-		   self.state == PHODDownloadStateCancelled ||
-		   self.state == PHODDownloadStateFailed;
-}
-
-- (BOOL)isConcurrent {
-	return YES;
-}
-
-- (void)setState:(PHODDownloadState)state {
-    [self willChangeValueForKey:@"isExecuting"];
-    [self willChangeValueForKey:@"isFinished"];
-	
-    _state = state;
-	
-    [self didChangeValueForKey:@"isFinished"];
-    [self didChangeValueForKey:@"isExecuting"];
-
+    return i;
 }
 
 @end
+

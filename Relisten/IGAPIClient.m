@@ -47,8 +47,8 @@
     return self.track.id;
 }
 
-- (void)downloadURL:(void (^)(NSURL *))dl {
-    dl(self.track.mp3);
+- (NSURL *)downloadURL {
+    return self.track.mp3;
 }
 
 - (void)cache {
@@ -87,16 +87,14 @@
     return sharedFoo;
 }
 
--(PHODDownloadOperation *)downloadTrack:(IGTrack *)track
-                                 inShow:(IGShow *)show
-                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-                                success:(void (^)(NSURL *fileURL)) success
-                                failure:(void ( ^ ) ( NSError *error ))failure {
-    return [self downloadItem:[IGDownloadItem.alloc initWithTrack:track
-                                                          andShow:show]
-                     progress:progress
-                      success:success
-                      failure:failure];
+-(IGDownloadItem *)downloadTrack:(IGTrack *)track
+                          inShow:(IGShow *)show {
+    IGDownloadItem *i = [IGDownloadItem.alloc initWithTrack:track
+                                                    andShow:show];
+    
+    [self downloadItem:i];
+    
+    return i;
 }
 
 @end

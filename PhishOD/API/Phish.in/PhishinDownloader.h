@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 	PHODDownloadStateFailed,
 };
 
+@import TCBlobDownloadSwift;
+
 @interface PHODDownloadItem : NSObject
 
 + (id)showForPath:(NSString *)path;
@@ -35,7 +37,9 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 @property (nonatomic, readonly) NSURL *cachedFile;
 @property (nonatomic, readonly) BOOL isCached;
 
-- (void)downloadURL:(void(^)(NSURL *))dl;
+@property (nonatomic) TCBlobDownload *blob;
+
+- (NSURL *)downloadURL;
 - (void)cache;
 - (void)delete;
 
@@ -51,42 +55,53 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 
 @end
 
-@interface PHODDownloadOperation : NSOperation
+@class PHODDownloader;
 
-@property (nonatomic) PHODDownloadState state;
-@property (nonatomic) PHODDownloadItem *item;
+@protocol PHODDownloaderDelegate <NSObject>
 
-@property (nonatomic) int64_t totalBytes;
-@property (nonatomic) int64_t completedBytes;
-@property (nonatomic, readonly) CGFloat downloadProgress;
+- (void)downloader:(PHODDownloader *)downloader
+      itemSucceded:(PHODDownloadItem *)item;
 
-@property (nonatomic, copy) void (^progress)(int64_t totalBytes, int64_t completedBytes);
-@property (nonatomic, copy) void (^success)(NSURL *fileURL);
-@property (nonatomic, copy) void (^failure)(NSError *error);
+- (void)downloader:(PHODDownloader *)downloader
+       itemStarted:(PHODDownloadItem *)item;
 
-- (instancetype)initWithDownloadItem:(PHODDownloadItem *)item
-                            progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-                             success:(void (^)(NSURL *fileURL)) success
-                             failure:(void ( ^ ) ( NSError *error ))failure;
-
-- (void)cancelDownload;
+- (void)downloader:(PHODDownloader *)downloader
+        itemFailed:(PHODDownloadItem *)item;
 
 @end
 
 @interface PHODDownloader : NSObject
 
-@property (nonatomic) NSOperationQueue *queue;
+@property (nonatomic, readonly) NSMutableArray<PHODDownloadItem *> *downloading;
+@property (nonatomic, readonly) NSMutableArray<PHODDownloadItem *> *downloadQueue;
 
-- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item
-                               progress:(void (^)(int64_t, int64_t))progress
-                                success:(void (^)(NSURL *))success
-                                failure:(void (^)(NSError *))failure;
+@property (nonatomic) NSUInteger maxConcurrentDownloads; // default = 2
+@property (nonatomic, weak) id<PHODDownloaderDelegate> delegate;
 
-- (PHODDownloadOperation *)downloadItem:(PHODDownloadItem *)item;
+- (TCBlobDownload *)downloadItem:(PHODDownloadItem *)item;
 
-- (PHODDownloadOperation *)findOperationForTrackInQueue:(PHODDownloadItem *)track;
-- (BOOL)isTrackDownloadedOrQueued:(PHODDownloadItem *)track;
-- (CGFloat)progressForTrack:(PHODDownloadItem *)track;
+- (void)addDownloadObserver:(NSObject *)observer
+                      forId:(NSInteger)eyed
+                   progress:(void (^)(int64_t, int64_t))progress
+                    success:(void (^)(NSURL *))success
+                    failure:(void (^)(NSError *))failure;
+
+- (void)addDownloadObserver:(NSObject *)observer
+            forDownloadItem:(PHODDownloadItem *)item
+                   progress:(void (^)(int64_t, int64_t))progress
+                    success:(void (^)(NSURL *))success
+                    failure:(void (^)(NSError *))failure;
+
+- (void)removeDownloadObserver:(NSObject *)observer
+                         forId:(NSInteger)eyed;
+
+- (void)removeDownloadObserver:(NSObject *)observer
+               forDownloadItem:(PHODDownloadItem *)item;
+
+- (BOOL)isTrackDownloadedOrQueued:(NSInteger)track;
+- (PHODDownloadItem *)findItemForItemIdInQueue:(NSInteger)track;
+
+- (CGFloat)progressForTrack:(NSInteger)track;
 
 @end
 
@@ -94,11 +109,8 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 
 +(instancetype)sharedInstance;
 
--(PHODDownloadOperation *)downloadTrack:(PhishinTrack *)track
-                                 inShow:(PhishinShow *)show
-                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-                                success:(void (^)(NSURL *fileURL)) success
-                                failure:(void ( ^ ) ( NSError *error ))failure;
+-(PhishinDownloadItem *)downloadTrack:(PhishinTrack *)track
+                               inShow:(PhishinShow *)show;
 
 @end
 

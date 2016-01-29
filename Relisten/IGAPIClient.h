@@ -54,18 +54,6 @@
 
 @end
 
-@interface IGDownloader : PHODDownloader
-
-+(instancetype)sharedInstance;
-
--(PHODDownloadOperation *)downloadTrack:(IGTrack *)track
-                                 inShow:(IGShow *)show
-                               progress:(void (^)(int64_t totalBytes, int64_t completedBytes))progress
-                                success:(void (^)(NSURL *fileURL)) success
-                                failure:(void ( ^ ) ( NSError *error ))failure;
-
-@end
-
 @interface IGDownloadItem : PHODDownloadItem
 
 @property (nonatomic, readonly) IGTrack *track;
@@ -73,5 +61,14 @@
 
 - (instancetype)initWithTrack:(IGTrack *)track
                       andShow:(IGShow *)show;
+
+@end
+
+@interface IGDownloader : PHODDownloader
+
++(instancetype)sharedInstance;
+
+-(IGDownloadItem *)downloadTrack:(IGTrack *)track
+                          inShow:(IGShow *)show;
 
 @end
