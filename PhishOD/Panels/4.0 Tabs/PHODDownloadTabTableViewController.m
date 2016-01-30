@@ -10,12 +10,14 @@
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <KVOController/FBKVOController.h>
+#import <Toast/UIView+Toast.h>
 
 #import "PHODTrackCell.h"
 #import "PHODCollectionTableViewCell.h"
 #import "PHODCollectionProvider.h"
 #import "PHODCollectionCollectionViewCell.h"
 #import "PHODLoadingTableViewCell.h"
+#import "PHODDownloadingTrackCell.h"
 #import "PHODTableHeaderView.h"
 
 #import "IGAPIClient.h"
@@ -27,10 +29,11 @@
 NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	kPHODDownloadTabDownloadedSection,
 	kPHODDownloadTabDownloadingSection,
+    kPHODDownloadTabQueueSection,
 	kPHODDownloadTabDownloadSectionCount
 };
 
-@interface PHODDownloadTabTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface PHODDownloadTabTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PHODDownloaderDelegate>
 
 #ifdef IS_PHISH
 @property (nonatomic) PHODDownloadedCollectionProvider *downloadedProvider;
@@ -38,8 +41,8 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 @property (nonatomic) NSArray *downloadedShows;
 #endif
 
-@property (nonatomic) NSOperationQueue *downloading;
-@property (nonatomic) FBKVOController *kvo;
+@property (nonatomic, readonly) NSArray<PHODDownloadItem *> *downloading;
+@property (nonatomic, readonly) NSArray<PHODDownloadItem *> *downloadQueue;
 
 @end
 
@@ -57,12 +60,35 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
 	return self;
 }
 
+- (NSArray<PHODDownloadItem *> *)downloading {
+    return self.downloader.downloading;
+}
+
+- (NSArray<PHODDownloadItem *> *)downloadQueue {
+    return self.downloader.downloadQueue;
+}
+
+- (PHODDownloader *)downloader {
+    PHODDownloader *manager;
+    
+#ifdef IS_PHISH
+    manager = PhishinAPI.sharedAPI.downloader;
+#else
+    manager = IGDownloader.sharedInstance;
+#endif
+    
+    return manager;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.downloader.delegate = self;
 	
-	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODTrackCell.class)
+	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODDownloadingTrackCell.class)
 											   bundle:nil]
-		 forCellReuseIdentifier:@"trackCell"];
+		 forCellReuseIdentifier:PHODDownloadingTrackCellIdentifier];
     
 #ifdef IS_PHISH
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(PHODLoadingTableViewCell.class)
@@ -81,27 +107,13 @@ NS_ENUM(NSInteger, kPHODDownloadTabSections) {
          forCellReuseIdentifier:@"show"];
 #endif
     
-#ifdef IS_PHISH
-    self.downloading = PhishinAPI.sharedAPI.downloader.queue;
-#else
-    self.downloading = IGDownloader.sharedInstance.queue;
-    
+#ifndef IS_PHISH
     self.tableView.tableFooterView = [UIView new];
     
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.emptyDataSetSource = self;
 #endif
     
-	self.kvo = [FBKVOController.alloc initWithObserver:self];
-	
-	[self.kvo observe:self.downloading
-			  keyPath:@"count"
-			  options:NSKeyValueObservingOptionNew
-				block:^(id observer, id object, NSDictionary *change) {
-					[self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, kPHODDownloadTabDownloadSectionCount)]
-								  withRowAnimation:UITableViewRowAnimationAutomatic];
-				}];
-	
 	self.tableView.estimatedRowHeight = 44.0f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
@@ -151,6 +163,9 @@ titleForHeaderInSection:(NSInteger)section {
 	else if(section == kPHODDownloadTabDownloadingSection) {
 		return @"Downloading";
 	}
+    else if(section == kPHODDownloadTabQueueSection) {
+        return [NSString stringWithFormat:@"%ld Queued", self.downloadQueue.count];
+    }
 	
 	return nil;
 }
@@ -236,8 +251,11 @@ heightForHeaderInSection:(NSInteger)section {
 #endif
 	}
 	else if(section == kPHODDownloadTabDownloadingSection) {
-		return self.downloading.operations.count;
+		return self.downloading.count;
 	}
+    else if(section == kPHODDownloadTabQueueSection) {
+        return self.downloadQueue.count;
+    }
 	
     return 0;
 }
@@ -277,23 +295,30 @@ heightForHeaderInSection:(NSInteger)section {
         return cell;
 #endif
 	}
-	else if(indexPath.section == kPHODDownloadTabDownloadingSection) {
-		cell =  [tableView dequeueReusableCellWithIdentifier:@"trackCell"
-												forIndexPath:indexPath];
-		
-		PHODTrackCell *c = (PHODTrackCell *)cell;
-		
-		if(indexPath.row >= self.downloading.operationCount) {
-			return cell;
-		}
-		
-		PHODDownloadOperation *op = self.downloading.operations[indexPath.row];
-		PhishinDownloadItem *item = (PhishinDownloadItem *)op.item;
-		[c updateCellWithTrack:item.track
-				   inTableView:self.tableView];
-		
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	}
+    else if(indexPath.section == kPHODDownloadTabDownloadingSection) {
+        cell =  [tableView dequeueReusableCellWithIdentifier:PHODDownloadingTrackCellIdentifier
+                                                forIndexPath:indexPath];
+        
+        PHODDownloadingTrackCell *c = (PHODDownloadingTrackCell *)cell;
+        
+        if(indexPath.row >= self.downloading.count) {
+            return cell;
+        }
+        
+        [c updateCellWithDownloadItem:self.downloading[indexPath.row]];
+    }
+    else if(indexPath.section == kPHODDownloadTabQueueSection) {
+        cell =  [tableView dequeueReusableCellWithIdentifier:PHODDownloadingTrackCellIdentifier
+                                                forIndexPath:indexPath];
+        
+        PHODDownloadingTrackCell *c = (PHODDownloadingTrackCell *)cell;
+        
+        if(indexPath.row >= self.downloadQueue.count) {
+            return cell;
+        }
+        
+        [c updateCellWithDownloadItem:self.downloadQueue[indexPath.row]];
+    }
     
     // Configure the cell...
     
@@ -313,6 +338,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.navigationController pushViewController:vc
                                              animated:YES];
     }
+    else if(indexPath.section == kPHODDownloadTabDownloadingSection) {
+        IGDownloadItem *i = (IGDownloadItem *)self.downloading[indexPath.row];
+        RLShowViewController *vc = [RLShowViewController.alloc initWithShow:i.show];
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
+    else if(indexPath.section == kPHODDownloadTabQueueSection) {
+        IGDownloadItem *i = (IGDownloadItem *)self.downloadQueue[indexPath.row];
+        RLShowViewController *vc = [RLShowViewController.alloc initWithShow:i.show];
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
 }
 #endif
 
@@ -326,6 +365,39 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
 }
 #endif
+
+#pragma mark - Download Delegate
+
+- (void)animateTwoSections {
+    [self.tableView reloadData];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(kPHODDownloadTabDownloadingSection, kPHODDownloadTabQueueSection - kPHODDownloadTabDownloadingSection + 1)]
+//                  withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)downloader:(PHODDownloader *)downloader
+     itemCancelled:(PHODDownloadItem *)item {
+    [self animateTwoSections];
+}
+
+- (void)downloader:(PHODDownloader *)downloader
+        itemFailed:(PHODDownloadItem *)item {
+    [self animateTwoSections];
+}
+
+- (void)downloader:(PHODDownloader *)downloader
+      itemSucceded:(PHODDownloadItem *)item {
+//    [self.tableView reloadData];
+    [self animateTwoSections];
+    
+//    [self.view makeToast:[NSString stringWithFormat:@"%@ finished downloading", [[item track] title]]
+//                duration:5.0f
+//                position:CSToastPositionBottom];
+}
+
+- (void)downloader:(PHODDownloader *)downloader
+       itemStarted:(PHODDownloadItem *)item {
+    [self animateTwoSections];
+}
 
 #pragma mark - Empty Data Set
 

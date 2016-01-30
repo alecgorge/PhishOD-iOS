@@ -64,7 +64,7 @@
 }
 
 - (BOOL)isDownloadingOrQueued {
-	return [self.downloader isTrackDownloadedOrQueued:self.downloadItem];
+	return [self.downloader isTrackDownloadingOrQueued:self.id];
 }
 
 - (NSURL *)cachedFile {

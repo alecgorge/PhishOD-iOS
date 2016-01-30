@@ -348,6 +348,10 @@
 		7CA833871C5BCC1100B5DFA9 /* TCBlobDownloadSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CA8337D1C5BCBD600B5DFA9 /* TCBlobDownloadSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CA8338E1C5BE81C00B5DFA9 /* AGQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */; };
 		7CA8338F1C5BE81C00B5DFA9 /* AGQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */; };
+		7CA833931C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA833911C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m */; };
+		7CA833941C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA833911C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m */; };
+		7CA833951C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA833921C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib */; };
+		7CA833961C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA833921C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib */; };
 		7CACD50217A4718A00E84B28 /* RotatableTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */; };
 		7CADB31A1760352900B80D54 /* PhishNetTopShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB3191760352900B80D54 /* PhishNetTopShow.m */; };
 		7CADB31D176035E100B80D54 /* TopRatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CADB31C176035E100B80D54 /* TopRatedViewController.m */; };
@@ -764,6 +768,9 @@
 		7CA833771C5BCBD600B5DFA9 /* TCBlobDownloadSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TCBlobDownloadSwift.xcodeproj; path = Vendor/TCBlobDownloadSwift/TCBlobDownloadSwift.xcodeproj; sourceTree = "<group>"; };
 		7CA8338C1C5BE81C00B5DFA9 /* AGQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGQueue.h; path = Shared/AGQueue.h; sourceTree = "<group>"; };
 		7CA8338D1C5BE81C00B5DFA9 /* AGQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGQueue.m; path = Shared/AGQueue.m; sourceTree = "<group>"; };
+		7CA833901C5C02B000B5DFA9 /* PHODDownloadingTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHODDownloadingTrackCell.h; path = Controllers/Panels/Downloads/PHODDownloadingTrackCell.h; sourceTree = "<group>"; };
+		7CA833911C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHODDownloadingTrackCell.m; path = Controllers/Panels/Downloads/PHODDownloadingTrackCell.m; sourceTree = "<group>"; };
+		7CA833921C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHODDownloadingTrackCell.xib; path = Controllers/Panels/Downloads/PHODDownloadingTrackCell.xib; sourceTree = "<group>"; };
 		7CACD4F217A4585C00E84B28 /* PhishTracksStatsPlayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhishTracksStatsPlayEvent.h; sourceTree = "<group>"; };
 		7CACD50017A4718900E84B28 /* RotatableTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableTabBarController.h; sourceTree = "<group>"; };
 		7CACD50117A4718A00E84B28 /* RotatableTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableTabBarController.m; sourceTree = "<group>"; };
@@ -1343,6 +1350,9 @@
 		7C36A73D1B3489A10004E766 /* Downloads */ = {
 			isa = PBXGroup;
 			children = (
+				7CA833901C5C02B000B5DFA9 /* PHODDownloadingTrackCell.h */,
+				7CA833911C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m */,
+				7CA833921C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib */,
 			);
 			name = Downloads;
 			sourceTree = "<group>";
@@ -2199,6 +2209,7 @@
 				7C10A8591B33B51700692DD3 /* jquery2.min.js in Resources */,
 				7C10A85A1B33B51700692DD3 /* glyphicons_172_rewind.png in Resources */,
 				7C10A85B1B33B51700692DD3 /* jQueryAPI.js in Resources */,
+				7CA833961C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib in Resources */,
 				7CE27FA11B5C5B2D00507C77 /* Pods-PhishOD-Relisten-acknowledgements.plist in Resources */,
 				7C10A85C1B33B51700692DD3 /* AGMediaPlayerViewController.xib in Resources */,
 				7C10A85D1B33B51700692DD3 /* 03-loopback.png in Resources */,
@@ -2272,6 +2283,7 @@
 				7C1C3C6A198219FD00555ACB /* glyphicons_175_stop@2x.png in Resources */,
 				7C249274198E919000C9275A /* cloud_download_22.png in Resources */,
 				7C1C3C6B198219FD00555ACB /* glyphicons_176_forward.png in Resources */,
+				7CA833951C5C02B000B5DFA9 /* PHODDownloadingTrackCell.xib in Resources */,
 				7C1C3C60198219FD00555ACB /* glyphicons_076_headphones@2x.png in Resources */,
 				7CDF2B82198AB67400D17353 /* ShowHeaderView.xib in Resources */,
 				7C1C3C6F198219FD00555ACB /* glyphicons_halflings_113_chevron-down.png in Resources */,
@@ -2601,6 +2613,7 @@
 				7C10A83C1B33B51700692DD3 /* PHODPhishNetTableViewController.m in Sources */,
 				7C10A83D1B33B51700692DD3 /* PhishinDownloadedShowsViewController.m in Sources */,
 				7C10A83E1B33B51700692DD3 /* PHODTrackCell.m in Sources */,
+				7CA833941C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m in Sources */,
 				7C10A83F1B33B51700692DD3 /* SongInstancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2642,6 +2655,7 @@
 				C582FD1818417D860000E8CD /* PhishTracksStatsFavorite.m in Sources */,
 				7CDF2B8B198AEAE600D17353 /* PhishinDownloader.m in Sources */,
 				F1B48AF6197382AD00DDF5C3 /* TourViewController.m in Sources */,
+				7CA833931C5C02B000B5DFA9 /* PHODDownloadingTrackCell.m in Sources */,
 				7C2170761B8B5D03007E7831 /* HFPodDataManager.m in Sources */,
 				F1B48B3F1973836800DDF5C3 /* UserTopTracksViewController.m in Sources */,
 				7C857EE81BB6094700613017 /* PhishShardStyle.m in Sources */,

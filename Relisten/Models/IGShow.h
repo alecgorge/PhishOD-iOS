@@ -49,7 +49,7 @@
 
 @property (nonatomic, strong) NSArray<Optional, IGTrack> *tracks;
 
-@property (nonatomic) IGArtist<Ignore> *artist;
+@property (nonatomic) IGArtist<Optional> *artist;
 
 - (IGShow *)cache;
 

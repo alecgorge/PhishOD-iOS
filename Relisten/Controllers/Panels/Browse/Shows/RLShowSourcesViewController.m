@@ -118,6 +118,7 @@ titleForHeaderInSection:(NSInteger)section {
         IGSourceCell *c = (IGSourceCell *)cell;
         
         c.uiDetailsLabel.hidden = YES;
+        c.uiDownloadAllButton.hidden = YES;
         
         [c updateCellWithSource:show
                     inTableView:tableView];

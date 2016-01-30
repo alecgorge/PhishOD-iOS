@@ -50,15 +50,37 @@
 @property (weak, nonatomic) IBOutlet UIView *heatmapView;
 @property (weak, nonatomic) IBOutlet UIView *heatmapValue;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heatmapValueHeight;
+@property (weak, nonatomic) IBOutlet UIButton *uiButtonMore;
+@property (weak, nonatomic) IBOutlet UIView *uiViewProgress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *uiConstraintProgress;
 
 @property (nonatomic) NSObject<PHODGenericTrack> *track;
 @property (nonatomic) NSTimer *progressTimer;
+
+@property (nonatomic) PHODDownloadItem *downloadItem;
 
 @property (nonatomic) BOOL hasSubtitle;
 
 @end
 
 @implementation PHODTrackCell
+
+- (void)awakeFromNib {
+    self.uiViewProgress.backgroundColor = [COLOR_PHISH_GREEN colorWithAlphaComponent:0.1];
+    self.uiViewProgress.hidden = YES;
+    self.uiConstraintProgress.constant = 0.0f;
+    self.uiPlaybackIndicator.backgroundColor = UIColor.clearColor;
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.uiConstraintProgress.constant = 0.0f;
+    self.uiViewProgress.hidden = YES;
+    
+    [self.track.downloader removeDownloadObserver:self
+                                            forId:self.track.id];
+}
 
 - (NSAttributedString *)attributedStringForTrack:(NSObject<PHODGenericTrack> *)track {
     if (!track || !track.title) {
@@ -113,6 +135,8 @@
         self.uiTrackNumber.hidden = NO;
         self.uiPlaybackIndicator.state = NAKPlaybackIndicatorViewStateStopped;
     }
+    
+    [self updateMoreButton];
 	
 	if(AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
 		if(!track.isCached) {
@@ -128,8 +152,57 @@
 			self.selectionStyle = UITableViewCellSelectionStyleDefault;
 		}
 	}
+    
+    if([self.track.downloader isTrackDownloadingOrQueued:self.track.id]) {
+        self.uiViewProgress.hidden = NO;
+        [self setProgress:0.02f
+                 animated:NO];
+    }
+    
+    [self.track.downloader addDownloadObserver:self
+                                         forId:self.track.id
+                                      progress:^(int64_t dl, int64_t total) {
+                                          self.uiViewProgress.hidden = NO;
+                                          
+                                          float per = (dl * 1.0f) / (total * 1.0f);
+                                          [self setProgress:per
+                                                   animated:YES];
+                                      }
+                                       success:^(NSURL *destUrl) {
+                                           [self updateMoreButton];
+                                           self.uiViewProgress.hidden = YES;
+                                       }
+                                       failure:^(NSError *err) {
+                                           [self updateMoreButton];
+                                           self.uiViewProgress.hidden = YES;
+                                       }];
 
 	self.heatmapView.hidden = YES;
+}
+
+- (void)setProgress:(float)per
+           animated:(BOOL)animated {
+    self.uiConstraintProgress.constant = -1.0f * (self.contentView.bounds.size.width - (per * self.contentView.bounds.size.width));
+    
+    void(^blk)(void) = ^{
+        [self.contentView layoutIfNeeded];
+        [self.uiViewProgress layoutIfNeeded];
+    };
+    
+    [self.uiViewProgress updateConstraintsIfNeeded];
+    
+    if(animated) {
+        [UIView animateWithDuration:0.1f
+                         animations:blk];
+    }
+    else {
+        blk();
+    }
+}
+
+- (void)updateMoreButton {
+    [self.uiButtonMore setImage:[UIImage imageNamed:self.track.isCached ? @"more-filled" : @"more"]
+                       forState:UIControlStateNormal];
 }
 
 - (void)updateCellWithTrack:(NSObject<PHODGenericTrack> *)track
@@ -238,8 +311,9 @@
         [controller addAction:[UIAlertAction actionWithTitle:@"Delete saved file"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action) {
-            [(IGTrack *)self.track deleteCache];
-        }]];
+                                                         [(IGTrack *)self.track deleteCache];
+                                                         [self updateMoreButton];
+                                                     }]];
     }
     else if(self.track.isDownloadingOrQueued) {
         [controller addAction:[UIAlertAction actionWithTitle:@"Cancel download"
@@ -249,8 +323,7 @@
                 return;
             }
             
-            PHODDownloadOperation *op = [self.track.downloader findOperationForTrackInQueue:self.track.downloadItem];
-            [op cancelDownload];
+            [self.track.downloader cancelDownloadForTrackId:self.track.id];
         }]];
     }
     else if (!self.track.isCached && AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus != AFNetworkReachabilityStatusNotReachable) {
@@ -262,6 +335,10 @@
             }
             
             [self.track.downloader downloadItem:self.track.downloadItem];
+                                                         
+                                                         [self setProgress:0.02f
+                                                                  animated:NO];
+                                                         self.uiViewProgress.hidden = NO;
         }]];
     }
     

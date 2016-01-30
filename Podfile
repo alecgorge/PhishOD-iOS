@@ -44,6 +44,7 @@ target "PhishOD" do
 	pod 'Instabug', '~> 4.1'
 	pod 'Flurry-iOS-SDK'
 	pod 'EDColor'
+	pod 'Toast'
 
 	target "Relisten" do
 	end

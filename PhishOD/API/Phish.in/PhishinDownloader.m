@@ -114,6 +114,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 
 - (NSURL *)downloadURL {
     NSAssert(NO, @"this needs to be overriden");
+    return nil;
 }
 
 @end
@@ -166,6 +167,9 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 @property (nonatomic, copy) void (^success)(NSURL *);
 @property (nonatomic, copy) void (^failure)(NSError *);
 
+@end
+
+@implementation PHODDownloaderCallbackContainer
 @end
 
 @interface PHODDownloader ()
@@ -256,52 +260,49 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
                 forItem:(PHODDownloadItem *)item {
     NSNumber *num = @(item.id);
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
-            cbc.progress(done, total);
-        }
-    });
+    for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+        cbc.progress(done, total);
+    }
 }
 
 - (void)triggerSuccess:(NSURL *)url
                forItem:(PHODDownloadItem *)item {
     NSNumber *num = @(item.id);
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
-            cbc.success(url);
-        }
-        
-        [self.delegate downloader:self
-                     itemSucceded:item];
+    for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+        cbc.success(url);
+    }
+    
+    [self removeDownloadingItem:item.id];
 
-        [self removeDownloadingItem:item.id];
-    });
+    [self.delegate downloader:self
+                 itemSucceded:item];
 }
 
 - (void)triggerError:(NSError *)err
              forItem:(PHODDownloadItem *)item {
     NSNumber *num = @(item.id);
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
-            cbc.failure(err);
-        }
-        
-        [self.delegate downloader:self
-                       itemFailed:item];
-
-        [self removeDownloadingItem:item.id];
-    });
+    for(PHODDownloaderCallbackContainer *cbc in self.callbacks[num]) {
+        cbc.failure(err);
+    }
+    
+    [self removeDownloadingItem:item.id];
+    
+    [self.delegate downloader:self
+                   itemFailed:item];
 }
 
 - (void)removeDownloadingItem:(NSInteger)eyed {
     NSNumber *num = @(eyed);
     
-    self.callbacks[num] = NSMutableArray.array;
-    
     for (PHODDownloadItem *i in self.downloading.copy) {
         if(i.id == eyed) {
+            if(i.blob.progress < 1.0f) {
+                [i.blob cancel];
+            }
+            
+            self.callbacks[num] = NSMutableArray.array;
             [self.downloading removeObject:i];
         }
     }
@@ -309,9 +310,24 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
     [self startIfPossible];
 }
 
+- (void)removeQueuedItem:(NSInteger)eyed {
+    NSNumber *num = @(eyed);
+    
+    for (PHODDownloadItem *i in self.downloadQueue.copy) {
+        if(i.id == eyed) {
+            self.callbacks[num] = NSMutableArray.array;
+            [self.downloadQueue removeObject:i];
+        }
+    }
+}
+
 - (void)startIfPossible {
     while(self.downloading.count < self.maxConcurrentDownloads) {
         PHODDownloadItem *i = [self.queue dequeue];
+        
+        if(i == nil) {
+            break;
+        }
         
         [self.downloading addObject:i];
         
@@ -323,7 +339,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 }
 
 - (TCBlobDownload *)downloadItem:(PHODDownloadItem *)item {
-    NSString *path = [[item.class cacheDir] stringByAppendingPathComponent:item.cachePath];
+    NSString *path = item.completeCachePath;
     TCBlobDownload *blob = [self.manager downloadFileAtURL:item.downloadURL
                                                toDirectory:[NSURL fileURLWithPath:path.stringByDeletingLastPathComponent
                                                                       isDirectory:YES]
@@ -340,6 +356,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
                                                         return;
                                                     }
                                                     
+                                                    [item cache];
                                                     [self triggerSuccess:url
                                                                  forItem:item];
                                                 }];
@@ -364,7 +381,7 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 	}];
 }
 
-- (BOOL)isTrackDownloadedOrQueued:(NSInteger)track {
+- (BOOL)isTrackDownloadingOrQueued:(NSInteger)track {
 	return [self findItemForItemIdInQueue:track] != nil;
 }
 
@@ -376,6 +393,19 @@ static NSString *kPhishinDownloaderShowsKey = @"phishod.shows";
 	}
 	
 	return blob.progress;
+}
+
+- (void)cancelDownloadForDownloadItem:(PHODDownloadItem *)item {
+    [self removeDownloadingItem:item.id];
+    [self removeQueuedItem:item.id];
+    
+    [self.delegate downloader:self
+                itemCancelled:item];
+}
+
+- (void)cancelDownloadForTrackId:(NSInteger)eyed {
+    PHODDownloadItem *item = [self findItemForItemIdInQueue:eyed];
+    [self cancelDownloadForDownloadItem:item];
 }
 
 @end

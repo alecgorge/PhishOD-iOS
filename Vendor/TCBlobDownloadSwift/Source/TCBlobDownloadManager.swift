@@ -187,17 +187,30 @@ class DownloadDelegate: NSObject, NSURLSessionDownloadDelegate {
     }
 
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        let download = self.downloads[downloadTask.taskIdentifier]!
-        var resultingURL: NSURL?
+        let dl = self.downloads[downloadTask.taskIdentifier]
+        
+        if dl == nil {
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(location)
+            }
+            catch let error as NSError {
+                print(error.description)
+            }
+            
+            return
+        }
+        
+        let download = dl!
         
         do {
-            try  NSFileManager.defaultManager().replaceItemAtURL(download.destinationURL, withItemAtURL: location, backupItemName: nil, options: [], resultingItemURL: &resultingURL)
-                
-                download.resultingURL = resultingURL
-
+            download.resultingURL = download.destinationURL
+            try NSFileManager.defaultManager().createDirectoryAtURL(download.destinationURL.URLByDeletingLastPathComponent!, withIntermediateDirectories: true, attributes: nil)
+            try NSFileManager.defaultManager().moveItemAtURL(location, toURL: download.destinationURL)
         }
         catch let error as NSError {
-            error.description
+            download.delegate?.download(download, didFinishWithError: error, atLocation: download.resultingURL)
+            download.completion?(error: error, location: download.resultingURL)
+            print(error.description)
         }
         
         
@@ -211,7 +224,17 @@ class DownloadDelegate: NSObject, NSURLSessionDownloadDelegate {
     }
 
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError sessionError: NSError?) {
-        let download = self.downloads[task.taskIdentifier]!
+        let dl = self.downloads[task.taskIdentifier]
+        
+        if dl == nil {
+            if sessionError != nil {
+                print(sessionError!)
+            }
+            return
+        }
+        
+        let download = dl!
+        
         var error: NSError? = sessionError ?? download.error
         // Handle possible HTTP errors
         if let response = task.response as? NSHTTPURLResponse {

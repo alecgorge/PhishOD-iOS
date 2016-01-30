@@ -12,6 +12,7 @@
 
 @interface IGSourceCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *uiDownloadAllButton;
 @property (weak, nonatomic) IBOutlet UILabel *uiDetailsLabel;
 
 - (void)updateCellWithSource:(IGShow *)source

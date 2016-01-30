@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *uiDurationLabel;
 @property (weak, nonatomic) IBOutlet AXRatingView *uiRatingView;
 @property (weak, nonatomic) IBOutlet UILabel *uiRatingReviewCountLabel;
-@property (weak, nonatomic) IBOutlet UIButton *uiDownloadAllButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *uiSourceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uiLineageLabel;

@@ -75,6 +75,7 @@ PODS:
   - SVProgressHUD (2.0-beta8)
   - SVWebViewController (1.0)
   - TDBadgedCell (3.0)
+  - Toast (3.0)
   - TTTAttributedLabel (1.13.4)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SVWebViewController
   - TDBadgedCell (from `https://github.com/tmdvs/TDBadgedCell.git`)
+  - Toast
   - TTTAttributedLabel
   - UIActivityIndicator-for-SDWebImage
   - VTAcknowledgementsViewController (~> 0.14)
@@ -186,10 +188,11 @@ SPEC CHECKSUMS:
   SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TDBadgedCell: 8e5314066fd8c2d8b6e3fc5dec824f5ded78bdc5
+  Toast: 32c59229abfcf41850162b83bb9259dc84372473
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
 
-PODFILE CHECKSUM: 69b5f3fbd2d1107ef488671b819bd98348b4afef
+PODFILE CHECKSUM: 10034766541c436efe74826c513288a0a87a515b
 
 COCOAPODS: 1.0.0.beta.2

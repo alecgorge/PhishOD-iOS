@@ -149,6 +149,10 @@ NS_ENUM(NSInteger, IGShowRows) {
             IGSourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"source"
                                                                  forIndexPath:indexPath];
             
+            [cell.uiDownloadAllButton addTarget:self
+                                         action:@selector(downloadAll)
+                               forControlEvents:UIControlEventTouchUpInside];
+            
             [cell updateCellWithSource:self.show
                            inTableView:tableView];
             
@@ -319,6 +323,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [AppDelegate.sharedDelegate.navDelegate fixForViewController:self];
     
     [AppDelegate.sharedDelegate saveCurrentState];
+}
+
+- (void)downloadAll {
+    for (IGTrack *t in self.show.tracks) {
+        if(!t.isCached) {
+            [t.downloader downloadItem:[IGDownloadItem.alloc initWithTrack:t
+                                                                   andShow:self.show]];
+        }
+    }
+    [self.tableView reloadData];
 }
 
 - (NSArray *)getAllTracks {

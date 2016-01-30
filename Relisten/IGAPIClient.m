@@ -13,6 +13,7 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <FCFileManager/FCFileManager.h>
+#import "PHODPersistence.h"
 
 #define IGUANA_API_URL_BASE @"http://iguana.app.alecgorge.com/api"
 
@@ -205,9 +206,20 @@
               return a;
           }];
           
+          [PHODPersistence.sharedInstance setObject:r
+                                             forKey:@"relisten.artists"];
+          
           success(r);
       }
       failure:^(NSURLSessionDataTask *task, NSError *error) {
+          NSArray *a = [PHODPersistence.sharedInstance objectForKey:@"relisten.artists"];
+          
+          if(a) {
+              success(a);
+              dbug(@"supressing error: %@", error);
+              return;
+          }
+          
           [self failure:error];
           
           success(nil);
@@ -451,7 +463,7 @@
     [ssss POST:@"play"
     parameters:@{@"song":@{@"title": track.title,
                            @"slug": track.slug,
-                           @"band": show.artist.slug,
+                           @"band": show.artist ? show.artist.slug : self.artist.slug,
                            @"year": [NSString stringWithFormat:@"%ld", (long)show.year],
                            @"month": [show.displayDate substringWithRange:NSMakeRange(5, 2)],
                            @"day": [show.displayDate substringWithRange:NSMakeRange(8, 2)],

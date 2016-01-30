@@ -66,6 +66,9 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
        itemStarted:(PHODDownloadItem *)item;
 
 - (void)downloader:(PHODDownloader *)downloader
+     itemCancelled:(PHODDownloadItem *)item;
+
+- (void)downloader:(PHODDownloader *)downloader
         itemFailed:(PHODDownloadItem *)item;
 
 @end
@@ -98,10 +101,13 @@ typedef NS_ENUM(NSInteger, PHODDownloadState) {
 - (void)removeDownloadObserver:(NSObject *)observer
                forDownloadItem:(PHODDownloadItem *)item;
 
-- (BOOL)isTrackDownloadedOrQueued:(NSInteger)track;
+- (BOOL)isTrackDownloadingOrQueued:(NSInteger)track;
 - (PHODDownloadItem *)findItemForItemIdInQueue:(NSInteger)track;
 
 - (CGFloat)progressForTrack:(NSInteger)track;
+
+- (void)cancelDownloadForDownloadItem:(PHODDownloadItem *)item;
+- (void)cancelDownloadForTrackId:(NSInteger)eyed;
 
 @end
 
