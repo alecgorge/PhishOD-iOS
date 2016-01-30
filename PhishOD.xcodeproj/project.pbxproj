@@ -2828,7 +2828,7 @@
 				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2862,7 +2862,7 @@
 				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2895,7 +2895,7 @@
 				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3009,7 +3009,7 @@
 				CODE_SIGN_ENTITLEMENTS = Relisten/Relisten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CURRENT_PROJECT_VERSION = 405;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

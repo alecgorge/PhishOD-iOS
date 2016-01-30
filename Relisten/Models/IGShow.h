@@ -51,6 +51,9 @@
 
 @property (nonatomic) IGArtist<Optional> *artist;
 
+@property (nonatomic) NSString<Optional> *origSource;
+@property (nonatomic) NSString<Optional> *origSourceLink;
+
 - (IGShow *)cache;
 
 + (NSString *)cacheKeyForShowId:(NSInteger)id;

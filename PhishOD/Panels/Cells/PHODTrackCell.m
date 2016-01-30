@@ -17,6 +17,7 @@
 #import "RLShowViewController.h"
 #import "IguanaMediaItem.h"
 #import "AppDelegate.h"
+#import "IGEvents.h"
 
 @implementation UIImage (IPImageUtils)
 

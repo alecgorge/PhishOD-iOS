@@ -128,7 +128,7 @@ typedef NS_ENUM(NSInteger, RLSourceDetailRows) {
                                           reuseIdentifier:@"InfoCell"];
         }
         
-        cell.textLabel.text = @"View on archive.org";
+        cell.textLabel.text = [NSString stringWithFormat:@"View on %@", self.show.origSource];
         cell.detailTextLabel.text = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
@@ -148,7 +148,7 @@ typedef NS_ENUM(NSInteger, RLSourceDetailRows) {
                                              animated:YES];
     }
     if(indexPath.row == RLSourceDetailViewOriginalRow) {
-        SVWebViewController *vc = [SVWebViewController.alloc initWithAddress:[NSString stringWithFormat:@"http://archive.org/details/%@", self.show.archiveIdentifier]];
+        SVWebViewController *vc = [SVWebViewController.alloc initWithAddress:self.show.origSourceLink];
         [self.navigationController pushViewController:vc
                                              animated:YES];
     }
